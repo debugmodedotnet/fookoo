@@ -1,0 +1,17 @@
+
+<h2>Events</h2>
+
+<hr/>
+
+<div *ngFor="let e of events">
+  <span>{{e.Title}}</span>
+  <br/>
+  <span>{{e.City}}</span>
+  <br/>
+  <span>{{e.Date|date:'short' }}</span>
+  <br/>
+ <span>{{e.isFree ? "Free" :"Paid"}}</span>
+ <br/>
+ <span>{{e.isOnline ? "Online" :"in Person"}}</span>
+ <br/>
+</div>

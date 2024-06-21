@@ -1,5 +1,4 @@
-
-<h1>{{title}}</h1>
+<!-- <h1>{{title}}</h1>
 
 <app-header></app-header>
 <button routerLink="/home">Home</button>
@@ -7,7 +6,22 @@
 <button routerLink="/signup">Sign up</button>
 <button routerLink="/login">Login</button>
 <hr/>
+<router-outlet></router-outlet> -->
+
+@if(!isLoginPage()){
+<!-- HEADER -->
+<app-header></app-header>
+
+<!-- CONTENT -->
+<main>
+  <div id="content">
+    <router-outlet></router-outlet>
+  </div>
+</main>
+
+<!-- FOOTER -->
+<app-footer></app-footer>
+
+}@else {
 <router-outlet></router-outlet>
-
-
-
+}

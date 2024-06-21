@@ -13,17 +13,17 @@ export class LoginComponent {
 
   loginForm: FormGroup;
   private userservice = inject(UserService);
-   constructor(private fb: FormBuilder) {
-  
-     this.loginForm = this.fb.group({
-       email: ['', [Validators.required, Validators.email]],
-       password: ['', [Validators.required, Validators.minLength(6)]]
-     });
-   }
+  constructor(private fb: FormBuilder) {
 
-   async onSubmit() {
-     console.log(this.loginForm?.value);
-     let user = await this.userservice.login(this.loginForm?.value.email, this.loginForm?.value.password);
-     console.log('login successful', user);
-   }
+    this.loginForm = this.fb.group({
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.minLength(6)]]
+    });
+  }
+
+  async onSubmit() {
+    console.log(this.loginForm?.value);
+    let user = await this.userservice.login(this.loginForm?.value.email, this.loginForm?.value.password);
+    console.log('login successful', user);
+  }
 }

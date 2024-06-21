@@ -1,16 +1,25 @@
 import { Component } from '@angular/core';
-import { RouterLink, RouterOutlet } from '@angular/router';
+import { Router, RouterLink, RouterOutlet } from '@angular/router';
 import { HeaderComponent } from './header/header.component';
 import { EventComponent } from './event/event.component';
+import { FooterComponent } from './footer/footer.component';
 
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, RouterLink, HeaderComponent, EventComponent],
+  imports: [RouterOutlet, RouterLink, HeaderComponent, EventComponent, FooterComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
   title = 'NomadCoder';
+
+  constructor(
+    private router: Router
+  ) { }
+
+  isLoginPage(): boolean {
+    return this.router.url === '/login' || this.router.url === '/signup';
+  }
 }

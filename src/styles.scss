@@ -480,9 +480,9 @@ inset-0 {
     }
 }
 
-.nmc-btn-primary:disabled  {
+.nmc-btn-primary:disabled {
     background-color: $nmc-light-grey;
-    pointer-events: none;    
+    pointer-events: none;
 }
 
 /******************************** Navigation ********************************/
@@ -528,4 +528,8 @@ inset-0 {
     position: absolute;
     bottom: 15px;
     right: 15px;
+}
+
+.nmc-alert p {
+    color: red;
 }

@@ -38,22 +38,29 @@
             id="email"
             formControlName="email"
           />
+        </div>
 
-          <!-- Display email validation errors -->
-          <div
-            *ngIf="
-              loginForm.get('email')?.invalid &&
-              (loginForm.get('email')?.dirty || loginForm.get('email')?.touched)
-            "
-            class="alert"
+        <!-- Display email validation errors -->
+        <div
+          *ngIf="
+            loginForm.get('email')?.invalid &&
+            (loginForm.get('email')?.dirty || loginForm.get('email')?.touched)
+          "
+          class="nmc-alert mt-1"
+        >
+          <p
+            *ngIf="loginForm.get('email')?.errors?.['required']"
+            class="font-14 m-0"
           >
-            <div *ngIf="loginForm.get('email')?.errors?.['required']">
-              Please enter email
-            </div>
-            <div *ngIf="loginForm.get('email')?.errors?.['email']">
-              Invalid email format
-            </div>
-          </div>
+            *Please enter email
+          </p>
+          
+          <p
+            *ngIf="loginForm.get('email')?.errors?.['email']"
+            class="font-14 m-0"
+          >
+            *Invalid email format
+          </p>
         </div>
 
         <div class="form-group mt-3 position-relative">
@@ -70,23 +77,29 @@
             [ngClass]="showPassword ? 'fa-eye' : 'fa-eye-slash'"
             (click)="togglePasswordVisibility()"
           ></i>
+        </div>
 
-          <!-- Display password validation errors -->
-          <div
-            *ngIf="
-              loginForm.get('password')?.invalid &&
-              (loginForm.get('password')?.dirty ||
-                loginForm.get('password')?.touched)
-            "
-            class="alert"
+        <!-- Display password validation errors -->
+        <div
+          *ngIf="
+            loginForm.get('password')?.invalid &&
+            (loginForm.get('password')?.dirty ||
+              loginForm.get('password')?.touched)
+          "
+          class="nmc-alert mt-1"
+        >
+          <p
+            *ngIf="loginForm.get('password')?.errors?.['required']"
+            class="font-14 m-0"
           >
-            <div *ngIf="loginForm.get('password')?.errors?.['required']">
-              Please enter password
-            </div>
-            <div *ngIf="loginForm.get('password')?.errors?.['minlength']">
-              Password must be at least 6 characters long
-            </div>
-          </div>
+            *Please enter password
+          </p>
+          <p
+            *ngIf="loginForm.get('password')?.errors?.['minlength']"
+            class="font-14 m-0"
+          >
+            *Password must be at least 6 characters long
+          </p>
         </div>
 
         <button

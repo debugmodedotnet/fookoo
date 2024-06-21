@@ -1,20 +1,26 @@
 import { Component, inject } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { UserService } from '../user.service';
+import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [ReactiveFormsModule],
+  imports: [CommonModule, ReactiveFormsModule],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss'
 })
 export class LoginComponent {
 
   loginForm: FormGroup;
-  private userservice = inject(UserService);
-  constructor(private fb: FormBuilder) {
+  showPassword: boolean = false;
+  
 
+  private userservice = inject(UserService);
+
+  constructor(private fb: FormBuilder, private router: Router
+  ) {
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]]
@@ -24,6 +30,12 @@ export class LoginComponent {
   async onSubmit() {
     console.log(this.loginForm?.value);
     let user = await this.userservice.login(this.loginForm?.value.email, this.loginForm?.value.password);
-    console.log('login successful', user);
+    this.router.navigate(['/home'], { queryParams: { username: 'JohnDoe' } });
+    console.log('Login Successful', user);
   }
+
+  togglePasswordVisibility(): void {
+    this.showPassword = !this.showPassword;
+  }
+
 }

@@ -16,28 +16,97 @@
             id="email"
             formControlName="email"
           />
+
+          <!-- Email validation errors -->
+          <div
+            *ngIf="
+              signupForm.get('email')?.invalid &&
+              (signupForm.get('email')?.dirty ||
+                signupForm.get('email')?.touched)
+            "
+            class="alert"
+          >
+            <div *ngIf="signupForm.get('email')?.errors?.['required']">
+              Please enter email
+            </div>
+            <div *ngIf="signupForm.get('email')?.errors?.['email']">
+              Invalid email format
+            </div>
+          </div>
         </div>
 
-        <div class="form-group mt-3">
+        <div class="form-group mt-3 position-relative">
           <label for="password" class="pb-2 font-14">Password</label>
           <input
-            type="password"
+            type="{{ showPassword ? 'text' : 'password' }}"
             class="form-control h-3 rounded-3"
             id="password"
             formControlName="password"
           />
+          <i
+            class="show-password cursor-pointer fa"
+            [ngClass]="showPassword ? 'fa-eye' : 'fa-eye-slash'"
+            (click)="togglePasswordVisibility()"
+          ></i>
+
+          <div
+            *ngIf="
+              signupForm.get('password')?.invalid &&
+              (signupForm.get('password')?.dirty ||
+                signupForm.get('password')?.touched)
+            "
+            class="alert"
+          >
+            <div *ngIf="signupForm.get('password')?.errors?.['required']">
+              Please enter password
+            </div>
+            <div *ngIf="signupForm.get('password')?.errors?.['minlength']">
+              Password must be at least 6 characters long
+            </div>
+          </div>
         </div>
 
-        <div class="form-group mt-3">
+        <div class="form-group mt-3 position-relative">
           <label for="confirmpassword" class="pb-2 font-14"
             >Confirm Password</label
           >
           <input
-            type="password"
+            type="{{ showConfirmPassword ? 'text' : 'password' }}"
             class="form-control h-3 rounded-3"
-            id="password"
+            id="confirmPassword"
             formControlName="confirmPassword"
           />
+          <i
+            class="show-password cursor-pointer fa"
+            [ngClass]="showConfirmPassword ? 'fa-eye' : 'fa-eye-slash'"
+            (click)="toggleConfirmPasswordVisibility()"
+          ></i>
+
+          <!-- Confirm Password validation errors -->
+          <div
+            *ngIf="
+              signupForm.get('confirmPassword')?.invalid &&
+              (signupForm.get('confirmPassword')?.dirty ||
+                signupForm.get('confirmPassword')?.touched)
+            "
+            class="alert"
+          >
+            <div
+              *ngIf="signupForm.get('confirmPassword')?.errors?.['required']"
+            >
+              Please confirm password
+            </div>
+            <div
+              *ngIf="signupForm.get('confirmPassword')?.errors?.['minlength']"
+            >
+              Password must be at least 6 characters long
+            </div>
+            <div
+              *ngIf="signupForm.get('confirmPassword')?.errors?.['passwordMismatch']"
+            >
+              Passwords do not match
+            </div>
+          </div>
         </div>
 
         <button

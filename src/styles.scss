@@ -519,9 +519,38 @@ inset-0 {
     color: $nmc-primary !important;
 }
 
+/******************************** Global Section Titles ********************************/
+.section-title {
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    position: relative;
+}
+
+.section-title::after {
+    content: "";
+    position: absolute;
+    display: block;
+    width: 70px;
+    height: 4px;
+    background: $nmc-primary;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+}
+
+.section-title.left::after {
+    right: 100%;
+}
+
 /******************************** Custom ********************************/
 .box-shadow-none {
     box-shadow: none;
+}
+
+.breadcrumb-item.active,
+.breadcrumb-item+.breadcrumb-item::before {
+    color: $nmc-primary !important;
 }
 
 .show-password {
@@ -532,4 +561,14 @@ inset-0 {
 
 .nmc-alert p {
     color: red;
+}
+
+.banner-section::after {
+    display: block;
+    background: rgba(0, 0, 0, .6);
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    content: '';
+    inset: 0;
 }

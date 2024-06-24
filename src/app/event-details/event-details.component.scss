@@ -1,51 +1,23 @@
 @use "../styles/variables" as *;
 
+.breadcrumb {
+    top: -40px;
+    left: -40px;
+}
 
 /******************************** Speakers Section ********************************/
-.speakers .member {
-    position: relative;
-    overflow: hidden;
-}
-
-.speakers .member .member-info {
+.speakers .member figure::before {
+    content: '';
+    width: 100%;
+    height: 100%;
+    border: 2px solid $nmc-primary;
     position: absolute;
-    padding: 15px 0;
-    inset: auto 0 -44px 0;
-    background: rgba(0, 0, 0, 0.6);
-    transition: 0.4s;
-}
-
-.speakers .member .member-info-content h4 {
-    font-weight: 700;
-    margin-bottom: 4px;
-    font-size: 16px;
-}
-
-.speakers .member .member-info-content h4 a:hover {
-    color: $nmc-primary !important;
-  }
-  
-
-.speakers .member .member-info-content p {
-    font-style: italic;
-    display: block;
-    font-size: 13px;
-}
-
-
-.speakers .member .social a {
-    transition: color 0.3s;
-    color: color-mix(in srgb, var(--default-color), transparent 30%);
-    margin: 0 4px;
-    display: inline-block;
-}
-
-.speakers .member:hover .member-info {
-    bottom: 0;
+    z-index: -1;
+    top: -15px;
+    left: 15px;
 }
 
 /******************************** Agenda Section ********************************/
-
 .schedule .nav-tabs {
     display: block;
     border-bottom: 0;
@@ -148,4 +120,45 @@
 .schedule .schedule-item p {
     color: color-mix(in srgb, $nmc-dark-grey, transparent 30%);
     margin-bottom: 0;
+}
+
+/******************************** Venue Section ********************************/
+.venue .venue-map iframe {
+    width: 100%;
+    height: 100%;
+    min-height: 300px;
+}
+
+.venue .venue-info {
+    background-size: cover;
+    position: relative;
+    padding-top: 60px;
+    padding-bottom: 60px;
+}
+
+.venue .venue-info:before {
+    content: "";
+    background: color-mix(in srgb, $nmc-dark-grey, transparent 30%);
+    position: absolute;
+    bottom: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+}
+
+/******************************** Attendees Section ********************************/
+.attendees {
+    width: 60px;
+    height: 60px;
+    overflow: hidden;
+    border-radius: 50%;
+    float: left;
+    margin: 0 10px 10px 0;
+}
+
+.attendees img {
+    height: 100%;
+    transform: translateX(-50%);
+    margin-left: 50%;
+    transition: all ease-in-out 0.3s;
 }

@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, OnInit, SimpleChanges, ViewChild, ViewContainerRef } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, SimpleChanges, ViewChild, ViewContainerRef, inject } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import {doc,getDoc} from '@angular/fire/firestore';
 import { IEvent } from '../event';
@@ -11,26 +11,23 @@ import { DatePipe, NgFor } from '@angular/common';
   templateUrl: './event.component.html',
   styleUrl: './event.component.scss'
 })
-export class EventComponent implements OnInit , OnChanges {
-
-
+export class EventComponent implements OnInit {
 
   events: IEvent[] = [];
-  constructor(private firestore: AngularFirestore) { }
+  private firestore = inject(AngularFirestore); 
+
+  constructor() { }
 
   ngOnInit(): void {
     this.getEvents();
   }
 
-  ngOnChanges(changes: SimpleChanges): void {
-     
-  }
 
   getEvents() {
-    this.firestore.collection('1').valueChanges().subscribe(events => {
+    this.firestore.collection('events').valueChanges().subscribe(events => {
       console.log(events);
-      //this.events = events as IEvent[];
-      this.events = events.map((event: any) => ({...event,Date:event.Date.toDate()} as IEvent))
+      this.events = events as IEvent[];
+      //this.events = events.map((event: any) => ({...event,Date:event.Date.toDate()} as IEvent))
     });
   }
 

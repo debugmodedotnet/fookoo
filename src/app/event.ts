@@ -1,7 +1,16 @@
 export interface IEvent {
+    Id:string; 
     Title : string; 
-    City: string; 
-    isOnline: boolean;
-    isFree:boolean;
+    Isoffline: boolean; 
+    City: string;
+    Address: string;
+    Iscertficateprovided: boolean;
+    Ispaid: boolean;
+    Tech:string;
     Date: Date;
+    Logo:string;
+    ShortDescription:string;
+    Description?:string; 
 }
+
+

@@ -1,0 +1,32 @@
+
+<h1>Create Event</h1>
+
+
+<form [formGroup]="eventForm" (ngSubmit)="onSubmit()">
+    <input formControlName="Id" placeholder="Id" />
+    <br/>
+    <input formControlName="Title" placeholder="Title" />
+    <br/>
+    <input type="checkbox" formControlName="isOffline" /> Is Offline?
+    <br/>
+    <input formControlName="City" placeholder="City" />
+    <br/>
+    <input formControlName="Address" placeholder="Address" />
+    <br/>
+    <input type="checkbox" formControlName="isCertificateProvided" /> Is Certificate Provided?
+    <br/>
+    <input type="checkbox" formControlName="isPaid" /> Is Paid?
+    <br/>
+    <input formControlName="Tech" placeholder="Tech" />
+    <br/>
+    <input formControlName="Logo" placeholder="Logo" />
+    <br/>
+    <textarea formControlName="ShortDescription" placeholder="Short Description"></textarea>
+    <br/>
+    <textarea formControlName="Description" placeholder="Description"></textarea>
+    <br/>
+    <input formControlName="Date" placeholder="Date" type="date" />
+    <br/>
+    <button type="submit">Create Event</button>
+    <br/>
+  </form>

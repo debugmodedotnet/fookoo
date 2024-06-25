@@ -1,0 +1,33 @@
+<section class="hero-section py-3 position-relative overflow-hidden">
+  <div
+    class="container-boxed position-relative d-flex align-items-center justify-content-between"
+  >
+    <div>
+      <h1 class="font-50 nmc-dark-grey fw-bolder font-family-poppins">
+        {{ hero?.Title }}
+      </h1>
+
+      <p class="font-22 nmc-dark-grey w-75 mt-4">
+        {{ hero?.Description }}
+      </p>
+
+      <button class="nmc-btn-primary mt-4" type="submit">
+        {{ hero?.BtnText }}
+      </button>
+    </div>
+
+    <img
+      [src]="hero?.HeroImage"
+      alt="Hero-Image"
+      class="object-fit-contain w-40"
+    />
+  </div>
+</section>
+
+<section class="text-center py-4 orange-bg-gradient">
+  <div class="container-boxed">
+    <p class="font-36 fw-bold w-50 m-auto nmc-white font-family-poppins">
+      {{ hero?.TagLine }}
+    </p>
+  </div>
+</section>

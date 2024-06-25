@@ -10,7 +10,7 @@ export const routes: Routes = [
     { path: 'login', loadComponent: () => import('./login/login.component').then(m => m.LoginComponent) },
     { path: 'profile', loadComponent: () => import('./profile/profile.component').then(m => m.ProfileComponent) },
     { path: 'events', loadComponent: () => import('./event/event.component').then(m => m.EventComponent) },
-    {path:'create-event',loadComponent:()=>import('./create-event/create-event.component').then(m=>m.CreateEventComponent)},
+    { path: 'create-event', loadComponent: () => import('./create-event/create-event.component').then(m => m.CreateEventComponent) },
     { path: 'event-details', loadComponent: () => import('./event-details/event-details.component').then(m => m.EventDetailsComponent) },
     { path: '', redirectTo: 'home', pathMatch: 'full' }
 ];

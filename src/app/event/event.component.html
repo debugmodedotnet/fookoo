@@ -1,30 +1,18 @@
-<!-- <h2>Events</h2>
-
-<hr/>
-
-<div *ngFor="let e of events">
-  <span>{{e.Title}}</span>
-  <br/>
-  <span>{{e.City}}</span>
-  <br/>
-  <span>{{e.Date|date:'short' }}</span>
-  <br/>
- <span>{{e.isFree ? "Free" :"Paid"}}</span>
- <br/>
- <span>{{e.isOnline ? "Online" :"in Person"}}</span>
- <br/>
-</div> -->
-
 <section>
   <div class="container-boxed">
-    <h2 class="section-title font-36 nmc-dark-grey font-family-poppins text-center mb-5">
+    <h2
+      class="section-title font-36 nmc-dark-grey font-family-poppins text-center mb-5"
+    >
       Upcoming Events
     </h2>
 
     <div class="events-container d-flex flex-column justify-content-center">
-      <div *ngFor="let e of events" class="events-card nmc-bg-white d-flex align-items-center justify-content-between overflow-hidden rounded-3 mx-auto p-4 mb-5">
+      <div
+        *ngFor="let e of events"
+        class="events-card nmc-bg-white d-flex align-items-center justify-content-between overflow-hidden rounded-3 mx-auto p-4 mb-5"
+      >
         <div class="hidden justify-content-start">
-          <img [src]="e.Logo"  alt="" width="250" />
+          <img [src]="e.Logo" alt="" width="250" />
         </div>
 
         <div class="p-4 text-start position-relative z-50 w-75">
@@ -33,19 +21,33 @@
               href="/event-details"
               target="_blank"
               rel="noopener noreferrer"
-              class="nmc-dark-grey">{{e.Title}}</a>
+              class="nmc-dark-grey"
+              >{{ e.Title }}</a
+            >
           </h2>
 
-          <h3 class="font-18 mt-3 nmc-medium-grey mb-4 fw-normal" style="max-width: 576px">
-            {{e.ShortDescription}}
+          <h3
+            class="font-18 mt-3 nmc-medium-grey mb-4 fw-normal"
+            style="max-width: 576px"
+          >
+            {{ e.ShortDescription }}
           </h3>
 
           <div class="d-flex align-items-center justify-content-start">
-            <span class="d-inline-block font-12 fw-semibold rounded-1 py-1 px-2 mb-2 text-red-600 bg-red-100">{{e.Isoffline?"Offline":"Online"}}</span>
+            <span
+              class="d-inline-block font-12 fw-semibold rounded-1 py-1 px-2 mb-2 text-red-600 bg-red-100"
+              >{{ e.Isoffline ? "Offline" : "Online" }}</span
+            >
 
-            <span class="d-inline-block font-12 fw-semibold rounded-1 py-1 px-2 mb-2 text-red-600 bg-red-100 ms-2">{{e.City}}</span>
+            <span
+              class="d-inline-block font-12 fw-semibold rounded-1 py-1 px-2 mb-2 text-red-600 bg-red-100 ms-2"
+              >{{ e.City }}</span
+            >
 
-            <span class="d-inline-block font-12 fw-semibold rounded-1 py-1 px-2 mb-2 text-red-600 bg-red-100 ms-2">{{e.Date}}</span>
+            <span
+              class="d-inline-block font-12 fw-semibold rounded-1 py-1 px-2 mb-2 text-red-600 bg-red-100 ms-2"
+              >{{ e.Ispaid ? "Paid" : "Free" }}</span
+            >
           </div>
         </div>
 

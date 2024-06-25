@@ -1,8 +1,7 @@
-import { Component, Input, OnChanges, OnInit, SimpleChanges, ViewChild, ViewContainerRef, inject } from '@angular/core';
-import { AngularFirestore } from '@angular/fire/compat/firestore';
-import {doc,getDoc} from '@angular/fire/firestore';
-import { IEvent } from '../event';
+import { Component, OnInit, inject } from '@angular/core';
 import { DatePipe, NgFor } from '@angular/common';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { IEvent } from '../modules/event';
 
 @Component({
   selector: 'app-event',
@@ -14,14 +13,13 @@ import { DatePipe, NgFor } from '@angular/common';
 export class EventComponent implements OnInit {
 
   events: IEvent[] = [];
-  private firestore = inject(AngularFirestore); 
+  private firestore = inject(AngularFirestore);
 
   constructor() { }
 
   ngOnInit(): void {
     this.getEvents();
   }
-
 
   getEvents() {
     this.firestore.collection('events').valueChanges().subscribe(events => {
@@ -31,5 +29,4 @@ export class EventComponent implements OnInit {
     });
   }
 
- 
 }

@@ -16,13 +16,12 @@ export class CreateInstructorComponent {
   constructor() {
     this.instructorForm = new FormGroup({
       Name: new FormControl('', Validators.required),
-      Position: new FormControl(''),
+      Position: new FormControl('', Validators.required),
       Skills: new FormControl('', Validators.maxLength(200)),
       Bio: new FormControl('', Validators.maxLength(200)),
-      X: new FormControl(''),
-      Facebook: new FormControl(''),
-      Instagram: new FormControl(''),
-      LinkedIn: new FormControl(''),
+      Github: new FormControl('', Validators.required),
+      Email: new FormControl('', Validators.required),
+      LinkedIn: new FormControl('', Validators.required),
     });
   }
 

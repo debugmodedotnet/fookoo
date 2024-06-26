@@ -9,8 +9,12 @@
     <div class="events-container d-flex flex-column justify-content-center">
       <div
         *ngFor="let e of events"
-        class="events-card nmc-bg-white d-flex align-items-center justify-content-between overflow-hidden rounded-3 mx-auto p-4 mb-5"
+        class="events-card nmc-bg-white d-flex align-items-center justify-content-between overflow-hidden rounded-3 mx-auto py-4 px-5 mb-5 position-relative"
       >
+        <div class="pricing-table-ribbon fw-bold position-absolute">
+          {{ e.Ispaid ? "Paid" : "Free" }}
+        </div>
+
         <div class="hidden justify-content-start">
           <img [src]="e.Logo" alt="" width="250" />
         </div>
@@ -46,12 +50,14 @@
 
             <span
               class="d-inline-block font-12 fw-semibold rounded-1 py-1 px-2 mb-2 text-red-600 bg-red-100 ms-2"
-              >{{ e.Ispaid ? "Paid" : "Free" }}</span
+              >{{ e.Date }}</span
             >
           </div>
         </div>
 
-        <button class="nmc-btn-primary mt-5 w-25 me-4">Enroll Now</button>
+        <a class="nmc-btn-primary text-center w-25 pt-2" href="/event-details">
+          Enroll Now
+        </a>
       </div>
     </div>
 

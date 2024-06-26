@@ -2,11 +2,12 @@ import { Component, OnInit, inject } from '@angular/core';
 import { DatePipe, NgFor } from '@angular/common';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { IEvent } from '../modules/event';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-event',
   standalone: true,
-  imports: [NgFor, DatePipe],
+  imports: [NgFor, DatePipe, RouterModule],
   templateUrl: './event.component.html',
   styleUrl: './event.component.scss'
 })

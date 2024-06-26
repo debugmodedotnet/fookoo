@@ -194,6 +194,18 @@ a {
     width: 50%;
 }
 
+.w-55 {
+    width: 55%;
+}
+
+.w-60 {
+    width: 60%;
+}
+
+.w-65 {
+    width: 65%;
+}
+
 .w-75 {
     width: 75%;
 }
@@ -383,6 +395,12 @@ a {
     background: linear-gradient(179.5deg,
             rgb(255, 166, 0) 3.3%,
             rgb(220 95 0) 96%);
+}
+
+.purple-bg-gradient {
+    background: linear-gradient(318deg,
+            rgb(85, 37, 186) 0%,
+            rgb(26, 1, 103) 100%);
 }
 
 /******************************** Positioning ********************************/

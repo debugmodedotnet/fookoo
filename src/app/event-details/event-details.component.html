@@ -4,19 +4,25 @@
     class="container-boxed position-relative d-flex flex-column align-items-center justify-content-center text-center z-2"
   >
     <div class="d-flex align-items-center justify-content-center gap-5 mb-3">
-      <h3>Total Seats: <span class="nmc-primary">1000</span></h3>
-      <h3>Total Registered: <span class="nmc-primary">554</span></h3>
+      <h3>
+        Total Seats:
+        <span class="nmc-primary">{{ eventAbout?.TotalSeats }}</span>
+      </h3>
+      <h3>
+        Total Registered:
+        <span class="nmc-primary">{{ eventAbout?.RegisteredSeats }}</span>
+      </h3>
     </div>
 
     <h1 class="font-50 nmc-primary fw-bolder w-50 font-family-poppins">
-      Work shop on Angular
+      {{ eventAbout?.EventName }}
     </h1>
 
-    <h4 class="nmc-dark-grey mt-3">20th November, 2024 | Delhi, India</h4>
+    <h4 class="nmc-dark-grey mt-3">{{ eventAbout?.EventDate }}</h4>
 
     <span
       class="d-inline-block font-18 fw-semibold rounded-1 py-1 px-3 mt-3 text-orange-600 bg-orange-100"
-      >Offline</span
+      >{{ eventAbout?.IsOffline ? "Offline" : "Online" }}</span
     >
 
     <ol class="breadcrumb nmc-primary my-4 position-absolute">
@@ -43,15 +49,12 @@
       </h2>
 
       <p class="nmc-dark-grey">
-        Sed nam ut dolor qui repellendus iusto odit. Possimus inventore eveniet
-        accusamus error amet eius aut accusantium et. Non odit consequatur
-        repudiandae sequi ea odio molestiae. Enim possimus sunt inventore in est
-        ut optio sequi unde.
+        {{ eventAbout?.EventInfo }}
       </p>
     </div>
 
     <img
-      src="assets/images/events/banner.webp"
+      [src]="eventAbout?.EventImg"
       alt="Hero-Image"
       class="object-fit-contain w-50 rounded-3"
     />
@@ -71,135 +74,34 @@
 
     <div class="tab-content row justify-content-center">
       <div role="tabpanel" class="col-lg-9 tab-pane active" id="day-1">
-        <div class="row schedule-item text-start">
-          <div class="col-md-2"><time>09:30 AM</time></div>
-          <div class="col-md-10">
-            <h4>Registration</h4>
+        <div
+          class="row schedule-item text-start"
+          *ngFor="let agenda of eventAgenda"
+        >
+          <div class="col-md-2">
+            <time>{{ agenda.Time }}</time>
           </div>
-        </div>
 
-        <div class="row schedule-item text-start">
-          <div class="col-md-2"><time>10:00 AM</time></div>
           <div class="col-md-10 position-relative">
-            <div class="speaker">
+            <div class="speaker" *ngIf="agenda.SpeakerImg">
               <img
-                src="assets/images/events/agenda-speaker-1.jpg"
+                [src]="agenda.SpeakerImg"
                 alt="Brenden Legros"
                 class="object-fit-cover"
               />
             </div>
-            <h4>Keynote <span>Brenden Legros</span></h4>
-            <p>Facere provident incidunt quos voluptas.</p>
-            <span
-              class="d-inline-block position-absolute font-12 fw-semibold rounded-1 py-1 px-2 top-0 end-0 text-red-600 bg-red-100"
-              >Angular 17</span
-            >
-          </div>
-        </div>
 
-        <div class="row schedule-item text-start">
-          <div class="col-md-2"><time>11:00 AM</time></div>
-          <div class="col-md-10 position-relative">
-            <div class="speaker">
-              <img
-                src="assets/images/events/agenda-speaker-2.jpg"
-                alt="Brenden Legros"
-                class="object-fit-cover"
-              />
-            </div>
-            <h4>Et voluptatem iusto dicta nobis. <span>Hubert Hirthe</span></h4>
-            <p>
-              Maiores dignissimos neque qui cum accusantium ut sit sint
-              inventore.
-            </p>
-            <span
-              class="d-inline-block position-absolute font-12 fw-semibold rounded-1 py-1 px-2 top-0 end-0 text-red-600 bg-red-100"
-              >Angular 17</span
-            >
-          </div>
-        </div>
-
-        <div class="row schedule-item text-start">
-          <div class="col-md-2"><time>12:00 AM</time></div>
-          <div class="col-md-10 position-relative">
-            <div class="speaker">
-              <img
-                src="assets/images/events/agenda-speaker-3.jpg"
-                alt="Brenden Legros"
-                class="object-fit-cover"
-              />
-            </div>
             <h4>
-              Explicabo et rerum quis et ut ea. <span>Cole Emmerich</span>
+              {{ agenda.Title }}
+              <span *ngIf="agenda.Speaker">{{ agenda.Speaker }}</span>
             </h4>
-            <p>
-              Veniam accusantium laborum nihil eos eaque accusantium aspernatur.
-            </p>
-            <span
-              class="d-inline-block position-absolute font-12 fw-semibold rounded-1 py-1 px-2 top-0 end-0 text-red-600 bg-red-100"
-              >Angular 17</span
-            >
-          </div>
-        </div>
 
-        <div class="row schedule-item text-start">
-          <div class="col-md-2"><time>02:00 PM</time></div>
-          <div class="col-md-10 position-relative">
-            <div class="speaker">
-              <img
-                src="assets/images/events/agenda-speaker-4.jpg"
-                alt="Brenden Legros"
-                class="object-fit-cover"
-              />
-            </div>
-            <h4>
-              Qui non qui vel amet culpa sequi. <span>Jack Christiansen</span>
-            </h4>
-            <p>Nam ex distinctio voluptatem doloremque suscipit iusto.</p>
-            <span
-              class="d-inline-block position-absolute font-12 fw-semibold rounded-1 py-1 px-2 top-0 end-0 text-red-600 bg-red-100"
-              >Angular 17</span
-            >
-          </div>
-        </div>
+            <p>{{ agenda.Info }}</p>
 
-        <div class="row schedule-item text-start">
-          <div class="col-md-2"><time>03:00 PM</time></div>
-          <div class="col-md-10 position-relative">
-            <div class="speaker">
-              <img
-                src="assets/images/events/agenda-speaker-5.jpg"
-                alt="Brenden Legros"
-                class="object-fit-cover"
-              />
-            </div>
-            <h4>
-              Quos ratione neque expedita asperiores.
-              <span>Alejandrin Littel</span>
-            </h4>
-            <p>Eligendi quo eveniet est nobis et ad temporibus odio quo.</p>
             <span
+              *ngIf="agenda.Tech"
               class="d-inline-block position-absolute font-12 fw-semibold rounded-1 py-1 px-2 top-0 end-0 text-red-600 bg-red-100"
-              >Angular 17</span
-            >
-          </div>
-        </div>
-
-        <div class="row schedule-item text-start">
-          <div class="col-md-2"><time>04:00 PM</time></div>
-          <div class="col-md-10 position-relative">
-            <div class="speaker">
-              <img
-                src="assets/images/events/agenda-speaker-1.jpg"
-                alt="Brenden Legros"
-                class="object-fit-cover"
-              />
-            </div>
-            <h4>Quo qui praesentium nesciunt <span>Willow Trantow</span></h4>
-            <p>Voluptatem et alias dolorum est aut sit enim neque veritatis.</p>
-            <span
-              class="d-inline-block position-absolute font-12 fw-semibold rounded-1 py-1 px-2 top-0 end-0 text-red-600 bg-red-100"
-              >Angular 17</span
+              >{{ agenda.Tech }}</span
             >
           </div>
         </div>
@@ -221,183 +123,92 @@
 
     <div class="speakers-list px-5">
       <div
-        class="member rounded-3 d-flex align-items-center justify-content-between gap-5"
-      >
-        <figure class="position-relative m-0 w-30">
-          <img
-            src="assets/images/events/speaker-1.jpg"
-            class="img-fluid w-100 object-fit-contain"
-            alt=""
-          />
-        </figure>
-
-        <div class="member-info text-start w-75">
-          <h3 class="font-family-poppins">
-            <a href="" class="nmc-primary font-family-poppins pe-2"
-              >Walter White</a
-            >
-            <span class="nmc-medium-grey font-18">Head of Engineering</span>
-          </h3>
-
-          <p class="nmc-medium-grey">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ullam eos
-            eligendi nihil quod sed laudantium rerum tempora fugiat quasi
-            officiis illo maxime, magnam animi veniam atque incidunt
-            exercitationem alias cum?
-          </p>
-
-          <div
-            class="social d-flex align-items-center justify-content-start gap-2"
-          >
-            <a href="#" class="font-20 nmc-primary"
-              ><i class="fa fa-twitter"></i
-            ></a>
-            <a href="#" class="font-20 nmc-primary"
-              ><i class="fa fa-facebook"></i
-            ></a>
-            <a href="#" class="font-20 nmc-primary"
-              ><i class="fa fa-instagram"></i
-            ></a>
-            <a href="#" class="font-20 nmc-primary"
-              ><i class="fa fa-linkedin"></i
-            ></a>
-          </div>
-        </div>
-      </div>
-
-      <div
         class="member rounded-3 d-flex align-items-center justify-content-between gap-5 mt-5"
+        *ngFor="let speaker of eventSpeakers; let i = index"
       >
-        <div class="member-info text-start w-75">
-          <h3 class="font-family-poppins">
-            <a href="" class="nmc-primary font-family-poppins pe-2"
-              >Walter White</a
+        <ng-container *ngIf="i % 2 === 0; else oddTemplate">
+          <figure class="position-relative m-0 w-30">
+            <img
+              [src]="speaker.Image"
+              class="img-fluid w-100 object-fit-contain"
+              alt=""
+            />
+          </figure>
+
+          <div class="member-info text-start w-75">
+            <h3 class="font-family-poppins">
+              <a href="" class="nmc-primary font-family-poppins pe-2">{{
+                speaker.Name
+              }}</a>
+              <span class="nmc-medium-grey font-18">{{
+                speaker.Position
+              }}</span>
+            </h3>
+
+            <p class="nmc-medium-grey">
+              {{ speaker.Info }}
+            </p>
+
+            <div
+              class="social d-flex align-items-center justify-content-start gap-2"
             >
-            <span class="nmc-medium-grey font-18">Head of Engineering</span>
-          </h3>
-
-          <p class="nmc-medium-grey">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ullam eos
-            eligendi nihil quod sed laudantium rerum tempora fugiat quasi
-            officiis illo maxime, magnam animi veniam atque incidunt
-            exercitationem alias cum?
-          </p>
-
-          <div
-            class="social d-flex align-items-center justify-content-start gap-2"
-          >
-            <a href="#" class="font-20 nmc-primary"
-              ><i class="fa fa-twitter"></i
-            ></a>
-            <a href="#" class="font-20 nmc-primary"
-              ><i class="fa fa-facebook"></i
-            ></a>
-            <a href="#" class="font-20 nmc-primary"
-              ><i class="fa fa-instagram"></i
-            ></a>
-            <a href="#" class="font-20 nmc-primary"
-              ><i class="fa fa-linkedin"></i
-            ></a>
+              <a [href]="speaker.X" class="font-20 nmc-primary"
+                ><i class="fa fa-twitter"></i
+              ></a>
+              <a [href]="speaker.Facebook" class="font-20 nmc-primary"
+                ><i class="fa fa-facebook"></i
+              ></a>
+              <a [href]="speaker.Instagram" class="font-20 nmc-primary"
+                ><i class="fa fa-instagram"></i
+              ></a>
+              <a [href]="speaker.LinkedIn" class="font-20 nmc-primary"
+                ><i class="fa fa-linkedin"></i
+              ></a>
+            </div>
           </div>
-        </div>
+        </ng-container>
 
-        <figure class="position-relative m-0 w-30">
-          <img
-            src="assets/images/events/speaker-2.jpg"
-            class="img-fluid w-100 object-fit-contain"
-            alt=""
-          />
-        </figure>
-      </div>
+        <ng-template #oddTemplate>
+          <div class="member-info text-start w-75">
+            <h3 class="font-family-poppins">
+              <a href="" class="nmc-primary font-family-poppins pe-2">{{
+                speaker.Name
+              }}</a>
+              <span class="nmc-medium-grey font-18">{{
+                speaker.Position
+              }}</span>
+            </h3>
 
-      <div
-        class="member rounded-3 d-flex align-items-center justify-content-between gap-5 mt-5"
-      >
-        <figure class="position-relative m-0 w-30">
-          <img
-            src="assets/images/events/agenda-speaker-3.jpg"
-            class="img-fluid w-100 object-fit-contain"
-            alt=""
-          />
-        </figure>
+            <p class="nmc-medium-grey">
+              {{ speaker.Info }}
+            </p>
 
-        <div class="member-info text-start w-75">
-          <h3 class="font-family-poppins">
-            <a href="" class="nmc-primary font-family-poppins pe-2"
-              >Walter White</a
+            <div
+              class="social d-flex align-items-center justify-content-start gap-2"
             >
-            <span class="nmc-medium-grey font-18">Head of Engineering</span>
-          </h3>
-
-          <p class="nmc-medium-grey">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ullam eos
-            eligendi nihil quod sed laudantium rerum tempora fugiat quasi
-            officiis illo maxime, magnam animi veniam atque incidunt
-            exercitationem alias cum?
-          </p>
-
-          <div
-            class="social d-flex align-items-center justify-content-start gap-2"
-          >
-            <a href="#" class="font-20 nmc-primary"
-              ><i class="fa fa-twitter"></i
-            ></a>
-            <a href="#" class="font-20 nmc-primary"
-              ><i class="fa fa-facebook"></i
-            ></a>
-            <a href="#" class="font-20 nmc-primary"
-              ><i class="fa fa-instagram"></i
-            ></a>
-            <a href="#" class="font-20 nmc-primary"
-              ><i class="fa fa-linkedin"></i
-            ></a>
+              <a [href]="speaker.X" class="font-20 nmc-primary"
+                ><i class="fa fa-twitter"></i
+              ></a>
+              <a [href]="speaker.Facebook" class="font-20 nmc-primary"
+                ><i class="fa fa-facebook"></i
+              ></a>
+              <a [href]="speaker.Instagram" class="font-20 nmc-primary"
+                ><i class="fa fa-instagram"></i
+              ></a>
+              <a [href]="speaker.LinkedIn" class="font-20 nmc-primary"
+                ><i class="fa fa-linkedin"></i
+              ></a>
+            </div>
           </div>
-        </div>
-      </div>
 
-      <div
-        class="member rounded-3 d-flex align-items-center justify-content-between gap-5 mt-5"
-      >
-        <div class="member-info text-start w-75">
-          <h3 class="font-family-poppins">
-            <a href="" class="nmc-primary font-family-poppins pe-2"
-              >Walter White</a
-            >
-            <span class="nmc-medium-grey font-18">Head of Engineering</span>
-          </h3>
-
-          <p class="nmc-medium-grey">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ullam eos
-            eligendi nihil quod sed laudantium rerum tempora fugiat quasi
-            officiis illo maxime, magnam animi veniam atque incidunt
-            exercitationem alias cum?
-          </p>
-
-          <div
-            class="social d-flex align-items-center justify-content-start gap-2"
-          >
-            <a href="#" class="font-20 nmc-primary"
-              ><i class="fa fa-twitter"></i
-            ></a>
-            <a href="#" class="font-20 nmc-primary"
-              ><i class="fa fa-facebook"></i
-            ></a>
-            <a href="#" class="font-20 nmc-primary"
-              ><i class="fa fa-instagram"></i
-            ></a>
-            <a href="#" class="font-20 nmc-primary"
-              ><i class="fa fa-linkedin"></i
-            ></a>
-          </div>
-        </div>
-
-        <figure class="position-relative m-0 w-30">
-          <img
-            src="assets/images/events/agenda-speaker-5.jpg"
-            class="img-fluid w-100 object-fit-contain"
-            alt=""
-          />
-        </figure>
+          <figure class="position-relative m-0 w-30">
+            <img
+              [src]="speaker.Image"
+              class="img-fluid w-100 object-fit-contain"
+              alt=""
+            />
+          </figure>
+        </ng-template>
       </div>
     </div>
   </div>
@@ -417,31 +228,31 @@
     <div class="row g-0">
       <div class="col-lg-6 venue-map">
         <iframe
-          src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12097.433213460943!2d-74.0062269!3d40.7101282!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xb89d1fe6bc499443!2sDowntown+Conference+Center!5e0!3m2!1smk!2sbg!4v1539943755621"
+          [src]="safeUrl"
           frameborder="0"
           style="border: 0"
           allowfullscreen=""
         ></iframe>
       </div>
 
-      <div
-        class="col-lg-6 venue-info"
-        style="
-          background: url(assets/images/events/venue-bg.jpg) top center
-            no-repeat;
-        "
-      >
-        <div class="row justify-content-center">
+      <div class="col-lg-6 venue-info">
+        <div
+          class="overlay position-absolute top-0 start-0 w-100 h-100 z-1"
+        ></div>
+        <img
+          [src]="eventVenue?.VenueImg"
+          alt=""
+          class="position-absolute top-0 w-100 h-100 object-fit-cover"
+        />
+
+        <div class="row justify-content-center position-relative z-2">
           <div class="col-11 col-lg-8 position-relative text-start">
             <h3 class="font-34 font-family-poppins nmc-white mb-2">
-              The Leela Ambience Convention Hotel, Delhi
+              {{ eventVenue?.VenueName }}
             </h3>
 
-            <p class="nmc-white">
-              Iste nobis eum sapiente sunt enim dolores labore accusantium
-              autem. Cumque beatae ipsam. Est quae sit qui voluptatem corporis
-              velit. Qui maxime accusamus possimus. Consequatur sequi et ea
-              suscipit enim nesciunt quia velit.
+            <p class="nmc-white mt-3">
+              {{ eventVenue?.VenueInfo }}
             </p>
           </div>
         </div>
@@ -456,16 +267,18 @@
 <section class="text-center">
   <div class="container-boxed">
     <p class="font-36 fw-bold m-auto nmc-dark-grey font-family-poppins">
-      Join India's Largest Angular Conference and learn with the experts.
+      {{ eventEnroll?.Tagline }}
     </p>
 
-    <button class="nmc-btn-primary m-auto w-25 mt-4">Enroll Now</button>
+    <button class="nmc-btn-primary m-auto w-25 mt-4">
+      {{ eventEnroll?.Button }}
+    </button>
   </div>
 </section>
 
 <div class="spacer--medium"></div>
 
-<!-- Event Attendes -->
+<!-- Event Attendees -->
 <section class="text-center py-5 nmc-bg-light-grey">
   <div class="container-boxed">
     <h2
@@ -477,248 +290,9 @@
     <div
       class="d-flex flex-wrap align-items-center justify-content-center mt-5"
     >
-      <div class="attendees rounded-5">
+      <div class="attendees rounded-5" *ngFor="let attendee of eventAttendees">
         <img
-          src="assets/images/events/agenda-speaker-1.jpg"
-          alt="Brenden Legros"
-          class="object-fit-cover"
-        />
-      </div>
-
-      <div class="attendees rounded-5">
-        <img
-          src="assets/images/events/agenda-speaker-2.jpg"
-          alt="Brenden Legros"
-          class="object-fit-cover"
-        />
-      </div>
-
-      <div class="attendees rounded-5">
-        <img
-          src="assets/images/events/agenda-speaker-3.jpg"
-          alt="Brenden Legros"
-          class="object-fit-cover"
-        />
-      </div>
-
-      <div class="attendees rounded-5">
-        <img
-          src="assets/images/events/agenda-speaker-4.jpg"
-          alt="Brenden Legros"
-          class="object-fit-cover"
-        />
-      </div>
-
-      <div class="attendees rounded-5">
-        <img
-          src="assets/images/events/agenda-speaker-5.jpg"
-          alt="Brenden Legros"
-          class="object-fit-cover"
-        />
-      </div>
-
-      <div class="attendees rounded-5">
-        <img
-          src="assets/images/events/agenda-speaker-1.jpg"
-          alt="Brenden Legros"
-          class="object-fit-cover"
-        />
-      </div>
-
-      <div class="attendees rounded-5">
-        <img
-          src="assets/images/events/agenda-speaker-2.jpg"
-          alt="Brenden Legros"
-          class="object-fit-cover"
-        />
-      </div>
-
-      <div class="attendees rounded-5">
-        <img
-          src="assets/images/events/agenda-speaker-3.jpg"
-          alt="Brenden Legros"
-          class="object-fit-cover"
-        />
-      </div>
-
-      <div class="attendees rounded-5">
-        <img
-          src="assets/images/events/agenda-speaker-4.jpg"
-          alt="Brenden Legros"
-          class="object-fit-cover"
-        />
-      </div>
-
-      <div class="attendees rounded-5">
-        <img
-          src="assets/images/events/agenda-speaker-5.jpg"
-          alt="Brenden Legros"
-          class="object-fit-cover"
-        />
-      </div>
-
-      <div class="attendees rounded-5">
-        <img
-          src="assets/images/events/agenda-speaker-1.jpg"
-          alt="Brenden Legros"
-          class="object-fit-cover"
-        />
-      </div>
-
-      <div class="attendees rounded-5">
-        <img
-          src="assets/images/events/agenda-speaker-2.jpg"
-          alt="Brenden Legros"
-          class="object-fit-cover"
-        />
-      </div>
-
-      <div class="attendees rounded-5">
-        <img
-          src="assets/images/events/agenda-speaker-3.jpg"
-          alt="Brenden Legros"
-          class="object-fit-cover"
-        />
-      </div>
-
-      <div class="attendees rounded-5">
-        <img
-          src="assets/images/events/agenda-speaker-4.jpg"
-          alt="Brenden Legros"
-          class="object-fit-cover"
-        />
-      </div>
-
-      <div class="attendees rounded-5">
-        <img
-          src="assets/images/events/agenda-speaker-5.jpg"
-          alt="Brenden Legros"
-          class="object-fit-cover"
-        />
-      </div>
-
-      <div class="attendees rounded-5">
-        <img
-          src="assets/images/events/agenda-speaker-1.jpg"
-          alt="Brenden Legros"
-          class="object-fit-cover"
-        />
-      </div>
-
-      <div class="attendees rounded-5">
-        <img
-          src="assets/images/events/agenda-speaker-2.jpg"
-          alt="Brenden Legros"
-          class="object-fit-cover"
-        />
-      </div>
-
-      <div class="attendees rounded-5">
-        <img
-          src="assets/images/events/agenda-speaker-3.jpg"
-          alt="Brenden Legros"
-          class="object-fit-cover"
-        />
-      </div>
-
-      <div class="attendees rounded-5">
-        <img
-          src="assets/images/events/agenda-speaker-4.jpg"
-          alt="Brenden Legros"
-          class="object-fit-cover"
-        />
-      </div>
-
-      <div class="attendees rounded-5">
-        <img
-          src="assets/images/events/agenda-speaker-5.jpg"
-          alt="Brenden Legros"
-          class="object-fit-cover"
-        />
-      </div>
-
-      <div class="attendees rounded-5">
-        <img
-          src="assets/images/events/agenda-speaker-1.jpg"
-          alt="Brenden Legros"
-          class="object-fit-cover"
-        />
-      </div>
-
-      <div class="attendees rounded-5">
-        <img
-          src="assets/images/events/agenda-speaker-2.jpg"
-          alt="Brenden Legros"
-          class="object-fit-cover"
-        />
-      </div>
-
-      <div class="attendees rounded-5">
-        <img
-          src="assets/images/events/agenda-speaker-3.jpg"
-          alt="Brenden Legros"
-          class="object-fit-cover"
-        />
-      </div>
-
-      <div class="attendees rounded-5">
-        <img
-          src="assets/images/events/agenda-speaker-4.jpg"
-          alt="Brenden Legros"
-          class="object-fit-cover"
-        />
-      </div>
-
-      <div class="attendees rounded-5">
-        <img
-          src="assets/images/events/agenda-speaker-5.jpg"
-          alt="Brenden Legros"
-          class="object-fit-cover"
-        />
-      </div>
-
-      <div class="attendees rounded-5">
-        <img
-          src="assets/images/events/agenda-speaker-1.jpg"
-          alt="Brenden Legros"
-          class="object-fit-cover"
-        />
-      </div>
-
-      <div class="attendees rounded-5">
-        <img
-          src="assets/images/events/agenda-speaker-2.jpg"
-          alt="Brenden Legros"
-          class="object-fit-cover"
-        />
-      </div>
-
-      <div class="attendees rounded-5">
-        <img
-          src="assets/images/events/agenda-speaker-3.jpg"
-          alt="Brenden Legros"
-          class="object-fit-cover"
-        />
-      </div>
-
-      <div class="attendees rounded-5">
-        <img
-          src="assets/images/events/agenda-speaker-4.jpg"
-          alt="Brenden Legros"
-          class="object-fit-cover"
-        />
-      </div>
-
-      <div class="attendees rounded-5">
-        <img
-          src="assets/images/events/agenda-speaker-5.jpg"
-          alt="Brenden Legros"
-          class="object-fit-cover"
-        />
-      </div>
-
-      <div class="attendees rounded-5">
-        <img
+          [src]="attendee.EventAttendees"
           src="assets/images/events/agenda-speaker-1.jpg"
           alt="Brenden Legros"
           class="object-fit-cover"

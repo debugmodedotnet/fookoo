@@ -130,20 +130,13 @@
 }
 
 .venue .venue-info {
-    background-size: cover;
     position: relative;
     padding-top: 60px;
     padding-bottom: 60px;
 }
 
-.venue .venue-info:before {
-    content: "";
+.venue .venue-info .overlay {
     background: color-mix(in srgb, $nmc-dark-grey, transparent 30%);
-    position: absolute;
-    bottom: 0;
-    top: 0;
-    left: 0;
-    right: 0;
 }
 
 /******************************** Attendees Section ********************************/

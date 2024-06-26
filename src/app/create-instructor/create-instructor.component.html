@@ -1,97 +1,95 @@
-
 <section class="pt-4 pb-5">
-    <div class="container-boxed">
-      <h2
-        class="section-title font-36 nmc-dark-grey font-family-poppins text-center mb-4"
-      >
-        Create Instructor
-      </h2>
-  
-      <div class="form-wrapper rounded-4 p-4 w-100">
-        <form [formGroup]="instructorForm" (ngSubmit)="onSubmit()">
-          <div class="row form-group mt-3">
-            <div class="col-6">
-              <input
-                type="text"
-                class="col-6 form-control h-3 rounded-3"
-                formControlName="Name"
-                placeholder="Name"
-              />
-            </div>
-  
-            <div class="col-6 mt-4">
-              <input
-                type="text"
-                class="form-control h-3 rounded-3"
-                formControlName="Position"
-                placeholder="Position"
-              />
-            </div>
-  
-            <div class="col-6 mt-4">
-              <input
-                type="text"
-                class="form-control h-3 rounded-3"
-                formControlName="Skills"
-                placeholder="Skills"
-              />
-            </div>
-  
-            <div class="col-6 mt-4">
-              <input
-                type="text"
-                class="form-control h-3 rounded-3"
-                formControlName="Bio"
-                placeholder="Bio"
-              />
-            </div>
-  
-            <div class="col-6 mt-4">
-              <input
-                type="text"
-                class="form-control h-3 rounded-3"
-                formControlName="X"
-                placeholder="X"
-              />
-            </div>
-  
-            <div class="col-6 mt-4">
-                <input
-                  type="text"
-                  class="form-control h-3 rounded-3"
-                  formControlName="Facebook"
-                  placeholder="Facebook"
-                />
-              </div>
+  <div class="container-boxed">
+    <h2
+      class="section-title font-36 nmc-dark-grey font-family-poppins text-center mb-4"
+    >
+      Create Instructor
+    </h2>
 
-              <div class="col-6 mt-4">
-                <input
-                  type="text"
-                  class="form-control h-3 rounded-3"
-                  formControlName="Instagram"
-                  placeholder="Instagram"
-                />
-              </div>
-
-              <div class="col-6 mt-4">
-                <input
-                  type="text"
-                  class="form-control h-3 rounded-3"
-                  formControlName="LinkedIn"
-                  placeholder="LinkedIn"
-                />
-              </div>
-  
-            <button
-              type="submit"
-              class="nmc-btn-primary w-50 font-14 fw-semibold box-shadow-none mt-5 mb-2 m-auto py-2 h-auto"
-              [disabled]="!instructorForm.valid"
-            >
-              Create Instructor
-            </button>
+    <div class="form-wrapper rounded-4 p-4 w-100">
+      <form [formGroup]="instructorForm" (ngSubmit)="onSubmit()">
+        <div class="row form-group mt-3">
+          <div class="col-6">
+            <input
+              type="text"
+              class="col-6 form-control h-3 rounded-3"
+              formControlName="Name"
+              placeholder="Name"
+            />
           </div>
-        </form>
-      </div>
+
+          <div class="col-6">
+            <input
+              type="text"
+              class="form-control h-3 rounded-3"
+              formControlName="Position"
+              placeholder="Position"
+            />
+          </div>
+
+          <div class="col-6 mt-4">
+            <input
+              type="text"
+              class="form-control h-3 rounded-3"
+              formControlName="Skills"
+              placeholder="Skills"
+            />
+          </div>
+
+          <div class="col-6 mt-4">
+            <input
+              type="text"
+              class="form-control h-3 rounded-3"
+              formControlName="Bio"
+              placeholder="Bio"
+            />
+          </div>
+
+          <div class="col-6 mt-4">
+            <input
+              type="text"
+              class="form-control h-3 rounded-3"
+              formControlName="X"
+              placeholder="X"
+            />
+          </div>
+
+          <div class="col-6 mt-4">
+            <input
+              type="text"
+              class="form-control h-3 rounded-3"
+              formControlName="Facebook"
+              placeholder="Facebook"
+            />
+          </div>
+
+          <div class="col-6 mt-4">
+            <input
+              type="text"
+              class="form-control h-3 rounded-3"
+              formControlName="Instagram"
+              placeholder="Instagram"
+            />
+          </div>
+
+          <div class="col-6 mt-4">
+            <input
+              type="text"
+              class="form-control h-3 rounded-3"
+              formControlName="LinkedIn"
+              placeholder="LinkedIn"
+            />
+          </div>
+
+          <button
+            type="submit"
+            class="nmc-btn-primary w-50 font-14 fw-semibold box-shadow-none mt-5 mb-2 m-auto py-2 h-auto"
+            [disabled]="!instructorForm.valid"
+          >
+            Create Instructor
+          </button>
+        </div>
+      </form>
     </div>
-  </section>
-  
+  </div>
+</section>

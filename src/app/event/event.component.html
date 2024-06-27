@@ -55,7 +55,11 @@
           </div>
         </div>
 
-        <a class="nmc-btn-primary text-center w-25 pt-2" href="/event-details">
+        <a
+          class="nmc-btn-primary text-center w-25 pt-2"
+          href="/event-details"
+          [routerLink]="['/event-details', e.Id]"
+        >
           Enroll Now
         </a>
       </div>

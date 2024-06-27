@@ -13,7 +13,6 @@ export const routes: Routes = [
     { path: 'create-event', loadComponent: () => import('./create-event/create-event.component').then(m => m.CreateEventComponent) },
     { path: 'create-instructor', loadComponent: () => import('./create-instructor/create-instructor.component').then(m => m.CreateInstructorComponent) },
     { path: 'event-details', loadComponent: () => import('./event-details/event-details.component').then(m => m.EventDetailsComponent) },
-
     { path: '', redirectTo: 'home', pathMatch: 'full' }
 ];
 

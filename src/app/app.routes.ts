@@ -17,5 +17,3 @@ export const routes: Routes = [
     { path: 'instructor-details/:id', loadComponent: () => import('./instructor-details/instructor-details.component').then(m => m.InstructorDetailsComponent) },
     { path: '', redirectTo: 'home', pathMatch: 'full' }
 ];
-
-

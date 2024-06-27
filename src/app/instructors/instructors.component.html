@@ -23,11 +23,13 @@
                   <h4 class="mb-1">{{ i.Name }}</h4>
                   <p class="text-secondary mb-3">{{ i.Position }}</p>
 
-                  <div
-                    class="social d-flex align-items-center justify-content-center gap-4"
+                  <a
+                    href="/instructor-details"
+                    class="nmc-btn-primary pt-2 px-4"
+                    [routerLink]="['/instructor-details', i.id]"
                   >
-                  <a [routerLink]="['/instructor-details', instructor.id]" class="btn btn-primary">More</a>
-                  </div>
+                    More
+                  </a>
                 </figcaption>
               </figure>
             </div>

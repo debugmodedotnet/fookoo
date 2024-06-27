@@ -29,4 +29,16 @@ export class InstructorsComponent implements OnInit {
     });
   }
 
+ }
+
+ export interface IInstructor {
+  id: string;
+  Name: string;
+  Position: string;
+  Bio: string;
+  Image: string;
+  Email: string;
+  Github: string;
+  LinkedIn: string;
+  Skills: string[];
 }

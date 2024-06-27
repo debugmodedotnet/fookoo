@@ -26,9 +26,7 @@
                   <div
                     class="social d-flex align-items-center justify-content-center gap-4"
                   >
-                  <a href="/instructor-details" class="btn btn-primary">
-                    More
-                  </a>
+                  <a [routerLink]="['/instructor-details', instructor.id]" class="btn btn-primary">More</a>
                   </div>
                 </figcaption>
               </figure>

@@ -337,6 +337,21 @@ a {
     color: rgb(196 0 43);
 }
 
+.text-purple-600 {
+    --tw-text-opacity: 1;
+    color: rgb(81 43 212);
+}
+
+.text-lemon-600 {
+    --tw-text-opacity: 1;
+    color: rgb(65 122 4);
+}
+
+.text-green-600 {
+    --tw-text-opacity: 1;
+    color: rgb(52 73 94);
+}
+
 /******************************** Background Colors ********************************/
 .nmc-bg-primary {
     background-color: $nmc-primary !important;
@@ -381,9 +396,24 @@ a {
     background-color: rgb(224 242 254/var(--tw-bg-opacity));
 }
 
+.bg-purple-100 {
+    --tw-bg-opacity: 1;
+    background-color: rgb(223 213 255/var(--tw-bg-opacity));
+}
+
+.bg-green-100 {
+    --tw-bg-opacity: 1;
+    background-color: rgb(196 255 229/var(--tw-bg-opacity));
+}
+
+.bg-lemon-100 {
+    --tw-bg-opacity: 1;
+    background-color: rgb(220 255 180/var(--tw-bg-opacity));
+}
+
 .bg-red-100 {
     --tw-bg-opacity: 1;
-    background-color: rgb(255 204 215);
+    background-color: rgb(255 204 215/var(--tw-bg-opacity));
 }
 
 .bg-blue-100 {

@@ -1,1 +1,77 @@
 <p>instructor-details works!</p>
+<section class="pt-4 pb-5">
+    <div class="container-boxed">
+      <h2 class="section-title font-36 nmc-dark-grey font-family-poppins text-center mb-4">
+        Instructor Detail
+      </h2>
+  
+      <div class="instructor-detail-wrapper rounded-4 p-4 w-100" *ngIf="instructor">
+        <div class="row form-group mt-3">
+          <div class="col-6">
+            <input
+              type="text"
+              class="col-6 form-control h-3 rounded-3"
+              [value]="instructor.Name"
+              disabled
+            />
+          </div>
+  
+          <div class="col-6">
+            <input
+              type="text"
+              class="form-control h-3 rounded-3"
+              [value]="instructor.Position"
+              disabled
+            />
+          </div>
+  
+          <div class="col-6 mt-4">
+            <input
+              type="text"
+              class="form-control h-3 rounded-3"
+              [value]="instructor.Skills"
+              disabled
+            />
+          </div>
+  
+          <div class="col-6 mt-4">
+            <input
+              type="text"
+              class="form-control h-3 rounded-3"
+              [value]="instructor.Bio"
+              disabled
+            />
+          </div>
+  
+          <div class="col-6 mt-4">
+            <input
+              type="text"
+              class="form-control h-3 rounded-3"
+              [value]="instructor.Email"
+              disabled
+            />
+          </div>
+  
+          <div class="col-6 mt-4">
+            <input
+              type="text"
+              class="form-control h-3 rounded-3"
+              [value]="instructor.github"
+              disabled
+            />
+          </div>
+  
+          <div class="col-6 mt-4">
+            <input
+              type="text"
+              class="form-control h-3 rounded-3"
+              [value]="instructor.LinkedIn"
+              disabled
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  

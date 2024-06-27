@@ -4,14 +4,16 @@
       <div class="col-md-4">
         <div class="profile-img">
           <img
-            src="assets/images/home/user.png"
+            src="assets/images/home/user.jpeg"
             alt=""
-            class="w-150px"
+            class="w-150px ml-2"
           />
+          <div class="mt-2">
           <div class="file btn btn-lg btn-primary">
-            Change Photo
+            Upload Photo
             <input type="file" name="file" />
           </div>
+        </div><br>
         </div>
       </div>
 
@@ -48,30 +50,14 @@
           </ul>
         </div>
       </div>
-
-      <div class="col-md-2">
-        <input
-          type="submit"
-          class="profile-edit-btn"
-          name="btnAddMore"
-          value="Edit Profile"
-        />
-      </div>
     </div>
     
     <div class="row">
       <div class="col-md-4">
         <div class="profile-work">
-          <p>WORK LINK</p>
-          <a href="">Website Link</a><br />
-          <a href="">Bootsnipp Profile</a><br />
-          <a href="">Bootply Profile</a>
-          <p>SKILLS</p>
-          <a href="">Web Designer</a><br />
-          <a href="">Web Developer</a><br />
-          <a href="">WordPress</a><br />
-          <a href="">WooCommerce</a><br />
-          <a href="">PHP, .Net</a><br />
+          <button id="editProfileBtn" class="btn btn-secondary btn-block mb-2" (click)="editProfile()">Edit Profile</button><br><br>
+          <button id="certificateBtn" class="btn btn-secondary btn-block mb-2" (click)="viewCertificate()">Certificate</button><br><br>
+          <button id="eventsBtn" class="btn btn-secondary btn-block mb-2" (click)="viewEvents()">Events</button>
         </div>
       </div>
       <div class="col-md-8">

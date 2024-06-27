@@ -1,21 +1,23 @@
-import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { Injectable , inject } from '@angular/core';
+import { Auth } from '@angular/fire/auth';
+import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
+import { Observable, from } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  private userSubject = new BehaviorSubject<string>('User');
-  user$ = this.userSubject.asObservable();
+  firebaseAuth = inject(Auth)
 
-  constructor() {}
-
-  getUser(): Observable<string> {
-    return this.user$;
-  }
-
-  setUser(name: string): void {
-    this.userSubject.next(name);
+  register(email: string , username: string, password: string): Observable<void>{
+    const promise = createUserWithEmailAndPassword(
+      this.firebaseAuth,
+      email,
+      password
+    ). then((response) => 
+      updateProfile(response.user, {displayName : username}),
+    );
+    return from(promise);
   }
 }
 

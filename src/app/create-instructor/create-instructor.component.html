@@ -1,84 +1,130 @@
-<section class="pt-4 pb-5">
+<section class="pt-4 pb-5 create-instructor-section">
   <div class="container-boxed">
-    <h2
-      class="section-title font-36 nmc-dark-grey font-family-poppins text-center mb-4"
-    >
+    <h2 class="section-title font-36 nmc-dark-grey font-family-poppins text-center mb-4">
       Create Instructor
     </h2>
 
-    <div class="form-wrapper rounded-4 p-4 w-100">
+    <div class="form-wrapper rounded-4 p-4 w-100 mx-auto">
       <form [formGroup]="instructorForm" (ngSubmit)="onSubmit()">
         <div class="row form-group mt-3">
           <div class="col-6">
+            <label for="name" class="form-label required">Name</label>
             <input
               type="text"
-              class="col-6 form-control h-3 rounded-3"
+              id="name"
+              class="form-control h-3 rounded-3"
               formControlName="Name"
-              placeholder="Name"
+              placeholder="Enter name"
             />
           </div>
 
           <div class="col-6">
+            <label for="position" class="form-label required">Position</label>
             <input
               type="text"
+              id="position"
               class="form-control h-3 rounded-3"
               formControlName="Position"
               placeholder="Position"
             />
           </div>
 
-          <div class="col-6 mt-4">
+          <div class="col-6">
+            <label for="email" class="form-label required">Email</label>
             <input
-              type="text"
-              class="form-control h-3 rounded-3"
-              formControlName="Skills"
-              placeholder="Skills"
-            />
-          </div>
-
-          <div class="col-6 mt-4">
-            <input
-              type="text"
-              class="form-control h-3 rounded-3"
-              formControlName="Bio"
-              placeholder="Bio"
-            />
-          </div>
-
-          <div class="col-6 mt-4">
-            <input
-              type="url"
-              class="form-control h-3 rounded-3"
-              formControlName="Github"
-              placeholder="Github"
-            />
-          </div>    
-
-          <div class="col-6 mt-4">
-            <input
-              type="url"
+              type="email"
+              id="email"
               class="form-control h-3 rounded-3"
               formControlName="Email"
               placeholder="Email"
             />
           </div>
 
-          <div class="col-6 mt-4">
+          <div class="col-6">
+            <label for="github" class="form-label required">Github</label>
             <input
               type="url"
+              id="github"
+              class="form-control h-3 rounded-3"
+              formControlName="Github"
+              placeholder="Github"
+            />
+          </div>
+
+          <div class="col-6">
+            <label for="twitter" class="form-label required">Twitter</label>
+            <input
+              type="url"
+              id="twitter"
+              class="form-control h-3 rounded-3"
+              formControlName="Twitter"
+              placeholder="Twitter"
+            />
+          </div>
+
+          <div class="col-6">
+            <label for="linkedin" class="form-label required">LinkedIn</label>
+            <input
+              type="url"
+              id="linkedin"
               class="form-control h-3 rounded-3"
               formControlName="LinkedIn"
               placeholder="LinkedIn"
             />
           </div>
 
-          <button
-            type="submit"
-            class="nmc-btn-primary w-50 font-14 fw-semibold box-shadow-none mt-5 mb-2 m-auto py-2 h-auto"
-            [disabled]="!instructorForm.valid"
-          >
-            Create Instructor
-          </button>
+          <div class="col-12 mt-4">
+            <label for="skills" class="form-label required">Skills</label>
+            <textarea
+              id="skills"
+              class="form-control rounded-3"
+              formControlName="Skills"
+              placeholder="List your Skills (use bullet points or text)"
+              rows="4"
+            ></textarea>
+          </div>
+
+          <div class="col-12 mt-4">
+            <label for="bio" class="form-label required">Bio</label>
+            <textarea
+              id="bio"
+              class="form-control rounded-3"
+              formControlName="Bio"
+              placeholder="Tell us about you in brief"
+              rows="4"
+            ></textarea>
+          </div>
+
+          <div class="col-6 mt-4">
+            <label for="imageLink" class="form-label ">Image Link</label>
+            <input
+              type="url"
+              id="imageLink"
+              class="form-control h-3 rounded-3"
+              formControlName="ImageLink"
+              placeholder="Image Link"
+            />
+          </div>
+
+          <div class="col-6 mt-4">
+            <label for="imageUpload" class="form-label ">Upload Image</label>
+            <input
+              type="file"
+              id="imageUpload"
+              class="form-control h-3 rounded-3"
+              formControlName="ImageUpload"
+            />
+          </div>
+
+          <div class="col-12 text-center mt-5">
+            <button
+              type="submit"
+              class="nmc-btn-primary w-100 font-14 fw-semibold box-shadow-none py-2 h-auto"
+              [disabled]="!instructorForm.valid"
+            >
+              Create Instructor
+            </button>
+          </div>
         </div>
       </form>
     </div>

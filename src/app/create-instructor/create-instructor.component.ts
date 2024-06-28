@@ -17,11 +17,14 @@ export class CreateInstructorComponent {
     this.instructorForm = new FormGroup({
       Name: new FormControl('', Validators.required),
       Position: new FormControl('', Validators.required),
-      Skills: new FormControl('', Validators.maxLength(200)),
-      Bio: new FormControl('', Validators.maxLength(200)),
-      Github: new FormControl('', Validators.required),
+      Skills: new FormControl('', Validators.maxLength(800)),
+      Bio: new FormControl('', Validators.maxLength(800)),
       Email: new FormControl('', Validators.required),
+      Github: new FormControl('', Validators.required),
+      Twitter: new FormControl('', Validators.required),
       LinkedIn: new FormControl('', Validators.required),
+      ImageLink: new FormControl('', ),
+      ImageUpload: new FormControl('',),
     });
   }
 

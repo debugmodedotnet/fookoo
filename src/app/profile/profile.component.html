@@ -1,169 +1,178 @@
-<div class="container emp-profile">
-  <form method="post">
-    <div class="row">
-      <div class="col-md-4">
-        <div class="profile-img">
-          <img
-            src="assets/images/home/user.jpeg"
-            alt=""
-            class="w-150px ml-2"
-          />
-          <div class="mt-2">
-          <div class="file btn btn-lg btn-primary">
-            Upload Photo
-            <input type="file" name="file" />
-          </div>
-        </div><br>
-        </div>
-      </div>
+<div class="spacer--medium"></div>
 
-      <div class="col-md-6">
-        <div class="profile-head">
-          <h5>{{user.name}}</h5>
-          <h6>Web Developer and Designer</h6>
-          <p class="proile-rating">RANKINGS : <span>8/10</span></p>
-          <ul class="nav nav-tabs" id="myTab" role="tablist">
-            <li class="nav-item">
-              <a
-                class="nav-link active"
-                id="home-tab"
-                data-toggle="tab"
-                href="#home"
-                role="tab"
-                aria-controls="home"
-                aria-selected="true"
-                >About</a
-              >
+<section class="my-5">
+  <div class="container-boxed pt-4">
+    <form method="post">
+      <div class="row">
+        <div class="col-2 pe-5 divider">
+          <div
+            class="profile-img d-flex justify-content-center flex-column text-center"
+          >
+            <img
+              src="assets/images/home/user.jpeg"
+              alt=""
+              class="w-150px object-fit-cover m-auto"
+            />
+
+            <div
+              class="file btn btn-lg btn-primary nmc-bg-dark-grey position-relative overflow-hidden rounded-0 font-16 mt-3"
+            >
+              Upload Photo
+              <input
+                type="file"
+                name="file"
+                class="opacity-0 position-absolute"
+              />
+            </div>
+          </div>
+
+          <ul class="text-start mt-5">
+            <li>
+              <a class="font-18 nmc-primary" href="#">About</a>
             </li>
-            <li class="nav-item">
-              <a
-                class="nav-link"
-                id="profile-tab"
-                data-toggle="tab"
-                href="#profile"
-                role="tab"
-                aria-controls="profile"
-                aria-selected="false"
-                >Timeline</a
-              >
+
+            <li class="mt-3">
+              <a class="font-18 nmc-medium-grey" href="#">Certificates</a>
+            </li>
+
+            <li class="mt-3">
+              <a class="font-18 nmc-medium-grey" href="#">Settings</a>
             </li>
           </ul>
         </div>
-      </div>
-    </div>
-    
-    <div class="row">
-      <div class="col-md-4">
-        <div class="profile-work">
-          <button id="editProfileBtn" class="btn btn-secondary btn-block mb-2" (click)="editProfile()">Edit Profile</button><br><br>
-          <button id="certificateBtn" class="btn btn-secondary btn-block mb-2" (click)="viewCertificate()">Certificate</button><br><br>
-          <button id="eventsBtn" class="btn btn-secondary btn-block mb-2" (click)="viewEvents()">Events</button>
-        </div>
-      </div>
-      <div class="col-md-8">
-        <div class="tab-content profile-tab" id="myTabContent">
+
+        <div class="col-lg ps-5">
           <div
-            class="tab-pane fade show active"
-            id="home"
-            role="tabpanel"
-            aria-labelledby="home-tab"
+            class="profile-head d-flex align-items-center justify-content-between"
           >
-            <div class="row">
-              <div class="col-md-6">
-                <label>User Id</label>
-              </div>
-              <div class="col-md-6">
-                <p>Kshiti123</p>
-              </div>
+            <div>
+              <h2 class="nmc-dark-grey font-family-poppins">{{ user.name }}</h2>
+              <h6 class="nmc-primary">Web Developer and Designer</h6>
             </div>
-            <div class="row">
-              <div class="col-md-6">
-                <label>Name</label>
-              </div>
-              <div class="col-md-6">
-                <p>Kshiti Ghelani</p>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-md-6">
-                <label>Email</label>
-              </div>
-              <div class="col-md-6">
-                <p>kshitighelanigmail.com</p>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-md-6">
-                <label>Phone</label>
-              </div>
-              <div class="col-md-6">
-                <p>123 456 7890</p>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-md-6">
-                <label>Profession</label>
-              </div>
-              <div class="col-md-6">
-                <p>Web Developer and Designer</p>
-              </div>
+
+            <div class="d-flex align-items-center justify-content-center gap-2">
+              <!-- <button
+                type="submit"
+                class="nmc-btn-primary nmc-bg-grey font-14 fw-semibold box-shadow-none mt-5 mb-2 m-auto py-2 h-auto"
+              >
+                Cancel
+              </button>
+
+              <button
+                type="submit"
+                class="nmc-btn-primary font-14 fw-semibold box-shadow-none mt-5 mb-2 m-auto py-2 h-auto"
+              >
+                Save
+              </button> -->
+
+              <button
+                type="submit"
+                class="nmc-btn-primary font-14 fw-semibold box-shadow-none mt-5 mb-2 m-auto py-2 h-auto"
+              >
+                Edit
+              </button>
             </div>
           </div>
-          <div
-            class="tab-pane fade"
-            id="profile"
-            role="tabpanel"
-            aria-labelledby="profile-tab"
-          >
-            <div class="row">
-              <div class="col-md-6">
-                <label>Experience</label>
+
+          <div class="form-wrapper pt-2 w-100">
+            <form>
+              <div class="row form-group mt-3">
+                <div class="col-6">
+                  <label for="name" class="pb-2 font-14">Name</label>
+                  <input
+                    type="text"
+                    class="form-control h-3 rounded-3"
+                    id="name"
+                    formControlName="name"
+                  />
+                </div>
+
+                <div class="col-6">
+                  <label for="position" class="pb-2 font-14">Position</label>
+                  <input
+                    type="text"
+                    class="form-control h-3 rounded-3"
+                    id="position"
+                    formControlName="position"
+                  />
+                </div>
+
+                <div class="col-6 mt-3">
+                  <label for="email" class="pb-2 font-14">Email</label>
+                  <input
+                    type="email"
+                    class="form-control h-3 rounded-3"
+                    id="email"
+                    formControlemail="name"
+                    disabled
+                  />
+                </div>
+
+                <div class="col-6 mt-3">
+                  <label for="password" class="pb-2 font-14">Password</label>
+                  <input
+                    type="password"
+                    class="form-control h-3 rounded-3"
+                    formControlName="password"
+                    id="password"
+                    disabled
+                  />
+                </div>
+
+                <div class="col-6 mt-3">
+                  <label for="tagline" class="pb-2 font-14">Tagline</label>
+                  <input
+                    type="text"
+                    class="form-control h-3 rounded-3"
+                    formControlName="tagline"
+                    id="tagline"
+                  />
+                </div>
+
+                <div class="col-6 mt-3">
+                  <label for="city" class="pb-2 font-14">City</label>
+                  <input
+                    type="text"
+                    class="form-control h-3 rounded-3"
+                    formControlName="city"
+                    id="city"
+                  />
+                </div>
+
+                <div class="col-4 mt-3">
+                  <label for="linkedin" class="pb-2 font-14">Linkedin</label>
+                  <input
+                    type="text"
+                    class="form-control h-3 rounded-3"
+                    formControlName="linkedin"
+                    id="linkedin"
+                  />
+                </div>
+
+                <div class="col-4 mt-3">
+                  <label for="github" class="pb-2 font-14">Github</label>
+                  <input
+                    type="text"
+                    class="form-control h-3 rounded-3"
+                    formControlName="github"
+                    id="github"
+                  />
+                </div>
+
+                <div class="col-4 mt-3">
+                  <label for="twitter" class="pb-2 font-14">Twitter</label>
+                  <input
+                    type="text"
+                    class="form-control h-3 rounded-3"
+                    formControlName="twitter"
+                    id="twitter"
+                  />
+                </div>
               </div>
-              <div class="col-md-6">
-                <p>Expert</p>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-md-6">
-                <label>Hourly Rate</label>
-              </div>
-              <div class="col-md-6">
-                <p>10$/hr</p>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-md-6">
-                <label>Total Projects</label>
-              </div>
-              <div class="col-md-6">
-                <p>230</p>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-md-6">
-                <label>English Level</label>
-              </div>
-              <div class="col-md-6">
-                <p>Expert</p>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-md-6">
-                <label>Availability</label>
-              </div>
-              <div class="col-md-6">
-                <p>6 months</p>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-md-12">
-                <label>Your Bio</label><br />
-                <p>Your detail description</p>
-              </div>
-            </div>
+            </form>
           </div>
         </div>
       </div>
-    </div>
-  </form>
-</div>
+    </form>
+  </div>
+</section>

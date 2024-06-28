@@ -1,22 +1,22 @@
 .create-instructor-section {
-  margin-top: 60px; /* Add margin to ensure it's below the header */
+  margin-top: 60px; 
 }
 
 .form-wrapper {
   box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
   width: 100%;
-  max-width: 600px; /* Ensure it doesn't exceed 600px */
-  margin: 0 auto; /* Center the form wrapper */
-  padding: 20px; /* Add padding for better spacing inside the form */
+  max-width: 600px; 
+  margin: 0 auto; 
+  padding: 20px; 
 }
 
 .form-wrapper input,
 .form-wrapper textarea {
-  margin-bottom: 20px; /* Add margin to inputs and textareas for better spacing */
+  margin-bottom: 20px; 
 }
 
 textarea.form-control {
-  resize: vertical; /* Allow vertical resizing of textareas */
+  resize: vertical; 
 }
 
 .form-label {
@@ -32,5 +32,4 @@ textarea.form-control {
 }
 
 button.nmc-btn-primary {
-  margin-top: 20px; /* Add margin to the button for spacing */
-}
+  margin-top: 20px; 

@@ -1,8 +1,6 @@
 <!-- Instructor Banner -->
-<section class="pt-5 position-relative overflow-hidden">
-  <div
-    class="container-boxed position-relative d-flex flex-column align-items-center justify-content-center text-center z-2"
-  >
+<section class="pt-5 position-relative overflow-hidden instructor-banner">
+  <div class="container-boxed position-relative d-flex flex-column align-items-center justify-content-center text-center z-2">
     <h1 class="font-50 nmc-primary fw-bolder w-50 font-family-poppins">
       {{ instructor?.Name }}
     </h1>
@@ -13,44 +11,28 @@
 <div class="spacer--medium"></div>
 
 <!-- About Instructor -->
-<section class="position-relative overflow-hidden">
-  <div
-    class="container-boxed position-relative d-flex align-items-center justify-content-between"
-  >
-    <div class="w-50">
-      <h2
-        class="section-title left font-36 nmc-dark-grey font-family-poppins pb-3"
-      >
+<section class="position-relative overflow-hidden about-instructor">
+  <div class="container-boxed position-relative d-flex align-items-center justify-content-between">
+    <div class="text-content">
+      <h2 class="section-title left font-36 nmc-dark-grey font-family-poppins pb-3">
         About The Instructor
       </h2>
       <p class="nmc-dark-grey">{{ instructor?.Bio }}</p>
     </div>
-    <img
-      [src]="instructor?.InstructorImg"
-      alt="Instructor Image"
-      class="object-fit-contain w-50 rounded-3"
-    />
+    <img src="{{ instructor?.InstructorImg }}" alt="Instructor Image" class="object-fit-contain w-50 rounded-3" />
   </div>
 </section>
 
 <div class="spacer--medium"></div>
 
 <!-- Instructor Skills -->
-<section class="schedule text-center py-5 nmc-bg-light-grey">
+<section class="schedule text-center py-5 nmc-bg-light-grey skills-section">
   <div class="container-boxed">
-    <h2
-      class="section-title font-36 nmc-dark-grey font-family-poppins text-center"
-    >
+    <h2 class="section-title font-36 nmc-dark-grey font-family-poppins text-center">
       Skills
     </h2>
-    <div class="tab-content row justify-content-center">
-      <div role="tabpanel" class="col-lg-9 tab-pane active">
-        <div class="row schedule-item text-start">
-          <div class="col-md-12">
-            <p>{{ instructor?.Skills }}</p>
-          </div>
-        </div>
-      </div>
+    <div class="skills-list">
+      <p class="skills-text">{{ instructor?.Skills }}</p>
     </div>
   </div>
 </section>
@@ -58,40 +40,21 @@
 <div class="spacer--medium"></div>
 
 <!-- Instructor Social Links -->
-<section class="speakers text-center">
+<section class="speakers text-center social-links-section">
   <div class="container-boxed">
-    <h2
-      class="section-title font-36 nmc-dark-grey font-family-poppins text-center mb-5"
-    >
+    <h2 class="section-title font-36 nmc-dark-grey font-family-poppins text-center mb-5">
       Connect with {{ instructor?.Name }}
     </h2>
-    <div class="speakers-list px-5">
-      <div
-        class="member rounded-3 d-flex align-items-center justify-content-between gap-5 mt-5"
-      >
-        <figure class="position-relative m-0 w-30">
-          <img
-            [src]="instructor?.InstructorImg"
-            class="img-fluid w-100 object-fit-contain"
-            alt="{{ instructor?.Name }}"
-          />
-        </figure>
-        <div class="member-info text-start w-75">
-          <div
-            class="social d-flex align-items-center justify-content-start gap-2"
-          >
-            <a
-              [href]="'mailto:' + instructor?.Email"
-              class="font-20 nmc-primary"
-              ><i class="fa fa-envelope"></i
-            ></a>
-            <a [href]="instructor?.github" class="font-20 nmc-primary"
-              ><i class="fa fa-github"></i
-            ></a>
-            <a [href]="instructor?.LinkedIn" class="font-20 nmc-primary"
-              ><i class="fa fa-linkedin"></i
-            ></a>
-          </div>
+    <div class="speakers-list">
+      <div class="member-info">
+        <div class="social">
+          <a href="mailto:{{ instructor?.Email }}" class="font-20 nmc-primary"><i class="fa fa-envelope"></i>{{ instructor?.Email }}</a>
+        </div>
+        <div class="social">
+          <a href="{{ instructor?.LinkedIn }}" class="font-20 nmc-primary"><i class="fa fa-linkedin"></i>{{ instructor?.LinkedIn }}</a>
+        </div>
+        <div class="social">
+          <a href="{{ instructor?.github }}" class="font-20 nmc-primary"><i class="fa fa-github"></i>{{ instructor?.github }}</a>
         </div>
       </div>
     </div>

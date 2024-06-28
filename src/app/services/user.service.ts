@@ -1,6 +1,7 @@
 import { Injectable, inject } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
-import { Observable, from } from 'rxjs';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { Observable, from, map, of, switchMap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -8,10 +9,11 @@ import { Observable, from } from 'rxjs';
 export class UserService {
 
   private afAuth = inject(AngularFireAuth);
+  private firestore = inject(AngularFirestore);
 
-  signUp(email: string, password: string): any {
-    return this.afAuth.createUserWithEmailAndPassword(email, password);
-  }
+  // signUp(email: string, password: string): any {
+  //   return this.afAuth.createUserWithEmailAndPassword(email, password);
+  // }
 
   login(email: string, password: string): any {
     return this.afAuth.signInWithEmailAndPassword(email, password);
@@ -19,6 +21,40 @@ export class UserService {
 
   logout(): Observable<void> {
     return from(this.afAuth.signOut());
+  }
+
+  addUserDetails(userId: string, userDetails: any): Promise<void> {
+    console.log('userDetails:', userDetails);
+    return this.firestore.doc(`users/${userId}`).set(userDetails);
+  }
+
+  async signUp(email: string, password: string, userDetails: { name: string; age: number; city: string }) {
+    try {
+      const userCredential = await this.afAuth.createUserWithEmailAndPassword(email, password);
+      const uid = userCredential!.user!.uid;
+      await this.firestore.doc(`users/${uid}`).set(userDetails);
+      console.log('User signed up and additional information added');
+    } catch (error) {
+      console.error('Error signing up:', error);
+    }
+  }
+
+  // getCurrentUser(): Observable<any> {
+  //   return this.afAuth.authState.pipe(
+  //     map(user => user ? user : null)
+  //   );
+  // }
+
+  getCurrentUser(): Observable<any> {
+    return this.afAuth.authState.pipe(
+      switchMap(user => {
+        if (user) {
+          return this.firestore.doc(`users/${user.uid}`).valueChanges();
+        } else {
+          return of(null);
+        }
+      })
+    );
   }
 
 }

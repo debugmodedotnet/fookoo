@@ -8,11 +8,14 @@ import { IEventVenue } from '../modules/event-venue';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { IEventEnroll } from '../modules/event-enroll';
 import { IEventSpeakers } from '../modules/event-speakers';
+import { UserService } from '../services/user.service';
+import { Router, RouterModule } from '@angular/router';
+import { map, take } from 'rxjs';
 
 @Component({
   selector: 'app-event-details',
   standalone: true,
-  imports: [CommonModule, DatePipe, NgFor],
+  imports: [CommonModule, DatePipe, NgFor, RouterModule],
   templateUrl: './event-details.component.html',
   styleUrl: './event-details.component.scss'
 })
@@ -24,11 +27,13 @@ export class EventDetailsComponent implements OnInit {
   eventVenue?: IEventVenue;
   eventEnroll?: IEventEnroll;
   eventAttendees?: IEventAttendees[];
+  private userService = inject(UserService);
 
   safeUrl?: SafeResourceUrl;
   constructor(private sanitizer: DomSanitizer) { }
 
   private firestore = inject(AngularFirestore);
+  private router = inject(Router);
 
   ngOnInit(): void {
     this.getEventDetails();
@@ -66,6 +71,17 @@ export class EventDetailsComponent implements OnInit {
     this.firestore.collection('event-details').doc('who-all-attending').collection('attendees').valueChanges().subscribe(eventAttendees => {
       console.log("eventAttendees:", eventAttendees);
       this.eventAttendees = eventAttendees as IEventAttendees[];
+    });
+  }
+
+  attendEvent():void{
+    this.userService.getCurrentUser().subscribe(user => {
+      if (user) {
+        console.log("User is logged in", user);
+      } else {
+        console.log("No user is logged in");
+        this.router.navigate(['/login']);
+      }
     });
   }
 

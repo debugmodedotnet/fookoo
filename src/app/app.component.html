@@ -7,21 +7,24 @@
 <button routerLink="/login">Login</button>
 <hr/>
 <router-outlet></router-outlet> -->
-
+<!-- 
 @if(!isLoginPage()){
-<!-- HEADER -->
+
 <app-header></app-header>
 
-<!-- CONTENT -->
+
 <main>
   <div id="content" class="content">
     <router-outlet></router-outlet>
   </div>
 </main>
 
-<!-- FOOTER -->
+
 <app-footer></app-footer>
 
 }@else {
 <router-outlet></router-outlet>
-}
+} -->
+<app-header></app-header>
+<router-outlet></router-outlet>
+<app-footer></app-footer>

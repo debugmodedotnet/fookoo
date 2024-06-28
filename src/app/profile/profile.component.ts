@@ -9,10 +9,10 @@ import { UserService } from '../services/user.service';
   styleUrl: './profile.component.scss'
 })
 export class ProfileComponent {
-  constructor() {}
+  constructor() { }
 
   private userService = inject(UserService);
-  user : any; 
+  user: any;
 
   ngOnInit(): void {
     this.userService.getCurrentUser().subscribe(user => {

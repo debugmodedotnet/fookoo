@@ -24,44 +24,47 @@
   </div>
 </section>
 
-<section>
+<section class="advertisements">
   <div class="container-boxed">
-    <div
-      class="d-flex align-items-center justify-content-center overflow-hidden rounded-4 purple-bg-gradient py-4"
+    <swiper-container
+      class="mySwiper"
+      slides-per-view="1"
+      pagination="false"
+      navigation="false"
+      autoplay="true"
+      class="single-slider d-flex align-items-center"
     >
-      <div class="p-5 text-start position-relative z-50">
-        <div class="mb-4">
-          <span
-            class="nmc-bg-white font-14 text-uppercase tracking-wider rounded-2 p-2"
-            >New!</span
-          >
+      <swiper-slide
+        class="d-flex align-items-center justify-content-between overflow-hidden rounded-4 purple-bg-gradient py-4"
+        *ngFor="let a of advertisements"
+      >
+        <div class="p-5 text-start position-relative z-50">
+          <div class="mb-4">
+            <span
+              class="nmc-bg-white font-14 text-uppercase tracking-wider rounded-2 p-2"
+              >New!</span
+            >
+          </div>
+
+          <h2 class="font-36 nmc-white font-family-poppins">
+            {{ a.Title }}
+          </h2>
+
+          <button class="nmc-btn-primary nmc-bg-white nmc-dark-grey mt-4">
+            Learn More
+          </button>
         </div>
 
-        <h2 class="font-36 nmc-white w-100 font-family-poppins">
-          {{ hero?.TagLine }}
-        </h2>
-
-        <button class="nmc-btn-primary nmc-bg-white nmc-dark-grey mt-4">
-          Learn more
-        </button>
-      </div>
-
-      <div class="hidden w-100 max-w-md justify-content-end">
-        <img
-          src="assets/images/home/slider-1.png"
-          alt=""
-          width="448"
-          height="440"
-        />
-      </div>
-    </div>
+        <div class="hidden w-60 max-w-md">
+          <img [src]="a.Image" alt="" class="w-100" />
+        </div>
+      </swiper-slide>
+    </swiper-container>
   </div>
 </section>
 
-<div class="spacer--medium"></div>
-
-<section>
-  <div
+<section class="pt-3">
+  <!-- <div
     class="d-flex align-items-center justify-content-between overflow-hidden ps-5"
   >
     <div class="text-start px-5">
@@ -153,41 +156,27 @@
         </ul>
       </div>
     </div>
-  </div>
+  </div> -->
 
-
-  <!-- <div class="container-boxed">
+  <div class="container-boxed">
     <div class="row">
-      <div class="col-4 mt-4" *ngFor="let tech of techStack; let i = index">
+      <div class="col-3 tech-stack mt-4" *ngFor="let tech of techStack">
         <div
-          class="rounded-3 text-center py-3 bg-cyan-100"
-          [ngClass]="{
-            'bg-red-100': i === 0,
-            'bg-blue-100': i === 1,
-            'bg-purple-100': i === 2,
-            'bg-lemon-100': i === 3,
-            'bg-cyan-100': i === 4,
-            'bg-green-100': i === 5
-          }"
+          class="rounded-3 py-3 ps-3 pe-5 d-flex align-items-center justify-content-start"
         >
+          <img [src]="tech.Logo" alt="" />
+          <p class="m-0 ps-2">{{ tech.Title }}</p>
+        </div>
+
+        <!-- <div class="rounded-3 text-center py-3">
           <a href="#">
             <img [src]="tech.Logo" alt="" class="m-auto" />
-            <h3
-              class="m-0 ps-2 font-family-poppins mt-3"
-              [ngClass]="{
-                'text-red-600': i === 0,
-                'text-blue-600': i === 1,
-                'text-purple-600': i === 2,
-                'text-lemon-600': i === 3,
-                'text-cyan-600': i === 4,
-                'text-green-600': i === 5
-              }"
-            >
+            <h3 class="m-0 ps-2 font-family-poppins mt-3">
               {{ tech.Title }}
             </h3></a
           >
-        </div>
+        </div> -->
       </div>
     </div>
-  </div> -->
+  </div>
 </section>

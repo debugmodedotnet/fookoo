@@ -8,6 +8,7 @@ export class AuthService {
   private userSubject = new BehaviorSubject<string>('User');
   user$ = this.userSubject.asObservable();
 
+
   constructor() {}
 
   getUser(): Observable<string> {
@@ -17,6 +18,8 @@ export class AuthService {
   setUser(name: string): void {
     this.userSubject.next(name);
   }
+
+ 
 }
 
 

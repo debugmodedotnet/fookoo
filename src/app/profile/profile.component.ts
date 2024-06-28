@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-profile',
@@ -9,6 +10,21 @@ import { Component } from '@angular/core';
 })
 export class ProfileComponent {
   constructor() {}
+
+  private userService = inject(UserService);
+  user : any; 
+
+  ngOnInit(): void {
+    this.userService.getCurrentUser().subscribe(user => {
+      if (user) {
+        console.log("User is logged in", user);
+        this.user = user;
+      } else {
+        console.log("No user is logged in");
+        this.user = null;
+      }
+    });
+  }
 
   editProfile() {
     console.log('Edit Profile button clicked');

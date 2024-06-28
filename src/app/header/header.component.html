@@ -185,11 +185,11 @@
           </li>
         </ul> -->
 
-        <!-- <button class="nmc-btn-primary ms-4" type="submit" routerLink="/login">
-          Join Community
-        </button> -->
+        <button *ngIf="!user" class="nmc-btn-primary ms-4" type="submit" routerLink="/login">
+          Start Learning
+        </button>
 
-        <div class="logged-in d-flex align-items-center ms-4">
+        <div *ngIf="user" class="logged-in d-flex align-items-center ms-4">
           <img
             src="assets/images/home/user.png"
             alt="Dummy User's Profile Image"
@@ -204,7 +204,7 @@
               data-bs-toggle="dropdown"
               aria-expanded="false"
             >
-              Hi, Username
+              Hi, {{ user.name }}
               <span class="text-xl ml-1 -mr-1 text-slate-500">
                 <svg
                   stroke="currentColor"

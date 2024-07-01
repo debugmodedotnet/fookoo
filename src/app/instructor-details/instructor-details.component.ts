@@ -1,38 +1,48 @@
-import { Component, OnInit, inject } from '@angular/core';
-import { CommonModule, NgFor } from '@angular/common';
-import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { AngularFireDatabase } from '@angular/fire/compat/database';
 
-import { ActivatedRoute, RouterModule } from '@angular/router';
-import { IInstructor } from '../modules/instructors';
+interface Instructor {
+  Name: string;
+  Bio: string;
+  Email: string;
+  InstructorImg: string;
+  Position: string;
+  skill1: string;
+  skill2: string;
+  skill3: string;
+  skill4: string;
+  LinkedIn: string;
+  Twitter: string;
+  github: string;
+}
 
 @Component({
   selector: 'app-instructor-details',
-  standalone: true,
-  imports: [CommonModule, NgFor, RouterModule],
   templateUrl: './instructor-details.component.html',
-  styleUrl: './instructor-details.component.scss'
+  styleUrls: ['./instructor-details.component.scss']
 })
 export class InstructorDetailsComponent implements OnInit {
+  instructor: Instructor | undefined;
+  skills: string[] = [];
 
-  instructor?: IInstructor;
-
-  private firestore = inject(AngularFirestore);
-  private route = inject(ActivatedRoute);
+  constructor(private route: ActivatedRoute, private db: AngularFireDatabase) { }
 
   ngOnInit(): void {
-    this.route.paramMap.subscribe(params => {
-      const instructorId = params.get('id');
-      if (instructorId) {
-        this.getInstructorDetails(instructorId);
-      }
-    });
-  }
+    const instructorId = this.route.snapshot.paramMap.get('id');
 
-  getInstructorDetails(id: string) {
-    this.firestore.collection('instructor').doc(id).valueChanges().subscribe(instructor => {
-      console.log("Instructor details:", instructor);
-      this.instructor = instructor as IInstructor;
-    });
+    if (instructorId) {
+      this.db.object<Instructor>(`instructors/${instructorId}`).valueChanges().subscribe(data => {
+        if (data) {
+          this.instructor = data;
+          this.skills = [
+            data['skill1'],
+            data['skill2'],
+            data['skill3'],
+            data['skill4']
+          ].filter(skill => skill);
+        }
+      });
+    }
   }
-
 }

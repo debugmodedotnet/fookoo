@@ -1,167 +1,81 @@
+// instructor-detail.component.scss
+@use "../styles/variables" as *;
 
-$nmc-primary: #007bff; 
-$nmc-dark-grey: #343a40; 
-$nmc-bg-light-grey: #f0f0f0; 
-$nmc-orange: #DC5F00; 
+.instructor-detail-container {
+  padding: 20px;
+  background-color: #f9f9f9;
 
-/** Instructor Banner */
-.instructor-banner {
-  padding-top: 100px; 
-  
-  position: relative;
-  z-index: 2; 
-  .container-boxed {
-    h1 {
-      font-size: 50px;
-      color: $nmc-primary;
-      font-family: 'Poppins', sans-serif;
-      font-weight: bold;
-    }
-    h4 {
-      color: $nmc-dark-grey;
-      margin-top: 15px;
-    }
-  }
-}
-
-/* About Instructor Section */
-.about-instructor {
-  .container-boxed {
+  .instructor-header {
     display: flex;
-    align-items: center;
     justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
 
-    .text-content {
-      width: 50%;
-
-      h2 {
-        font-size: 36px;
-        color: $nmc-dark-grey;
-        font-family: 'Poppins', sans-serif;
-        padding-bottom: 15px;
+    .instructor-info {
+      .instructor-name {
+        color: $nmc-primary;
+        font-size: 2em;
       }
 
-      p {
-        color: $nmc-dark-grey;
-        text-align: justify;
+      .instructor-position {
+        color: $nmc-secondary;
+        font-size: 1.2em;
       }
-    }
 
-    img {
-      width: 50%;
-      border-radius: 3px;
-      object-fit: contain;
-      margin-left: 20px;
-    }
-  }
-}
+      .social-links {
+        margin-top: 10px;
 
-/* Instructor Skills Section */
-.skills-section {
-  text-align: center;
-  padding: 50px 0;
-  background-color: $nmc-bg-light-grey;
+        .social-link {
+          margin-right: 10px;
+          color: $nmc-primary;
+          text-decoration: none;
+          transition: color 0.3s;
 
-  .container-boxed {
-    h2 {
-      font-size: 36px;
-      color: $nmc-dark-grey;
-      font-family: 'Poppins', sans-serif;
-      margin-bottom: 30px;
-    }
-
-    .skills-list {
-      .skills-text {
-        font-size: 24px;
-        font-family: 'Poppins', sans-serif;
-        color: $nmc-dark-grey;
-        margin: 0 auto;
-        padding: 15px;
-        background-color: white;
-        border: 2px solid $nmc-primary; 
-        border-radius: 5px;
-        display: inline-block;
-        transition: transform 0.3s;
-
-        &:hover {
-          transform: scale(1.05);
-          background-color: $nmc-primary; 
-          color: white; 
-        }
-      }
-    }
-  }
-}
-
-/** Instructor Social Links Section **/
-.social-links-section {
-  text-align: center;
-  padding: 50px 0;
-
-  .container-boxed {
-    h2 {
-      font-size: 36px;
-      color: $nmc-dark-grey;
-      font-family: 'Poppins', sans-serif;
-      margin-bottom: 50px;
-    }
-
-    .speakers-list {
-      .member-info {
-        text-align: left;
-        width: 75%;
-        margin: 0 auto;
-
-        .social {
-          display: flex;
-          align-items: center;
-          justify-content: start;
-          gap: 20px;
-          margin-bottom: 15px;
-
-          a {
-            font-size: 20px;
-            color: $nmc-primary;
-            display: flex;
-            align-items: center;
-
-            i {
-              margin-right: 10px;
-              transition: color ease-in-out 0.3s;
-            }
-
-            &:hover {
-              i {
-                color: $nmc-dark-grey;
-              }
-              color: $nmc-dark-grey;
-              text-decoration: underline; 
-            }
+          &:hover {
+            color: $nmc-secondary;
           }
         }
       }
     }
+
+    .instructor-photo {
+      img {
+        max-width: 200px;
+        border-radius: 50%;
+      }
+    }
   }
-}
 
+  .instructor-bio,
+  .instructor-skills,
+  .contact-section {
+    margin-bottom: 20px;
 
-a {
-  color: $nmc-primary;
-  transition: color 0.3s;
+    h2 {
+      color: $nmc-primary;
+      margin-bottom: 10px;
+    }
 
-  &:hover {
-    color: $nmc-dark-grey; 
+    p,
+    .skills {
+      background-color: #fff;
+      padding: 15px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+    }
   }
-}
 
-/* Sticky Header Styles */
-.sticky-header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  background-color: white;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  border-bottom: 3px solid $nmc-orange; 
-  z-index: 1000; 
+  .instructor-skills {
+    .skills {
+      display: flex;
+      gap: 10px;
+
+      .skill {
+        background-color: $nmc-secondary;
+        color: #fff;
+        padding: 5px 10px;
+        border-radius: 5px;
+      }
+    }
+  }
 }

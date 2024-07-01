@@ -1,5 +1,6 @@
 import { EventDetailsComponent } from './event-details/event-details.component';
-import { InstructorDetailsComponent } from './instructor-details/instructor-details.component';
+import { InstructorDetailsComponent } from './instructor-details/instructor-details.component'; // Ensure the path and name are correct
+
 import { Routes } from '@angular/router';
 import { SignupComponent } from './signup/signup.component';
 import { LoginComponent } from './login/login.component';

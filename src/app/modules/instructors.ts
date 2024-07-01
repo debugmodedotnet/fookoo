@@ -1,6 +1,5 @@
 export interface IInstructor {
     id?: string;
-
     //Facebook: string;
     //Instagram: string;
     InstructorImg: string;

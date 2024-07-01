@@ -6,7 +6,11 @@
     }
 
     .file {
-        border: none;
+        cursor: pointer !important;
+
+        input {
+            inset: 0;
+        }
     }
 }
 
@@ -15,6 +19,6 @@
     ;
 }
 
-.profile-tabs li.active {
+.profile-tabs li.active a {
     color: $nmc-primary !important;
 }

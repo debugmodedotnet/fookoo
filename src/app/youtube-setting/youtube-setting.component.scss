@@ -1,0 +1,28 @@
+.btn-light-orange {
+    background-color: #ef7a04; /* Light orange color */
+    color: white;
+    border: none;
+  }
+  
+.btn-light-orange:hover {
+    background-color: #fc9313; /* Darker shade of orange for hover */
+  }
+
+  
+.button-spacing {
+    margin-right: 20px; 
+  }
+  
+.btn-custom-edit{
+    background-color: #ef7a04; /* Light orange color */
+    color: white;
+    border: none;
+}
+.btn-custom-edit:hover {
+    background-color: #fc9313; 
+}
+.btn-small {
+    padding: 0.25rem 0.5rem; 
+    font-size: 0.75rem; 
+    border-radius: 0.2rem; 
+  }

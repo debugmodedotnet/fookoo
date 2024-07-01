@@ -2,14 +2,14 @@
 
 <section class="my-5">
   <div class="container-boxed pt-4">
-    <form method="post">
+
       <div class="row">
         <div class="col-2 pe-5 divider">
           <div
             class="profile-img d-flex justify-content-center flex-column text-center"
           >
             <img
-              src="assets/images/home/user.jpeg"
+              [src]="user?.photoURL"
               alt=""
               class="w-150px object-fit-cover m-auto"
             />
@@ -18,161 +18,43 @@
               class="file btn btn-lg btn-primary nmc-bg-dark-grey position-relative overflow-hidden rounded-0 font-16 mt-3"
             >
               Upload Photo
-              <input
-                type="file"
-                name="file"
-                class="opacity-0 position-absolute"
-              />
+              <input type="file" name="file" (change)="uploadPhoto($event)" />
             </div>
           </div>
 
           <ul class="text-start mt-5">
             <li>
-              <a class="font-18 nmc-primary" href="#">About</a>
+              <a class="font-18 nmc-primary" (click)="loadAbout()">About</a>
             </li>
 
             <li class="mt-3">
-              <a class="font-18 nmc-medium-grey" href="#">Certificates</a>
+              <a class="font-18 nmc-medium-grey" (click)="loadCertictaes()">Certificates</a>
             </li>
 
             <li class="mt-3">
-              <a class="font-18 nmc-medium-grey" href="#">Settings</a>
+              <a class="font-18 nmc-medium-grey" (click)="loadSetings()">Settings</a>
             </li>
           </ul>
         </div>
+        <!-- <div>
+           @defer(when showAbout){
+            <app-about></app-about>
+           }
+           @defer(when showCerficates){
+            <app-certificates></app-certificates>
+           }
+           @defer(when showSettings){
+            <app-settings></app-settings>
+           }
+        </div> -->
+        <!-- <div>
+          <app-about *ngIf="showAbout"></app-about>
+          <app-certificates *ngIf="showCerficates"></app-certificates>
+          <app-settings *ngIf="showSettings"></app-settings>
+        </div> -->
+        <div #profileView>
 
-        <div class="col-lg ps-5">
-          <div
-            class="profile-head d-flex align-items-center justify-content-between"
-          >
-            <div>
-              <h2 class="nmc-dark-grey font-family-poppins">{{ user.name }}</h2>
-              <h6 class="nmc-primary">Web Developer and Designer</h6>
-            </div>
-
-            <div class="d-flex align-items-center justify-content-center gap-2">
-              <!-- <button
-                type="submit"
-                class="nmc-btn-primary nmc-bg-grey font-14 fw-semibold box-shadow-none mt-5 mb-2 m-auto py-2 h-auto"
-              >
-                Cancel
-              </button>
-
-              <button
-                type="submit"
-                class="nmc-btn-primary font-14 fw-semibold box-shadow-none mt-5 mb-2 m-auto py-2 h-auto"
-              >
-                Save
-              </button> -->
-
-              <button
-                type="submit"
-                class="nmc-btn-primary font-14 fw-semibold box-shadow-none mt-5 mb-2 m-auto py-2 h-auto"
-              >
-                Edit
-              </button>
-            </div>
-          </div>
-
-          <div class="form-wrapper pt-2 w-100">
-            <form>
-              <div class="row form-group mt-3">
-                <div class="col-6">
-                  <label for="name" class="pb-2 font-14">Name</label>
-                  <input
-                    type="text"
-                    class="form-control h-3 rounded-3"
-                    id="name"
-                    formControlName="name"
-                  />
-                </div>
-
-                <div class="col-6">
-                  <label for="position" class="pb-2 font-14">Position</label>
-                  <input
-                    type="text"
-                    class="form-control h-3 rounded-3"
-                    id="position"
-                    formControlName="position"
-                  />
-                </div>
-
-                <div class="col-6 mt-3">
-                  <label for="email" class="pb-2 font-14">Email</label>
-                  <input
-                    type="email"
-                    class="form-control h-3 rounded-3"
-                    id="email"
-                    formControlemail="name"
-                    disabled
-                  />
-                </div>
-
-                <div class="col-6 mt-3">
-                  <label for="password" class="pb-2 font-14">Password</label>
-                  <input
-                    type="password"
-                    class="form-control h-3 rounded-3"
-                    formControlName="password"
-                    id="password"
-                    disabled
-                  />
-                </div>
-
-                <div class="col-6 mt-3">
-                  <label for="tagline" class="pb-2 font-14">Tagline</label>
-                  <input
-                    type="text"
-                    class="form-control h-3 rounded-3"
-                    formControlName="tagline"
-                    id="tagline"
-                  />
-                </div>
-
-                <div class="col-6 mt-3">
-                  <label for="city" class="pb-2 font-14">City</label>
-                  <input
-                    type="text"
-                    class="form-control h-3 rounded-3"
-                    formControlName="city"
-                    id="city"
-                  />
-                </div>
-
-                <div class="col-4 mt-3">
-                  <label for="linkedin" class="pb-2 font-14">Linkedin</label>
-                  <input
-                    type="text"
-                    class="form-control h-3 rounded-3"
-                    formControlName="linkedin"
-                    id="linkedin"
-                  />
-                </div>
-
-                <div class="col-4 mt-3">
-                  <label for="github" class="pb-2 font-14">Github</label>
-                  <input
-                    type="text"
-                    class="form-control h-3 rounded-3"
-                    formControlName="github"
-                    id="github"
-                  />
-                </div>
-
-                <div class="col-4 mt-3">
-                  <label for="twitter" class="pb-2 font-14">Twitter</label>
-                  <input
-                    type="text"
-                    class="form-control h-3 rounded-3"
-                    formControlName="twitter"
-                    id="twitter"
-                  />
-                </div>
-              </div>
-            </form>
-          </div>
         </div>
       </div>
-    </form>
   </div>
 </section>

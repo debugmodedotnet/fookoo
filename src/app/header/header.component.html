@@ -191,8 +191,8 @@
 
         <div *ngIf="user" class="logged-in d-flex align-items-center ms-4">
           <img
-            src="assets/images/home/user.png"
-            alt="Dummy User's Profile Image"
+            [src]="profileImg"
+            alt="Profile Image"
             class="w-2 h-auto"
           />
 
@@ -235,7 +235,7 @@
               <li class="py-2">
                 <a
                   class="dropdown-item font-16 nmc-medium-grey text-center"
-                  href="#"
+                  (click)="logout()"
                   >Logout
                 </a>
               </li>

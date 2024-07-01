@@ -39,11 +39,12 @@ export class UserService {
     }
   }
 
-  // getCurrentUser(): Observable<any> {
-  //   return this.afAuth.authState.pipe(
-  //     map(user => user ? user : null)
-  //   );
-  // }
+  getCurrentUser1(): Observable<any> {
+    
+    return this.afAuth.authState.pipe(
+      map(user => user ? user : null)
+    );
+  }
 
   getCurrentUser(): Observable<any> {
     return this.afAuth.authState.pipe(
@@ -56,5 +57,16 @@ export class UserService {
       })
     );
   }
+
+  async updateUserProfile(userDetails:any){
+     console.log('userDetails:', userDetails);
+     let a = await this.afAuth.currentUser;
+     const uid = a!.uid;
+     console.log('uid:', uid);
+     await this.firestore.doc(`users/${uid}`).update(userDetails);
+     console.log('User signed up and additional information added');
+  }
+
+  
 
 }

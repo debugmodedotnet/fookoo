@@ -1,0 +1,107 @@
+
+<div class="col-lg ps-5">
+    <div
+      class="profile-head d-flex align-items-center justify-content-between"
+    >
+      <div>
+        <h2 class="nmc-dark-grey font-family-poppins">
+          {{ user?.name }}
+        </h2>
+        <h6 class="nmc-primary">Web Developer and Designer</h6>
+      </div>
+
+      <div class="d-flex align-items-center justify-content-center gap-2">
+       
+        <button (click)="saveProfile()"
+          class="nmc-btn-primary font-14 fw-semibold box-shadow-none mt-5 mb-2 m-auto py-2 h-auto">
+          Save
+        </button>
+      </div>
+    </div>
+
+    <div class="form-wrapper pt-2 w-100">
+      <form [formGroup]="userProfileForm">
+        <div class="row form-group mt-3">
+          <div class="col-6">
+            <label for="name" class="pb-2 font-14">Name</label>
+            <input
+              type="text"
+              class="form-control h-3 rounded-3"
+              id="name"
+              formControlName="name"
+            />
+          </div>
+
+          <div class="col-6">
+            <label for="position" class="pb-2 font-14">Position</label>
+            <input
+              type="text"
+              class="form-control h-3 rounded-3"
+              id="position"
+              formControlName="position"
+            />
+          </div>
+
+          <div class="col-6 mt-3">
+            <label for="password" class="pb-2 font-14">Password</label>
+            <input
+              type="password"
+              class="form-control h-3 rounded-3"
+              formControlName="password"
+              id="password"
+            />
+          </div>
+
+          <div class="col-6 mt-3">
+            <label for="tagline" class="pb-2 font-14">Tagline</label>
+            <input
+              type="text"
+              class="form-control h-3 rounded-3"
+              formControlName="tagline"
+              id="tagline"
+            />
+          </div>
+
+          <div class="col-6 mt-3">
+            <label for="city" class="pb-2 font-14">City</label>
+            <input
+              type="text"
+              class="form-control h-3 rounded-3"
+              formControlName="city"
+              id="city"
+            />
+          </div>
+
+          <div class="col-4 mt-3">
+            <label for="linkedin" class="pb-2 font-14">Linkedin</label>
+            <input
+              type="text"
+              class="form-control h-3 rounded-3"
+              formControlName="linkedin"
+              id="linkedin"
+            />
+          </div>
+
+          <div class="col-4 mt-3">
+            <label for="github" class="pb-2 font-14">Github</label>
+            <input
+              type="text"
+              class="form-control h-3 rounded-3"
+              formControlName="github"
+              id="github"
+            />
+          </div>
+
+          <div class="col-4 mt-3">
+            <label for="twitter" class="pb-2 font-14">Twitter</label>
+            <input
+              type="text"
+              class="form-control h-3 rounded-3"
+              formControlName="twitter"
+              id="twitter"
+            />
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>

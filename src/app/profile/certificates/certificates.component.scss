@@ -1,0 +1,9 @@
+@use "../../styles/variables" as *;
+
+.certificates figure {
+    border: 2px solid $nmc-primary;
+
+    img {
+        max-height: 200px;
+    }
+}

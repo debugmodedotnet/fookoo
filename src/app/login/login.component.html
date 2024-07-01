@@ -1,5 +1,5 @@
 <main
-  class="login-container d-flex align-items-center justify-content-center vh-100"
+  class="login-container d-flex align-items-center justify-content-center pt-5"
 >
   <div class="login-card rounded-4 p-4">
     <div class="card-content">
@@ -54,7 +54,7 @@
           >
             *Please enter email
           </p>
-          
+
           <p
             *ngIf="loginForm.get('email')?.errors?.['email']"
             class="font-14 m-0"
@@ -147,3 +147,5 @@
     </div>
   </div>
 </main>
+
+<div class="spacer--medium"></div>

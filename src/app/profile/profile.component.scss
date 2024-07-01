@@ -1,3 +1,5 @@
+@use "../styles/variables" as *;
+
 .profile-img {
     img {
         box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
@@ -8,6 +10,11 @@
     }
 }
 
-.divider{
-    border-right: 1px solid #ccc;;
+.divider {
+    border-right: 1px solid #ccc;
+    ;
+}
+
+.profile-tabs li.active {
+    color: $nmc-primary !important;
 }

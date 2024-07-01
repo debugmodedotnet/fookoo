@@ -1,1 +1,51 @@
-<p>settings works!</p>
+<div class="col-lg ps-5">
+  <h2 class="section-title left font-32 nmc-dark-grey font-family-poppins pb-3">
+    Settings
+  </h2>
+  
+  <div class="profile-head d-flex align-items-center justify-content-between">
+    <!-- <div>
+      <h2 class="nmc-dark-grey font-family-poppins">
+        {{ user?.name }}
+      </h2>
+      <h6 class="nmc-primary">Web Developer and Designer</h6>
+    </div> -->
+  </div>
+
+  <div class="form-wrapper pt-2 w-100">
+    <form [formGroup]="userProfileForm">
+      <div class="row form-group mt-3">
+        <div class="col-6">
+          <label for="email" class="pb-2 font-14">Email</label>
+          <input
+            type="email"
+            class="form-control h-3 rounded-3"
+            id="email"
+            formControlemail="email"
+            value="{{ user.email }}"
+            disabled
+          />
+        </div>
+
+        <div class="col-6">
+          <label for="password" class="pb-2 font-14">Password</label>
+          <input
+            type="password"
+            class="form-control h-3 rounded-3"
+            formControlName="password"
+            id="password"
+          />
+        </div>
+      </div>
+    </form>
+
+    <div class="d-flex align-items-center justify-content-end gap-2">
+      <button
+        (click)="saveProfile()"
+        class="nmc-btn-primary font-14 fw-semibold box-shadow-none mt-5 mb-2 px-4 py-2 h-auto"
+      >
+        Save
+      </button>
+    </div>
+  </div>
+</div>

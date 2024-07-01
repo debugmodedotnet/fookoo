@@ -1,8 +1,5 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { UserService } from '../../services/user.service';
-import { AngularFireStorage } from '@angular/fire/compat/storage';
-import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { finalize } from 'rxjs';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
@@ -16,14 +13,11 @@ export class AboutComponent implements OnInit {
 
   private userService = inject(UserService);
   user: any;
-  private storage = inject(AngularFireStorage);
-  private db = inject(AngularFirestore);
   userProfileForm: FormGroup;
 
-  constructor() { 
+  constructor() {
     this.userProfileForm = new FormGroup({
-      name: new FormControl(''), 
-      password: new FormControl(''),
+      name: new FormControl(''),
       position: new FormControl(''),
       age: new FormControl(''),
       city: new FormControl(''),
@@ -53,15 +47,13 @@ export class AboutComponent implements OnInit {
         this.user = null;
       }
     });
-
   }
 
-  saveProfile(){
+  saveProfile() {
     console.log("hey");
     const userDetails = { ...this.user, ...this.userProfileForm.value };
     console.log(this.user.id);
     this.userService.updateUserProfile(userDetails);
   }
-
 
 }

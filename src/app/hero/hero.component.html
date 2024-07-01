@@ -1,4 +1,4 @@
-<section class="hero-section py-3 position-relative overflow-hidden">
+<section class="hero-section pt-4 pb-3 position-relative overflow-hidden">
   <div
     class="container-boxed position-relative d-flex align-items-center justify-content-between"
   >
@@ -64,118 +64,15 @@
 </section>
 
 <section class="pt-3">
-  <!-- <div
-    class="d-flex align-items-center justify-content-between overflow-hidden ps-5"
-  >
-    <div class="text-start px-5">
-      <h2 class="font-36 w-100 font-family-poppins">
-        Integrate critical workflows
-      </h2>
-
-      <h3 class="font-18 my-3 nmc-dark-grey fw-light">
-        Link Airtable to your existing tools, connect important business
-        processes, and build more powerful applications.
-      </h3>
-
-      <a class="nmc-primary font-18">Explore all technologies -></a>
-    </div>
-
-    <div class="w-65">
-      <div class="scroller" data-speed="fast">
-        <ul class="tag-list scroller__inner py-3">
-          <li
-            class="rounded-3 py-2 ps-3 pe-5 d-flex align-items-center justify-content-start w-20"
-          >
-            <img src="assets/images/home/github.svg" alt="" />
-            <p class="m-0 ps-2">Github</p>
-          </li>
-
-          <li
-            class="rounded-3 py-2 ps-3 pe-5 d-flex align-items-center justify-content-start w-20"
-          >
-            <img src="assets/images/home/react.svg" alt="" />
-            <p class="m-0 ps-2">React</p>
-          </li>
-
-          <li
-            class="rounded-3 py-2 ps-3 pe-5 d-flex align-items-center justify-content-start w-20"
-          >
-            <img src="assets/images/home/angular.svg" alt="" />
-            <p class="m-0 ps-2">Angular</p>
-          </li>
-        </ul>
-      </div>
-
-      <div class="scroller" data-speed="fast">
-        <ul class="tag-list scroller__inner py-3">
-          <li
-            class="rounded-3 py-2 ps-3 pe-5 d-flex align-items-center justify-content-start w-20"
-          >
-            <img src="assets/images/home/github.svg" alt="" />
-            <p class="m-0 ps-2">Github</p>
-          </li>
-
-          <li
-            class="rounded-3 py-2 ps-3 pe-5 d-flex align-items-center justify-content-start w-20"
-          >
-            <img src="assets/images/home/react.svg" alt="" />
-            <p class="m-0 ps-2">React</p>
-          </li>
-
-          <li
-            class="rounded-3 py-2 ps-3 pe-5 d-flex align-items-center justify-content-start w-20"
-          >
-            <img src="assets/images/home/angular.svg" alt="" />
-            <p class="m-0 ps-2">Angular</p>
-          </li>
-        </ul>
-      </div>
-
-      <div class="scroller" data-speed="fast">
-        <ul class="tag-list scroller__inner py-3">
-          <li
-            class="rounded-3 py-2 ps-3 pe-5 d-flex align-items-center justify-content-start w-20"
-          >
-            <img src="assets/images/home/github.svg" alt="" />
-            <p class="m-0 ps-2">Github</p>
-          </li>
-
-          <li
-            class="rounded-3 py-2 ps-3 pe-5 d-flex align-items-center justify-content-start w-20"
-          >
-            <img src="assets/images/home/react.svg" alt="" />
-            <p class="m-0 ps-2">React</p>
-          </li>
-
-          <li
-            class="rounded-3 py-2 ps-3 pe-5 d-flex align-items-center justify-content-start w-20"
-          >
-            <img src="assets/images/home/angular.svg" alt="" />
-            <p class="m-0 ps-2">Angular</p>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </div> -->
-
   <div class="container-boxed">
     <div class="row">
       <div class="col-3 tech-stack mt-4" *ngFor="let tech of techStack">
         <div
           class="rounded-3 py-3 ps-3 pe-5 d-flex align-items-center justify-content-start"
         >
-          <img [src]="tech.Logo" alt="" />
+          <img [src]="tech.Logo" alt="" class="object-fit-contain" />
           <p class="m-0 ps-2">{{ tech.Title }}</p>
         </div>
-
-        <!-- <div class="rounded-3 text-center py-3">
-          <a href="#">
-            <img [src]="tech.Logo" alt="" class="m-auto" />
-            <h3 class="m-0 ps-2 font-family-poppins mt-3">
-              {{ tech.Title }}
-            </h3></a
-          >
-        </div> -->
       </div>
     </div>
   </div>

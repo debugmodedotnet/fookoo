@@ -1,11 +1,11 @@
 export interface IEvent {
     Id:string; 
     Title : string; 
-    Isoffline: boolean; 
+    isOffline: boolean; 
     City: string;
     Address: string;
-    Iscertficateprovided: boolean;
-    Ispaid: boolean;
+    isCertificateProvided: boolean;
+    isPaid: boolean;
     Tech:string;
     Date: Date;
     Logo:string;

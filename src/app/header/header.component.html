@@ -14,187 +14,17 @@
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg w-75">
       <div class="collapse navbar-collapse justify-content-end">
-        <!-- <ul class="navbar-nav mb-lg-0 gap-4">
-          <li class="nav-item">
-            <a class="nav-link font-16 nmc-medium-grey" href="#"
-              >Explore Courses</a
-            >
-          </li>
-
-          <li class="nav-item dropdown">
-            <a
-              class="nav-link font-16 nmc-medium-grey dropdown-toggle"
-              href="#"
-              role="button"
-              data-bs-toggle="dropdown"
-              aria-expanded="false"
-            >
-              AI Newsletter
-              <span class="text-xl ml-1 -mr-1 text-slate-500">
-                <svg
-                  stroke="currentColor"
-                  fill="none"
-                  stroke-width="2"
-                  viewBox="0 0 24 24"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  height="1em"
-                  width="1em"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <polyline points="6 9 12 15 18 9"></polyline>
-                </svg>
-              </span>
-            </a>
-
-            <ul class="dropdown-menu">
-              <li class="py-2">
-                <a
-                  class="dropdown-item font-16 nmc-medium-grey text-center"
-                  href="#"
-                  >The Batch
-                </a>
-              </li>
-
-              <li class="py-2">
-                <a
-                  class="dropdown-item font-16 nmc-medium-grey text-center"
-                  href="#"
-                  >Data Point
-                </a>
-              </li>
-
-              <li class="py-2">
-                <a
-                  class="dropdown-item font-16 nmc-medium-grey text-center"
-                  href="#"
-                  >Blog
-                </a>
-              </li>
-            </ul>
-          </li>
-
-          <li class="nav-item dropdown">
-            <a
-              class="nav-link font-16 nmc-medium-grey dropdown-toggle"
-              href="#"
-              role="button"
-              data-bs-toggle="dropdown"
-              aria-expanded="false"
-            >
-              Community
-              <span class="text-xl ml-1 -mr-1 text-slate-500">
-                <svg
-                  stroke="currentColor"
-                  fill="none"
-                  stroke-width="2"
-                  viewBox="0 0 24 24"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  height="1em"
-                  width="1em"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <polyline points="6 9 12 15 18 9"></polyline>
-                </svg>
-              </span>
-            </a>
-
-            <ul class="dropdown-menu">
-              <li class="py-2">
-                <a
-                  class="dropdown-item font-16 nmc-medium-grey text-center"
-                  href="#"
-                  >Forum
-                </a>
-              </li>
-
-              <li class="py-2">
-                <a
-                  class="dropdown-item font-16 nmc-medium-grey text-center"
-                  href="#"
-                  >Events
-                </a>
-              </li>
-
-              <li class="py-2">
-                <a
-                  class="dropdown-item font-16 nmc-medium-grey text-center"
-                  href="#"
-                  >Ambassadors
-                </a>
-              </li>
-            </ul>
-          </li>
-
-          <li class="nav-item">
-            <a class="nav-link font-16 nmc-medium-grey" href="#">Resources</a>
-          </li>
-
-          <li class="nav-item dropdown">
-            <a
-              class="nav-link font-16 nmc-medium-grey dropdown-toggle"
-              href="#"
-              role="button"
-              data-bs-toggle="dropdown"
-              aria-expanded="false"
-            >
-              Company
-              <span class="text-xl ml-1 -mr-1 text-slate-500">
-                <svg
-                  stroke="currentColor"
-                  fill="none"
-                  stroke-width="2"
-                  viewBox="0 0 24 24"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  height="1em"
-                  width="1em"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <polyline points="6 9 12 15 18 9"></polyline>
-                </svg>
-              </span>
-            </a>
-
-            <ul class="dropdown-menu">
-              <li class="py-2">
-                <a
-                  class="dropdown-item font-16 nmc-medium-grey text-center"
-                  href="#"
-                  >About
-                </a>
-              </li>
-
-              <li class="py-2">
-                <a
-                  class="dropdown-item font-16 nmc-medium-grey text-center"
-                  href="#"
-                  >Careers
-                </a>
-              </li>
-
-              <li class="py-2">
-                <a
-                  class="dropdown-item font-16 nmc-medium-grey text-center"
-                  href="#"
-                  >Contact
-                </a>
-              </li>
-            </ul>
-          </li>
-        </ul> -->
-
-        <button *ngIf="!user" class="nmc-btn-primary ms-4" type="submit" routerLink="/login">
+        <button
+          *ngIf="!user"
+          class="nmc-btn-primary ms-4"
+          type="submit"
+          routerLink="/login"
+        >
           Start Learning
         </button>
 
         <div *ngIf="user" class="logged-in d-flex align-items-center ms-4">
-          <img
-            [src]="profileImg"
-            alt="Profile Image"
-            class="w-2 h-auto"
-          />
+          <img [src]="profileImg" alt="Profile Image" class="w-2 h-auto rounded-5" />
 
           <li class="nav-item dropdown m-0 ms-2">
             <a
@@ -234,7 +64,7 @@
 
               <li class="py-2">
                 <a
-                  class="dropdown-item font-16 nmc-medium-grey text-center"
+                  class="dropdown-item font-16 nmc-medium-grey text-center cursor-pointer"
                   (click)="logout()"
                   >Logout
                 </a>

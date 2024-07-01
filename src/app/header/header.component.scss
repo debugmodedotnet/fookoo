@@ -1,4 +1,10 @@
+@use "../styles/variables" as *;
+
 .sticky-header {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    border-bottom: 3px solid #DC5F00;
+    border-bottom: 3px solid $nmc-primary;
+}
+
+.dropdown-menu li {
+    border-bottom: 1px solid $nmc-light-grey;
 }

@@ -35,7 +35,7 @@ export class HeaderComponent implements OnInit {
     });
   }
 
-  attendEvent(): void {}
+  attendEvent(): void { }
 
   logout(): void {
     this.userService.logout().subscribe(() => {

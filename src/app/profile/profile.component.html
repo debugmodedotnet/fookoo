@@ -1,60 +1,55 @@
-<div class="spacer--medium"></div>
-
-<section class="my-5">
+<section class="my-5 pt-4">
   <div class="container-boxed pt-4">
+    <div class="row">
+      <div class="col-2 pe-5 divider">
+        <div
+          class="profile-img d-flex justify-content-center flex-column text-center"
+        >
+          <img
+            [src]="user?.photoURL"
+            alt=""
+            class="w-150px object-fit-cover m-auto"
+          />
 
-      <div class="row">
-        <div class="col-2 pe-5 divider">
           <div
-            class="profile-img d-flex justify-content-center flex-column text-center"
+            class="file btn btn-lg btn-primary nmc-bg-dark-grey position-relative overflow-hidden rounded-0 font-16 mt-3"
           >
-            <img
-              [src]="user?.photoURL"
-              alt=""
-              class="w-150px object-fit-cover m-auto"
+            Upload Photo
+            <input
+              type="file"
+              name="file"
+              (change)="uploadPhoto($event)"
+              class="opacity-0 position-absolute"
             />
-
-            <div
-              class="file btn btn-lg btn-primary nmc-bg-dark-grey position-relative overflow-hidden rounded-0 font-16 mt-3"
-            >
-              Upload Photo
-              <input type="file" name="file" (change)="uploadPhoto($event)" />
-            </div>
           </div>
-
-          <ul class="text-start mt-5">
-            <li>
-              <a class="font-18 nmc-primary" (click)="loadAbout()">About</a>
-            </li>
-
-            <li class="mt-3">
-              <a class="font-18 nmc-medium-grey" (click)="loadCertictaes()">Certificates</a>
-            </li>
-
-            <li class="mt-3">
-              <a class="font-18 nmc-medium-grey" (click)="loadSetings()">Settings</a>
-            </li>
-          </ul>
         </div>
-        <!-- <div>
-           @defer(when showAbout){
-            <app-about></app-about>
-           }
-           @defer(when showCerficates){
-            <app-certificates></app-certificates>
-           }
-           @defer(when showSettings){
-            <app-settings></app-settings>
-           }
-        </div> -->
-        <!-- <div>
-          <app-about *ngIf="showAbout"></app-about>
-          <app-certificates *ngIf="showCerficates"></app-certificates>
-          <app-settings *ngIf="showSettings"></app-settings>
-        </div> -->
-        <div #profileView>
 
-        </div>
+        <ul class="text-start mt-5 profile-tabs">
+          <li>
+            <a class="font-18 nmc-primary cursor-pointer" (click)="loadAbout()"
+              >About</a
+            >
+          </li>
+
+          <li class="mt-3">
+            <a
+              class="font-18 nmc-medium-grey cursor-pointer"
+              (click)="loadCertificates()"
+              >Certificates</a
+            >
+          </li>
+
+          <li class="mt-3">
+            <a
+              class="font-18 nmc-medium-grey cursor-pointer"
+              (click)="loadSettings()"
+              >Settings</a
+            >
+          </li>
+        </ul>
       </div>
+
+      <div #profileView class="col-lg ps-5"></div>
+    </div>
   </div>
 </section>

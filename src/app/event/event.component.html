@@ -6,7 +6,7 @@
       Upcoming Events
     </h2>
 
-    <div class="events-container d-flex flex-column justify-content-center">
+    <!-- <div class="events-container d-flex flex-column justify-content-center">
       <div
         *ngFor="let e of events"
         class="events-card nmc-bg-white d-flex align-items-center justify-content-between overflow-hidden rounded-3 mx-auto py-4 px-5 mb-5 position-relative"
@@ -63,13 +63,73 @@
           Enroll Now
         </a>
       </div>
+    </div> -->
+
+    <div class="events-container d-flex flex-column justify-content-center">
+      <div class="row">
+        <div *ngFor="let e of events" class="col-12 col-md-6 col-lg-3">
+          <div
+            class="events-card card overflow-hidden nmc-bg-white overflow-hidden rounded-3 position-relative"
+          >
+            <div class="pricing-table-ribbon fw-bold position-absolute">
+              {{ e.isPaid ? "Paid" : "Free" }}
+            </div>
+
+            <figure
+              class="m-0 p-0 zoom-effect overflow-hidden m-3 rounded-3 d-flex"
+            >
+              <img
+                [src]="e.Logo"
+                class="w-100 h-auto object-fit-fill m-auto p-3"
+                alt="Event Tech"
+                loading="lazy"
+              />
+            </figure>
+
+            <figcaption class="m-0 p-3 pt-0">
+              <div class="d-flex align-items-center justify-content-start mb-2">
+                <span
+                  class="d-inline-block font-12 fw-semibold rounded-1 py-1 px-2 text-red-600 bg-orange-100"
+                  >{{ e.isOffline ? "Offline" : "Online" }}
+                </span>
+
+                <span
+                  *ngIf="e.isOffline"
+                  class="d-inline-block font-12 fw-semibold rounded-1 py-1 px-2 text-orange-600 bg-orange-100 ms-2"
+                  >{{ e.City }}
+                </span>
+              </div>
+
+              <h4 class="font-22 nmc-primary my-3 font-family-poppins">
+                {{ e.Title }}
+              </h4>
+
+              <h3 class="font-18 nmc-dark-grey mb-3 fw-normal">
+                {{ e.ShortDescription }}
+              </h3>
+
+              <h4 class="font-16 nmc-medium-grey mb-3 fw-normal">
+                Date: {{ e.Date }}
+              </h4>
+
+              <a
+                class="nmc-btn-primary text-center w-50 pt-2 mt-3"
+                href="/event-details"
+                [routerLink]="['/event-details', e.Id]"
+              >
+                Enroll Now
+              </a>
+            </figcaption>
+          </div>
+        </div>
+      </div>
     </div>
 
-    <!-- <button
-      class="nmc-btn-primary nmc-bg-dark-grey nmc-white mx-auto w-50"
+    <button
+      class="nmc-btn-primary nmc-bg-dark-grey nmc-white mx-auto mt-5"
       type="submit"
     >
       Load More
-    </button> -->
+    </button>
   </div>
 </section>

@@ -1,170 +1,198 @@
-<div class="col-lg ps-5">
-  <div class="profile-head d-flex align-items-center justify-content-between">
-    <div>
-      <h2 class="nmc-dark-grey font-family-poppins">
-        {{ user?.name }}
-      </h2>
-      <h6 class="nmc-primary">Web Developer and Designer</h6>
-    </div>
-
-    <div class="d-flex align-items-center justify-content-center gap-2">
-      <button
-        (click)="saveProfile()"
-        class="nmc-btn-primary font-14 fw-semibold box-shadow-none mt-5 mb-2 px-4 py-2 h-auto"
-      >
-        Save
-      </button>
-    </div>
+<div class="profile-head d-flex align-items-center justify-content-between">
+  <div>
+    <h2 class="nmc-dark-grey font-family-poppins">
+      {{ user?.name }}
+    </h2>
+    <h6 class="nmc-primary">Web Developer and Designer</h6>
   </div>
 
-  <div class="form-wrapper pt-2 w-100">
-    <form [formGroup]="userProfileForm">
-      <div class="row form-group mt-3">
-        <div class="col-6">
-          <label for="name" class="pb-2 font-14">Name</label>
-          <input
-            type="text"
-            class="form-control h-3 rounded-3"
-            id="name"
-            formControlName="name"
-          />
-        </div>
+  <div class="d-flex align-items-center justify-content-center gap-2">
+    <button
+      (click)="saveProfile()"
+      class="nmc-btn-primary font-14 fw-semibold box-shadow-none mt-5 mb-2 px-4 py-2 h-auto"
+      [disabled]="
+        userProfileForm.get('github')?.invalid ||
+        userProfileForm.get('linkedin')?.invalid ||
+        userProfileForm.get('twitter')?.invalid
+      "
+    >
+      Save
+    </button>
+  </div>
+</div>
 
-        <div class="col-6">
-          <label for="position" class="pb-2 font-14">Position</label>
-          <input
-            type="text"
-            class="form-control h-3 rounded-3"
-            id="position"
-            formControlName="position"
-          />
-        </div>
+<div class="form-wrapper pt-2 w-100">
+  <form [formGroup]="userProfileForm">
+    <div class="row form-group mt-3">
+      <div class="col-6">
+        <label for="name" class="pb-2 font-14">Name</label>
+        <input
+          type="text"
+          class="form-control h-3 rounded-3"
+          id="name"
+          formControlName="name"
+        />
+      </div>
 
-        <div class="col-6 mt-4">
-          <label for="tagline" class="pb-2 font-14">Tagline</label>
-          <input
-            type="text"
-            class="form-control h-3 rounded-3"
-            formControlName="tagline"
-            id="tagline"
-          />
-        </div>
+      <div class="col-6">
+        <label for="position" class="pb-2 font-14">Position</label>
+        <input
+          type="text"
+          class="form-control h-3 rounded-3"
+          id="position"
+          formControlName="position"
+        />
+      </div>
 
-        <div class="col-6 mt-4">
-          <label for="bio" class="pb-2 font-14">Bio</label>
-          <input
-            type="text"
-            class="form-control h-3 rounded-3"
-            formControlName="bio"
-            id="bio"
-          />
-        </div>
+      <div class="col-6 mt-4">
+        <label for="tagline" class="pb-2 font-14">Tagline</label>
+        <input
+          type="text"
+          class="form-control h-3 rounded-3"
+          formControlName="tagline"
+          id="tagline"
+        />
+      </div>
 
-        <div class="col-6 mt-4">
-          <label for="photoURL" class="pb-2 font-14">Photo URL</label>
-          <input
-            type="text"
-            class="form-control h-3 rounded-3"
-            formControlName="photoURL"
-            id="photoURL"
-          />
-        </div>
+      <div class="col-6 mt-4">
+        <label for="bio" class="pb-2 font-14">Bio</label>
+        <input
+          type="text"
+          class="form-control h-3 rounded-3"
+          formControlName="bio"
+          id="bio"
+        />
+      </div>
 
-        <div class="col-6 mt-4">
-          <label for="imageURL" class="pb-2 font-14">Image URL</label>
-          <input
-            type="text"
-            class="form-control h-3 rounded-3"
-            formControlName="imageURL"
-            id="imageURL"
-          />
-        </div>
+      <div class="col-3 mt-4">
+        <label for="city" class="pb-2 font-14">City</label>
+        <input
+          type="text"
+          class="form-control h-3 rounded-3"
+          formControlName="city"
+          id="city"
+        />
+      </div>
 
-        <div class="col-3 mt-4">
-          <label for="city" class="pb-2 font-14">City</label>
-          <input
-            type="text"
-            class="form-control h-3 rounded-3"
-            formControlName="city"
-            id="city"
-          />
-        </div>
-
-        <div class="col-3 mt-4">
-          <label for="linkedin" class="pb-2 font-14">Linkedin</label>
-          <input
-            type="text"
-            class="form-control h-3 rounded-3"
-            formControlName="linkedin"
-            id="linkedin"
-          />
-        </div>
-
-        <div class="col-3 mt-4">
-          <label for="github" class="pb-2 font-14">Github</label>
-          <input
-            type="text"
-            class="form-control h-3 rounded-3"
-            formControlName="github"
-            id="github"
-          />
-        </div>
-
-        <div class="col-3 mt-4">
-          <label for="twitter" class="pb-2 font-14">Twitter</label>
-          <input
-            type="text"
-            class="form-control h-3 rounded-3"
-            formControlName="twitter"
-            id="twitter"
-          />
-        </div>
-
-        <div class="col-3 mt-4">
-          <label for="skill1" class="pb-2 font-14">Skill-1</label>
-          <input
-            type="text"
-            class="form-control h-3 rounded-3"
-            formControlName="skill1"
-            id="skill1"
-          />
-        </div>
-
-        <div class="col-3 mt-4">
-          <label for="skill2" class="pb-2 font-14">Skill-2</label>
-          <input
-            type="text"
-            class="form-control h-3 rounded-3"
-            formControlName="skill2"
-            id="skill2"
-          />
-        </div>
-
-        <div class="col-3 mt-4">
-          <label for="skill3" class="pb-2 font-14">Skill-3</label>
-          <input
-            type="text"
-            class="form-control h-3 rounded-3"
-            formControlName="skill3"
-            id="skill3"
-          />
-        </div>
-
-        <div class="col-3 mt-4">
-          <label for="skill4" class="pb-2 font-14">Skill-4</label>
-          <input
-            type="text"
-            class="form-control h-3 rounded-3"
-            formControlName="skill4"
-            id="skill4"
-          />
-        </div>
-
-        <div class="col-4 mt-4">
-          <input type="checkbox" formControlName="openforjob" />
-          Is Open For a Job?
+      <div class="col-3 mt-4">
+        <label for="linkedin" class="pb-2 font-14">Linkedin</label>
+        <input
+          type="text"
+          class="form-control h-3 rounded-3"
+          formControlName="linkedin"
+          id="linkedin"
+        />
+        <div
+          *ngIf="
+            userProfileForm.get('linkedin')?.invalid &&
+            (userProfileForm.get('linkedin')?.dirty ||
+              userProfileForm.get('linkedin')?.touched)
+          "
+          class="nmc-alert mt-1"
+        >
+          <p
+            *ngIf="userProfileForm.get('linkedin')?.errors?.['pattern']"
+            class="font-14 m-0"
+          >
+            *Please enter a valid LinkedIn URL
+          </p>
         </div>
       </div>
-    </form>
-  </div>
+
+      <div class="col-3 mt-4">
+        <label for="github" class="pb-2 font-14">Github</label>
+        <input
+          type="text"
+          class="form-control h-3 rounded-3"
+          formControlName="github"
+          id="github"
+        />
+        <div
+          *ngIf="
+            userProfileForm.get('github')?.invalid &&
+            (userProfileForm.get('github')?.dirty ||
+              userProfileForm.get('github')?.touched)
+          "
+          class="nmc-alert mt-1"
+        >
+          <p
+            *ngIf="userProfileForm.get('github')?.errors?.['pattern']"
+            class="font-14 m-0"
+          >
+            *Please enter a valid GitHub URL
+          </p>
+        </div>
+      </div>
+
+      <div class="col-3 mt-4">
+        <label for="twitter" class="pb-2 font-14">Twitter</label>
+        <input
+          type="text"
+          class="form-control h-3 rounded-3"
+          formControlName="twitter"
+          id="twitter"
+        />
+        <div
+          *ngIf="
+            userProfileForm.get('twitter')?.invalid &&
+            (userProfileForm.get('twitter')?.dirty ||
+              userProfileForm.get('twitter')?.touched)
+          "
+          class="nmc-alert mt-1"
+        >
+          <p
+            *ngIf="userProfileForm.get('twitter')?.errors?.['pattern']"
+            class="font-14 m-0"
+          >
+            *Please enter a valid Twitter URL
+          </p>
+        </div>
+      </div>
+
+      <div class="col-3 mt-4">
+        <label for="skill1" class="pb-2 font-14">Skill-1</label>
+        <input
+          type="text"
+          class="form-control h-3 rounded-3"
+          formControlName="skill1"
+          id="skill1"
+        />
+      </div>
+
+      <div class="col-3 mt-4">
+        <label for="skill2" class="pb-2 font-14">Skill-2</label>
+        <input
+          type="text"
+          class="form-control h-3 rounded-3"
+          formControlName="skill2"
+          id="skill2"
+        />
+      </div>
+
+      <div class="col-3 mt-4">
+        <label for="skill3" class="pb-2 font-14">Skill-3</label>
+        <input
+          type="text"
+          class="form-control h-3 rounded-3"
+          formControlName="skill3"
+          id="skill3"
+        />
+      </div>
+
+      <div class="col-3 mt-4">
+        <label for="skill4" class="pb-2 font-14">Skill-4</label>
+        <input
+          type="text"
+          class="form-control h-3 rounded-3"
+          formControlName="skill4"
+          id="skill4"
+        />
+      </div>
+
+      <div class="col-4 mt-4">
+        <input type="checkbox" formControlName="openforjob" />
+        Is Open For a Job?
+      </div>
+    </div>
+  </form>
 </div>

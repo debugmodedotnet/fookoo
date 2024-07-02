@@ -1,4 +1,4 @@
-<section>
+<section class="py-5">
   <div class="container-boxed">
     <h2
       class="section-title font-36 nmc-dark-grey font-family-poppins text-center mb-4"
@@ -23,20 +23,20 @@
       *ngFor="let v of youtubeVideos"
     >
       <a [href]="v.Link">
-        <figure class="position-relative m-0">
+        <figure class="position-relative m-0 rounded-3 overflow-hidden">
           <img
             alt="Image"
             loading="lazy"
             sizes="100vw"
             [src]="v.Thumbnail"
             src="https://img.youtube.com/vi/U6-cM8212do/hqdefault.jpg"
-            class="w-100 h-100 object-fit-cover rounded-2"
+            class="w-100 h-100 object-fit-fill"
           />
         </figure>
 
         <div class="pt-3 px-4 text-start">
           <span
-            class="d-inline-block font-12 fw-semibold rounded-1 py-1 px-2 mb-3 text-sky-600 bg-sky-100"
+            class="d-inline-block font-12 fw-semibold rounded-1 py-1 px-2 mb-3 text-orange-600 bg-orange-100"
             >{{ v.Tech }}</span
           >
 

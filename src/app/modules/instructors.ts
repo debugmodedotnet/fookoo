@@ -1,15 +1,15 @@
 export interface IInstructor {
     id?: string;
-
-    //Facebook: string;
-    //Instagram: string;
-    InstructorImg: string;
-    LinkedIn: string;
     Name: string;
-    Position: string;
-    //X: string;
     Bio: string;
     Email: string;
-    Skills: string;
-    github: string;
+    InstructorImg: string;
+    Position: string;
+    skill1: string;
+    skill2: string;
+    skill3: string;
+    skill4: string;
+    LinkedIn: string;
+    Twitter: string;
+    Github: string;
 }

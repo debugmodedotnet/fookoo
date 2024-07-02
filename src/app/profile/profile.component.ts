@@ -17,6 +17,7 @@ export class ProfileComponent {
   private storage = inject(AngularFireStorage);
 
   user: any;
+  currentTab: string = 'about';
 
   @ViewChild('profileView', { static: true, read: ViewContainerRef }) profileView?: ViewContainerRef;
 
@@ -39,6 +40,7 @@ export class ProfileComponent {
     if (this.profileView) {
       this.profileView.clear();
       this.profileView.createComponent(AboutComponent);
+      this.currentTab = 'about';
     }
   }
 
@@ -47,6 +49,7 @@ export class ProfileComponent {
     if (this.profileView) {
       this.profileView.clear();
       this.profileView.createComponent(CertificatesComponent);
+      this.currentTab = 'certificates'; 
     }
   }
 
@@ -55,6 +58,7 @@ export class ProfileComponent {
     if (this.profileView) {
       this.profileView.clear();
       this.profileView.createComponent(SettingsComponent);
+      this.currentTab = 'settings'; 
     }
   }
 

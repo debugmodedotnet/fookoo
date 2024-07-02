@@ -1,3 +1,22 @@
+.table {
+    table-layout: fixed;
+    width: 100%;
+  }
+  
+  /* Vertical alignment of content in table cells */
+  .table td {
+    vertical-align: top;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  
+  /* Flexbox alignment for action buttons */
+  .table td.actions {
+    display: flex;
+    align-items: center;
+    gap: 5px; /* Space between buttons */
+  }
+  
 .btn-light-orange {
     background-color: #ef7a04; /* Light orange color */
     color: white;

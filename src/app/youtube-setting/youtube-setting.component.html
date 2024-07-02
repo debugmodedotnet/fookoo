@@ -1,60 +1,68 @@
 <div class="container mt-5">
-    <h3>{{ editMode ? 'Edit' : 'Add' }} YouTube Video</h3>
-    <form [formGroup]="videoForm" (ngSubmit)="addOrUpdateVideo()">
-      <div class="mb-3">
-        <label for="Info" class="form-label">Info:</label>
-        <input class="form-control form-control-sm" formControlName="Info" type="text">
-      </div>
-      <div class="mb-3">
-        <label for="Title" class="form-label">Title:</label>
-        <input class="form-control form-control-sm" formControlName="Title" type="text">
-      </div>
-      <div class="mb-3">
-        <label for="Thumbnail" class="form-label">Thumbnail:</label>
-        <input class="form-control form-control-sm" formControlName="Thumbnail" type="text">
-      </div>
-      <div class="mb-3">
-        <label for="Link" class="form-label">Link:</label>
-        <input class="form-control form-control-sm" formControlName="Link" type="text">
-      </div>
-      <div class="mb-3">
-        <label for="Tech" class="form-label">Tech:</label>
-        <input class="form-control form-control-sm" formControlName="Tech" type="text">
-      </div>
-      <div class="mb-3 form-check">
-        <input class="form-check-input" formControlName="displayAtHomePage" type="checkbox" id="displayAtHomePage">
-        <label for="displayAtHomePage" class="form-check-label">Display at Home Page</label>
-      </div>
-      <button class="btn btn-light-orange btn-sm" type="submit">{{ editMode ? 'Update' : 'Add' }}</button>
-    </form>
-  </div>  
-  
-  
-  <div class="container mt-5">
     <h2>YouTube Videos</h2>
-    <table class="table table-striped">
-      <thead>
-        <tr>
-          <th>Title</th>
-          <th>Tech</th>
-          <th>Link</th>
-          <th>Display at Home Page</th>
-          <th>Actions</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let video of videos">
-          <td>{{ video.Title }}</td>
-          <td>{{ video.Tech }}</td>
-          <td><a [href]="video.Link" target="_blank">Watch</a></td>
-          <td>{{ video.displayAtHomePage ? 'Yes' : 'No' }}</td>
-          <td>
-            <button class="btn btn-custom-edit btn-small button-spacing" (click)="editVideo(video)">Edit</button>
-            <button class="btn btn-danger btn-small button-spacing" (click)="deleteVideo(video.id)">Delete</button>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
   
+    <!-- Button to show the form for adding a new video -->
+    <button class="btn btn-light-orange btn-sm mb-3" (click)="showForm()">Add New Video</button>
+  
+    <!-- Form for adding or updating a video -->
+    <div *ngIf="formVisible">
+      <h3>{{ editMode ? 'Edit' : 'Add' }} YouTube Video</h3>
+      <form [formGroup]="videoForm" (ngSubmit)="addOrUpdateVideo()">
+        <div class="mb-3">
+          <label for="Info" class="form-label">Info:</label>
+          <input class="form-control form-control-sm" formControlName="Info" type="text">
+        </div>
+        <div class="mb-3">
+          <label for="Title" class="form-label">Title:</label>
+          <input class="form-control form-control-sm" formControlName="Title" type="text">
+        </div>
+        <div class="mb-3">
+          <label for="Thumbnail" class="form-label">Thumbnail:</label>
+          <input class="form-control form-control-sm" formControlName="Thumbnail" type="text">
+        </div>
+        <div class="mb-3">
+          <label for="Link" class="form-label">Link:</label>
+          <input class="form-control form-control-sm" formControlName="Link" type="text">
+        </div>
+        <div class="mb-3">
+          <label for="Tech" class="form-label">Tech:</label>
+          <input class="form-control form-control-sm" formControlName="Tech" type="text">
+        </div>
+        <div class="mb-3 form-check">
+          <input class="form-check-input" formControlName="displayAtHomePage" type="checkbox" id="displayAtHomePage">
+          <label for="displayAtHomePage" class="form-check-label">Display at Home Page</label>
+        </div>
+        <button class="btn btn-light-orange btn-sm" type="submit">{{ editMode ? 'Update' : 'Add' }}</button>
+      </form>
+    </div>
+  
+    <!-- Table displaying the list of YouTube videos -->
+    <div *ngIf="!formVisible" class="mt-3">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Info</th>
+            <th>Title</th>
+            <th>Tech</th>
+            <th>Link</th>
+            <th>Display</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let video of videos">
+            <td>{{ video.Info }}</td>
+            <td>{{ video.Title }}</td>
+            <td>{{ video.Tech }}</td>
+            <td><a [href]="video.Link" target="_blank">Watch</a></td>
+            <td>{{ video.displayAtHomePage ? 'Yes' : 'No' }}</td>
+            <td class="actions">
+              <button class="btn btn-custom-edit btn-sm" (click)="editVideo(video)">Edit</button>
+              <button class="btn btn-danger btn-sm" (click)="deleteVideo(video.id)">Delete</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
   

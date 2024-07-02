@@ -1,13 +1,13 @@
 import { Component } from '@angular/core';
 import { IYoutubeVideos } from '../modules/home-youtube';
-import { YoutubeVideoService } from '../youtube-video.service';
+import { YoutubeVideoService } from '../services/youtube-video.service';
 import { ReactiveFormsModule, FormGroup, FormBuilder } from '@angular/forms';
 import { NgFor } from '@angular/common';
 
 @Component({
   selector: 'app-youtube-setting',
   standalone: true,
-  imports: [ ReactiveFormsModule, NgFor],
+  imports: [ReactiveFormsModule, NgFor],
   templateUrl: './youtube-setting.component.html',
   styleUrl: './youtube-setting.component.scss'
 })

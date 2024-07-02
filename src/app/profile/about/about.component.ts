@@ -1,11 +1,12 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { UserService } from '../../services/user.service';
-import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-about',
   standalone: true,
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, CommonModule],
   templateUrl: './about.component.html',
   styleUrl: './about.component.scss'
 })
@@ -21,15 +22,13 @@ export class AboutComponent implements OnInit {
       position: new FormControl(''),
       age: new FormControl(''),
       city: new FormControl(''),
-      twitter: new FormControl(''),
-      linkedin: new FormControl(''),
-      github: new FormControl(''),
-      photoURL: new FormControl(''),
+      twitter: new FormControl('', [Validators.pattern('https?://x.com/.+'), Validators.minLength(5)]),
+      linkedin: new FormControl('', [Validators.pattern('https?://www.linkedin.com/in/.+'), Validators.minLength(5)]),
+      github: new FormControl('', [Validators.pattern('https?://github.com/.+'), Validators.minLength(5)]),
       skill1: new FormControl(''),
       skill2: new FormControl(''),
       skill3: new FormControl(''),
       skill4: new FormControl(''),
-      resumeURL: new FormControl(''),
       bio: new FormControl(''),
       openforjob: new FormControl(''),
       tagline: new FormControl(''),

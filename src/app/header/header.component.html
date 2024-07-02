@@ -24,7 +24,13 @@
         </button>
 
         <div *ngIf="user" class="logged-in d-flex align-items-center ms-4">
-          <img [src]="profileImg" alt="Profile Image" class="w-2 h-auto rounded-5" />
+          <figure class="user-img overflow-hidden m-0 p-0 rounded-5">
+            <img
+              [src]="profileImg"
+              alt="Profile Image"
+              class="w-100 h-100 object-fit-cover"
+            />
+          </figure>
 
           <li class="nav-item dropdown m-0 ms-2">
             <a

@@ -1,5 +1,5 @@
 import { CanActivateFn, Router } from '@angular/router';
-import { UserService } from './services/user.service';
+import { UserService } from './user.service';
 import { map, catchError, tap } from 'rxjs/operators';
 import { of } from 'rxjs';
 import { inject } from '@angular/core';

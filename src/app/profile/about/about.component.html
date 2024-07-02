@@ -10,6 +10,11 @@
     <button
       (click)="saveProfile()"
       class="nmc-btn-primary font-14 fw-semibold box-shadow-none mt-5 mb-2 px-4 py-2 h-auto"
+      [disabled]="
+        userProfileForm.get('github')?.invalid ||
+        userProfileForm.get('linkedin')?.invalid ||
+        userProfileForm.get('twitter')?.invalid
+      "
     >
       Save
     </button>
@@ -77,6 +82,21 @@
           formControlName="linkedin"
           id="linkedin"
         />
+        <div
+          *ngIf="
+            userProfileForm.get('linkedin')?.invalid &&
+            (userProfileForm.get('linkedin')?.dirty ||
+              userProfileForm.get('linkedin')?.touched)
+          "
+          class="nmc-alert mt-1"
+        >
+          <p
+            *ngIf="userProfileForm.get('linkedin')?.errors?.['pattern']"
+            class="font-14 m-0"
+          >
+            *Please enter a valid LinkedIn URL
+          </p>
+        </div>
       </div>
 
       <div class="col-3 mt-4">
@@ -87,6 +107,21 @@
           formControlName="github"
           id="github"
         />
+        <div
+          *ngIf="
+            userProfileForm.get('github')?.invalid &&
+            (userProfileForm.get('github')?.dirty ||
+              userProfileForm.get('github')?.touched)
+          "
+          class="nmc-alert mt-1"
+        >
+          <p
+            *ngIf="userProfileForm.get('github')?.errors?.['pattern']"
+            class="font-14 m-0"
+          >
+            *Please enter a valid GitHub URL
+          </p>
+        </div>
       </div>
 
       <div class="col-3 mt-4">
@@ -97,6 +132,21 @@
           formControlName="twitter"
           id="twitter"
         />
+        <div
+          *ngIf="
+            userProfileForm.get('twitter')?.invalid &&
+            (userProfileForm.get('twitter')?.dirty ||
+              userProfileForm.get('twitter')?.touched)
+          "
+          class="nmc-alert mt-1"
+        >
+          <p
+            *ngIf="userProfileForm.get('twitter')?.errors?.['pattern']"
+            class="font-14 m-0"
+          >
+            *Please enter a valid Twitter URL
+          </p>
+        </div>
       </div>
 
       <div class="col-3 mt-4">

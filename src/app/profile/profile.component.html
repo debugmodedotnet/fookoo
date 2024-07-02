@@ -5,21 +5,27 @@
         <div
           class="profile-img d-flex justify-content-center flex-column text-center"
         >
-          <img
-            [src]="user?.photoURL"
-            alt=""
-            class="w-150px object-fit-cover m-auto"
-          />
+          <figure class="m-0 p-0 overflow-hidden rounded-3">
+            <img
+              [src]="user?.photoURL"
+              alt=""
+              class="w-100 h-100 object-fit-cover m-auto"
+            />
+          </figure>
 
-          <div
-            class="file btn btn-lg btn-primary nmc-bg-dark-grey position-relative overflow-hidden rounded-0 border-0 font-16 mt-3"
-          >
-            Upload Photo
+          <div class="dp-upload mt-3">
+            <label
+              for="file-upload"
+              class="custom-file-upload nmc-bg-dark-grey nmc-white w-100"
+            >
+              Upload Photo
+            </label>
+
             <input
+              id="file-upload"
               type="file"
               name="file"
               (change)="uploadPhoto($event)"
-              class="opacity-0 position-absolute w-100 h-100"
             />
           </div>
         </div>

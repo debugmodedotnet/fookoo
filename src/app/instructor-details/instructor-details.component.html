@@ -1,26 +1,26 @@
 <div class="instructor-detail-container" *ngIf="instructor">
   <div class="instructor-header">
     <div class="instructor-info">
-      <h1 class="instructor-name">{{ instructor?.Name }}</h1>
-      <h3 class="instructor-position">{{ instructor?.Position }}</h3>
+      <h1 class="instructor-name">{{ instructor.Name }}</h1>
+      <h3 class="instructor-position">{{ instructor.Position }}</h3>
       <div class="social-links">
         <a
           *ngIf="instructor.LinkedIn"
-          href="{{ instructor?.LinkedIn }}"
+          href="{{ instructor.LinkedIn }}"
           target="_blank"
           class="social-link"
           >LinkedIn</a
         >
         <a
           *ngIf="instructor.Twitter"
-          href="{{ instructor?.Twitter }}"
+          href="{{ instructor.Twitter }}"
           target="_blank"
           class="social-link"
           >Twitter</a
         >
         <a
           *ngIf="instructor.Github"
-          href="{{ instructor?.Github }}"
+          href="{{ instructor.Github }}"
           target="_blank"
           class="social-link"
           >GitHub</a
@@ -30,43 +30,46 @@
     <div class="instructor-photo">
       <img
         *ngIf="instructor.InstructorImg"
-        [src]="instructor?.InstructorImg"
+        [src]="instructor.InstructorImg"
         alt="Instructor Photo"
       />
     </div>
   </div>
 
-  <div class="instructor-bio">
-    <h2>About</h2>
-    <p>{{ instructor?.Bio }}</p>
-  </div>
-
   <div class="instructor-skills">
     <h2>Skills</h2>
-    <div class="skills">
-      <div class="skill" *ngFor="let skill of skills">{{ skill }}</div>
-    </div>
   </div>
+
+  <div class="instructor-bio">
+
+       <h2>About</h2>
+       <p>{{ instructor.Bio }}</p>
+   
+  </div>
+
+  
+
+  
 
   <div class="contact-section">
     <h2>Contact</h2>
-    <p>Email: {{ instructor?.Email }}</p>
+    <p>Email: {{ instructor.Email }}</p>
     <p *ngIf="instructor.LinkedIn">
       LinkedIn:
-      <a href="{{ instructor?.LinkedIn }}" target="_blank">{{
-        instructor?.LinkedIn
+      <a href="{{ instructor.LinkedIn }}" target="_blank">{{
+        instructor.LinkedIn
       }}</a>
     </p>
     <p *ngIf="instructor.Twitter">
       Twitter:
-      <a href="{{ instructor?.Twitter }}" target="_blank">{{
-        instructor?.Twitter
+      <a href="{{ instructor.Twitter }}" target="_blank">{{
+        instructor.Twitter
       }}</a>
     </p>
-    <p *ngIf="instructor.github">
+    <p *ngIf="instructor.Github">
       GitHub:
-      <a href="{{ instructor?.Github }}" target="_blank">{{
-        instructor?.Github
+      <a href="{{ instructor.Github }}" target="_blank">{{
+        instructor.Github
       }}</a>
     </p>
   </div>

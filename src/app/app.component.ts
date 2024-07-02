@@ -13,7 +13,7 @@ import { AngularFireAuthModule } from '@angular/fire/compat/auth';
   styleUrl: './app.component.scss'
 })
 export class AppComponent implements OnInit {
-  
+
   title = 'NomadCoder';
   scrollTop: HTMLElement | null = null;
 
@@ -22,7 +22,27 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.scrollTop = document.querySelector('.scroll-top');
+    this.setupPreloader();
+    this.setupScrollTopButton();
+  }
+
+  setupPreloader(): void {
+    const preloader = document.querySelector('#preloader') as HTMLElement | null;
+    if (preloader) {
+      window.addEventListener('load', () => {
+        setTimeout(() => {
+          preloader.style.opacity = '0';
+          preloader.style.transition = 'opacity 0.5s ease-out';
+          preloader.addEventListener('transitionend', () => {
+            preloader.remove();
+          });
+        }, 100); 
+      });
+    }
+  }
+
+  setupScrollTopButton(): void {
+    this.scrollTop = document.querySelector('.scroll-top') as HTMLElement;
 
     if (this.scrollTop) {
       this.toggleScrollTop();

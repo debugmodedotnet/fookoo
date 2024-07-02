@@ -7,30 +7,42 @@
 
   .instructor-header {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    align-items: flex-start; // Align items at the start of the container
+    justify-content: space-between; // Distribute space between items evenly
     margin-bottom: 20px;
 
     .instructor-info {
+      margin-right: auto; // Ensure the info section aligns to the left
+      text-align: center; // Center-align text within the section
+
       .instructor-name {
-        color: $nmc-primary;
-        font-size: 2em;
+        font-family: 'Arial', sans-serif; 
+        color: $nmc-primary;        
+        margin-top: 30px; 
+        padding: 10px;
+        border-radius: 5px;
       }
 
       .instructor-position {
-        color: $nmc-secondary;
+        color: black; 
         font-size: 1.2em;
+        margin-bottom: 10px; 
       }
 
       .social-links {
-        margin-top: 10px;
-
+        margin-top: 20px;
+         
         .social-link {
           margin-right: 10px;
           color: $nmc-primary;
           text-decoration: none;
           transition: color 0.3s;
-
+          display: inline-block;
+          padding: 10px;
+          background-color: #fff; // White background color for social links
+          border: 2px solid #ffa500; // Orange border color for social links
+          border-radius: 5px;
+          
           &:hover {
             color: $nmc-secondary;
           }
@@ -39,9 +51,12 @@
     }
 
     .instructor-photo {
+      margin-left: auto; // Pushes the photo to the right edge
       img {
-        max-width: 200px;
-        border-radius: 50%;
+        width: 400px; // Adjust the size as needed
+        height: 400px; // Make it square
+        object-fit: cover; // Ensure the image covers the area
+        border-radius: 10%; // Slightly rounded corners
       }
     }
   }
@@ -65,6 +80,25 @@
     }
   }
 
+  .instructor-bio {
+    padding: 20px;
+    border-radius: 5px;
+    color: rgb(15, 1, 1);
+    border: 2px solid #ffa500;
+
+    h2 {
+      padding: 10px;
+      color: $nmc-primary;
+    }
+
+    p {
+      padding: 10px;
+      background-color: transparent;
+      border: none;
+      color: rgb(12, 2, 2);
+    }
+  }
+
   .instructor-skills {
     .skills {
       display: flex;
@@ -79,3 +113,5 @@
     }
   }
 }
+
+

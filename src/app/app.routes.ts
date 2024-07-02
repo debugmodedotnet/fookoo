@@ -1,5 +1,6 @@
 import { Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
+import { InstructorDetailsComponent } from './instructor-details/instructor-details.component';
 import { userAuthGuard } from './services/user-auth.guard';
 
 export const routes: Routes = [

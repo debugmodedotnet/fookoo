@@ -1,53 +1,46 @@
-// instructor-detail.component.scss
-@use "../styles/variables" as *;
+.bg-custom-peach {
+  background-color: #FFEDD5;
+}
 
-.bg-gradient {
-  background: linear-gradient(to right, #FFA500, #add8e6);
+.text-custom-ff7e5f {
+  color: #ff7e5f;
 }
 
 .text-black {
-  color: #000;
+  color: black;
 }
 
 .text-orange {
-  color: #FFA500;
+  color: #ff7e5f;
+}
+
+.text-dark-orange {
+  color: #d35400;
+}
+
+.bg-light-orange {
+  background-color: #ffe6e6;
+}
+
+.bg-light-brown {
+  background-color: #f5f5dc;
 }
 
 .border-orange {
-  border: 2px solid #FFA500;
-}
-
-.profile-header {
-  background-color: #fff;
-  padding: 20px;
-  border: 2px solid #FFA500;
-  border-radius: 10px;
-  display: flex;
-  align-items: center;
-}
-
-.profile-header img {
-  border-radius: 50%;
-}
-
-.profile-header h1,
-.profile-header p {
-  margin: 0;
-}
-
-.social-links {
-  margin-top: 10px;
-}
-
-.bg-white {
-  background-color: #fff;
+  border: 1px solid #ff7e5f;
 }
 
 .course-card {
-  transition: background-color 0.3s ease;
+  border-radius: 10px;
 }
 
-.course-card:hover {
-  background-color: #FFA500;
-  color: #fff;
+.skill-box {
+  border: 1px solid #ff7e5f;
+  border-radius: 5px;
+  background-color: white;
+}
+
+.badge-custom-paid {
+  background-color: #ff7e5f;
+  color: white;
 }

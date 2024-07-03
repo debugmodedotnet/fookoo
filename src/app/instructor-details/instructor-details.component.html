@@ -1,76 +1,65 @@
-<div class="instructor-detail-container" *ngIf="instructor">
-  <div class="instructor-header">
-    <div class="instructor-info">
-      <h1 class="instructor-name">{{ instructor.Name }}</h1>
-      <h3 class="instructor-position">{{ instructor.Position }}</h3>
-      <div class="social-links">
-        <a
-          *ngIf="instructor.LinkedIn"
-          href="{{ instructor.LinkedIn }}"
-          target="_blank"
-          class="social-link"
-          >LinkedIn</a
-        >
-        <a
-          *ngIf="instructor.Twitter"
-          href="{{ instructor.Twitter }}"
-          target="_blank"
-          class="social-link"
-          >Twitter</a
-        >
-        <a
-          *ngIf="instructor.Github"
-          href="{{ instructor.Github }}"
-          target="_blank"
-          class="social-link"
-          >GitHub</a
-        >
+<div class="bg-gradient p-5">
+  <div class="profile-header d-flex flex-column align-items-center text-center">
+    <img src="assets/images/home/user.jpg" alt="Instructor Image" class="rounded-circle mb-3" style="width: 150px;">
+    <div>
+      <h1 class="text-black m-0">Jenny Wilson</h1>
+      <p class="text-black m-0">Front-end Developer, Designer, Teacher</p>
+      <div class="social-links mt-2">
+        <a href="https://www.facebook.com" target="_blank" class="text-black mx-2"><i class="bi bi-facebook"></i></a>
+        <a href="https://www.instagram.com" target="_blank" class="text-black mx-2"><i class="bi bi-instagram"></i></a>
+        <a href="https://x.com" target="_blank" class="text-black mx-2"><i class="bi bi-twitter-x"></i></a>
+        <a href="https://www.linkedin.com" target="_blank" class="text-black mx-2"><i class="bi bi-linkedin"></i></a>
+        <a href="https://www.youtube.com" target="_blank" class="text-black mx-2"><i class="bi bi-youtube"></i></a>
+      </div>
+      <div class="skills mt-3 d-flex flex-wrap justify-content-center">
+        <div class="skill-box border-orange m-1 p-2">Angular</div>
+        <div class="skill-box border-orange m-1 p-2">Azure</div>
+        <div class="skill-box border-orange m-1 p-2">Dotnet</div>
+        <div class="skill-box border-orange m-1 p-2">GenAI</div>
       </div>
     </div>
-    <div class="instructor-photo">
-      <img
-        *ngIf="instructor.InstructorImg"
-        [src]="instructor.InstructorImg"
-        alt="Instructor Photo"
-      />
+  </div>
+</div>
+
+<div class="container bg-white mt-4">
+  <div class="row">
+    <div class="col-md-4">
+      <div class="bg-white p-4 mb-4 border-orange">
+        <h3 class="text-black">About me</h3>
+        <p class="text-black">I am an Innovation designer focusing on UX/UI based in Berlin. As a creative resident at Figma, I explored the city of the future and how new technologies like AI, voice control, and augmented reality will change our interfaces.</p>
+        <a href="#" class="text-orange">Read more</a>
+      </div>
+      <div class="bg-white p-4 border-orange">
+        <h3 class="text-black">Statistics</h3>
+        <ul class="list-unstyled text-black">
+          <li>32 Courses</li>
+          <li>11,604 Total Students</li>
+          <li>12,230 Reviews</li>
+        </ul>
+      </div>
     </div>
-  </div>
-
-  <div class="instructor-skills">
-    <h2>Skills</h2>
-  </div>
-
-  <div class="instructor-bio">
-
-       <h2>About</h2>
-       <p>{{ instructor.Bio }}</p>
-   
-  </div>
-
-  
-
-  
-
-  <div class="contact-section">
-    <h2>Contact</h2>
-    <p>Email: {{ instructor.Email }}</p>
-    <p *ngIf="instructor.LinkedIn">
-      LinkedIn:
-      <a href="{{ instructor.LinkedIn }}" target="_blank">{{
-        instructor.LinkedIn
-      }}</a>
-    </p>
-    <p *ngIf="instructor.Twitter">
-      Twitter:
-      <a href="{{ instructor.Twitter }}" target="_blank">{{
-        instructor.Twitter
-      }}</a>
-    </p>
-    <p *ngIf="instructor.Github">
-      GitHub:
-      <a href="{{ instructor.Github }}" target="_blank">{{
-        instructor.Github
-      }}</a>
-    </p>
+    <div class="col-md-8">
+      <h3 class="text-black">My Courses</h3>
+      <div class="course-card bg-white p-4 mb-4 border-orange">
+        <h4 class="text-black">Create a Website with WordPress</h4>
+        <p class="text-black">3h 30m | Beginner | ⭐ 4.5 (1,345)</p>
+      </div>
+      <div class="course-card bg-white p-4 mb-4 border-orange">
+        <h4 class="text-black">JavaScript Fundamentals</h4>
+        <p class="text-black">1h 20m | Advanced | ⭐ 4 (1,000)</p>
+      </div>
+      <div class="course-card bg-white p-4 mb-4 border-orange">
+        <h4 class="text-black">AngularJS Forms Using Bootstrap</h4>
+        <p class="text-black">2h 30m | Beginner | ⭐ 4.5 (900)</p>
+      </div>
+      <div class="course-card bg-white p-4 mb-4 border-orange">
+        <h4 class="text-black">Get started with Python from base</h4>
+        <p class="text-black">2h 00m | Intermediate | ⭐ 4.5 (1,900)</p>
+      </div>
+      <div class="course-card bg-white p-4 mb-4 border-orange">
+        <h4 class="text-black">The Ultimate Advanced Laravel</h4>
+        <p class="text-black">3h 00m | Advanced | ⭐ 4.5 (1,900)</p>
+      </div>
+    </div>
   </div>
 </div>

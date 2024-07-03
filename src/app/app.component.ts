@@ -4,7 +4,6 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 
-
 @Component({
   selector: 'app-root',
   standalone: true,
@@ -36,7 +35,7 @@ export class AppComponent implements OnInit {
           preloader.addEventListener('transitionend', () => {
             preloader.remove();
           });
-        }, 100); 
+        }, 100);
       });
     }
   }

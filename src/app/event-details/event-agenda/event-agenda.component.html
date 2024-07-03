@@ -1,0 +1,45 @@
+<section class="schedule text-center py-5 nmc-bg-light-grey">
+    <div class="container-boxed">
+      <h2
+        class="section-title font-36 nmc-dark-grey font-family-poppins text-center"
+      >
+        Event Agenda
+      </h2>
+  
+      <div class="tab-content row justify-content-center">
+        <div role="tabpanel" class="col-lg-9 tab-pane active" id="day-1">
+          <div
+            class="row schedule-item text-start"
+            *ngFor="let agenda of eventAgenda"
+          >
+            <div class="col-md-2">
+              <time>{{ agenda.Time }}</time>
+            </div>
+  
+            <div class="col-md-10 position-relative">
+              <div class="speaker" *ngIf="agenda.SpeakerImg">
+                <img
+                  [src]="agenda.SpeakerImg"
+                  alt="Brenden Legros"
+                  class="object-fit-cover"
+                />
+              </div>
+  
+              <h4>
+                {{ agenda.Title }}
+                <span *ngIf="agenda.Speaker">{{ agenda.Speaker }}</span>
+              </h4>
+  
+              <p>{{ agenda.Info }}</p>
+  
+              <span
+                *ngIf="agenda.Tech"
+                class="d-inline-block position-absolute font-12 fw-semibold rounded-1 py-1 px-2 top-0 end-0 text-red-600 bg-red-100"
+                >{{ agenda.Tech }}</span
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>

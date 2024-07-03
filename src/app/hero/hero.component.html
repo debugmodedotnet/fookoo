@@ -1,25 +1,26 @@
-<section class="hero-section pt-4 pb-3 position-relative overflow-hidden">
+<section class="hero-section pt-5 pb-3 position-relative overflow-hidden">
   <div
     class="container-boxed position-relative d-flex align-items-center justify-content-between"
   >
     <div>
       <h1 class="font-50 nmc-dark-grey fw-bolder font-family-poppins">
-        {{ hero?.Title }}
+        <!-- {{ hero?.Title}} -->
+        Creating <span class="text-bottom-line position-relative">Job-Ready</span> Developers
       </h1>
 
       <p class="font-22 nmc-dark-grey w-75 mt-4">
         {{ hero?.Description }}
       </p>
 
-      <button class="nmc-btn-primary mt-4" type="submit">
+      <!-- <button class="nmc-btn-primary mt-4" type="submit">
         {{ hero?.BtnText }}
-      </button>
+      </button> -->
     </div>
 
     <img
       [src]="hero?.HeroImage"
       alt="Hero-Image"
-      class="object-fit-contain w-40"
+      class="object-fit-contain w-50"
     />
   </div>
 </section>
@@ -71,7 +72,9 @@
           class="rounded-3 py-3 ps-3 pe-5 d-flex align-items-center justify-content-start"
         >
           <img [src]="tech.Logo" alt="" class="object-fit-contain" />
-          <p class="m-0 ps-2">{{ tech.Title }}</p>
+          <p class="m-0 ps-2">
+            {{ tech.Title }}
+          </p>
         </div>
       </div>
     </div>

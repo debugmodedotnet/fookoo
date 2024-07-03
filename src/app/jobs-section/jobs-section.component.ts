@@ -1,11 +1,9 @@
-import { CommonModule } from '@angular/common';
-import { AfterViewInit, CUSTOM_ELEMENTS_SCHEMA, Component } from '@angular/core';
-import { Swiper } from 'swiper';
+import { CUSTOM_ELEMENTS_SCHEMA, Component } from '@angular/core';
 
 @Component({
   selector: 'app-jobs-section',
   standalone: true,
-  imports: [CommonModule],
+  imports: [],
   templateUrl: './jobs-section.component.html',
   styleUrl: './jobs-section.component.scss',
   schemas: [CUSTOM_ELEMENTS_SCHEMA]

@@ -7,9 +7,12 @@
     </h2>
 
     <div class="container overflow-hidden">
-      <div class="row gy-4 gy-lg-0 gx-xxl-5">
-        <div class="col-12 col-md-6 col-lg-3" *ngFor="let i of instructors">
-          <div class="card overflow-hidden">
+      <div class="row gy-5">
+        <div
+          class="col-lg-4 col-md-6 position-relative trainers mx-auto"
+          *ngFor="let i of instructors"
+        >
+          <!-- <div class="card overflow-hidden">
             <div class="card-body p-0">
               <figure class="m-0 p-0 zoom-effect overflow-hidden">
                 <img
@@ -24,7 +27,6 @@
                   <p class="text-secondary mb-3">{{ i.Position }}</p>
 
                   <a
-                    href="/instructor-details"
                     class="nmc-btn-primary pt-2 px-4"
                     [routerLink]="['/instructor-details', i.id]"
                   >
@@ -33,7 +35,36 @@
                 </figcaption>
               </figure>
             </div>
-          </div>
+          </div> -->
+
+          <figure class="overflow-hidden rounded-circle">
+            <img
+              class="img-fluid z-1"
+              loading="lazy"
+              [src]="i.InstructorImg"
+              [alt]="i.Name"
+            />
+
+            <div class="social">
+              <a [href]="i.Email"><i class="bi bi-envelope-fill"></i></a>
+              <a [href]="i.Twitter"><i class="bi bi-twitter-x"></i></a>
+              <a [href]="i.Github"><i class="bi bi-github"></i></a>
+              <a [href]="i.LinkedIn"><i class="bi bi-linkedin"></i></a>
+            </div>
+          </figure>
+
+          <figcaption class="m-0 p-4">
+            <h4 class="mb-1">{{ i.Name }}</h4>
+            <p class="text-secondary mb-3">{{ i.Position }}</p>
+            <p class="text-secondary mb-3 truncate">{{ i.Bio }}</p>
+
+            <a
+              class="nmc-btn-primary pt-2 px-4 w-40 m-auto"
+              [routerLink]="['/instructor-details', i.id]"
+            >
+              More
+            </a>
+          </figcaption>
         </div>
       </div>
     </div>

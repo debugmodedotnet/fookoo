@@ -52,3 +52,7 @@
     </swiper-slide>
   </swiper-container>
 </section>
+
+@for (item of youtubeVideos; track $index) {
+   <youtube-player [videoId]="item.Link" [height]="100"></youtube-player>
+}

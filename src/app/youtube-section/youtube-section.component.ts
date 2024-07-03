@@ -3,17 +3,19 @@ import { DatePipe, NgFor } from '@angular/common';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { RouterModule } from '@angular/router';
 import { IYoutubeVideos } from '../modules/home-youtube';
+import {YouTubePlayer} from '@angular/youtube-player';
 
 @Component({
   selector: 'app-youtube-section',
   standalone: true,
-  imports: [NgFor, DatePipe, RouterModule],
+  imports: [NgFor, DatePipe, RouterModule, YouTubePlayer],
   templateUrl: './youtube-section.component.html',
   styleUrl: './youtube-section.component.scss',
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class YoutubeSectionComponent implements OnInit {
 
+  
   youtubeVideos: IYoutubeVideos[] = [];
   private firestore = inject(AngularFirestore);
 

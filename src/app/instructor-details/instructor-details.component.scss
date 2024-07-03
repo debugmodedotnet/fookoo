@@ -1,117 +1,53 @@
 // instructor-detail.component.scss
 @use "../styles/variables" as *;
 
-.instructor-detail-container {
-  padding: 20px;
-  background-color: #f9f9f9;
-
-  .instructor-header {
-    display: flex;
-    align-items: flex-start; // Align items at the start of the container
-    justify-content: space-between; // Distribute space between items evenly
-    margin-bottom: 20px;
-
-    .instructor-info {
-      margin-right: auto; // Ensure the info section aligns to the left
-      text-align: center; // Center-align text within the section
-
-      .instructor-name {
-        font-family: 'Arial', sans-serif; 
-        color: $nmc-primary;        
-        margin-top: 30px; 
-        padding: 10px;
-        border-radius: 5px;
-      }
-
-      .instructor-position {
-        color: black; 
-        font-size: 1.2em;
-        margin-bottom: 10px; 
-      }
-
-      .social-links {
-        margin-top: 20px;
-         
-        .social-link {
-          margin-right: 10px;
-          color: $nmc-primary;
-          text-decoration: none;
-          transition: color 0.3s;
-          display: inline-block;
-          padding: 10px;
-          background-color: #fff; // White background color for social links
-          border: 2px solid #ffa500; // Orange border color for social links
-          border-radius: 5px;
-          
-          &:hover {
-            color: $nmc-secondary;
-          }
-        }
-      }
-    }
-
-    .instructor-photo {
-      margin-left: auto; // Pushes the photo to the right edge
-      img {
-        width: 400px; // Adjust the size as needed
-        height: 400px; // Make it square
-        object-fit: cover; // Ensure the image covers the area
-        border-radius: 10%; // Slightly rounded corners
-      }
-    }
-  }
-
-  .instructor-bio,
-  .instructor-skills,
-  .contact-section {
-    margin-bottom: 20px;
-
-    h2 {
-      color: $nmc-primary;
-      margin-bottom: 10px;
-    }
-
-    p,
-    .skills {
-      background-color: #fff;
-      padding: 15px;
-      border: 1px solid #ddd;
-      border-radius: 5px;
-    }
-  }
-
-  .instructor-bio {
-    padding: 20px;
-    border-radius: 5px;
-    color: rgb(15, 1, 1);
-    border: 2px solid #ffa500;
-
-    h2 {
-      padding: 10px;
-      color: $nmc-primary;
-    }
-
-    p {
-      padding: 10px;
-      background-color: transparent;
-      border: none;
-      color: rgb(12, 2, 2);
-    }
-  }
-
-  .instructor-skills {
-    .skills {
-      display: flex;
-      gap: 10px;
-
-      .skill {
-        background-color: $nmc-secondary;
-        color: #fff;
-        padding: 5px 10px;
-        border-radius: 5px;
-      }
-    }
-  }
+.bg-gradient {
+  background: linear-gradient(to right, #FFA500, #add8e6);
 }
 
+.text-black {
+  color: #000;
+}
 
+.text-orange {
+  color: #FFA500;
+}
+
+.border-orange {
+  border: 2px solid #FFA500;
+}
+
+.profile-header {
+  background-color: #fff;
+  padding: 20px;
+  border: 2px solid #FFA500;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.profile-header img {
+  border-radius: 50%;
+}
+
+.profile-header h1,
+.profile-header p {
+  margin: 0;
+}
+
+.social-links {
+  margin-top: 10px;
+}
+
+.bg-white {
+  background-color: #fff;
+}
+
+.course-card {
+  transition: background-color 0.3s ease;
+}
+
+.course-card:hover {
+  background-color: #FFA500;
+  color: #fff;
+}

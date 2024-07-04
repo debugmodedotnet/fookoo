@@ -58,6 +58,12 @@ export class UserService {
     );
   }
 
+  isAdmin(): Observable<boolean> {
+    return this.getCurrentUser().pipe(
+      map(user => user?.role === 'admin')
+    );
+  }
+
   async updateUserProfile(userDetails:any){
      console.log('userDetails:', userDetails);
      let a = await this.afAuth.currentUser;

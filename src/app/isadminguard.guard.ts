@@ -10,22 +10,26 @@ export const isAdminGuard: CanActivateFn = (route, state) => {
 
   return userService.getCurrentUser().pipe(
     map(user => {
-      if (user) {
-        console.log('User logged in');
+      if (user && user.role === 'admin') {
+        // User is logged in and is an admin
+        console.log('User is an admin');
         return true;
       } else {
-        console.log('User not logged in');
+        // User is not logged in or not an admin
+        console.log('User is not an admin');
         return false;
       }
     }),
-    tap(isLoggedIn => {
-      if (!isLoggedIn) {
-        router.navigate(['/login']);
+    tap(isAdmin => {
+      if (!isAdmin) {
+        // Redirect to home page if not admin
+        router.navigate(['/home']);
       }
     }),
     catchError((err) => {
       console.error(err);
-      router.navigate(['/login']);
+      // Redirect to home page on error
+      router.navigate(['/home']);
       return of(false);
     })
   );

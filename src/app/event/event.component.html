@@ -6,65 +6,6 @@
       Upcoming Events
     </h2>
 
-    <!-- <div class="events-container d-flex flex-column justify-content-center">
-      <div
-        *ngFor="let e of events"
-        class="events-card nmc-bg-white d-flex align-items-center justify-content-between overflow-hidden rounded-3 mx-auto py-4 px-5 mb-5 position-relative"
-      >
-        <div class="pricing-table-ribbon fw-bold position-absolute">
-          {{ e.Ispaid ? "Paid" : "Free" }}
-        </div>
-
-        <div class="hidden justify-content-start">
-          <img [src]="e.Logo" alt="" width="250" />
-        </div>
-
-        <div class="p-4 text-start position-relative z-50 w-75">
-          <h2 class="font-36 w-100 font-family-poppins mb-4">
-            <a
-              href="/event-details"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="nmc-dark-grey"
-              >{{ e.Title }}</a
-            >
-          </h2>
-
-          <h3
-            class="font-18 mt-3 nmc-medium-grey mb-4 fw-normal"
-            style="max-width: 576px"
-          >
-            {{ e.ShortDescription }}
-          </h3>
-
-          <div class="d-flex align-items-center justify-content-start">
-            <span
-              class="d-inline-block font-12 fw-semibold rounded-1 py-1 px-2 mb-2 text-red-600 bg-red-100"
-              >{{ e.Isoffline ? "Offline" : "Online" }}</span
-            >
-
-            <span
-              class="d-inline-block font-12 fw-semibold rounded-1 py-1 px-2 mb-2 text-red-600 bg-red-100 ms-2"
-              >{{ e.City }}</span
-            >
-
-            <span
-              class="d-inline-block font-12 fw-semibold rounded-1 py-1 px-2 mb-2 text-red-600 bg-red-100 ms-2"
-              >{{ e.Date }}</span
-            >
-          </div>
-        </div>
-
-        <a
-          class="nmc-btn-primary text-center w-25 pt-2"
-          href="/event-details"
-          [routerLink]="['/event-details', e.Id]"
-        >
-          Enroll Now
-        </a>
-      </div>
-    </div> -->
-
     <div class="events-container d-flex flex-column justify-content-center">
       <div class="row">
         <div *ngFor="let e of events" class="col-12 col-md-6 col-lg-3">
@@ -114,8 +55,7 @@
 
               <a
                 class="nmc-btn-primary text-center w-50 pt-2 mt-3"
-                href="/event-details"
-                [routerLink]="['/event-details', e.Id]"
+                [routerLink]="['/event', e.id]"
               >
                 Enroll Now
               </a>

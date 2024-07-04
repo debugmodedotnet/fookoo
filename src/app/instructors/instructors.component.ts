@@ -17,6 +17,8 @@ export class InstructorsComponent implements OnInit {
   instructors: IInstructor[] = [];
   private firestore = inject(AngularFirestore);
 
+  defaultImage = 'assets/images/home/defaultInstructor.jpg';
+
   constructor() { }
 
   ngOnInit(): void {

@@ -7,102 +7,191 @@
     </h2>
 
     <div class="form-wrapper rounded-4 p-4 w-100">
-      <form [formGroup]="eventForm" (ngSubmit)="onSubmit()">
+      <form [formGroup]="eventForm" (ngSubmit)="addOrUpdateEvent()">
         <div class="row form-group mt-3">
           <div class="col-6">
+            <label for="title" class="form-label required">Title</label>
             <input
-              type="text"
-              class="col-6 form-control h-3 rounded-3"
-              formControlName="Id"
-              placeholder="ID"
-            />
-          </div>
-
-          <div class="col-6">
-            <input
+              id="title"
               type="text"
               class="form-control h-3 rounded-3"
               formControlName="Title"
-              placeholder="Title"
+              placeholder="Enter Title"
             />
           </div>
 
-          <div class="col-6 mt-4">
+          <div class="col-3">
+            <label for="totalSeats" class="form-label required"
+              >Total Seats</label
+            >
             <input
+              id="totalSeats"
               type="text"
               class="form-control h-3 rounded-3"
-              formControlName="City"
-              placeholder="City"
+              formControlName="TotalSeats"
+              placeholder="Enter Total Seats"
             />
           </div>
 
-          <div class="col-6 mt-4">
+          <div class="col-3">
+            <label for="registeredSeats" class="form-label required"
+              >Registered Seats</label
+            >
             <input
+              id="registeredSeats"
               type="text"
               class="form-control h-3 rounded-3"
-              formControlName="Address"
-              placeholder="Address"
+              formControlName="RegisteredSeats"
+              placeholder="Enter Registered Seats"
             />
           </div>
 
-          <div class="col-6 mt-4">
+          <div class="col-4 mt-4">
+            <label for="tech" class="form-label required">Technology</label>
             <input
+              id="tech"
               type="text"
               class="form-control h-3 rounded-3"
               formControlName="Tech"
-              placeholder="Tech"
+              placeholder="Enter Technology"
             />
           </div>
 
-          <div class="col-6 mt-4">
+          <div class="col-4 mt-4">
+            <label for="logo" class="form-label required">Logo</label>
             <input
+              id="logo"
               type="text"
               class="form-control h-3 rounded-3"
               formControlName="Logo"
-              placeholder="Logo"
+              placeholder="Enter Logo URL"
             />
           </div>
 
-          <div class="col-6 mt-4">
+          <div class="col-4 mt-4">
+            <label for="shortDescription" class="form-label required"
+              >Short Description</label
+            >
             <input
+              id="shortDescription"
+              type="text"
+              class="form-control h-3 rounded-3"
+              formControlName="ShortDescription"
+              placeholder="Enter Short Description"
+            />
+          </div>
+
+          <div class="col-12 mt-4">
+            <label for="longDescription" class="form-label required"
+              >Long Description</label
+            >
+            <textarea
+              id="longDescription"
+              type="text"
+              class="form-control h-3 rounded-3"
+              formControlName="Description"
+              placeholder="Enter Long Description"
+              rows="4"
+            ></textarea>
+          </div>
+
+          <div class="col-3 mt-4">
+            <label for="date" class="form-label required">Date</label>
+            <input
+              id="date"
               formControlName="Date"
-              placeholder="Date"
               type="date"
               class="form-control h-3 rounded-3"
             />
           </div>
 
+          <div class="col-3 mt-4">
+            <label for="city" class="form-label required">City</label>
+            <input
+              id="city"
+              type="text"
+              class="form-control h-3 rounded-3"
+              formControlName="City"
+              placeholder="Enter City"
+            />
+          </div>
+
           <div class="col-6 mt-4">
-            <textarea
+            <label for="eventImage" class="form-label">Event Image</label>
+            <input
+              type="file"
+              id="eventImage"
+              class="form-control h-3 rounded-3"
+              formControlName="EventImage"
+            />
+          </div>
+
+          <div class="col-6 mt-4">
+            <label for="venueName" class="form-label required"
+              >Venue Name</label
+            >
+            <input
+              id="venueName"
               type="text"
               class="form-control h-3 rounded-3"
-              formControlName="ShortDescription"
-              placeholder="ShortDescription"
+              formControlName="VenueName"
+              placeholder="Enter Venue Name"
+            />
+          </div>
+
+          <div class="col-6 mt-4">
+            <label for="venueImage" class="form-label">Venue Image</label>
+            <input
+              type="file"
+              id="venueImage"
+              class="form-control h-3 rounded-3"
+              formControlName="VenueImg"
+            />
+          </div>
+
+          <div class="col-6 mt-4">
+            <label for="venueInfo" class="form-label required"
+              >Venue Info</label
+            >
+            <textarea
+              id="venueInfo"
+              type="text"
+              class="form-control h-3 rounded-3"
+              formControlName="VenueInfo"
+              placeholder="Venue Info"
             ></textarea>
           </div>
 
-          <div class="col-12 mt-4">
-            <textarea
+          <div class="col-6 mt-4">
+            <label for="VenueImg" class="form-label">Venue Map Location</label>
+            <input
+              id="VenueImg"
               type="text"
+              id="imageUpload"
               class="form-control h-3 rounded-3"
-              formControlName="Description"
-              placeholder="Description"
-            ></textarea>
+              formControlName="VenueImg"
+              placeholder="Enter Iframe"
+            />
           </div>
 
-          <div class="col-2 mt-4 ">
+          <div class="col-2 mt-5">
             <input type="checkbox" formControlName="isOffline" />
             Is Offline?
           </div>
 
-          <div class="col-2 mt-4 ">
+          <div class="col-2 mt-5">
             <input type="checkbox" formControlName="isPaid" />
             Is Paid?
           </div>
 
-          <div class="col-3 mt-4 ">
+          <div class="col-3 mt-5">
             <input type="checkbox" formControlName="isCertificateProvided" />
             Is Certificate Provided?
+          </div>
+
+          <div class="col-3 mt-5">
+            <input type="checkbox" formControlName="displayAtHomePage" />
+            Display At HomePage
           </div>
 
           <button
@@ -117,3 +206,5 @@
     </div>
   </div>
 </section>
+
+

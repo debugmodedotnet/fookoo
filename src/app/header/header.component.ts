@@ -20,10 +20,13 @@ export class HeaderComponent implements OnInit {
     this.userService.getCurrentUser().subscribe((user) => {
       if (user) {
         console.log('User is logged in', user);
+        
         this.user = user;
         console.log(this.user.uid);
+
         this.profileImg = user.photoURL;
         console.log(this.profileImg);
+        
         if (this.profileImg == null) {
           this.profileImg = 'assets/images/home/user.png';
         }

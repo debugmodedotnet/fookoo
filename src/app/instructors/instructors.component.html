@@ -1,4 +1,4 @@
-<section class="instructor text-center py-5">
+<section class="instructor text-center pb-5">
   <div class="container-boxed">
     <h2
       class="section-title font-36 nmc-dark-grey font-family-poppins text-center mb-5"
@@ -12,31 +12,6 @@
           class="col-lg-4 col-md-6 position-relative trainers mx-auto"
           *ngFor="let i of instructors"
         >
-          <!-- <div class="card overflow-hidden">
-            <div class="card-body p-0">
-              <figure class="m-0 p-0 zoom-effect overflow-hidden">
-                <img
-                  class="img-fluid"
-                  loading="lazy"
-                  [src]="i.InstructorImg"
-                  [alt]="i.Name"
-                />
-
-                <figcaption class="m-0 p-4">
-                  <h4 class="mb-1">{{ i.Name }}</h4>
-                  <p class="text-secondary mb-3">{{ i.Position }}</p>
-
-                  <a
-                    class="nmc-btn-primary pt-2 px-4"
-                    [routerLink]="['/instructor-details', i.id]"
-                  >
-                    More
-                  </a>
-                </figcaption>
-              </figure>
-            </div>
-          </div> -->
-
           <figure class="overflow-hidden rounded-circle">
             <img
               class="img-fluid z-1"
@@ -60,7 +35,7 @@
 
             <a
               class="nmc-btn-primary pt-2 px-4 w-40 m-auto"
-              [routerLink]="['/instructor-details', i.id]"
+              [routerLink]="['/instructor', i.id]"
             >
               More
             </a>

@@ -1,10 +1,11 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, Input, OnInit, inject } from '@angular/core';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { UserService } from '../../services/user.service';
 import { IEventVenue } from '../../modules/event-venue';
 import { IEventEnroll } from '../../modules/event-enroll';
+import { IEvent } from '../../modules/event';
 
 @Component({
   selector: 'app-event-venue',
@@ -15,8 +16,12 @@ import { IEventEnroll } from '../../modules/event-enroll';
 })
 export class EventVenueComponent implements OnInit {
 
-  eventVenue?: IEventVenue;
-  eventEnroll?: IEventEnroll;
+  //eventVenue?: IEventVenue;
+  //eventEnroll?: IEventEnroll;
+
+  event?: IEvent;
+
+  @Input() eventId: string | null = null;
 
   private userService = inject(UserService);
   private router = inject(Router);
@@ -26,21 +31,19 @@ export class EventVenueComponent implements OnInit {
   constructor(private sanitizer: DomSanitizer) { }
 
   ngOnInit(): void {
-    this.getEventVenue();
+    if (this.eventId) {
+      this.getEventVenue(this.eventId);
+    }
   }
 
-  getEventVenue() {
-    this.firestore.collection('event-details').doc('event-venue').valueChanges().subscribe(eventVenue => {
-      console.log("eventVenue:", eventVenue);
-      this.eventVenue = eventVenue as IEventVenue;
-      if (this.eventVenue?.VenueMap) {
-        this.safeUrl = this.sanitizer.bypassSecurityTrustResourceUrl(this.eventVenue.VenueMap);
-      }
-    });
+  getEventVenue(eventId: string) {
+    this.firestore.collection('events').doc(eventId).valueChanges().subscribe(event => {
+      console.log("event:", event);
+      this.event = event as IEvent;
 
-    this.firestore.collection('event-details').doc('enroll-now').valueChanges().subscribe(eventEnroll => {
-      console.log("eventEnroll:", eventEnroll);
-      this.eventEnroll = eventEnroll as IEventEnroll;
+      if (this.event?.VenueIframe) {
+        this.safeUrl = this.sanitizer.bypassSecurityTrustResourceUrl(this.event.VenueIframe);
+      }
     });
   }
 

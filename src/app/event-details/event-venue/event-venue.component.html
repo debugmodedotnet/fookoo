@@ -20,8 +20,9 @@
         <div
           class="overlay position-absolute top-0 start-0 w-100 h-100 z-1"
         ></div>
+
         <img
-          [src]="eventVenue?.VenueImg"
+          [src]="event?.VenueImg"
           alt=""
           class="position-absolute top-0 w-100 h-100 object-fit-cover"
         />
@@ -29,11 +30,11 @@
         <div class="row justify-content-center position-relative z-2">
           <div class="col-11 col-lg-8 position-relative text-start">
             <h3 class="font-34 font-family-poppins nmc-white mb-2">
-              {{ eventVenue?.VenueName }}
+              {{ event?.VenueName }}
             </h3>
 
             <p class="nmc-white mt-3">
-              {{ eventVenue?.VenueInfo }}
+              {{ event?.VenueInfo }}
             </p>
           </div>
         </div>
@@ -48,11 +49,11 @@
 <section class="text-center">
   <div class="container-boxed">
     <p class="font-36 fw-bold m-auto nmc-dark-grey font-family-poppins">
-      {{ eventEnroll?.Tagline }}
+      {{ event?.Tagline }}
     </p>
 
     <button class="nmc-btn-primary m-auto w-25 mt-4" (click)="attendEvent()">
-      {{ eventEnroll?.Button }}
+      Enroll Now
     </button>
   </div>
 </section>

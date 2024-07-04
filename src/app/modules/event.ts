@@ -1,16 +1,24 @@
 export interface IEvent {
-    Id:string; 
-    Title : string; 
-    isOffline: boolean; 
+    id?: string;
+    Id: string;
+    Title: string;
     City: string;
-    Address: string;
+    isOffline: boolean;
     isCertificateProvided: boolean;
     isPaid: boolean;
-    Tech:string;
+    EventImage: string;
+    Tech: string;
     Date: Date;
-    Logo:string;
-    ShortDescription:string;
-    Description?:string; 
+    Logo: string;
+    ShortDescription: string;
+    Description?: string;
+    displayAtHomePage: boolean;
+    TotalSeats: number;
+    RegisteredSeats: number;
+    VenueName: string;
+    VenueInfo: string;
+    VenueImg: string;
+    VenueIframe: string;
 }
 
 

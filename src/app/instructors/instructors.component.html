@@ -41,7 +41,7 @@
             <img
               class="img-fluid z-1"
               loading="lazy"
-              [src]="i.InstructorImg"
+              [src]="i.InstructorImg ? i.InstructorImg : defaultImage"
               [alt]="i.Name"
             />
 

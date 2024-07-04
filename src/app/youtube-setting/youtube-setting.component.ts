@@ -8,7 +8,7 @@ import { NgFor, NgIf } from '@angular/common';
   selector: 'app-youtube-setting',
   standalone: true,
 
-  imports: [ ReactiveFormsModule, NgFor, NgIf],
+  imports: [ReactiveFormsModule, NgFor, NgIf],
 
   templateUrl: './youtube-setting.component.html',
   styleUrl: './youtube-setting.component.scss'
@@ -19,13 +19,16 @@ export class YoutubeSettingComponent {
   editMode = false;
   currentVideoId?: string;
   formVisible = false;
-  totalVideoCount = 0; 
+  totalVideoCount = 0;
 
   constructor(private youtubeVideoService: YoutubeVideoService, private fb: FormBuilder) {
     this.videoForm = this.fb.group({
+
+
       Id:[''],
       Info: ['', [Validators.required, Validators.maxLength(100)]],
       Title: ['', Validators.required],
+
       Thumbnail: [''],
       Link: ['', [Validators.required, this.youtubeUrlValidator]],
       Tech: [''],
@@ -50,10 +53,7 @@ export class YoutubeSettingComponent {
   }
 
   addOrUpdateVideo() {
-
-
-    // generate GUID and pass 
-    let vid = "video"+ this.totalVideoCount+1; 
+    let vid = "video" + this.totalVideoCount + 1;
     this.videoForm?.get('Id')?.setValue(vid);
     if (this.editMode && this.currentVideoId) {
       this.updateVideo(this.currentVideoId, this.videoForm.value);
@@ -63,7 +63,6 @@ export class YoutubeSettingComponent {
   }
 
   addVideo() {
-    
     this.youtubeVideoService.addVideo(this.videoForm.value).then(() => {
       this.resetForm();
       this.loadVideos(); // Reload videos after adding

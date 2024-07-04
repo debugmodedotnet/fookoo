@@ -66,7 +66,4 @@ export class UserService {
      await this.firestore.doc(`users/${uid}`).update(userDetails);
      console.log('User signed up and additional information added');
   }
-
-  
-
 }

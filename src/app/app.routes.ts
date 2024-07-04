@@ -16,6 +16,7 @@ export const routes: Routes = [
     {
       path: 'admin',
       component: AdminComponent,
+      canActivate: [isAdminGuard, userAuthGuard],
       children: [
         { path: 'event', loadComponent: () => import('./create-event/create-event.component').then(m => m.CreateEventComponent) },
         { path: 'instructor', loadComponent: () => import('./create-instructor/create-instructor.component').then(m => m.CreateInstructorComponent) },

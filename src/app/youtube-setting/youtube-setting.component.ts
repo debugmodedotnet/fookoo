@@ -19,9 +19,11 @@ export class YoutubeSettingComponent {
   editMode = false;
   currentVideoId?: string;
   formVisible = false;
+  totalVideoCount = 0; 
 
   constructor(private youtubeVideoService: YoutubeVideoService, private fb: FormBuilder) {
     this.videoForm = this.fb.group({
+      Id:[''],
       Info: [''],
       Title: [''],
       Thumbnail: [''],
@@ -39,6 +41,7 @@ export class YoutubeSettingComponent {
     this.youtubeVideoService.getVideos().subscribe(
       videos => {
         this.videos = videos;
+        this.totalVideoCount = videos.length;
       },
       error => {
         console.error('Error loading videos:', error);
@@ -47,15 +50,21 @@ export class YoutubeSettingComponent {
   }
 
   addOrUpdateVideo() {
+
+
+    // generate GUID and pass 
+    let vid = "video"+ this.totalVideoCount+1; 
+    this.videoForm?.get('Id')?.setValue(vid);
     if (this.editMode && this.currentVideoId) {
       this.updateVideo(this.currentVideoId, this.videoForm.value);
     } else {
-      this.addVideo(this.videoForm.value);
+      this.addVideo();
     }
   }
 
-  addVideo(video: IYoutubeVideos) {
-    this.youtubeVideoService.addVideo(video).then(() => {
+  addVideo() {
+    
+    this.youtubeVideoService.addVideo(this.videoForm.value).then(() => {
       this.resetForm();
       this.loadVideos(); // Reload videos after adding
     }).catch(error => {
@@ -75,7 +84,7 @@ export class YoutubeSettingComponent {
   editVideo(video: IYoutubeVideos) {
     this.videoForm.patchValue(video);
     this.editMode = true;
-    this.currentVideoId = video.id;
+    this.currentVideoId = video.Id;
     this.formVisible = true; // Show the form
   }
 

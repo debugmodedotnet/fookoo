@@ -73,6 +73,7 @@ export class ProfileComponent {
       task.snapshotChanges().pipe(
         finalize(() => {
           fileRef.getDownloadURL().subscribe(url => {
+            
             const userDetails = { ...this.user, photoURL: url };
             this.userService.updateUserProfile(userDetails);
           });

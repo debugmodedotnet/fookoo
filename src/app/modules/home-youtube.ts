@@ -1,5 +1,5 @@
 export interface IYoutubeVideos {
-    id?: string;
+    Id: string;
     Info: string;
     Title: string;
     Thumbnail: string;

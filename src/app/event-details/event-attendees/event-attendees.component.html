@@ -1,0 +1,26 @@
+<section class="text-center py-5 nmc-bg-light-grey">
+    <div class="container-boxed">
+      <h2
+        class="section-title font-36 nmc-dark-grey font-family-poppins text-center"
+      >
+        Who All Attending
+      </h2>
+  
+      <div
+        class="d-flex flex-wrap align-items-center justify-content-center mt-5"
+      >
+        <div class="attendees rounded-5" *ngFor="let attendee of eventAttendees">
+          <img
+            [src]="attendee.EventAttendees"
+            src="assets/images/events/agenda-speaker-1.jpg"
+            alt="Brenden Legros"
+            class="object-fit-cover"
+          />
+        </div>
+  
+        <div class="attendees rounded-5 nmc-bg-dark-grey opacity-10 d-flex">
+          <p class="nmc-white m-auto">+99</p>
+        </div>
+      </div>
+    </div>
+  </section>

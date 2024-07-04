@@ -1,5 +1,5 @@
 import { CUSTOM_ELEMENTS_SCHEMA, Component, OnInit, inject } from '@angular/core';
-import { DatePipe, NgFor, CommonModule } from '@angular/common';
+import { DatePipe, NgFor } from '@angular/common';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { IHero } from '../modules/hero';
 import { ITechStack } from '../modules/techs';
@@ -8,7 +8,7 @@ import { IAdvertisement } from '../modules/home-ads';
 @Component({
   selector: 'app-hero',
   standalone: true,
-  imports: [CommonModule, DatePipe, NgFor],
+  imports: [DatePipe, NgFor],
   templateUrl: './hero.component.html',
   styleUrl: './hero.component.scss',
   schemas: [CUSTOM_ELEMENTS_SCHEMA]

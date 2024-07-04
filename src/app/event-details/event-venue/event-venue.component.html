@@ -1,0 +1,58 @@
+<section class="venue text-center overflow-hidden">
+  <div class="container-boxed">
+    <h2
+      class="section-title font-36 nmc-dark-grey font-family-poppins text-center mb-5"
+    >
+      Event Venue
+    </h2>
+
+    <div class="row g-0">
+      <div class="col-lg-6 venue-map">
+        <iframe
+          [src]="safeUrl"
+          frameborder="0"
+          style="border: 0"
+          allowfullscreen=""
+        ></iframe>
+      </div>
+
+      <div class="col-lg-6 venue-info">
+        <div
+          class="overlay position-absolute top-0 start-0 w-100 h-100 z-1"
+        ></div>
+        <img
+          [src]="eventVenue?.VenueImg"
+          alt=""
+          class="position-absolute top-0 w-100 h-100 object-fit-cover"
+        />
+
+        <div class="row justify-content-center position-relative z-2">
+          <div class="col-11 col-lg-8 position-relative text-start">
+            <h3 class="font-34 font-family-poppins nmc-white mb-2">
+              {{ eventVenue?.VenueName }}
+            </h3>
+
+            <p class="nmc-white mt-3">
+              {{ eventVenue?.VenueInfo }}
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="spacer--medium"></div>
+
+<!-- Enroll Now -->
+<section class="text-center">
+  <div class="container-boxed">
+    <p class="font-36 fw-bold m-auto nmc-dark-grey font-family-poppins">
+      {{ eventEnroll?.Tagline }}
+    </p>
+
+    <button class="nmc-btn-primary m-auto w-25 mt-4" (click)="attendEvent()">
+      {{ eventEnroll?.Button }}
+    </button>
+  </div>
+</section>

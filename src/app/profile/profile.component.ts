@@ -1,7 +1,6 @@
 import { Component, ViewChild, ViewContainerRef, inject } from '@angular/core';
 import { UserService } from '../services/user.service';
 import { AngularFireStorage } from '@angular/fire/compat/storage';
-import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { finalize } from 'rxjs';
 
 @Component({

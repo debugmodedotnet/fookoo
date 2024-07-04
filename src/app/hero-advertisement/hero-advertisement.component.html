@@ -1,39 +1,38 @@
-
-<section class="advertisements">
-    <div class="container-boxed">
-      <swiper-container
-        class="mySwiper"
-        slides-per-view="1"
-        pagination="false"
-        navigation="false"
-        autoplay="true"
-        class="single-slider d-flex align-items-center"
+<section class="advertisements pt-5">
+  <div class="container-boxed">
+    <swiper-container
+      class="mySwiper"
+      slides-per-view="1"
+      pagination="false"
+      navigation="false"
+      autoplay="true"
+      class="single-slider d-flex align-items-center"
+    >
+      <swiper-slide
+        class="d-flex align-items-center justify-content-between overflow-hidden rounded-4 purple-bg-gradient py-4"
+        *ngFor="let a of advertisements"
       >
-        <swiper-slide
-          class="d-flex align-items-center justify-content-between overflow-hidden rounded-4 purple-bg-gradient py-4"
-          *ngFor="let a of advertisements"
-        >
-          <div class="p-5 text-start position-relative z-50">
-            <div class="mb-4">
-              <span
-                class="nmc-bg-white font-14 text-uppercase tracking-wider rounded-2 p-2"
-                >New!</span
-              >
-            </div>
-  
-            <h2 class="font-36 nmc-white font-family-poppins">
-              {{ a.Title }}
-            </h2>
-  
-            <button class="nmc-btn-primary nmc-bg-white nmc-dark-grey mt-4">
-              Learn More
-            </button>
+        <div class="p-5 text-start position-relative z-50">
+          <div class="mb-4">
+            <span
+              class="nmc-bg-white font-14 text-uppercase tracking-wider rounded-2 p-2"
+              >New!</span
+            >
           </div>
-  
-          <div class="hidden w-60 max-w-md">
-            <img [src]="a.Image" alt="" class="w-100" />
-          </div>
-        </swiper-slide>
-      </swiper-container>
-    </div>
-  </section>
+
+          <h2 class="font-36 nmc-white font-family-poppins">
+            {{ a.Title }}
+          </h2>
+
+          <button class="nmc-btn-primary nmc-bg-white nmc-dark-grey mt-4">
+            Learn More
+          </button>
+        </div>
+
+        <div class="hidden w-60 max-w-md">
+          <img [src]="a.Image" alt="" class="w-100" />
+        </div>
+      </swiper-slide>
+    </swiper-container>
+  </div>
+</section>

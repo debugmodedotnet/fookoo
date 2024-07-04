@@ -48,7 +48,7 @@ export class ProfileComponent {
     if (this.profileView) {
       this.profileView.clear();
       this.profileView.createComponent(CertificatesComponent);
-      this.currentTab = 'certificates'; 
+      this.currentTab = 'certificates';
     }
   }
 
@@ -57,7 +57,7 @@ export class ProfileComponent {
     if (this.profileView) {
       this.profileView.clear();
       this.profileView.createComponent(SettingsComponent);
-      this.currentTab = 'settings'; 
+      this.currentTab = 'settings';
     }
   }
 
@@ -73,7 +73,7 @@ export class ProfileComponent {
       task.snapshotChanges().pipe(
         finalize(() => {
           fileRef.getDownloadURL().subscribe(url => {
-            
+
             const userDetails = { ...this.user, photoURL: url };
             this.userService.updateUserProfile(userDetails);
           });

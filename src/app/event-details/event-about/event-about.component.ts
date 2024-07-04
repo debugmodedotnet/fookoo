@@ -1,6 +1,7 @@
 import { Component, Input, OnInit, inject } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { IEventAbout } from '../../modules/about-event';
+import { IEvent } from '../../modules/event';
 
 @Component({
   selector: 'app-event-about',
@@ -11,7 +12,7 @@ import { IEventAbout } from '../../modules/about-event';
 })
 export class EventAboutComponent implements OnInit {
 
-  eventAbout?: IEventAbout;
+  eventAbout?: IEvent;
 
   @Input() eventId: string | null = null;
 
@@ -26,7 +27,7 @@ export class EventAboutComponent implements OnInit {
   getEventDetails(eventId: string) {
     this.firestore.collection('events').doc(eventId).valueChanges().subscribe(eventAbout => {
       console.log("eventAbout:", eventAbout);
-      this.eventAbout = eventAbout as IEventAbout;
+      this.eventAbout = eventAbout as IEvent;
     });
   }
 

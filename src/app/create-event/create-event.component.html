@@ -48,6 +48,21 @@
 
           <div class="col-4 mt-4">
             <label for="tech" class="form-label required">Technology</label>
+
+            <select
+              class="form-select form-control h-3 rounded-3"
+              id="tech"
+              formControlName="Tech"
+            >
+              <option selected>Choose...</option>
+              <option value="Angular">Angular</option>
+              <option value="React">React</option>
+              <option value="Vue">Vue</option>
+            </select>
+          </div>
+
+          <!-- <div class="col-4 mt-4">
+            <label for="tech" class="form-label required">Technology</label>
             <input
               id="tech"
               type="text"
@@ -55,7 +70,7 @@
               formControlName="Tech"
               placeholder="Enter Technology"
             />
-          </div>
+          </div> -->
 
           <div class="col-4 mt-4">
             <label for="logo" class="form-label required">Logo</label>
@@ -65,6 +80,17 @@
               class="form-control h-3 rounded-3"
               formControlName="Logo"
               placeholder="Enter Logo URL"
+            />
+          </div>
+
+          <div class="col-4 mt-4">
+            <label for="tagline" class="form-label required">Tagline</label>
+            <input
+              id="tagline"
+              type="text"
+              class="form-control h-3 rounded-3"
+              formControlName="Tagline"
+              placeholder="Enter Tagline"
             />
           </div>
 
@@ -81,7 +107,7 @@
             />
           </div>
 
-          <div class="col-12 mt-4">
+          <div class="col-8 mt-4">
             <label for="longDescription" class="form-label required"
               >Long Description</label
             >
@@ -163,33 +189,34 @@
           </div>
 
           <div class="col-6 mt-4">
-            <label for="VenueImg" class="form-label">Venue Map Location</label>
+            <label for="venueIframe" class="form-label"
+              >Venue Map Location</label
+            >
             <input
-              id="VenueImg"
+              id="venueIframe"
               type="text"
-              id="imageUpload"
               class="form-control h-3 rounded-3"
-              formControlName="VenueImg"
+              formControlName="VenueIframe"
               placeholder="Enter Iframe"
             />
           </div>
 
-          <div class="col-2 mt-5">
+          <div class="col-2 mt-4">
             <input type="checkbox" formControlName="isOffline" />
             Is Offline?
           </div>
 
-          <div class="col-2 mt-5">
+          <div class="col-2 mt-4">
             <input type="checkbox" formControlName="isPaid" />
             Is Paid?
           </div>
 
-          <div class="col-3 mt-5">
+          <div class="col-3 mt-4">
             <input type="checkbox" formControlName="isCertificateProvided" />
             Is Certificate Provided?
           </div>
 
-          <div class="col-3 mt-5">
+          <div class="col-3 mt-4">
             <input type="checkbox" formControlName="displayAtHomePage" />
             Display At HomePage
           </div>
@@ -206,5 +233,3 @@
     </div>
   </div>
 </section>
-
-

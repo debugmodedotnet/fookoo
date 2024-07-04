@@ -14,14 +14,16 @@
     </div>
 
     <h1 class="font-50 nmc-primary fw-bolder w-50 font-family-poppins">
-      {{ eventAbout?.EventName }}
+      {{ eventAbout?.Title }}
     </h1>
 
-    <h4 class="nmc-dark-grey mt-3">{{ eventAbout?.EventDate }}</h4>
+    <h4 class="nmc-dark-grey mt-3">
+      {{ eventAbout?.Date }} | {{ eventAbout?.City }}
+    </h4>
 
     <span
       class="d-inline-block font-18 fw-semibold rounded-1 py-1 px-3 mt-3 text-orange-600 bg-orange-100"
-      >{{ eventAbout?.IsOffline ? "Offline" : "Online" }}</span
+      >{{ eventAbout?.isOffline ? "Offline" : "Online" }}</span
     >
 
     <ol class="breadcrumb nmc-primary my-4 position-absolute">
@@ -36,25 +38,27 @@
 <div class="spacer--medium"></div>
 
 <section class="position-relative overflow-hidden">
-  <div
-    class="container-boxed position-relative d-flex align-items-center justify-content-between"
-  >
-    <div class="w-50">
-      <h2
-        class="section-title left font-36 nmc-dark-grey font-family-poppins pb-3"
-      >
-        About The Event
-      </h2>
+  <div class="container-boxed">
+    <div class="row gx-5">
+      <div class="col-6">
+        <h2
+          class="section-title left font-36 nmc-dark-grey font-family-poppins pb-3"
+        >
+          About The Event
+        </h2>
 
-      <p class="nmc-dark-grey">
-        {{ eventAbout?.EventInfo }}
-      </p>
+        <p class="nmc-dark-grey">
+          {{ eventAbout?.Description }}
+        </p>
+      </div>
+
+      <div class="col-6">
+        <img
+          [src]="eventAbout?.EventImage"
+          alt="Hero-Image"
+          class="object-fit-contain rounded-3"
+        />
+      </div>
     </div>
-
-    <img
-      [src]="eventAbout?.EventImg"
-      alt="Hero-Image"
-      class="object-fit-contain w-50 rounded-3"
-    />
   </div>
 </section>

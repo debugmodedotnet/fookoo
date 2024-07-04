@@ -18,6 +18,7 @@ export interface IEvent {
     VenueName: string;
     VenueInfo: string;
     VenueImg: string;
+    Tagline: string;
     VenueIframe: string;
 }
 

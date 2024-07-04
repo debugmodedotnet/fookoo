@@ -9,16 +9,16 @@ import { UserService } from '../services/user.service';
   templateUrl: './admin.component.html',
   styleUrl: './admin.component.scss'
 })
-export class AdminComponent implements OnInit {
+export class AdminComponent {
 
-  private userService = inject(UserService);
-  private router = inject(Router);
-  ngOnInit(): void {
-    this.userService.getCurrentUser().subscribe(user => {
-      if(!user.isadmin){
-        this.router.navigate(['/home']);
-      }
-    });
-  }
+  // private userService = inject(UserService);
+  // private router = inject(Router);
+  // ngOnInit(): void {
+  //   this.userService.getCurrentUser().subscribe(user => {
+  //     if(!user.isadmin){
+  //       this.router.navigate(['/home']);
+  //     }
+  //   });
+  // }
   
 }

@@ -5,11 +5,12 @@ export interface IInstructor {
     Email: string;
     InstructorImg: string;
     Position: string;
-    skill1: string;
-    skill2: string;
-    skill3: string;
-    skill4: string;
+    Skill1: string;
+    Skill2: string;
+    Skill3: string;
+    Skill4: string;
     LinkedIn: string;
     Twitter: string;
     Github: string;
-}
+  }
+  

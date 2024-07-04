@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { IYoutubeVideos } from '../modules/home-youtube';
 import { YoutubeVideoService } from '../services/youtube-video.service';
-import { ReactiveFormsModule, FormGroup, FormBuilder } from '@angular/forms';
+import { ReactiveFormsModule, FormGroup, FormBuilder, Validators, AbstractControl, ValidationErrors } from '@angular/forms';
 import { NgFor, NgIf } from '@angular/common';
 
 @Component({
@@ -23,11 +23,14 @@ export class YoutubeSettingComponent {
 
   constructor(private youtubeVideoService: YoutubeVideoService, private fb: FormBuilder) {
     this.videoForm = this.fb.group({
-      Id: [''],
-      Info: [''],
-      Title: [''],
+
+
+      Id:[''],
+      Info: ['', [Validators.required, Validators.maxLength(100)]],
+      Title: ['', Validators.required],
+
       Thumbnail: [''],
-      Link: [''],
+      Link: ['', [Validators.required, this.youtubeUrlValidator]],
       Tech: [''],
       displayAtHomePage: [false]
     });
@@ -118,4 +121,13 @@ export class YoutubeSettingComponent {
     this.formVisible = false;
   }
 
+  youtubeUrlValidator(control: AbstractControl): ValidationErrors | null {
+    const url = control.value;
+    const youtubePattern = /^(https?:\/\/)?(www\.)?(youtube\.com|youtu\.?be)\/.+$/;
+    if (!url || youtubePattern.test(url)) {
+      return null;
+    } else {
+      return { youtubeUrl: true };
+    }
+  }
 }

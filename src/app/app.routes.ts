@@ -13,13 +13,16 @@ export const routes: Routes = [
     { path: 'events', loadComponent: () => import('./event/event.component').then(m => m.EventComponent) },
     { path: 'event/:id', loadComponent: () => import('./event-details/event-details.component').then(m => m.EventDetailsComponent) },
     { path: 'instructor-details/:id', loadComponent: () => import('./instructor-details/instructor-details.component').then(m => m.InstructorDetailsComponent) },
+    //{ path: 'instructor-setting/:id', loadComponent: () => import('./instructor-setting/instructor-setting.component').then(m => m.InstructorSettingComponent) },
     {
       path: 'admin',
       component: AdminComponent,
+      canActivate: [isAdminGuard, userAuthGuard],
       children: [
         { path: 'event', loadComponent: () => import('./create-event/create-event.component').then(m => m.CreateEventComponent) },
         { path: 'instructor', loadComponent: () => import('./create-instructor/create-instructor.component').then(m => m.CreateInstructorComponent) },
         { path: 'youtube', loadComponent: () => import('./youtube-setting/youtube-setting.component').then(m => m.YoutubeSettingComponent) },
+       //{ path: 'instructor', loadComponent: () => import('./instructor-setting/instructor-setting.component').then(m => m.InstructorSettingComponent) },
         // Add more child routes here as needed
       ]
     },

@@ -48,6 +48,8 @@
               class="form-control h-3 rounded-3"
               formControlName="Github"
               placeholder="Github"
+              pattern="https://github.com/.*"
+              title="Please enter a valid GitHub URL"
             />
           </div>
 
@@ -59,6 +61,8 @@
               class="form-control h-3 rounded-3"
               formControlName="Twitter"
               placeholder="Twitter"
+              pattern="https://twitter.com/.*"
+              title="Please enter a valid Twitter URL"
             />
           </div>
 
@@ -70,18 +74,53 @@
               class="form-control h-3 rounded-3"
               formControlName="LinkedIn"
               placeholder="LinkedIn"
+              pattern="https://www.linkedin.com/.*"
+              title="Please enter a valid LinkedIn URL"
             />
           </div>
 
-          <div class="col-12 mt-4">
-            <label for="skills" class="form-label required">Skills</label>
-            <textarea
-              id="skills"
-              class="form-control rounded-3"
-              formControlName="Skills"
-              placeholder="List your Skills (use bullet points or text)"
-              rows="4"
-            ></textarea>
+          <div class="col-6 mt-4">
+            <label for="Skill1" class="form-label required">Skill 1</label>
+            <select id="Skill1" class="form-control h-3 rounded-3" formControlName="Skill1" required>
+              <option value="" disabled>Select a skill</option>
+              <option value="Angular">Angular</option>
+              <option value="React">React</option>
+              <option value="Azure">Azure</option>
+              <option value="GenAI">GenAI</option>
+            </select>
+          </div>
+
+          <div class="col-6 mt-4">
+            <label for="Skill2" class="form-label required">Skill 2</label>
+            <select id="Skill2" class="form-control h-3 rounded-3" formControlName="Skill2" required>
+              <option value="" disabled>Select a skill</option>
+              <option value="Angular">Angular</option>
+              <option value="React">React</option>
+              <option value="Azure">Azure</option>
+              <option value="GenAI">GenAI</option>
+            </select>
+          </div>
+
+          <div class="col-6 mt-4">
+            <label for="Skill1" class="form-label required">Skill 3</label>
+            <select id="Skill3" class="form-control h-3 rounded-3" formControlName="Skill3" required>
+              <option value="" disabled>Select a skill</option>
+              <option value="Angular">Angular</option>
+              <option value="React">React</option>
+              <option value="Azure">Azure</option>
+              <option value="GenAI">GenAI</option>
+            </select>
+          </div>
+
+          <div class="col-6 mt-4">
+            <label for="Skill4" class="form-label required">Skill 4</label>
+            <select id="Skill4" class="form-control h-3 rounded-3" formControlName="Skill4" required>
+              <option value="" disabled>Select a skill</option>
+              <option value="Angular">Angular</option>
+              <option value="React">React</option>
+              <option value="Azure">Azure</option>
+              <option value="GenAI">GenAI</option>
+            </select>
           </div>
 
           <div class="col-12 mt-4">
@@ -95,23 +134,13 @@
             ></textarea>
           </div>
 
-          <div class="col-6 mt-4">
-            <label for="imageLink" class="form-label ">Image Link</label>
-            <input
-              type="url"
-              id="imageLink"
-              class="form-control h-3 rounded-3"
-              formControlName="ImageLink"
-              placeholder="Image Link"
-            />
-          </div>
-
-          <div class="col-6 mt-4">
-            <label for="imageUpload" class="form-label ">Upload Image</label>
+          <div class="col-12 mt-4">
+            <label for="imageUpload" class="form-label">Upload Image</label>
             <input
               type="file"
               id="imageUpload"
               class="form-control h-3 rounded-3"
+              (change)="uploadPhoto($event)"
               formControlName="ImageUpload"
             />
           </div>

@@ -1,38 +1,63 @@
 import { Component, inject } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { AngularFireStorage } from '@angular/fire/compat/storage';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { finalize } from 'rxjs/operators';
 
 @Component({
   selector: 'app-create-instructor',
   standalone: true,
   imports: [ReactiveFormsModule],
   templateUrl: './create-instructor.component.html',
-  styleUrl: './create-instructor.component.scss',
+  styleUrls: ['./create-instructor.component.scss'],
 })
 export class CreateInstructorComponent {
   instructorForm: FormGroup;
   private firestore = inject(AngularFirestore);
+  private storage = inject(AngularFireStorage);
+  skills: string[] = ["Angular", "Azure", "Dotnet", "GenAI", "Python", "Firebase"];
+  photoURL: string | null = null;
 
   constructor() {
     this.instructorForm = new FormGroup({
       Name: new FormControl('', Validators.required),
       Position: new FormControl('', Validators.required),
-      Skills: new FormControl('', Validators.maxLength(800)),
+      Email: new FormControl('', [Validators.required, Validators.email]),
+      Github: new FormControl('', [Validators.required, Validators.pattern('https://github.com/.*')]),
+      Twitter: new FormControl('', [Validators.required, Validators.pattern('https://twitter.com/.*')]),
+      LinkedIn: new FormControl('', [Validators.required, Validators.pattern('https://www.linkedin.com/.*')]),
+      Skill1: new FormControl('', Validators.required),
+      Skill2: new FormControl('', Validators.required),
+      Skill3: new FormControl('', Validators.required),
+      Skill4: new FormControl('', Validators.required),
       Bio: new FormControl('', Validators.maxLength(800)),
-      Email: new FormControl('', Validators.required),
-      Github: new FormControl('', Validators.required),
-      Twitter: new FormControl('', Validators.required),
-      LinkedIn: new FormControl('', Validators.required),
-      ImageLink: new FormControl('', ),
-      ImageUpload: new FormControl('',),
+      ImageUpload: new FormControl('', Validators.required),
     });
   }
 
-  
+  uploadPhoto(event: any) {
+    const file = event.target.files[0];
+    if (file) {
+      // Create a unique file path
+      const filePath = `instructorPhotos/${new Date().getTime()}_${file.name}`;
+      const fileRef = this.storage.ref(filePath);
+      const task = this.storage.upload(filePath, file);
+
+      // Get notified when the download URL is available
+      task.snapshotChanges().pipe(
+        finalize(() => {
+          fileRef.getDownloadURL().subscribe(url => {
+            this.photoURL = url;
+          });
+        })
+      ).subscribe();
+    }
+  }
 
   onSubmit() {
     if (this.instructorForm.valid) {
-      this.firestore.collection('instructor').add(this.instructorForm.value)
+      const instructorData = { ...this.instructorForm.value, ImageUpload: this.photoURL };
+      this.firestore.collection('instructor').add(instructorData)
         .then(docRef => {
           console.log(`Document written with ID: ${docRef.id}`);
         })
@@ -41,5 +66,4 @@ export class CreateInstructorComponent {
         });
     }
   }
-
 }

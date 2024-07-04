@@ -1,0 +1,19 @@
+<section class="pb-5 pt-4">
+  <div class="container-boxed">
+    <div class="row">
+      @for(tech of techStack; track tech.Title){
+
+      <div class="col-3 tech-stack mt-4">
+        <div
+          class="rounded-3 py-3 ps-3 pe-5 d-flex align-items-center justify-content-start"
+        >
+          <img [src]="tech.Logo" alt="" class="object-fit-contain" />
+          <p class="m-0 ps-2">
+            {{ tech.Title }}
+          </p>
+        </div>
+      </div>
+      }
+    </div>
+  </div>
+</section>

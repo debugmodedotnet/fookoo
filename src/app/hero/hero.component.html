@@ -25,58 +25,7 @@
   </div>
 </section>
 
-<section class="advertisements">
-  <div class="container-boxed">
-    <swiper-container
-      class="mySwiper"
-      slides-per-view="1"
-      pagination="false"
-      navigation="false"
-      autoplay="true"
-      class="single-slider d-flex align-items-center"
-    >
-      <swiper-slide
-        class="d-flex align-items-center justify-content-between overflow-hidden rounded-4 purple-bg-gradient py-4"
-        *ngFor="let a of advertisements"
-      >
-        <div class="p-5 text-start position-relative z-50">
-          <div class="mb-4">
-            <span
-              class="nmc-bg-white font-14 text-uppercase tracking-wider rounded-2 p-2"
-              >New!</span
-            >
-          </div>
+<app-hero-tech></app-hero-tech>
+<app-hero-advertisement></app-hero-advertisement>
 
-          <h2 class="font-36 nmc-white font-family-poppins">
-            {{ a.Title }}
-          </h2>
 
-          <button class="nmc-btn-primary nmc-bg-white nmc-dark-grey mt-4">
-            Learn More
-          </button>
-        </div>
-
-        <div class="hidden w-60 max-w-md">
-          <img [src]="a.Image" alt="" class="w-100" />
-        </div>
-      </swiper-slide>
-    </swiper-container>
-  </div>
-</section>
-
-<section class="pb-5 pt-4">
-  <div class="container-boxed">
-    <div class="row">
-      <div class="col-3 tech-stack mt-4" *ngFor="let tech of techStack">
-        <div
-          class="rounded-3 py-3 ps-3 pe-5 d-flex align-items-center justify-content-start"
-        >
-          <img [src]="tech.Logo" alt="" class="object-fit-contain" />
-          <p class="m-0 ps-2">
-            {{ tech.Title }}
-          </p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>

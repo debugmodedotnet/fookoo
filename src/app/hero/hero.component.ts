@@ -1,14 +1,15 @@
-import { CUSTOM_ELEMENTS_SCHEMA, Component, OnInit, inject } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, Component, OnInit, ViewEncapsulation, inject } from '@angular/core';
 import { DatePipe, NgFor } from '@angular/common';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { IHero } from '../modules/hero';
-import { ITechStack } from '../modules/techs';
-import { IAdvertisement } from '../modules/home-ads';
+import { HeroAdvertisementComponent } from '../hero-advertisement/hero-advertisement.component';
+import { HeroTechComponent } from '../hero-tech/hero-tech.component';
+
 
 @Component({
   selector: 'app-hero',
   standalone: true,
-  imports: [DatePipe, NgFor],
+  imports: [DatePipe, HeroAdvertisementComponent, HeroTechComponent],
   templateUrl: './hero.component.html',
   styleUrl: './hero.component.scss',
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
@@ -16,8 +17,8 @@ import { IAdvertisement } from '../modules/home-ads';
 export class HeroComponent implements OnInit {
 
   hero?: IHero;
-  advertisements?: IAdvertisement[];
-  techStack?: ITechStack[];
+
+
 
   private firestore = inject(AngularFirestore);
 
@@ -31,15 +32,8 @@ export class HeroComponent implements OnInit {
       this.hero = hero as IHero;
     });
 
-    this.firestore.collection('homepagedata').doc('advertisements').collection('ads-list').valueChanges().subscribe(advertisements => {
-      console.log("advertisements:", advertisements);
-      this.advertisements = advertisements as IAdvertisement[];
-    });
+   
 
-    this.firestore.collection('homepagedata').doc('technology-stack').collection('techs').valueChanges().subscribe(techStack => {
-      console.log("techStack:", techStack);
-      this.techStack = techStack as ITechStack[];
-    });
   }
 
 }

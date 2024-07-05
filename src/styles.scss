@@ -15,7 +15,6 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-    border-radius: 10px;
     background-color: $nmc-dark-grey;
 }
 
@@ -167,6 +166,10 @@ textarea {
 
 .font-50 {
     font-size: 3.125rem !important;
+}
+
+.font-big {
+    font-size: 100px !important;
 }
 
 /*-------------------------------------------------------------------------

@@ -5,7 +5,6 @@ import { IHero } from '../modules/hero';
 import { HeroAdvertisementComponent } from '../hero-advertisement/hero-advertisement.component';
 import { HeroTechComponent } from '../hero-tech/hero-tech.component';
 
-
 @Component({
   selector: 'app-hero',
   standalone: true,
@@ -18,8 +17,6 @@ export class HeroComponent implements OnInit {
 
   hero?: IHero;
 
-
-
   private firestore = inject(AngularFirestore);
 
   ngOnInit(): void {
@@ -31,9 +28,6 @@ export class HeroComponent implements OnInit {
       console.log("Hero:", hero);
       this.hero = hero as IHero;
     });
-
-   
-
   }
 
 }

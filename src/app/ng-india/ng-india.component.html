@@ -1,770 +1,348 @@
-<!-- <section class="speakers-section text-center py-5">
+<section class="hero-section py-5">
+  <div
+    class="container-boxed position-relative d-flex align-items-center justify-content-between gap-5"
+  >
+    <div class="w-45">
+      <h1 class="font-big nmc-primary font-family-poppins">
+        {{ ngIndia?.Title }}
+      </h1>
+
+      <h2 class="font-48 nmc-dark-grey mt-4">
+        India's Largest
+        <span class="text-bottom-line position-relative">Angular</span>
+        Conference
+      </h2>
+
+      <p class="font-18 nmc-dark-grey mt-4">
+        {{ ngIndia?.Info }}
+      </p>
+    </div>
+
+    <figure class="w-55 h-auto overflow-hidden rounded-3">
+      <img
+        class="img-fluid m-auto object-fit-fill"
+        loading="lazy"
+        [src]="ngIndia?.Banner"
+      />
+    </figure>
+  </div>
+</section>
+
+<!-- <section class="tracker-section pb-5">
   <div class="container-boxed">
-    <h2
-      class="section-title font-36 nmc-dark-grey font-family-poppins text-center mb-5"
-    >
-      Event Speakers
-    </h2>
-
-    <div class="row gy-4">
-      <div class="col-xl-3 col-lg-4 col-md-6">
-        <div class="speaker">
-          <img
-            src="assets/images/events/speaker-1.jpg"
-            class="img-fluid"
-            alt=""
-          />
-
-          <div class="speaker-info">
-            <div class="speaker-info-content">
-              <h4>
-                <a href="" class="nmc-white font-family-poppins"
-                  >Walter White</a
-                >
-              </h4>
-
-              <p class="nmc-white">Quas alias incidunt</p>
-
-              <div
-                class="social d-flex align-items-center justify-content-center gap-2"
-              >
-                <a href="#" class="font-18 nmc-white"
-                  ><i class="bi bi-twitter"></i
-                ></a>
-                <a href="#" class="font-18 nmc-white"
-                  ><i class="bi bi-facebook"></i
-                ></a>
-                <a href="#" class="font-18 nmc-white"
-                  ><i class="bi bi-instagram"></i
-                ></a>
-                <a href="#" class="font-18 nmc-white"
-                  ><i class="bi bi-linkedin"></i
-                ></a>
-              </div>
-            </div>
-          </div>
-        </div>
+    <div class="row justify-content-center">
+      <div class="col-3 rounded-circle inner d-flex mx-5">
+        <h3 class="nmc-dark-grey font-22 text-center m-auto">
+          <span class="font-50 d-block font-family-poppins">1</span>Day/Track
+        </h3>
       </div>
 
-      <div class="col-xl-3 col-lg-4 col-md-6">
-        <div class="speaker">
-          <img
-            src="assets/images/events/speaker-2.jpg"
-            class="img-fluid"
-            alt=""
-          />
-
-          <div class="speaker-info">
-            <div class="speaker-info-content">
-              <h4>
-                <a href="" class="nmc-white font-family-poppins"
-                  >Walter White</a
-                >
-              </h4>
-
-              <p class="nmc-white">Quas alias incidunt</p>
-
-              <div
-                class="social d-flex align-items-center justify-content-center gap-2"
-              >
-                <a href="#" class="font-18 nmc-white"
-                  ><i class="bi bi-twitter"></i
-                ></a>
-                <a href="#" class="font-18 nmc-white"
-                  ><i class="bi bi-facebook"></i
-                ></a>
-                <a href="#" class="font-18 nmc-white"
-                  ><i class="bi bi-instagram"></i
-                ></a>
-                <a href="#" class="font-18 nmc-white"
-                  ><i class="bi bi-linkedin"></i
-                ></a>
-              </div>
-            </div>
-          </div>
-        </div>
+      <div class="col-3 rounded-circle inner d-flex mx-5">
+        <h3 class="nmc-dark-grey font-22 text-center m-auto">
+          <span class="font-50 d-block font-family-poppins">22</span>Talks
+        </h3>
       </div>
 
-      <div class="col-xl-3 col-lg-4 col-md-6">
-        <div class="speaker">
-          <img
-            src="assets/images/events/agenda-speaker-3.jpg"
-            class="img-fluid"
-            alt=""
-          />
-
-          <div class="speaker-info">
-            <div class="speaker-info-content">
-              <h4>
-                <a href="" class="nmc-white font-family-poppins"
-                  >Walter White</a
-                >
-              </h4>
-
-              <p class="nmc-white">Quas alias incidunt</p>
-
-              <div
-                class="social d-flex align-items-center justify-content-center gap-2"
-              >
-                <a href="#" class="font-18 nmc-white"
-                  ><i class="bi bi-twitter"></i
-                ></a>
-                <a href="#" class="font-18 nmc-white"
-                  ><i class="bi bi-facebook"></i
-                ></a>
-                <a href="#" class="font-18 nmc-white"
-                  ><i class="bi bi-instagram"></i
-                ></a>
-                <a href="#" class="font-18 nmc-white"
-                  ><i class="bi bi-linkedin"></i
-                ></a>
-              </div>
-            </div>
-          </div>
-        </div>
+      <div class="col-3 rounded-circle inner d-flex mx-5">
+        <h3 class="nmc-dark-grey font-22 text-center m-auto">
+          <span class="font-50 d-block font-family-poppins">22</span>Speakers
+        </h3>
       </div>
 
-      <div class="col-xl-3 col-lg-4 col-md-6">
-        <div class="speaker">
-          <img
-            src="assets/images/events/agenda-speaker-5.jpg"
-            class="img-fluid"
-            alt=""
-          />
-
-          <div class="speaker-info">
-            <div class="speaker-info-content">
-              <h4>
-                <a href="" class="nmc-white font-family-poppins"
-                  >Walter White</a
-                >
-              </h4>
-
-              <p class="nmc-white">Quas alias incidunt</p>
-
-              <div
-                class="social d-flex align-items-center justify-content-center gap-2"
-              >
-                <a href="#" class="font-18 nmc-white"
-                  ><i class="bi bi-twitter"></i
-                ></a>
-                <a href="#" class="font-18 nmc-white"
-                  ><i class="bi bi-facebook"></i
-                ></a>
-                <a href="#" class="font-18 nmc-white"
-                  ><i class="bi bi-instagram"></i
-                ></a>
-                <a href="#" class="font-18 nmc-white"
-                  ><i class="bi bi-linkedin"></i
-                ></a>
-              </div>
-            </div>
-          </div>
-        </div>
+      <div class="col-3 rounded-circle inner d-flex mx-5">
+        <h3 class="nmc-dark-grey font-22 text-center m-auto">
+          <span class="font-50 d-block font-family-poppins">500+</span>Delegates
+        </h3>
       </div>
     </div>
   </div>
 </section> -->
 
-<section class="hero-section pt-5 position-relative overflow-hidden">
-  <div
-    class="container-boxed position-relative d-flex flex-column align-items-center justify-content-center text-center z-2"
-  >
-    <h1 class="font-50 nmc-primary fw-bolder w-50 font-family-poppins">
-      Ng-India 2024
-    </h1>
-
-    <h4 class="nmc-dark-grey mt-3">10th February, 2024 | Delhi, India</h4>
-
-    <span
-      class="d-inline-block font-18 fw-semibold rounded-1 py-1 px-3 my-3 text-orange-600 bg-orange-100"
-      >Offline
-    </span>
-
-    <a
-      href="https://www.youtube.com/watch?v=Vyv-EooCh-c&list=PL4ghowaPhrX13hdJmn8HLG8n3NWD9R4NX"
-      class="play-btn overflow-hidden position-relative"
-    ></a>
-  </div>
-</section>
-
-<section class="speakers-section text-center py-5">
+@for(event of prevEvents; track event.Title){
+<section class="previous-editions py-5">
   <div class="container-boxed">
-    <h2
-      class="section-title font-36 nmc-dark-grey font-family-poppins text-center mb-5"
+    <div
+      class="banner position-relative d-flex align-items-center justify-content-between gap-5"
     >
-      Speakers
-    </h2>
+      <div class="w-50">
+        <h2
+          class="section-title left font-50 nmc-dark-grey font-family-poppins"
+        >
+          {{ event.Title }}
+        </h2>
 
-    <swiper-container
-      class="mySwiper"
-      loop="true"
-      speed="600"
-      autoplay-delay="3000"
-      slides-per-view="4"
-      space-between="20"
-    >
-      <swiper-slide>
-        <div class="speaker">
-          <img
-            src="assets/images/events/speaker-1.jpg"
-            class="img-fluid"
-            alt=""
-          />
+        <h4 class="nmc-primary mt-3">
+          {{ event.Date | date : "d MMMM, yyyy" }} | {{ event.Location }}
+        </h4>
 
-          <div class="speaker-info">
-            <div class="speaker-info-content">
-              <h4>
-                <a href="" class="nmc-white font-family-poppins"
-                  >Walter White</a
-                >
-              </h4>
+        <p class="font-18 nmc-dark-grey mt-3">
+          {{ event.Description }}
+        </p>
 
-              <p class="nmc-white">Quas alias incidunt</p>
-
-              <div
-                class="social d-flex align-items-center justify-content-center gap-2"
-              >
-                <a href="#" class="font-18 nmc-white"
-                  ><i class="bi bi-twitter"></i
-                ></a>
-                <a href="#" class="font-18 nmc-white"
-                  ><i class="bi bi-facebook"></i
-                ></a>
-                <a href="#" class="font-18 nmc-white"
-                  ><i class="bi bi-instagram"></i
-                ></a>
-                <a href="#" class="font-18 nmc-white"
-                  ><i class="bi bi-linkedin"></i
-                ></a>
-              </div>
+        <!-- <div class="row justify-content-start gap-4">
+            <div class="col-3 rounded-circle ng-tracker d-flex">
+              <h3 class="nmc-dark-grey font-16 text-center m-auto">
+                <span class="font-30 d-block font-family-poppins">1</span
+                >Day/Track
+              </h3>
             </div>
-          </div>
-        </div>
-      </swiper-slide>
 
-      <swiper-slide>
-        <div class="speaker">
-          <img
-            src="assets/images/events/speaker-2.jpg"
-            class="img-fluid"
-            alt=""
-          />
-
-          <div class="speaker-info">
-            <div class="speaker-info-content">
-              <h4>
-                <a href="" class="nmc-white font-family-poppins"
-                  >Walter White</a
-                >
-              </h4>
-
-              <p class="nmc-white">Quas alias incidunt</p>
-
-              <div
-                class="social d-flex align-items-center justify-content-center gap-2"
-              >
-                <a href="#" class="font-18 nmc-white"
-                  ><i class="bi bi-twitter"></i
-                ></a>
-                <a href="#" class="font-18 nmc-white"
-                  ><i class="bi bi-facebook"></i
-                ></a>
-                <a href="#" class="font-18 nmc-white"
-                  ><i class="bi bi-instagram"></i
-                ></a>
-                <a href="#" class="font-18 nmc-white"
-                  ><i class="bi bi-linkedin"></i
-                ></a>
-              </div>
+            <div class="col-3 rounded-circle ng-tracker d-flex">
+              <h3 class="nmc-dark-grey font-16 text-center m-auto">
+                <span class="font-30 d-block font-family-poppins">22</span>Talks
+              </h3>
             </div>
-          </div>
-        </div>
-      </swiper-slide>
 
-      <swiper-slide>
-        <div class="speaker">
-          <img
-            src="assets/images/events/agenda-speaker-3.jpg"
-            class="img-fluid"
-            alt=""
-          />
-
-          <div class="speaker-info">
-            <div class="speaker-info-content">
-              <h4>
-                <a href="" class="nmc-white font-family-poppins"
-                  >Walter White</a
-                >
-              </h4>
-
-              <p class="nmc-white">Quas alias incidunt</p>
-
-              <div
-                class="social d-flex align-items-center justify-content-center gap-2"
-              >
-                <a href="#" class="font-18 nmc-white"
-                  ><i class="bi bi-twitter"></i
-                ></a>
-                <a href="#" class="font-18 nmc-white"
-                  ><i class="bi bi-facebook"></i
-                ></a>
-                <a href="#" class="font-18 nmc-white"
-                  ><i class="bi bi-instagram"></i
-                ></a>
-                <a href="#" class="font-18 nmc-white"
-                  ><i class="bi bi-linkedin"></i
-                ></a>
-              </div>
+            <div class="col-3 rounded-circle ng-tracker d-flex">
+              <h3 class="nmc-dark-grey font-16 text-center m-auto">
+                <span class="font-30 d-block font-family-poppins">22</span
+                >Speakers
+              </h3>
             </div>
-          </div>
-        </div>
-      </swiper-slide>
 
-      <swiper-slide>
-        <div class="speaker">
-          <img
-            src="assets/images/events/agenda-speaker-5.jpg"
-            class="img-fluid"
-            alt=""
-          />
-
-          <div class="speaker-info">
-            <div class="speaker-info-content">
-              <h4>
-                <a href="" class="nmc-white font-family-poppins"
-                  >Walter White</a
-                >
-              </h4>
-
-              <p class="nmc-white">Quas alias incidunt</p>
-
-              <div
-                class="social d-flex align-items-center justify-content-center gap-2"
-              >
-                <a href="#" class="font-18 nmc-white"
-                  ><i class="bi bi-twitter"></i
-                ></a>
-                <a href="#" class="font-18 nmc-white"
-                  ><i class="bi bi-facebook"></i
-                ></a>
-                <a href="#" class="font-18 nmc-white"
-                  ><i class="bi bi-instagram"></i
-                ></a>
-                <a href="#" class="font-18 nmc-white"
-                  ><i class="bi bi-linkedin"></i
-                ></a>
-              </div>
+            <div class="col-3 rounded-circle ng-tracker d-flex">
+              <h3 class="nmc-dark-grey font-16 text-center m-auto">
+                <span class="font-30 d-block font-family-poppins">500+</span
+                >Delegates
+              </h3>
             </div>
-          </div>
+          </div> -->
+
+        <div class="mt-4 d-flex align-items-center justify-content-start gap-4">
+          <a
+            class="nmc-btn-primary h-auto py-2 text-center w-30"
+            [href]="event.PhotosLink"
+          >
+            <i class="bi bi-card-image me-2"></i>Photos
+          </a>
+          <a
+            class="nmc-btn-primary h-auto py-2 text-center w-30"
+            [href]="event.VideosLink"
+          >
+            <i class="bi bi-youtube me-2"></i>Youtube
+          </a>
         </div>
-      </swiper-slide>
-
-      <swiper-slide>
-        <div class="speaker">
-          <img
-            src="assets/images/events/speaker-1.jpg"
-            class="img-fluid"
-            alt=""
-          />
-
-          <div class="speaker-info">
-            <div class="speaker-info-content">
-              <h4>
-                <a href="" class="nmc-white font-family-poppins"
-                  >Walter White</a
-                >
-              </h4>
-
-              <p class="nmc-white">Quas alias incidunt</p>
-
-              <div
-                class="social d-flex align-items-center justify-content-center gap-2"
-              >
-                <a href="#" class="font-18 nmc-white"
-                  ><i class="bi bi-twitter"></i
-                ></a>
-                <a href="#" class="font-18 nmc-white"
-                  ><i class="bi bi-facebook"></i
-                ></a>
-                <a href="#" class="font-18 nmc-white"
-                  ><i class="bi bi-instagram"></i
-                ></a>
-                <a href="#" class="font-18 nmc-white"
-                  ><i class="bi bi-linkedin"></i
-                ></a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </swiper-slide>
-
-      <swiper-slide>
-        <div class="speaker">
-          <img
-            src="assets/images/events/speaker-2.jpg"
-            class="img-fluid"
-            alt=""
-          />
-
-          <div class="speaker-info">
-            <div class="speaker-info-content">
-              <h4>
-                <a href="" class="nmc-white font-family-poppins"
-                  >Walter White</a
-                >
-              </h4>
-
-              <p class="nmc-white">Quas alias incidunt</p>
-
-              <div
-                class="social d-flex align-items-center justify-content-center gap-2"
-              >
-                <a href="#" class="font-18 nmc-white"
-                  ><i class="bi bi-twitter"></i
-                ></a>
-                <a href="#" class="font-18 nmc-white"
-                  ><i class="bi bi-facebook"></i
-                ></a>
-                <a href="#" class="font-18 nmc-white"
-                  ><i class="bi bi-instagram"></i
-                ></a>
-                <a href="#" class="font-18 nmc-white"
-                  ><i class="bi bi-linkedin"></i
-                ></a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </swiper-slide>
-
-      <swiper-slide>
-        <div class="speaker">
-          <img
-            src="assets/images/events/agenda-speaker-3.jpg"
-            class="img-fluid"
-            alt=""
-          />
-
-          <div class="speaker-info">
-            <div class="speaker-info-content">
-              <h4>
-                <a href="" class="nmc-white font-family-poppins"
-                  >Walter White</a
-                >
-              </h4>
-
-              <p class="nmc-white">Quas alias incidunt</p>
-
-              <div
-                class="social d-flex align-items-center justify-content-center gap-2"
-              >
-                <a href="#" class="font-18 nmc-white"
-                  ><i class="bi bi-twitter"></i
-                ></a>
-                <a href="#" class="font-18 nmc-white"
-                  ><i class="bi bi-facebook"></i
-                ></a>
-                <a href="#" class="font-18 nmc-white"
-                  ><i class="bi bi-instagram"></i
-                ></a>
-                <a href="#" class="font-18 nmc-white"
-                  ><i class="bi bi-linkedin"></i
-                ></a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </swiper-slide>
-
-      <swiper-slide>
-        <div class="speaker">
-          <img
-            src="assets/images/events/agenda-speaker-5.jpg"
-            class="img-fluid"
-            alt=""
-          />
-
-          <div class="speaker-info">
-            <div class="speaker-info-content">
-              <h4>
-                <a href="" class="nmc-white font-family-poppins"
-                  >Walter White</a
-                >
-              </h4>
-
-              <p class="nmc-white">Quas alias incidunt</p>
-
-              <div
-                class="social d-flex align-items-center justify-content-center gap-2"
-              >
-                <a href="#" class="font-18 nmc-white"
-                  ><i class="bi bi-twitter"></i
-                ></a>
-                <a href="#" class="font-18 nmc-white"
-                  ><i class="bi bi-facebook"></i
-                ></a>
-                <a href="#" class="font-18 nmc-white"
-                  ><i class="bi bi-instagram"></i
-                ></a>
-                <a href="#" class="font-18 nmc-white"
-                  ><i class="bi bi-linkedin"></i
-                ></a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </swiper-slide>
-    </swiper-container>
-  </div>
-</section>
-
-<section class="gallery-section text-center py-5 nmc-bg-light-grey">
-  <div class="container-boxed">
-    <h2
-      class="section-title font-36 nmc-dark-grey font-family-poppins text-center mb-5"
-    >
-      Gallery
-    </h2>
-
-    <swiper-container
-      class="mySwiper"
-      loop="true"
-      speed="600"
-      autoplay-delay="5000"
-      slides-per-view="5"
-      space-between="20"
-      centered-slides="true"
-    >
-      <swiper-slide
-        ><a
-          class="glightbox"
-          data-gallery="images-gallery"
-          href="assets/images/event-gallery/event-gallery-1.jpg"
-          ><img
-            src="assets/images/event-gallery/event-gallery-1.jpg"
-            class="img-fluid"
-            alt="" /></a
-      ></swiper-slide>
-
-      <swiper-slide
-        ><a
-          class="glightbox"
-          data-gallery="images-gallery"
-          href="assets/images/event-gallery/event-gallery-2.jpg"
-          ><img
-            src="assets/images/event-gallery/event-gallery-2.jpg"
-            class="img-fluid"
-            alt=""
-        /></a>
-      </swiper-slide>
-
-      <swiper-slide
-        ><a
-          class="glightbox"
-          data-gallery="images-gallery"
-          href="assets/images/event-gallery/event-gallery-3.jpg"
-          ><img
-            src="assets/images/event-gallery/event-gallery-3.jpg"
-            class="img-fluid"
-            alt=""
-        /></a>
-      </swiper-slide>
-
-      <swiper-slide
-        ><a
-          class="glightbox"
-          data-gallery="images-gallery"
-          href="assets/images/event-gallery/event-gallery-4.jpg"
-          ><img
-            src="assets/images/event-gallery/event-gallery-4.jpg"
-            class="img-fluid"
-            alt="" /></a
-      ></swiper-slide>
-
-      <swiper-slide
-        ><a
-          class="glightbox"
-          data-gallery="images-gallery"
-          href="assets/images/event-gallery/event-gallery-5.jpg"
-          ><img
-            src="assets/images/event-gallery/event-gallery-5.jpg"
-            class="img-fluid"
-            alt="" /></a
-      ></swiper-slide>
-
-      <swiper-slide
-        ><a
-          class="glightbox"
-          data-gallery="images-gallery"
-          href="assets/images/event-gallery/event-gallery-6.jpg"
-          ><img
-            src="assets/images/event-gallery/event-gallery-6.jpg"
-            class="img-fluid"
-            alt="" /></a
-      ></swiper-slide>
-
-      <swiper-slide
-        ><a
-          class="glightbox"
-          data-gallery="images-gallery"
-          href="assets/images/event-gallery/event-gallery-7.jpg"
-          ><img
-            src="assets/images/event-gallery/event-gallery-7.jpg"
-            class="img-fluid"
-            alt="" /></a
-      ></swiper-slide>
-
-      <swiper-slide
-        ><a
-          class="glightbox"
-          data-gallery="images-gallery"
-          href="assets/images/event-gallery/event-gallery-8.jpg"
-          ><img
-            src="assets/images/event-gallery/event-gallery-8.jpg"
-            class="img-fluid"
-            alt="" /></a
-      ></swiper-slide>
-    </swiper-container>
-  </div>
-</section>
-
-<section class="venue-section py-5">
-  <div class="container-boxed">
-    <h2
-      class="section-title font-36 nmc-dark-grey font-family-poppins text-center mb-5"
-    >
-      Event Venue
-    </h2>
-
-    <div class="row g-0">
-      <div class="col-lg-6 venue-map">
-        <iframe
-          src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12097.433213460943!2d-74.0062269!3d40.7101282!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xb89d1fe6bc499443!2sDowntown+Conference+Center!5e0!3m2!1smk!2sbg!4v1539943755621"
-          frameborder="0"
-          style="border: 0"
-          allowfullscreen=""
-        ></iframe>
       </div>
 
-      <div class="col-lg-6 venue-info">
+      <div class="yt-video rounded-3 overflow-hidden">
+        <youtube-player
+          [videoId]="event.SummaryVideoId"
+          height="320"
+        ></youtube-player>
+      </div>
+    </div>
+
+    <div class="tracker-section mt-5 d-flex gap-3">
+      <div class="w-25 rounded-3 inner d-flex">
+        <h3 class="nmc-dark-grey font-18 text-center m-auto">
+          <span class="font-34 d-block font-family-poppins">{{
+            event.Day
+          }}</span
+          >Day/Track
+        </h3>
+      </div>
+
+      <div class="w-25 rounded-3 inner d-flex">
+        <h3 class="nmc-dark-grey font-18 text-center m-auto">
+          <span class="font-34 d-block font-family-poppins">{{
+            event.Talks
+          }}</span
+          >Talks
+        </h3>
+      </div>
+
+      <div class="w-25 rounded-3 inner d-flex">
+        <h3 class="nmc-dark-grey font-18 text-center m-auto">
+          <span class="font-34 d-block font-family-poppins">{{
+            event.Speakers
+          }}</span
+          >Speakers
+        </h3>
+      </div>
+
+      <div class="w-25 rounded-3 inner d-flex">
+        <h3 class="nmc-dark-grey font-18 text-center m-auto">
+          <span class="font-34 d-block font-family-poppins">{{
+            event.Delegates
+          }}</span
+          >Delegates
+        </h3>
+      </div>
+    </div>
+
+    <div class="speakers-section mt-4">
+      <h2
+        class="section-title left font-26 nmc-dark-grey font-family-poppins mb-4"
+      >
+        Speakers
+      </h2>
+
+      <div
+        class="d-flex flex-wrap align-items-center justify-content-start gap-3"
+      >
+        <div class="speakers rounded-circle" *ngFor="let speaker of event.SpeakersCollection">
+          <a [href]="speaker.LinkedIn">
+            <img
+              [src]="speaker.Image"
+              alt="Brenden Legros"
+              class="object-fit-cover"
+          /></a>
+        </div>
+
+        <div class="speakers rounded-circle">
+          <a href="">
+            <img
+              src="assets/images/events/agenda-speaker-1.jpg"
+              alt="Brenden Legros"
+              class="object-fit-cover"
+          /></a>
+        </div>
+
+        <div class="speakers rounded-circle">
+          <a href="">
+            <img
+              src="assets/images/events/agenda-speaker-1.jpg"
+              alt="Brenden Legros"
+              class="object-fit-cover"
+          /></a>
+        </div>
+
+        <div class="speakers rounded-circle">
+          <a href="">
+            <img
+              src="assets/images/events/agenda-speaker-1.jpg"
+              alt="Brenden Legros"
+              class="object-fit-cover"
+          /></a>
+        </div>
+
+        <div class="speakers rounded-circle">
+          <a href="">
+            <img
+              src="assets/images/events/agenda-speaker-1.jpg"
+              alt="Brenden Legros"
+              class="object-fit-cover"
+          /></a>
+        </div>
+
+        <div class="speakers rounded-circle">
+          <a href="">
+            <img
+              src="assets/images/events/agenda-speaker-1.jpg"
+              alt="Brenden Legros"
+              class="object-fit-cover"
+          /></a>
+        </div>
+
+        <div class="speakers rounded-circle">
+          <a href="">
+            <img
+              src="assets/images/events/agenda-speaker-1.jpg"
+              alt="Brenden Legros"
+              class="object-fit-cover"
+          /></a>
+        </div>
+
+        <div class="speakers rounded-circle">
+          <a href="">
+            <img
+              src="assets/images/events/agenda-speaker-1.jpg"
+              alt="Brenden Legros"
+              class="object-fit-cover"
+          /></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="sponsors-section mt-4">
+      <h2
+        class="section-title left font-26 nmc-dark-grey font-family-poppins mb-4"
+      >
+        Sponsors
+      </h2>
+
+      <div class="row g-0 clients-wrap">
         <div
-          class="overlay position-absolute top-0 start-0 w-100 h-100 z-1"
-        ></div>
+          class="col-xl-3 col-md-4 client-logo d-flex align-items-center justify-content-center overflow-hidden"
+        >
+          <img
+            src="assets/images/clients/client-1.png"
+            class="img-fluid"
+            alt=""
+          />
+        </div>
 
-        <img
-          src="assets/images/events/venue-bg.jpg"
-          alt=""
-          class="position-absolute top-0 w-100 h-100 object-fit-cover"
-        />
+        <div
+          class="col-xl-3 col-md-4 client-logo d-flex align-items-center justify-content-center overflow-hidden"
+        >
+          <img
+            src="assets/images/clients/client-2.png"
+            class="img-fluid"
+            alt=""
+          />
+        </div>
 
-        <div class="row justify-content-center position-relative z-2">
-          <div class="col-11 col-lg-8 position-relative text-start">
-            <h3 class="font-34 font-family-poppins nmc-white mb-2">
-              The Leela Ambience Convention Hotel, Delhi
-            </h3>
+        <div
+          class="col-xl-3 col-md-4 client-logo d-flex align-items-center justify-content-center overflow-hidden"
+        >
+          <img
+            src="assets/images/clients/client-3.png"
+            class="img-fluid"
+            alt=""
+          />
+        </div>
 
-            <p class="nmc-white mt-3">
-              " Iste nobis eum sapiente sunt enim dolores labore accusantium
-              autem. Cumque beatae ipsam. Est quae sit qui voluptatem corporis
-              velit. Qui maxime accusamus possimus. Consequatur sequi et ea
-              suscipit enim nesciunt quia velit."
-            </p>
-          </div>
+        <div
+          class="col-xl-3 col-md-4 client-logo d-flex align-items-center justify-content-center overflow-hidden"
+        >
+          <img
+            src="assets/images/clients/client-4.png"
+            class="img-fluid"
+            alt=""
+          />
+        </div>
+
+        <div
+          class="col-xl-3 col-md-4 client-logo d-flex align-items-center justify-content-center overflow-hidden"
+        >
+          <img
+            src="assets/images/clients/client-5.png"
+            class="img-fluid"
+            alt=""
+          />
+        </div>
+
+        <div
+          class="col-xl-3 col-md-4 client-logo d-flex align-items-center justify-content-center overflow-hidden"
+        >
+          <img
+            src="assets/images/clients/client-6.png"
+            class="img-fluid"
+            alt=""
+          />
+        </div>
+
+        <div
+          class="col-xl-3 col-md-4 client-logo d-flex align-items-center justify-content-center overflow-hidden"
+        >
+          <img
+            src="assets/images/clients/client-7.png"
+            class="img-fluid"
+            alt=""
+          />
+        </div>
+
+        <div
+          class="col-xl-3 col-md-4 client-logo d-flex align-items-center justify-content-center overflow-hidden"
+        >
+          <img
+            src="assets/images/clients/client-8.png"
+            class="img-fluid"
+            alt=""
+          />
         </div>
       </div>
     </div>
   </div>
 </section>
-
-<section id="sponsors" class="sponsors-section py-5 nmc-bg-light-grey">
-  <div class="container-boxed">
-    <h2
-      class="section-title font-36 nmc-dark-grey font-family-poppins text-center mb-5"
-    >
-      Sponsors
-    </h2>
-
-    <div class="row g-0 clients-wrap">
-      <div
-        class="col-xl-3 col-md-4 client-logo d-flex align-items-center justify-content-center overflow-hidden"
-      >
-        <img
-          src="assets/images/clients/client-1.png"
-          class="img-fluid"
-          alt=""
-        />
-      </div>
-
-      <div
-        class="col-xl-3 col-md-4 client-logo d-flex align-items-center justify-content-center overflow-hidden"
-      >
-        <img
-          src="assets/images/clients/client-2.png"
-          class="img-fluid"
-          alt=""
-        />
-      </div>
-
-      <div
-        class="col-xl-3 col-md-4 client-logo d-flex align-items-center justify-content-center overflow-hidden"
-      >
-        <img
-          src="assets/images/clients/client-3.png"
-          class="img-fluid"
-          alt=""
-        />
-      </div>
-
-      <div
-        class="col-xl-3 col-md-4 client-logo d-flex align-items-center justify-content-center overflow-hidden"
-      >
-        <img
-          src="assets/images/clients/client-4.png"
-          class="img-fluid"
-          alt=""
-        />
-      </div>
-
-      <div
-        class="col-xl-3 col-md-4 client-logo d-flex align-items-center justify-content-center overflow-hidden"
-      >
-        <img
-          src="assets/images/clients/client-5.png"
-          class="img-fluid"
-          alt=""
-        />
-      </div>
-
-      <div
-        class="col-xl-3 col-md-4 client-logo d-flex align-items-center justify-content-center overflow-hidden"
-      >
-        <img
-          src="assets/images/clients/client-6.png"
-          class="img-fluid"
-          alt=""
-        />
-      </div>
-
-      <div
-        class="col-xl-3 col-md-4 client-logo d-flex align-items-center justify-content-center overflow-hidden"
-      >
-        <img
-          src="assets/images/clients/client-7.png"
-          class="img-fluid"
-          alt=""
-        />
-      </div>
-
-      <div
-        class="col-xl-3 col-md-4 client-logo d-flex align-items-center justify-content-center overflow-hidden"
-      >
-        <img
-          src="assets/images/clients/client-8.png"
-          class="img-fluid"
-          alt=""
-        />
-      </div>
-    </div>
-  </div>
-</section>
+}

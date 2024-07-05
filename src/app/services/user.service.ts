@@ -7,13 +7,8 @@ import { Observable, from, map, of, switchMap } from 'rxjs';
   providedIn: 'root'
 })
 export class UserService {
-
   private afAuth = inject(AngularFireAuth);
   private firestore = inject(AngularFirestore);
-
-  // signUp(email: string, password: string): any {
-  //   return this.afAuth.createUserWithEmailAndPassword(email, password);
-  // }
 
   login(email: string, password: string): any {
     return this.afAuth.signInWithEmailAndPassword(email, password);
@@ -39,13 +34,6 @@ export class UserService {
     }
   }
 
-  getCurrentUser1(): Observable<any> {
-    
-    return this.afAuth.authState.pipe(
-      map(user => user ? user : null)
-    );
-  }
-
   getCurrentUser(): Observable<any> {
     return this.afAuth.authState.pipe(
       switchMap(user => {
@@ -60,16 +48,16 @@ export class UserService {
 
   isAdmin(): Observable<boolean> {
     return this.getCurrentUser().pipe(
-      map(user => user?.role === 'admin')
+      map(user => user?.isadmin === true)
     );
   }
 
-  async updateUserProfile(userDetails:any){
-     console.log('userDetails:', userDetails);
-     let a = await this.afAuth.currentUser;
-     const uid = a!.uid;
-     console.log('uid:', uid);
-     await this.firestore.doc(`users/${uid}`).update(userDetails);
-     console.log('User signed up and additional information added');
+  async updateUserProfile(userDetails: any) {
+    console.log('userDetails:', userDetails);
+    let a = await this.afAuth.currentUser;
+    const uid = a!.uid;
+    console.log('uid:', uid);
+    await this.firestore.doc(`users/${uid}`).update(userDetails);
+    console.log('User signed up and additional information added');
   }
 }

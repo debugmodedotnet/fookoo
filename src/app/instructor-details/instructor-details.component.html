@@ -67,3 +67,50 @@
     </div>
   </div>
 </div>
+<!--<div *ngIf="instructor" class="bg-custom-peach p-5">
+  <div class="profile-header d-flex flex-column align-items-center text-center">
+    <img [src]="instructor.InstructorImg || 'assets/images/home/user.jpg'" alt="Instructor Image" class="rounded-circle mb-3" style="width: 150px;">
+    <div>
+      <h1 class="text-black m-0">{{ instructor.Name }}</h1>
+      <p class="text-black m-0">{{ instructor.Position }}</p>
+      <div class="social-links mt-2">
+        <a *ngIf="instructor.Facebook" [href]="instructor.Facebook" target="_blank" class="text-black mx-2"><i class="bi bi-facebook"></i></a>
+        <a *ngIf="instructor.Instagram" [href]="instructor.Instagram" target="_blank" class="text-black mx-2"><i class="bi bi-instagram"></i></a>
+        <a *ngIf="instructor.Twitter" [href]="instructor.Twitter" target="_blank" class="text-black mx-2"><i class="bi bi-twitter-x"></i></a>
+        <a *ngIf="instructor.LinkedIn" [href]="instructor.LinkedIn" target="_blank" class="text-black mx-2"><i class="bi bi-linkedin"></i></a>
+        <a *ngIf="instructor.YouTube" [href]="instructor.YouTube" target="_blank" class="text-black mx-2"><i class="bi bi-youtube"></i></a>
+      </div>
+      <div class="skills mt-3 d-flex flex-wrap justify-content-center">
+        <div *ngIf="instructor.Skill1" class="skill-box border-orange m-1 p-2">{{ instructor.Skill1 }}</div>
+        <div *ngIf="instructor.Skill2" class="skill-box border-orange m-1 p-2">{{ instructor.Skill2 }}</div>
+        <div *ngIf="instructor.Skill3" class="skill-box border-orange m-1 p-2">{{ instructor.Skill3 }}</div>
+        <div *ngIf="instructor.Skill4" class="skill-box border-orange m-1 p-2">{{ instructor.Skill4 }}</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="instructor" class="container bg-white mt-4">
+  <div class="row">
+    <div class="col-md-4">
+      <div class="bg-white p-4 mb-4 border-orange">
+        <h3 class="text-dark-orange ">About me</h3>
+        <p class="text-black">{{ instructor.Bio }}</p>
+        <a href="#" class="text-orange">Read more</a>
+      </div>
+      <div class="bg-white p-4 border-orange">
+        <h3 class="text-black">Contact</h3>
+        <p class="text-black">Feel free to reach out to me through the following contact details:</p>
+        <p class="text-black"><strong>Email:</strong> {{ instructor.Email }}</p>
+      </div>
+    </div>
+    <div class="col-md-8">
+      <h3 class="text-black">My Courses</h3>
+      <div *ngFor="let course of instructor.courses" class="course-card bg-light-orange p-4 mb-4 border-orange position-relative">
+        <h4 class="text-black">{{ course.Title }}</h4>
+        <p class="text-dark-orange">{{ course.Duration }} | {{ course.Level }} | ⭐ {{ course.Rating }}</p>
+        <span class="badge badge-custom-paid position-absolute top-0 end-0 m-2">{{ course.Price }}</span>
+      </div>
+    </div>
+  </div>
+</div>-->

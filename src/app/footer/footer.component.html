@@ -2,7 +2,7 @@
   <div class="text-center container-boxed">
     <a href="#" class="d-flex align-items-center justify-content-center">
       <img
-        src="assets/images/logo/footer-logo.png"
+        [src]="footer?.FooterLogo"
         class="w-25 h-auto"
         alt="NomadCoder Logo"
       />
@@ -66,50 +66,45 @@
         rel="noopener noreferrer"
         target="_blank"
         class="nmc-white font-24"
-        href="https://www.facebook.com"
+        [href]="footer?.Facebook"
       >
         <i class="bi bi-facebook"></i>
-        <!-- <img src="assets/images/socials/facebook.svg" alt="Facebook Logo" /> -->
       </a>
 
       <a
         rel="noopener noreferrer"
         target="_blank"
         class="nmc-white font-24"
-        href="https://www.instagram.com"
+        [href]="footer?.Instagram"
       >
         <i class="bi bi-instagram"></i>
-        <!-- <img src="assets/images/socials/instagram.svg" alt="Instagram Logo" /> -->
       </a>
 
       <a
         rel="noopener noreferrer"
         target="_blank"
         class="nmc-white font-24"
-        href="https://x.com"
+        [href]="footer?.Twitter"
       >
         <i class="bi bi-twitter-x"></i>
-        <!-- <img src="assets/images/socials/x.svg" alt="X Logo" /> -->
       </a>
 
       <a
         rel="noopener noreferrer"
         target="_blank"
         class="nmc-white font-24"
-        href="https://www.linkedin.com"
+        [href]="footer?.LinkedIn"
       >
         <i class="bi bi-linkedin"></i>
-        <!-- <img src="assets/images/socials/linkedin.svg" alt="Linkedin Logo" /> -->
       </a>
 
       <a
         rel="noopener noreferrer"
         target="_blank"
         class="nmc-white font-30"
-        href="https://www.youtube.com"
+        [href]="footer?.Youtube"
       >
         <i class="bi bi-youtube"></i>
-        <!-- <img src="assets/images/socials/youtube.svg" alt="Youtube Logo" /> -->
       </a>
     </div>
   </div>
@@ -118,5 +113,5 @@
 <div
   class="font-14 py-2 text-center font-family-poppins nmc-white nmc-bg-primary"
 >
-  Copyright © 2024 NomadCoder. All rights reserved.
+  {{ footer?.CopyrightText }}
 </div>

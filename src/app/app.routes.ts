@@ -1,12 +1,12 @@
 import { Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
-import { InstructorDetailsComponent } from './instructor-details/instructor-details.component';
 import { userAuthGuard } from './services/user-auth.guard';
 import { isAdminGuard } from './isadminguard.guard';
 import { AdminComponent } from './admin/admin.component';
 
 export const routes: Routes = [
     { path: 'home', component: HomeComponent },
+    { path: 'ng-india', loadComponent: () => import('./ng-india/ng-india.component').then(m => m.NgIndiaComponent) },
     { path: 'signup', loadComponent: () => import('./signup/signup.component').then(m => m.SignupComponent) },
     { path: 'login', loadComponent: () => import('./login/login.component').then(m => m.LoginComponent) },
     { path: 'profile', loadComponent: () => import('./profile/profile.component').then(m => m.ProfileComponent), canActivate: [userAuthGuard] },

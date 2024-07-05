@@ -9,7 +9,7 @@
   
       <!-- Form to create new instructor -->
       <div *ngIf="formVisible" class="form-wrapper rounded-4 p-4 w-100 mx-auto">
-        <form [formGroup]="instructorForm" (ngSubmit)="onSubmit()">
+        <form [formGroup]="instructorForm" (ngSubmit)="addOrUpdateInstructor()">
           <div class="row form-group mt-3">
             <div class="col-6">
               <label for="name" class="form-label required">Name</label>
@@ -174,7 +174,7 @@
               <td><a [href]="instructor.LinkedIn" target="_blank">LinkedIn</a></td>
               <td class="actions">
                 <button class="btn btn-custom-edit btn-sm" (click)="editInstructor(instructor)">Edit</button>
-                <button class="btn btn-danger btn-sm" (click)="deleteInstructor(instructor.Id)">Delete</button>
+                <button class="btn btn-danger btn-sm" (click)="deleteInstructor(instructor.id)">Delete</button>
               </td>
             </tr>
           </tbody>

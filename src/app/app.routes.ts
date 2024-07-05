@@ -1,6 +1,5 @@
 import { Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
-import { InstructorDetailsComponent } from './instructor-details/instructor-details.component';
 import { AdminComponent } from './admin/admin.component';
 import { userAuthGuard } from './services/user-auth.guard';
 import { isAdminGuard } from './isadminguard.guard';
@@ -25,3 +24,4 @@ export const routes: Routes = [
   },
   { path: '', redirectTo: 'home', pathMatch: 'full' }
 ];
+

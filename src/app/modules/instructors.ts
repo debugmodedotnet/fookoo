@@ -5,7 +5,7 @@ export interface IInstructor {
   Name: string;
   Bio: string;
   Email: string;
-  InstructorImg: string;
+  InstructorImg?: string | null;  // Choose to make InstructorImg optional and allow null
   Position: string;
   Skill1: string;
   Skill2: string;
@@ -14,6 +14,6 @@ export interface IInstructor {
   LinkedIn: string;
   Twitter: string;
   Github: string;
-  courses?: ICourse[];
-  }
-  
+  courses?: ICourse[];  // Include courses if it's needed
+}
+

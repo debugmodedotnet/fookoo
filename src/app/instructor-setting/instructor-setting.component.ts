@@ -1,10 +1,19 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators, AbstractControl, ValidationErrors } from '@angular/forms';
+import { Component, OnInit, inject } from '@angular/core';
+import { FormBuilder, FormGroup, Validators, AbstractControl, ValidationErrors, ReactiveFormsModule } from '@angular/forms';
 import { InstructorService } from '../services/instructor.service'; // Update with your service
-import { IInstructor } from '../models/instructor'; // Update with your model/interface
+import { IInstructor } from '../modules/instructors';  // Update with your model/interface
+import { NgFor, NgIf } from '@angular/common';
+import { AngularFireStorage } from '@angular/fire/compat/storage';
+import { finalize } from 'rxjs';
 
 @Component({
   selector: 'app-instructor-setting',
+  standalone: true,
+  imports: [
+    NgIf,
+    NgFor,
+    ReactiveFormsModule
+  ],
   templateUrl: './instructor-setting.component.html',
   styleUrls: ['./instructor-setting.component.scss']
 })
@@ -15,6 +24,9 @@ export class InstructorSettingComponent implements OnInit {
   currentInstructorId?: string;
   formVisible = false;
   skills: string[] = ['Skill A', 'Skill B', 'Skill C', 'Skill D']; // Example skills
+  photoURL: string | null = null;
+
+  private storage = inject(AngularFireStorage);
 
   constructor(private instructorService: InstructorService, private fb: FormBuilder) {
     this.instructorForm = this.fb.group({
@@ -58,48 +70,61 @@ export class InstructorSettingComponent implements OnInit {
   }
 
   addInstructor() {
-    this.instructorService.addInstructor(this.instructorForm.value).subscribe(
+    this.instructorService.addInstructor({ ...this.instructorForm.value, ImageUpload: this.photoURL }).then(
       () => {
         this.resetForm();
         this.loadInstructors(); // Reload instructors after adding
-      },
-      error => {
+      }).catch(error => {
         console.error('Error adding instructor:', error);
-      }
-    );
+      });
   }
 
   updateInstructor(id: string, instructor: IInstructor) {
-    this.instructorService.updateInstructor(id, instructor).subscribe(
+    this.instructorService.updateInstructor(id, { ...instructor, InstructorImg: this.photoURL }).then(
       () => {
         this.resetForm();
         this.loadInstructors(); // Reload instructors after update
-      },
-      error => {
+      }).catch(error => {
         console.error('Error updating instructor:', error);
-      }
-    );
+      });
   }
 
   editInstructor(instructor: IInstructor) {
     this.instructorForm.patchValue(instructor);
     this.editMode = true;
-    this.currentInstructorId = instructor.Id;
+    this.currentInstructorId = instructor.id;
     this.formVisible = true; // Show the form
   }
 
   deleteInstructor(id: string | undefined) {
     if (id) {
-      this.instructorService.deleteInstructor(id).subscribe(
+      this.instructorService.deleteInstructor(id).then(
         () => {
           this.loadInstructors(); // Reload instructors after deletion
-        },
-        error => {
+        }).catch(error => {
           console.error('Error deleting instructor:', error);
-        }
-      );
+        });
     } else {
       console.error('Instructor ID is undefined, cannot delete.');
+    }
+  }
+
+  uploadPhoto(event: any) {
+    const file = event.target.files[0];
+    if (file) {
+      // Create a unique file path
+      const filePath = `instructorPhotos/${new Date().getTime()}_${file.name}`;
+      const fileRef = this.storage.ref(filePath);
+      const task = this.storage.upload(filePath, file);
+
+      // Get notified when the download URL is available
+      task.snapshotChanges().pipe(
+        finalize(() => {
+          fileRef.getDownloadURL().subscribe(url => {
+            this.photoURL = url;
+          });
+        })
+      ).subscribe();
     }
   }
 

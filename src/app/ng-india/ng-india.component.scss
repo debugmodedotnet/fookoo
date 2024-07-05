@@ -3,6 +3,27 @@
 /*-------------------------------------------------------------------------
 # Hero Section
 -------------------------------------------------------------------------*/
+// .hero-section figure img {
+//     -webkit-mask-image: url('../../assets/images/ng-india/hero-img-blob-1.svg');
+//     mask-image: url('../../assets/images/ng-india/hero-img-blob-1.svg');
+//     -webkit-mask-size: contain;
+//     mask-size: contain;
+//     -webkit-mask-repeat: no-repeat;
+//     mask-repeat: no-repeat;
+//     -webkit-mask-position-x: right;
+// }
+
+.text-bottom-line::after {
+    background-image: url('../../assets/images/home/bottom-text-line.svg');
+    background-repeat: no-repeat;
+    content: "";
+    height: 4px;
+    inset: 65px 0 0 0;
+    margin: 0 auto;
+    position: absolute;
+    width: 191px;
+}
+
 .play-btn {
     margin-top: 20px;
     width: 94px;
@@ -67,51 +88,56 @@
     }
 }
 
+.tracker-section .inner {
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+    height: 150px;
+    transition: transform .5s;
+    border: 2px solid $nmc-primary;
+
+    &:hover {
+        transform: scale(1.03);
+    }
+}
+
+/*-------------------------------------------------------------------------
+# Previous Edition Section
+-------------------------------------------------------------------------*/
+.previous-editions {
+    border-top: 2px solid $nmc-primary;
+
+    // .ng-tracker {
+    //     box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+    //     height: 120px;
+    //     width: 120px;
+    //     transition: transform .5s;
+    //     border: 2px solid $nmc-primary;
+
+    //     &:hover {
+    //         transform: scale(.5);
+    //     }
+    // }
+
+    .yt-video {
+        border: 2px solid $nmc-primary;
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    }
+}
+
 /*-------------------------------------------------------------------------
 # Speakers Section
 -------------------------------------------------------------------------*/
-.speakers-section .speaker {
-    position: relative;
-    //overflow: hidden;
+.speakers {
+    width: 80px;
+    height: 80px;
+    overflow: hidden;
+    margin: 0 10px 10px 0;
+}
 
-    .speaker-info {
-        position: absolute;
-        padding: 15px 0;
-        inset: auto 0 -44px 0;
-        background: rgba(0, 0, 0, 0.6);
-        transition: 0.4s;
-
-        h4 {
-            font-weight: 700;
-            margin-bottom: 4px;
-            font-size: 16px;
-
-            a:hover {
-                color: $nmc-primary !important;
-            }
-        }
-
-        p {
-            font-style: italic;
-            display: block;
-            font-size: 13px;
-        }
-
-        .social a {
-            transition: color 0.3s;
-            color: color-mix(in srgb, var(--default-color), transparent 30%);
-            margin: 0 4px;
-            display: inline-block;
-
-            i:hover {
-                color: $nmc-primary !important;
-            }
-        }
-    }
-
-    &:hover .speaker-info {
-        bottom: 0;
-    }
+.speakers img {
+    height: 100%;
+    transform: translateX(-50%);
+    margin-left: 50%;
+    transition: all ease-in-out 0.3s;
 }
 
 /*-------------------------------------------------------------------------
@@ -144,35 +170,4 @@
         padding: 30px;
         max-width: 50%;
     }
-}
-
-/*-------------------------------------------------------------------------
-# Gallery Section
--------------------------------------------------------------------------*/
-.gallery-section .swiper-slide-active {
-    //background: $nmc-primary;
-    border: 6px solid $nmc-primary;
-    //padding: 4px;
-    z-index: 1;
-    //transform: scale(1.2);
-    //transition: none;
-}
-
-/*-------------------------------------------------------------------------
-# Venue Section
--------------------------------------------------------------------------*/
-.venue-section .venue-map iframe {
-    width: 100%;
-    height: 100%;
-    min-height: 300px;
-}
-
-.venue-section .venue-info {
-    position: relative;
-    padding-top: 60px;
-    padding-bottom: 60px;
-}
-
-.venue-section .venue-info .overlay {
-    background: color-mix(in srgb, $nmc-dark-grey, transparent 30%);
 }

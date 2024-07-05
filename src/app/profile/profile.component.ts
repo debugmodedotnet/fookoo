@@ -61,6 +61,15 @@ export class ProfileComponent {
     }
   }
 
+  async loadJob() {
+    const { JobComponent } = await import('../job/job.component');
+    if (this.profileView) {
+      this.profileView.clear();
+      this.profileView.createComponent(JobComponent);
+      this.currentTab = 'job';
+    }
+  }
+
   uploadPhoto(event: any) {
     const file = event.target.files[0];
     if (file) {

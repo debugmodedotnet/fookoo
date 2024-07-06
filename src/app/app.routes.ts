@@ -4,6 +4,7 @@ import { AdminComponent } from './admin/admin.component';
 import { userAuthGuard } from './services/user-auth.guard';
 import { isAdminGuard } from './services/isadminguard.guard';
 
+
 export const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'ng-india', loadComponent: () => import('./ng-india/ng-india.component').then(m => m.NgIndiaComponent) },

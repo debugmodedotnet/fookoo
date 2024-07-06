@@ -57,6 +57,16 @@ $nmc-primary: #ef7a04; // or whatever color value you want to use
   border: none;
 }
 
+.btn-light-red {
+  background-color: #ff0f0fee;
+  color: white;
+  border: none;
+}
+
+.btn-light-red:hover {
+  background-color: #ee4444;
+}
+
 .btn-light-orange:hover {
   background-color: #fc9313;
 }

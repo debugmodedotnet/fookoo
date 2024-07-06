@@ -119,6 +119,7 @@ export class YoutubeSettingComponent {
 
   hideForm() {
     this.formVisible = false;
+    this.resetForm(); // Reset the form when hiding
   }
 
   youtubeUrlValidator(control: AbstractControl): ValidationErrors | null {

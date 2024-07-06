@@ -1,4 +1,5 @@
 export interface IPrevEvents {
+    id?: string;
     Date: Date;
     Day: number;
     Delegates: number;
@@ -7,6 +8,7 @@ export interface IPrevEvents {
     PhotosLink: string;
     Speakers: number;
     SummaryVideoId: string;
+    SummaryImg: string;
     Talks: number;
     Title: string;
     VideosLink: string;
@@ -14,12 +16,14 @@ export interface IPrevEvents {
     SponsorsCollection?: ISponsor[];
 }
 
-interface ISpeaker {
+export interface ISpeaker {
     Image: string;
     LinkedIn: string;
+    Twitter: string;
+    Github:string;
 }
 
-interface ISponsor {
+export interface ISponsor {
     Image: string;
     Link: string;
 }

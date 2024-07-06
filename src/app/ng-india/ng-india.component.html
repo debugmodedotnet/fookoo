@@ -28,36 +28,6 @@
   </div>
 </section>
 
-<!-- <section class="tracker-section pb-5">
-  <div class="container-boxed">
-    <div class="row justify-content-center">
-      <div class="col-3 rounded-circle inner d-flex mx-5">
-        <h3 class="nmc-dark-grey font-22 text-center m-auto">
-          <span class="font-50 d-block font-family-poppins">1</span>Day/Track
-        </h3>
-      </div>
-
-      <div class="col-3 rounded-circle inner d-flex mx-5">
-        <h3 class="nmc-dark-grey font-22 text-center m-auto">
-          <span class="font-50 d-block font-family-poppins">22</span>Talks
-        </h3>
-      </div>
-
-      <div class="col-3 rounded-circle inner d-flex mx-5">
-        <h3 class="nmc-dark-grey font-22 text-center m-auto">
-          <span class="font-50 d-block font-family-poppins">22</span>Speakers
-        </h3>
-      </div>
-
-      <div class="col-3 rounded-circle inner d-flex mx-5">
-        <h3 class="nmc-dark-grey font-22 text-center m-auto">
-          <span class="font-50 d-block font-family-poppins">500+</span>Delegates
-        </h3>
-      </div>
-    </div>
-  </div>
-</section> -->
-
 @for(event of prevEvents; track event.Title){
 <section class="previous-editions py-5">
   <div class="container-boxed">
@@ -71,102 +41,72 @@
           {{ event.Title }}
         </h2>
 
-        <h4 class="nmc-primary mt-3">
+        <h4 class="nmc-dark-grey mt-3 font-20">
           {{ event.Date | date : "d MMMM, yyyy" }} | {{ event.Location }}
         </h4>
 
-        <p class="font-18 nmc-dark-grey mt-3">
-          {{ event.Description }}
-        </p>
+        <div class="row justify-content-start gap-4 mt-4">
+          <div class="col-4 rounded-circle ng-tracker d-flex">
+            <h3 class="nmc-dark-grey font-16 text-center m-auto">
+              <span class="font-30 d-block font-family-poppins">
+                {{ event.Talks }}
+              </span>
+              Talks
+            </h3>
+          </div>
 
-        <!-- <div class="row justify-content-start gap-4">
-            <div class="col-3 rounded-circle ng-tracker d-flex">
-              <h3 class="nmc-dark-grey font-16 text-center m-auto">
-                <span class="font-30 d-block font-family-poppins">1</span
-                >Day/Track
-              </h3>
-            </div>
+          <div class="col-4 rounded-circle ng-tracker d-flex">
+            <h3 class="nmc-dark-grey font-16 text-center m-auto">
+              <span class="font-30 d-block font-family-poppins">
+                {{ event.Speakers }}
+              </span>
+              Speakers
+            </h3>
+          </div>
 
-            <div class="col-3 rounded-circle ng-tracker d-flex">
-              <h3 class="nmc-dark-grey font-16 text-center m-auto">
-                <span class="font-30 d-block font-family-poppins">22</span>Talks
-              </h3>
-            </div>
-
-            <div class="col-3 rounded-circle ng-tracker d-flex">
-              <h3 class="nmc-dark-grey font-16 text-center m-auto">
-                <span class="font-30 d-block font-family-poppins">22</span
-                >Speakers
-              </h3>
-            </div>
-
-            <div class="col-3 rounded-circle ng-tracker d-flex">
-              <h3 class="nmc-dark-grey font-16 text-center m-auto">
-                <span class="font-30 d-block font-family-poppins">500+</span
-                >Delegates
-              </h3>
-            </div>
-          </div> -->
+          <div class="col-4 rounded-circle ng-tracker d-flex">
+            <h3 class="nmc-dark-grey font-16 text-center m-auto">
+              <span class="font-30 d-block font-family-poppins">
+                {{ event.Delegates }}+
+              </span>
+              Delegates
+            </h3>
+          </div>
+        </div>
 
         <div class="mt-4 d-flex align-items-center justify-content-start gap-4">
           <a
             class="nmc-btn-primary h-auto py-2 text-center w-30"
+            target="_blank"
             [href]="event.PhotosLink"
           >
             <i class="bi bi-card-image me-2"></i>Photos
           </a>
           <a
             class="nmc-btn-primary h-auto py-2 text-center w-30"
+            target="_blank"
             [href]="event.VideosLink"
           >
-            <i class="bi bi-youtube me-2"></i>Youtube
+            <i class="bi bi-youtube me-2"></i>Watch Talks
           </a>
         </div>
       </div>
 
-      <div class="yt-video rounded-3 overflow-hidden">
+      <div class="yt-video rounded-3 overflow-hidden w-60">
+        @if(event.SummaryVideoId){
         <youtube-player
           [videoId]="event.SummaryVideoId"
-          height="320"
+          placeholderImageQuality="high"
         ></youtube-player>
-      </div>
-    </div>
 
-    <div class="tracker-section mt-5 d-flex gap-3">
-      <div class="w-25 rounded-3 inner d-flex">
-        <h3 class="nmc-dark-grey font-18 text-center m-auto">
-          <span class="font-34 d-block font-family-poppins">{{
-            event.Day
-          }}</span
-          >Day/Track
-        </h3>
-      </div>
-
-      <div class="w-25 rounded-3 inner d-flex">
-        <h3 class="nmc-dark-grey font-18 text-center m-auto">
-          <span class="font-34 d-block font-family-poppins">{{
-            event.Talks
-          }}</span
-          >Talks
-        </h3>
-      </div>
-
-      <div class="w-25 rounded-3 inner d-flex">
-        <h3 class="nmc-dark-grey font-18 text-center m-auto">
-          <span class="font-34 d-block font-family-poppins">{{
-            event.Speakers
-          }}</span
-          >Speakers
-        </h3>
-      </div>
-
-      <div class="w-25 rounded-3 inner d-flex">
-        <h3 class="nmc-dark-grey font-18 text-center m-auto">
-          <span class="font-34 d-block font-family-poppins">{{
-            event.Delegates
-          }}</span
-          >Delegates
-        </h3>
+        }@else {
+        <img
+          [src]="event.SummaryImg"
+          alt="Summary Image"
+          width="642"
+          height="320"
+        />
+        }
       </div>
     </div>
 
@@ -177,79 +117,24 @@
         Speakers
       </h2>
 
-      <div
-        class="d-flex flex-wrap align-items-center justify-content-start gap-3"
-      >
-        <div class="speakers rounded-circle" *ngFor="let speaker of event.SpeakersCollection">
-          <a [href]="speaker.LinkedIn">
+      <div class="row gx-3 gy-2">
+        <div
+          class="col-2 speakers"
+          *ngFor="let speaker of event.SpeakersCollection"
+        >
+          <figure class="rounded-3 overflow-hidden">
             <img
-              [src]="speaker.Image"
+              [src]="speaker.Image ? speaker.Image : defaultSpeakerImage"
               alt="Brenden Legros"
-              class="object-fit-cover"
-          /></a>
-        </div>
+              class="object-fit-cover w-100 h-100"
+            />
 
-        <div class="speakers rounded-circle">
-          <a href="">
-            <img
-              src="assets/images/events/agenda-speaker-1.jpg"
-              alt="Brenden Legros"
-              class="object-fit-cover"
-          /></a>
-        </div>
-
-        <div class="speakers rounded-circle">
-          <a href="">
-            <img
-              src="assets/images/events/agenda-speaker-1.jpg"
-              alt="Brenden Legros"
-              class="object-fit-cover"
-          /></a>
-        </div>
-
-        <div class="speakers rounded-circle">
-          <a href="">
-            <img
-              src="assets/images/events/agenda-speaker-1.jpg"
-              alt="Brenden Legros"
-              class="object-fit-cover"
-          /></a>
-        </div>
-
-        <div class="speakers rounded-circle">
-          <a href="">
-            <img
-              src="assets/images/events/agenda-speaker-1.jpg"
-              alt="Brenden Legros"
-              class="object-fit-cover"
-          /></a>
-        </div>
-
-        <div class="speakers rounded-circle">
-          <a href="">
-            <img
-              src="assets/images/events/agenda-speaker-1.jpg"
-              alt="Brenden Legros"
-              class="object-fit-cover"
-          /></a>
-        </div>
-
-        <div class="speakers rounded-circle">
-          <a href="">
-            <img
-              src="assets/images/events/agenda-speaker-1.jpg"
-              alt="Brenden Legros"
-              class="object-fit-cover"
-          /></a>
-        </div>
-
-        <div class="speakers rounded-circle">
-          <a href="">
-            <img
-              src="assets/images/events/agenda-speaker-1.jpg"
-              alt="Brenden Legros"
-              class="object-fit-cover"
-          /></a>
+            <div class="social">
+              <a [href]="speaker.Twitter"><i class="bi bi-twitter-x"></i></a>
+              <a [href]="speaker.Github"><i class="bi bi-github"></i></a>
+              <a [href]="speaker.LinkedIn"><i class="bi bi-linkedin"></i></a>
+            </div>
+          </figure>
         </div>
       </div>
     </div>
@@ -264,82 +149,17 @@
       <div class="row g-0 clients-wrap">
         <div
           class="col-xl-3 col-md-4 client-logo d-flex align-items-center justify-content-center overflow-hidden"
+          *ngFor="let sponsor of event.SponsorsCollection"
         >
-          <img
-            src="assets/images/clients/client-1.png"
-            class="img-fluid"
-            alt=""
-          />
-        </div>
-
-        <div
-          class="col-xl-3 col-md-4 client-logo d-flex align-items-center justify-content-center overflow-hidden"
-        >
-          <img
-            src="assets/images/clients/client-2.png"
-            class="img-fluid"
-            alt=""
-          />
-        </div>
-
-        <div
-          class="col-xl-3 col-md-4 client-logo d-flex align-items-center justify-content-center overflow-hidden"
-        >
-          <img
-            src="assets/images/clients/client-3.png"
-            class="img-fluid"
-            alt=""
-          />
-        </div>
-
-        <div
-          class="col-xl-3 col-md-4 client-logo d-flex align-items-center justify-content-center overflow-hidden"
-        >
-          <img
-            src="assets/images/clients/client-4.png"
-            class="img-fluid"
-            alt=""
-          />
-        </div>
-
-        <div
-          class="col-xl-3 col-md-4 client-logo d-flex align-items-center justify-content-center overflow-hidden"
-        >
-          <img
-            src="assets/images/clients/client-5.png"
-            class="img-fluid"
-            alt=""
-          />
-        </div>
-
-        <div
-          class="col-xl-3 col-md-4 client-logo d-flex align-items-center justify-content-center overflow-hidden"
-        >
-          <img
-            src="assets/images/clients/client-6.png"
-            class="img-fluid"
-            alt=""
-          />
-        </div>
-
-        <div
-          class="col-xl-3 col-md-4 client-logo d-flex align-items-center justify-content-center overflow-hidden"
-        >
-          <img
-            src="assets/images/clients/client-7.png"
-            class="img-fluid"
-            alt=""
-          />
-        </div>
-
-        <div
-          class="col-xl-3 col-md-4 client-logo d-flex align-items-center justify-content-center overflow-hidden"
-        >
-          <img
-            src="assets/images/clients/client-8.png"
-            class="img-fluid"
-            alt=""
-          />
+          <a [href]="sponsor.Link" target="_blank">
+            <figure class="overflow-hidden p-5 m-0">
+              <img
+                [src]="sponsor.Image ? sponsor.Image : defaultSponsorImage"
+                class="w-100 h-100 object-fit-contain"
+                alt=""
+              />
+            </figure>
+          </a>
         </div>
       </div>
     </div>

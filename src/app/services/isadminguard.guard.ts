@@ -1,6 +1,6 @@
 import { inject } from '@angular/core';
 import { CanActivateFn, Router } from '@angular/router';
-import { UserService } from './services/user.service';
+import { UserService } from './user.service';
 import { catchError, map, of, tap } from 'rxjs';
 
 export const isAdminGuard: CanActivateFn = (route, state) => {

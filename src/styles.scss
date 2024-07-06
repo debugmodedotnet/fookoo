@@ -457,12 +457,6 @@ textarea {
             rgb(26, 1, 103) 100%);
 }
 
-.purple-bg-gradient {
-    background: linear-gradient(318deg,
-            rgb(85, 37, 186) 0%,
-            rgb(26, 1, 103) 100%);
-}
-
 .blue-bg-gradient {
     background: linear-gradient(318deg,
             rgb(37, 106, 186) 0%,
@@ -481,22 +475,38 @@ textarea {
             rgb(103, 1, 74) 100%);
 }
 
-.yellow-bg-gradient {
-    background: linear-gradient(318deg,
-            rgb(186, 166, 37) 0%,
-            rgb(103, 96, 1) 100%);
-}
-
-.red-bg-gradient {
-    background: linear-gradient(318deg,
-            rgb(186, 37, 37) 0%,
-            rgb(103, 1, 1) 100%);
-}
-
 .indigo-bg-gradient {
     background: linear-gradient(318deg,
             rgb(114, 37, 186) 0%,
             rgb(103, 1, 91) 100%);
+}
+
+// .purple-bg-gradient {
+//     background: linear-gradient(318deg, #7e11f3 0%, #af67fc 100%);
+// }
+
+// .orange-bg-gradient {
+//     background: linear-gradient(318deg, #fc4a1a 0%, #f7b733 100%);
+// }
+
+// .blue-bg-gradient {
+//     background: linear-gradient(318deg, #396afc 0%, #2948ff 100%);
+// }
+
+// .green-bg-gradient {
+//     background: linear-gradient(318deg, #00b09b 0%, #96c93d 100%);
+// }
+
+// .pink-bg-gradient {
+//     background: linear-gradient(318deg, #f95671 0%, #f576ab 100%);
+// }
+
+.yellow-bg-gradient {
+    background: linear-gradient(318deg, #f7971e 0%, #ffd200 100%);
+}
+
+.red-bg-gradient {
+    background: linear-gradient(318deg, #b11712 0%, #ff373d 100%);
 }
 
 /*-------------------------------------------------------------------------

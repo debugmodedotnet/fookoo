@@ -38,12 +38,10 @@ export class CreateInstructorComponent {
   uploadPhoto(event: any) {
     const file = event.target.files[0];
     if (file) {
-      // Create a unique file path
       const filePath = `instructorPhotos/${new Date().getTime()}_${file.name}`;
       const fileRef = this.storage.ref(filePath);
       const task = this.storage.upload(filePath, file);
 
-      // Get notified when the download URL is available
       task.snapshotChanges().pipe(
         finalize(() => {
           fileRef.getDownloadURL().subscribe(url => {
@@ -60,6 +58,9 @@ export class CreateInstructorComponent {
       this.firestore.collection('instructor').add(instructorData)
         .then(docRef => {
           console.log(`Document written with ID: ${docRef.id}`);
+          // Reset the form and clear the photo URL
+          this.instructorForm.reset();
+          this.photoURL = null;
         })
         .catch(error => {
           console.error("Error adding document: ", error);

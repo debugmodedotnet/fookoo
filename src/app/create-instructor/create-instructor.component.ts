@@ -31,7 +31,7 @@ export class CreateInstructorComponent {
       Skill3: new FormControl('', Validators.required),
       Skill4: new FormControl('', Validators.required),
       Bio: new FormControl('', Validators.maxLength(800)),
-      ImageUpload: new FormControl('', Validators.required),
+      InstructorImg: new FormControl('', Validators.required),
     });
   }
 
@@ -54,7 +54,7 @@ export class CreateInstructorComponent {
 
   onSubmit() {
     if (this.instructorForm.valid) {
-      const instructorData = { ...this.instructorForm.value, ImageUpload: this.photoURL };
+      const instructorData = { ...this.instructorForm.value, InstructorImg: this.photoURL };
       this.firestore.collection('instructor').add(instructorData)
         .then(docRef => {
           console.log(`Document written with ID: ${docRef.id}`);

@@ -3,16 +3,6 @@
 /*-------------------------------------------------------------------------
 # Hero Section
 -------------------------------------------------------------------------*/
-// .hero-section figure img {
-//     -webkit-mask-image: url('../../assets/images/ng-india/hero-img-blob-1.svg');
-//     mask-image: url('../../assets/images/ng-india/hero-img-blob-1.svg');
-//     -webkit-mask-size: contain;
-//     mask-size: contain;
-//     -webkit-mask-repeat: no-repeat;
-//     mask-repeat: no-repeat;
-//     -webkit-mask-position-x: right;
-// }
-
 .text-bottom-line::after {
     background-image: url('../../assets/images/home/bottom-text-line.svg');
     background-repeat: no-repeat;
@@ -88,56 +78,71 @@
     }
 }
 
-.tracker-section .inner {
-    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
-    height: 150px;
-    transition: transform .5s;
-    border: 2px solid $nmc-primary;
-
-    &:hover {
-        transform: scale(1.03);
-    }
-}
-
 /*-------------------------------------------------------------------------
 # Previous Edition Section
 -------------------------------------------------------------------------*/
 .previous-editions {
     border-top: 2px solid $nmc-primary;
 
-    // .ng-tracker {
-    //     box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
-    //     height: 120px;
-    //     width: 120px;
-    //     transition: transform .5s;
-    //     border: 2px solid $nmc-primary;
+    .ng-tracker {
+        box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+        height: 120px;
+        width: 120px;
 
-    //     &:hover {
-    //         transform: scale(.5);
-    //     }
-    // }
+        transition: transform .5s;
+        border: 2px solid $nmc-primary;
+
+        &:hover {
+            transform: scale(1.03);
+        }
+    }
 
     .yt-video {
         border: 2px solid $nmc-primary;
         box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+        height: 390px;
     }
 }
 
 /*-------------------------------------------------------------------------
 # Speakers Section
 -------------------------------------------------------------------------*/
-.speakers {
-    width: 80px;
-    height: 80px;
-    overflow: hidden;
-    margin: 0 10px 10px 0;
-}
+.speakers figure {
+    height: 200px;
+    position: relative;
+    border: 1px solid $nmc-primary;;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 
-.speakers img {
-    height: 100%;
-    transform: translateX(-50%);
-    margin-left: 50%;
-    transition: all ease-in-out 0.3s;
+    .social {
+        position: absolute;
+        inset: 0;
+        background-color: rgba(0, 0, 0, 0.6);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 2;
+        padding-bottom: 20px;
+        transition: 0.3s;
+        visibility: hidden;
+        opacity: 0;
+    }
+
+    .social a {
+        transition: 0.3s;
+        color: $nmc-white;
+        font-size: 20px;
+        margin: 0 8px;
+    }
+
+    .social a:hover {
+        color: $nmc-primary;
+    }
+
+    &:hover .social {
+        padding-bottom: 0;
+        visibility: visible;
+        opacity: 1;
+    }
 }
 
 /*-------------------------------------------------------------------------
@@ -153,21 +158,17 @@
         border-right: 1px solid color-mix(in srgb, $nmc-dark-grey, transparent 85%);
         border-bottom: 1px solid color-mix(in srgb, $nmc-dark-grey, transparent 85%);
 
-        img {
-            padding: 50px;
-            max-width: 80%;
-            transition: 0.3s;
-        }
+        figure {
+            //width: 230px;
+            height: 200px;
 
-        &:hover img {
-            transform: scale(1.1);
-        }
-    }
-}
+            img {
+                transition: 0.3s;
+            }
 
-@media (max-width: 640px) {
-    .sponsors .client-logo img {
-        padding: 30px;
-        max-width: 50%;
+            &:hover img {
+                transform: scale(1.1);
+            }
+        }
     }
 }

@@ -1,21 +1,28 @@
-import { Component, OnInit, inject } from '@angular/core';
-import { Router, RouterModule } from '@angular/router';
+import { Component, OnDestroy, OnInit, inject } from '@angular/core';
+import { ResolveEnd, Router, RouterModule } from '@angular/router';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { IHeader } from '../modules/header';
 import { UserService } from '../services/user.service';
+import { Subscription } from 'rxjs';
+import { NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [RouterModule],
+  imports: [
+    NgIf,
+    RouterModule
+  ],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss',
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent implements OnInit, OnDestroy {
 
   user: any;
   profileImg = 'assets/images/home/user.png';
   header?: IHeader;
+  isQuizPageActive?: boolean;
+  $routerSubscription = new Subscription();
 
   private firestore = inject(AngularFirestore);
   private userService = inject(UserService);
@@ -44,6 +51,17 @@ export class HeaderComponent implements OnInit {
     });
 
     this.getHeaderDetails();
+
+    this.$routerSubscription = this.router.events.subscribe((routerData) => {
+      if (routerData instanceof ResolveEnd) {
+        if (routerData.url.includes('admin/quiz')) {
+          this.isQuizPageActive = true;
+        }
+        else {
+          this.isQuizPageActive = false;
+        }
+      }
+    });
   }
 
   getHeaderDetails() {
@@ -60,5 +78,9 @@ export class HeaderComponent implements OnInit {
       console.log('User logged out');
       this.router.navigate(['/home']);
     });
+  }
+
+  ngOnDestroy(): void {
+    this.$routerSubscription.unsubscribe();
   }
 }

@@ -2,7 +2,7 @@ import { Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { AdminComponent } from './admin/admin.component';
 import { userAuthGuard } from './services/user-auth.guard';
-import { isAdminGuard } from './isadminguard.guard';
+import { isAdminGuard } from './services/isadminguard.guard';
 
 export const routes: Routes = [
   { path: 'home', component: HomeComponent },

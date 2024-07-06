@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Observable } from 'rxjs';
-import { Job } from './job';
+import { Job } from '../modules/job';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +10,7 @@ export class JobService {
 
   private jobsCollection = this.firestore.collection<Job>('jobs');
 
-  constructor(private firestore: AngularFirestore) {}
+  constructor(private firestore: AngularFirestore) { }
 
   // Method to add a job
   addJob(job: Job): Promise<any> {

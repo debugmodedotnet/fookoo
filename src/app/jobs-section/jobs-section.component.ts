@@ -1,21 +1,21 @@
 import { CUSTOM_ELEMENTS_SCHEMA, Component, OnInit } from '@angular/core';
-import { JobService } from '../job.service';
-import { Job } from '../job';
+import { JobService } from '../services/job.service';
+import { Job } from '../modules/job';
 import { Observable, of } from 'rxjs';
 import { CommonModule, NgFor } from '@angular/common';
 
 @Component({
   selector: 'app-jobs-section',
   standalone: true,
-  imports: [CommonModule,NgFor],
+  imports: [CommonModule, NgFor],
   templateUrl: './jobs-section.component.html',
   styleUrl: './jobs-section.component.scss',
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
-export class JobsSectionComponent implements OnInit{
+export class JobsSectionComponent implements OnInit {
   jobs$: Observable<Job[]> = of([]);
 
-  constructor(private jobService: JobService) {}
+  constructor(private jobService: JobService) { }
 
   ngOnInit() {
     this.jobs$ = this.jobService.getJobs(); // Assign observable to jobs$

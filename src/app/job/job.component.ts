@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators, FormBuilder } from '@angular/forms';
-import { UserService } from '../services/user.service';
-import { NgIf } from '@angular/common';
 import { JobService } from '../job.service';
 
 @Component({
@@ -9,9 +7,9 @@ import { JobService } from '../job.service';
   standalone: true,
   imports: [ReactiveFormsModule],
   templateUrl: './job.component.html',
-  styleUrl: './job.component.scss'
+  styleUrls: ['./job.component.scss']
 })
-export class JobComponent implements OnInit{
+export class JobComponent implements OnInit {
   jobForm: FormGroup;
 
   constructor(private fb: FormBuilder, private jobService: JobService) {
@@ -24,7 +22,12 @@ export class JobComponent implements OnInit{
       Remote: [false],
       CompanyGithub: ['', [Validators.pattern('https://github.com/.+')]],
       CompanyTwitter: ['', [Validators.pattern('https://twitter.com/.+')]],
-      CompanyLinkedIn: ['', [Validators.pattern('https://www.linkedin.com/.+')]]
+      CompanyLinkedIn: ['', [Validators.pattern('https://www.linkedin.com/.+')]],
+      Position: ['', Validators.required],
+      Email: ['', [Validators.required, Validators.email]],
+      PhoneNo: ['', [Validators.required, Validators.pattern('^[0-9]+$')]],
+      Tag: [''],
+      ImageUrl: ['', [Validators.required, Validators.pattern('https?://.+')]]
     });
   }
 

@@ -15,10 +15,13 @@
 
 .trainers {
     figure {
-        margin: 0 80px;
-        border-radius: 50%;
-        overflow: hidden;
-        position: relative;
+        //margin: 0 80px;
+        //border-radius: 50%;
+       // overflow: hidden;
+        //position: relative;
+
+        height: 200px;
+        width: 200px;
         box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 
         .social {

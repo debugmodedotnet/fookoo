@@ -122,7 +122,7 @@
         >
           <figure class="rounded-3 overflow-hidden">
             <img
-              [src]="speaker.Image"
+              [src]="speaker.Image ? speaker.Image : defaultSpeakerImage"
               alt="Brenden Legros"
               class="object-fit-cover w-100 h-100"
             />
@@ -152,7 +152,7 @@
           <a [href]="sponsor.Link" target="_blank">
             <figure class="overflow-hidden p-5 m-0">
               <img
-                [src]="sponsor.Image"
+                [src]="sponsor.Image ? sponsor.Image : defaultSponsorImage"
                 class="w-100 h-100 object-fit-contain"
                 alt=""
               />
@@ -163,6 +163,4 @@
     </div>
   </div>
 </section>
-
-<!-- <button (click)="addSpeaker(event.id)">Add Speaker</button> -->
 }

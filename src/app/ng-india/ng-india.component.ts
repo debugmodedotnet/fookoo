@@ -18,6 +18,9 @@ export class NgIndiaComponent implements OnInit {
   ngIndia?: INgIndia;
   prevEvents?: IPrevEvents[] = [];
 
+  defaultSpeakerImage = 'assets/images/home/defaultInstructor.jpg';
+  defaultSponsorImage = 'assets/images/home/noImage.png';
+
   private firestore = inject(AngularFirestore);
 
   ngOnInit(): void {
@@ -72,24 +75,4 @@ export class NgIndiaComponent implements OnInit {
       event.SponsorsCollection = sponsors;
     });
   }
-
-  // addSpeaker(eventId: string | undefined) {
-  //   if (!eventId) {
-  //     console.error('Event ID is undefined');
-  //     return;
-  //   }
-
-  //   const newSpeaker: ISpeaker = {
-  //     Image: '',    
-  //     LinkedIn: '',   
-  //     Twitter: '',
-  //     Github: ''
-  //   };
-
-  //   this.firestore.collection('ng-india').doc('previous-events').collection('events-list').doc(eventId).collection('speakers').add(newSpeaker).then(() => {
-  //     console.log('New speaker added');
-  //   }).catch(error => {
-  //     console.error('Error adding speaker: ', error);
-  //   });
-  // }
 }

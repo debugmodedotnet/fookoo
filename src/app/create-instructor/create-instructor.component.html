@@ -102,7 +102,7 @@
           </div>
 
           <div class="col-6 mt-4">
-            <label for="Skill1" class="form-label required">Skill 3</label>
+            <label for="Skill3" class="form-label required">Skill 3</label>
             <select id="Skill3" class="form-control h-3 rounded-3" formControlName="Skill3" required>
               <option value="" disabled>Select a skill</option>
               <option value="Angular">Angular</option>
@@ -135,13 +135,13 @@
           </div>
 
           <div class="col-12 mt-4">
-            <label for="imageUpload" class="form-label">Upload Image</label>
+            <label for="InstructorImg" class="form-label">Upload Image</label>
             <input
               type="file"
-              id="imageUpload"
+              id="InstructorImg"
               class="form-control h-3 rounded-3"
               (change)="uploadPhoto($event)"
-              formControlName="ImageUpload"
+              formControlName="InstructorImg"
             />
           </div>
 

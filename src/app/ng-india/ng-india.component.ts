@@ -3,7 +3,7 @@ import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { YouTubePlayer } from '@angular/youtube-player';
 import { INgIndia } from '../modules/ng-india';
 import { map } from 'rxjs';
-import { IPrevEvents } from '../modules/prev-events';
+import { IPrevEvents, ISpeaker, ISponsor } from '../modules/prev-events';
 import { DatePipe, NgFor } from '@angular/common';
 
 @Component({
@@ -43,7 +43,53 @@ export class NgIndiaComponent implements OnInit {
     ).subscribe(prevEvents => {
       console.log(prevEvents);
       this.prevEvents = prevEvents;
+      this.prevEvents.forEach(event => this.loadSpeakersForEvent(event));
+      this.prevEvents.forEach(event => this.loadSponsorsForEvent(event));
+
     });
   }
 
+  loadSpeakersForEvent(event: IPrevEvents) {
+    this.firestore.collection('ng-india').doc('previous-events').collection('events-list').doc(event.id).collection('speakers').snapshotChanges().pipe(
+      map(actions => actions.map(a => {
+        const data = a.payload.doc.data() as ISpeaker;
+        const id = a.payload.doc.id;
+        return { id, ...data };
+      }))
+    ).subscribe(speakers => {
+      event.SpeakersCollection = speakers;
+    });
+  }
+
+  loadSponsorsForEvent(event: IPrevEvents) {
+    this.firestore.collection('ng-india').doc('previous-events').collection('events-list').doc(event.id).collection('sponsors').snapshotChanges().pipe(
+      map(actions => actions.map(a => {
+        const data = a.payload.doc.data() as ISponsor;
+        const id = a.payload.doc.id;
+        return { id, ...data };
+      }))
+    ).subscribe(sponsors => {
+      event.SponsorsCollection = sponsors;
+    });
+  }
+
+  // addSpeaker(eventId: string | undefined) {
+  //   if (!eventId) {
+  //     console.error('Event ID is undefined');
+  //     return;
+  //   }
+
+  //   const newSpeaker: ISpeaker = {
+  //     Image: '',    
+  //     LinkedIn: '',   
+  //     Twitter: '',
+  //     Github: ''
+  //   };
+
+  //   this.firestore.collection('ng-india').doc('previous-events').collection('events-list').doc(eventId).collection('speakers').add(newSpeaker).then(() => {
+  //     console.log('New speaker added');
+  //   }).catch(error => {
+  //     console.error('Error adding speaker: ', error);
+  //   });
+  // }
 }

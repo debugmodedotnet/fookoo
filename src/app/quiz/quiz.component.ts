@@ -3,7 +3,6 @@ import { QuizService } from '../services/quiz.service';
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { IQuizQuestion } from '../modules/quiz-question';
 import { NgFor, NgIf } from '@angular/common';
-import { UserService } from '../services/user.service';
 import { first } from 'rxjs';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 
@@ -20,7 +19,7 @@ import { AngularFireAuth } from '@angular/fire/compat/auth';
 })
 export class QuizComponent implements OnInit {
 
-  readonly TOTAL_ALLOWED_ATTEMPTS = 3;
+  readonly TOTAL_ALLOWED_ATTEMPTS = 10;
   quizForm: FormGroup;
   totalAttemptedQuestions: number = 0;
   question?: IQuizQuestion;
@@ -68,9 +67,20 @@ export class QuizComponent implements OnInit {
   }
 
   getQuestion(questionIdsToExclude: string[]): void {
-    this.quizService.getQuestion(questionIdsToExclude).pipe(first()).subscribe(res => {
-      console.log(">>>>> ", res, questionIdsToExclude)
-      this.question = res[0];
+    this.quizService.getQuestion(questionIdsToExclude).pipe(first()).subscribe(firstRes => {
+      console.log(">>>>> first res", firstRes, questionIdsToExclude)
+      if (firstRes.length) {
+        this.question = firstRes[0];
+      }
+      else {
+        this.quizService.getQuestion(questionIdsToExclude, 1).pipe(first()).subscribe(secondRes => {
+          console.log(">>>>> second res", firstRes, questionIdsToExclude)
+          if (!secondRes.length) {
+            throw new Error("Didn't find question");
+          }
+          this.question = secondRes[0];
+        });
+      }
     });
   }
 

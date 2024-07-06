@@ -5,6 +5,7 @@ import { IQuizQuestion } from '../modules/quiz-question';
 import { NgFor, NgIf } from '@angular/common';
 import { first } from 'rxjs';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { shuffleItems } from '../utils/common-util';
 
 @Component({
   selector: 'app-quiz',
@@ -71,6 +72,7 @@ export class QuizComponent implements OnInit {
       console.log(">>>>> first res", firstRes, questionIdsToExclude)
       if (firstRes.length) {
         this.question = firstRes[0];
+        shuffleItems(this.question.options);
       }
       else {
         this.quizService.getQuestion(questionIdsToExclude, 1).pipe(first()).subscribe(secondRes => {
@@ -79,6 +81,7 @@ export class QuizComponent implements OnInit {
             throw new Error("Didn't find question");
           }
           this.question = secondRes[0];
+          shuffleItems(this.question.options);
         });
       }
     });

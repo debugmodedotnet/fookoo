@@ -1,4 +1,4 @@
-swiper-slide {
+/* swiper-slide {
     width: 320px !important;
     height: 445px !important;
     box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
@@ -13,5 +13,50 @@ swiper-slide {
     h5 {
         border-top: 1px solid #fff;
     }
+} */
 
-}
+swiper-slide {
+    width: 320px !important;
+    height: 445px !important;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+    margin: 40px;
+  
+    figure {
+      box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+      height: 100px;
+      width: 100px;
+    }
+  
+    h5 {
+      border-top: 1px solid #fff;
+    }
+  }
+  
+  .purple-bg-gradient {
+    background: linear-gradient(to right, #7e11f3 0%, #af67fc 100%);
+  }
+  
+  .orange-bg-gradient {
+    background: linear-gradient(to right, #fc4a1a 0%, #f7b733 100%);
+  }
+  
+  .blue-bg-gradient {
+    background: linear-gradient(to right, #396afc 0%, #2948ff 100%);
+  }
+  
+  .green-bg-gradient {
+    background: linear-gradient(to right, #00b09b 0%, #96c93d 100%);
+  }
+  
+  .pink-bg-gradient {
+    background: linear-gradient(to right, #f95671 0%, #f576ab 100%);
+  }
+  
+  .yellow-bg-gradient {
+    background: linear-gradient(to right, #f7971e 0%, #ffd200 100%);
+  }
+  
+  .red-bg-gradient {
+    background: linear-gradient(to right, #b11712 0%, #ff373d 100%);
+  }
+  

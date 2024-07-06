@@ -1,0 +1,21 @@
+<div class="container-boxed">
+    <h5>Total Attempted Questions: {{totalAttemptedQuestions}} / {{TOTAL_ALLOWED_ATTEMPTS}}</h5>
+    <h5 *ngIf="!(totalAttemptedQuestions < TOTAL_ALLOWED_ATTEMPTS)">You have finished quiz</h5>
+    <form *ngIf="totalAttemptedQuestions < TOTAL_ALLOWED_ATTEMPTS" [formGroup]="quizForm">
+        <div class="row form-group mt-3">
+            {{question?.question}}
+            <label *ngFor="let option of question?.options">
+                <input type="radio" [value]="option.id" formControlName="optionId">
+                <span>{{option.value}}</span>
+            </label>
+        </div>
+        <div class="row my-3">
+            <div class="col-4">
+                <button *ngIf="totalAttemptedQuestions < TOTAL_ALLOWED_ATTEMPTS" type="submit"
+                    class="nmc-btn-primary ms-4" (click)="handleNextClick()">{{ totalAttemptedQuestions ===
+                    (TOTAL_ALLOWED_ATTEMPTS -1) ? "Submit" :
+                    "Next" }}</button>
+            </div>
+        </div>
+    </form>
+</div>

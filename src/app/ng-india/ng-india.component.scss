@@ -1,6 +1,5 @@
 @use "../styles/variables" as *;
 
-
 // Hero Section
 .text-bottom-line::after {
     background-image: url('../../assets/images/home/bottom-text-line.svg');
@@ -11,6 +10,18 @@
     margin: 0 auto;
     position: absolute;
     width: 191px;
+}
+
+.event-summary .ng-tracker {
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+    height: 180px;
+    width: 180px;
+    transition: transform .5s;
+    border: 2px solid $nmc-primary;
+
+    &:hover {
+        transform: scale(1.03);
+    }
 }
 
 // .play-btn {
@@ -77,97 +88,41 @@
 //     }
 // }
 
-/*-------------------------------------------------------------------------
-# Previous Edition Section
--------------------------------------------------------------------------*/
-// .previous-editions {
-//     border-top: 2px solid $nmc-primary;
+.previous-editions-wrapper {
+    border-top: 2px solid $nmc-primary;
 
-//     .ng-tracker {
-//         box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
-//         height: 120px;
-//         width: 120px;
+    .nav-tabs {
+        display: block;
+        border-bottom: 0;
 
-//         transition: transform .5s;
-//         border: 2px solid $nmc-primary;
 
-//         &:hover {
-//             transform: scale(1.03);
-//         }
-//     }
+        li {
+            display: inline-block;
+            margin-bottom: 0;
 
-//     .yt-video {
-//         border: 2px solid $nmc-primary;
-//         box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-//         height: 390px;
-//     }
-// }
+            a {
+                border: none;
+                border-radius: 50px;
+                font-weight: 600;
+                background-color: $nmc-dark-grey;
+                color: $nmc-white;
+                padding: 10px 50px;
 
-/*-------------------------------------------------------------------------
-# Speakers Section
--------------------------------------------------------------------------*/
-// .speakers figure {
-//     height: 200px;
-//     position: relative;
-//     border: 1px solid $nmc-primary;;
-//     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+                &.active,
+                &:hover {
+                    background-color: $nmc-primary;
+                    color: $nmc-white !important;
+                }
+            }
+        }
+    }
 
-//     .social {
-//         position: absolute;
-//         inset: 0;
-//         background-color: rgba(0, 0, 0, 0.6);
-//         display: flex;
-//         justify-content: center;
-//         align-items: center;
-//         z-index: 2;
-//         padding-bottom: 20px;
-//         transition: 0.3s;
-//         visibility: hidden;
-//         opacity: 0;
-//     }
+    .tab-pane {
+        opacity: 0;
+        transition: opacity 0.3s ease-in-out;
+    }
 
-//     .social a {
-//         transition: 0.3s;
-//         color: $nmc-white;
-//         font-size: 20px;
-//         margin: 0 8px;
-//     }
-
-//     .social a:hover {
-//         color: $nmc-primary;
-//     }
-
-//     &:hover .social {
-//         padding-bottom: 0;
-//         visibility: visible;
-//         opacity: 1;
-//     }
-// }
-
-/*-------------------------------------------------------------------------
-# Sponsors Section
--------------------------------------------------------------------------*/
-// .sponsors-section {
-//     .clients-wrap {
-//         border-top: 1px solid color-mix(in srgb, $nmc-dark-grey, transparent 85%);
-//         border-left: 1px solid color-mix(in srgb, $nmc-dark-grey, transparent 85%);
-//     }
-
-//     .client-logo {
-//         border-right: 1px solid color-mix(in srgb, $nmc-dark-grey, transparent 85%);
-//         border-bottom: 1px solid color-mix(in srgb, $nmc-dark-grey, transparent 85%);
-
-//         figure {
-//             //width: 230px;
-//             height: 200px;
-
-//             img {
-//                 transition: 0.3s;
-//             }
-
-//             &:hover img {
-//                 transform: scale(1.1);
-//             }
-//         }
-//     }
-// }
+    .tab-pane.active.show {
+        opacity: 1;
+    }
+}

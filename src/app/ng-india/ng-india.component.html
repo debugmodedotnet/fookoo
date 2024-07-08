@@ -1,33 +1,183 @@
 <section class="hero-section py-5">
-  <div
-    class="container-boxed position-relative d-flex align-items-center justify-content-between gap-5"
-  >
-    <div class="w-45">
-      <h1 class="font-big nmc-primary font-family-poppins">
-        {{ ngIndia?.Title }}
-      </h1>
+  <div class="container-boxed">
+    <div
+      class="position-relative d-flex align-items-center justify-content-between gap-5"
+    >
+      <div class="w-45">
+        <h1 class="font-big nmc-primary font-family-poppins">
+          {{ ngIndia?.Title }}
+        </h1>
 
-      <h2 class="font-48 nmc-dark-grey mt-4">
-        India's Largest
-        <span class="text-bottom-line position-relative">Angular</span>
-        Conference
-      </h2>
+        <h2 class="font-48 nmc-dark-grey mt-4">
+          India's Largest
+          <span class="text-bottom-line position-relative">Angular</span>
+          Conference
+        </h2>
 
-      <p class="font-18 nmc-dark-grey mt-4">
-        {{ ngIndia?.Info }}
-      </p>
+        <p class="font-18 nmc-dark-grey mt-4">
+          {{ ngIndia?.Info }}
+        </p>
+      </div>
+
+      <figure class="w-55 h-auto overflow-hidden rounded-3">
+        <img
+          class="img-fluid m-auto object-fit-fill"
+          loading="lazy"
+          [src]="ngIndia?.Banner"
+        />
+      </figure>
     </div>
 
-    <figure class="w-55 h-auto overflow-hidden rounded-3">
-      <img
-        class="img-fluid m-auto object-fit-fill"
-        loading="lazy"
-        [src]="ngIndia?.Banner"
-      />
-    </figure>
+    <div class="event-summary row justify-content-center gap-4 my-5">
+      <div class="col-3 rounded-circle ng-tracker d-flex">
+        <h3 class="nmc-dark-grey font-16 text-center m-auto">
+          <span class="font-30 d-block font-family-poppins">6 </span>
+          Editions
+        </h3>
+      </div>
+
+      <div class="col-3 rounded-circle ng-tracker d-flex">
+        <h3 class="nmc-dark-grey font-16 text-center m-auto">
+          <span class="font-30 d-block font-family-poppins">1000 </span>
+          Talks
+        </h3>
+      </div>
+
+      <div class="col-3 rounded-circle ng-tracker d-flex">
+        <h3 class="nmc-dark-grey font-16 text-center m-auto">
+          <span class="font-30 d-block font-family-poppins"> 500</span>
+          Speakers
+        </h3>
+      </div>
+
+      <div class="col-3 rounded-circle ng-tracker d-flex">
+        <h3 class="nmc-dark-grey font-16 text-center m-auto">
+          <span class="font-30 d-block font-family-poppins">10,000+ </span>
+          Delegates
+        </h3>
+      </div>
+
+      <div class="col-3 rounded-circle ng-tracker d-flex">
+        <h3 class="nmc-dark-grey font-16 text-center m-auto">
+          <span class="font-30 d-block font-family-poppins">150 </span>
+          Sponsors
+        </h3>
+      </div>
+
+      <div class="col-3 rounded-circle ng-tracker d-flex">
+        <h3 class="nmc-dark-grey font-16 text-center m-auto">
+          <span class="font-30 d-block font-family-poppins">1Lakh </span>
+          Reach
+        </h3>
+      </div>
+    </div>
+
+    <div class="event-summary row justify-content-center gap-4 my-5">
+      <div class="col-3 rounded-3 ng-tracker d-flex">
+        <h3 class="nmc-dark-grey font-16 text-center m-auto">
+          <span class="font-30 d-block font-family-poppins">6 </span>
+          Editions
+        </h3>
+      </div>
+
+      <div class="col-3 rounded-3 ng-tracker d-flex">
+        <h3 class="nmc-dark-grey font-16 text-center m-auto">
+          <span class="font-30 d-block font-family-poppins">1000 </span>
+          Talks
+        </h3>
+      </div>
+
+      <div class="col-3 rounded-3 ng-tracker d-flex">
+        <h3 class="nmc-dark-grey font-16 text-center m-auto">
+          <span class="font-30 d-block font-family-poppins"> 500</span>
+          Speakers
+        </h3>
+      </div>
+
+      <div class="col-3 rounded-3 ng-tracker d-flex">
+        <h3 class="nmc-dark-grey font-16 text-center m-auto">
+          <span class="font-30 d-block font-family-poppins">10,000+ </span>
+          Delegates
+        </h3>
+      </div>
+
+      <div class="col-3 rounded-3 ng-tracker d-flex">
+        <h3 class="nmc-dark-grey font-16 text-center m-auto">
+          <span class="font-30 d-block font-family-poppins">150 </span>
+          Sponsors
+        </h3>
+      </div>
+
+      <div class="col-3 rounded-3 ng-tracker d-flex">
+        <h3 class="nmc-dark-grey font-16 text-center m-auto">
+          <span class="font-30 d-block font-family-poppins">1Lakh </span>
+          Reach
+        </h3>
+      </div>
+    </div>
   </div>
 </section>
 
-@for(event of prevEvents; track event.Title){
-<app-ng-india-edition [event]="event"></app-ng-india-edition>
-}
+<section class="previous-editions-wrapper pt-5">
+  <h2
+    class="section-title font-36 nmc-dark-grey font-family-poppins text-center mb-5"
+  >
+    Previous Events
+  </h2>
+
+  <ul
+    class="nav nav-tabs m-auto gap-3 d-flex align-items-center justify-content-center"
+    role="tablist"
+  >
+    <li class="nav-item" *ngFor="let event of prevEvents; let i = index">
+      <a
+        class="nav-link"
+        [class.active]="i === 0"
+        (click)="selectTab(i)"
+        [attr.aria-selected]="i === selectedTab"
+        role="tab"
+        data-bs-toggle="tab"
+        [href]="'#tab' + i"
+      >
+        {{ event.Year }}
+      </a>
+    </li>
+
+    <li class="nav-item">
+      <a
+        class="nav-link"
+        [class.active]="selectedTab === 'all'"
+        (click)="selectTab('all')"
+        [attr.aria-selected]="selectedTab === 'all'"
+        role="tab"
+        data-bs-toggle="tab"
+        href="#all"
+      >
+        All
+      </a>
+    </li>
+  </ul>
+
+  <div class="tab-content">
+    <div
+      *ngFor="let event of prevEvents; let i = index"
+      class="tab-pane fade"
+      [class.show]="i === selectedTab"
+      [class.active]="i === selectedTab"
+      id="tab{{ i }}"
+    >
+      <app-ng-india-edition [event]="event"></app-ng-india-edition>
+    </div>
+
+    <div
+      class="tab-pane fade"
+      [class.show]="selectedTab === 'all'"
+      [class.active]="selectedTab === 'all'"
+      id="all"
+    >
+      @for(event of prevEvents; track event.Title){
+      <app-ng-india-edition [event]="event"></app-ng-india-edition>
+      }
+    </div>
+  </div>
+</section>

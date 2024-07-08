@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import {DatePipe, NgFor} from '@angular/common';
+import { DatePipe, NgFor } from '@angular/common';
 import { IPrevEvents } from '../modules/prev-events';
 import { YouTubePlayer } from '@angular/youtube-player';
 
@@ -12,8 +12,8 @@ import { YouTubePlayer } from '@angular/youtube-player';
 })
 export class NgIndiaEditionComponent {
 
-  @Input() event? : IPrevEvents ;
+  @Input() event?: IPrevEvents;
   defaultSpeakerImage = 'assets/images/home/defaultInstructor.jpg';
   defaultSponsorImage = 'assets/images/home/noImage.png';
-  
+
 }

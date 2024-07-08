@@ -12,6 +12,7 @@ export interface IPrevEvents {
     Talks: number;
     Title: string;
     VideosLink: string;
+    Year: number;
     SpeakersCollection?: ISpeaker[];
     SponsorsCollection?: ISponsor[];
 }
@@ -20,7 +21,7 @@ export interface ISpeaker {
     Image: string;
     LinkedIn: string;
     Twitter: string;
-    Github:string;
+    Github: string;
 }
 
 export interface ISponsor {

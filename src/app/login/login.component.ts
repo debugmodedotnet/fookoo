@@ -30,7 +30,8 @@ export class LoginComponent {
   async onSubmit() {
     console.log(this.loginForm?.value);
     let user = await this.userservice.login(this.loginForm?.value.email, this.loginForm?.value.password);
-    this.router.navigate(['/home'], { queryParams: { username: 'JohnDoe' } });
+    console.log(user);
+    this.router.navigate(['/home']);
     console.log('Login Successful', user);
   }
 

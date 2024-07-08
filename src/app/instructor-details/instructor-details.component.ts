@@ -1,12 +1,16 @@
 // src/app/components/instructor-detail/instructor-detail.component.ts
 import { Component, Input, OnInit, inject } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { IInstructor } from '../../models/instructor';
+import { IInstructor } from '../modules/instructors';
+import { NgFor, NgIf } from '@angular/common';
+
 
 @Component({
-  selector: 'app-instructor-detail',
-  templateUrl: './instructor-detail.component.html',
-  styleUrls: ['./instructor-detail.component.scss']
+  selector: 'app-instructor-details',
+  standalone: true,
+  imports: [NgIf, NgFor],
+  templateUrl: './instructor-details.component.html',
+  styleUrls: ['./instructor-details.component.scss']
 })
 export class InstructorDetailsComponent implements OnInit {
 

@@ -1,6 +1,7 @@
-// src/app/models/instructor.ts
+import { ICourse } from "./course";
 export interface IInstructor {
-  InstructorImg: string;
+  id?: string;
+  InstructorImg?: string | null;
   Name: string;
   Position: string;
   Bio: string;
@@ -12,7 +13,7 @@ export interface IInstructor {
   Twitter?: string;
   LinkedIn?: string;
   YouTube?: string;
-  GitHub?: string;
+  Github?: string;
   Skill1?: string;
   Skill2?: string;
   Skill3?: string;

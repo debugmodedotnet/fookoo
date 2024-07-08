@@ -54,12 +54,12 @@ export class SignupComponent {
     const userDetails = {
       name: this.signupForm?.value.name,
       age: 30,
-      city: 'New York'
+      city: ""
     };
 
     this.signupservice.signUp(email, password, userDetails).then(() => {
       // Handle successful signup, such as navigating to a different page
-      this.router.navigate(['/profile']);
+      this.router.navigate(['/login']);
     }).catch(error => {
       // Handle signup error
       console.error(error);

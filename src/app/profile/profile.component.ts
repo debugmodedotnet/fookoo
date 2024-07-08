@@ -62,7 +62,7 @@ export class ProfileComponent {
   }
 
   async loadJob() {
-    const { JobComponent } = await import('../job/job.component');
+    const { JobComponent } = await import('./job/job.component');
     if (this.profileView) {
       this.profileView.clear();
       this.profileView.createComponent(JobComponent);

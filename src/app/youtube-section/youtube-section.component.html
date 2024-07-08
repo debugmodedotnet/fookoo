@@ -1,5 +1,5 @@
 <section class="py-5">
-  <div class="container-boxed">
+  <div class="container-boxed p-0">
     <div class="d-flex align-items-center justify-content-between">
       <h2
         class="section-title left font-36 nmc-dark-grey font-family-poppins pb-3"
@@ -9,16 +9,18 @@
 
       <button class="nmc-btn-primary ms-4">Subscribe</button>
     </div>
+  </div>
 
-    <div class="row gx-5 youtube-videos">
-      @for (item of youtubeVideos; track $index) {
-      <div class="col-6 p-3">
-        <div class="inner overflow-hidden rounded-3">
-          <youtube-player [videoId]="item.Link" [height]="250"></youtube-player>
-        </div>
-      </div>
-      }
+  <div
+    class="d-flex youtube-videos flex-wrap gap-3 align-items-center justify-content-center"
+  >
+    @for (item of youtubeVideos; track $index) {
+
+    <div class="inner overflow-hidden rounded-3">
+      <youtube-player [videoId]="item.Link" class="yt-player"></youtube-player>
     </div>
+
+    }
   </div>
 
   <!-- <swiper-container

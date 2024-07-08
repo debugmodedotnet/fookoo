@@ -3,6 +3,7 @@ import { HomeComponent } from './home/home.component';
 import { AdminComponent } from './admin/admin.component';
 import { userAuthGuard } from './services/user-auth.guard';
 import { isAdminGuard } from './services/isadminguard.guard';
+import { InstructorDetailsComponent } from './components/instructor-details/instructor-details.component';
 
 
 export const routes: Routes = [
@@ -13,7 +14,7 @@ export const routes: Routes = [
   { path: 'profile', loadComponent: () => import('./profile/profile.component').then(m => m.ProfileComponent), canActivate: [userAuthGuard] },
   { path: 'events', loadComponent: () => import('./event/event.component').then(m => m.EventComponent) },
   { path: 'event/:id', loadComponent: () => import('./event-details/event-details.component').then(m => m.EventDetailsComponent) },
-  { path: 'instructor/:id', loadComponent: () => import('./instructor-details/instructor-details.component').then(m => m.InstructorDetailsComponent) },
+  { path: 'instructor/:id', component: InstructorDetailsComponent },
   {
     path: 'admin',
     component: AdminComponent,

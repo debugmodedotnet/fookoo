@@ -1,40 +1,31 @@
-import { Component, OnInit } from '@angular/core';
-import { CommonModule, NgFor, NgIf } from '@angular/common';
-import { ActivatedRoute } from '@angular/router';
+// src/app/components/instructor-detail/instructor-detail.component.ts
+import { Component, Input, OnInit, inject } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { IInstructor } from '../modules/instructors';
+import { IInstructor } from '../../models/instructor';
 
 @Component({
-  selector: 'app-instructor-details',
-  standalone: true,
-  imports: [CommonModule, NgIf, NgFor],
-  templateUrl: './instructor-details.component.html',
-  styleUrls: ['./instructor-details.component.scss']
+  selector: 'app-instructor-detail',
+  templateUrl: './instructor-detail.component.html',
+  styleUrls: ['./instructor-detail.component.scss']
 })
 export class InstructorDetailsComponent implements OnInit {
-  instructor: IInstructor | null = null;
 
-  constructor(private route: ActivatedRoute, private firestore: AngularFirestore) { }
+  instructor?: IInstructor;
+
+  @Input() instructorId: string | null = null;
+
+  private firestore = inject(AngularFirestore);
 
   ngOnInit(): void {
-    this.getInstructorDetails();
+    if (this.instructorId) {
+      this.getInstructorDetails(this.instructorId);
+    }
   }
 
-  getInstructorDetails() {
-    const instructorId = this.route.snapshot.paramMap.get('id');
-    if (instructorId) {
-      this.firestore.collection('instructors').doc(instructorId).valueChanges().subscribe({
-        next: (data) => {
-          if (data) {
-            this.instructor = data as IInstructor;
-          } else {
-            this.instructor = null;
-          }
-        },
-        error: (err) => {
-          console.error('Error fetching instructor details:', err);
-        }
-      });
-    }
+  getInstructorDetails(instructorId: string) {
+    this.firestore.collection('instructors').doc(instructorId).valueChanges().subscribe(instructor => {
+      console.log("instructor:", instructor);
+      this.instructor = instructor as IInstructor;
+    });
   }
 }

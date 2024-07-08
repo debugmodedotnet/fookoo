@@ -1,19 +1,27 @@
-import { ICourse } from "./course";
-
+// src/app/models/instructor.ts
 export interface IInstructor {
-  id?: string;
+  InstructorImg: string;
   Name: string;
+  Position: string;
   Bio: string;
   Email: string;
-  InstructorImg?: string | null;  // Choose to make InstructorImg optional and allow null
-  Position: string;
-  Skill1: string;
-  Skill2: string;
-  Skill3: string;
-  Skill4: string;
-  LinkedIn: string;
-  Twitter: string;
-  Github: string;
-  courses?: ICourse[];  // Include courses if it's needed
+  Phone: string;
+  Address: string;
+  Facebook?: string;
+  Instagram?: string;
+  Twitter?: string;
+  LinkedIn?: string;
+  YouTube?: string;
+  GitHub?: string;
+  Skill1?: string;
+  Skill2?: string;
+  Skill3?: string;
+  Skill4?: string;
+  Courses: Array<{
+    Title: string;
+    Duration: string;
+    Level: string;
+    Rating: number;
+    Price: string;
+  }>;
 }
-

@@ -1,90 +1,64 @@
-<div class="bg-custom-peach p-5">
+<div *ngIf="instructor" class="bg-custom-peach p-5">
   <div class="profile-header d-flex flex-column align-items-center text-center">
-    <img src="assets/images/home/user.jpg" alt="Instructor Image" class="rounded-circle mb-3" style="width: 150px;">
-    <div>
-      <h1 class="text-black m-0">Jenny Wilson</h1>
-      <p class="text-black m-0">Front-end Developer, Designer, Teacher</p>
-      <div class="social-links mt-2">
-        <a href="https://www.facebook.com" target="_blank" class="text-black mx-2"><i class="bi bi-facebook"></i></a>
-        <a href="https://www.instagram.com" target="_blank" class="text-black mx-2"><i class="bi bi-instagram"></i></a>
-        <a href="https://x.com" target="_blank" class="text-black mx-2"><i class="bi bi-twitter-x"></i></a>
-        <a href="https://www.linkedin.com" target="_blank" class="text-black mx-2"><i class="bi bi-linkedin"></i></a>
-        <a href="https://www.youtube.com" target="_blank" class="text-black mx-2"><i class="bi bi-youtube"></i></a>
-      </div>
-      <div class="skills mt-3 d-flex flex-wrap justify-content-center">
-        <div class="skill-box border-orange m-1 p-2">Angular</div>
-        <div class="skill-box border-orange m-1 p-2">Azure</div>
-        <div class="skill-box border-orange m-1 p-2">Dotnet</div>
-        <div class="skill-box border-orange m-1 p-2">GenAI</div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="container bg-white mt-4">
-  <div class="row">
-    <div class="col-md-4">
-      <div class="bg-white p-4 mb-4 border-orange">
-        <h3 class="text-dark-orange ">About me</h3>
-        <p class="text-black">I am an Innovation designer focusing on UX/UI based in Berlin. As a creative resident at Figma, I explored the city of the future and how new technologies like AI, voice control, and augmented reality will change our interfaces.</p>
-        <a href="#" class="text-orange">Read more</a>
-      </div>
-      <div class="bg-white p-4 border-orange">
-        <h3 class="text-black">Contact</h3>
-        <p class="text-black">Feel free to reach out to me through the following contact details:</p>
-        <p class="text-black"><strong>Email:</strong> jenny.wilson.gmail.com</p>
-        <p class="text-black"><strong>Phone:</strong> +123 456 7890</p>
-        <p class="text-black"><strong>Address:</strong> Berlin, Germany</p>
-      </div>
-    </div>
-    <div class="col-md-8">
-      <h3 class="text-black">My Courses</h3>
-      <div class="course-card bg-light-orange p-4 mb-4 border-orange position-relative">
-        <h4 class="text-black">Create a Website with WordPress</h4>
-        <p class="text-dark-orange">3h 30m | Beginner | ⭐ 4.5 (1,345)</p>
-        <span class="badge badge-custom-paid position-absolute top-0 end-0 m-">Paid</span>
-      </div>
-      <div class="course-card bg-light-orange p-4 mb-4 border-orange position-relative">
-        <h4 class="text-black">JavaScript Fundamentals</h4>
-        <p class="text-dark-orange">1h 20m | Advanced | ⭐ 4 (1,000)</p>
-        <span class="badge badge-custom-paid position-absolute top-0 end-0 m-2">Paid</span>
-      </div>
-      <div class="course-card bg-light-orange p-4 mb-4 border-orange position-relative">
-        <h4 class="text-black">AngularJS Forms Using Bootstrap</h4>
-        <p class="text-dark-orange">2h 30m | Beginner | ⭐ 4.5 (900)</p>
-        <span class="badge badge-custom-paid position-absolute top-0 end-0 m-2">Paid</span>
-      </div>
-      <div class="course-card bg-light-orange p-4 mb-4 border-orange position-relative">
-        <h4 class="text-black">Get started with Python from base</h4>
-        <p class="text-dark-orange">2h 00m | Intermediate | ⭐ 4.5 (1,900)</p>
-        <span class="badge badge-custom-paid position-absolute top-0 end-0 m-2">Paid</span>
-      </div>
-      <div class="course-card bg-light-orange p-4 mb-4 border-orange position-relative">
-        <h4 class="text-black">The Ultimate Advanced Laravel</h4>
-        <p class="text-dark-orange">3h 00m | Advanced | ⭐ 4.5 (1,900)</p>
-        <span class="badge badge-custom-paid position-absolute top-0 end-0 m-2">Paid</span>
-      </div>
-    </div>
-  </div>
-</div>
-<!--<div *ngIf="instructor" class="bg-custom-peach p-5">
-  <div class="profile-header d-flex flex-column align-items-center text-center">
-    <img [src]="instructor.InstructorImg || 'assets/images/home/user.jpg'" alt="Instructor Image" class="rounded-circle mb-3" style="width: 150px;">
+    <img
+      [src]="instructor.InstructorImg || 'assets/images/home/user.jpg'"
+      alt="Instructor Image"
+      class="rounded-circle mb-3"
+      style="width: 150px"
+    />
     <div>
       <h1 class="text-black m-0">{{ instructor.Name }}</h1>
       <p class="text-black m-0">{{ instructor.Position }}</p>
       <div class="social-links mt-2">
-        <a *ngIf="instructor.Facebook" [href]="instructor.Facebook" target="_blank" class="text-black mx-2"><i class="bi bi-facebook"></i></a>
-        <a *ngIf="instructor.Instagram" [href]="instructor.Instagram" target="_blank" class="text-black mx-2"><i class="bi bi-instagram"></i></a>
-        <a *ngIf="instructor.Twitter" [href]="instructor.Twitter" target="_blank" class="text-black mx-2"><i class="bi bi-twitter-x"></i></a>
-        <a *ngIf="instructor.LinkedIn" [href]="instructor.LinkedIn" target="_blank" class="text-black mx-2"><i class="bi bi-linkedin"></i></a>
-        <a *ngIf="instructor.YouTube" [href]="instructor.YouTube" target="_blank" class="text-black mx-2"><i class="bi bi-youtube"></i></a>
+        <a
+          *ngIf="instructor.Facebook"
+          [href]="instructor.Facebook"
+          target="_blank"
+          class="text-black mx-2"
+          ><i class="bi bi-facebook"></i
+        ></a>
+        <a
+          *ngIf="instructor.Instagram"
+          [href]="instructor.Instagram"
+          target="_blank"
+          class="text-black mx-2"
+          ><i class="bi bi-instagram"></i
+        ></a>
+        <a
+          *ngIf="instructor.Twitter"
+          [href]="instructor.Twitter"
+          target="_blank"
+          class="text-black mx-2"
+          ><i class="bi bi-twitter"></i
+        ></a>
+        <a
+          *ngIf="instructor.LinkedIn"
+          [href]="instructor.LinkedIn"
+          target="_blank"
+          class="text-black mx-2"
+          ><i class="bi bi-linkedin"></i
+        ></a>
+        <a
+          *ngIf="instructor.YouTube"
+          [href]="instructor.YouTube"
+          target="_blank"
+          class="text-black mx-2"
+          ><i class="bi bi-youtube"></i
+        ></a>
       </div>
       <div class="skills mt-3 d-flex flex-wrap justify-content-center">
-        <div *ngIf="instructor.Skill1" class="skill-box border-orange m-1 p-2">{{ instructor.Skill1 }}</div>
-        <div *ngIf="instructor.Skill2" class="skill-box border-orange m-1 p-2">{{ instructor.Skill2 }}</div>
-        <div *ngIf="instructor.Skill3" class="skill-box border-orange m-1 p-2">{{ instructor.Skill3 }}</div>
-        <div *ngIf="instructor.Skill4" class="skill-box border-orange m-1 p-2">{{ instructor.Skill4 }}</div>
+        <div *ngIf="instructor.Skill1" class="skill-box border-orange m-1 p-2">
+          {{ instructor.Skill1 }}
+        </div>
+        <div *ngIf="instructor.Skill2" class="skill-box border-orange m-1 p-2">
+          {{ instructor.Skill2 }}
+        </div>
+        <div *ngIf="instructor.Skill3" class="skill-box border-orange m-1 p-2">
+          {{ instructor.Skill3 }}
+        </div>
+        <div *ngIf="instructor.Skill4" class="skill-box border-orange m-1 p-2">
+          {{ instructor.Skill4 }}
+        </div>
       </div>
     </div>
   </div>
@@ -94,23 +68,71 @@
   <div class="row">
     <div class="col-md-4">
       <div class="bg-white p-4 mb-4 border-orange">
-        <h3 class="text-dark-orange ">About me</h3>
+        <h3 class="text-dark-orange">About me</h3>
         <p class="text-black">{{ instructor.Bio }}</p>
         <a href="#" class="text-orange">Read more</a>
       </div>
       <div class="bg-white p-4 border-orange">
         <h3 class="text-black">Contact</h3>
-        <p class="text-black">Feel free to reach out to me through the following contact details:</p>
-        <p class="text-black"><strong>Email:</strong> {{ instructor.Email }}</p>
+        <p class="text-black">
+          Feel free to reach out to me through the following contact details:
+        </p>
+        <p class="text-black">
+          <strong>Email:</strong> {{ instructor.Email }}
+        </p>
+        <p class="text-black">
+          <strong>Phone:</strong> {{ instructor.Phone }}
+        </p>
+        <p class="text-black">
+          <strong>Address:</strong> {{ instructor.Address }}
+        </p>
+        <div class="mt-3">
+          <a
+            *ngIf="instructor.Twitter"
+            [href]="instructor.Twitter"
+            target="_blank"
+            class="text-black mx-2"
+            ><i class="bi bi-twitter"></i
+          ></a>
+          <a
+            *ngIf="instructor.Email"
+            [href]="'mailto:' + instructor.Email"
+            target="_blank"
+            class="text-black mx-2"
+            ><i class="bi bi-envelope"></i
+          ></a>
+          <a
+            *ngIf="instructor.LinkedIn"
+            [href]="instructor.LinkedIn"
+            target="_blank"
+            class="text-black mx-2"
+            ><i class="bi bi-linkedin"></i
+          ></a>
+          <a
+            *ngIf="instructor.Github"
+            [href]="instructor.Github"
+            target="_blank"
+            class="text-black mx-2"
+            ><i class="bi bi-github"></i
+          ></a>
+        </div>
       </div>
     </div>
     <div class="col-md-8">
       <h3 class="text-black">My Courses</h3>
-      <div *ngFor="let course of instructor.courses" class="course-card bg-light-orange p-4 mb-4 border-orange position-relative">
+      <div
+        *ngFor="let course of instructor.Courses"
+        class="course-card bg-light-orange p-4 mb-4 border-orange position-relative"
+      >
         <h4 class="text-black">{{ course.Title }}</h4>
-        <p class="text-dark-orange">{{ course.Duration }} | {{ course.Level }} | ⭐ {{ course.Rating }}</p>
-        <span class="badge badge-custom-paid position-absolute top-0 end-0 m-2">{{ course.Price }}</span>
+        <p class="text-dark-orange">
+          {{ course.Duration }} | {{ course.Level }} | ⭐ {{ course.Rating }}
+        </p>
+        <span
+          class="badge badge-custom-paid position-absolute top-0 end-0 m-2"
+          >{{ course.Price }}</span
+        >
       </div>
     </div>
   </div>
-</div>-->
+</div>

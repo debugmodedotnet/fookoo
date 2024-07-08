@@ -29,6 +29,11 @@
         Or, sign in with your email
       </div>
 
+      <!-- Display custom error message for new users -->
+      <div *ngIf="errorMessage" class="nmc-alert mt-1">
+        <p class="font-14 m-0">{{ errorMessage }}</p>
+      </div>
+
       <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
         <div class="form-group mt-3">
           <label for="email" class="pb-2 font-14">Email</label>

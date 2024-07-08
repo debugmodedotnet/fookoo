@@ -19,7 +19,8 @@ import { NgIf } from '@angular/common';
 export class HeaderComponent implements OnInit, OnDestroy {
 
   user: any;
-  profileImg = 'assets/images/home/user.png';
+  profileImg = 'assets/images/home/defaultUser.jpg';
+
   header?: IHeader;
   isQuizPageActive?: boolean;
   $routerSubscription = new Subscription();
@@ -41,12 +42,12 @@ export class HeaderComponent implements OnInit, OnDestroy {
         console.log(this.profileImg);
 
         if (this.profileImg == null) {
-          this.profileImg = 'assets/images/home/user.png';
+          this.profileImg = 'assets/images/home/defaultUser.jpg';
         }
       } else {
         console.log('No user is logged in');
         this.user = null;
-        this.profileImg = 'assets/images/home/user.png';
+        this.profileImg = 'assets/images/home/defaultUser.jpg';
       }
     });
 

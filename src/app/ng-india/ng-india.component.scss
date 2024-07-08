@@ -1,8 +1,7 @@
 @use "../styles/variables" as *;
 
-/*-------------------------------------------------------------------------
-# Hero Section
--------------------------------------------------------------------------*/
+
+// Hero Section
 .text-bottom-line::after {
     background-image: url('../../assets/images/home/bottom-text-line.svg');
     background-repeat: no-repeat;
@@ -14,161 +13,161 @@
     width: 191px;
 }
 
-.play-btn {
-    margin-top: 20px;
-    width: 94px;
-    height: 94px;
-    background: radial-gradient($nmc-primary 50%, color-mix(in srgb, $nmc-primary, transparent 75%) 52%);
-    border-radius: 50%;
-    display: block;
+// .play-btn {
+//     margin-top: 20px;
+//     width: 94px;
+//     height: 94px;
+//     background: radial-gradient($nmc-primary 50%, color-mix(in srgb, $nmc-primary, transparent 75%) 52%);
+//     border-radius: 50%;
+//     display: block;
 
-    &::before,
-    &::after {
-        content: "";
-        position: absolute;
-    }
+//     &::before,
+//     &::after {
+//         content: "";
+//         position: absolute;
+//     }
 
-    &::before {
-        width: 120px;
-        height: 120px;
-        animation-delay: 0s;
-        animation: pulsate-btn 2s;
-        animation-direction: forwards;
-        animation-iteration-count: infinite;
-        animation-timing-function: steps;
-        opacity: 1;
-        border-radius: 50%;
-        border: 5px solid color-mix(in srgb, $nmc-primary, transparent 30%);
-        top: -15%;
-        left: -15%;
-        background: rgba(198, 16, 0, 0);
-    }
+//     &::before {
+//         width: 120px;
+//         height: 120px;
+//         animation-delay: 0s;
+//         animation: pulsate-btn 2s;
+//         animation-direction: forwards;
+//         animation-iteration-count: infinite;
+//         animation-timing-function: steps;
+//         opacity: 1;
+//         border-radius: 50%;
+//         border: 5px solid color-mix(in srgb, $nmc-primary, transparent 30%);
+//         top: -15%;
+//         left: -15%;
+//         background: rgba(198, 16, 0, 0);
+//     }
 
-    &::after {
-        left: 50%;
-        top: 50%;
-        transform: translateX(-40%) translateY(-50%);
-        width: 0;
-        height: 0;
-        border-top: 10px solid transparent;
-        border-bottom: 10px solid transparent;
-        border-left: 15px solid #fff;
-        z-index: 100;
-        transition: all 400ms cubic-bezier(0.55, 0.055, 0.675, 0.19);
-    }
+//     &::after {
+//         left: 50%;
+//         top: 50%;
+//         transform: translateX(-40%) translateY(-50%);
+//         width: 0;
+//         height: 0;
+//         border-top: 10px solid transparent;
+//         border-bottom: 10px solid transparent;
+//         border-left: 15px solid #fff;
+//         z-index: 100;
+//         transition: all 400ms cubic-bezier(0.55, 0.055, 0.675, 0.19);
+//     }
 
-    &:hover::before {
-        left: 50%;
-        top: 50%;
-        transform: translateX(-40%) translateY(-50%);
-        width: 0;
-        height: 0;
-        border: none;
-        border-top: 10px solid transparent;
-        border-bottom: 10px solid transparent;
-        border-left: 15px solid #fff;
-        z-index: 200;
-        animation: none;
-        border-radius: 0;
-    }
+//     &:hover::before {
+//         left: 50%;
+//         top: 50%;
+//         transform: translateX(-40%) translateY(-50%);
+//         width: 0;
+//         height: 0;
+//         border: none;
+//         border-top: 10px solid transparent;
+//         border-bottom: 10px solid transparent;
+//         border-left: 15px solid #fff;
+//         z-index: 200;
+//         animation: none;
+//         border-radius: 0;
+//     }
 
-    &:hover::after {
-        border-left: 15px solid $nmc-primary;
-        transform: scale(20);
-    }
-}
+//     &:hover::after {
+//         border-left: 15px solid $nmc-primary;
+//         transform: scale(20);
+//     }
+// }
 
 /*-------------------------------------------------------------------------
 # Previous Edition Section
 -------------------------------------------------------------------------*/
-.previous-editions {
-    border-top: 2px solid $nmc-primary;
+// .previous-editions {
+//     border-top: 2px solid $nmc-primary;
 
-    .ng-tracker {
-        box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
-        height: 120px;
-        width: 120px;
+//     .ng-tracker {
+//         box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+//         height: 120px;
+//         width: 120px;
 
-        transition: transform .5s;
-        border: 2px solid $nmc-primary;
+//         transition: transform .5s;
+//         border: 2px solid $nmc-primary;
 
-        &:hover {
-            transform: scale(1.03);
-        }
-    }
+//         &:hover {
+//             transform: scale(1.03);
+//         }
+//     }
 
-    .yt-video {
-        border: 2px solid $nmc-primary;
-        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-        height: 390px;
-    }
-}
+//     .yt-video {
+//         border: 2px solid $nmc-primary;
+//         box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+//         height: 390px;
+//     }
+// }
 
 /*-------------------------------------------------------------------------
 # Speakers Section
 -------------------------------------------------------------------------*/
-.speakers figure {
-    height: 200px;
-    position: relative;
-    border: 1px solid $nmc-primary;;
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+// .speakers figure {
+//     height: 200px;
+//     position: relative;
+//     border: 1px solid $nmc-primary;;
+//     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 
-    .social {
-        position: absolute;
-        inset: 0;
-        background-color: rgba(0, 0, 0, 0.6);
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        z-index: 2;
-        padding-bottom: 20px;
-        transition: 0.3s;
-        visibility: hidden;
-        opacity: 0;
-    }
+//     .social {
+//         position: absolute;
+//         inset: 0;
+//         background-color: rgba(0, 0, 0, 0.6);
+//         display: flex;
+//         justify-content: center;
+//         align-items: center;
+//         z-index: 2;
+//         padding-bottom: 20px;
+//         transition: 0.3s;
+//         visibility: hidden;
+//         opacity: 0;
+//     }
 
-    .social a {
-        transition: 0.3s;
-        color: $nmc-white;
-        font-size: 20px;
-        margin: 0 8px;
-    }
+//     .social a {
+//         transition: 0.3s;
+//         color: $nmc-white;
+//         font-size: 20px;
+//         margin: 0 8px;
+//     }
 
-    .social a:hover {
-        color: $nmc-primary;
-    }
+//     .social a:hover {
+//         color: $nmc-primary;
+//     }
 
-    &:hover .social {
-        padding-bottom: 0;
-        visibility: visible;
-        opacity: 1;
-    }
-}
+//     &:hover .social {
+//         padding-bottom: 0;
+//         visibility: visible;
+//         opacity: 1;
+//     }
+// }
 
 /*-------------------------------------------------------------------------
 # Sponsors Section
 -------------------------------------------------------------------------*/
-.sponsors-section {
-    .clients-wrap {
-        border-top: 1px solid color-mix(in srgb, $nmc-dark-grey, transparent 85%);
-        border-left: 1px solid color-mix(in srgb, $nmc-dark-grey, transparent 85%);
-    }
+// .sponsors-section {
+//     .clients-wrap {
+//         border-top: 1px solid color-mix(in srgb, $nmc-dark-grey, transparent 85%);
+//         border-left: 1px solid color-mix(in srgb, $nmc-dark-grey, transparent 85%);
+//     }
 
-    .client-logo {
-        border-right: 1px solid color-mix(in srgb, $nmc-dark-grey, transparent 85%);
-        border-bottom: 1px solid color-mix(in srgb, $nmc-dark-grey, transparent 85%);
+//     .client-logo {
+//         border-right: 1px solid color-mix(in srgb, $nmc-dark-grey, transparent 85%);
+//         border-bottom: 1px solid color-mix(in srgb, $nmc-dark-grey, transparent 85%);
 
-        figure {
-            //width: 230px;
-            height: 200px;
+//         figure {
+//             //width: 230px;
+//             height: 200px;
 
-            img {
-                transition: 0.3s;
-            }
+//             img {
+//                 transition: 0.3s;
+//             }
 
-            &:hover img {
-                transform: scale(1.1);
-            }
-        }
-    }
-}
+//             &:hover img {
+//                 transform: scale(1.1);
+//             }
+//         }
+//     }
+// }

@@ -15,6 +15,7 @@ export class ProfileComponent {
   private userService = inject(UserService);
   private storage = inject(AngularFireStorage);
 
+  defaultImage = 'assets/images/home/defaultUser.jpg';
   user: any;
   currentTab: string = 'about';
 

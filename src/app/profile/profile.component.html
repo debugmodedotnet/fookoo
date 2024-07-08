@@ -7,7 +7,7 @@
         >
           <figure class="m-0 p-0 overflow-hidden rounded-3">
             <img
-              [src]="user?.photoURL"
+              [src]="user?.photoURL ? user?.photoURL : defaultImage"
               alt=""
               class="w-100 h-100 object-fit-cover m-auto"
             />
@@ -56,10 +56,11 @@
           </li>
 
           <li [class.active]="currentTab === 'job'" class="mt-3">
-            <a 
-              class="font-18 nmc-medium-grey cursor-pointer" 
+            <a
+              class="font-18 nmc-medium-grey cursor-pointer"
               (click)="loadJob()"
-              >Job</a>
+              >Job</a
+            >
           </li>
         </ul>
       </div>

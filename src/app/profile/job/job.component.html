@@ -1,0 +1,257 @@
+<h2 class="section-title left font-30 nmc-dark-grey font-family-poppins pb-3">
+  Create Job
+</h2>
+
+<div class="form-wrapper w-100">
+  <form [formGroup]="jobForm" (ngSubmit)="onSubmit()">
+    <div class="row form-group mt-3">
+      <div class="col-6">
+        <label for="companyName" class="form-label fw-semibold font-14 required"
+          >Company Name</label
+        >
+        <input
+          type="text"
+          id="companyName"
+          class="form-control h-3 rounded-3"
+          formControlName="CompanyName"
+          placeholder="Enter company name"
+        />
+      </div>
+
+      <div class="col-6">
+        <label for="companyUrl" class="form-label fw-semibold font-14 required"
+          >Company URL</label
+        >
+        <input
+          type="url"
+          id="companyUrl"
+          class="form-control h-3 rounded-3"
+          formControlName="CompanyUrl"
+          placeholder="Company URL"
+        />
+      </div>
+
+      <div class="col-12 mt-3">
+        <label for="jobDescription" class="form-label fw-semibold font-14 required"
+          >Job Description</label
+        >
+        <textarea
+          id="jobDescription"
+          class="form-control rounded-3"
+          formControlName="JobDescription"
+          placeholder="Describe the job"
+          rows="4"
+        ></textarea>
+      </div>
+
+      <div class="col-12 mt-3">
+        <label for="skillsRequired" class="form-label fw-semibold font-14 required"
+          >Skills Required</label
+        >
+        <textarea
+          id="skillsRequired"
+          class="form-control rounded-3"
+          formControlName="SkillsRequired"
+          placeholder="List the required skills"
+          rows="4"
+        ></textarea>
+      </div>
+
+      <div class="col-5 mt-3">
+        <label for="position" class="form-label fw-semibold font-14 required"
+          >Position</label
+        >
+
+        <select
+          id="position"
+          class="form-select form-control h-3 rounded-3"
+          formControlName="Position"
+        >
+          <option selected>Select position</option>
+          <option value="Intern">Intern</option>
+          <option value="Software Engineer">Software Engineer</option>
+          <option value="Social Media Manager">Social Media Manager</option>
+          <option value="Senior Software Engineer">
+            Senior Software Engineer
+          </option>
+          <option value="Software Developer">Software Developer</option>
+          <option value="Product Manager">Product Manager</option>
+          <option value="ML Engineer">ML Engineer</option>
+        </select>
+      </div>
+
+      <div class="col-5 mt-3">
+        <label for="location" class="form-label fw-semibold font-14 required"
+          >Location</label
+        >
+        <input
+          type="text"
+          id="location"
+          class="form-control h-3 rounded-3"
+          formControlName="Location"
+          placeholder="Location"
+        />
+      </div>
+
+      <div class="col-2 mt-3">
+        <label for="remote" class="form-label fw-semibold font-14">Remote</label>
+        <div class="form-check">
+          <input
+            type="checkbox"
+            id="remote"
+            class="form-check-input"
+            formControlName="Remote"
+          />
+          <label for="remote" class="form-check-label">Remote</label>
+        </div>
+      </div>
+
+      <div class="col-4 mt-3">
+        <label for="companyGithub" class="form-label fw-semibold font-14"
+          >Company Github</label
+        >
+        <input
+          type="url"
+          id="companyGithub"
+          class="form-control h-3 rounded-3"
+          formControlName="CompanyGithub"
+          placeholder="Company Github"
+        />
+
+        <div
+          *ngIf="
+            jobForm.get('CompanyGithub')?.invalid &&
+            (jobForm.get('CompanyGithub')?.dirty ||
+              jobForm.get('CompanyGithub')?.touched)
+          "
+          class="nmc-alert mt-1"
+        >
+          <p
+            *ngIf="jobForm.get('CompanyGithub')?.errors?.['pattern']"
+            class="font-14 m-0"
+          >
+            *Please enter a valid Github URL
+          </p>
+        </div>
+      </div>
+
+      <div class="col-4 mt-3">
+        <label for="companyTwitter" class="form-label fw-semibold font-14"
+          >Company Twitter</label
+        >
+        <input
+          type="url"
+          id="companyTwitter"
+          class="form-control h-3 rounded-3"
+          formControlName="CompanyTwitter"
+          placeholder="Company Twitter"
+        />
+
+        <div
+          *ngIf="
+            jobForm.get('CompanyTwitter')?.invalid &&
+            (jobForm.get('CompanyTwitter')?.dirty ||
+              jobForm.get('CompanyTwitter')?.touched)
+          "
+          class="nmc-alert mt-1"
+        >
+          <p
+            *ngIf="jobForm.get('CompanyTwitter')?.errors?.['pattern']"
+            class="font-14 m-0"
+          >
+            *Please enter a valid Twitter URL
+          </p>
+        </div>
+      </div>
+
+      <div class="col-4 mt-3">
+        <label for="companyLinkedIn" class="form-label fw-semibold font-14"
+          >Company LinkedIn</label
+        >
+        <input
+          type="url"
+          id="companyLinkedIn"
+          class="form-control h-3 rounded-3"
+          formControlName="CompanyLinkedIn"
+          placeholder="Company LinkedIn"
+        />
+
+        <div
+          *ngIf="
+            jobForm.get('CompanyLinkedIn')?.invalid &&
+            (jobForm.get('CompanyLinkedIn')?.dirty ||
+              jobForm.get('CompanyLinkedIn')?.touched)
+          "
+          class="nmc-alert mt-1"
+        >
+          <p
+            *ngIf="jobForm.get('CompanyLinkedIn')?.errors?.['pattern']"
+            class="font-14 m-0"
+          >
+            *Please enter a valid LinkedIn URL
+          </p>
+        </div>
+      </div>
+
+      <div class="col-6 mt-3">
+        <label for="email" class="form-label fw-semibold font-14 required"
+          >Email</label
+        >
+        <input
+          type="email"
+          id="email"
+          class="form-control h-3 rounded-3"
+          formControlName="Email"
+          placeholder="Email"
+        />
+      </div>
+
+      <div class="col-6 mt-3">
+        <label for="phoneNo" class="form-label fw-semibold font-14 required"
+          >Phone No</label
+        >
+        <input
+          type="text"
+          id="phoneNo"
+          class="form-control h-3 rounded-3"
+          formControlName="PhoneNo"
+          placeholder="Phone No"
+        />
+      </div>
+
+      <div class="col-6 mt-3">
+        <label for="tag" class="form-label fw-semibold font-14 required">Tag</label>
+        <input
+          type="text"
+          id="tag"
+          class="form-control h-3 rounded-3"
+          formControlName="Tag"
+          placeholder="Tag"
+        />
+      </div>
+
+      <div class="col-6 mt-3">
+        <label for="imageUrl" class="form-label fw-semibold font-14 required"
+          >Logo URL</label
+        >
+        <input
+          type="url"
+          id="imageUrl"
+          class="form-control h-3 rounded-3"
+          formControlName="ImageUrl"
+          placeholder="Logo URL"
+        />
+      </div>
+    </div>
+
+    <div class="mt-4 d-flex justify-content-end">
+      <button
+        type="submit"
+        class="nmc-btn-primary font-14 fw-semibold box-shadow-none py-2"
+        [disabled]="!jobForm.valid"
+      >
+        Create Job
+      </button>
+    </div>
+  </form>
+</div>

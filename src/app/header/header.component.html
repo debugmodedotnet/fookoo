@@ -30,15 +30,17 @@
       <div
         class="collapse navbar-collapse justify-content-end align-items-center"
       >
-        <ul class="navbar-nav mb-lg-0 gap-4 align-items-center">
-          <li class="nav-item">
+        <ul class="navbar-nav mb-lg-0 gap-3 align-items-center">
+          <!-- <li class="nav-item">
             <a class="nav-link font-16 nmc-medium-grey font-uppercase"
               >Take Test</a
             >
-          </li>
+          </li> -->
 
           <li class="nav-item">
-            <a class="nav-link font-16 nmc-medium-grey font-uppercase">Ted</a>
+            <a class="nav-link font-16 nmc-medium-grey font-uppercase"
+              >Youtube</a
+            >
           </li>
 
           <li class="nav-item">
@@ -55,7 +57,14 @@
           Start Learning</button
         >}@else{
 
-        <button *ngIf="!isQuizPageActive" class="nmc-btn-primary ms-4" type="submit" routerLink="/admin/quiz">Start Quiz</button>
+        <button
+          *ngIf="!isQuizPageActive"
+          class="nmc-btn-primary ms-4"
+          type="submit"
+          routerLink="/admin/quiz"
+        >
+          Start Quiz
+        </button>
         <div class="logged-in d-flex align-items-center ms-4">
           <figure class="user-img overflow-hidden m-0 p-0 rounded-5">
             <img

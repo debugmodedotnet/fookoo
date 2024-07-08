@@ -1,8 +1,6 @@
 @use "../styles/variables" as *;
 
 .previous-editions {
-    border-top: 2px solid $nmc-primary;
-
     .ng-tracker {
         box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
         height: 120px;
@@ -21,70 +19,68 @@
         box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
         height: 390px;
     }
-}
 
+    // Speakers Section
+    .speakers figure {
+        height: 200px;
+        position: relative;
+        border: 1px solid $nmc-primary;
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 
-// Speakers Section
-.speakers figure {
-    height: 200px;
-    position: relative;
-    border: 1px solid $nmc-primary;;
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+        .social {
+            position: absolute;
+            inset: 0;
+            background-color: rgba(0, 0, 0, 0.6);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 2;
+            padding-bottom: 20px;
+            transition: 0.3s;
+            visibility: hidden;
+            opacity: 0;
+        }
 
-    .social {
-        position: absolute;
-        inset: 0;
-        background-color: rgba(0, 0, 0, 0.6);
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        z-index: 2;
-        padding-bottom: 20px;
-        transition: 0.3s;
-        visibility: hidden;
-        opacity: 0;
+        .social a {
+            transition: 0.3s;
+            color: $nmc-white;
+            font-size: 20px;
+            margin: 0 8px;
+        }
+
+        .social a:hover {
+            color: $nmc-primary;
+        }
+
+        &:hover .social {
+            padding-bottom: 0;
+            visibility: visible;
+            opacity: 1;
+        }
     }
 
-    .social a {
-        transition: 0.3s;
-        color: $nmc-white;
-        font-size: 20px;
-        margin: 0 8px;
-    }
+    // Sponsors Section
+    .sponsors-section {
+        .clients-wrap {
+            border-top: 1px solid color-mix(in srgb, $nmc-dark-grey, transparent 85%);
+            border-left: 1px solid color-mix(in srgb, $nmc-dark-grey, transparent 85%);
+        }
 
-    .social a:hover {
-        color: $nmc-primary;
-    }
+        .client-logo {
+            border-right: 1px solid color-mix(in srgb, $nmc-dark-grey, transparent 85%);
+            border-bottom: 1px solid color-mix(in srgb, $nmc-dark-grey, transparent 85%);
 
-    &:hover .social {
-        padding-bottom: 0;
-        visibility: visible;
-        opacity: 1;
-    }
-}
+            figure {
+                //width: 230px;
+                height: 200px;
 
+                img {
+                    transition: 0.3s;
+                }
 
-// Sponsors Section
-.sponsors-section {
-    .clients-wrap {
-        border-top: 1px solid color-mix(in srgb, $nmc-dark-grey, transparent 85%);
-        border-left: 1px solid color-mix(in srgb, $nmc-dark-grey, transparent 85%);
-    }
-
-    .client-logo {
-        border-right: 1px solid color-mix(in srgb, $nmc-dark-grey, transparent 85%);
-        border-bottom: 1px solid color-mix(in srgb, $nmc-dark-grey, transparent 85%);
-
-        figure {
-            //width: 230px;
-            height: 200px;
-
-            img {
-                transition: 0.3s;
-            }
-
-            &:hover img {
-                transform: scale(1.1);
+                &:hover img {
+                    transform: scale(1.1);
+                }
             }
         }
     }

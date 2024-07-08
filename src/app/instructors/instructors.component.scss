@@ -10,6 +10,7 @@
     overflow: hidden;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 2;
+    line-clamp: 2;
     display: -webkit-box;
 }
 
@@ -17,7 +18,7 @@
     figure {
         //margin: 0 80px;
         //border-radius: 50%;
-       // overflow: hidden;
+        // overflow: hidden;
         //position: relative;
 
         height: 200px;

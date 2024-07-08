@@ -5,7 +5,7 @@ import { INgIndia } from '../modules/ng-india';
 import { map } from 'rxjs';
 import { IPrevEvents, ISpeaker, ISponsor } from '../modules/prev-events';
 import { DatePipe, NgFor } from '@angular/common';
-import {NgIndiaEditionComponent} from '../ng-india-edition/ng-india-edition.component';
+import { NgIndiaEditionComponent } from '../ng-india-edition/ng-india-edition.component';
 
 @Component({
   selector: 'app-ng-india',
@@ -18,6 +18,7 @@ export class NgIndiaComponent implements OnInit {
 
   ngIndia?: INgIndia;
   prevEvents?: IPrevEvents[] = [];
+  selectedTab: number | string = 0;
 
   defaultSpeakerImage = 'assets/images/home/defaultInstructor.jpg';
   defaultSponsorImage = 'assets/images/home/noImage.png';
@@ -25,9 +26,12 @@ export class NgIndiaComponent implements OnInit {
   private firestore = inject(AngularFirestore);
 
   ngOnInit(): void {
-
     this.getBannerDetails();
     this.getPrevEvents();
+  }
+
+  selectTab(index: number | string): void {
+    this.selectedTab = index;
   }
 
   getBannerDetails() {

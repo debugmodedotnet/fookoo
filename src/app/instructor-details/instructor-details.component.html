@@ -10,43 +10,36 @@
       <h1 class="text-black m-0">{{ instructor.Name }}</h1>
       <p class="text-black m-0">{{ instructor.Position }}</p>
       <div class="social-links mt-2">
-        @if (instructor.Facebook) {
+        
+        @if (instructor.Twitter){
           <a
-          *ngIf="instructor.Facebook"
-          [href]="instructor.Facebook"
-          target="_blank"
-          class="text-black mx-2"
-          ><i class="bi bi-facebook"></i
-        ></a>
-        }
-        <a
-          *ngIf="instructor.Instagram"
-          [href]="instructor.Instagram"
-          target="_blank"
-          class="text-black mx-2"
-          ><i class="bi bi-instagram"></i
-        ></a>
-        <a
           *ngIf="instructor.Twitter"
           [href]="instructor.Twitter"
           target="_blank"
           class="text-black mx-2"
           ><i class="bi bi-twitter"></i
         ></a>
-        <a
+        }
+
+        @if (instructor.LinkedIn) {
+            <a
           *ngIf="instructor.LinkedIn"
           [href]="instructor.LinkedIn"
           target="_blank"
           class="text-black mx-2"
           ><i class="bi bi-linkedin"></i
         ></a>
-        <a
-          *ngIf="instructor.YouTube"
-          [href]="instructor.YouTube"
+        }
+        
+        @if (instructor.Github){
+          <a
+          *ngIf="instructor.Github"
+          [href]="instructor.Github"
           target="_blank"
           class="text-black mx-2"
-          ><i class="bi bi-youtube"></i
+          ><i class="bi bi-github"></i
         ></a>
+        }
       </div>
       <div class="skills mt-3 d-flex flex-wrap justify-content-center">
         <div *ngIf="instructor.Skill1" class="skill-box border-orange m-1 p-2">
@@ -82,41 +75,48 @@
         <p class="text-black">
           <strong>Email:</strong> {{ instructor.Email }}
         </p>
-        <p class="text-black">
-          <strong>Phone:</strong> {{ instructor.Phone }}
-        </p>
-        <p class="text-black">
-          <strong>Address:</strong> {{ instructor.Address }}
-        </p>
         <div class="mt-3">
-          <a
+
+          @if (instructor.Twitter){
+            <a
             *ngIf="instructor.Twitter"
             [href]="instructor.Twitter"
             target="_blank"
             class="text-black mx-2"
             ><i class="bi bi-twitter"></i
           ></a>
-          <a
+          }
+
+          @if (instructor.Email){
+            <a
             *ngIf="instructor.Email"
             [href]="'mailto:' + instructor.Email"
             target="_blank"
             class="text-black mx-2"
             ><i class="bi bi-envelope"></i
           ></a>
-          <a
+          }
+          
+          @if (instructor.LinkedIn) {
+            <a
             *ngIf="instructor.LinkedIn"
             [href]="instructor.LinkedIn"
             target="_blank"
             class="text-black mx-2"
             ><i class="bi bi-linkedin"></i
           ></a>
-          <a
+          }
+          
+          @if (instructor.Github){
+            <a
             *ngIf="instructor.Github"
             [href]="instructor.Github"
             target="_blank"
             class="text-black mx-2"
             ><i class="bi bi-github"></i
           ></a>
+          }
+          
         </div>
       </div>
     </div>

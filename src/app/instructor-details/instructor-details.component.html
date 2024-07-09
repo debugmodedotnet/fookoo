@@ -10,36 +10,29 @@
       <h1 class="text-black m-0">{{ instructor.Name }}</h1>
       <p class="text-black m-0">{{ instructor.Position }}</p>
       <div class="social-links mt-2">
-        
-        @if (instructor.Twitter){
-          <a
+        <a
           *ngIf="instructor.Twitter"
           [href]="instructor.Twitter"
           target="_blank"
           class="text-black mx-2"
           ><i class="bi bi-twitter"></i
         ></a>
-        }
 
-        @if (instructor.LinkedIn) {
-            <a
+        <a
           *ngIf="instructor.LinkedIn"
           [href]="instructor.LinkedIn"
           target="_blank"
           class="text-black mx-2"
           ><i class="bi bi-linkedin"></i
         ></a>
-        }
-        
-        @if (instructor.Github){
-          <a
+
+        <a
           *ngIf="instructor.Github"
           [href]="instructor.Github"
           target="_blank"
           class="text-black mx-2"
           ><i class="bi bi-github"></i
         ></a>
-        }
       </div>
       <div class="skills mt-3 d-flex flex-wrap justify-content-center">
         <div *ngIf="instructor.Skill1" class="skill-box border-orange m-1 p-2">
@@ -76,47 +69,37 @@
           <strong>Email:</strong> {{ instructor.Email }}
         </p>
         <div class="mt-3">
-
-          @if (instructor.Twitter){
-            <a
+          <a
             *ngIf="instructor.Twitter"
             [href]="instructor.Twitter"
             target="_blank"
             class="text-black mx-2"
             ><i class="bi bi-twitter"></i
           ></a>
-          }
 
-          @if (instructor.Email){
-            <a
+          <a
             *ngIf="instructor.Email"
             [href]="'mailto:' + instructor.Email"
             target="_blank"
             class="text-black mx-2"
             ><i class="bi bi-envelope"></i
           ></a>
-          }
-          
-          @if (instructor.LinkedIn) {
-            <a
+
+          <a
             *ngIf="instructor.LinkedIn"
             [href]="instructor.LinkedIn"
             target="_blank"
             class="text-black mx-2"
             ><i class="bi bi-linkedin"></i
           ></a>
-          }
-          
-          @if (instructor.Github){
-            <a
+
+          <a
             *ngIf="instructor.Github"
             [href]="instructor.Github"
             target="_blank"
             class="text-black mx-2"
             ><i class="bi bi-github"></i
           ></a>
-          }
-          
         </div>
       </div>
     </div>

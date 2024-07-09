@@ -1,4 +1,3 @@
-// job.service.ts
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Observable } from 'rxjs';
@@ -8,29 +7,30 @@ import { Job } from '../modules/job';
   providedIn: 'root'
 })
 export class JobService {
+  constructor(private firestore: AngularFirestore) {}
 
-  constructor(private firestore: AngularFirestore) { }
-
+  // Fetch jobs with the document ID included
   getJobs(): Observable<Job[]> {
-    return this.firestore.collection<Job>('jobs').valueChanges();
+    return this.firestore.collection<Job>('jobs').valueChanges({ idField: 'id' });
   }
 
-  getJobById(jobId: string): Observable<Job | undefined> {
-    return this.firestore.collection<Job>('jobs').doc(jobId).valueChanges();
+  getJobById(id: string): Observable<Job | undefined> {
+    return this.firestore.collection<Job>('jobs').doc(id).valueChanges();
   }
 
   addJob(job: Job): Promise<void> {
     const id = this.firestore.createId();
-    return this.firestore.collection('jobs').doc(id).set(job);
+    return this.firestore.collection('jobs').doc(id).set({ ...job, id });
   }
 
-  updateJob(jobId: string, job: Job): Promise<void> {
-    return this.firestore.collection('jobs').doc(jobId).update(job);
+  updateJob(id: string, job: Job): Promise<void> {
+    return this.firestore.collection('jobs').doc(id).update(job);
   }
 
-  deleteJob(jobId: string): Promise<void> {
-    return this.firestore.collection('jobs').doc(jobId).delete();
+  deleteJob(id: string): Promise<void> {
+    return this.firestore.collection('jobs').doc(id).delete();
   }
 }
+
 
 

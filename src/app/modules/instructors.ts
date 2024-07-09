@@ -1,4 +1,6 @@
-import { ICourse } from "./course";
+// src/app/modules/instructors.ts
+import { ICourse } from './course';
+
 export interface IInstructor {
   id?: string;
   InstructorImg?: string | null;
@@ -14,11 +16,5 @@ export interface IInstructor {
   Skill2?: string;
   Skill3?: string;
   Skill4?: string;
-  Courses: Array<{
-    Title: string;
-    Duration: string;
-    Level: string;
-    Rating: number;
-    Price: string;
-  }>;
+  Courses?: ICourse[];
 }

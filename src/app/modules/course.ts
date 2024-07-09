@@ -1,7 +1,8 @@
+// src/app/modules/course.ts
 export interface ICourse {
-Title: string;
+  Title: string;
   Duration: string;
   Level: string;
-  Price: string;
   Rating: number;
+  Price: string;
 }

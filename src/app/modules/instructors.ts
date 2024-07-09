@@ -6,10 +6,6 @@ export interface IInstructor {
   Position: string;
   Bio: string;
   Email: string;
-  Phone: string;
-  Address: string;
-  Facebook?: string;
-  Instagram?: string;
   Twitter?: string;
   LinkedIn?: string;
   YouTube?: string;

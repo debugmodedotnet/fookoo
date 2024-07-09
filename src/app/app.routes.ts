@@ -14,7 +14,9 @@ export const routes: Routes = [
   { path: 'events', loadComponent: () => import('./event/event.component').then(m => m.EventComponent) },
   { path: 'event/:id', loadComponent: () => import('./event-details/event-details.component').then(m => m.EventDetailsComponent) },
   { path: 'instructor/:instructorId', loadComponent: () => import('./instructor-details/instructor-details.component').then(m => m.InstructorDetailsComponent) },
-  
+  { path: 'job-list', loadComponent: () => import('./job-list/job-list.component').then(m => m.JobListComponent) },
+  { path: 'job-detail', loadComponent: () => import('./job-detail/job-detail.component').then(m => m.JobDetailComponent) },
+
   {
     path: 'admin',
     component: AdminComponent,

@@ -59,9 +59,16 @@
             <a
               class="font-18 nmc-medium-grey cursor-pointer"
               (click)="loadJob()"
-              >Job</a
+              >Create Job</a
             >
           </li>
+
+          <li [class.active]="currentTab === 'viewJob'" class="mt-3">
+            <a class="font-18 nmc-medium-grey cursor-pointer" 
+            (click)="loadViewJob()"
+            >View Job</a>
+          </li>
+
         </ul>
       </div>
 

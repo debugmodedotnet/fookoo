@@ -33,7 +33,7 @@
 
       <div class="col-12 mt-3">
         <label for="jobDescription" class="form-label fw-semibold font-14 required"
-          >Job Description</label
+          >About the Job</label
         >
         <textarea
           id="jobDescription"
@@ -52,6 +52,19 @@
           id="skillsRequired"
           class="form-control rounded-3"
           formControlName="SkillsRequired"
+          placeholder="List the required skills"
+          rows="4"
+        ></textarea>
+      </div>
+
+      <div class="col-12 mt-3">
+        <label for="skillsRequired" class="form-label fw-semibold font-14 required"
+          >Responsibilities</label
+        >
+        <textarea
+          id="responsibilities"
+          class="form-control rounded-3"
+          formControlName="Responsibilities"
           placeholder="List the required skills"
           rows="4"
         ></textarea>
@@ -194,7 +207,7 @@
       </div>
 
       <div class="col-6 mt-3">
-        <label for="email" class="form-label fw-semibold font-14 required"
+        <label for="email" class="form-label fw-semibold font-14 "
           >Email</label
         >
         <input
@@ -207,7 +220,7 @@
       </div>
 
       <div class="col-6 mt-3">
-        <label for="phoneNo" class="form-label fw-semibold font-14 required"
+        <label for="phoneNo" class="form-label fw-semibold font-14 "
           >Phone No</label
         >
         <input

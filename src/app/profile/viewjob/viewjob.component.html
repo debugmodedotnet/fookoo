@@ -1,0 +1,37 @@
+<section class="my-5 pt-4">
+    <div class="container-boxed pt-4">
+      <h2 class="section-title left font-30 nmc-dark-grey font-family-poppins pb-3">
+        Job Listings
+      </h2>
+  
+      <div *ngIf="loading">Loading job details...</div>
+  
+      <table class="table table-bordered table-striped" *ngIf="!loading">
+        <thead>
+          <tr>
+            <th>Company Name</th>
+            <th>Position</th>
+            <th>Location</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let job of jobs">
+            <td>{{ job.CompanyName }}</td>
+            <td>{{ job.Position }}</td>
+            <td>{{ job.Location }}</td>
+            <td>
+              <button class="btn btn-info btn-sm" (click)="editJob(job.id)">Edit</button>
+              <button class="btn btn-danger btn-sm ms-2" (click)="deleteJob(job.id)">Delete</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+  
+  
+  
+  
+  
+  

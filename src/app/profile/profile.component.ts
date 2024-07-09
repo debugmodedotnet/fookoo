@@ -71,6 +71,15 @@ export class ProfileComponent {
     }
   }
 
+  async loadViewJob() {
+    const { ViewJobComponent } = await import ('./viewjob/viewjob.component');
+    if (this.profileView) {
+      this.profileView.clear();
+      this.profileView.createComponent(ViewJobComponent);
+      this.currentTab = 'viewJob';
+    }
+  }
+
   uploadPhoto(event: any) {
     const file = event.target.files[0];
     if (file) {

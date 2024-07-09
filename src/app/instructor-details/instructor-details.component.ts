@@ -21,12 +21,14 @@ export class InstructorDetailsComponent implements OnInit {
   private firestore = inject(AngularFirestore);
 
   ngOnInit(): void {
+    console.log(this.instructorId);
     if (this.instructorId) {
       this.getInstructorDetails(this.instructorId);
     }
   }
 
   getInstructorDetails(instructorId: string) {
+    console.log("instructorId:", instructorId);
     this.firestore.collection('instructors').doc(instructorId).valueChanges().subscribe(instructor => {
       console.log("instructor:", instructor);
       this.instructor = instructor as IInstructor;

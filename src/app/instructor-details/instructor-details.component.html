@@ -10,13 +10,15 @@
       <h1 class="text-black m-0">{{ instructor.Name }}</h1>
       <p class="text-black m-0">{{ instructor.Position }}</p>
       <div class="social-links mt-2">
-        <a
+        @if (instructor.Facebook) {
+          <a
           *ngIf="instructor.Facebook"
           [href]="instructor.Facebook"
           target="_blank"
           class="text-black mx-2"
           ><i class="bi bi-facebook"></i
         ></a>
+        }
         <a
           *ngIf="instructor.Instagram"
           [href]="instructor.Instagram"

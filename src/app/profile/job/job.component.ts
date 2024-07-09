@@ -72,7 +72,7 @@ export class JobComponent implements OnInit {
           .then(() => {
             this.message = 'Job has been successfully updated!';
             this.messageType = 'success';
-            this.router.navigate(['/view-job']);
+            this.router.navigate(['/view-job']); // Redirect to view jobs page
           })
           .catch(error => {
             this.message = 'An error occurred while updating the job.';
@@ -97,9 +97,5 @@ export class JobComponent implements OnInit {
       this.messageType = 'error';
     }
   }
-
-  onCancel() {
-    this.router.navigate(['/jobs']);
-  }
-
 }
+

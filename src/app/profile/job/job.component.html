@@ -6,9 +6,7 @@
   <form [formGroup]="jobForm" (ngSubmit)="onSubmit()">
     <div class="row form-group mt-3">
       <div class="col-6">
-        <label for="companyName" class="form-label fw-semibold font-14 required"
-          >Company Name</label
-        >
+        <label for="companyName" class="form-label fw-semibold font-14 required">Company Name</label>
         <input
           type="text"
           id="companyName"
@@ -19,9 +17,7 @@
       </div>
 
       <div class="col-6">
-        <label for="companyUrl" class="form-label fw-semibold font-14 required"
-          >Company URL</label
-        >
+        <label for="companyUrl" class="form-label fw-semibold font-14 required">Company URL</label>
         <input
           type="url"
           id="companyUrl"
@@ -32,9 +28,7 @@
       </div>
 
       <div class="col-12 mt-3">
-        <label for="jobDescription" class="form-label fw-semibold font-14 required"
-          >About the Job</label
-        >
+        <label for="jobDescription" class="form-label fw-semibold font-14 required">About the Job</label>
         <textarea
           id="jobDescription"
           class="form-control rounded-3"
@@ -45,9 +39,7 @@
       </div>
 
       <div class="col-12 mt-3">
-        <label for="skillsRequired" class="form-label fw-semibold font-14 required"
-          >Skills Required</label
-        >
+        <label for="skillsRequired" class="form-label fw-semibold font-14 required">Skills Required</label>
         <textarea
           id="skillsRequired"
           class="form-control rounded-3"
@@ -58,35 +50,28 @@
       </div>
 
       <div class="col-12 mt-3">
-        <label for="skillsRequired" class="form-label fw-semibold font-14 required"
-          >Responsibilities</label
-        >
+        <label for="responsibilities" class="form-label fw-semibold font-14 required">Responsibilities</label>
         <textarea
           id="responsibilities"
           class="form-control rounded-3"
           formControlName="Responsibilities"
-          placeholder="List the required skills"
+          placeholder="List the responsibilities"
           rows="4"
         ></textarea>
       </div>
 
       <div class="col-5 mt-3">
-        <label for="position" class="form-label fw-semibold font-14 required"
-          >Position</label
-        >
-
+        <label for="position" class="form-label fw-semibold font-14 required">Position</label>
         <select
           id="position"
           class="form-select form-control h-3 rounded-3"
           formControlName="Position"
         >
-          <option selected>Select position</option>
+          <option value="" disabled>Select position</option>
           <option value="Intern">Intern</option>
           <option value="Software Engineer">Software Engineer</option>
           <option value="Social Media Manager">Social Media Manager</option>
-          <option value="Senior Software Engineer">
-            Senior Software Engineer
-          </option>
+          <option value="Senior Software Engineer">Senior Software Engineer</option>
           <option value="Software Developer">Software Developer</option>
           <option value="Product Manager">Product Manager</option>
           <option value="ML Engineer">ML Engineer</option>
@@ -94,9 +79,7 @@
       </div>
 
       <div class="col-5 mt-3">
-        <label for="location" class="form-label fw-semibold font-14 required"
-          >Location</label
-        >
+        <label for="location" class="form-label fw-semibold font-14 required">Location</label>
         <input
           type="text"
           id="location"
@@ -120,9 +103,7 @@
       </div>
 
       <div class="col-4 mt-3">
-        <label for="companyGithub" class="form-label fw-semibold font-14"
-          >Company Github</label
-        >
+        <label for="companyGithub" class="form-label fw-semibold font-14">Company Github</label>
         <input
           type="url"
           id="companyGithub"
@@ -130,28 +111,21 @@
           formControlName="CompanyGithub"
           placeholder="Company Github"
         />
-
         <div
           *ngIf="
             jobForm.get('CompanyGithub')?.invalid &&
-            (jobForm.get('CompanyGithub')?.dirty ||
-              jobForm.get('CompanyGithub')?.touched)
+            (jobForm.get('CompanyGithub')?.dirty || jobForm.get('CompanyGithub')?.touched)
           "
           class="nmc-alert mt-1"
         >
-          <p
-            *ngIf="jobForm.get('CompanyGithub')?.errors?.['pattern']"
-            class="font-14 m-0"
-          >
+          <p *ngIf="jobForm.get('CompanyGithub')?.errors?.['pattern']" class="font-14 m-0">
             *Please enter a valid Github URL
           </p>
         </div>
       </div>
 
       <div class="col-4 mt-3">
-        <label for="companyTwitter" class="form-label fw-semibold font-14"
-          >Company Twitter</label
-        >
+        <label for="companyTwitter" class="form-label fw-semibold font-14">Company Twitter</label>
         <input
           type="url"
           id="companyTwitter"
@@ -159,28 +133,21 @@
           formControlName="CompanyTwitter"
           placeholder="Company Twitter"
         />
-
         <div
           *ngIf="
             jobForm.get('CompanyTwitter')?.invalid &&
-            (jobForm.get('CompanyTwitter')?.dirty ||
-              jobForm.get('CompanyTwitter')?.touched)
+            (jobForm.get('CompanyTwitter')?.dirty || jobForm.get('CompanyTwitter')?.touched)
           "
           class="nmc-alert mt-1"
         >
-          <p
-            *ngIf="jobForm.get('CompanyTwitter')?.errors?.['pattern']"
-            class="font-14 m-0"
-          >
+          <p *ngIf="jobForm.get('CompanyTwitter')?.errors?.['pattern']" class="font-14 m-0">
             *Please enter a valid Twitter URL
           </p>
         </div>
       </div>
 
       <div class="col-4 mt-3">
-        <label for="companyLinkedIn" class="form-label fw-semibold font-14"
-          >Company LinkedIn</label
-        >
+        <label for="companyLinkedIn" class="form-label fw-semibold font-14">Company LinkedIn</label>
         <input
           type="url"
           id="companyLinkedIn"
@@ -188,28 +155,21 @@
           formControlName="CompanyLinkedIn"
           placeholder="Company LinkedIn"
         />
-
         <div
           *ngIf="
             jobForm.get('CompanyLinkedIn')?.invalid &&
-            (jobForm.get('CompanyLinkedIn')?.dirty ||
-              jobForm.get('CompanyLinkedIn')?.touched)
+            (jobForm.get('CompanyLinkedIn')?.dirty || jobForm.get('CompanyLinkedIn')?.touched)
           "
           class="nmc-alert mt-1"
         >
-          <p
-            *ngIf="jobForm.get('CompanyLinkedIn')?.errors?.['pattern']"
-            class="font-14 m-0"
-          >
+          <p *ngIf="jobForm.get('CompanyLinkedIn')?.errors?.['pattern']" class="font-14 m-0">
             *Please enter a valid LinkedIn URL
           </p>
         </div>
       </div>
 
       <div class="col-6 mt-3">
-        <label for="email" class="form-label fw-semibold font-14 "
-          >Email</label
-        >
+        <label for="email" class="form-label fw-semibold font-14">Email</label>
         <input
           type="email"
           id="email"
@@ -220,9 +180,7 @@
       </div>
 
       <div class="col-6 mt-3">
-        <label for="phoneNo" class="form-label fw-semibold font-14 "
-          >Phone No</label
-        >
+        <label for="phoneNo" class="form-label fw-semibold font-14">Phone No</label>
         <input
           type="text"
           id="phoneNo"
@@ -244,9 +202,7 @@
       </div>
 
       <div class="col-6 mt-3">
-        <label for="imageUrl" class="form-label fw-semibold font-14 required"
-          >Logo URL</label
-        >
+        <label for="imageUrl" class="form-label fw-semibold font-14 required">Logo URL</label>
         <input
           type="url"
           id="imageUrl"
@@ -267,4 +223,12 @@
       </button>
     </div>
   </form>
-</div>
+
+  <div *ngIf="message" class="mt-4">
+    <p [ngClass]="{'text-success': messageType === 'success', 'text-danger': messageType === 'error'}" class="font-18 m-0">
+      {{ message }}
+    </p>
+  </div>
+</div> 
+
+

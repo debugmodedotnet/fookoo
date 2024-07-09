@@ -2,23 +2,24 @@ import { Component, OnInit, inject } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { JobService } from '../../services/job.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { NgIf } from '@angular/common';
+import { NgIf, NgClass } from '@angular/common';
 import { Job } from '../../modules/job';
 
 @Component({
   selector: 'app-job',
   standalone: true,
-  imports: [ReactiveFormsModule, NgIf],
+  imports: [ReactiveFormsModule, NgIf, NgClass],
   templateUrl: './job.component.html',
   styleUrls: ['./job.component.scss']
 })
 export class JobComponent implements OnInit {
-
   jobForm: FormGroup;
   private jobService = inject(JobService);
   private route = inject(ActivatedRoute);
   private router = inject(Router);
   jobId?: string;
+  message: string | null = null;
+  messageType: 'success' | 'error' = 'success';
 
   constructor() {
     this.jobForm = new FormGroup({
@@ -69,18 +70,36 @@ export class JobComponent implements OnInit {
       if (this.jobId) {
         this.jobService.updateJob(this.jobId, this.jobForm.value)
           .then(() => {
-            console.log('Job successfully updated!');
-            this.router.navigate(['/jobs']);  // Redirect to job listings after update
+            this.message = 'Job has been successfully updated!';
+            this.messageType = 'success';
+            this.router.navigate(['/view-job']);
           })
           .catch(error => {
+            this.message = 'An error occurred while updating the job.';
+            this.messageType = 'error';
             console.error('Error updating job: ', error);
           });
       } else {
-        console.log('Job ID is not available for updating.');
+        this.jobService.addJob(this.jobForm.value)
+          .then(() => {
+            this.message = 'Job has been successfully created!';
+            this.messageType = 'success';
+            this.jobForm.reset();
+          })
+          .catch(error => {
+            this.message = 'An error occurred while creating the job.';
+            this.messageType = 'error';
+            console.error('Error creating job: ', error);
+          });
       }
     } else {
-      console.log('Form is invalid!');
+      this.message = 'Please fill out all required fields correctly.';
+      this.messageType = 'error';
     }
   }
-}
 
+  onCancel() {
+    this.router.navigate(['/jobs']);
+  }
+
+}

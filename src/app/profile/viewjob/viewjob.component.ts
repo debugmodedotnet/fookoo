@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { JobService } from '../../services/job.service';
 import { Job } from '../../modules/job';
@@ -15,11 +15,8 @@ import { NgFor, NgIf } from '@angular/common';
 export class ViewJobComponent implements OnInit {
   jobs: Job[] = [];
   loading = true;
-
-  constructor(
-    private jobService: JobService,
-    private router: Router
-  ) {}
+  private jobService = inject(JobService);
+  private router = inject(Router);
 
   ngOnInit(): void {
     this.loadJobs();
@@ -29,6 +26,7 @@ export class ViewJobComponent implements OnInit {
     this.jobService.getJobs().subscribe(
       jobs => {
         this.jobs = jobs;
+        console.log('Jobs loaded:', this.jobs); // Debugging line
         this.loading = false;
       },
       error => {

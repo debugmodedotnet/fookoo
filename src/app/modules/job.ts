@@ -15,5 +15,6 @@ export interface Job {
   PhoneNo: string;
   Tag: string;
   ImageUrl: string;
+  userId?: string; // ID of the user who created the job
 }
 

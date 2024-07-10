@@ -13,11 +13,9 @@
 }
 
 .event-summary .ng-tracker {
-    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
-    height: 180px;
-    width: 180px;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
     transition: transform .5s;
-    border: 2px solid $nmc-primary;
+    border: none;
 
     &:hover {
         transform: scale(1.03);

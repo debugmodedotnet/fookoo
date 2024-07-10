@@ -1,3 +1,7 @@
 .content {
+    margin-top: 145px;
+}
+
+:host-context(.start-quiz-active) .content {
     margin-top: 91px;
 }

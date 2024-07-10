@@ -16,9 +16,7 @@ export class AppComponent implements OnInit {
   title = 'NomadCoder';
   scrollTop: HTMLElement | null = null;
 
-  constructor(
-    private router: Router
-  ) { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
     this.setupPreloader();

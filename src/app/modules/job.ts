@@ -4,7 +4,8 @@ export interface Job {
   CompanyUrl: string;
   JobDescription: string;
   SkillsRequired: string;
-  Responsibilities: string;
+  Responsibilities: string[];
+  Qualification: string[];
   Position: string;
   Location: string;
   Remote: boolean;

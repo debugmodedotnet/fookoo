@@ -1,42 +1,114 @@
-.btn-class{
-    background-color:rgb(255, 152, 49);
+// Container and layout styles
+.container-boxed {
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
-.form-label.required::after {
-    content: " *";
-    color: red;
-  }
+// Section title styling
+.section-title {
+  font-weight: 700;
+  color: #333;
+}
 
-  .text-orange {
-    color: orange;
-  }
+.text-orange {
+  color: orange;
+}
 
-  .form-control {
-    border: 1px solid #ddd;
-    padding: 10px;
-    border-radius: 4px;
-  }
+// Table styling
+.table {
+  border-collapse: separate;
+  border-spacing: 0;
+}
 
-  .form-control:focus {
-    border-color: orange;
-    box-shadow: 0 0 5px rgba(255, 165, 0, 0.5);
-  }
+.table-bordered {
+  border: 1px solid #dee2e6;
+}
 
-  .btn-class {
-    background-color: orange;
-    color: white;
-    border: none;
-  }
+.table th, .table td {
+  padding: 0.75rem;
+  vertical-align: middle;
+  border-top: 1px solid #dee2e6;
+}
 
-  .btn-class:hover {
-    background-color: darkorange;
-  }
+// Chip styling
+.chip-container {
+  display: inline-flex;
+  align-items: center;
+  margin-right: 8px;
+}
 
-  .btn-secondary {
-    background-color: #f8f9fa;
-    color: #333;
-  }
+.chip {
+  background-color: #f1f1f1;
+  border-radius: 16px;
+  padding: 4px 8px;
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+}
 
-  .btn-secondary:hover {
-    background-color: #e2e6ea;
-  }
+.chip button {
+  background: none;
+  border: none;
+  color: red;
+  cursor: pointer;
+}
+
+// Form styles
+.form-group {
+  margin-bottom: 1rem;
+}
+
+.form-control, .form-select {
+  width: 100%;
+}
+
+.required::after {
+  content: "*";
+  color: red;
+  margin-left: 5px;
+}
+
+.btn-class {
+  background-color: orange;
+  color: white;
+}
+
+.btn-class:hover {
+  background-color: darkorange;
+}
+
+.btn-primary {
+  background-color: blue;
+  color: white;
+}
+
+.btn-primary:hover {
+  background-color: darkblue;
+}
+
+.btn-danger {
+  background-color: red;
+  color: white;
+}
+
+.btn-danger:hover {
+  background-color: darkred;
+}
+
+.btn-success {
+  background-color: green;
+  color: white;
+}
+
+.btn-success:hover {
+  background-color: darkgreen;
+}
+
+.btn-secondary {
+  background-color: gray;
+  color: white;
+}
+
+.btn-secondary:hover {
+  background-color: darkgray;
+}

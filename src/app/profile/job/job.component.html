@@ -4,230 +4,142 @@
 
 <div class="form-wrapper w-100">
   <form [formGroup]="jobForm" (ngSubmit)="onSubmit()">
-    <!-- Company Name -->
-    <div class="mb-3">
-      <label for="CompanyName" class="form-label required">Company Name</label>
-      <input
-        id="CompanyName"
-        formControlName="CompanyName"
-        type="text"
-        class="form-control"
-        placeholder="Enter company name"
-      />
-      <div *ngIf="jobForm.get('CompanyName')?.invalid && (jobForm.get('CompanyName')?.touched || jobForm.dirty)" class="text-danger">
-        Company Name is required.
+    <div class="row mb-3">
+      <div class="col-md-6">
+        <label for="CompanyName" class="form-label required">Company Name</label>
+        <input id="CompanyName" formControlName="CompanyName" type="text" class="form-control" />
+      </div>
+      <div class="col-md-6">
+        <label for="CompanyUrl" class="form-label required">Company URL</label>
+        <input id="CompanyUrl" formControlName="CompanyUrl" type="text" class="form-control" />
       </div>
     </div>
 
-    <!-- Company URL -->
-    <div class="mb-3">
-      <label for="CompanyUrl" class="form-label required">Company URL</label>
-      <input
-        id="CompanyUrl"
-        formControlName="CompanyUrl"
-        type="url"
-        class="form-control"
-        placeholder="Enter company URL"
-      />
-      <div *ngIf="jobForm.get('CompanyUrl')?.invalid && (jobForm.get('CompanyUrl')?.touched || jobForm.dirty)" class="text-danger">
-        Please enter a valid URL.
-      </div>
-    </div>
-
-    <!-- Job Description -->
-    <div class="mb-3">
-      <label for="JobDescription" class="form-label required">Job Description</label>
-      <textarea
-        id="JobDescription"
-        formControlName="JobDescription"
-        rows="4"
-        class="form-control"
-        placeholder="Enter job description"
-      ></textarea>
-      <div *ngIf="jobForm.get('JobDescription')?.invalid && (jobForm.get('JobDescription')?.touched || jobForm.dirty)" class="text-danger">
-        Job Description is required.
+    <div class="row mb-3">
+      <div class="col-md-12">
+        <label for="JobDescription" class="form-label required">Job Description</label>
+        <textarea id="JobDescription" formControlName="JobDescription" class="form-control"></textarea>
       </div>
     </div>
 
     <!-- Responsibilities -->
-    <div class="mb-3">
-      <label for="Responsibilities" class="form-label required">Responsibilities</label>
-      <textarea
-        id="Responsibilities"
-        formControlName="Responsibilities"
-        rows="4"
-        class="form-control"
-        placeholder="Enter job responsibilities"
-      ></textarea>
-      <div *ngIf="jobForm.get('Responsibilities')?.invalid && (jobForm.get('Responsibilities')?.touched || jobForm.dirty)" class="text-danger">
-        Responsibilities are required.
+<div class="row mb-3">
+  <div class="col-md-12">
+    <label for="Responsibilities" class="form-label required">Responsibilities</label>
+    <div formArrayName="Responsibilities">
+      <div class="d-flex flex-wrap align-items-center">
+        <div class="d-flex flex-wrap align-items-center">
+          <ng-container *ngFor="let control of responsibilities.controls; let i = index">
+            <div class="chip-container me-2 mb-2">
+              <div class="chip">
+                {{ control.value }}
+                <button type="button" (click)="removeResponsibility(i)" class="btn btn-danger btn-sm ms-2">×</button>
+              </div>
+            </div>
+          </ng-container>
+          <input #newResponsibility type="text" class="form-control me-2" placeholder="Add responsibility" />
+          <button type="button" (click)="addResponsibility(newResponsibility.value); newResponsibility.value = '';" class="btn btn-primary btn-sm">+</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Qualification -->
+<div class="row mb-3">
+  <div class="col-md-12">
+    <label for="Qualification" class="form-label required">Qualification</label>
+    <div formArrayName="Qualification">
+      <div class="d-flex flex-wrap align-items-center">
+        <div class="d-flex flex-wrap align-items-center">
+          <ng-container *ngFor="let control of qualifications.controls; let i = index">
+            <div class="chip-container me-2 mb-2">
+              <div class="chip">
+                {{ control.value }}
+                <button type="button" (click)="removeQualification(i)" class="btn btn-danger btn-sm ms-2">×</button>
+              </div>
+            </div>
+          </ng-container>
+          <input #newQualification type="text" class="form-control me-2" placeholder="Add qualification" />
+          <button type="button" (click)="addQualification(newQualification.value); newQualification.value = '';" class="btn btn-primary btn-sm">+</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+    <div class="row mb-3">
+      <div class="col-md-12">
+        <label for="SkillsRequired" class="form-label required">Skills Required</label>
+        <textarea id="SkillsRequired" formControlName="SkillsRequired" class="form-control"></textarea>
       </div>
     </div>
 
-    <!-- Skills Required -->
-    <div class="mb-3">
-      <label for="SkillsRequired" class="form-label required">Skills Required</label>
-      <input
-        id="SkillsRequired"
-        formControlName="SkillsRequired"
-        type="text"
-        class="form-control"
-        placeholder="Enter skills required"
-      />
-      <div *ngIf="jobForm.get('SkillsRequired')?.invalid && (jobForm.get('SkillsRequired')?.touched || jobForm.dirty)" class="text-danger">
-        Skills Required is required.
+    <div class="row mb-3">
+      <div class="col-md-6">
+        <label for="Location" class="form-label required">Location</label>
+        <input id="Location" formControlName="Location" type="text" class="form-control" />
+      </div>
+      <div class="col-md-6">
+        <label for="Remote" class="form-label">Remote</label>
+        <input id="Remote" formControlName="Remote" type="checkbox" class="form-check-input" />
       </div>
     </div>
 
-    <!-- Location -->
-    <div class="mb-3">
-      <label for="Location" class="form-label">Location</label>
-      <input
-        id="Location"
-        formControlName="Location"
-        type="text"
-        class="form-control"
-        placeholder="Enter job location"
-      />
-      <div *ngIf="jobForm.get('Location')?.invalid && (jobForm.get('Location')?.touched || jobForm.dirty)" class="text-danger">
-        Location is required.
+    <div class="row mb-3">
+      <div class="col-md-4">
+        <label for="CompanyGithub" class="form-label">Company Github</label>
+        <input id="CompanyGithub" formControlName="CompanyGithub" type="text" class="form-control" />
+      </div>
+      <div class="col-md-4">
+        <label for="CompanyTwitter" class="form-label">Company Twitter</label>
+        <input id="CompanyTwitter" formControlName="CompanyTwitter" type="text" class="form-control" />
+      </div>
+      <div class="col-md-4">
+        <label for="CompanyLinkedIn" class="form-label">Company LinkedIn</label>
+        <input id="CompanyLinkedIn" formControlName="CompanyLinkedIn" type="text" class="form-control" />
       </div>
     </div>
 
-    <!-- Remote -->
-    <div class="mb-3 form-check">
-      <input
-        id="Remote"
-        formControlName="Remote"
-        type="checkbox"
-        class="form-check-input"
-      />
-      <label for="Remote" class="form-check-label">Remote</label>
-    </div>
-
-    <!-- Company Twitter -->
-    <div class="mb-3">
-      <label for="CompanyTwitter" class="form-label">Company Twitter</label>
-      <input
-        id="CompanyTwitter"
-        formControlName="CompanyTwitter"
-        type="url"
-        class="form-control"
-        placeholder="Enter company Twitter URL"
-      />
-      <div *ngIf="jobForm.get('CompanyTwitter')?.invalid && (jobForm.get('CompanyTwitter')?.touched || jobForm.dirty)" class="text-danger">
-        Please enter a valid Twitter URL (optional).
+    <div class="row mb-3">
+      <div class="col-md-6">
+        <label for="Position" class="form-label required">Position</label>
+        <select id="Position" formControlName="Position" class="form-select">
+          <option *ngFor="let position of positions" [value]="position">{{ position }}</option>
+        </select>
+        <div *ngIf="jobForm.get('Position')?.invalid && (jobForm.get('Position')?.touched || jobForm.dirty)" class="text-danger">
+          Position is required.
+        </div>
+      </div>
+      <div class="col-md-6">
+        <label for="Tag" class="form-label required">Tag</label>
+        <select id="Tag" formControlName="Tag" class="form-select">
+          <option *ngFor="let tag of tags" [value]="tag">{{ tag }}</option>
+        </select>
       </div>
     </div>
 
-    <!-- Company LinkedIn -->
-    <div class="mb-3">
-      <label for="CompanyLinkedIn" class="form-label">Company LinkedIn</label>
-      <input
-        id="CompanyLinkedIn"
-        formControlName="CompanyLinkedIn"
-        type="url"
-        class="form-control"
-        placeholder="Enter company LinkedIn URL"
-      />
-      <div *ngIf="jobForm.get('CompanyLinkedIn')?.invalid && (jobForm.get('CompanyLinkedIn')?.touched || jobForm.dirty)" class="text-danger">
-        Please enter a valid LinkedIn URL (optional).
+    <div class="row mb-3">
+      <div class="col-md-6">
+        <label for="Email" class="form-label">Email</label>
+        <input id="Email" formControlName="Email" type="email" class="form-control" />
+      </div>
+      <div class="col-md-6">
+        <label for="PhoneNo" class="form-label">Phone No</label>
+        <input id="PhoneNo" formControlName="PhoneNo" type="text" class="form-control" />
       </div>
     </div>
 
-    <!-- Company GitHub -->
-    <div class="mb-3">
-      <label for="CompanyGithub" class="form-label">Company GitHub</label>
-      <input
-        id="CompanyGithub"
-        formControlName="CompanyGithub"
-        type="url"
-        class="form-control"
-        placeholder="Enter company GitHub URL"
-      />
-      <div *ngIf="jobForm.get('CompanyGithub')?.invalid && (jobForm.get('CompanyGithub')?.touched || jobForm.dirty)" class="text-danger">
-        Please enter a valid GitHub URL (optional).
-      </div>
-    </div>
-
-    <!-- Position -->
-    <div class="mb-3">
-      <label for="Position" class="form-label required">Position</label>
-      <input
-        id="Position"
-        formControlName="Position"
-        type="text"
-        class="form-control"
-        placeholder="Enter job position"
-      />
-      <div *ngIf="jobForm.get('Position')?.invalid && (jobForm.get('Position')?.touched || jobForm.dirty)" class="text-danger">
-        Position is required.
-      </div>
-    </div>
-
-    <!-- Email -->
-    <div class="mb-3">
-      <label for="Email" class="form-label">Email</label>
-      <input
-        id="Email"
-        formControlName="Email"
-        type="email"
-        class="form-control"
-        placeholder="Enter contact email"
-      />
-      <div *ngIf="jobForm.get('Email')?.invalid && (jobForm.get('Email')?.touched || jobForm.dirty)" class="text-danger">
-        Please enter a valid email address (optional).
-      </div>
-    </div>
-
-    <!-- Phone No -->
-    <div class="mb-3">
-      <label for="PhoneNo" class="form-label">Phone No</label>
-      <input
-        id="PhoneNo"
-        formControlName="PhoneNo"
-        type="text"
-        class="form-control"
-        placeholder="Enter contact phone number"
-      />
-      <div *ngIf="jobForm.get('PhoneNo')?.invalid && (jobForm.get('PhoneNo')?.touched || jobForm.dirty)" class="text-danger">
-        Please enter a valid phone number (optional).
-      </div>
-    </div>
-
-    <!-- Tag -->
-    <div class="mb-3">
-      <label for="Tag" class="form-label">Tag</label>
-      <input
-        id="Tag"
-        formControlName="Tag"
-        type="text"
-        class="form-control"
-        placeholder="Enter job tag (optional)"
-      />
-    </div>
-
-    <!-- Image URL -->
-    <div class="mb-3">
-      <label for="ImageUrl" class="form-label">Image URL</label>
-      <input
-        id="ImageUrl"
-        formControlName="ImageUrl"
-        type="url"
-        class="form-control"
-        placeholder="Enter job image URL"
-      />
-      <div *ngIf="jobForm.get('ImageUrl')?.invalid && (jobForm.get('ImageUrl')?.touched || jobForm.dirty)" class="text-danger">
-        Please enter a valid image URL.
+    <div class="row mb-3">
+      <div class="col-md-12">
+        <label for="ImageUrl" class="form-label required">Image URL</label>
+        <input id="ImageUrl" formControlName="ImageUrl" type="text" class="form-control" />
       </div>
     </div>
 
     <div class="mt-4 d-flex justify-content-end">
-      <button
-        type="submit"
-        class="nmc-btn-primary font-14 fw-semibold box-shadow-none py-2"
-        [disabled]="!jobForm.valid"
-      >
+      <button type="submit" class="nmc-btn-primary font-14 fw-semibold box-shadow-none py-2" [disabled]="!jobForm.valid">
         {{ jobId ? 'Update Job' : 'Create Job' }}
       </button>
     </div>
@@ -239,6 +151,3 @@
     </p>
   </div>
 </div>
-
-
-

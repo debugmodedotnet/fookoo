@@ -1,4 +1,167 @@
-.form-label.required::after {
-  content: " *";
-  color: red;
+/* General Styles */
+body {
+  background-color: white;
+  color: black;
+}
+
+.section-title {
+  margin-bottom: 20px;
+}
+
+.form-wrapper {
+  .row {
+    margin-bottom: 15px;
+  }
+
+  .form-label {
+    font-weight: 600;
+  }
+  
+  .form-control, .form-select {
+    width: 100%;
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    transition: border-color 0.3s ease;
+
+    &:focus {
+      border-color: #ff5722; /* Orange border on focus */
+      box-shadow: none;
+    }
+  }
+
+  .form-check-input {
+    margin-left: 10px;
+  }
+
+  .required::after {
+    content: "*";
+    color: red;
+    margin-left: 5px;
+  }
+
+  .text-danger {
+    margin-top: 5px;
+    font-size: 12px;
+  }
+
+  .mt-4 {
+    margin-top: 1.5rem;
+  }
+
+  .d-flex {
+    display: flex;
+    align-items: center;
+  }
+
+  .mb-2 {
+    margin-bottom: 10px; /* Adjust as needed */
+  }
+}
+
+/* Form and Buttons */
+.form-control {
+  width: 400px; /* Increase the length of the text area */
+  margin-right: 10px; /* Space between text area and buttons */
+}
+
+.btn-add, .btn-remove, .nmc-btn-primary {
+  background-color: #ff5722; /* Orange background */
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  font-size: 14px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn-add {
+  padding: 5px 10px; /* Specific padding for .btn-add */
+}
+
+.btn-add:hover {
+  background-color: #e64a19; /* Darker orange on hover */
+}
+
+.btn-remove {
+  border-radius: 50%; /* Circular button */
+  padding: 5px;
+  font-size: 14px;
+}
+
+.btn-remove:hover {
+  background-color: #e64a19; /* Darker orange on hover */
+}
+
+.nmc-btn-primary {
+  padding: 10px 20px;
+  font-size: 14px;
+  border-radius: 4px;
+}
+
+.nmc-btn-primary:hover {
+  background-color: #e64a19;
+}
+
+.nmc-btn-primary:disabled {
+  background-color: #ddd;
+  cursor: not-allowed;
+}
+
+/* Chip Container */
+.chip-container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.chip {
+  display: flex;
+  align-items: center;
+  background-color: #f1f1f1;
+  border-radius: 16px;
+  padding: 5px 10px;
+  margin-right: 5px;
+  margin-bottom: 5px;
+  font-size: 14px;
+}
+
+.chip button {
+  border: none;
+  background: none;
+  color: #ff5722;
+  cursor: pointer;
+  font-size: 14px;
+  margin-left: 5px;
+
+  &:hover {
+    color: #e64a19;
+  }
+}
+
+/* Message Styles */
+.message-container {
+  margin-top: 20px; /* Space above message container */
+}
+
+.message-container p {
+  font-size: 16px; /* Font size for messages */
+  padding: 10px;
+  border-radius: 4px;
+  text-align: center;
+  margin: 0;
+}
+
+.message-success {
+  background-color: #d4edda; /* Light green background for success */
+  color: #155724; /* Dark green text color for success */
+  border: 1px solid #c3e6cb; /* Border color for success */
+}
+
+.message-error {
+  background-color: #f8d7da; /* Light red background for error */
+  color: #721c24; /* Dark red text color for error */
+  border: 1px solid #f5c6cb; /* Border color for error */
 }

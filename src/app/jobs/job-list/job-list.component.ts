@@ -16,10 +16,11 @@ import { AsyncPipe, NgFor, NgIf } from '@angular/common';
   styleUrl: './job-list.component.scss'
 })
 export class JobListComponent implements OnInit {
+
   @Output() selectJob = new EventEmitter<Job>();
   jobs$?: Observable<Job[]>;
 
-  constructor(private firestore: AngularFirestore) {}
+  constructor(private firestore: AngularFirestore) { }
 
   ngOnInit() {
     this.jobs$ = this.firestore.collection<Job>('jobs').valueChanges();

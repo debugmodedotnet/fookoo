@@ -1,5 +1,5 @@
 export interface Job {
-  id?: string; // Firestore document ID, optional
+  id?: string;
   CompanyName: string;
   CompanyUrl: string;
   JobDescription: string;
@@ -15,6 +15,6 @@ export interface Job {
   PhoneNo: string;
   Tag: string;
   ImageUrl: string;
-  userId?: string; // ID of the user who created the job
+  userId?: string;
 }
 

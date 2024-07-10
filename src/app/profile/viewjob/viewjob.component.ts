@@ -69,8 +69,8 @@ export class ViewJobComponent implements OnInit {
     if (job && job.id) {
       this.jobForm.patchValue({
         ...job,
-        Responsibilities: this.fb.array(job.Responsibilities.map(r => this.fb.control(r))),
-        Qualification: this.fb.array(job.Qualification.map(q => this.fb.control(q)))
+        Responsibilities: job.Responsibilities ? job.Responsibilities.map(r => this.fb.control(r)) : [],
+        Qualification: job.Qualification ? job.Qualification.map(q => this.fb.control(q)) : []
       });
       this.currentJobId = job.id;
       this.editMode = true;
@@ -167,6 +167,7 @@ export class ViewJobComponent implements OnInit {
     this.qualifications.removeAt(index);
   }
 }
+
 
 /*import { Component, OnInit, inject } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators, FormControl } from '@angular/forms';

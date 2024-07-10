@@ -60,10 +60,24 @@ body {
   }
 }
 
+.btn-class{
+  background-color: #fc7e2b;
+  color: white;
+
+}
+
 /* Form and Buttons */
 .form-control {
   width: 400px; /* Increase the length of the text area */
   margin-right: 10px; /* Space between text area and buttons */
+}
+
+.responsibility-input {
+  width: 100%; /* Adjust the width as needed */
+}
+
+.qualification-input {
+  width: 100px; /* Adjust the width as needed */
 }
 
 .btn-add, .btn-remove, .nmc-btn-primary {

@@ -22,7 +22,7 @@
       </div>
     </div>
 
-    <!-- Responsibilities -->
+   <!-- Responsibilities -->
 <div class="row mb-3">
   <div class="col-md-12">
     <label for="Responsibilities" class="form-label required">Responsibilities</label>
@@ -37,8 +37,8 @@
               </div>
             </div>
           </ng-container>
-          <input #newResponsibility type="text" class="form-control me-2" placeholder="Add responsibility" />
-          <button type="button" (click)="addResponsibility(newResponsibility.value); newResponsibility.value = '';" class="btn btn-primary btn-sm">+</button>
+          <input #newResponsibility type="text" class="form-control me-2 responsibility-input" placeholder="Add responsibility" />
+          <button type="button" (click)="addResponsibility(newResponsibility.value); newResponsibility.value = '';" class="btn btn-class btn-sm">+</button>
         </div>
       </div>
     </div>
@@ -60,13 +60,14 @@
               </div>
             </div>
           </ng-container>
-          <input #newQualification type="text" class="form-control me-2" placeholder="Add qualification" />
-          <button type="button" (click)="addQualification(newQualification.value); newQualification.value = '';" class="btn btn-primary btn-sm">+</button>
+          <input #newQualification type="text" class="form-control me-2 qualification-input" placeholder="Add qualification" />
+          <button type="button" (click)="addQualification(newQualification.value); newQualification.value = '';" class="btn btn-class btn-sm">+</button>
         </div>
       </div>
     </div>
   </div>
 </div>
+
 
 
     <div class="row mb-3">

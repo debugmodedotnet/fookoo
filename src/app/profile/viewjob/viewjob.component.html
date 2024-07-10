@@ -21,7 +21,7 @@
           <td>{{ job.Position }}</td>
           <td>{{ job.Location }}</td>
           <td>
-            <button class="btn btn-class btn-sm" (click)="editJob(job)">Edit</button>
+            <button class="btn btn-class btn-sm ms-2" (click)="editJob(job)">Edit</button>
             <button class="btn btn-danger btn-sm ms-2" (click)="deleteJob(job.id)">Delete</button>
           </td>
         </tr>
@@ -31,9 +31,9 @@
     <div *ngIf="editMode">
       <h3 class="text-orange">Edit Job</h3>
       <form [formGroup]="jobForm" (ngSubmit)="updateJob()">
-        <!-- Company Name -->
-        <div class="form-group row">
-          <div class="col-md-6 mb-3">
+        <!-- Company Details -->
+        <div class="row mb-3">
+          <div class="col-md-6">
             <label for="CompanyName" class="form-label required">Company Name</label>
             <input
               id="CompanyName"
@@ -46,8 +46,7 @@
               Company Name is required.
             </div>
           </div>
-
-          <div class="col-md-6 mb-3">
+          <div class="col-md-6">
             <label for="CompanyUrl" class="form-label required">Company URL</label>
             <input
               id="CompanyUrl"
@@ -63,72 +62,67 @@
         </div>
 
         <!-- Job Description -->
-        <div class="form-group mb-3">
-          <label for="JobDescription" class="form-label required">Job Description</label>
-          <textarea
-            id="JobDescription"
-            formControlName="JobDescription"
-            rows="4"
-            class="form-control"
-            placeholder="Enter job description"
-          ></textarea>
-          <div *ngIf="jobForm.get('JobDescription')?.invalid && (jobForm.get('JobDescription')?.touched || jobForm.dirty)" class="text-danger">
-            Job Description is required.
+        <div class="row mb-3">
+          <div class="col-md-12">
+            <label for="JobDescription" class="form-label required">Job Description</label>
+            <textarea
+              id="JobDescription"
+              formControlName="JobDescription"
+              rows="4"
+              class="form-control"
+              placeholder="Enter job description"
+            ></textarea>
+            <div *ngIf="jobForm.get('JobDescription')?.invalid && (jobForm.get('JobDescription')?.touched || jobForm.dirty)" class="text-danger">
+              Job Description is required.
+            </div>
           </div>
         </div>
 
         <!-- Responsibilities -->
-<div class="row mb-3">
-  <div class="col-md-12">
-    <label for="Responsibilities" class="form-label required">Responsibilities</label>
-    <div formArrayName="Responsibilities">
-      <div class="d-flex flex-wrap align-items-center">
-        <div class="d-flex flex-wrap align-items-center">
-          <ng-container *ngFor="let control of responsibilities.controls; let i = index">
-            <div class="chip-container me-2 mb-2">
-              <div class="chip">
-                {{ control.value }}
-                <button type="button" (click)="removeResponsibility(i)" class="btn btn-danger btn-sm ms-2">×</button>
+        <div class="row mb-3">
+          <div class="col-md-12">
+            <label for="Responsibilities" class="form-label required">Responsibilities</label>
+            <div formArrayName="Responsibilities">
+              <div class="d-flex flex-wrap align-items-center">
+                <ng-container *ngFor="let control of responsibilities.controls; let i = index">
+                  <div class="chip-container me-2 mb-2">
+                    <div class="chip">
+                      {{ control.value }}
+                      <button type="button" (click)="removeResponsibility(i)" class="btn btn-danger btn-sm ms-2">×</button>
+                    </div>
+                  </div>
+                </ng-container>
+                <input #newResponsibility type="text" class="form-control me-2" placeholder="Add responsibility" />
+                <button type="button" (click)="addResponsibility(newResponsibility.value); newResponsibility.value = '';" class="btn btn-class btn-sm">+</button>
               </div>
             </div>
-          </ng-container>
-          <input #newResponsibility type="text" class="form-control me-2" placeholder="Add responsibility" />
-          <button type="button" (click)="addResponsibility(newResponsibility.value); newResponsibility.value = '';" class="btn btn-primary btn-sm">+</button>
+          </div>
         </div>
-      </div>
-    </div>
-  </div>
-</div>
 
-<!-- Qualification -->
-<div class="row mb-3">
-  <div class="col-md-12">
-    <label for="Qualification" class="form-label required">Qualification</label>
-    <div formArrayName="Qualification">
-      <div class="d-flex flex-wrap align-items-center">
-        <div class="d-flex flex-wrap align-items-center">
-          <ng-container *ngFor="let control of qualifications.controls; let i = index">
-            <div class="chip-container me-2 mb-2">
-              <div class="chip">
-                {{ control.value }}
-                <button type="button" (click)="removeQualification(i)" class="btn btn-danger btn-sm ms-2">×</button>
+        <!-- Qualification -->
+        <div class="row mb-3">
+          <div class="col-md-12">
+            <label for="Qualification" class="form-label required">Qualification</label>
+            <div formArrayName="Qualification">
+              <div class="d-flex flex-wrap align-items-center">
+                <ng-container *ngFor="let control of qualifications.controls; let i = index">
+                  <div class="chip-container me-2 mb-2">
+                    <div class="chip">
+                      {{ control.value }}
+                      <button type="button" (click)="removeQualification(i)" class="btn btn-danger btn-sm ms-2">×</button>
+                    </div>
+                  </div>
+                </ng-container>
+                <input #newQualification type="text" class="form-control me-2" placeholder="Add qualification" />
+                <button type="button" (click)="addQualification(newQualification.value); newQualification.value = '';" class="btn btn-class btn-sm">+</button>
               </div>
             </div>
-          </ng-container>
-          <input #newQualification type="text" class="form-control me-2" placeholder="Add qualification" />
-          <button type="button" (click)="addQualification(newQualification.value); newQualification.value = '';" class="btn btn-primary btn-sm">+</button>
+          </div>
         </div>
-      </div>
-    </div>
-  </div>
-</div>
 
-<!-- Rest of the form elements here -->
-
-
-        <!-- Other fields -->
-        <div class="form-group row mb-3">
-          <div class="col-md-6">
+        <!-- Skills Required -->
+        <div class="row mb-3">
+          <div class="col-md-12">
             <label for="SkillsRequired" class="form-label required">Skills Required</label>
             <input
               id="SkillsRequired"
@@ -138,6 +132,10 @@
               placeholder="Enter skills required"
             />
           </div>
+        </div>
+
+        <!-- Location and Remote -->
+        <div class="row mb-3">
           <div class="col-md-6">
             <label for="Location" class="form-label required">Location</label>
             <input
@@ -148,9 +146,6 @@
               placeholder="Enter job location"
             />
           </div>
-        </div>
-
-        <div class="form-group row mb-3">
           <div class="col-md-6">
             <label for="Remote" class="form-label">Remote</label>
             <input
@@ -160,15 +155,26 @@
               class="form-check-input"
             />
           </div>
+        </div>
+
+        <!-- Position and Tag -->
+        <div class="row mb-3">
           <div class="col-md-6">
             <label for="Position" class="form-label required">Position</label>
             <select id="Position" formControlName="Position" class="form-select">
               <option *ngFor="let position of positions" [value]="position">{{ position }}</option>
             </select>
           </div>
+          <div class="col-md-6">
+            <label for="Tag" class="form-label">Tag</label>
+            <select id="Tag" formControlName="Tag" class="form-select">
+              <option *ngFor="let tag of tags" [value]="tag">{{ tag }}</option>
+            </select>
+          </div>
         </div>
 
-        <div class="form-group row mb-3">
+        <!-- Contact Information -->
+        <div class="row mb-3">
           <div class="col-md-6">
             <label for="Email" class="form-label">Email</label>
             <input
@@ -191,13 +197,8 @@
           </div>
         </div>
 
-        <div class="form-group row mb-3">
-          <div class="col-md-6">
-            <label for="Tag" class="form-label">Tag</label>
-            <select id="Tag" formControlName="Tag" class="form-select">
-              <option *ngFor="let tag of tags" [value]="tag">{{ tag }}</option>
-            </select>
-          </div>
+        <!-- Image URL -->
+        <div class="row mb-3">
           <div class="col-md-6">
             <label for="ImageUrl" class="form-label required">Image URL</label>
             <input
@@ -211,18 +212,19 @@
         </div>
 
         <!-- Update and Cancel Buttons -->
-        <div class="form-group row">
-          <div class="col-md-6 mb-3">
-            <button type="submit" class="btn btn-success">Update</button>
+        <div class="row mb-3">
+          <div class="col-md-6">
+            <button type="submit" class="btn btn-orange">Update</button>
           </div>
-          <div class="col-md-6 mb-3">
-            <button type="button" (click)="cancelEdit()" class="btn btn-secondary">Cancel</button>
+          <div class="col-md-6">
+            <button type="button" (click)="cancelEdit()" class="btn btn-red">Cancel</button>
           </div>
         </div>
       </form>
     </div>
   </div>
 </section>
+
 
 
 <!-- <section class="my-5 pt-4">

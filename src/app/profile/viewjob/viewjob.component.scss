@@ -68,9 +68,10 @@
   margin-left: 5px;
 }
 
-.btn-class {
-  background-color: orange;
+.btn-class{
+  background-color: #fc7e2b;
   color: white;
+
 }
 
 .btn-class:hover {
@@ -112,3 +113,24 @@
 .btn-secondary:hover {
   background-color: darkgray;
 }
+
+.btn-orange {
+  background-color: #f57c00; /* Orange color */
+  color: #fff;
+  border: none;
+}
+
+.btn-orange:hover {
+  background-color: #e64a19; /* Darker orange on hover */
+}
+
+.btn-red {
+  background-color: #d32f2f; /* Red color */
+  color: #fff;
+  border: none;
+}
+
+.btn-red:hover {
+  background-color: #c62828; /* Darker red on hover */
+}
+

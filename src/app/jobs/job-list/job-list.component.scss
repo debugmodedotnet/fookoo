@@ -1,61 +1,31 @@
-.container-fluid {
-  padding: 20px;
+.job-list-content{
+  
+    border: 1px solid #ccc; 
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15); 
+    padding: 20px; 
+    margin: 10px 0; 
+    background-color: #fff; 
+    border-radius: 5px; 
+
 }
 
-.list-group-item {
+.job-list-ul {
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+}
+
+.job-list-item {
+  margin-bottom: 20px; 
   cursor: pointer;
+  border: 1px solid grey;
+  background-color: white;
+  padding: 20px; 
+  border-radius: 6px; 
+  transition: background-color 0.3s;
+  font-size: 20px; 
 }
 
-.card {
-  margin-top: 20px;
-  border: 1px solid #ddd;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.card-header {
-  background-color: #f8f9fa;
-  border-bottom: 1px solid #ddd;
-}
-
-.card-title {
-  margin-bottom: 0;
-}
-
-.card-body {
-  padding: 20px;
-}
-
-.card-body p {
-  margin-bottom: 10px;
-}
-
-.card-body ul {
-  list-style-type: disc;
-  padding-left: 20px;
-}
-
-.card-body ul li {
-  margin-bottom: 5px;
-}
-
-.btn-primary {
-  background-color: #4285f4;
-  border-color: #4285f4;
-}
-
-.btn-primary:hover {
-  background-color: #357ae8;
-  border-color: #357ae8;
-}
-
-h5 {
-  margin-top: 20px;
-}
-
-hr {
-  margin: 20px 0;
-}
-
-.header{
-  text-align: center;
+.job-list-item:hover {
+  background-color: orange;
 }

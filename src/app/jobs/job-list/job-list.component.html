@@ -1,4 +1,12 @@
-<div *ngIf="jobs$ | async as jobs" class="job-list-content">
+<div class="filter-dropdown">
+  <label for="tagFilter">Filter by Tag:</label>
+  <select id="tagFilter" (change)="onTagFilterChange($event)">
+    <option value="">All</option>
+    <option *ngFor="let tag of tags" [value]="tag">{{ tag }}</option>
+  </select>
+</div>
+
+<div *ngIf="filteredJobs$ | async as jobs" class="job-list-content">
   <ul class="job-list-ul list-group">
     <li
       *ngFor="let job of jobs"
@@ -9,3 +17,16 @@
     </li>
   </ul>
 </div>
+
+
+<!--<div *ngIf="jobs$ | async as jobs" class="job-list-content">
+  <ul class="job-list-ul list-group">
+    <li
+      *ngFor="let job of jobs"
+      (click)="onJobClick(job)"
+      class="job-list-item list-group-item"
+    >
+      {{ job.Position }} - {{ job.CompanyName }}
+    </li>
+  </ul>
+</div> -->

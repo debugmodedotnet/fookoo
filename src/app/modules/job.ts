@@ -1,20 +1,20 @@
 export interface Job {
-  id?: string; // Firestore document ID, optional
+  id?: string;  // Include the ID field
   CompanyName: string;
   CompanyUrl: string;
   JobDescription: string;
-  SkillsRequired: string;
   Responsibilities: string[];
   Qualification: string[];
-  Position: string;
+  SkillsRequired: string;
   Location: string;
   Remote: boolean;
-  CompanyGithub: string;
-  CompanyTwitter: string;
-  CompanyLinkedIn: string;
-  Email: string;
-  PhoneNo: string;
-  Tag: string;
+  CompanyTwitter?: string;
+  CompanyLinkedIn?: string;
+  CompanyGithub?: string;
+  Position: string;
+  Email?: string;
+  PhoneNo?: string;
+  Tag?: string;
   ImageUrl: string;
   userId?: string; // ID of the user who created the job
 }

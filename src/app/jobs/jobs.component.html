@@ -1,0 +1,10 @@
+<div class="jobs-container">
+    <div class="job-list">
+      <app-job-list (selectJob)="onSelectJob($event)"></app-job-list>
+    </div>
+    
+    <div class="job-detail">
+      <app-job-detail [job]="selectedJob"></app-job-detail>
+    </div>
+  </div>
+  

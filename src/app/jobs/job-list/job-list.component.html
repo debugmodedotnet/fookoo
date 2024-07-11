@@ -1,0 +1,11 @@
+<div *ngIf="jobs$ | async as jobs">
+  <ul class="job-list-ul">
+    <li
+      *ngFor="let job of jobs"
+      (click)="onJobClick(job)"
+      class="job-list-item"
+    >
+      {{ job.Position }} - {{ job.CompanyName }}
+    </li>
+  </ul>
+</div>

@@ -1,17 +1,28 @@
-// Container and layout styles
-.container-boxed {
-  max-width: 1200px;
-  margin: 0 auto;
+@use "../../styles/variables" as *;
+
+.form-label.required::after {
+  content: " *";
+  color: red;
 }
 
-// Section title styling
-.section-title {
-  font-weight: 700;
-  color: #333;
+.chip {
+  display: flex;
+  align-items: center;
+  background-color: #f1f1f1;
+  border-radius: 50px;
+  padding: 5px 10px;
+  margin-right: 5px;
+  margin-bottom: 5px;
+  font-size: 14px;
 }
 
-.text-orange {
-  color: orange;
+.chip button {
+  border: none;
+  background: none;
+  color: $nmc-primary;
+  cursor: pointer;
+  font-size: 14px;
+  margin-left: 5px;
 }
 
 // Table styling
@@ -24,113 +35,9 @@
   border: 1px solid #dee2e6;
 }
 
-.table th, .table td {
+.table th,
+.table td {
   padding: 0.75rem;
   vertical-align: middle;
   border-top: 1px solid #dee2e6;
 }
-
-// Chip styling
-.chip-container {
-  display: inline-flex;
-  align-items: center;
-  margin-right: 8px;
-}
-
-.chip {
-  background-color: #f1f1f1;
-  border-radius: 16px;
-  padding: 4px 8px;
-  display: flex;
-  align-items: center;
-  font-size: 14px;
-}
-
-.chip button {
-  background: none;
-  border: none;
-  color: red;
-  cursor: pointer;
-}
-
-// Form styles
-.form-group {
-  margin-bottom: 1rem;
-}
-
-.form-control, .form-select {
-  width: 100%;
-}
-
-.required::after {
-  content: "*";
-  color: red;
-  margin-left: 5px;
-}
-
-.btn-class{
-  background-color: #fc7e2b;
-  color: white;
-
-}
-
-.btn-class:hover {
-  background-color: darkorange;
-}
-
-.btn-primary {
-  background-color: blue;
-  color: white;
-}
-
-.btn-primary:hover {
-  background-color: darkblue;
-}
-
-.btn-danger {
-  background-color: red;
-  color: white;
-}
-
-.btn-danger:hover {
-  background-color: darkred;
-}
-
-.btn-success {
-  background-color: green;
-  color: white;
-}
-
-.btn-success:hover {
-  background-color: darkgreen;
-}
-
-.btn-secondary {
-  background-color: gray;
-  color: white;
-}
-
-.btn-secondary:hover {
-  background-color: darkgray;
-}
-
-.btn-orange {
-  background-color: #f57c00; /* Orange color */
-  color: #fff;
-  border: none;
-}
-
-.btn-orange:hover {
-  background-color: #e64a19; /* Darker orange on hover */
-}
-
-.btn-red {
-  background-color: #d32f2f; /* Red color */
-  color: #fff;
-  border: none;
-}
-
-.btn-red:hover {
-  background-color: #c62828; /* Darker red on hover */
-}
-

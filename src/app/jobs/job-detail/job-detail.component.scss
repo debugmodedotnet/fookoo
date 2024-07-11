@@ -1,15 +1,11 @@
 .job_position{
-
-    background-color: #c5bfbf;
+    background-color: #ccc;
 }
 
-.job-detail-content {
-    border: 1px solid #ccc; /* Light grey border */
-    box-shadow: 0 4px 8px rgba(0,0,0,0.15); /* Shadow for depth */
-    padding: 20px; /* Inner spacing */
-    margin: 10px 0; /* Vertical spacing */
-    background-color: #fff; /* White background */
-    border-radius: 5px; /* Rounded corners */
+.important{
+    border: 1px solid #ccc;
+    margin: 10px 0;
+    padding: 10px;
 }
 
 .job-detail-content h2 {
@@ -33,8 +29,8 @@
 }
 
 .job-detail-content .job-image {
-    max-width: 100%; /* Ensures the image is responsive */
-    height: auto; /* Maintain aspect ratio */
-    margin-top: 10px; /* Spacing above the image */
-    border-radius: 5px; /* Rounded corners for the image */
+    max-width: 100%; 
+    height: auto; 
+    margin-top: 10px; 
+    border-radius: 5px; 
 }

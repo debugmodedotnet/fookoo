@@ -1,31 +1,52 @@
-.job-list-content{
-  
-    border: 1px solid #ccc; 
-    box-shadow: 0 4px 8px rgba(0,0,0,0.15); 
-    padding: 20px; 
-    margin: 10px 0; 
-    background-color: #fff; 
-    border-radius: 5px; 
 
+.job-list-content {
+  background-color: #fff; /* White background for the content */
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .job-list-ul {
+  list-style-type: none;
   padding: 0;
   margin: 0;
-  list-style-type: none;
 }
 
 .job-list-item {
-  margin-bottom: 20px; 
+  background-color: #f8f8f8; /* Light grey background for each item */
+  border: 1px solid #ddd; /* Light border */
+  border-radius: 4px;
+  padding: 10px;
+  margin-bottom: 10px;
   cursor: pointer;
-  border: 1px solid grey;
-  background-color: white;
-  padding: 20px; 
-  border-radius: 6px; 
-  transition: background-color 0.3s;
-  font-size: 20px; 
+  transition: background-color 0.3s, border-color 0.3s;
 }
 
 .job-list-item:hover {
-  background-color: orange;
+  background-color: #ff9131; /* Slightly darker background on hover */
+  border-color: #ccc; /* Darker border color on hover */
+}
+
+.job-list-item.selected {
+  background-color: #fa873b; /* Orange background for the selected item */
+  color: #fff; /* White text color for selected item */
+  border-color: #e65c00; /* Darker orange border for the selected item */
+}
+
+.filter-dropdown {
+  margin-bottom: 20px;
+}
+
+.filter-dropdown select {
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 16px;
+  background-color: #fff; /* White background for dropdown */
+  color: #333; /* Dark text color */
+}
+
+.filter-dropdown select:focus {
+  border-color: #ff6600; /* Orange border color when focused */
+  outline: none;
 }

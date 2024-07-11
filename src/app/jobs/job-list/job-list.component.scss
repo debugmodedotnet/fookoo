@@ -1,9 +1,16 @@
 
+@use "../../styles/variables" as *;
+
 .job-list-content {
-  background-color: #fff; /* White background for the content */
+  background-color: #fff; 
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.select_job{
+    color: #e65c00;
+
 }
 
 .job-list-ul {
@@ -13,18 +20,20 @@
 }
 
 .job-list-item {
-  background-color: #f8f8f8; /* Light grey background for each item */
-  border: 1px solid #ddd; /* Light border */
+  background-color: #f8f8f8; 
+  border: 1px solid #ddd; 
   border-radius: 4px;
   padding: 10px;
   margin-bottom: 10px;
   cursor: pointer;
   transition: background-color 0.3s, border-color 0.3s;
+  font-size: 19px;
 }
 
 .job-list-item:hover {
-  background-color: #ff9131; /* Slightly darker background on hover */
-  border-color: #ccc; /* Darker border color on hover */
+  background-color: $nmc-primary; 
+  border-color: #ccc; 
+   
 }
 
 .job-list-item.selected {

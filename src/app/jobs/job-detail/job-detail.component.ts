@@ -1,12 +1,12 @@
 import { Component, Input } from '@angular/core';
 import { Job } from '../../modules/job';
-import { NgIf } from '@angular/common';
+import { NgFor, NgIf } from '@angular/common';
 
 
 @Component({
   selector: 'app-job-detail',
   standalone: true,
-  imports: [NgIf],
+  imports: [NgIf, NgFor],
   templateUrl: './job-detail.component.html',
   styleUrl: './job-detail.component.scss'
 })

@@ -1,5 +1,7 @@
+<h3 class="select_job"><strong>Job-list</strong></h3>
+
 <div class="filter-dropdown">
-  <label for="tagFilter">Filter by Tag:</label>
+  <label for="tagFilter">Search Jobs:</label>
   <select id="tagFilter" (change)="onTagFilterChange($event)">
     <option value="">All</option>
     <option *ngFor="let tag of tags" [value]="tag">{{ tag }}</option>

@@ -1,120 +1,239 @@
 <h2 class="section-title left font-30 nmc-dark-grey font-family-poppins pb-3">
-  {{ jobId ? 'Edit Job' : 'Create Job' }}
+  {{ jobId ? "Edit Job" : "Create Job" }}
 </h2>
 
 <div class="form-wrapper w-100">
   <form [formGroup]="jobForm" (ngSubmit)="onSubmit()">
     <div class="row mb-3">
       <div class="col-md-6">
-        <label for="CompanyName" class="form-label required">Company Name</label>
-        <input id="CompanyName" formControlName="CompanyName" type="text" class="form-control" />
+        <label for="CompanyName" class="form-label fw-semibold font-14 required"
+          >Company Name</label
+        >
+        <input
+          id="CompanyName"
+          formControlName="CompanyName"
+          type="text"
+          class="form-control h-3 rounded-3"
+        />
       </div>
+
       <div class="col-md-6">
-        <label for="CompanyUrl" class="form-label required">Company URL</label>
-        <input id="CompanyUrl" formControlName="CompanyUrl" type="text" class="form-control" />
+        <label for="CompanyUrl" class="form-label fw-semibold font-14 required"
+          >Company URL</label
+        >
+        <input
+          id="CompanyUrl"
+          formControlName="CompanyUrl"
+          type="text"
+          class="form-control h-3 rounded-3"
+        />
       </div>
     </div>
 
     <div class="row mb-3">
       <div class="col-md-12">
-        <label for="JobDescription" class="form-label required">Job Description</label>
-        <textarea id="JobDescription" formControlName="JobDescription" class="form-control"></textarea>
+        <label
+          for="JobDescription"
+          class="form-label fw-semibold font-14 required"
+          >Job Description</label
+        >
+        <textarea
+          id="JobDescription"
+          formControlName="JobDescription"
+          class="form-control rounded-3"
+          rows="5"
+        ></textarea>
       </div>
     </div>
 
-   <!-- Responsibilities -->
-<div class="row mb-3">
-  <div class="col-md-12">
-    <label for="Responsibilities" class="form-label required">Responsibilities</label>
-    <div formArrayName="Responsibilities">
-      <div class="d-flex flex-wrap align-items-center">
-        <div class="d-flex flex-wrap align-items-center">
-          <ng-container *ngFor="let control of responsibilities.controls; let i = index">
-            <div class="chip-container me-2 mb-2">
-              <div class="chip">
-                {{ control.value }}
-                <button type="button" (click)="removeResponsibility(i)" class="btn btn-danger btn-sm ms-2">×</button>
+    <!-- Responsibilities -->
+    <div class="row mb-3">
+      <div class="col-md-12">
+        <label
+          for="Responsibilities"
+          class="form-label fw-semibold font-14 required"
+          >Responsibilities</label
+        >
+        <div formArrayName="Responsibilities">
+          <div class="d-flex flex-wrap align-items-center">
+            <ng-container
+              *ngFor="let control of responsibilities.controls; let i = index"
+            >
+              <div class="chip-container me-2 mb-2">
+                <div class="chip">
+                  {{ control.value }}
+                  <button
+                    type="button"
+                    (click)="removeResponsibility(i)"
+                    class="btn btn-danger btn-sm ms-2"
+                  >
+                    ×
+                  </button>
+                </div>
               </div>
-            </div>
-          </ng-container>
-          <input #newResponsibility type="text" class="form-control me-2 responsibility-input" placeholder="Add responsibility" />
-          <button type="button" (click)="addResponsibility(newResponsibility.value); newResponsibility.value = '';" class="btn btn-class btn-sm">+</button>
+            </ng-container>
+
+            <input
+              #newResponsibility
+              type="text"
+              class="form-control h-3 rounded-3"
+              (keydown.enter)="
+                addResponsibility(newResponsibility.value);
+                newResponsibility.value = ''
+              "
+            />
+          </div>
         </div>
       </div>
     </div>
-  </div>
-</div>
 
-<!-- Qualification -->
-<div class="row mb-3">
-  <div class="col-md-12">
-    <label for="Qualification" class="form-label required">Qualification</label>
-    <div formArrayName="Qualification">
-      <div class="d-flex flex-wrap align-items-center">
-        <div class="d-flex flex-wrap align-items-center">
-          <ng-container *ngFor="let control of qualifications.controls; let i = index">
-            <div class="chip-container me-2 mb-2">
-              <div class="chip">
-                {{ control.value }}
-                <button type="button" (click)="removeQualification(i)" class="btn btn-danger btn-sm ms-2">×</button>
+    <!-- Qualification -->
+    <div class="row mb-3">
+      <div class="col-md-12">
+        <label
+          for="Qualification"
+          class="form-label fw-semibold font-14 required"
+          >Qualification</label
+        >
+
+        <div formArrayName="Qualification">
+          <div class="d-flex flex-wrap align-items-center">
+            <ng-container
+              *ngFor="let control of qualifications.controls; let i = index"
+            >
+              <div class="chip-container me-2 mb-2">
+                <div class="chip">
+                  {{ control.value }}
+                  <button
+                    type="button"
+                    (click)="removeQualification(i)"
+                    class="btn btn-danger btn-sm ms-2"
+                  >
+                    ×
+                  </button>
+                </div>
               </div>
-            </div>
-          </ng-container>
-          <input #newQualification type="text" class="form-control me-2 qualification-input" placeholder="Add qualification" />
-          <button type="button" (click)="addQualification(newQualification.value); newQualification.value = '';" class="btn btn-class btn-sm">+</button>
+            </ng-container>
+
+            <input
+              #newQualification
+              type="text"
+              class="form-control h-3 rounded-3"
+              (keydown.enter)="
+                addQualification(newQualification.value);
+                newQualification.value = ''
+              "
+            />
+          </div>
         </div>
       </div>
     </div>
-  </div>
-</div>
-
-
 
     <div class="row mb-3">
       <div class="col-md-12">
-        <label for="SkillsRequired" class="form-label required">Skills Required</label>
-        <textarea id="SkillsRequired" formControlName="SkillsRequired" class="form-control"></textarea>
+        <label
+          for="SkillsRequired"
+          class="form-label fw-semibold font-14 required"
+          >Skills Required</label
+        >
+        <textarea
+          id="SkillsRequired"
+          formControlName="SkillsRequired"
+          class="form-control rounded-3"
+          rows="3"
+        ></textarea>
       </div>
     </div>
 
     <div class="row mb-3">
       <div class="col-md-6">
-        <label for="Location" class="form-label required">Location</label>
-        <input id="Location" formControlName="Location" type="text" class="form-control" />
+        <label for="Location" class="form-label fw-semibold font-14 required"
+          >Location</label
+        >
+        <input
+          id="Location"
+          formControlName="Location"
+          type="text"
+          class="form-control h-3 rounded-3"
+        />
       </div>
+
       <div class="col-md-6">
-        <label for="Remote" class="form-label">Remote</label>
-        <input id="Remote" formControlName="Remote" type="checkbox" class="form-check-input" />
+        <label for="Remote" class="form-label fw-semibold font-14"
+          >Remote</label
+        >
+        <input
+          id="Remote"
+          formControlName="Remote"
+          type="checkbox"
+          class="form-check-input"
+        />
       </div>
     </div>
 
     <div class="row mb-3">
       <div class="col-md-4">
-        <label for="CompanyGithub" class="form-label">Company Github</label>
-        <input id="CompanyGithub" formControlName="CompanyGithub" type="text" class="form-control" />
+        <label for="CompanyGithub" class="form-label fw-semibold font-14"
+          >Company Github</label
+        >
+        <input
+          id="CompanyGithub"
+          formControlName="CompanyGithub"
+          type="text"
+          class="form-control h-3 rounded-3"
+        />
       </div>
+
       <div class="col-md-4">
-        <label for="CompanyTwitter" class="form-label">Company Twitter</label>
-        <input id="CompanyTwitter" formControlName="CompanyTwitter" type="text" class="form-control" />
+        <label for="CompanyTwitter" class="form-label fw-semibold font-14"
+          >Company Twitter</label
+        >
+        <input
+          id="CompanyTwitter"
+          formControlName="CompanyTwitter"
+          type="text"
+          class="form-control h-3 rounded-3"
+        />
       </div>
+
       <div class="col-md-4">
-        <label for="CompanyLinkedIn" class="form-label">Company LinkedIn</label>
-        <input id="CompanyLinkedIn" formControlName="CompanyLinkedIn" type="text" class="form-control" />
+        <label for="CompanyLinkedIn" class="form-label fw-semibold font-14"
+          >Company LinkedIn</label
+        >
+        <input
+          id="CompanyLinkedIn"
+          formControlName="CompanyLinkedIn"
+          type="text"
+          class="form-control h-3 rounded-3"
+        />
       </div>
     </div>
 
     <div class="row mb-3">
       <div class="col-md-6">
-        <label for="Position" class="form-label required">Position</label>
+        <label for="Position" class="form-label fw-semibold font-14 required"
+          >Position</label
+        >
         <select id="Position" formControlName="Position" class="form-select">
-          <option *ngFor="let position of positions" [value]="position">{{ position }}</option>
+          <option *ngFor="let position of positions" [value]="position">
+            {{ position }}
+          </option>
         </select>
-        <div *ngIf="jobForm.get('Position')?.invalid && (jobForm.get('Position')?.touched || jobForm.dirty)" class="text-danger">
+        <div
+          *ngIf="
+            jobForm.get('Position')?.invalid &&
+            (jobForm.get('Position')?.touched || jobForm.dirty)
+          "
+          class="text-danger"
+        >
           Position is required.
         </div>
       </div>
+
       <div class="col-md-6">
-        <label for="Tag" class="form-label required">Tag</label>
+        <label for="Tag" class="form-label fw-semibold font-14 required"
+          >Tag</label
+        >
         <select id="Tag" formControlName="Tag" class="form-select">
           <option *ngFor="let tag of tags" [value]="tag">{{ tag }}</option>
         </select>
@@ -123,31 +242,61 @@
 
     <div class="row mb-3">
       <div class="col-md-6">
-        <label for="Email" class="form-label">Email</label>
-        <input id="Email" formControlName="Email" type="email" class="form-control" />
+        <label for="Email" class="form-label fw-semibold font-14">Email</label>
+        <input
+          id="Email"
+          formControlName="Email"
+          type="email"
+          class="form-control h-3 rounded-3"
+        />
       </div>
+
       <div class="col-md-6">
-        <label for="PhoneNo" class="form-label">Phone No</label>
-        <input id="PhoneNo" formControlName="PhoneNo" type="text" class="form-control" />
+        <label for="PhoneNo" class="form-label fw-semibold font-14"
+          >Phone No</label
+        >
+        <input
+          id="PhoneNo"
+          formControlName="PhoneNo"
+          type="text"
+          class="form-control h-3 rounded-3"
+        />
       </div>
     </div>
 
     <div class="row mb-3">
       <div class="col-md-12">
-        <label for="ImageUrl" class="form-label required">Image URL</label>
-        <input id="ImageUrl" formControlName="ImageUrl" type="text" class="form-control" />
+        <label for="ImageUrl" class="form-label fw-semibold font-14 required"
+          >Image URL</label
+        >
+        <input
+          id="ImageUrl"
+          formControlName="ImageUrl"
+          type="text"
+          class="form-control h-3 rounded-3"
+        />
       </div>
     </div>
 
     <div class="mt-4 d-flex justify-content-end">
-      <button type="submit" class="nmc-btn-primary font-14 fw-semibold box-shadow-none py-2" [disabled]="!jobForm.valid">
-        {{ jobId ? 'Update Job' : 'Create Job' }}
+      <button
+        type="submit"
+        class="nmc-btn-primary font-14 fw-semibold box-shadow-none py-2"
+        [disabled]="!jobForm.valid"
+      >
+        {{ jobId ? "Update Job" : "Create Job" }}
       </button>
     </div>
   </form>
 
   <div *ngIf="message" class="mt-4">
-    <p [ngClass]="{'text-success': messageType === 'success', 'text-danger': messageType === 'error'}" class="font-18 m-0">
+    <p
+      [ngClass]="{
+        'text-success': messageType === 'success',
+        'text-danger': messageType === 'error'
+      }"
+      class="font-18 m-0"
+    >
       {{ message }}
     </p>
   </div>

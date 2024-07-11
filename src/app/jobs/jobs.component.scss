@@ -50,3 +50,7 @@
     max-width: 100%;
     height: auto;
 }
+
+.job-list:hover {
+    outline: 2px solid orange; /* This will change the background to orange on hover */
+}

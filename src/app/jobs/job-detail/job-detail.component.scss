@@ -1,0 +1,40 @@
+.job_position{
+
+    background-color: #c5bfbf;
+}
+
+.job-detail-content {
+    border: 1px solid #ccc; /* Light grey border */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15); /* Shadow for depth */
+    padding: 20px; /* Inner spacing */
+    margin: 10px 0; /* Vertical spacing */
+    background-color: #fff; /* White background */
+    border-radius: 5px; /* Rounded corners */
+}
+
+.job-detail-content h2 {
+    color: #333; /* Darker text for the title */
+    margin-bottom: 10px; /* Spacing after the title */
+}
+
+.job-detail-content p {
+    color: #666; /* Lighter text color */
+    line-height: 1.6; /* Increased line height for readability */
+    margin-bottom: 10px; /* Spacing between paragraphs */
+}
+
+.job-detail-content a {
+    color: #0067d8; /* Bright link color */
+    text-decoration: none; /* No underline */
+}
+
+.job-detail-content a:hover {
+    text-decoration: underline; /* Underline on hover for links */
+}
+
+.job-detail-content .job-image {
+    max-width: 100%; /* Ensures the image is responsive */
+    height: auto; /* Maintain aspect ratio */
+    margin-top: 10px; /* Spacing above the image */
+    border-radius: 5px; /* Rounded corners for the image */
+}

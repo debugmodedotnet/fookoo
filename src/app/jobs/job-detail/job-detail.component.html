@@ -6,23 +6,40 @@
     </div>
     <p><strong>Company Name:</strong> {{ job.CompanyName }}</p>
     <p><strong>Company URL:</strong> <a [href]="job.CompanyUrl" target="_blank">{{ job.CompanyUrl }}</a></p>
+    <p><strong>Domain:</strong> {{ job.Tag }}</p>
     <p><strong>Location:</strong> {{ job.Location }}</p>
     <p><strong>Remote:</strong> {{ job.Remote ? 'Yes' : 'No' }}</p>
+    <button class="button_css">Apply</button>
+    <p class="image"> <img [src]="job.ImageUrl" alt="{{ job.Position }}" class="job-image" /></p>
   </div>
 
   <p><strong>Job Description:</strong> {{ job.JobDescription }}</p>
-  <p><strong>Responsibilities:</strong> {{ job.Responsibilities }}</p>
   <p><strong>Skills Required:</strong> {{ job.SkillsRequired }}</p>
+  <p><strong>Responsibilities:</strong></p>
+  <ul>
+    <li *ngFor="let responsibility of job.Responsibilities">&#8226; {{ responsibility }}</li>
+  </ul>
+  <p><strong>Qualifications:</strong></p>
+  <ul>
+    <li *ngFor="let qualification of job.Qualification">&#8226; {{ qualification }}</li>
+  </ul>
+  
+
+
+  <div class="contacts">
+    <p class="contacts_header"><strong>Contacts:-</strong></p>
   <p><strong>Company Twitter:</strong> <a [href]="job.CompanyTwitter" target="_blank">{{ job.CompanyTwitter }}</a></p>
   <p><strong>Company LinkedIn:</strong> <a [href]="job.CompanyLinkedIn" target="_blank">{{ job.CompanyLinkedIn }}</a></p>
   <p><strong>Company GitHub:</strong> <a [href]="job.CompanyGithub" target="_blank">{{ job.CompanyGithub }}</a></p>
   <p><strong>Email:</strong> <a [href]="'mailto:' + job.Email">{{ job.Email }}</a></p>
   <p><strong>Phone No:</strong> {{ job.PhoneNo }}</p>
-  <p><strong>Tag:</strong> {{ job.Tag }}</p>
-  <p><strong>Image:</strong> <img [src]="job.ImageUrl" alt="{{ job.Position }}" class="job-image" /></p>
+  
+  
+  </div>
 </div>
 
 <!-- Placeholder text if no job is selected -->
-<div *ngIf="!job">
-  <p>Select a job to see the details</p>
+<div *ngIf="!job" >
+  <p class="select_job"><strong>Job-details</strong></p>
+  <p>Pls select any job from the job-list</p>
 </div>

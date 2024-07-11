@@ -14,12 +14,12 @@ export const routes: Routes = [
   { path: 'events', loadComponent: () => import('./event/event.component').then(m => m.EventComponent) },
   { path: 'event/:id', loadComponent: () => import('./event-details/event-details.component').then(m => m.EventDetailsComponent) },
   { path: 'instructor/:instructorId', loadComponent: () => import('./instructor-details/instructor-details.component').then(m => m.InstructorDetailsComponent) },
-  { path: 'job-list', loadComponent: () => import('./jobs/job-list/job-list.component').then(m => m.JobListComponent) },
-  { path: 'job-detail', loadComponent: () => import('./jobs/job-detail/job-detail.component').then(m => m.JobDetailComponent) },
+  { path: 'job-list', loadComponent: () => import('./job-list/job-list.component').then(m => m.JobListComponent) },
+  { path: 'job-detail', loadComponent: () => import('./job-detail/job-detail.component').then(m => m.JobDetailComponent) },
   { path: 'view-job', loadComponent: () => import('./profile/viewjob/viewjob.component').then(m => m.ViewJobComponent) },
   { path: 'job', loadComponent: () => import('./profile/job/job.component').then(m => m.JobComponent) },
-  { path: 'jobs', loadComponent: () => import('./jobs/jobs.component').then(m => m.JobsComponent) },
-
+  { path: 'quiz', loadComponent: () => import('./quiz/quiz.component').then(m => m.QuizComponent) },
+  
   {
     path: 'admin',
     component: AdminComponent,
@@ -28,10 +28,9 @@ export const routes: Routes = [
       { path: 'event', loadComponent: () => import('./create-event/create-event.component').then(m => m.CreateEventComponent) },
       { path: 'instructor', loadComponent: () => import('./create-instructor/create-instructor.component').then(m => m.CreateInstructorComponent) },
       { path: 'youtube', loadComponent: () => import('./youtube-setting/youtube-setting.component').then(m => m.YoutubeSettingComponent) },
-      { path: 'quiz', loadComponent: () => import('./quiz/quiz.component').then(m => m.QuizComponent) },
+      //{ path: 'quiz', loadComponent: () => import('./quiz/quiz.component').then(m => m.QuizComponent) },
       { path: 'instructor-setting', loadComponent: () => import('./instructor-setting/instructor-setting.component').then(m => m.InstructorSettingComponent) },
     ]
   },
   { path: '', redirectTo: 'home', pathMatch: 'full' }
 ];
-

@@ -1,5 +1,47 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { Job } from '../modules/job';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class JobService {
+  constructor(private firestore: AngularFirestore) {}
+
+  getJobs(): Observable<Job[]> {
+    return this.firestore.collection<Job>('jobs').snapshotChanges().pipe(
+      map(actions => actions.map(a => {
+        const data = a.payload.doc.data() as Job;
+        const id = a.payload.doc.id;
+        return { id, ...data };
+      }))
+    );
+  }
+
+  addJob(job: Job, jobId: string): Promise<void> {
+    return this.firestore.collection('jobs').doc(jobId).set(job);
+  }
+
+  getJobById(jobId: string): Observable<Job | undefined> {
+    return this.firestore.collection('jobs').doc<Job>(jobId).valueChanges().pipe(
+      map(data => data ? { id: jobId, ...data } : undefined)
+    );
+  }
+
+  updateJob(jobId: string, job: Partial<Job>): Promise<void> {
+    return this.firestore.collection('jobs').doc(jobId).update(job);
+  }
+
+  deleteJob(jobId: string): Promise<void> {
+    return this.firestore.collection('jobs').doc(jobId).delete();
+  }
+}
+
+
+/*import { Injectable } from '@angular/core';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Observable } from 'rxjs';
 import { Job } from '../modules/job';
 
@@ -30,6 +72,6 @@ export class JobService {
   deleteJob(id: string): Promise<void> {
     return this.firestore.collection('jobs').doc(id).delete();
   }
-}
+} */
 
 

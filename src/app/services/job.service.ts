@@ -8,10 +8,20 @@ import { map } from 'rxjs';
   providedIn: 'root'
 })
 export class JobService {
-  constructor(private firestore: AngularFirestore) {}
+  constructor(private firestore: AngularFirestore) { }
 
   getJobs(): Observable<Job[]> {
     return this.firestore.collection<Job>('jobs').snapshotChanges().pipe(
+      map(actions => actions.map(a => {
+        const data = a.payload.doc.data() as Job;
+        const id = a.payload.doc.id;
+        return { id, ...data };
+      }))
+    );
+  }
+
+  getJobsByUserId(userId: string): Observable<Job[]> {
+    return this.firestore.collection<Job>('jobs', ref => ref.where('userId', '==', userId)).snapshotChanges().pipe(
       map(actions => actions.map(a => {
         const data = a.payload.doc.data() as Job;
         const id = a.payload.doc.id;

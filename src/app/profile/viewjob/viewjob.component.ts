@@ -5,6 +5,8 @@ import { JobService } from '../../services/job.service';
 import { Job } from '../../modules/job';
 import { CommonModule } from '@angular/common';
 import { NgFor, NgIf } from '@angular/common';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { first } from 'rxjs';
 
 @Component({
   selector: 'app-view-job',
@@ -22,9 +24,12 @@ export class ViewJobComponent implements OnInit {
   private jobService = inject(JobService);
   private router = inject(Router);
   private fb = inject(FormBuilder);
+  userId?: string;
 
   tags: string[] = ['Angular', 'React', 'GenAI', 'JavaScript', 'TypeScript'];
   positions: string[] = ['Software Engineer', 'ML Engineer', 'Software Developer', 'Social Media Management', 'Senior Software Engineer', 'Intern'];
+
+  private afAuth = inject(AngularFireAuth);
 
   constructor() {
     this.jobForm = this.fb.group({
@@ -48,12 +53,17 @@ export class ViewJobComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.loadJobs();
+    console.log("here")
+    this.afAuth.user.pipe(first()).subscribe(res => {
+      console.log(res)
+      this.userId = res?.uid;
+      this.loadJobs();
+    });
   }
 
   loadJobs(): void {
     this.loading = true;
-    this.jobService.getJobs().subscribe(
+    this.jobService.getJobsByUserId(this.getUserId()).subscribe(
       (jobs: Job[]) => {
         console.log('Loaded jobs:', jobs); // Debugging line to check the jobs array
         this.jobs = jobs;
@@ -186,6 +196,13 @@ export class ViewJobComponent implements OnInit {
 
   removeQualification(index: number): void {
     this.qualifications.removeAt(index);
+  }
+
+  getUserId(): string {
+    if (!this.userId) {
+      throw new Error("UserId not found");
+    }
+    return this.userId;
   }
 }
 

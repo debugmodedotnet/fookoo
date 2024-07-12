@@ -5,6 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { NgIf, NgClass, NgFor } from '@angular/common';
 import { Job } from '../../modules/job';
 import { first } from 'rxjs/operators';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
 
 @Component({
   selector: 'app-job',
@@ -21,9 +22,12 @@ export class JobComponent implements OnInit {
   jobId?: string;
   message: string | null = null;
   messageType: 'success' | 'error' = 'success';
+  userId?: string;
 
   tags: string[] = ['Angular', 'React', 'GenAI', 'JavaScript', 'TypeScript'];
   positions: string[] = ['Software Engineer', 'ML Engineer', 'Software Developer', 'Social Media Management', 'Senior Software Engineer', 'Intern'];
+
+  private afAuth = inject(AngularFireAuth);
 
   constructor() {
     this.jobForm = new FormGroup({
@@ -42,7 +46,8 @@ export class JobComponent implements OnInit {
       Email: new FormControl('', [Validators.email]),
       PhoneNo: new FormControl('', [Validators.pattern('^[0-9]+$')]),
       Tag: new FormControl('', [Validators.required]),
-      ImageUrl: new FormControl('', [Validators.required, Validators.pattern('https?://.+')])
+      ImageUrl: new FormControl('', [Validators.required, Validators.pattern('https?://.+')]),
+      Private: new FormControl(false)
     });
   }
 
@@ -52,6 +57,10 @@ export class JobComponent implements OnInit {
       if (this.jobId) {
         this.loadJobDetails(this.jobId);
       }
+    });
+    this.afAuth.user.pipe(first()).subscribe(async res => {
+      console.log(res)
+      this.userId = res?.uid;
     });
   }
 
@@ -159,7 +168,7 @@ export class JobComponent implements OnInit {
   onSubmit(): void {
     if (this.jobForm.valid) {
       if (this.jobId) {
-        this.jobService.updateJob(this.jobId, this.jobForm.value)
+        this.jobService.updateJob(this.jobId, { ...this.jobForm.value, userId: this.getUserId() })
           .then(() => {
             this.message = 'Job has been successfully updated!';
             this.messageType = 'success';
@@ -171,12 +180,19 @@ export class JobComponent implements OnInit {
             console.error('Error updating job: ', error);
           });
       } else {
-        this.addJobWithCustomId(this.jobForm.value);
+        this.addJobWithCustomId({ ...this.jobForm.value, userId: this.getUserId() });
       }
     } else {
       this.message = 'Please fill out all required fields correctly.';
       this.messageType = 'error';
     }
+  }
+
+  getUserId(): string {
+    if (!this.userId) {
+      throw new Error("UserId not found");
+    }
+    return this.userId;
   }
 }
 

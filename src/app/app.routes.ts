@@ -20,6 +20,7 @@ export const routes: Routes = [
   { path: 'job', loadComponent: () => import('./profile/job/job.component').then(m => m.JobComponent) },
   { path: 'quiz', loadComponent: () => import('./quiz/quiz.component').then(m => m.QuizComponent) },
   { path: 'jobs', loadComponent: () => import('./jobs/jobs.component').then(m => m.JobsComponent) },
+  { path: 'jobs/:id', loadComponent: () => import('./jobs/jobs.component').then(m => m.JobsComponent) },
 
   {
     path: 'admin',

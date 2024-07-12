@@ -1,0 +1,50 @@
+@use "../../../app/styles/variables" as *;
+
+.job-list {
+    border-right: 1px solid rgb(218, 220, 224);
+    height: 100vh;
+    overflow: scroll;
+    width: 372px;
+    z-index: 2;
+}
+
+.job-detail {
+    flex: 3;
+    background-color: rgb(248, 249, 250);
+    height: 100vh;
+    overflow: scroll;
+
+}
+
+::-webkit-scrollbar-track {
+    background-color: $nmc-white;
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 20px;
+    background-color: $nmc-grey;
+}
+
+.wrapper {
+    box-shadow: 0 1px 2px 0 rgba(60, 64, 67, .3), 0 1px 3px 1px rgba(60, 64, 67, .15);
+
+
+    li {
+        list-style: disc;
+    }
+
+    .border-bottom {
+        border-bottom: 1px solid #ccc;
+    }
+
+    .company-img {
+        height: 100px;
+        width: 100px;
+        top: 1.5rem;
+        right: 1.5rem;
+    }
+
+    button{
+        border: 1px solid #ccc;
+    }
+}

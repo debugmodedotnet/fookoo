@@ -1,61 +1,7 @@
+@use "../../../app/styles/variables" as *;
 
-@use "../../styles/variables" as *;
-
-.job-list-content {
-  background-color: #fff; 
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+.cards-container {
+    overflow: auto;
+    overscroll-behavior: contain;
 }
 
-.select_job{
-    color: #e65c00;
-
-}
-
-.job-list-ul {
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
-}
-
-.job-list-item {
-  background-color: #f8f8f8; 
-  border: 1px solid #ddd; 
-  border-radius: 4px;
-  padding: 10px;
-  margin-bottom: 10px;
-  cursor: pointer;
-  transition: background-color 0.3s, border-color 0.3s;
-  font-size: 19px;
-}
-
-.job-list-item:hover {
-  background-color: $nmc-primary; 
-  border-color: #ccc; 
-   
-}
-
-.job-list-item.selected {
-  background-color: #fa873b; /* Orange background for the selected item */
-  color: #fff; /* White text color for selected item */
-  border-color: #e65c00; /* Darker orange border for the selected item */
-}
-
-.filter-dropdown {
-  margin-bottom: 20px;
-}
-
-.filter-dropdown select {
-  padding: 8px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  font-size: 16px;
-  background-color: #fff; /* White background for dropdown */
-  color: #333; /* Dark text color */
-}
-
-.filter-dropdown select:focus {
-  border-color: #ff6600; /* Orange border color when focused */
-  outline: none;
-}

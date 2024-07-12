@@ -1,22 +1,23 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { Observable, combineLatest, of } from 'rxjs';
-import { map } from 'rxjs/operators';
 import { Job } from '../../modules/job';
-import { AsyncPipe, NgClass, NgIf } from '@angular/common';
+import { combineLatest, map, Observable, of } from 'rxjs';
+import { AsyncPipe, NgIf } from '@angular/common';
+import { RouterModule } from '@angular/router';
 
 @Component({
-  selector: 'app-job-list',
+  selector: 'app-all-jobs',
   standalone: true,
-  imports: [NgIf, AsyncPipe, NgClass],
-  templateUrl: './job-list.component.html',
-  styleUrls: ['./job-list.component.scss']
+  imports: [NgIf, AsyncPipe, RouterModule],
+  templateUrl: './all-jobs.component.html',
+  styleUrl: './all-jobs.component.scss'
 })
-export class JobListComponent implements OnInit {
+export class AllJobsComponent {
 
   @Output() selectJob = new EventEmitter<Job>();
 
   jobs$!: Observable<Job[]>;
+  tags: string[] = ['Angular', 'React', 'GenAI', 'JavaScript', 'TypeScript'];
   selectedTag: string = '';
   filteredJobs$!: Observable<Job[]>;
 
@@ -44,4 +45,5 @@ export class JobListComponent implements OnInit {
   onJobClick(job: Job) {
     this.selectJob.emit(job);
   }
+
 }

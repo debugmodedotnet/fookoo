@@ -1,5 +1,5 @@
 export interface Job {
-  id?: string;  // Include the ID field
+  id?: string;  
   CompanyName: string;
   CompanyUrl: string;
   JobDescription: string;

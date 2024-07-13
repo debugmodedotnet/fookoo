@@ -17,8 +17,6 @@ export class EventComponent implements OnInit {
   events: IEvent[] = [];
   private firestore = inject(AngularFirestore);
 
-  constructor() { }
-
   ngOnInit(): void {
     this.getEvents();
   }

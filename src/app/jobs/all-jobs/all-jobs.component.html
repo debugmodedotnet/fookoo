@@ -12,7 +12,7 @@
   <div class="job-detail">
     <div
       class="job-detail-content px-4 pb-4"
-      *ngIf="filteredJobs$ | async as jobs; else noJobs"
+      *ngIf="filteredJobs$ | async as jobs"
     >
       @for(job of jobs; track job){
       <div class="wrapper rounded-4 nmc-bg-white mt-4 pb-4">
@@ -73,8 +73,8 @@
       }
     </div>
 
-    <ng-template #noJobs>
+    <!-- <ng-template #noJobs>
       <p class="text-center mt-4">No jobs available at the moment.</p>
-    </ng-template>
+    </ng-template> -->
   </div>
 </div>

@@ -1,6 +1,5 @@
 import { Component, Input, OnInit, inject } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { IEventAbout } from '../../modules/about-event';
 import { IEvent } from '../../modules/event';
 
 @Component({

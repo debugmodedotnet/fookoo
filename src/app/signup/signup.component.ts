@@ -14,8 +14,8 @@ import { UserService } from '../services/user.service';
 export class SignupComponent {
 
   signupForm: FormGroup;
-  showPassword: boolean = false;
-  showConfirmPassword: boolean = false;
+  showPassword = false;
+  showConfirmPassword = false;
 
   private signupservice = inject(UserService);
   private router = inject(Router);

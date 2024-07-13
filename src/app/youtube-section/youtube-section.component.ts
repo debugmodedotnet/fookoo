@@ -18,8 +18,6 @@ export class YoutubeSectionComponent implements OnInit {
   youtubeVideos: IYoutubeVideos[] = [];
   private firestore = inject(AngularFirestore);
 
-  constructor() { }
-
   ngOnInit(): void {
     this.getEvents();
   }

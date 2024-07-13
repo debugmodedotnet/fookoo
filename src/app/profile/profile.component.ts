@@ -1,4 +1,4 @@
-import { Component, ViewChild, ViewContainerRef, inject } from '@angular/core';
+import { Component, OnInit, ViewChild, ViewContainerRef, inject } from '@angular/core';
 import { UserService } from '../services/user.service';
 import { AngularFireStorage } from '@angular/fire/compat/storage';
 import { finalize } from 'rxjs';
@@ -10,14 +10,14 @@ import { finalize } from 'rxjs';
   templateUrl: './profile.component.html',
   styleUrl: './profile.component.scss'
 })
-export class ProfileComponent {
+export class ProfileComponent implements OnInit {
 
   private userService = inject(UserService);
   private storage = inject(AngularFireStorage);
 
   defaultImage = 'assets/images/home/defaultUser.jpg';
   user: any;
-  currentTab: string = 'about';
+  currentTab = 'about';
 
   @ViewChild('profileView', { static: true, read: ViewContainerRef }) profileView?: ViewContainerRef;
 
@@ -98,6 +98,7 @@ export class ProfileComponent {
           });
         })
       ).subscribe(data => {
+        console.log(data);
       });
     }
   }

@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Job } from '../../modules/job';
 import { combineLatest, map, Observable, of } from 'rxjs';
@@ -12,13 +12,13 @@ import { RouterModule } from '@angular/router';
   templateUrl: './all-jobs.component.html',
   styleUrl: './all-jobs.component.scss'
 })
-export class AllJobsComponent {
+export class AllJobsComponent implements OnInit {
 
   @Output() selectJob = new EventEmitter<Job>();
 
   jobs$!: Observable<Job[]>;
   tags: string[] = ['Angular', 'React', 'GenAI', 'JavaScript', 'TypeScript'];
-  selectedTag: string = '';
+  selectedTag = '';
   filteredJobs$!: Observable<Job[]>;
 
   constructor(private firestore: AngularFirestore) { }

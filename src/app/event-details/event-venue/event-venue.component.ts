@@ -3,8 +3,6 @@ import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { UserService } from '../../services/user.service';
-import { IEventVenue } from '../../modules/event-venue';
-import { IEventEnroll } from '../../modules/event-enroll';
 import { IEvent } from '../../modules/event';
 
 @Component({

@@ -1,6 +1,5 @@
-import { Component, OnInit, inject } from '@angular/core';
-import { Router, RouterOutlet } from '@angular/router';
-import { UserService } from '../services/user.service';
+import { Component } from '@angular/core';
+import { RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-admin',
@@ -20,5 +19,5 @@ export class AdminComponent {
   //     }
   //   });
   // }
-  
+
 }

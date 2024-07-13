@@ -3,7 +3,8 @@ import { CanActivateFn, Router } from '@angular/router';
 import { UserService } from './user.service';
 import { catchError, map, of, tap } from 'rxjs';
 
-export const isAdminGuard: CanActivateFn = (route, state) => {
+export const isAdminGuard: CanActivateFn = () => {
+
   const router = inject(Router);
   const userService = inject(UserService);
 

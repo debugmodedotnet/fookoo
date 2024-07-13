@@ -1,4 +1,4 @@
-import { Component, EventEmitter, inject, Input, model, OnInit, Output } from '@angular/core';
+import { Component, model } from '@angular/core';
 import { Job } from '../../modules/job';
 import { AsyncPipe, NgFor, NgIf } from '@angular/common';
 

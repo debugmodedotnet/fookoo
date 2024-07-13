@@ -4,7 +4,7 @@ import { map, catchError, tap } from 'rxjs/operators';
 import { of } from 'rxjs';
 import { inject } from '@angular/core';
 
-export const userAuthGuard: CanActivateFn = (route, state) => {
+export const userAuthGuard: CanActivateFn = () => {
   const router = inject(Router);
   const userService = inject(UserService);
 

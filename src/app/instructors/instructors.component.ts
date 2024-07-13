@@ -19,8 +19,6 @@ export class InstructorsComponent implements OnInit {
 
   defaultImage = 'assets/images/home/defaultInstructor.jpg';
 
-  constructor() { }
-
   ngOnInit(): void {
     this.getInstructors();
   }

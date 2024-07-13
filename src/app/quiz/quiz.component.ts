@@ -22,7 +22,7 @@ export class QuizComponent implements OnInit {
 
   readonly TOTAL_ALLOWED_ATTEMPTS = 10;
   quizForm: FormGroup;
-  totalAttemptedQuestions: number = 0;
+  totalAttemptedQuestions = 0;
   question?: IQuizQuestion;
   userId?: string;
 

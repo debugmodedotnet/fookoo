@@ -14,7 +14,7 @@ import { Router } from '@angular/router';
 export class LoginComponent {
 
   loginForm: FormGroup;
-  showPassword: boolean = false;
+  showPassword = false;
   errorMessage: string | null = null;
 
   private userservice = inject(UserService);

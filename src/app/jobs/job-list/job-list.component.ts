@@ -17,7 +17,7 @@ export class JobListComponent implements OnInit {
   @Output() selectJob = new EventEmitter<Job>();
 
   jobs$!: Observable<Job[]>;
-  selectedTag: string = '';
+  selectedTag = '';
   filteredJobs$!: Observable<Job[]>;
 
   constructor(private firestore: AngularFirestore) { }

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { IYoutubeVideos } from '../modules/home-youtube';
 import { YoutubeVideoService } from '../services/youtube-video.service';
 import { ReactiveFormsModule, FormGroup, FormBuilder, Validators, AbstractControl, ValidationErrors } from '@angular/forms';
@@ -13,7 +13,8 @@ import { NgFor, NgIf } from '@angular/common';
   templateUrl: './youtube-setting.component.html',
   styleUrl: './youtube-setting.component.scss'
 })
-export class YoutubeSettingComponent {
+export class YoutubeSettingComponent implements OnInit {
+
   videos: IYoutubeVideos[] = [];
   videoForm: FormGroup;
   editMode = false;
@@ -23,12 +24,9 @@ export class YoutubeSettingComponent {
 
   constructor(private youtubeVideoService: YoutubeVideoService, private fb: FormBuilder) {
     this.videoForm = this.fb.group({
-
-
-      Id:[''],
+      Id: [''],
       Info: ['', [Validators.required, Validators.maxLength(100)]],
       Title: ['', Validators.required],
-
       Thumbnail: [''],
       Link: ['', [Validators.required, this.youtubeUrlValidator]],
       Tech: [''],
@@ -53,7 +51,7 @@ export class YoutubeSettingComponent {
   }
 
   addOrUpdateVideo() {
-    let vid = "video" + this.totalVideoCount + 1;
+    const vid = "video" + this.totalVideoCount + 1;
     this.videoForm?.get('Id')?.setValue(vid);
     if (this.editMode && this.currentVideoId) {
       this.updateVideo(this.currentVideoId, this.videoForm.value);

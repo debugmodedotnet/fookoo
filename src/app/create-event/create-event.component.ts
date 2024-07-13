@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { EventService } from '../services/event.service';
@@ -11,7 +11,7 @@ import { IEvent } from '../modules/event';
   templateUrl: './create-event.component.html',
   styleUrl: './create-event.component.scss',
 })
-export class CreateEventComponent {
+export class CreateEventComponent implements OnInit {
 
   events: IEvent[] = [];
   eventForm: FormGroup;
@@ -67,7 +67,7 @@ export class CreateEventComponent {
 
   addOrUpdateEvent() {
     console.log(this.totalEventCount);
-    let eid = "e" + this.totalEventCount + 1;
+    const eid = "e" + this.totalEventCount + 1;
     this.eventForm?.get('Id')?.setValue(eid);
 
     if (this.editMode && this.currentEventId) {

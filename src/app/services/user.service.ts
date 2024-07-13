@@ -66,7 +66,7 @@ export class UserService {
 
   async updateUserProfile(userDetails: any) {
     console.log('userDetails:', userDetails);
-    let a = await this.afAuth.currentUser;
+    const a = await this.afAuth.currentUser;
     const uid = a!.uid;
     console.log('uid:', uid);
     await this.firestore.doc(`users/${uid}`).update(userDetails);

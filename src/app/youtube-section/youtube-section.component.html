@@ -15,11 +15,9 @@
     class="d-flex youtube-videos flex-wrap gap-3 align-items-center justify-content-center"
   >
     @for (item of youtubeVideos; track $index) {
-
     <div class="inner overflow-hidden rounded-3">
       <youtube-player [videoId]="item.Link" class="yt-player"></youtube-player>
     </div>
-
     }
   </div>
 

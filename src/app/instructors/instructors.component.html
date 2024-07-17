@@ -8,10 +8,8 @@
 
     <div class="container overflow-hidden">
       <div class="row">
-        <div
-          class="col-4 gx-5 position-relative trainers mx-auto mt-4"
-          *ngFor="let i of instructors"
-        >
+        @for(i of instructors; track i){
+        <div class="col-4 gx-5 position-relative trainers mx-auto mt-4">
           <figure
             class="position-relative overflow-hidden rounded-circle m-auto"
           >
@@ -43,6 +41,7 @@
             </a>
           </figcaption>
         </div>
+        }
       </div>
     </div>
   </div>

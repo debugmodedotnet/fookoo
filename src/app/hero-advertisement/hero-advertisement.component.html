@@ -8,9 +8,9 @@
       autoplay="true"
       class="single-slider d-flex align-items-center"
     >
+      @for(a of advertisements; track a){
       <swiper-slide
         class="d-flex align-items-center justify-content-between overflow-hidden rounded-4 purple-bg-gradient py-4"
-        *ngFor="let a of advertisements"
       >
         <div class="p-5 text-start position-relative z-50">
           <div class="mb-4">
@@ -33,6 +33,7 @@
           <img [src]="a.Image" alt="" class="w-100" />
         </div>
       </swiper-slide>
+      }
     </swiper-container>
   </div>
 </section>

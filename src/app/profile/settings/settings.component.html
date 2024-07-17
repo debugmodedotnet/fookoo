@@ -2,43 +2,41 @@
   Settings
 </h2>
 
-<div class="form-wrapper w-100">
-  <form [formGroup]="userProfileForm">
-    <div class="row form-group mt-3">
-      <div class="col-6">
-        <label for="email" class="form-label fw-semibold font-14 required"
-          >Email</label
-        >
-        <input
-          type="email"
-          class="form-control h-3 rounded-3"
-          id="email"
-          formControlemail="email"
-          value="{{ user.email }}"
-          disabled
-        />
-      </div>
 
-      <div class="col-6">
-        <label for="password" class="form-label fw-semibold font-14 required"
-          >Password</label
-        >
-        <input
-          type="password"
-          class="form-control h-3 rounded-3"
-          formControlName="password"
-          id="password"
-        />
-      </div>
+<div *ngIf="user" class="settings-container">
+  <h2>User Settings</h2>
+  <div class="user-info">
+    <p><strong>Email:</strong> {{ user.email }}</p>
+    <p>
+      <strong>Password:</strong> 
+      <span [class.password-hidden]="!showPassword">{{ user.password }}</span>
+      <button class="icon-button" (click)="togglePasswordVisibility()">
+        <span class="eye-icon" [class.open]="showPassword"></span>
+      </button>
+    </p>
+  </div>
+
+  <button class="update-password-btn" (click)="toggleUpdatePasswordForm()">
+    {{ showUpdatePasswordForm ? 'Cancel' : 'Update Password' }}
+  </button>
+
+  <form *ngIf="showUpdatePasswordForm" [formGroup]="updatePasswordForm" (ngSubmit)="updatePassword()" class="update-password-form">
+    <div class="form-group">
+      <label for="currentPassword">Current Password:</label>
+      <input type="password" id="currentPassword" formControlName="currentPassword">
     </div>
+    <div class="form-group">
+      <label for="newPassword">New Password:</label>
+      <input type="password" id="newPassword" formControlName="newPassword">
+    </div>
+    <div class="form-group">
+      <label for="confirmPassword">Confirm New Password:</label>
+      <input type="password" id="confirmPassword" formControlName="confirmPassword">
+    </div>
+    <button type="submit" [disabled]="!updatePasswordForm.valid">Update Password</button>
   </form>
 
-  <div class="d-flex justify-content-end mt-4">
-    <button
-      (click)="saveProfile()"
-      class="nmc-btn-primary font-14 fw-semibold box-shadow-none px-4 py-2 h-auto"
-    >
-      Save
-    </button>
+  <div *ngIf="showPopup" class="popup">
+    Password updated successfully!
   </div>
 </div>

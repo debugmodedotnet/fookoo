@@ -1,4 +1,185 @@
-.form-label.required::after {
-    content: " *";
-    color: red;
-}
+:host {
+    display: block;
+    font-family: Arial, sans-serif;
+  }
+  
+  .settings-container {
+    max-width: 500px;
+    margin: 20px auto;
+    padding: 30px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 1px 4px 6px rgba(0, 0, 0, 0.1);
+    position: relative;
+  }
+  
+  h2 {
+    color: #333;
+    margin-bottom: 25px;
+    font-size: 24px;
+    padding-bottom: 10px;
+  }
+  
+  .user-info {
+    margin-bottom: 25px;
+  
+    p {
+      margin: 15px 0;
+      display: flex;
+      align-items: center;
+      font-size: 16px;
+    }
+  
+    strong {
+      min-width: 80px;
+      display: inline-block;
+      color: #555;
+      margin-right: 10px;
+    }
+  }
+  
+  .password-hidden {
+    -webkit-text-security: disc;
+    text-security: disc;
+  }
+  
+  .icon-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    margin-left: 10px;
+    padding: 0;
+  }
+  
+  .eye-icon {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 2px solid orangered;
+    border-radius: 75% 15%;
+    position: relative;
+    transform: rotate(45deg);
+  
+    &::before {
+      content: '';
+      display: block;
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      border: 2px solid orangered;
+      border-radius: 50%;
+      left: 2px;
+      top: 2px;
+    }
+  
+    &.open::after {
+      content: '';
+      display: block;
+      position: absolute;
+      width: 20px;
+      height: 2px;
+      background-color: orangered;
+      transform: rotate(-45deg);
+      top: 9px;
+      left: 0;
+    }
+  }
+  
+  .update-password-btn {
+    background-color: orangered;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.1s;
+    font-size: 16px;
+    font-weight: bold;
+  
+    &:hover {
+      background-color: #ff5722;
+    }
+  
+    &:active {
+      transform: scale(0.98);
+    }
+  }
+  
+  .update-password-form {
+    margin-top: 25px;
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+  
+    .form-group {
+      margin-bottom: 20px;
+  
+      label {
+        display: block;
+        margin-bottom: 8px;
+        color: #555;
+        font-weight: bold;
+      }
+  
+      input {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        font-size: 16px;
+        transition: border-color 0.3s;
+  
+        &:focus {
+          outline: none;
+          border-color: orangered;
+        }
+      }
+    }
+  
+    button {
+      background-color: orangered;
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.3s, transform 0.1s;
+      font-size: 16px;
+      font-weight: bold;
+  
+      &:hover {
+        background-color: #ff5722;
+      }
+  
+      &:active {
+        transform: scale(0.98);
+      }
+  
+      &:disabled {
+        background-color: #ccc;
+        cursor: not-allowed;
+      }
+    }
+  }
+  
+  .popup {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #4CAF50;
+    color: white;
+    padding: 15px 25px;
+    border-radius: 4px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    font-size: 16px;
+    font-weight: bold;
+    z-index: 1000;
+    animation: fadeInOut 3s ease-in-out;
+  }
+  
+  @keyframes fadeInOut {
+    0%, 100% { opacity: 0; transform: translateX(-50%) translateY(-20px); }
+    10%, 90% { opacity: 1; transform: translateX(-50%) translateY(0); }
+  }

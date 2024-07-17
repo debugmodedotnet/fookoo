@@ -1,9 +1,9 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { Job } from '../../modules/job';
 import { combineLatest, map, Observable, of } from 'rxjs';
 import { AsyncPipe, NgIf } from '@angular/common';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
+import { Job } from '../../modules/job';
 
 @Component({
   selector: 'app-all-jobs',
@@ -21,10 +21,12 @@ export class AllJobsComponent implements OnInit {
   selectedTag = '';
   filteredJobs$!: Observable<Job[]>;
 
-  constructor(private firestore: AngularFirestore) { }
+  constructor(private firestore: AngularFirestore, private router: Router) { }
+
 
   ngOnInit() {
-    this.jobs$ = this.firestore.collection<Job>('jobs').valueChanges();
+    //this.jobs$ = this.firestore.collection<Job>('jobs').valueChanges();
+    this.jobs$ = this.firestore.collection<Job>('jobs').valueChanges({ idField: 'id' });
     this.updateFilteredJobs();
   }
 
@@ -42,8 +44,9 @@ export class AllJobsComponent implements OnInit {
     );
   }
 
-  onJobClick(job: Job) {
-    this.selectJob.emit(job);
-  }
+  // onJobClick(job: Job) {
+  //   this.selectJob.emit(job);
+  //   this.router.navigate(['/jobs', job.id]);
+  // }
 
 }

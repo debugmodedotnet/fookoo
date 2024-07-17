@@ -4,9 +4,7 @@ export interface IEventSpeakers {
     Image: string;
     Position: string;
     Info: string;
-    Title: string;
-    Facebook: string;
-    Instagram: string;
+    Github: string;
     LinkedIn: string;
     X: string;
 }

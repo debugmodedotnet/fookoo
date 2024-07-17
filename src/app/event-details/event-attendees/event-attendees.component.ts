@@ -1,4 +1,3 @@
-import { NgFor } from '@angular/common';
 import { Component, OnInit, inject } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { IEventAttendees } from '../../modules/event-attendees';
@@ -6,7 +5,7 @@ import { IEventAttendees } from '../../modules/event-attendees';
 @Component({
   selector: 'app-event-attendees',
   standalone: true,
-  imports: [NgFor],
+  imports: [],
   templateUrl: './event-attendees.component.html',
   styleUrl: './event-attendees.component.scss'
 })

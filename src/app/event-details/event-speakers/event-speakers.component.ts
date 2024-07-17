@@ -1,4 +1,3 @@
-import { NgFor, NgIf } from '@angular/common';
 import { Component, Input, OnInit, inject } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { IEventSpeakers } from '../../modules/event-speakers';
@@ -7,7 +6,7 @@ import { map } from 'rxjs';
 @Component({
   selector: 'app-event-speakers',
   standalone: true,
-  imports: [NgFor, NgIf],
+  imports: [],
   templateUrl: './event-speakers.component.html',
   styleUrl: './event-speakers.component.scss'
 })
@@ -34,6 +33,8 @@ export class EventSpeakersComponent implements OnInit {
       })), map(eventSpeakers => eventSpeakers.reverse())
     ).subscribe(eventSpeakers => {
       console.log("eventSpeakers:", eventSpeakers);
+      this.eventSpeakers = eventSpeakers;
     });
   }
+
 }

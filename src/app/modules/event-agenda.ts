@@ -1,4 +1,5 @@
 export interface IEventAgenda {
+    id?: string;
     Info: string;
     Speaker: string;
     Tech: string;

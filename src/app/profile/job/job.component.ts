@@ -144,10 +144,7 @@ export class JobComponent implements OnInit {
   addJobWithCustomId(jobData: any): void {
     this.jobService.getJobs().pipe(first()).subscribe(
       (snapshot) => {
-        const jobCount = snapshot.length;
-        const customJobId = `job${jobCount + 1}`;
-
-        this.jobService.addJob(jobData, customJobId)
+        this.jobService.addJob(jobData)
           .then(() => {
             this.message = 'Job has been successfully created!';
             this.messageType = 'success';

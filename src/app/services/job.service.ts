@@ -30,8 +30,8 @@ export class JobService {
     );
   }
 
-  addJob(job: Job, jobId: string): Promise<void> {
-    return this.firestore.collection('jobs').doc(jobId).set(job);
+  async addJob(job: Job): Promise<void> {
+    await this.firestore.collection('jobs').add(job);
   }
 
   getJobById(jobId: string): Observable<Job | undefined> {

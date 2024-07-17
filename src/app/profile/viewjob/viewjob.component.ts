@@ -48,7 +48,8 @@ export class ViewJobComponent implements OnInit {
       Email: new FormControl<string | null>(null, [Validators.email]),
       PhoneNo: new FormControl<string | null>(null, [Validators.pattern('^[0-9]+$')]),
       Tag: new FormControl<string | null>(null),
-      ImageUrl: new FormControl<string | null>(null, [Validators.required, Validators.pattern('https?://.+')])
+      ImageUrl: new FormControl<string | null>(null, [Validators.required, Validators.pattern('https?://.+')]),
+      Private: new FormControl(false)
     });
   }
 
@@ -93,7 +94,8 @@ export class ViewJobComponent implements OnInit {
         Email: job.Email,
         PhoneNo: job.PhoneNo,
         Tag: job.Tag,
-        ImageUrl: job.ImageUrl
+        ImageUrl: job.ImageUrl,
+        Private: job.Private
       });
 
       // Clear existing responsibilities and qualifications
@@ -115,7 +117,8 @@ export class ViewJobComponent implements OnInit {
       const updatedJob = {
         ...this.jobForm.value,
         Responsibilities: (this.jobForm.get('Responsibilities') as FormArray).controls.map(c => c.value),
-        Qualification: (this.jobForm.get('Qualification') as FormArray).controls.map(c => c.value)
+        Qualification: (this.jobForm.get('Qualification') as FormArray).controls.map(c => c.value),
+        userId: this.getUserId()
       };
 
       this.jobService.updateJob(this.currentJobId, updatedJob).then(() => {
@@ -160,7 +163,8 @@ export class ViewJobComponent implements OnInit {
       Email: '',
       PhoneNo: '',
       Tag: '',
-      ImageUrl: ''
+      ImageUrl: '',
+      Private: false
     });
     this.editMode = false;
     this.currentJobId = null;

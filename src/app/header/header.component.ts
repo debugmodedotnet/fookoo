@@ -4,15 +4,11 @@ import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { IHeader } from '../modules/header';
 import { UserService } from '../services/user.service';
 import { Subscription } from 'rxjs';
-import { NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [
-    NgIf,
-    RouterModule
-  ],
+  imports: [RouterModule],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss',
 })

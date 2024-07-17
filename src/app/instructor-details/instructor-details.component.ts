@@ -3,14 +3,13 @@ import { Component, Input, OnInit, inject } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { IInstructor } from '../modules/instructors';
 import { ICourse } from '../modules/course'; 
-import { NgFor, NgIf } from '@angular/common';
 import { catchError, map, switchMap } from 'rxjs/operators';
 import { of } from 'rxjs';
 
 @Component({
   selector: 'app-instructor-details',
   standalone: true,
-  imports: [NgIf, NgFor],
+  imports: [],
   templateUrl: './instructor-details.component.html',
   styleUrls: ['./instructor-details.component.scss']
 })

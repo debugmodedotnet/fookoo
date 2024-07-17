@@ -65,10 +65,8 @@
               </h3>
 
               <div class="list-group my-4">
-                <div
-                  class="list-group-item list-group-item-action p-3"
-                  *ngFor="let option of question?.options"
-                >
+                @for(option of question?.options; track option){
+                <div class="list-group-item list-group-item-action p-3">
                   <div class="form-check">
                     <label class="form-check-label stretched-link">
                       <input
@@ -81,11 +79,12 @@
                     >
                   </div>
                 </div>
+                }
               </div>
 
               <div class="d-flex align-items-center justify-content-end">
+                @if(totalAttemptedQuestions < TOTAL_ALLOWED_ATTEMPTS){
                 <button
-                  *ngIf="totalAttemptedQuestions < TOTAL_ALLOWED_ATTEMPTS"
                   type="submit"
                   class="nmc-btn-primary rounded-2 px-3 box-shadow-none"
                   (click)="handleNextClick()"
@@ -94,8 +93,8 @@
                     totalAttemptedQuestions === TOTAL_ALLOWED_ATTEMPTS - 1
                       ? "Submit"
                       : "Next ->"
-                  }}
-                </button>
+                  }}</button
+                >}
               </div>
             </div>
           </form>

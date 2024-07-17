@@ -2,18 +2,13 @@ import { Component, OnInit, inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, AbstractControl, ValidationErrors, ReactiveFormsModule } from '@angular/forms';
 import { InstructorService } from '../services/instructor.service'; // Update with your service
 import { IInstructor } from '../modules/instructors';  // Update with your model/interface
-import { NgFor, NgIf } from '@angular/common';
 import { AngularFireStorage } from '@angular/fire/compat/storage';
 import { finalize } from 'rxjs';
 
 @Component({
   selector: 'app-instructor-setting',
   standalone: true,
-  imports: [
-    NgIf,
-    NgFor,
-    ReactiveFormsModule
-  ],
+  imports: [ReactiveFormsModule],
   templateUrl: './instructor-setting.component.html',
   styleUrls: ['./instructor-setting.component.scss']
 })

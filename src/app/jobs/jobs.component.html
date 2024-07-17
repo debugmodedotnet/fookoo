@@ -5,7 +5,9 @@
   </div>
 
   <div class="job-detail">
-    <app-job-detail [job]="selectedJob" [jobID]="jobID"></app-job-detail>
+    <div *ngIf="selectedJob && jobID">
+      <app-job-detail [jobID]="jobID"></app-job-detail>
+    </div>
   </div>
 </div>
 } @else {<app-all-jobs></app-all-jobs>}

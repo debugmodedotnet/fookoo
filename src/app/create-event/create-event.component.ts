@@ -67,7 +67,7 @@ export class CreateEventComponent implements OnInit {
 
   addOrUpdateEvent() {
     console.log(this.totalEventCount);
-    const eid = "e" + this.totalEventCount + 1;
+    const eid = "event" + this.totalEventCount + 1;
     this.eventForm?.get('Id')?.setValue(eid);
 
     if (this.editMode && this.currentEventId) {

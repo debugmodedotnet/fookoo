@@ -53,7 +53,6 @@ export class NgIndiaComponent implements OnInit {
       this.prevEvents = prevEvents;
       this.prevEvents.forEach(event => this.loadSpeakersForEvent(event));
       this.prevEvents.forEach(event => this.loadSponsorsForEvent(event));
-
     });
   }
 

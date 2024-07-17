@@ -1,7 +1,8 @@
 import { NgFor, NgIf } from '@angular/common';
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, Input, OnInit, inject } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { IEventSpeakers } from '../../modules/event-speakers';
+import { map } from 'rxjs';
 
 @Component({
   selector: 'app-event-speakers',
@@ -14,16 +15,25 @@ export class EventSpeakersComponent implements OnInit {
 
   eventSpeakers?: IEventSpeakers[];
 
+  @Input() eventId: string | null = null;
+
   private firestore = inject(AngularFirestore);
 
   ngOnInit(): void {
-    this.getEventSpeakers();
+    if (this.eventId) {
+      this.getEventSpeakers(this.eventId);
+    }
   }
 
-  getEventSpeakers() {
-    this.firestore.collection('event-details').doc('event-speakers').collection('speakers').valueChanges().subscribe(eventSpeakers => {
+  getEventSpeakers(eventId: string) {
+    this.firestore.collection('events').doc(eventId).collection('speakers').snapshotChanges().pipe(
+      map(actions => actions.map(a => {
+        const data = a.payload.doc.data() as IEventSpeakers;
+        const id = a.payload.doc.id;
+        return { id, ...data };
+      })), map(eventSpeakers => eventSpeakers.reverse())
+    ).subscribe(eventSpeakers => {
       console.log("eventSpeakers:", eventSpeakers);
-      this.eventSpeakers = eventSpeakers as IEventSpeakers[];
     });
   }
 }

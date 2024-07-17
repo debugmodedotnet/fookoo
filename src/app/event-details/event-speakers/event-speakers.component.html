@@ -8,7 +8,91 @@
     </h2>
 
     <div class="speakers-list px-5">
+      @for (speaker of eventSpeakers; track speaker.id; let i = $index) {
       <div
+        class="member rounded-3 d-flex align-items-center justify-content-between gap-5 mt-5"
+      >
+        @if(i % 2 === 0){
+        <figure class="position-relative m-0 w-30">
+          <img
+            [src]="speaker.Image"
+            class="img-fluid w-100 object-fit-contain"
+            alt=""
+          />
+        </figure>
+
+        <div class="member-info text-start w-75">
+          <h3 class="font-family-poppins">
+            <a href="" class="nmc-primary font-family-poppins pe-2">{{
+              speaker.Name
+            }}</a>
+            <span class="nmc-medium-grey font-18">{{ speaker.Position }}</span>
+          </h3>
+
+          <p class="nmc-medium-grey">
+            {{ speaker.Info }}
+          </p>
+
+          <div
+            class="social d-flex align-items-center justify-content-start gap-2"
+          >
+            <a [href]="speaker.X" class="font-20 nmc-primary"
+              ><i class="bi bi-twitter-x"></i
+            ></a>
+            <a [href]="speaker.Facebook" class="font-20 nmc-primary"
+              ><i class="bi bi-facebook"></i
+            ></a>
+            <a [href]="speaker.Instagram" class="font-20 nmc-primary"
+              ><i class="bi bi-instagram"></i
+            ></a>
+            <a [href]="speaker.LinkedIn" class="font-20 nmc-primary"
+              ><i class="bi bi-linkedin"></i
+            ></a>
+          </div>
+        </div>
+        }@else {
+        <div class="member-info text-start w-75">
+          <h3 class="font-family-poppins">
+            <a href="" class="nmc-primary font-family-poppins pe-2">{{
+              speaker.Name
+            }}</a>
+            <span class="nmc-medium-grey font-18">{{ speaker.Position }}</span>
+          </h3>
+
+          <p class="nmc-medium-grey">
+            {{ speaker.Info }}
+          </p>
+
+          <div
+            class="social d-flex align-items-center justify-content-start gap-2"
+          >
+            <a [href]="speaker.X" class="font-20 nmc-primary"
+              ><i class="bi bi-twitter-x"></i
+            ></a>
+            <a [href]="speaker.Facebook" class="font-20 nmc-primary"
+              ><i class="bi bi-facebook"></i
+            ></a>
+            <a [href]="speaker.Instagram" class="font-20 nmc-primary"
+              ><i class="bi bi-instagram"></i
+            ></a>
+            <a [href]="speaker.LinkedIn" class="font-20 nmc-primary"
+              ><i class="bi bi-linkedin"></i
+            ></a>
+          </div>
+        </div>
+
+        <figure class="position-relative m-0 w-30">
+          <img
+            [src]="speaker.Image"
+            class="img-fluid w-100 object-fit-contain"
+            alt=""
+          />
+        </figure>
+        }
+      </div>
+      }
+
+      <!-- <div
         class="member rounded-3 d-flex align-items-center justify-content-between gap-5 mt-5"
         *ngFor="let speaker of eventSpeakers; let i = index"
       >
@@ -89,7 +173,7 @@
           />
         </figure>
         }
-      </div>
+      </div> -->
     </div>
   </div>
 </section>

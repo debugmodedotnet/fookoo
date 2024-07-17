@@ -20,6 +20,6 @@ export class JobDetailComponent {
   constructor() {
     console.log(this.jobID());
     console.log(this.job());
-   }
+  }
 
 }

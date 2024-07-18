@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Observable, combineLatest, of } from 'rxjs';
 import { map } from 'rxjs/operators';
@@ -14,10 +14,11 @@ import { AsyncPipe, NgClass, NgIf } from '@angular/common';
 })
 export class JobListComponent implements OnInit {
 
+  @Input() selectedTag: string | null = null;
   @Output() selectJob = new EventEmitter<Job>();
 
   jobs$!: Observable<Job[]>;
-  selectedTag = '';
+  /*selectedTag = '';*/
   filteredJobs$!: Observable<Job[]>;
 
   constructor(private firestore: AngularFirestore) { }
@@ -29,6 +30,10 @@ export class JobListComponent implements OnInit {
 
   onTagFilterChange(tag: string) {
     this.selectedTag = tag;
+    this.updateFilteredJobs();
+  }
+
+  ngOnChanges() {
     this.updateFilteredJobs();
   }
 

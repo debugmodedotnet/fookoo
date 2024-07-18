@@ -5,12 +5,14 @@ import { JobDetailComponent } from './job-detail/job-detail.component';
 import { ActivatedRoute } from '@angular/router';
 import { AllJobsComponent } from './all-jobs/all-jobs.component';
 import { JobService } from '../services/job.service';
-import { first } from 'rxjs';
+import { combineLatest, first, Observable, of } from 'rxjs';
+import { map } from 'rxjs/operators';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-jobs',
   standalone: true,
-  imports: [JobListComponent, JobDetailComponent, AllJobsComponent],
+  imports: [CommonModule,JobListComponent, JobDetailComponent, AllJobsComponent],
   templateUrl: './jobs.component.html',
   styleUrl: './jobs.component.scss'
 })
@@ -18,6 +20,8 @@ export class JobsComponent implements OnInit {
 
   selectedJob!: Job | null;
   jobID!: string | null;
+  filteredJobs$!: Observable<Job[]>;
+  selectedTag: string | null = '';
 
   private route = inject(ActivatedRoute);
   private jobService = inject(JobService);
@@ -40,10 +44,13 @@ export class JobsComponent implements OnInit {
         }
       });
     }
+    
   }
 
   onSelectJob(job: Job) {
     console.log("select job: ", job)
     this.selectedJob = job;
   }
+
+  
 }

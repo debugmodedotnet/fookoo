@@ -21,11 +21,6 @@ export class EventService {
     );
   }
 
-  // addEvent(event: IEvent) {
-  //   console.log('Adding event:', event);
-  //   return this.firestore.collection('events').add(event);
-  // }
-
 
   addEvent(event: IEvent, slug: string) {
     console.log('Adding event:', event);

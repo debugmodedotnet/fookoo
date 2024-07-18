@@ -2,7 +2,7 @@
   <div class="job-list nmc-bg-white">
     <div class="cards-container">
       @for( tag of tags; track tag ){
-      <div (click)="onTagFilterChange(tag)" [class.active]="isTagActive(tag)"  class="card p-4 m-3 cursor-pointer">
+      <div (click)="onTagFilterChange(tag)" [class.active]="isTagActive(tag)" class="card p-4 m-3 cursor-pointer">
         {{ tag }}
       </div>
       }
@@ -14,6 +14,7 @@
       class="job-detail-content px-4 pb-4"
       *ngIf="filteredJobs$ | async as jobs"
     >
+    <ng-container *ngIf="jobs.length > 0; else noJobs">
       @for(job of jobs; track job){
       <div class="wrapper rounded-4 nmc-bg-white mt-4 pb-4">
         <div class="company-info p-4 border-bottom position-relative">
@@ -71,10 +72,13 @@
         </button>
       </div>
       }
+      </ng-container>
+      <ng-template #noJobs>
+        <div class="no-jobs-message">
+          <h4>No jobs available for selected tag</h4>
+        </div>
+      </ng-template>
+  
     </div>
-
-    <!-- <ng-template #noJobs>
-      <p class="text-center mt-4">No jobs available at the moment.</p>
-    </ng-template> -->
   </div>
 </div>

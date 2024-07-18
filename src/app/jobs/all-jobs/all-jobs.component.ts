@@ -1,14 +1,14 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { combineLatest, map, Observable, of } from 'rxjs';
-import { AsyncPipe, NgIf } from '@angular/common';
+import { AsyncPipe, NgFor, NgIf } from '@angular/common';
 import { Router, RouterModule } from '@angular/router';
 import { Job } from '../../modules/job';
 
 @Component({
   selector: 'app-all-jobs',
   standalone: true,
-  imports: [NgIf, AsyncPipe, RouterModule],
+  imports: [NgIf, AsyncPipe, RouterModule, NgFor],
   templateUrl: './all-jobs.component.html',
   styleUrl: './all-jobs.component.scss'
 })

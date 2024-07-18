@@ -15,6 +15,7 @@ import { AsyncPipe, NgClass, NgIf } from '@angular/common';
 export class JobListComponent implements OnInit {
 
   @Input() selectedTag: string | null = null;
+  @Input() selectedJob: Job | null = null;
   @Output() selectJob = new EventEmitter<Job>();
 
   jobs$!: Observable<Job[]>;
@@ -47,6 +48,8 @@ export class JobListComponent implements OnInit {
   }
 
   onJobClick(job: Job) {
-    this.selectJob.emit(job);
+    this.selectedJob = job; // Update selected job
+    this.selectJob.emit(job); // Emit selected job to parent component
   }
+
 }

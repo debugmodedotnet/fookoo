@@ -3,5 +3,22 @@
 .cards-container {
     overflow: auto;
     overscroll-behavior: contain;
-}
-
+  
+    .card {
+      border: 1px solid #ccc;
+      transition: background-color 0.3s ease;
+      cursor: pointer;
+  
+      &:hover {
+        background-color: #f0f0f0;
+      }
+  
+      &.selected {
+        background-color: #ffe5b4; /* Highlight color */
+        border-color: #ffa500; /* Border highlight color */
+        font-weight: bold;
+      }
+    }
+  }
+  
+  

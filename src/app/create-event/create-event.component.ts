@@ -3,6 +3,7 @@ import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { EventService } from '../services/event.service';
 import { IEvent } from '../modules/event';
+import slugify from 'slugify';
 
 @Component({
   selector: 'app-create-event',
@@ -41,7 +42,7 @@ export class CreateEventComponent implements OnInit {
       VenueName: new FormControl('', Validators.required),
       VenueInfo: new FormControl('', Validators.required),
       VenueImg: new FormControl('', Validators.required),
-      VenueIframe:new FormControl('', Validators.required),
+      VenueIframe: new FormControl('', Validators.required),
       isOffline: new FormControl(false),
       isPaid: new FormControl(false),
       isCertificateProvided: new FormControl(false),
@@ -65,24 +66,29 @@ export class CreateEventComponent implements OnInit {
     );
   }
 
+  generateSlug(title: string): string {
+    return slugify(title, { lower: true, strict: true });
+  }
+
   addOrUpdateEvent() {
     console.log(this.totalEventCount);
-    const eid = "event" + this.totalEventCount + 1;
-    this.eventForm?.get('Id')?.setValue(eid);
+    const title = this.eventForm.get('Title')?.value;
+    const slug = this.generateSlug(title);
+    this.eventForm?.get('Id')?.setValue(slug);
 
     if (this.editMode && this.currentEventId) {
       this.updateEvent(this.currentEventId, this.eventForm.value);
     } else {
-      this.addEvent();
+      this.addEvent(slug);
     }
   }
 
-  addEvent() {
-    this.eventService.addEvent(this.eventForm.value).then(() => {
+  addEvent(slug: string) {
+    this.eventService.addEvent(this.eventForm.value, slug).then(() => {
       this.resetForm();
       this.loadEvents();
     }).catch(error => {
-      console.error('Error adding video:', error);
+      console.error('Error adding event:', error);
     });
   }
 
@@ -91,7 +97,7 @@ export class CreateEventComponent implements OnInit {
       this.resetForm();
       this.loadEvents();
     }).catch(error => {
-      console.error('Error updating video:', error);
+      console.error('Error updating event:', error);
     });
   }
 
@@ -102,6 +108,18 @@ export class CreateEventComponent implements OnInit {
     this.formVisible = true;
   }
 
+  deleteEvent(id: string | undefined) {
+    if (id) {
+      this.eventService.deleteEvent(id).then(() => {
+        this.loadEvents();
+      }).catch(error => {
+        console.error('Error deleting event:', error);
+      });
+    } else {
+      console.error('Event ID is undefined, cannot delete.');
+    }
+  }
+
   resetForm() {
     this.eventForm.reset({
       Title: '',
@@ -109,16 +127,16 @@ export class CreateEventComponent implements OnInit {
       RegisteredSeats: '',
       Tech: '',
       Logo: '',
-      Tagline:'',
+      Tagline: '',
       ShortDescription: '',
       Description: '',
       Date: '',
       City: '',
-      EventImage:'',
+      EventImage: '',
       VenueName: '',
       VenueInfo: '',
       VenueImg: '',
-      VenueIframe:'',
+      VenueIframe: '',
       isOffline: false,
       isPaid: false,
       isCertificateProvided: false,
@@ -127,6 +145,15 @@ export class CreateEventComponent implements OnInit {
     this.editMode = false;
     this.currentEventId = undefined;
     this.formVisible = false;
+  }
+
+  showForm() {
+    this.formVisible = true;
+  }
+
+  hideForm() {
+    this.formVisible = false;
+    this.resetForm();
   }
 
 }

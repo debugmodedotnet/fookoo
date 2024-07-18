@@ -1,5 +1,5 @@
 import { Component, OnInit, inject } from '@angular/core';
-import { DatePipe, NgFor } from '@angular/common';
+import { DatePipe } from '@angular/common';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { IInstructor } from '../modules/instructors';
 import { RouterModule } from '@angular/router';
@@ -8,7 +8,7 @@ import { map } from 'rxjs';
 @Component({
   selector: 'app-instructors',
   standalone: true,
-  imports: [NgFor, DatePipe, RouterModule],
+  imports: [DatePipe, RouterModule],
   templateUrl: './instructors.component.html',
   styleUrl: './instructors.component.scss'
 })

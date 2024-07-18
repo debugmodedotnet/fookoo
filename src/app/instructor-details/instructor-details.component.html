@@ -1,4 +1,5 @@
-<div *ngIf="instructor" class="bg-custom-peach p-5">
+@if(instructor){
+<div class="bg-custom-peach p-5">
   <div class="profile-header d-flex flex-column align-items-center text-center">
     <img
       [src]="instructor.InstructorImg || 'assets/images/home/user.jpg'"
@@ -10,49 +11,42 @@
       <h1 class="text-black m-0">{{ instructor.Name }}</h1>
       <p class="text-black m-0">{{ instructor.Position }}</p>
       <div class="social-links mt-2">
-        <a
-          *ngIf="instructor.Twitter"
-          [href]="instructor.Twitter"
-          target="_blank"
-          class="text-black mx-2"
+        @if(instructor.Twitter){
+        <a [href]="instructor.Twitter" target="_blank" class="text-black mx-2"
           ><i class="bi bi-twitter"></i
         ></a>
-
-        <a
-          *ngIf="instructor.LinkedIn"
-          [href]="instructor.LinkedIn"
-          target="_blank"
-          class="text-black mx-2"
-          ><i class="bi bi-linkedin"></i
-        ></a>
-
-        <a
-          *ngIf="instructor.Github"
-          [href]="instructor.Github"
-          target="_blank"
-          class="text-black mx-2"
-          ><i class="bi bi-github"></i
-        ></a>
+        } @if(instructor.LinkedIn){
+        <a [href]="instructor.LinkedIn" target="_blank" class="text-black mx-2"
+          ><i class="bi bi-linkedin"></i></a
+        >} @if(instructor.Github){
+        <a [href]="instructor.Github" target="_blank" class="text-black mx-2"
+          ><i class="bi bi-github"></i></a
+        >}
       </div>
       <div class="skills mt-3 d-flex flex-wrap justify-content-center">
-        <div *ngIf="instructor.Skill1" class="skill-box border-orange m-1 p-2">
+        @if(instructor.Skill1){
+        <div class="skill-box border-orange m-1 p-2">
           {{ instructor.Skill1 }}
         </div>
-        <div *ngIf="instructor.Skill2" class="skill-box border-orange m-1 p-2">
+        } @if(instructor.Skill2){
+        <div class="skill-box border-orange m-1 p-2">
           {{ instructor.Skill2 }}
         </div>
-        <div *ngIf="instructor.Skill3" class="skill-box border-orange m-1 p-2">
+        } @if(instructor.Skill3){
+        <div class="skill-box border-orange m-1 p-2">
           {{ instructor.Skill3 }}
         </div>
-        <div *ngIf="instructor.Skill4" class="skill-box border-orange m-1 p-2">
+        } @if(instructor.Skill4){
+        <div class="skill-box border-orange m-1 p-2">
           {{ instructor.Skill4 }}
         </div>
+        }
       </div>
     </div>
   </div>
 </div>
 
-<div *ngIf="instructor" class="container bg-white mt-4">
+<div class="container bg-white mt-4">
   <div class="row">
     <div class="col-md-4">
       <div class="bg-white p-4 mb-4 border-orange">
@@ -65,48 +59,35 @@
         <p class="text-black">
           Feel free to reach out to me through the following contact details:
         </p>
-        <p class="text-black">
-          <strong>Email:</strong> {{ instructor.Email }}
-        </p>
+        <p class="text-black"><strong>Email:</strong> {{ instructor.Email }}</p>
         <div class="mt-3">
+          @if(instructor.Twitter){
+          <a [href]="instructor.Twitter" target="_blank" class="text-black mx-2"
+            ><i class="bi bi-twitter"></i></a
+          >} @if(instructor.Email){
           <a
-            *ngIf="instructor.Twitter"
-            [href]="instructor.Twitter"
-            target="_blank"
-            class="text-black mx-2"
-            ><i class="bi bi-twitter"></i
-          ></a>
-
-          <a
-            *ngIf="instructor.Email"
             [href]="'mailto:' + instructor.Email"
             target="_blank"
             class="text-black mx-2"
-            ><i class="bi bi-envelope"></i
-          ></a>
-
+            ><i class="bi bi-envelope"></i></a
+          >} @if(instructor.LinkedIn){
           <a
-            *ngIf="instructor.LinkedIn"
             [href]="instructor.LinkedIn"
             target="_blank"
             class="text-black mx-2"
-            ><i class="bi bi-linkedin"></i
-          ></a>
-
-          <a
-            *ngIf="instructor.Github"
-            [href]="instructor.Github"
-            target="_blank"
-            class="text-black mx-2"
-            ><i class="bi bi-github"></i
-          ></a>
+            ><i class="bi bi-linkedin"></i></a
+          >} @if(instructor.Github){
+          <a [href]="instructor.Github" target="_blank" class="text-black mx-2"
+            ><i class="bi bi-github"></i></a
+          >}
         </div>
       </div>
     </div>
     <div class="col-md-8">
       <h3 class="text-black">My Courses</h3>
+      
+      @for(course of instructor.Courses; track course){
       <div
-        *ngFor="let course of instructor.Courses"
         class="course-card bg-light-orange p-4 mb-4 border-orange position-relative"
       >
         <h4 class="text-black">{{ course.Title }}</h4>
@@ -118,6 +99,8 @@
           >{{ course.Price }}</span
         >
       </div>
+      }
     </div>
   </div>
 </div>
+}

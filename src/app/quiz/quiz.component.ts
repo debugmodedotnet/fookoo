@@ -2,7 +2,6 @@ import { Component, OnInit, inject } from '@angular/core';
 import { QuizService } from '../services/quiz.service';
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { IQuizQuestion } from '../modules/quiz-question';
-import { NgFor, NgIf } from '@angular/common';
 import { first } from 'rxjs';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { shuffleItems } from '../utils/common-util';
@@ -10,11 +9,7 @@ import { shuffleItems } from '../utils/common-util';
 @Component({
   selector: 'app-quiz',
   standalone: true,
-  imports: [
-    NgIf,
-    NgFor,
-    ReactiveFormsModule
-  ],
+  imports: [ReactiveFormsModule],
   templateUrl: './quiz.component.html',
   styleUrl: './quiz.component.scss'
 })

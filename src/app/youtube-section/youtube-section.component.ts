@@ -1,5 +1,5 @@
 import { CUSTOM_ELEMENTS_SCHEMA, Component, OnInit, inject } from '@angular/core';
-import { DatePipe, NgFor } from '@angular/common';
+import { DatePipe } from '@angular/common';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { RouterModule } from '@angular/router';
 import { IYoutubeVideos } from '../modules/home-youtube';
@@ -8,7 +8,7 @@ import { YouTubePlayer } from '@angular/youtube-player';
 @Component({
   selector: 'app-youtube-section',
   standalone: true,
-  imports: [NgFor, DatePipe, RouterModule, YouTubePlayer],
+  imports: [DatePipe, RouterModule, YouTubePlayer],
   templateUrl: './youtube-section.component.html',
   styleUrl: './youtube-section.component.scss',
   schemas: [CUSTOM_ELEMENTS_SCHEMA],

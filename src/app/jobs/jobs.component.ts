@@ -5,14 +5,12 @@ import { JobDetailComponent } from './job-detail/job-detail.component';
 import { ActivatedRoute } from '@angular/router';
 import { AllJobsComponent } from './all-jobs/all-jobs.component';
 import { JobService } from '../services/job.service';
-import { combineLatest, first, Observable, of } from 'rxjs';
-import { map } from 'rxjs/operators';
-import { CommonModule } from '@angular/common';
+import { first, Observable } from 'rxjs';
 
 @Component({
   selector: 'app-jobs',
   standalone: true,
-  imports: [CommonModule,JobListComponent, JobDetailComponent, AllJobsComponent],
+  imports: [JobListComponent, JobDetailComponent, AllJobsComponent],
   templateUrl: './jobs.component.html',
   styleUrl: './jobs.component.scss'
 })
@@ -44,7 +42,7 @@ export class JobsComponent implements OnInit {
         }
       });
     }
-    
+
   }
 
   onSelectJob(job: Job) {
@@ -52,5 +50,5 @@ export class JobsComponent implements OnInit {
     this.selectedJob = job;
   }
 
-  
+
 }

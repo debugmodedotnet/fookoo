@@ -6,13 +6,13 @@ import { IEvent } from '../modules/event';
 import { map } from 'rxjs';
 
 @Component({
-  selector: 'app-event',
+  selector: 'app-event-listing',
   standalone: true,
   imports: [DatePipe, RouterModule],
-  templateUrl: './event.component.html',
-  styleUrl: './event.component.scss'
+  templateUrl: './event-listing.component.html',
+  styleUrl: './event-listing.component.scss'
 })
-export class EventComponent implements OnInit {
+export class EventListingComponent implements OnInit {
 
   events: IEvent[] = [];
   private firestore = inject(AngularFirestore);
@@ -22,7 +22,7 @@ export class EventComponent implements OnInit {
   }
 
   getEvents() {
-    this.firestore.collection('events', ref => ref.limit(4)).snapshotChanges().pipe(
+    this.firestore.collection('events').snapshotChanges().pipe(
       map(actions => actions.map(a => {
         const data = a.payload.doc.data() as IEvent;
         const id = a.payload.doc.id;

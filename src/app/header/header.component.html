@@ -1,5 +1,4 @@
 <header class="sticky-header nmc-bg-white fixed-top">
-  
   @if(!isQuizPageActive){
   <div class="nmc-bg-dark-grey">
     <div class="container-boxed text-center nmc-white py-3">
@@ -35,7 +34,25 @@
       >
         <ul class="navbar-nav mb-lg-0 gap-3 align-items-center">
           <li class="nav-item">
-            <a class="nav-link font-16 nmc-medium-grey font-uppercase"
+            <a
+              class="nav-link font-16 nmc-medium-grey font-uppercase"
+              routerLink="/event-listing"
+              >Events</a
+            >
+          </li>
+
+          <li class="nav-item">
+            <a
+              class="nav-link font-16 nmc-medium-grey font-uppercase"
+              routerLink="/instructor-listing"
+              >Instructors</a
+            >
+          </li>
+
+          <li class="nav-item">
+            <a
+              class="nav-link font-16 nmc-medium-grey font-uppercase"
+              routerLink="/youtube-listing"
               >Youtube</a
             >
           </li>

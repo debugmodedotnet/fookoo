@@ -1,3 +1,6 @@
+import { IEventAgenda } from "./event-agenda";
+import { IEventSpeakers } from "./event-speakers";
+
 export interface IEvent {
     id?: string;
     Id: string;
@@ -20,6 +23,8 @@ export interface IEvent {
     VenueImg: string;
     Tagline: string;
     VenueIframe: string;
+    Speakers: IEventSpeakers[];
+  Agenda: IEventAgenda[];
 }
 
 

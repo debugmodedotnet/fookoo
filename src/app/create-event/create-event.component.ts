@@ -1,9 +1,11 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormArray, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { EventService } from '../services/event.service';
 import { IEvent } from '../modules/event';
 import slugify from 'slugify';
+import { IEventSpeakers } from '../modules/event-speakers';
+import { IEventAgenda } from '../modules/event-agenda';
 
 @Component({
   selector: 'app-create-event',
@@ -21,6 +23,9 @@ export class CreateEventComponent implements OnInit {
   editMode = false;
   currentEventId?: string;
   formVisible = false;
+
+  speakerFormVisible = false;
+  currentSpeakerIndex: number | null = null;
 
   private firestore = inject(AngularFirestore);
   private eventService = inject(EventService);
@@ -47,6 +52,8 @@ export class CreateEventComponent implements OnInit {
       isPaid: new FormControl(false),
       isCertificateProvided: new FormControl(false),
       displayAtHomePage: new FormControl(false),
+      Speakers: new FormArray([]),
+      Agenda: new FormArray([]),
     });
   }
 
@@ -71,7 +78,6 @@ export class CreateEventComponent implements OnInit {
   }
 
   addOrUpdateEvent() {
-    console.log(this.totalEventCount);
     const title = this.eventForm.get('Title')?.value;
     const slug = this.generateSlug(title);
     this.eventForm?.get('Id')?.setValue(slug);
@@ -106,6 +112,9 @@ export class CreateEventComponent implements OnInit {
     this.editMode = true;
     this.currentEventId = event.Id;
     this.formVisible = true;
+
+    this.setSpeakers(event.Speakers);
+    this.setAgenda(event.Agenda);
   }
 
   deleteEvent(id: string | undefined) {
@@ -145,6 +154,8 @@ export class CreateEventComponent implements OnInit {
     this.editMode = false;
     this.currentEventId = undefined;
     this.formVisible = false;
+    this.speakerFormVisible = false;
+    this.currentSpeakerIndex = null;
   }
 
   showForm() {
@@ -154,6 +165,105 @@ export class CreateEventComponent implements OnInit {
   hideForm() {
     this.formVisible = false;
     this.resetForm();
+  }
+
+  get Speakers() {
+    return this.eventForm.get('Speakers') as FormArray;
+  }
+
+  get Agenda() {
+    return this.eventForm.get('Agenda') as FormArray;
+  }
+
+  showSpeakerForm(index?: number) {
+    this.speakerFormVisible = true;
+    if (index !== undefined) {
+      this.currentSpeakerIndex = index;
+    } else {
+      this.Speakers.push(new FormGroup({
+        Name: new FormControl('', Validators.required),
+        Image: new FormControl('', Validators.required),
+        Position: new FormControl('', Validators.required),
+        Info: new FormControl('', Validators.required),
+        Github: new FormControl(''),
+        LinkedIn: new FormControl(''),
+        X: new FormControl('')
+      }));
+      this.currentSpeakerIndex = this.Speakers.length - 1;
+    }
+  }
+
+  saveSpeaker() {
+    this.speakerFormVisible = false;
+    this.currentSpeakerIndex = null;
+  }
+
+  cancelSpeakerForm() {
+    if (this.currentSpeakerIndex !== null && this.currentSpeakerIndex >= this.Speakers.length - 1) {
+      this.Speakers.removeAt(this.currentSpeakerIndex);
+    }
+    this.speakerFormVisible = false;
+    this.currentSpeakerIndex = null;
+  }
+
+  editSpeaker(index: number) {
+    this.showSpeakerForm(index);
+  }
+
+  addSpeaker() {
+    this.Speakers.push(new FormGroup({
+      Name: new FormControl('', Validators.required),
+      Bio: new FormControl('', Validators.required),
+      Image: new FormControl('', Validators.required)
+    }));
+  }
+
+  addAgendaItem() {
+    this.Agenda.push(new FormGroup({
+      Time: new FormControl('', Validators.required),
+      Activity: new FormControl('', Validators.required)
+    }));
+  }
+
+  removeSpeaker(index: number) {
+    this.Speakers.removeAt(index);
+  }
+
+  removeAgendaItem(index: number) {
+    this.Agenda.removeAt(index);
+  }
+
+  setSpeakers(speakers: IEventSpeakers[]) {
+    const speakerFGs = speakers.map(speaker => new FormGroup({
+      Name: new FormControl(speaker.Name, Validators.required),
+      Image: new FormControl(speaker.Image, Validators.required),
+      Position: new FormControl(speaker.Position, Validators.required),
+      Info: new FormControl(speaker.Info, Validators.required),
+      Github: new FormControl(speaker.Github),
+      LinkedIn: new FormControl(speaker.LinkedIn),
+      X: new FormControl(speaker.X)
+    }));
+    const speakerFormArray = new FormArray(speakerFGs);
+    this.eventForm.setControl('Speakers', speakerFormArray);
+  }
+
+  setAgenda(agenda: IEventAgenda[]) {
+    const agendaFGs = agenda.map(item => new FormGroup({
+      Info: new FormControl(item.Info),
+      Speaker: new FormControl(item.Speaker),
+      Tech: new FormControl(item.Tech),
+      Time: new FormControl(item.Time, Validators.required),
+      Title: new FormControl(item.Title, Validators.required),
+      SpeakerImg: new FormControl(item.SpeakerImg)
+    }));
+    const agendaFormArray = new FormArray(agendaFGs);
+    this.eventForm.setControl('Agenda', agendaFormArray);
+  }
+
+  clearFormArray(formArray: FormArray) {
+    while (formArray.length) {
+      formArray.removeAt(0);
+    }
   }
 
 }

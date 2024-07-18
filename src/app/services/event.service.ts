@@ -19,12 +19,11 @@ export class EventService {
         return { id, ...data };
       }))
     );
-  }
+  }  
 
-
-  addEvent(event: IEvent, slug: string) {
+  addEvent(event: IEvent, id: string) {
     console.log('Adding event:', event);
-    return this.firestore.collection('events').doc(slug).set(event);
+    return this.firestore.collection('events').doc(id).set(event);
   }
 
   updateEvent(id: string, event: IEvent) {

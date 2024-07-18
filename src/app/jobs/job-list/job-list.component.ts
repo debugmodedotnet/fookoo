@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Observable, combineLatest, of } from 'rxjs';
 import { map } from 'rxjs/operators';
@@ -12,7 +12,7 @@ import { AsyncPipe, NgClass, NgIf } from '@angular/common';
   templateUrl: './job-list.component.html',
   styleUrls: ['./job-list.component.scss']
 })
-export class JobListComponent implements OnInit {
+export class JobListComponent implements OnInit, OnChanges {
 
   @Input() selectedTag: string | null = null;
   @Input() selectedJob: Job | null = null;

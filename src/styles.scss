@@ -576,6 +576,41 @@ inset-0 {
     background-color: $nmc-dark-grey;
 }
 
+.nmc-btn-outline {
+    display: block;
+    height: 42px;
+    border-radius: 8px;
+    color: $nmc-dark-grey;
+    background-color: $nmc-white;
+    border: 1px solid rgba(203, 213, 224, 1);
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+    font-size: 1rem;
+    line-height: 1.5rem;
+    font-weight: 500;
+    position: relative;
+
+    &::before,
+    &::after {
+        position: absolute;
+        content: '';
+        height: 1px;
+        width: 400px;
+        background-color: rgba(203, 213, 224, 1);
+        top: 21px;
+    }
+
+    &::before {
+        right: 185px;
+    }
+
+    &::after {
+        left: 185px;
+    }
+}
+
 .nmc-underline-btn {
     display: inline-block;
     padding: 1em 0;

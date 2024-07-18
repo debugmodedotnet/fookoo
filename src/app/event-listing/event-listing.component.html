@@ -1,19 +1,15 @@
 <section class="py-5">
   <div class="container-boxed">
-    <div class="d-flex align-items-center justify-content-between mb-4">
-      <h2
-        class="section-title left font-36 nmc-dark-grey font-family-poppins pb-3"
-      >
-        Upcoming Events
-      </h2>
-
-      <button class="nmc-btn-primary" routerLink="/event-listing">View All</button>
-    </div>
+    <h2
+      class="section-title text-center font-36 nmc-dark-grey font-family-poppins pb-3"
+    >
+      Upcoming Events
+    </h2>
 
     <div class="events-container d-flex flex-column justify-content-center">
       <div class="row">
         @for(e of events; track e){
-        <div class="col-12 col-md-6 col-lg-3">
+        <div class="col-12 col-md-6 col-lg-3 mt-4">
           <div
             class="events-card card overflow-hidden nmc-bg-white overflow-hidden rounded-3 position-relative"
           >
@@ -68,6 +64,12 @@
           </div>
         </div>
         }
+
+        <div class="mt-5 d-flex">
+          <button class="nmc-btn-outline m-auto">
+            Load More<i class="bi bi-chevron-down ms-2"></i>
+          </button>
+        </div>
       </div>
     </div>
   </div>

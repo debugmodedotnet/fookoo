@@ -1,12 +1,12 @@
 import { Component, Input } from '@angular/core';
-import { DatePipe, NgFor } from '@angular/common';
+import { DatePipe } from '@angular/common';
 import { IPrevEvents } from '../modules/prev-events';
 import { YouTubePlayer } from '@angular/youtube-player';
 
 @Component({
   selector: 'app-ng-india-edition',
   standalone: true,
-  imports: [DatePipe, YouTubePlayer, NgFor],
+  imports: [DatePipe, YouTubePlayer],
   templateUrl: './ng-india-edition.component.html',
   styleUrl: './ng-india-edition.component.scss'
 })

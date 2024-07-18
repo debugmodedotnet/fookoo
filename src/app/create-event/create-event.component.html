@@ -13,9 +13,9 @@
     </div>
 
     @if(formVisible){
-    <div class="form-wrapper rounded-4 p-4 w-100">
+    <div class="form-wrapper rounded-4 w-100">
       <form [formGroup]="eventForm" (ngSubmit)="addOrUpdateEvent()">
-        <div class="row form-group mt-3">
+        <div class="row form-group mt-3 p-4">
           <div class="col-6">
             <label for="title" class="form-label required">Title</label>
             <input
@@ -218,13 +218,10 @@
           </div>
         </div>
 
-        <div formArrayName="Speakers">
-          <h3>Speakers</h3>
-
-          <button type="button" (click)="showSpeakerForm()">Add Speaker</button>
-
-          @if(Speakers.controls.length > 0){
-          <table>
+        <!-- @if(editMode){
+        <div class="p-4 border-top">
+          <h4>Speakers</h4>
+          <table class="table table-bordered table-striped">
             <thead>
               <tr>
                 <th>Name</th>
@@ -233,146 +230,71 @@
                 <th>Info</th>
                 <th>Github</th>
                 <th>LinkedIn</th>
-                <th>Twitter</th>
-                <th>Actions</th>
+                <th>X</th>
               </tr>
             </thead>
+
             <tbody>
-              <tr
-                *ngFor="let speaker of Speakers.controls; let i = index"
-                [formGroupName]="i"
-              >
-                <td>{{ speaker.get("Name")?.value }}</td>
-                <td>{{ speaker.get("Image")?.value }}</td>
-                <td>{{ speaker.get("Position")?.value }}</td>
-                <td>{{ speaker.get("Info")?.value }}</td>
-                <td>{{ speaker.get("Github")?.value }}</td>
-                <td>{{ speaker.get("LinkedIn")?.value }}</td>
-                <td>{{ speaker.get("X")?.value }}</td>
+              @for(speaker of eventForm.get('Speakers').controls; track
+              speaker){
+              <tr>
+                <td>{{ speaker.get("Name").value }}</td>
                 <td>
-                  <button type="button" (click)="editSpeaker(i)">Edit</button>
-                  <button type="button" (click)="removeSpeaker(i)">
-                    Delete
-                  </button>
+                  <img
+                    [src]="speaker.get('Image').value"
+                    alt="speaker image"
+                    width="50"
+                  />
                 </td>
+                <td>{{ speaker.get("Position").value }}</td>
+                <td>{{ speaker.get("Info").value }}</td>
+                <td>{{ speaker.get("Github").value }}</td>
+                <td>{{ speaker.get("LinkedIn").value }}</td>
+                <td>{{ speaker.get("X").value }}</td>
               </tr>
+              }
             </tbody>
           </table>
-          } @if(speakerFormVisible){
-          <div formArrayName="Speakers">
-            <div
-              [formGroupName]="currentSpeakerIndex"
-              class="row form-group mt-3"
-            >
-              <div class="col-6">
-                <label for="name" class="form-label required">Name</label>
-                <input
-                  id="name"
-                  type="text"
-                  class="form-control h-3 rounded-3"
-                  formControlName="Name"
-                  placeholder="Enter Name"
-                />
-              </div>
-
-              <div class="col-6">
-                <label for="position" class="form-label required"
-                  >Position</label
-                >
-                <input
-                  id="position"
-                  type="text"
-                  class="form-control h-3 rounded-3"
-                  formControlName="Position"
-                  placeholder="Enter Position"
-                />
-              </div>
-
-              <div class="col-6 mt-3">
-                <label for="info" class="form-label required">Info</label>
-                <input
-                  id="info"
-                  type="text"
-                  class="form-control h-3 rounded-3"
-                  formControlName="Info"
-                  placeholder="Enter Info"
-                />
-              </div>
-
-              <div class="col-6 mt-3">
-                <label for="image" class="form-label required">Image</label>
-                <input
-                  id="image"
-                  type="text"
-                  class="form-control h-3 rounded-3"
-                  formControlName="Image"
-                  placeholder="Enter Image"
-                />
-              </div>
-
-              <div class="col-4 mt-3">
-                <label for="github" class="form-label required">Github</label>
-                <input
-                  id="github"
-                  type="text"
-                  class="form-control h-3 rounded-3"
-                  formControlName="Github"
-                  placeholder="Enter Github"
-                />
-              </div>
-
-              <div class="col-4 mt-3">
-                <label for="linkedIn" class="form-label required"
-                  >LinkedIn</label
-                >
-                <input
-                  id="linkedIn"
-                  type="text"
-                  class="form-control h-3 rounded-3"
-                  formControlName="LinkedIn"
-                  placeholder="Enter LinkedIn"
-                />
-              </div>
-
-              <div class="col-4 mt-3">
-                <label for="x" class="form-label required">Twitter</label>
-                <input
-                  id="x"
-                  type="text"
-                  class="form-control h-3 rounded-3"
-                  formControlName="X"
-                  placeholder="Enter Twitter"
-                />
-              </div>
-
-              <button type="button" (click)="saveSpeaker()">Save</button>
-              <button type="button" (click)="cancelSpeakerForm()">
-                Cancel
-              </button>
-            </div>
-          </div>
-          }
         </div>
+        } @if(editMode){
+        <div class="p-4 border-top">
+          <h4>Agenda</h4>
 
-        <!-- <div formArrayName="Agenda">
-          <h3>Agenda</h3>
+          <table class="table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th>Info</th>
+                <th>Speaker</th>
+                <th>Tech</th>
+                <th>Time</th>
+                <th>Title</th>
+                <th>Speaker Image</th>
+              </tr>
+            </thead>
 
-          <button type="button" (click)="addAgendaItem()">
-            Add Agenda Item
-          </button>
+            <tbody>
+              @for(agenda of eventForm.get('Agenda').controls; track agenda){
+              <tr>
+                <td>{{ agenda.get("Info").value }}</td>
+                <td>{{ agenda.get("Speaker").value }}</td>
+                <td>{{ agenda.get("Tech").value }}</td>
+                <td>{{ agenda.get("Time").value }}</td>
+                <td>{{ agenda.get("Title").value }}</td>
+                <td>
+                  <img
+                    [src]="agenda.get('SpeakerImg').value"
+                    alt="agenda speaker image"
+                    width="50"
+                  />
+                </td>
+              </tr>
+              }
+            </tbody>
+          </table>
+        </div>
+        } -->
 
-          @for(agendaItem of Agenda.controls; track agendaItem; let j = $index){
-          <div [formGroupName]="j">
-            <label for="agendaTime">Time:</label>
-            <input id="agendaTime" formControlName="Time" required />
-            <label for="agendaActivity">Activity:</label>
-            <input id="agendaActivity" formControlName="Activity" required />
-            <button type="button" (click)="removeAgendaItem(j)">Remove</button>
-          </div>
-          }
-        </div> -->
-
-        <div class="mt-4 d-flex justify-content-end">
+        <div class="d-flex justify-content-end p-4">
           <button
             type="button"
             class="nmc-btn-primary font-14 fw-semibold box-shadow-none py-2 h-auto nmc-bg-medium-grey"
@@ -386,7 +308,7 @@
             class="nmc-btn-primary font-14 fw-semibold box-shadow-none py-2 h-auto ms-3"
             [disabled]="!eventForm.valid"
           >
-            Save
+            {{ editMode ? "Update" : "Add" }} Event
           </button>
         </div>
       </form>

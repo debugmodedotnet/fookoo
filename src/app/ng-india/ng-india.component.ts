@@ -4,13 +4,13 @@ import { YouTubePlayer } from '@angular/youtube-player';
 import { INgIndia } from '../modules/ng-india';
 import { map } from 'rxjs';
 import { IPrevEvents, ISpeaker, ISponsor } from '../modules/prev-events';
-import { DatePipe, NgFor } from '@angular/common';
+import { DatePipe } from '@angular/common';
 import { NgIndiaEditionComponent } from '../ng-india-edition/ng-india-edition.component';
 
 @Component({
   selector: 'app-ng-india',
   standalone: true,
-  imports: [YouTubePlayer, DatePipe, NgFor, NgIndiaEditionComponent],
+  imports: [YouTubePlayer, DatePipe, NgIndiaEditionComponent],
   templateUrl: './ng-india.component.html',
   styleUrl: './ng-india.component.scss'
 })

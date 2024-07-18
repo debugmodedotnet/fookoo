@@ -24,7 +24,7 @@ export class InstructorsComponent implements OnInit {
   }
 
   getInstructors() {
-    this.firestore.collection('instructor').snapshotChanges().pipe(
+    this.firestore.collection('instructor', ref => ref.limit(3)).snapshotChanges().pipe(
       map(actions => actions.map(a => {
         const data = a.payload.doc.data() as IInstructor;
         const id = a.payload.doc.id;

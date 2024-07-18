@@ -22,11 +22,11 @@
         </figure>
 
         <div class="member-info text-start w-75">
-          <h3 class="font-family-poppins">
-            <a href="" class="nmc-primary font-family-poppins pe-2">{{
-              speaker.Name
-            }}</a>
-            <span class="nmc-medium-grey font-18">{{ speaker.Position }}</span>
+          <h3 class="font-family-poppins nmc-primary">
+            {{ speaker.Name }}
+            <span class="nmc-medium-grey font-18 ps-2">{{
+              speaker.Position
+            }}</span>
           </h3>
 
           <p class="nmc-medium-grey">
@@ -36,13 +36,21 @@
           <div
             class="social d-flex align-items-center justify-content-start gap-2"
           >
-            <a [href]="speaker.X" class="font-20 nmc-primary"
+            <a target="_blank" [href]="speaker.X" class="font-20 nmc-primary"
               ><i class="bi bi-twitter-x"></i
             ></a>
-            <a [href]="speaker.Github" class="font-20 nmc-primary"
+
+            <a
+              target="_blank"
+              [href]="speaker.Github"
+              class="font-20 nmc-primary"
               ><i class="bi bi-github"></i
             ></a>
-            <a [href]="speaker.LinkedIn" class="font-20 nmc-primary"
+
+            <a
+              target="_blank"
+              [href]="speaker.LinkedIn"
+              class="font-20 nmc-primary"
               ><i class="bi bi-linkedin"></i
             ></a>
           </div>

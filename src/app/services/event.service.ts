@@ -21,9 +21,15 @@ export class EventService {
     );
   }
 
-  addEvent(event: IEvent) {
+  // addEvent(event: IEvent) {
+  //   console.log('Adding event:', event);
+  //   return this.firestore.collection('events').add(event);
+  // }
+
+
+  addEvent(event: IEvent, slug: string) {
     console.log('Adding event:', event);
-    return this.firestore.collection('events').add(event);
+    return this.firestore.collection('events').doc(slug).set(event);
   }
 
   updateEvent(id: string, event: IEvent) {
@@ -33,5 +39,5 @@ export class EventService {
   deleteEvent(id: string) {
     return this.firestore.doc(`events/${id}`).delete();
   }
-  
+
 }

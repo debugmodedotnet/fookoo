@@ -2,7 +2,7 @@
   <div class="job-list nmc-bg-white">
     <div class="cards-container">
       @for( tag of tags; track tag ){
-      <div (click)="onTagFilterChange(tag)" class="card p-4 m-3 cursor-pointer">
+      <div (click)="onTagFilterChange(tag)" [class.active]="isTagActive(tag)"  class="card p-4 m-3 cursor-pointer">
         {{ tag }}
       </div>
       }

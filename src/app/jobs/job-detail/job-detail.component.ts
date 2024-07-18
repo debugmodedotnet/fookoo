@@ -1,4 +1,4 @@
-import { Component, model } from '@angular/core';
+import { Component, model, Input } from '@angular/core';
 import { Job } from '../../modules/job';
 import { AsyncPipe, NgFor, NgIf } from '@angular/common';
 
@@ -16,6 +16,7 @@ export class JobDetailComponent {
 
   job = model<Job | null>();
   jobID = model<string | null>();
+  @Input() filteredJobs: Job[] = [];
 
   constructor() {
     console.log(this.jobID());

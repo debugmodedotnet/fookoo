@@ -21,6 +21,7 @@ export class AllJobsComponent implements OnInit {
   selectedTag = '';
   filteredJobs$!: Observable<Job[]>;
 
+
   constructor(private firestore: AngularFirestore, private router: Router) { }
 
 
@@ -48,5 +49,9 @@ export class AllJobsComponent implements OnInit {
   //   this.selectJob.emit(job);
   //   this.router.navigate(['/jobs', job.id]);
   // }
+
+  isTagActive(tag: string): boolean {
+    return this.selectedTag === tag;
+  }
 
 }

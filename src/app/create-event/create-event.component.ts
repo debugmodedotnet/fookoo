@@ -50,6 +50,14 @@ export class CreateEventComponent implements OnInit {
     });
   }
 
+  get agendaFormArray(): FormArray {
+    return this.eventForm.get('Agenda') as FormArray;
+  }
+
+  get speakersFormArray(): FormArray {
+    return this.eventForm.get('Speakers') as FormArray;
+  }
+
   ngOnInit(): void {
     this.loadEvents();
   }

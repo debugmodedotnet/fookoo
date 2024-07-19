@@ -232,11 +232,11 @@
             </thead>
 
             <tbody>
-              @for(speaker of eventForm.get('Speakers').controls; track
+              @for(speaker of speakersFormArray.controls; track
               speaker){
               <tr>
-                <td>{{ speaker.get("Name").value }}</td>
-                <td>{{ speaker.get("Position").value }}</td>
+                <td>{{ speaker.get("Name")?.value }}</td>
+                <td>{{ speaker.get("Position")?.value }}</td>
                 <td class="actions">
                   <button
                     class="btn btn-custom-edit btn-sm nmc-bg-primary nmc-white"
@@ -268,10 +268,10 @@
             </thead>
 
             <tbody>
-              @for(agenda of eventForm.get('Agenda').controls; track agenda){
+              @for(agenda of agendaFormArray.controls; track agenda){
               <tr>
-                <td>{{ agenda.get("Time").value }}</td>
-                <td>{{ agenda.get("Title").value }}</td>
+                <td>{{ agenda.get("Time")?.value }}</td>
+                <td>{{ agenda.get("Title")?.value }}</td>
                 <td class="actions">
                   <button
                     class="btn btn-custom-edit btn-sm nmc-bg-primary nmc-white"

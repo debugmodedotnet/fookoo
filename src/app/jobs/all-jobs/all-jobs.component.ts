@@ -27,12 +27,14 @@ export class AllJobsComponent implements OnInit {
 
   ngOnInit() {
     //this.jobs$ = this.firestore.collection<Job>('jobs').valueChanges();
+    this.selectedTag = localStorage.getItem('selectedTag') || '';
     this.jobs$ = this.firestore.collection<Job>('jobs').valueChanges({ idField: 'id' });
     this.updateFilteredJobs();
   }
 
   onTagFilterChange(tag: string) {
     this.selectedTag = tag;
+    localStorage.setItem('selectedTag', tag);
     this.updateFilteredJobs();
   }
 

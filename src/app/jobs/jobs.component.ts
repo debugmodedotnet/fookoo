@@ -25,6 +25,7 @@ export class JobsComponent implements OnInit {
   private jobService = inject(JobService);
 
   ngOnInit(): void {
+    this.selectedTag = localStorage.getItem('selectedTag') || '';
     console.log(">>> here")
     const id = this.route.snapshot.paramMap.get('id')
     this.jobID = id;
@@ -50,5 +51,9 @@ export class JobsComponent implements OnInit {
     this.selectedJob = job;
   }
 
+  onTagChange(tag: string) {
+    this.selectedTag = tag;
+    localStorage.setItem('selectedTag', tag); // Store the selected tag in localStorage
+  }
 
 }

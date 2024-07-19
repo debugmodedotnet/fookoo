@@ -17,6 +17,7 @@ export class JobListComponent implements OnInit, OnChanges {
   @Input() selectedTag: string | null = null;
   @Input() selectedJob: Job | null = null;
   @Output() selectJob = new EventEmitter<Job>();
+  @Output() tagChange = new EventEmitter<string>(); // Add this line
 
   jobs$!: Observable<Job[]>;
   /*selectedTag = '';*/
@@ -29,9 +30,11 @@ export class JobListComponent implements OnInit, OnChanges {
     this.updateFilteredJobs();
   }
 
+
   onTagFilterChange(tag: string) {
     this.selectedTag = tag;
     this.updateFilteredJobs();
+    this.tagChange.emit(tag); // Ensure this emits a string value
   }
 
   ngOnChanges() {

@@ -1,7 +1,12 @@
 @if(jobID){
 <div class="jobs-container d-flex">
   <div class="job-list">
-    <app-job-list (selectJob)="onSelectJob($event)" [selectedTag]="selectedJob?.Tag ?? null"></app-job-list>
+    <app-job-list 
+      [selectedTag]="selectedTag" 
+      (selectJob)="onSelectJob($event)" 
+      [selectedTag]="selectedJob?.Tag ?? null"
+      (tagChange)="onTagChange($event)">
+    </app-job-list>
   </div>
 
   <div class="job-detail">

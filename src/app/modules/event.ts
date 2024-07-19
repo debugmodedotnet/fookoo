@@ -23,8 +23,8 @@ export interface IEvent {
   VenueImg: string;
   Tagline: string;
   VenueIframe: string;
-  Speakers: IEventSpeakers[];
-  Agenda: IEventAgenda[];
+  Speakers?: IEventSpeakers[];
+  Agenda?: IEventAgenda[];
 }
 
 

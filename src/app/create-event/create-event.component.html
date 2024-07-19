@@ -7,7 +7,7 @@
     </h2>
 
     <div class="d-flex justify-content-end mb-3">
-      <button class="nmc-btn-primary" (click)="showForm()">
+      <button class="nmc-btn-primary" (click)="showForm()" type="button">
         Add New Event
       </button>
     </div>
@@ -224,7 +224,7 @@
             <h4 class="section-title left pb-3">Speakers</h4>
 
             <button
-              (click)="addSpeaker()"
+              (click)="showSpeakerForm()"
               type="button"
               class="nmc-btn-primary font-14 fw-semibold box-shadow-none py-2 h-auto"
             >
@@ -232,10 +232,9 @@
             </button>
           </div>
 
+          @if(speakerFormVisible){
           <div formArrayName="Speakers">
-            @for(speaker of speakersFormArray.controls; track speaker; let i =
-            $index){
-            <div [formGroupName]="i" class="row form-group">
+            <div class="row form-group">
               <div class="col-6">
                 <label for="name" class="form-label required"> Name</label>
                 <input
@@ -315,7 +314,7 @@
                 <button
                   type="button"
                   class="nmc-btn-primary font-14 fw-semibold box-shadow-none py-2 h-auto nmc-bg-medium-grey"
-                  (click)="removeSpeaker(i)"
+                  (click)="hideSpeakerForm()"
                 >
                   Cancel
                 </button>
@@ -323,15 +322,14 @@
                 <button
                   type="button"
                   class="nmc-btn-primary font-14 fw-semibold box-shadow-none py-2 h-auto ms-2"
+                  (click)="addOrUpdateSpeaker()"
                 >
-                  Add
+                  Save
                 </button>
               </div>
             </div>
-            }
           </div>
-
-          @if(editMode){
+          } @if(!speakerFormVisible){
           <table class="table table-bordered table-striped">
             <thead>
               <tr>
@@ -342,18 +340,26 @@
             </thead>
 
             <tbody>
-              @for(speaker of speakersFormArray.controls; track speaker){
-              <tr>
-                <td>{{ speaker.get("Name")?.value }}</td>
-                <td>{{ speaker.get("Position")?.value }}</td>
+              @for(speaker of speakers; track speaker; let i = $index){
+              <tr [formGroupName]="i">
+                <td>{{ speaker.Name }}</td>
+                <td>{{ speaker.Position }}</td>
                 <td class="actions">
                   <button
                     class="btn btn-custom-edit btn-sm nmc-bg-primary nmc-white"
+                    (click)="editSpeaker(i)"
+                    type="button"
                   >
                     Edit
                   </button>
 
-                  <button class="btn btn-danger btn-sm ms-3">Delete</button>
+                  <button
+                    class="btn btn-danger btn-sm ms-3"
+                    (click)="removeSpeaker(i)"
+                    type="button"
+                  >
+                    Delete
+                  </button>
                 </td>
               </tr>
               }
@@ -368,7 +374,7 @@
             <h4 class="section-title left pb-3">Agenda</h4>
 
             <button
-              (click)="addAgenda()"
+              (click)="showAgendaForm()"
               type="button"
               class="nmc-btn-primary font-14 fw-semibold box-shadow-none py-2 h-auto"
             >
@@ -376,10 +382,9 @@
             </button>
           </div>
 
+          @if(agendaFormVisible){
           <div formArrayName="Agenda">
-            @for(agendaItem of agendaFormArray.controls; track agendaItem; let i
-            = $index){
-            <div [formGroupName]="i" class="row form-group">
+            <div class="row form-group">
               <div class="col-4">
                 <label for="time" class="form-label required"> Time</label>
                 <input
@@ -448,7 +453,7 @@
                 <button
                   type="button"
                   class="nmc-btn-primary font-14 fw-semibold box-shadow-none py-2 h-auto nmc-bg-medium-grey"
-                  (click)="removeAgenda(i)"
+                  (click)="hideAgendaForm()"
                 >
                   Cancel
                 </button>
@@ -456,15 +461,14 @@
                 <button
                   type="button"
                   class="nmc-btn-primary font-14 fw-semibold box-shadow-none py-2 h-auto ms-2"
+                  (click)="addOrUpdateAgenda()"
                 >
-                  Add
+                  Save
                 </button>
               </div>
             </div>
-            }
           </div>
-
-          @if(editMode){
+          } @if(!agendaFormVisible){
           <table class="table table-bordered table-striped">
             <thead>
               <tr>
@@ -475,18 +479,26 @@
             </thead>
 
             <tbody>
-              @for(agenda of agendaFormArray.controls; track agenda){
-              <tr>
-                <td>{{ agenda.get("Time")?.value }}</td>
-                <td>{{ agenda.get("Title")?.value }}</td>
+              @for(agenda of agendas; track agenda; let i = $index;){
+              <tr [formGroupName]="i">
+                <td>{{ agenda.Time }}</td>
+                <td>{{ agenda.Title }}</td>
                 <td class="actions">
                   <button
+                    type="button"
                     class="btn btn-custom-edit btn-sm nmc-bg-primary nmc-white"
+                    (click)="editAgenda(i)"
                   >
                     Edit
                   </button>
 
-                  <button class="btn btn-danger btn-sm ms-3">Delete</button>
+                  <button
+                    type="button"
+                    class="btn btn-danger btn-sm ms-3"
+                    (click)="removeAgenda(i)"
+                  >
+                    Delete
+                  </button>
                 </td>
               </tr>
               }
@@ -509,7 +521,7 @@
             class="nmc-btn-primary font-14 fw-semibold box-shadow-none py-2 h-auto ms-3"
             [disabled]="!eventForm.valid"
           >
-            {{ editMode ? "Update" : "Add" }} Event
+            {{ editMode !== null ? "Update" : "Add" }} Event
           </button>
         </div>
       </form>
@@ -530,7 +542,7 @@
         </thead>
 
         <tbody>
-          @for(event of events; track event){
+          @for(event of events; track event; let i = $index;){
           <tr>
             <td>{{ event.Title }}</td>
             <td>{{ event.Date }}</td>
@@ -538,6 +550,7 @@
 
             <td class="actions">
               <button
+                type="button"
                 class="btn btn-custom-edit btn-sm nmc-bg-primary nmc-white"
                 (click)="editEvent(event)"
               >
@@ -545,6 +558,7 @@
               </button>
 
               <button
+                type="button"
                 class="btn btn-danger btn-sm ms-3"
                 (click)="deleteEvent(event.id)"
               >

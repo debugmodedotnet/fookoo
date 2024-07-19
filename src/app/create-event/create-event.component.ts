@@ -17,11 +17,17 @@ import { IEventAgenda } from '../modules/event-agenda';
 export class CreateEventComponent implements OnInit {
 
   events: IEvent[] = [];
+  speakers: IEventSpeakers[] = []; 
+  agendas: IEventAgenda[] = []; 
   eventForm: FormGroup;
   totalEventCount = 0;
   editMode = false;
   currentEventId?: string;
   formVisible = false;
+  speakerFormVisible = false;
+  agendaFormVisible = false;
+  editingSpeakerIndex: number | null = null;
+  editingAgendaIndex: number | null = null;
 
   private eventService = inject(EventService);
 
@@ -116,7 +122,7 @@ export class CreateEventComponent implements OnInit {
   updateEvent(id: string, event: IEvent, speakers: IEventSpeakers[], agenda: IEventAgenda[]) {
     this.eventService.updateEvent(id, event).then(() => {
       this.updateSpeakers(id, speakers);
-      this.updateAgenda(id, agenda);
+      this.updateAgendas(id, agenda);
       this.resetForm();
       this.loadEvents();
     }).catch(error => {
@@ -154,7 +160,7 @@ export class CreateEventComponent implements OnInit {
     });
   }
 
-  updateAgenda(eventId: string, agenda: IEventAgenda[]) {
+  updateAgendas(eventId: string, agenda: IEventAgenda[]) {
     agenda.forEach(agendaItem => {
       if (agendaItem.id) {
         this.eventService.updateAgenda(eventId, agendaItem.id, agendaItem).catch(error => {
@@ -263,6 +269,56 @@ export class CreateEventComponent implements OnInit {
     this.resetForm();
   }
 
+  showSpeakerForm() {
+    this.speakerFormVisible = true;
+  }
+
+  hideSpeakerForm() {
+    this.speakerFormVisible = false;
+    this.editingSpeakerIndex = null;
+  }
+
+  showAgendaForm() {
+    this.agendaFormVisible = true;
+  }
+
+  hideAgendaForm() {
+    this.agendaFormVisible = false;
+    this.editingAgendaIndex = null;
+  }
+
+  fetchSpeakers() {
+    if (this.currentEventId) {
+      this.eventService.getEventSpeakers(this.currentEventId).subscribe(
+        speakers => {
+          this.speakers = speakers;
+        },
+        error => {
+          console.error('Error fetching speakers:', error);
+        }
+      );
+    }
+  }
+
+  addOrUpdateSpeaker() {
+    if (this.editingSpeakerIndex !== null) {
+      this.updateSpeaker();
+    } else {
+      const speakerForm = this.speakersFormArray.at(this.editingSpeakerIndex!) as FormGroup;
+      const speakerData = speakerForm.value;
+      const eventId = this.currentEventId;
+  
+      if (eventId) {
+        this.eventService.addSpeaker(eventId, speakerData).then(() => {
+          this.fetchSpeakers(); 
+          this.hideSpeakerForm();
+        }).catch(error => {
+          console.error('Error adding speaker:', error);
+        });
+      }
+    }
+  }
+
   addSpeaker() {
     this.speakersFormArray.push(new FormGroup({
       id: new FormControl(''),
@@ -276,8 +332,62 @@ export class CreateEventComponent implements OnInit {
     }));
   }
 
+  editSpeaker(index: number) {
+    this.editingSpeakerIndex = index;
+    this.showSpeakerForm();
+  }
+
+  updateSpeaker() {
+    if (this.editingSpeakerIndex !== null) {
+      const speakerForm = this.speakersFormArray.at(this.editingSpeakerIndex) as FormGroup;
+      const speakerData = speakerForm.value;
+      const eventId = this.currentEventId;
+  
+      if (eventId && speakerData.id) {
+        this.eventService.updateSpeaker(eventId, speakerData.id, speakerData).then(() => {
+          this.fetchSpeakers(); 
+          this.hideSpeakerForm();
+        }).catch(error => {
+          console.error('Error updating speaker:', error);
+        });
+      }
+    }
+  }
+
   removeSpeaker(index: number) {
     this.speakersFormArray.removeAt(index);
+  }
+
+  fetchAgenda() {
+    if (this.currentEventId) {
+      this.eventService.getEventAgenda(this.currentEventId).subscribe(
+        agendas => {
+          this.agendas = agendas;
+        },
+        error => {
+          console.error('Error fetching agenda:', error);
+        }
+      );
+    }
+  }
+
+  addOrUpdateAgenda() {
+    if (this.editingAgendaIndex !== null) {
+      this.updateAgenda();
+    } else {
+      const agendaForm = this.agendaFormArray.at(this.editingAgendaIndex!) as FormGroup;
+      const agendaData = agendaForm.value;
+      const eventId = this.currentEventId;
+  
+      if (eventId) {
+        this.eventService.addAgenda(eventId, agendaData).then(() => {
+          this.fetchAgenda(); 
+          this.hideAgendaForm();
+        }).catch(error => {
+          console.error('Error adding agenda:', error);
+        });
+      }
+    }
   }
 
   addAgenda() {
@@ -294,6 +404,28 @@ export class CreateEventComponent implements OnInit {
 
   removeAgenda(index: number) {
     this.agendaFormArray.removeAt(index);
+  }
+
+  editAgenda(index: number) {
+    this.editingAgendaIndex = index;
+    this.showAgendaForm();
+  }
+
+  updateAgenda() {
+    if (this.editingAgendaIndex !== null) {
+      const agendaForm = this.agendaFormArray.at(this.editingAgendaIndex) as FormGroup;
+      const agendaData = agendaForm.value;
+      const eventId = this.currentEventId;
+  
+      if (eventId && agendaData.id) {
+        this.eventService.updateAgenda(eventId, agendaData.id, agendaData).then(() => {
+          this.fetchAgenda(); 
+          this.hideAgendaForm();
+        }).catch(error => {
+          console.error('Error updating agenda:', error);
+        });
+      }
+    }
   }
 
 }

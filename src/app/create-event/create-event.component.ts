@@ -159,35 +159,35 @@ export class CreateEventComponent implements OnInit {
     if (event.Speakers) {
       event.Speakers.forEach(speaker => {
         speakersFormArray.push(new FormGroup({
-          id: new FormControl(speaker?.id),
-          Name: new FormControl(speaker?.Name),
-          Image: new FormControl(speaker?.Image),
-          Position: new FormControl(speaker?.Position),
-          Info: new FormControl(speaker?.Info),
-          Github: new FormControl(speaker?.Github),
-          LinkedIn: new FormControl(speaker?.LinkedIn),
-          X: new FormControl(speaker?.X),
+          id: new FormControl(speaker.id),
+          Name: new FormControl(speaker.Name),
+          Image: new FormControl(speaker.Image),
+          Position: new FormControl(speaker.Position),
+          Info: new FormControl(speaker.Info),
+          Github: new FormControl(speaker.Github),
+          LinkedIn: new FormControl(speaker.LinkedIn),
+          X: new FormControl(speaker.X),
         }));
       });
     }
 
     if (event.Agenda) {
-      event.Agenda.forEach(agenda => {
+      event.Agenda.forEach(agendaItem => {
         agendaFormArray.push(new FormGroup({
-          id: new FormControl(agenda?.id),
-          Info: new FormControl(agenda?.Info),
-          Speaker: new FormControl(agenda?.Speaker),
-          Tech: new FormControl(agenda?.Tech),
-          Time: new FormControl(agenda?.Time),
-          Title: new FormControl(agenda?.Title),
-          SpeakerImg: new FormControl(agenda?.SpeakerImg),
+          id: new FormControl(agendaItem.id),
+          Info: new FormControl(agendaItem.Info),
+          Speaker: new FormControl(agendaItem.Speaker),
+          Tech: new FormControl(agendaItem.Tech),
+          Time: new FormControl(agendaItem.Time),
+          Title: new FormControl(agendaItem.Title),
+          SpeakerImg: new FormControl(agendaItem.SpeakerImg),
         }));
       });
     }
 
     this.editMode = true;
     this.currentEventId = event.Id;
-    this.formVisible = true;
+    this.showForm();
   }
 
   deleteEvent(id: string | undefined) {

@@ -1,0 +1,55 @@
+@use "../styles/variables" as *;
+
+.instructor .card {
+    border-bottom: 3px solid $nmc-primary;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.truncate {
+    width: 100%;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    display: -webkit-box;
+}
+
+.trainers {
+    figure {
+        height: 200px;
+        width: 200px;
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+
+        .social {
+            position: absolute;
+            inset: 0;
+            background-color: rgba(0, 0, 0, 0.6);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 2;
+            padding-bottom: 20px;
+            transition: 0.3s;
+            visibility: hidden;
+            opacity: 0;
+        }
+
+        .social a {
+            transition: 0.3s;
+            color: $nmc-white;
+            font-size: 20px;
+            margin: 0 8px;
+        }
+
+        .social a:hover {
+            color: $nmc-primary;
+        }
+    }
+
+    &:hover figure .social {
+        padding-bottom: 0;
+        visibility: visible;
+        opacity: 1;
+    }
+
+}

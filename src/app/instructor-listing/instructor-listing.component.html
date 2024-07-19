@@ -1,1 +1,54 @@
-<p>instructor-listing works!</p>
+<section class="instructor text-center py-5">
+  <div class="container-boxed">
+    <h2
+      class="section-title text-center font-36 nmc-dark-grey font-family-poppins pb-3"
+    >
+      Experienced & Professional Instructors
+    </h2>
+
+    <div class="container overflow-hidden">
+      <div class="row">
+        @for(i of instructors; track i){
+        <div class="col-4 gx-5 position-relative trainers mx-auto mt-4">
+          <figure
+            class="position-relative overflow-hidden rounded-circle m-auto"
+          >
+            <img
+              class="z-1 w-100 h-100 object-fit-cover"
+              loading="lazy"
+              [src]="i.InstructorImg ? i.InstructorImg : defaultImage"
+              [alt]="i.Name"
+            />
+
+            <div class="social">
+              <a [href]="i.Email"><i class="bi bi-envelope-fill"></i></a>
+              <a [href]="i.Twitter"><i class="bi bi-twitter-x"></i></a>
+              <a [href]="i.Github"><i class="bi bi-github"></i></a>
+              <a [href]="i.LinkedIn"><i class="bi bi-linkedin"></i></a>
+            </div>
+          </figure>
+
+          <figcaption class="m-0 p-4">
+            <h4 class="mb-1">{{ i.Name }}</h4>
+            <p class="text-secondary mb-3">{{ i.Position }}</p>
+            <p class="text-secondary mb-3 truncate">{{ i.Bio }}</p>
+
+            <a
+              class="nmc-btn-primary pt-2 px-4 w-40 m-auto"
+              [routerLink]="['/instructor', i.id]"
+            >
+              More
+            </a>
+          </figcaption>
+        </div>
+        }
+
+        <div class="mt-5 d-flex">
+          <button class="nmc-btn-outline m-auto">
+            Load More<i class="bi bi-chevron-down ms-2"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

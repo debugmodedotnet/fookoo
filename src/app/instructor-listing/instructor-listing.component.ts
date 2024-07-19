@@ -15,25 +15,30 @@ import { map } from 'rxjs';
 export class InstructorListingComponent implements OnInit {
 
   instructors: IInstructor[] = [];
-  private firestore = inject(AngularFirestore);
-
   defaultImage = 'assets/images/home/defaultInstructor.jpg';
+  showLoadMoreButton = false;
+
+  private firestore = inject(AngularFirestore);
 
   ngOnInit(): void {
     this.getInstructors();
   }
 
   getInstructors() {
-    this.firestore.collection('instructor', ref => ref.limit(3)).snapshotChanges().pipe(
+    this.firestore.collection('instructor').snapshotChanges().pipe(
       map(actions => actions.map(a => {
         const data = a.payload.doc.data() as IInstructor;
         const id = a.payload.doc.id;
         return { id, ...data };
       }))
     ).subscribe(instructors => {
-      console.log(instructors);
       this.instructors = instructors as IInstructor[];
+      this.showLoadMoreButton = this.instructors.length > 6;
     });
   }
-  
+
+  loadMore() {
+    console.log('Load more clicked');
+  }
+
 }

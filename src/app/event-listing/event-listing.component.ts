@@ -15,6 +15,8 @@ import { map } from 'rxjs';
 export class EventListingComponent implements OnInit {
 
   events: IEvent[] = [];
+  showLoadMoreButton = false;
+
   private firestore = inject(AngularFirestore);
 
   ngOnInit(): void {
@@ -31,7 +33,12 @@ export class EventListingComponent implements OnInit {
     ).subscribe(events => {
       console.log(events);
       this.events = events as IEvent[];
+      this.showLoadMoreButton = this.events.length > 8;
     });
+  }
+
+  loadMore() {
+    console.log('Load more clicked');
   }
 
 }

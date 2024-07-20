@@ -18,7 +18,7 @@ export class SettingsComponent implements OnInit {
   private firestore = inject(AngularFirestore);
   private fb = inject(FormBuilder);
 
-  user: any;
+  user?: firebase.User;
   showPassword = false;
   updatePasswordForm: FormGroup;
   showUpdatePasswordForm = false;
@@ -35,20 +35,22 @@ export class SettingsComponent implements OnInit {
   ngOnInit(): void {
     this.afAuth.authState.subscribe(user => {
       if (user) {
-        this.loadUserData(user.uid);
+        this.user = user;
+        // this.loadUserData(user.uid);
       } else {
-        this.user = null;
+        // this.user = null;
       }
     });
   }
 
-  loadUserData(uid: string) {
-    this.firestore.collection('users').doc(uid).get().subscribe(doc => {
-      if (doc.exists) {
-        this.user = doc.data();
-      }
-    });
-  }
+  // loadUserData(uid: string) {
+  //   this.firestore.collection('users').doc(uid).get().subscribe(doc => {
+  //     console.log(doc.data())
+  //     if (doc.exists) {
+  //       this.user = doc.data();
+  //     }
+  //   });
+  // }
 
   togglePasswordVisibility(): void {
     this.showPassword = !this.showPassword;
@@ -78,19 +80,19 @@ export class SettingsComponent implements OnInit {
           user.reauthenticateWithCredential(credential).then(() => {
             user.updatePassword(newPassword).then(() => {
               // Update password in Firestore
-              this.firestore.collection('users').doc(user.uid).update({
-                password: newPassword
-              }).then(() => {
-                console.log('Password updated successfully');
-                this.user.password = newPassword;
-                this.toggleUpdatePasswordForm();
-                this.showPopup = true;
-                setTimeout(() => {
-                  this.showPopup = false;
-                }, 3000);
-              }).catch(error => {
-                console.error('Error updating password in Firestore:', error);
-              });
+              // this.firestore.collection('users').doc(user.uid).update({
+              //   password: newPassword
+              // }).then(() => {
+              console.log('Password updated successfully');
+              // this.user.password = newPassword;
+              this.toggleUpdatePasswordForm();
+              this.showPopup = true;
+              setTimeout(() => {
+                this.showPopup = false;
+              }, 3000);
+              // }).catch(error => {
+              //   console.error('Error updating password in Firestore:', error);
+              // });
             }).catch(error => {
               console.error('Error updating password:', error);
             });

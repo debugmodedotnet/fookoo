@@ -7,13 +7,13 @@
   <h2>User Settings</h2>
   <div class="user-info">
     <p><strong>Email:</strong> {{ user.email }}</p>
-    <p>
+    <!-- <p>
       <strong>Password:</strong> 
       <span [class.password-hidden]="!showPassword">{{ user.password }}</span>
       <button class="icon-button" (click)="togglePasswordVisibility()">
         <span class="eye-icon" [class.open]="showPassword"></span>
       </button>
-    </p>
+    </p> -->
   </div>
 
   <button class="update-password-btn" (click)="toggleUpdatePasswordForm()">

@@ -6,6 +6,7 @@ import { EventService } from '../services/event.service';
 import { IEvent } from '../modules/event';
 import { IEventSpeakers } from '../modules/event-speakers';
 import { IEventAgenda } from '../modules/event-agenda';
+import { first } from 'rxjs';
 
 @Component({
   selector: 'app-create-event',
@@ -17,8 +18,8 @@ import { IEventAgenda } from '../modules/event-agenda';
 export class CreateEventComponent implements OnInit {
 
   events: IEvent[] = [];
-  speakers: IEventSpeakers[] = []; 
-  agendas: IEventAgenda[] = []; 
+  speakers: IEventSpeakers[] = [];
+  agendas: IEventAgenda[] = [];
   eventForm: FormGroup;
   totalEventCount = 0;
   editMode = false;
@@ -71,15 +72,36 @@ export class CreateEventComponent implements OnInit {
   }
 
   loadEvents() {
-    this.eventService.getEvents().subscribe(
+    this.eventService.getEvents().pipe(first()).subscribe(
       events => {
+        console.log(events)
         this.events = events;
         this.totalEventCount = events.length;
+        this.fetchAndAddSpeakers();
+        this.fetchAndAddAgenda();
       },
       error => {
         console.error('Error loading events:', error);
       }
     );
+  }
+
+  fetchAndAddSpeakers(): void {
+    for (let index = 0; index < this.events.length; index++) {
+      this.eventService.getEventSpeakers(this.events[index].id!).pipe(first()).subscribe(res => {
+        this.events[index].Speakers = res;
+        console.log(res)
+      });
+    }
+  }
+
+  fetchAndAddAgenda(): void {
+    for (let index = 0; index < this.events.length; index++) {
+      this.eventService.getEventAgenda(this.events[index].id!).pipe(first()).subscribe(res => {
+        this.events[index].Agenda = res;
+        console.log(res)
+      });
+    }
   }
 
   generateSlug(title: string): string {
@@ -184,6 +206,7 @@ export class CreateEventComponent implements OnInit {
     agendaFormArray.clear();
 
     if (event.Speakers) {
+      this.speakers = event.Speakers;
       event.Speakers.forEach(speaker => {
         speakersFormArray.push(new FormGroup({
           id: new FormControl(speaker.id),
@@ -199,6 +222,7 @@ export class CreateEventComponent implements OnInit {
     }
 
     if (event.Agenda) {
+      this.agendas = event.Agenda;
       event.Agenda.forEach(agendaItem => {
         agendaFormArray.push(new FormGroup({
           id: new FormControl(agendaItem.id),
@@ -289,14 +313,18 @@ export class CreateEventComponent implements OnInit {
 
   fetchSpeakers() {
     if (this.currentEventId) {
-      this.eventService.getEventSpeakers(this.currentEventId).subscribe(
-        speakers => {
-          this.speakers = speakers;
-        },
-        error => {
-          console.error('Error fetching speakers:', error);
-        }
-      );
+      // this.eventService.getEventSpeakers(this.currentEventId).subscribe(
+      //   speakers => {
+      //     this.speakers = speakers;
+      //   },
+      //   error => {
+      //     console.error('Error fetching speakers:', error);
+      //   }
+      // );
+      const index = this.events.findIndex((event) => event.id === this.currentEventId);
+      if (index !== -1) {
+        this.speakers = this.events[index].Speakers ?? [];
+      }
     }
   }
 
@@ -307,10 +335,10 @@ export class CreateEventComponent implements OnInit {
       const speakerForm = this.speakersFormArray.at(this.editingSpeakerIndex!) as FormGroup;
       const speakerData = speakerForm.value;
       const eventId = this.currentEventId;
-  
+
       if (eventId) {
         this.eventService.addSpeaker(eventId, speakerData).then(() => {
-          this.fetchSpeakers(); 
+          this.fetchSpeakers();
           this.hideSpeakerForm();
         }).catch(error => {
           console.error('Error adding speaker:', error);
@@ -342,10 +370,10 @@ export class CreateEventComponent implements OnInit {
       const speakerForm = this.speakersFormArray.at(this.editingSpeakerIndex) as FormGroup;
       const speakerData = speakerForm.value;
       const eventId = this.currentEventId;
-  
+
       if (eventId && speakerData.id) {
         this.eventService.updateSpeaker(eventId, speakerData.id, speakerData).then(() => {
-          this.fetchSpeakers(); 
+          this.fetchSpeakers();
           this.hideSpeakerForm();
         }).catch(error => {
           console.error('Error updating speaker:', error);
@@ -378,10 +406,10 @@ export class CreateEventComponent implements OnInit {
       const agendaForm = this.agendaFormArray.at(this.editingAgendaIndex!) as FormGroup;
       const agendaData = agendaForm.value;
       const eventId = this.currentEventId;
-  
+
       if (eventId) {
         this.eventService.addAgenda(eventId, agendaData).then(() => {
-          this.fetchAgenda(); 
+          this.fetchAgenda();
           this.hideAgendaForm();
         }).catch(error => {
           console.error('Error adding agenda:', error);
@@ -416,10 +444,10 @@ export class CreateEventComponent implements OnInit {
       const agendaForm = this.agendaFormArray.at(this.editingAgendaIndex) as FormGroup;
       const agendaData = agendaForm.value;
       const eventId = this.currentEventId;
-  
+
       if (eventId && agendaData.id) {
         this.eventService.updateAgenda(eventId, agendaData.id, agendaData).then(() => {
-          this.fetchAgenda(); 
+          this.fetchAgenda();
           this.hideAgendaForm();
         }).catch(error => {
           console.error('Error updating agenda:', error);

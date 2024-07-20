@@ -4,6 +4,8 @@ import { Component, inject, OnInit } from '@angular/core';
 import { FormArray, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { EventService } from '../services/event.service';
 import { IEvent } from '../modules/event';
+import { IEventSpeakers } from '../modules/event-speakers';
+import { IEventAgenda } from '../modules/event-agenda';
 
 @Component({
   selector: 'app-create-event',
@@ -15,11 +17,17 @@ import { IEvent } from '../modules/event';
 export class CreateEventComponent implements OnInit {
 
   events: IEvent[] = [];
+  speakers: IEventSpeakers[] = []; 
+  agendas: IEventAgenda[] = []; 
   eventForm: FormGroup;
   totalEventCount = 0;
   editMode = false;
   currentEventId?: string;
   formVisible = false;
+  speakerFormVisible = false;
+  agendaFormVisible = false;
+  editingSpeakerIndex: number | null = null;
+  editingAgendaIndex: number | null = null;
 
   private eventService = inject(EventService);
 
@@ -50,16 +58,16 @@ export class CreateEventComponent implements OnInit {
     });
   }
 
+  ngOnInit(): void {
+    this.loadEvents();
+  }
+
   get agendaFormArray(): FormArray {
     return this.eventForm.get('Agenda') as FormArray;
   }
 
   get speakersFormArray(): FormArray {
     return this.eventForm.get('Speakers') as FormArray;
-  }
-
-  ngOnInit(): void {
-    this.loadEvents();
   }
 
   loadEvents() {
@@ -86,17 +94,24 @@ export class CreateEventComponent implements OnInit {
 
     this.eventForm.get('Id')?.setValue(eventId);
 
-    const event = this.eventForm.value as IEvent;
+    const speakers = this.speakersFormArray.value as IEventSpeakers[];
+    const agenda = this.agendaFormArray.value as IEventAgenda[];
+    const event = { ...this.eventForm.value } as IEvent;
+
+    delete event.Speakers;
+    delete event.Agenda;
 
     if (this.editMode && this.currentEventId) {
-      this.updateEvent(this.currentEventId, event);
+      this.updateEvent(this.currentEventId, event, speakers, agenda);
     } else {
-      this.addEvent(eventId, event);
+      this.addEvent(eventId, event, speakers, agenda);
     }
   }
 
-  addEvent(id: string, event: IEvent) {
+  addEvent(id: string, event: IEvent, speakers: IEventSpeakers[], agenda: IEventAgenda[]) {
     this.eventService.addEvent(event, id).then(() => {
+      this.addSpeakers(id, speakers);
+      this.addAgendas(id, agenda);
       this.resetForm();
       this.loadEvents();
     }).catch(error => {
@@ -104,8 +119,10 @@ export class CreateEventComponent implements OnInit {
     });
   }
 
-  updateEvent(id: string, event: IEvent) {
+  updateEvent(id: string, event: IEvent, speakers: IEventSpeakers[], agenda: IEventAgenda[]) {
     this.eventService.updateEvent(id, event).then(() => {
+      this.updateSpeakers(id, speakers);
+      this.updateAgendas(id, agenda);
       this.resetForm();
       this.loadEvents();
     }).catch(error => {
@@ -113,47 +130,49 @@ export class CreateEventComponent implements OnInit {
     });
   }
 
-  // editEvent(event: IEvent) {
-  //   this.eventForm.patchValue(event);
+  addSpeakers(eventId: string, speakers: IEventSpeakers[]) {
+    speakers.forEach(speaker => {
+      this.eventService.addSpeaker(eventId, speaker).catch(error => {
+        console.error('Error adding speaker:', error);
+      });
+    });
+  }
 
-  //   const speakersFormArray = this.eventForm.get('Speakers') as FormArray;
-  //   const agendaFormArray = this.eventForm.get('Agenda') as FormArray;
-  //   speakersFormArray.clear();
-  //   agendaFormArray.clear();
+  updateSpeakers(eventId: string, speakers: IEventSpeakers[]) {
+    speakers.forEach(speaker => {
+      if (speaker.id) {
+        this.eventService.updateSpeaker(eventId, speaker.id, speaker).catch(error => {
+          console.error('Error updating speaker:', error);
+        });
+      } else {
+        this.eventService.addSpeaker(eventId, speaker).catch(error => {
+          console.error('Error adding speaker:', error);
+        });
+      }
+    });
+  }
 
-  //   if (event.Speakers) {
-  //     event.Speakers.forEach(speaker => {
-  //       speakersFormArray.push(new FormGroup({
-  //         id: new FormControl(speaker.id),
-  //         Name: new FormControl(speaker.Name),
-  //         Image: new FormControl(speaker.Image),
-  //         Position: new FormControl(speaker.Position),
-  //         Info: new FormControl(speaker.Info),
-  //         Github: new FormControl(speaker.Github),
-  //         LinkedIn: new FormControl(speaker.LinkedIn),
-  //         X: new FormControl(speaker.X),
-  //       }));
-  //     });
-  //   }
+  addAgendas(eventId: string, agenda: IEventAgenda[]) {
+    agenda.forEach(agendaItem => {
+      this.eventService.addAgenda(eventId, agendaItem).catch(error => {
+        console.error('Error adding agenda item:', error);
+      });
+    });
+  }
 
-  //    if (event.Agenda) {
-  //     event.Agenda.forEach(agenda => {
-  //       agendaFormArray.push(new FormGroup({
-  //         id: new FormControl(agenda.id),
-  //         Info: new FormControl(agenda.Info),
-  //         Speaker: new FormControl(agenda.Speaker),
-  //         Tech: new FormControl(agenda.Tech),
-  //         Time: new FormControl(agenda.Time),
-  //         Title: new FormControl(agenda.Title),
-  //         SpeakerImg: new FormControl(agenda.SpeakerImg),
-  //       }));
-  //     });
-  //   }
-
-  //   this.editMode = true;
-  //   this.currentEventId = event.Id;
-  //   this.formVisible = true;
-  // }
+  updateAgendas(eventId: string, agenda: IEventAgenda[]) {
+    agenda.forEach(agendaItem => {
+      if (agendaItem.id) {
+        this.eventService.updateAgenda(eventId, agendaItem.id, agendaItem).catch(error => {
+          console.error('Error updating agenda item:', error);
+        });
+      } else {
+        this.eventService.addAgenda(eventId, agendaItem).catch(error => {
+          console.error('Error adding agenda item:', error);
+        });
+      }
+    });
+  }
 
   editEvent(event: IEvent) {
     this.eventForm.patchValue(event);
@@ -230,11 +249,15 @@ export class CreateEventComponent implements OnInit {
       isOffline: false,
       isPaid: false,
       isCertificateProvided: false,
-      displayAtHomePage: false
+      displayAtHomePage: false,
+      Speakers: [],
+      Agenda: [],
     });
+    this.speakersFormArray.clear();
+    this.agendaFormArray.clear();
     this.editMode = false;
     this.currentEventId = undefined;
-    this.formVisible = false;
+    this.hideForm();
   }
 
   showForm() {
@@ -244,6 +267,165 @@ export class CreateEventComponent implements OnInit {
   hideForm() {
     this.formVisible = false;
     this.resetForm();
+  }
+
+  showSpeakerForm() {
+    this.speakerFormVisible = true;
+  }
+
+  hideSpeakerForm() {
+    this.speakerFormVisible = false;
+    this.editingSpeakerIndex = null;
+  }
+
+  showAgendaForm() {
+    this.agendaFormVisible = true;
+  }
+
+  hideAgendaForm() {
+    this.agendaFormVisible = false;
+    this.editingAgendaIndex = null;
+  }
+
+  fetchSpeakers() {
+    if (this.currentEventId) {
+      this.eventService.getEventSpeakers(this.currentEventId).subscribe(
+        speakers => {
+          this.speakers = speakers;
+        },
+        error => {
+          console.error('Error fetching speakers:', error);
+        }
+      );
+    }
+  }
+
+  addOrUpdateSpeaker() {
+    if (this.editingSpeakerIndex !== null) {
+      this.updateSpeaker();
+    } else {
+      const speakerForm = this.speakersFormArray.at(this.editingSpeakerIndex!) as FormGroup;
+      const speakerData = speakerForm.value;
+      const eventId = this.currentEventId;
+  
+      if (eventId) {
+        this.eventService.addSpeaker(eventId, speakerData).then(() => {
+          this.fetchSpeakers(); 
+          this.hideSpeakerForm();
+        }).catch(error => {
+          console.error('Error adding speaker:', error);
+        });
+      }
+    }
+  }
+
+  addSpeaker() {
+    this.speakersFormArray.push(new FormGroup({
+      id: new FormControl(''),
+      Name: new FormControl('', Validators.required),
+      Image: new FormControl('', Validators.required),
+      Position: new FormControl('', Validators.required),
+      Info: new FormControl('', Validators.required),
+      Github: new FormControl(''),
+      LinkedIn: new FormControl(''),
+      X: new FormControl(''),
+    }));
+  }
+
+  editSpeaker(index: number) {
+    this.editingSpeakerIndex = index;
+    this.showSpeakerForm();
+  }
+
+  updateSpeaker() {
+    if (this.editingSpeakerIndex !== null) {
+      const speakerForm = this.speakersFormArray.at(this.editingSpeakerIndex) as FormGroup;
+      const speakerData = speakerForm.value;
+      const eventId = this.currentEventId;
+  
+      if (eventId && speakerData.id) {
+        this.eventService.updateSpeaker(eventId, speakerData.id, speakerData).then(() => {
+          this.fetchSpeakers(); 
+          this.hideSpeakerForm();
+        }).catch(error => {
+          console.error('Error updating speaker:', error);
+        });
+      }
+    }
+  }
+
+  removeSpeaker(index: number) {
+    this.speakersFormArray.removeAt(index);
+  }
+
+  fetchAgenda() {
+    if (this.currentEventId) {
+      this.eventService.getEventAgenda(this.currentEventId).subscribe(
+        agendas => {
+          this.agendas = agendas;
+        },
+        error => {
+          console.error('Error fetching agenda:', error);
+        }
+      );
+    }
+  }
+
+  addOrUpdateAgenda() {
+    if (this.editingAgendaIndex !== null) {
+      this.updateAgenda();
+    } else {
+      const agendaForm = this.agendaFormArray.at(this.editingAgendaIndex!) as FormGroup;
+      const agendaData = agendaForm.value;
+      const eventId = this.currentEventId;
+  
+      if (eventId) {
+        this.eventService.addAgenda(eventId, agendaData).then(() => {
+          this.fetchAgenda(); 
+          this.hideAgendaForm();
+        }).catch(error => {
+          console.error('Error adding agenda:', error);
+        });
+      }
+    }
+  }
+
+  addAgenda() {
+    this.agendaFormArray.push(new FormGroup({
+      id: new FormControl(''),
+      Info: new FormControl('', Validators.required),
+      Speaker: new FormControl('', Validators.required),
+      Tech: new FormControl('', Validators.required),
+      Time: new FormControl('', Validators.required),
+      Title: new FormControl('', Validators.required),
+      SpeakerImg: new FormControl('', Validators.required),
+    }));
+  }
+
+  removeAgenda(index: number) {
+    this.agendaFormArray.removeAt(index);
+  }
+
+  editAgenda(index: number) {
+    this.editingAgendaIndex = index;
+    this.showAgendaForm();
+  }
+
+  updateAgenda() {
+    if (this.editingAgendaIndex !== null) {
+      const agendaForm = this.agendaFormArray.at(this.editingAgendaIndex) as FormGroup;
+      const agendaData = agendaForm.value;
+      const eventId = this.currentEventId;
+  
+      if (eventId && agendaData.id) {
+        this.eventService.updateAgenda(eventId, agendaData.id, agendaData).then(() => {
+          this.fetchAgenda(); 
+          this.hideAgendaForm();
+        }).catch(error => {
+          console.error('Error updating agenda:', error);
+        });
+      }
+    }
   }
 
 }

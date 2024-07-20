@@ -312,7 +312,6 @@ export class CreateEventComponent implements OnInit {
   }
 
   fetchSpeakers() {
-    // debugger
     if (this.currentEventId) {
       // this.eventService.getEventSpeakers(this.currentEventId).subscribe(
       //   speakers => {

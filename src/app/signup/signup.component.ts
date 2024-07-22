@@ -3,7 +3,6 @@ import { NgClass, NgIf } from '@angular/common';
 import { Router } from '@angular/router';
 import { AbstractControl, FormBuilder, FormGroup, ReactiveFormsModule, ValidationErrors, Validators } from '@angular/forms';
 import { UserService } from '../services/user.service';
-import * as CryptoJS from 'crypto-js';
 
 @Component({
   selector: 'app-signup',
@@ -51,12 +50,11 @@ export class SignupComponent {
 
   onSubmit() {
     const email = this.signupForm?.value.email;
-    const password = CryptoJS.SHA256(this.signupForm?.value.password).toString(); // Hash the password
+    const password = this.signupForm?.value.password;
     const userDetails = {
       name: this.signupForm?.value.name,
       age: 30,
-      city: "",
-      password: password // Store the hashed password
+      city: ""
     };
 
     this.signupservice.signUp(email, password, userDetails).then(() => {

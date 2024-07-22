@@ -812,3 +812,21 @@ inset-0 {
 .nmc-alert p {
     color: red;
 }
+
+.nmc-view-all {
+    .nmc-view-all-btn {
+        background: linear-gradient(111.59deg, #e78235 16.69%, #dc5f00 74.35%);
+        box-shadow: 0 3px 6px #f5cbab;
+        width: 3rem;
+        height: 3rem;
+    }
+
+    span {
+        margin-right: 1rem;
+    }
+
+    // &:hover span {
+    //     margin-left: 3em;
+    //     transition: all .5s ease;
+    // }
+}

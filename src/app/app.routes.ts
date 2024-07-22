@@ -31,7 +31,7 @@ export const routes: Routes = [
   { path: 'ng-india', loadComponent: () => import('./ng-india/ng-india.component').then(m => m.NgIndiaComponent) },
 
   {
-    path: 'admin',
+    path: 'admin1',
     component: AdminComponent,
     canActivate: [isAdminGuard, userAuthGuard],
     children: [

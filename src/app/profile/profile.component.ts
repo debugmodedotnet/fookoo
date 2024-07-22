@@ -83,16 +83,15 @@ export class ProfileComponent implements OnInit {
   uploadPhoto(event: any) {
     const file = event.target.files[0];
     if (file) {
-      // Create a unique file path
-      const filePath = `userPhotos/${new Date().getTime()}_${file.name}`;
+      const userId = this.user.uid;
+      const filePath = `users/${userId}/photos/${new Date().getTime()}_${file.name}`;
       const fileRef = this.storage.ref(filePath);
       const task = this.storage.upload(filePath, file);
-
-      // Get notified when the download URL is available
+  
       task.snapshotChanges().pipe(
         finalize(() => {
           fileRef.getDownloadURL().subscribe(url => {
-
+  
             const userDetails = { ...this.user, photoURL: url };
             this.userService.updateUserProfile(userDetails);
           });
@@ -102,5 +101,7 @@ export class ProfileComponent implements OnInit {
       });
     }
   }
+  
+  
 
 }

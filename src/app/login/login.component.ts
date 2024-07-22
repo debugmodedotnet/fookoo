@@ -5,6 +5,7 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { UserService } from '../services/user.service';
 import { NgClass, NgIf } from '@angular/common';
 import { Router } from '@angular/router';
+import * as CryptoJS from 'crypto-js';
 
 @Component({
   selector: 'app-login',
@@ -34,9 +35,12 @@ export class LoginComponent {
   onSubmit() {
     if (this.loginForm.valid) {
       const { email, password } = this.loginForm.value;
-  
+
+      // Hash the password before sending it to Firebase
+      const hashedPassword = CryptoJS.SHA256(password).toString();
+
       // First, try to sign in
-      this.afAuth.signInWithEmailAndPassword(email, password)
+      this.afAuth.signInWithEmailAndPassword(email, hashedPassword)
         .then((userCredential) => {
           // User signed in successfully
           console.log('User signed in successfully');
@@ -49,10 +53,14 @@ export class LoginComponent {
               .then((userCredential) => {
                 // New user created successfully
                 const user = userCredential.user;
-                
+
+                // Hash the password before storing it in Firestore
+                const hashedPassword = CryptoJS.SHA256(password).toString();
+
                 // Store user data in Firestore
                 this.firestore.collection('users').doc(user?.uid).set({
                   email: email,
+                  password: hashedPassword,
                   createdAt: new Date()
                 })
                 .then(() => {
@@ -81,4 +89,3 @@ export class LoginComponent {
     this.showPassword = !this.showPassword;
   }
 }
-

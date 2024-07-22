@@ -1,13 +1,23 @@
 <section class="py-5">
   <div class="container-boxed">
-    <div class="d-flex align-items-center justify-content-between mb-4">
+    <div class="d-flex align-items-center justify-content-between mb-5">
       <h2
-        class="section-title left font-36 nmc-dark-grey font-family-poppins pb-3"
+        class="section-title left font-36 nmc-dark-grey font-family-poppins pb-3 mb-0"
       >
         Upcoming Events
       </h2>
 
-      <button class="nmc-btn-primary" routerLink="/event-listing">View All</button>
+      <a
+        class="nmc-view-all d-flex align-items-center justify-content-start"
+        routerLink="/event-listing"
+      >
+        <span class="nmc-dark-grey">VIEW ALL</span>
+
+        <div
+          class="d-flex align-items-center justify-content-center rounded-circle nmc-view-all-btn nmc-white"
+        >
+          <i class="bi bi-arrow-right font-24"></i></div
+      ></a>
     </div>
 
     <div class="events-container d-flex flex-column justify-content-center">

@@ -16,5 +16,9 @@ export interface IInstructor {
   Skill2?: string;
   Skill3?: string;
   Skill4?: string;
+  Company1: string;
+  Company2: string;
+  Company3: string;
+  Company4: string;
   Courses?: ICourse[];
 }

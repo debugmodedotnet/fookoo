@@ -44,24 +44,65 @@
         right: 1.5rem;
     }
 
-    button {
+    button{
         border: 1px solid #ccc;
     }
 }
 
 .card {
     cursor: pointer;
-
+  
     &.active {
-        border: 2px solid #ffa500;
-        background-color: #ffe5b4;
+      border: 2px solid #ffa500; // Change to your active color
+      background-color: #ffe5b4; // Optional: change to your preferred active background color
     }
-}
+  }
 
-
+  /* Example styles for no jobs available message */
 .no-jobs-message {
     text-align: center;
     margin-top: 2rem;
     font-size: 1.5rem;
-    color: #888;
+    color: #888; /* Adjust color as per your design */
 }
+
+.button-container {
+    text-align: center;
+    margin: 20px 0;
+  }
+  
+  .btn-load-more, .btn-show-less {
+    display: inline-flex;
+    align-items: center;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s;
+  }
+  
+  .btn-load-more {
+    background-color:  #e78235; /* Adjust to your theme */
+    margin-right: 10px; /* Space between buttons */
+  }
+  
+  .btn-show-less {
+    background-color: rgb(63, 63, 63); /* Adjust to your theme */
+  }
+  
+  .btn-load-more:hover {
+    background-color: #f77b0e; /* Adjust to your theme */
+  }
+  
+  .btn-show-less:hover {
+    background-color: #2b2828; /* Adjust to your theme */
+  }
+  
+  .bi-arrow-down, .bi-arrow-up {
+    margin-left: 8px;
+  }
+  

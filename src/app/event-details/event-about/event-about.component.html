@@ -1,38 +1,57 @@
 <section class="pt-5 position-relative overflow-hidden">
-  <div
-    class="container-boxed position-relative d-flex flex-column align-items-center justify-content-center text-center z-2"
-  >
-    <div class="d-flex align-items-center justify-content-center gap-5 mb-3">
-      <h3>
+  <div class="container-boxed">
+    <div
+      class="d-flex align-items-center justify-content-center gap-5 mb-3 mx-5"
+    >
+      <h4 class="font-family-poppins">
         Total Seats:
         <span class="nmc-primary">{{ eventAbout?.TotalSeats }}</span>
-      </h3>
-      
-      <h3>
+      </h4>
+
+      <h4 class="font-family-poppins">
         Total Registered:
         <span class="nmc-primary">{{ eventAbout?.RegisteredSeats }}</span>
-      </h3>
+      </h4>
     </div>
 
-    <h1 class="font-50 nmc-primary fw-bolder w-50 font-family-poppins">
-      {{ eventAbout?.Title }}
-    </h1>
-
-    <h4 class="nmc-dark-grey mt-3">
-      {{ eventAbout?.Date }} | {{ eventAbout?.City }}
-    </h4>
-
-    <span
-      class="d-inline-block font-18 fw-semibold rounded-1 py-1 px-3 mt-3 text-orange-600 bg-orange-100"
-      >{{ eventAbout?.isOffline ? "Offline" : "Online" }}</span
+    <div
+      class="position-relative d-flex flex-column align-items-center justify-content-center text-center z-2"
     >
+      <h1 class="font-52 nmc-primary fw-bolder w-50 font-family-poppins">
+        {{ eventAbout?.Title }}
+      </h1>
 
-    <ol class="breadcrumb nmc-primary my-4 position-absolute">
+      <div class="d-flex align-items-center justify-center gap-4 mt-3">
+        <h4 class="nmc-dark-grey">
+          <i class="bi bi-calendar-event-fill me-1 font-20 nmc-primary"></i>
+          {{ eventAbout?.Date | date : "MMMM d" }}
+        </h4>
+
+        <h4 class="nmc-dark-grey">
+          <i class="bi bi-geo-alt-fill me-1 font-20 nmc-primary"></i>
+          @if(eventAbout?.isOffline){ {{ eventAbout?.City }} }@else{ Online}
+        </h4>
+      </div>
+
+      <!-- <span
+        class="d-inline-block font-18 fw-semibold rounded-1 py-1 px-3 mt-3 text-orange-600 bg-orange-100"
+        >{{ eventAbout?.isOffline ? "Offline" : "Online" }}</span
+      > -->
+
+      <!-- <ol class="breadcrumb nmc-primary my-4 position-absolute">
       <li class="breadcrumb-item">
         <a href="#" class="nmc-dark-grey me-2">Home</a>
       </li>
       <li class="breadcrumb-item active" aria-current="page">Event-Details</li>
-    </ol>
+    </ol> -->
+
+      <button
+        class="nmc-btn-primary m-auto mt-4 px-5 py-2 h-auto"
+        (click)="attendEvent()"
+      >
+        Enroll Now
+      </button>
+    </div>
   </div>
 </section>
 

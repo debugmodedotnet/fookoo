@@ -3,6 +3,8 @@
     @for( job of jobs; track job){
     <div 
       (click)="onJobClick(job)"
+      (keyup.enter)="onJobClick(job)"
+      tabindex="0"
       [ngClass]="{'card': true, 'p-4': true, 'm-3': true, 'cursor-pointer': true, 'selected': job === selectedJob}">
       <h5 class="font-16 nmc-dark-grey fw-normal">
         {{ job.Position }}

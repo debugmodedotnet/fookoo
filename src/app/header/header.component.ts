@@ -66,9 +66,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
       console.log(header);
       this.header = header as IHeader;
     });
-  }
-
-  attendEvent(): void { }
+  }  
 
   logout(): void {
     this.userService.logout().subscribe(() => {

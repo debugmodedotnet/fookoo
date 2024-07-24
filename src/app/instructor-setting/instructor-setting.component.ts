@@ -36,6 +36,10 @@ export class InstructorSettingComponent implements OnInit {
       Skill2: ['', Validators.required],
       Skill3: ['', Validators.required],
       Skill4: ['', Validators.required],
+      Company1: ['', Validators.required],
+      Company2: ['', Validators.required],
+      Company3: [''],
+      Company4: [''],
       Bio: ['', Validators.required],
       ImageUpload: ['']
     });

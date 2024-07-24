@@ -21,8 +21,8 @@ export class CertificatesComponent {
 
   showSharePopup = false;
   showConfirmationPopup = false;
-  selectedPlatform: string = '';
-  shareUrl: string = '';
+  selectedPlatform = '';
+  shareUrl = '';
 
   addCertificate() {
     const fileInput = document.createElement('input');
@@ -47,12 +47,13 @@ export class CertificatesComponent {
 
   openSharePopup(certificate: any) {
     this.showSharePopup = true;
+    console.log(certificate);
   }
 
   closeSharePopup() {
     this.showSharePopup = false;
   }
- 
+
   confirmShare(platform: string, url: string) {
     this.selectedPlatform = platform;
     this.shareUrl = url;

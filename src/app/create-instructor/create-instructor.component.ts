@@ -24,12 +24,16 @@ export class CreateInstructorComponent {
       Position: new FormControl('', Validators.required),
       Email: new FormControl('', [Validators.required, Validators.email]),
       Github: new FormControl('', [Validators.required, Validators.pattern('https://github.com/.*')]),
-      Twitter: new FormControl('', [Validators.required, Validators.pattern('https://twitter.com/.*')]),
+      Twitter: new FormControl('', [Validators.required, Validators.pattern('https://x.com/.*')]),
       LinkedIn: new FormControl('', [Validators.required, Validators.pattern('https://www.linkedin.com/.*')]),
       Skill1: new FormControl('', Validators.required),
       Skill2: new FormControl('', Validators.required),
       Skill3: new FormControl('', Validators.required),
       Skill4: new FormControl('', Validators.required),
+      Company1: new FormControl('', Validators.required),
+      Company2: new FormControl('', Validators.required),
+      Company3: new FormControl(''),
+      Company4: new FormControl(''),
       Bio: new FormControl('', Validators.maxLength(800)),
       InstructorImg: new FormControl('', Validators.required),
     });
@@ -46,6 +50,8 @@ export class CreateInstructorComponent {
         finalize(() => {
           fileRef.getDownloadURL().subscribe(url => {
             this.photoURL = url;
+            // Update the form control with the photo URL
+            this.instructorForm.patchValue({ InstructorImg: this.photoURL });
           });
         })
       ).subscribe();

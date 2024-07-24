@@ -80,6 +80,15 @@ export class ProfileComponent implements OnInit {
     }
   }
 
+  async loadAppliedJob() {
+    const { AppliedJobComponent } = await import('./applied-job/applied-job.component');
+    if (this.profileView) {
+      this.profileView.clear();
+      this.profileView.createComponent(AppliedJobComponent);
+      this.currentTab = 'appliedJob';
+    }
+  }
+
   uploadPhoto(event: any) {
     const file = event.target.files[0];
     if (file) {
@@ -101,7 +110,5 @@ export class ProfileComponent implements OnInit {
       });
     }
   }
-  
-  
 
 }

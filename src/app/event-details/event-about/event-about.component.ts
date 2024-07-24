@@ -75,7 +75,8 @@ export class EventAboutComponent implements OnInit {
     this.isLoading = true;
     const userData = {
       name: user.name || '',
-      image: user.photoURL || ''
+      image: user.photoURL || '',
+      email: user.email || ''
     };
 
     const eventRef = this.firestore.collection('event-transactions').doc(this.eventId);

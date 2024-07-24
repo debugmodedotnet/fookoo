@@ -35,7 +35,6 @@ export class LoginComponent {
   //   if (this.loginForm.valid) {
   //     const { email, password } = this.loginForm.value;
 
-  //     // First, try to sign in
   //     this.afAuth.signInWithEmailAndPassword(email, password)
   //       .then(() => {
   //         // User signed in successfully
@@ -43,33 +42,23 @@ export class LoginComponent {
   //         this.router.navigate(['/home']);
   //       })
   //       .catch((error) => {
-  //         if (error.code === 'auth/user-not-found') {
-  //           // If user doesn't exist, create a new account
-  //           this.afAuth.createUserWithEmailAndPassword(email, password)
-  //             .then((userCredential) => {
-  //               // New user created successfully
-  //               const user = userCredential.user;
+  //         if (error.code === 'auth/user-not-found') {            
+  //           this.errorMessage = 'User not found. Please sign up or try a different email.';
+  //         }
 
-  //               // Store user data in Firestore
-  //               this.firestore.collection('users').doc(user?.uid).set({
-  //                 email: email,
-  //                 createdAt: new Date()
-  //               })
-  //               .then(() => {
-  //                 console.log('New user created and data stored in Firestore');
-  //                 this.router.navigate(['/home']);
-  //               })
-  //               .catch((error) => {
-  //                 console.error('Error storing user data:', error);
-  //                 this.errorMessage = 'Error storing user data. Please try again.';
-  //               });
-  //             })
-  //             .catch((error) => {
-  //               console.error('Registration error:', error);
-  //               this.errorMessage = error.message || 'An unexpected error occurred. Please try again.';
-  //             });
-  //         } else {
-  //           // Handle other sign-in errors
+  //         else if (error.code === 'auth/wrong-password') {
+  //           this.errorMessage = 'Incorrect password. Please try again.';
+  //         } 
+
+  //         else if (error.code === 'auth/invalid-email') {
+  //           this.errorMessage = 'The email address is invalid. Please enter a valid email.';
+  //         } 
+
+  //         else if (error.code === 'auth/invalid-credential') {
+  //           this.errorMessage = 'The credentials provided are incorrect or malformed. Please check and try again.';
+  //         } 
+
+  //         else {
   //           console.error('Login error:', error);
   //           this.errorMessage = error.message || 'An unexpected error occurred. Please try again.';
   //         }
@@ -81,7 +70,6 @@ export class LoginComponent {
     if (this.loginForm.valid) {
       const { email, password } = this.loginForm.value;
 
-      // First, try to sign in
       this.afAuth.signInWithEmailAndPassword(email, password)
         .then(() => {
           // User signed in successfully
@@ -89,33 +77,26 @@ export class LoginComponent {
           this.router.navigate(['/home']);
         })
         .catch((error) => {
-          if (error.code === 'auth/user-not-found') {
-            // If user doesn't exist, create a new account
-            this.afAuth.createUserWithEmailAndPassword(email, password)
-              .then((userCredential) => {
-                // New user created successfully
-                const user = userCredential.user;
+          console.error('Login error code:', error.code);
+          console.error('Login error message:', error.message);
 
-                // Store user data in Firestore
-                this.firestore.collection('users').doc(user?.uid).set({
-                  email: email,
-                  createdAt: new Date()
-                })
-                  .then(() => {
-                    console.log('New user created and data stored in Firestore');
-                    this.router.navigate(['/home']);
-                  })
-                  .catch((error) => {
-                    console.error('Error storing user data:', error);
-                    this.errorMessage = 'Error storing user data. Please try again.';
-                  });
-              })
-              .catch((error) => {
-                console.error('Registration error:', error);
-                this.errorMessage = error.message || 'An unexpected error occurred. Please try again.';
-              });
-          } else {
-            // Handle other sign-in errors
+          if (error.code === 'auth/user-not-found') {
+            this.errorMessage = 'User not found. Please sign up or try a different email.';
+          }
+
+          else if (error.code === 'auth/wrong-password') {
+            this.errorMessage = 'Incorrect password. Please try again.';
+          }
+
+          else if (error.code === 'auth/invalid-email') {
+            this.errorMessage = 'The email address is invalid. Please enter a valid email.';
+          }
+
+          else if (error.code === 'auth/invalid-credential') {
+            this.errorMessage = 'The credentials provided are incorrect or malformed. Please check and try again.';
+          }
+
+          else {
             console.error('Login error:', error);
             this.errorMessage = error.message || 'An unexpected error occurred. Please try again.';
           }

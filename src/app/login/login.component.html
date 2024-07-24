@@ -103,12 +103,15 @@
           >
             *Please enter password
           </p>
+
           <p
             *ngIf="loginForm.get('password')?.errors?.['minlength']"
             class="font-14 m-0"
           >
             *Password must be at least 6 characters long
           </p>
+
+          <!-- <p *ngIf="errorMessage" class="font-14 m-0">{{ errorMessage }}</p> -->
         </div>
 
         <button

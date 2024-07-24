@@ -1,200 +1,207 @@
 <main
-  class="login-container d-flex align-items-center justify-content-start flex-column pt-4"
+  class="login-container d-flex align-items-center justify-content-between py-5"
 >
-  <h1 class="font-30 nmc-black mb-4 font-family-poppins">
-    Create Your Account
-  </h1>
+  <div class="w-50 p-5">
+    <h1 class="font-52 nmc-primary mb-4 font-family-poppins">
+      Welcome to NomadCoder!
+    </h1>
 
-  <div class="login-card rounded-4 p-4">
-    <div class="card-content">
-      <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
-        <div class="form-group mt-3">
-          <label for="name" class="pb-2 font-14">Name</label>
-          <input
-            type="name"
-            class="form-control h-3 rounded-3"
-            id="name"
-            formControlName="name"
-          />
+    <h4 class="nmc-dark-grey">
+      Sign up and start your development journey with us.
+    </h4>
+  </div>
+
+  <div class="w-50">
+    <div class="font-15 mb-3 text-center">
+      <span>Already have an account?</span>
+      <a
+        class="link d-inline-block ms-2 nmc-primary text-decoration-underline"
+        href="/login"
+        >Sign in here!</a
+      >
+    </div>
+
+    <div class="login-card rounded-4 p-4 m-auto">
+      <div class="card-content">
+        <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+          <div class="form-group mt-3">
+            <label for="name" class="pb-2 font-14">Name</label>
+            <input
+              type="name"
+              class="form-control h-3 rounded-3"
+              id="name"
+              formControlName="name"
+            />
+          </div>
+
+          <div
+            *ngIf="
+              signupForm.get('name')?.invalid &&
+              (signupForm.get('name')?.dirty || signupForm.get('name')?.touched)
+            "
+            class="nmc-alert mt-1"
+          >
+            <p
+              *ngIf="signupForm.get('name')?.errors?.['required']"
+              class="font-14 m-0"
+            >
+              *Please enter name
+            </p>
+          </div>
+
+          <div class="form-group mt-3">
+            <label for="email" class="pb-2 font-14">Email</label>
+            <input
+              type="email"
+              class="form-control h-3 rounded-3"
+              id="email"
+              formControlName="email"
+            />
+          </div>
+
+          <!-- Email validation errors -->
+          <div
+            *ngIf="
+              signupForm.get('email')?.invalid &&
+              (signupForm.get('email')?.dirty ||
+                signupForm.get('email')?.touched)
+            "
+            class="nmc-alert mt-1"
+          >
+            <p
+              *ngIf="signupForm.get('email')?.errors?.['required']"
+              class="font-14 m-0"
+            >
+              *Please enter email
+            </p>
+            <p
+              *ngIf="signupForm.get('email')?.errors?.['email']"
+              class="font-14 m-0"
+            >
+              *Invalid email format
+            </p>
+          </div>
+
+          <div class="form-group mt-3 position-relative">
+            <label for="password" class="pb-2 font-14">Password</label>
+            <input
+              type="{{ showPassword ? 'text' : 'password' }}"
+              class="form-control h-3 rounded-3"
+              id="password"
+              formControlName="password"
+            />
+            <i
+              class="show-password cursor-pointer fa"
+              [ngClass]="showPassword ? 'fa-eye' : 'fa-eye-slash'"
+              (click)="togglePasswordVisibility()"
+              (keyup.enter)="togglePasswordVisibility()"
+              tabindex="0"
+            ></i>
+          </div>
+
+          <!-- Password validation errors -->
+          <div
+            *ngIf="
+              signupForm.get('password')?.invalid &&
+              (signupForm.get('password')?.dirty ||
+                signupForm.get('password')?.touched)
+            "
+            class="nmc-alert mt-1"
+          >
+            <p
+              *ngIf="signupForm.get('password')?.errors?.['required']"
+              class="font-14 m-0"
+            >
+              *Please enter password
+            </p>
+
+            <p
+              *ngIf="signupForm.get('password')?.errors?.['minlength']"
+              class="font-14 m-0"
+            >
+              *Password must be at least 6 characters long
+            </p>
+          </div>
+
+          <div class="form-group mt-3 position-relative">
+            <label for="confirmpassword" class="pb-2 font-14"
+              >Confirm Password</label
+            >
+            <input
+              type="{{ showConfirmPassword ? 'text' : 'password' }}"
+              class="form-control h-3 rounded-3"
+              id="confirmPassword"
+              formControlName="confirmPassword"
+            />
+
+            <i
+              class="show-password cursor-pointer fa"
+              [ngClass]="showConfirmPassword ? 'fa-eye' : 'fa-eye-slash'"
+              (click)="toggleConfirmPasswordVisibility()"
+              (keyup.enter)="toggleConfirmPasswordVisibility()"
+              tabindex="0"
+            ></i>
+          </div>
+
+          <!-- Confirm Password validation errors -->
+          <div
+            *ngIf="
+              signupForm.get('confirmPassword')?.invalid &&
+              (signupForm.get('confirmPassword')?.dirty ||
+                signupForm.get('confirmPassword')?.touched)
+            "
+            class="nmc-alert mt-1"
+          >
+            <p
+              *ngIf="signupForm.get('confirmPassword')?.errors?.['required']"
+              class="font-14 m-0"
+            >
+              *Please confirm password
+            </p>
+
+            <p
+              *ngIf="signupForm.get('confirmPassword')?.errors?.['minlength']"
+              class="font-14 m-0"
+            >
+              *Password must be at least 6 characters long
+            </p>
+
+            <p
+              *ngIf="signupForm.get('confirmPassword')?.errors?.['passwordMismatch']"
+              class="font-14 m-0"
+            >
+              *Passwords do not match
+            </p>
+          </div>
+
+          <button
+            type="submit"
+            class="nmc-btn-primary w-100 font-14 fw-semibold box-shadow-none mt-4 py-2 h-auto"
+            [disabled]="this.signupForm.invalid"
+          >
+            Register
+          </button>
+        </form>
+
+        <div class="font-13 nmc-medium-light-grey mt-2">
+          <span>By signing up, you agree to our </span
+          ><a
+            href="#"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="link nmc-medium-light-grey text-decoration-underline"
+            >Terms Of Use</a
+          >
+          and
+          <a
+            href="#"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="link nmc-medium-light-grey text-decoration-underline"
+            >Privacy Policy</a
+          >
         </div>
-
-        <div
-          *ngIf="
-            signupForm.get('name')?.invalid &&
-            (signupForm.get('name')?.dirty || signupForm.get('name')?.touched)
-          "
-          class="nmc-alert mt-1"
-        >
-          <p
-            *ngIf="signupForm.get('name')?.errors?.['required']"
-            class="font-14 m-0"
-          >
-            *Please enter name
-          </p>
-        </div>
-
-        <div class="form-group mt-3">
-          <label for="email" class="pb-2 font-14">Email</label>
-          <input
-            type="email"
-            class="form-control h-3 rounded-3"
-            id="email"
-            formControlName="email"
-          />
-        </div>
-
-        <!-- Email validation errors -->
-        <div
-          *ngIf="
-            signupForm.get('email')?.invalid &&
-            (signupForm.get('email')?.dirty || signupForm.get('email')?.touched)
-          "
-          class="nmc-alert mt-1"
-        >
-          <p
-            *ngIf="signupForm.get('email')?.errors?.['required']"
-            class="font-14 m-0"
-          >
-            *Please enter email
-          </p>
-          <p
-            *ngIf="signupForm.get('email')?.errors?.['email']"
-            class="font-14 m-0"
-          >
-            *Invalid email format
-          </p>
-        </div>
-
-        <div class="form-group mt-3 position-relative">
-          <label for="password" class="pb-2 font-14">Password</label>
-          <input
-            type="{{ showPassword ? 'text' : 'password' }}"
-            class="form-control h-3 rounded-3"
-            id="password"
-            formControlName="password"
-          />
-          <i
-            class="show-password cursor-pointer fa"
-            [ngClass]="showPassword ? 'fa-eye' : 'fa-eye-slash'"
-            (click)="togglePasswordVisibility()"
-            (keyup.enter)="togglePasswordVisibility()"
-            tabindex="0"
-          ></i>
-        </div>
-
-        <!-- Password validation errors -->
-        <div
-          *ngIf="
-            signupForm.get('password')?.invalid &&
-            (signupForm.get('password')?.dirty ||
-              signupForm.get('password')?.touched)
-          "
-          class="nmc-alert mt-1"
-        >
-          <p
-            *ngIf="signupForm.get('password')?.errors?.['required']"
-            class="font-14 m-0"
-          >
-            *Please enter password
-          </p>
-
-          <p
-            *ngIf="signupForm.get('password')?.errors?.['minlength']"
-            class="font-14 m-0"
-          >
-            *Password must be at least 6 characters long
-          </p>
-        </div>
-
-        <div class="form-group mt-3 position-relative">
-          <label for="confirmpassword" class="pb-2 font-14"
-            >Confirm Password</label
-          >
-          <input
-            type="{{ showConfirmPassword ? 'text' : 'password' }}"
-            class="form-control h-3 rounded-3"
-            id="confirmPassword"
-            formControlName="confirmPassword"
-          />
-
-          <i
-            class="show-password cursor-pointer fa"
-            [ngClass]="showConfirmPassword ? 'fa-eye' : 'fa-eye-slash'"
-            (click)="toggleConfirmPasswordVisibility()"
-            (keyup.enter)="toggleConfirmPasswordVisibility()"
-            tabindex="0"
-          ></i>
-        </div>
-
-        <!-- Confirm Password validation errors -->
-        <div
-          *ngIf="
-            signupForm.get('confirmPassword')?.invalid &&
-            (signupForm.get('confirmPassword')?.dirty ||
-              signupForm.get('confirmPassword')?.touched)
-          "
-          class="nmc-alert mt-1"
-        >
-          <p
-            *ngIf="signupForm.get('confirmPassword')?.errors?.['required']"
-            class="font-14 m-0"
-          >
-            *Please confirm password
-          </p>
-
-          <p
-            *ngIf="signupForm.get('confirmPassword')?.errors?.['minlength']"
-            class="font-14 m-0"
-          >
-            *Password must be at least 6 characters long
-          </p>
-
-          <p
-            *ngIf="signupForm.get('confirmPassword')?.errors?.['passwordMismatch']"
-            class="font-14 m-0"
-          >
-            *Passwords do not match
-          </p>
-        </div>
-
-        <button
-          type="submit"
-          class="nmc-btn-primary w-100 font-14 fw-semibold box-shadow-none mt-4 py-2 h-auto"
-          [disabled]="this.signupForm.invalid"
-        >
-          Register
-        </button>
-      </form>
-
-      <div class="font-13 nmc-medium-light-grey mt-2">
-        <span>By signing up, you agree to our </span
-        ><a
-          href="#"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="link nmc-medium-light-grey text-decoration-underline"
-          >Terms Of Use</a
-        >
-        and
-        <a
-          href="#"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="link nmc-medium-light-grey text-decoration-underline"
-          >Privacy Policy</a
-        >
       </div>
     </div>
   </div>
-
-  <div class="font-15 mt-3">
-    <span>Already have an account?</span>
-    <a
-      class="link d-inline-block ms-2 nmc-primary text-decoration-underline"
-      href="/login"
-      >Sign in here!</a
-    >
-  </div>
 </main>
-
-<div class="spacer--medium"></div>

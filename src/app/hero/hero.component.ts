@@ -25,7 +25,6 @@ export class HeroComponent implements OnInit {
 
   getHeroData() {
     this.firestore.collection('homepagedata').doc('hero').valueChanges().subscribe(hero => {
-      console.log("Hero:", hero);
       this.hero = hero as IHero;
     });
   }

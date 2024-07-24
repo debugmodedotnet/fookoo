@@ -76,7 +76,9 @@
           <i
             class="show-password cursor-pointer fa"
             [ngClass]="showPassword ? 'fa-eye' : 'fa-eye-slash'"
-            (click)="togglePasswordVisibility()"            
+            (click)="togglePasswordVisibility()"
+            (keyup.enter)="togglePasswordVisibility()"
+            tabindex="0"
           ></i>
         </div>
 
@@ -119,6 +121,8 @@
             class="show-password cursor-pointer fa"
             [ngClass]="showConfirmPassword ? 'fa-eye' : 'fa-eye-slash'"
             (click)="toggleConfirmPasswordVisibility()"
+            (keyup.enter)="toggleConfirmPasswordVisibility()"
+            tabindex="0"
           ></i>
         </div>
 

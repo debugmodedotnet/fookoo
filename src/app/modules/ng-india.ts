@@ -3,4 +3,10 @@ export interface INgIndia {
     Info: string;
     Tagline: string;
     Title: string;
+    Delegates: number;
+    Editions: number;
+    Speakers: number;
+    Talks: number;
+    Sponsors: number;
+    Reach: number;
 }

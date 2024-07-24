@@ -37,7 +37,7 @@ export class LoginComponent {
   
       // First, try to sign in
       this.afAuth.signInWithEmailAndPassword(email, password)
-        .then((userCredential) => {
+        .then(() => {
           // User signed in successfully
           console.log('User signed in successfully');
           this.router.navigate(['/home']);

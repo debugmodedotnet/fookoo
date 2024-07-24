@@ -22,7 +22,7 @@ export class EventComponent implements OnInit {
   }
 
   getEvents() {
-    this.firestore.collection('events', ref => ref.limit(4)).snapshotChanges().pipe(
+    this.firestore.collection('events', ref => ref.limit(3)).snapshotChanges().pipe(
       map(actions => actions.map(a => {
         const data = a.payload.doc.data() as IEvent;
         const id = a.payload.doc.id;

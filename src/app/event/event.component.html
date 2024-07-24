@@ -9,7 +9,7 @@
 
       <a
         class="nmc-view-all d-flex align-items-center justify-content-start"
-        routerLink="/event-listing"
+        routerLink="/events"
       >
         <span class="nmc-dark-grey">VIEW ALL</span>
 
@@ -23,7 +23,7 @@
     <div class="events-container d-flex flex-column justify-content-center">
       <div class="row">
         @for(e of events; track e){
-        <div class="col-12 col-md-6 col-lg-3">
+        <div class="col-4">
           <div
             class="events-card card overflow-hidden nmc-bg-white overflow-hidden rounded-3 position-relative"
           >
@@ -49,11 +49,11 @@
                   >{{ e.isOffline ? "Offline" : "Online" }}
                 </span>
 
-                @if(e.isOffline){
+                <!-- @if(e.isOffline){
                 <span
                   class="d-inline-block font-12 fw-semibold rounded-1 py-1 px-2 text-orange-600 bg-orange-100 ms-2"
                   >{{ e.City }} </span
-                >}
+                >} -->
               </div>
 
               <h4 class="font-22 nmc-dark-grey my-3 font-family-poppins">
@@ -65,7 +65,7 @@
               </h3>
 
               <h4 class="font-16 nmc-medium-grey mb-3 fw-normal">
-                Date: {{ e.Date }}
+                {{ e.Date | date : "MMMM d" }} @if(e.isOffline){| {{ e.City }}}
               </h4>
 
               <a

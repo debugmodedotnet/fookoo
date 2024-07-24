@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, RouterLink, RouterOutlet } from '@angular/router';
+import { NavigationEnd, Router, RouterLink, RouterOutlet } from '@angular/router';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
+import { filter } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -21,6 +22,15 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
     this.setupPreloader();
     this.setupScrollTopButton();
+
+    this.router.events.pipe(
+      filter(event => event instanceof NavigationEnd)
+    ).subscribe(() => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth' // Optional: for smooth scrolling
+      });
+    });
   }
 
   setupPreloader(): void {

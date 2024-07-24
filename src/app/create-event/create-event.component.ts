@@ -20,13 +20,16 @@ export class CreateEventComponent implements OnInit {
   events: IEvent[] = [];
   speakers: IEventSpeakers[] = [];
   agendas: IEventAgenda[] = [];
+
   eventForm: FormGroup;
   totalEventCount = 0;
   editMode = false;
   currentEventId?: string;
+
   formVisible = false;
   speakerFormVisible = false;
   agendaFormVisible = false;
+
   editingSpeakerIndex: number | null = null;
   editingAgendaIndex: number | null = null;
 
@@ -86,23 +89,43 @@ export class CreateEventComponent implements OnInit {
     );
   }
 
+  // fetchAndAddSpeakers(): void {
+  //   for (let index = 0; index < this.events.length; index++) {
+  //     this.eventService.getEventSpeakers(this.events[index].id!).pipe(first()).subscribe(res => {
+  //       this.events[index].Speakers = res;
+  //       console.log(res)
+  //     });
+  //   }
+  // }
+
   fetchAndAddSpeakers(): void {
-    for (let index = 0; index < this.events.length; index++) {
-      this.eventService.getEventSpeakers(this.events[index].id!).pipe(first()).subscribe(res => {
-        this.events[index].Speakers = res;
-        console.log(res)
+    for (const event of this.events) {
+      this.eventService.getEventSpeakers(event.id!).pipe(first()).subscribe(res => {
+        event.Speakers = res;
+        console.log(res);
       });
     }
   }
 
+
+  // fetchAndAddAgenda(): void {
+  //   for (let index = 0; index < this.events.length; index++) {
+  //     this.eventService.getEventAgenda(this.events[index].id!).pipe(first()).subscribe(res => {
+  //       this.events[index].Agenda = res;
+  //       console.log(res)
+  //     });
+  //   }
+  // }
+
   fetchAndAddAgenda(): void {
-    for (let index = 0; index < this.events.length; index++) {
-      this.eventService.getEventAgenda(this.events[index].id!).pipe(first()).subscribe(res => {
-        this.events[index].Agenda = res;
-        console.log(res)
+    for (const event of this.events) {
+      this.eventService.getEventAgenda(event.id!).pipe(first()).subscribe(res => {
+        event.Agenda = res;
+        console.log(res);
       });
     }
   }
+
 
   generateSlug(title: string): string {
     return slugify(title, { lower: true, strict: true });

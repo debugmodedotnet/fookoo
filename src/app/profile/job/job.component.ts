@@ -149,6 +149,7 @@ export class JobComponent implements OnInit {
             this.message = 'Job has been successfully created!';
             this.messageType = 'success';
             this.resetForm(); // Reset the form after successful job creation
+            console.log(snapshot);
           })
           .catch(error => {
             this.message = 'An error occurred while creating the job.';

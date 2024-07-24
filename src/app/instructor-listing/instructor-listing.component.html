@@ -1,54 +1,84 @@
-<section class="instructor text-center py-5">
-  <div class="container-boxed">
-    <h2
-      class="section-title text-center font-36 nmc-dark-grey font-family-poppins pb-3"
-    >
-      Experienced & Professional Instructors
-    </h2>
-
-    <div class="container overflow-hidden">
-      <div class="row">
-        @for(i of instructors; track i){
-        <div class="col-4 gx-5 position-relative trainers mx-auto mt-4">
-          <figure
-            class="position-relative overflow-hidden rounded-circle m-auto"
-          >
-            <img
-              class="z-1 w-100 h-100 object-fit-cover"
-              loading="lazy"
-              [src]="i.InstructorImg ? i.InstructorImg : defaultImage"
-              [alt]="i.Name"
-            />
-
-            <div class="social">
-              <a [href]="i.Email"><i class="bi bi-envelope-fill"></i></a>
-              <a [href]="i.Twitter"><i class="bi bi-twitter-x"></i></a>
-              <a [href]="i.Github"><i class="bi bi-github"></i></a>
-              <a [href]="i.LinkedIn"><i class="bi bi-linkedin"></i></a>
-            </div>
-          </figure>
-
-          <figcaption class="m-0 p-4">
-            <h4 class="mb-1">{{ i.Name }}</h4>
-            <p class="text-secondary mb-3">{{ i.Position }}</p>
-            <p class="text-secondary mb-3 truncate">{{ i.Bio }}</p>
-
-            <a
-              class="nmc-btn-primary pt-2 px-4 w-40 m-auto"
-              [routerLink]="['/instructor', i.id]"
-            >
-              More
-            </a>
-          </figcaption>
+<div class="outer-container">
+  <h2>Our Mentors</h2>
+  <div class="inner-container container mt-5 p-4">
+    
+    <div class="mentor-section">
+      <div class="col-12 col-md-6 text-center d-flex image-container">
+        <img src="https://img.freepik.com/premium-photo/vertical-view-smartphone-camera-african-american-businessman-speaks-phone-using-front-camera-video-call-black-business-man-talking-webcam-conversation-office-worker-suit_321831-7004.jpg" class="img-fluid" alt="Mentor Image">
+      </div>
+      <div class="col-12 col-md-6 text-left d-flex flex-column justify-content-center text-container">
+        <h1>MARDRID JACKSON</h1>
+        <p>National and local 60-90 minute virtual career mentoring events designed to increase awareness of HR career pathways.</p>
+        <div>
+          <button class="btn btn-outline-warning mb-2">HR Professionals</button>
+          <button class="btn btn-outline-secondary mb-2">For Students</button>
         </div>
-        } @if(showLoadMoreButton){
-        <div class="mt-5 d-flex">
-          <button class="nmc-btn-outline m-auto" (click)="loadMore()">
-            Load More<i class="bi bi-chevron-down ms-2"></i>
-          </button>
-        </div>
-        }
+        <p class="mt-3">
+          <a href="mailto:mentorship@shrm.org" class="email-link">
+            Email us 
+          </a>
+        </p>
       </div>
     </div>
+
+    <div class="company-bar mt-4">
+      <div class="row justify-content-center">
+        <div class="col-auto">
+          <img src="assets/microsoft-logo.png" alt="Microsoft">
+        </div>
+        <div class="col-auto">
+          <img src="assets/amazon-logo.png" alt="Amazon">
+        </div>
+        <div class="col-auto">
+          <img src="assets/disney-logo.png" alt="Disney">
+        </div>
+        <div class="col-auto">
+          <img src="assets/spotify-logo.png" alt="Spotify">
+        </div>
+        <div class="col-auto">
+          <img src="assets/facebook-logo.png" alt="Facebook">
+        </div>
+      </div>
+    </div>
+
+    <div class="mentor-section">
+      <div class="col-12 col-md-6 text-left d-flex flex-column justify-content-center text-container">
+        <h1>FLORA NYRA</h1>
+        <p>National and local 60-90 minute virtual career mentoring events designed to increase awareness of HR career pathways.</p>
+        <div>
+          <button class="btn btn-outline-warning mb-2">HR Professionals</button>
+          <button class="btn btn-outline-secondary mb-2">For Students</button>
+        </div>
+        <p class="mt-3">
+          <a href="mailto:mentorship@shrm.org" class="email-link">
+            Email us 
+          </a>
+        </p>
+      </div>
+      <div class="col-12 col-md-6 text-center d-flex image-container">
+        <img src="https://www.realmenrealstyle.com/wp-content/uploads/2018/05/black-suit.jpg" class="img-fluid" alt="Mentor Image">
+      </div>
+    </div>
+
+    <div class="company-bar mt-4">
+      <div class="row justify-content-center">
+        <div class="col-auto">
+          <img src="assets/microsoft-logo.png" alt="Microsoft">
+        </div>
+        <div class="col-auto">
+          <img src="assets/amazon-logo.png" alt="Amazon">
+        </div>
+        <div class="col-auto">
+          <img src="assets/disney-logo.png" alt="Disney">
+        </div>
+        <div class="col-auto">
+          <img src="assets/spotify-logo.png" alt="Spotify">
+        </div>
+        <div class="col-auto">
+          <img src="assets/facebook-logo.png" alt="Facebook">
+        </div>
+      </div>
+    </div>
+    
   </div>
-</section>
+</div>

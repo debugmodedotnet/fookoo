@@ -12,9 +12,9 @@
   <div class="job-detail">
     <div
       class="job-detail-content px-4 pb-4"
-      *ngIf="filteredJobs$ | async as jobs"
+     
     >
-    <ng-container *ngIf="jobs.length > 0; else noJobs">
+    <ng-container *ngIf="displayedJobs.length > 0; else noJobs">
       @for(job of displayedJobs; track job){
       <div class="wrapper rounded-4 nmc-bg-white mt-4 pb-4">
         <div class="company-info p-4 border-bottom position-relative">
@@ -73,11 +73,12 @@
       </div>
       
     }
+    
     <div class="button-container">
-      <button *ngIf="selectedTag === 'All jobs' && displayedJobs.length < totalJobs" (click)="loadMore()" class="btn-load-more">
+      <button *ngIf="selectedTag === 'All jobs' && displayedJobs.length % itemsPerPage === 0" (click)="loadMore()" class="btn-load-more">
         Load More <i class="bi bi-arrow-down"></i>
       </button>
-      <button *ngIf="currentPage > 0 && selectedTag === 'All jobs'  && currentPage > 0" (click)="showLess()" class="btn-show-less">
+      <button *ngIf="currentPage > 0 && selectedTag === 'All jobs'" (click)="showLess()" class="btn-show-less">
         Show Less <i class="bi bi-arrow-up"></i>
       </button>
     </div>

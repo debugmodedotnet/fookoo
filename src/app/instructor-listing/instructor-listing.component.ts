@@ -1,18 +1,23 @@
-import { Component, OnInit, inject } from '@angular/core';
-import { DatePipe } from '@angular/common';
+import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { Observable } from 'rxjs';
 import { IInstructor } from '../modules/instructors';
-import { RouterModule } from '@angular/router';
-import { map } from 'rxjs';
+import { CommonModule, NgFor, NgIf } from '@angular/common';
+
 
 @Component({
   selector: 'app-instructor-listing',
   standalone: true,
-  imports: [DatePipe, RouterModule],
+  imports: [CommonModule, NgFor, NgIf],
   templateUrl: './instructor-listing.component.html',
   styleUrl: './instructor-listing.component.scss'
 })
-export class InstructorListingComponent  {
+export class InstructorListingComponent implements OnInit {
+  instructors$!: Observable<IInstructor[]>; // Using definite assignment assertion
 
-  
+  constructor(private firestore: AngularFirestore) {}
+
+  ngOnInit(): void {
+    this.instructors$ = this.firestore.collection<IInstructor>('instructor').valueChanges();
+  }
 }

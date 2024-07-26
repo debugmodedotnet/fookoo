@@ -1,4 +1,4 @@
-<section class="py-5">
+<section class="py-5 nmc-bg-light-grey">
   <div class="container-boxed">
     <h2
       class="section-title text-center font-36 nmc-dark-grey font-family-poppins pb-3"
@@ -6,27 +6,27 @@
       Meet Our Mentors
     </h2>
 
-    <div class="wrapper mt-5">
+    <div class="wrapper mt-5 nmc-bg-white">
       @for(instructor of instructors$ | async; track instructor; let i =
       $index;){
       <ng-container>
         @if(instructor){
         <div class="mentor-section">
-          <div class="row justify-content-between">
+          <div class="d-flex align-items-center justify-content-between">
             <div
-              class="col-12 col-md-6 text-center d-flex image-container"
+              class="w-40 text-center d-flex image-container"
               [ngClass]="{ 'order-md-2': i % 2 !== 0 }"
             >
-              <img
-                [src]="instructor.InstructorImg || 'default-image-url.jpg'"
-                class="img-fluid mentor-img"
-                alt="Mentor Image"
-              />
+              <figure class="m-0 p-0 overflow-hidden">
+                <img
+                  [src]="instructor.InstructorImg || 'default-image-url.jpg'"
+                  class="img-fluid w-100 h-100 object-fit-cover"
+                  alt="Mentor Image"
+                />
+              </figure>
             </div>
 
-            <div
-              class="col-12 col-md-6 text-left d-flex flex-column justify-content-center p-5"
-            >
+            <div class="w-60 text-left p-5 m-auto">
               <h1 class="font-family-poppins font-48 nmc-dark-grey">
                 {{ instructor.Name }}
               </h1>
@@ -106,7 +106,7 @@
               </div>
 
               <button
-                class="nmc-btn-primary w-50 h-auto py-2 px-2 mt-3 rounded-2 box-shadow-none nmc-bg-white nmc-primary"
+                class="nmc-btn-primary h-auto py-2 px-3 mt-3 rounded-2 box-shadow-none nmc-bg-white nmc-primary"
               >
                 Upcoming Courses ->
               </button>
@@ -115,19 +115,38 @@
         </div>
         }
 
-        <div class="company-bar mt-4">
-          <div class="row justify-content-center">
+        <div class="company-bar bg-orange-100 p-4">
+          <div class="row justify-content-center gap-3">
             <div class="col-auto" *ngIf="instructor.Company1">
-              <p class="company-name">{{ instructor.Company1 }}</p>
+              <a
+                class="m-0 font-24 text-orange-600 font-family-pacifico"
+                target="_blank"
+                >{{ instructor.Company1 }}</a
+              >
             </div>
+
             <div class="col-auto" *ngIf="instructor.Company2">
-              <p class="company-name">{{ instructor.Company2 }}</p>
+              <a
+                class="m-0 font-24 text-orange-600 font-family-pacifico"
+                target="_blank"
+                >{{ instructor.Company2 }}</a
+              >
             </div>
+
             <div class="col-auto" *ngIf="instructor.Company3">
-              <p class="company-name">{{ instructor.Company3 }}</p>
+              <a
+                class="m-0 font-24 text-orange-600 font-family-pacifico"
+                target="_blank"
+                >{{ instructor.Company3 }}</a
+              >
             </div>
+
             <div class="col-auto" *ngIf="instructor.Company4">
-              <p class="company-name">{{ instructor.Company4 }}</p>
+              <a
+                class="m-0 font-24 text-orange-600 font-family-pacifico"
+                target="_blank"
+                >{{ instructor.Company4 }}</a
+              >
             </div>
           </div>
         </div>

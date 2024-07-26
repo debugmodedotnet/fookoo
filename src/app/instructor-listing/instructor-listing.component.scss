@@ -3,116 +3,52 @@
 .wrapper {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 
-  button{
+  button {
     border: 1px solid #ccc;
   }
-}
 
-
-
-
-
-
-
-
-.email-link {
-  color: #235d38;
-  text-decoration: none;
-}
-
-.email-link:hover {
-  text-decoration: underline;
-}
-
-.min-vh-100 {
-  min-height: 100vh;
-}
-
-.company-bar {
-  background-color: #f1f7f1;
-  padding: 1rem 0;
-  margin-top: 3rem;
-  border-radius: 8px;
-}
-
-img {
-  max-height: 60px;
-}
-
-@media (max-width: 768px) {
-  .row {
-    flex-direction: column;
-  }
-
-  img {
-    margin-top: 1rem;
-  }
-}
-
-.image-container {
-  flex: 0 0 40%;
-  max-width: 40%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.image-container img {
-  max-width: 100%;
-  height: auto;
-  max-height: 450px;
-}
-
-
-
-@media (max-width: 768px) {
   .image-container {
-    max-width: none;
-    flex: 1;
+
+    figure {
+      height: 700px;
+      width: 100%;
+    }
+
+    &.order-md-2 {
+      order: 2;
+    }
+
+    &.order-md-2 img {
+      margin-left: auto;
+      margin-right: 0;
+    }
+
+    &:not(.order-md-2) img {
+      margin-left: 0;
+      margin-right: auto;
+    }
   }
-
-  .text-container {
-    padding: 1rem;
-    margin: 0;
-  }
-}
-
-.mentor-section {
-  min-height: 400px;
-  display: flex;
-  align-items: center;
-  margin-bottom: 2rem;
 }
 
 
+// @media (max-width: 768px) {
+//   .row {
+//     flex-direction: column;
+//   }
 
-.company-name {
-  font-family: 'Cursive', sans-serif;
-  font-size: 18px;
-  margin-top: 5px;
-  text-align: center;
-}
+//   img {
+//     margin-top: 1rem;
+//   }
+// }
 
-.image-container.order-md-2 {
-  order: 2;
-}
+// @media (max-width: 768px) {
+//   .image-container {
+//     max-width: none;
+//     flex: 1;
+//   }
 
-.mentor-img {
-  margin-left: auto;
-  margin-right: auto;
-  max-width: 80%;
-}
-
-.image-container.order-md-2 .mentor-img {
-  margin-left: auto;
-  margin-right: 0;
-}
-
-.image-container:not(.order-md-2) .mentor-img {
-  margin-left: 0;
-  margin-right: auto;
-}
-
-.fixed-size-button {
-  width: 200px;
-}
+//   .text-container {
+//     padding: 1rem;
+//     margin: 0;
+//   }
+// }

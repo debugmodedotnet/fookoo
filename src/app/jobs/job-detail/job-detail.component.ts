@@ -18,6 +18,8 @@ export class JobDetailComponent {
   jobID = model<string | null>();
   @Input() filteredJobs: Job[] = [];
 
+  defaultImage = 'assets/images/home/default_company.png';
+
   constructor() {
     console.log(this.jobID());
     console.log(this.job());

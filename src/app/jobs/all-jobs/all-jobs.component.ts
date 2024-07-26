@@ -1,10 +1,9 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { AngularFirestore, QueryDocumentSnapshot, QuerySnapshot } from '@angular/fire/compat/firestore';
-import { combineLatest, map, Observable, of } from 'rxjs';
+import { map, Observable, of } from 'rxjs';
 import { AsyncPipe, NgFor, NgIf } from '@angular/common';
 import { Router, RouterModule } from '@angular/router';
 import { Job } from '../../modules/job';
-import { query, orderBy, startAt, endAt, startAfter, limit } from "firebase/firestore";
 
 @Component({
   selector: 'app-all-jobs',
@@ -16,6 +15,7 @@ import { query, orderBy, startAt, endAt, startAfter, limit } from "firebase/fire
 export class AllJobsComponent implements OnInit {
 
   @Output() selectJob = new EventEmitter<Job>();
+  defaultImage = 'assets/images/home/default_company.png';
 
   jobs$: Observable<Job[]> = of([]);
   tags: string[] = ['All jobs', 'Angular', 'React', 'GenAI', 'JavaScript', 'TypeScript'];
@@ -56,7 +56,7 @@ export class AllJobsComponent implements OnInit {
   }
 
   getJobsByTag(tag: string): Observable<Job[]> {
-    return this.firestore.collection<Job>('jobs', ref => 
+    return this.firestore.collection<Job>('jobs', ref =>
       ref.where('Tag', '==', tag)).valueChanges({ idField: 'id' });
   }
 

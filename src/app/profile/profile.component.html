@@ -80,14 +80,16 @@
               >View Job</a
             >
           </li>
-          
+
           <li [class.active]="currentTab === 'appliedJob'" class="mt-3">
             <a
               class="font-18 nmc-medium-grey cursor-pointer"
               (click)="loadAppliedJob()"
-            >Applied Job</a>
+              (keydown)="loadAppliedJob()"
+              tabindex="0"
+              >Applied Job</a
+            >
           </li>
-
         </ul>
       </div>
 

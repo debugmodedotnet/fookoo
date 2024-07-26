@@ -17,6 +17,8 @@ export class JobsSectionComponent implements OnInit {
 
   jobs$: Observable<Job[]> = of([]);
 
+  defaultImage = 'assets/images/home/default_company.png';
+
   constructor(private jobService: JobService) { }
 
   ngOnInit() {

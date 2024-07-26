@@ -76,6 +76,11 @@ textarea {
     src: url("assets/fonts/Poppins-SemiBold.ttf");
 }
 
+@font-face {
+    font-family: "Pacifico";
+    src: url("assets/fonts/Pacifico-Regular.ttf");
+}
+
 .font-family-roboto {
     font-family: $nmc-font-family-roboto !important;
 }
@@ -90,6 +95,10 @@ textarea {
 
 .font-family-poppins {
     font-family: $nmc-font-family-poppins !important;
+}
+
+.font-family-pacifico {
+    font-family: $nmc-font-family-pacifico !important;
 }
 
 /*-------------------------------------------------------------------------

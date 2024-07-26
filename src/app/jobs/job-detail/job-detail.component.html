@@ -5,7 +5,8 @@
       <div class="company-img position-absolute">
         <a [href]="job()?.CompanyUrl"
           ><img
-            [src]="job()?.ImageUrl"
+            
+            [src]="job()?.ImageUrl ? job()?.ImageUrl : defaultImage"
             alt="{{ job()?.Position }}"
             class="h-100 w-100 object-fit-contain"
         /></a>

@@ -1,60 +1,138 @@
-<div class="outer-container">
-  <h2>Our Mentors</h2>
-  <div class="inner-container container mt-5 p-4">
-    <ng-container *ngFor="let instructor of instructors$ | async; let i = index">
-      <div class="mentor-section" *ngIf="instructor">
-        <div class="row">
-          <!-- Conditionally render the image and text containers based on index -->
-          <div class="col-12 col-md-6 text-center d-flex image-container" [ngClass]="{'order-md-2': i % 2 !== 0}">
-            <img [src]="instructor.InstructorImg || 'default-image-url.jpg'" class="img-fluid mentor-img" alt="Mentor Image">
-          </div>
-          <div class="col-12 col-md-6 text-left d-flex flex-column justify-content-center text-container">
-            <h1>{{ instructor.Name }}</h1>
-            <p>{{ instructor.Bio }}</p>
-            <div>
-              <button class="btn btn-outline-warning mb-2">{{ instructor.Skill1 }}</button>
-              <button class="btn btn-outline-secondary mb-2" *ngIf="instructor.Skill2">{{ instructor.Skill2 }}</button>
-              <button class="btn btn-outline-secondary mb-2" *ngIf="instructor.Skill3">{{ instructor.Skill3 }}</button>
-              <button class="btn btn-outline-secondary mb-2" *ngIf="instructor.Skill4">{{ instructor.Skill4 }}</button>
-            </div>
-            <div class="social-links mt-2">
-              <a *ngIf="instructor.Email" [href]="'mailto:' + instructor.Email" target="_blank" class="text-black mx-2">
-                <i class="bi bi-envelope"></i>
-              </a>
-              <a *ngIf="instructor.Twitter" [href]="instructor.Twitter" target="_blank" class="text-black mx-2">
-                <i class="bi bi-twitter"></i>
-              </a>
-              <a *ngIf="instructor.LinkedIn" [href]="instructor.LinkedIn" target="_blank" class="text-black mx-2">
-                <i class="bi bi-linkedin"></i>
-              </a>
-              <a *ngIf="instructor.YouTube" [href]="instructor.YouTube" target="_blank" class="text-black mx-2">
-                <i class="bi bi-youtube"></i>
-              </a>
-              <a *ngIf="instructor.Github" [href]="instructor.Github" target="_blank" class="text-black mx-2">
-                <i class="bi bi-github"></i>
-              </a>
-            </div>
-            <button class="btn btn-outline-warning mt-3 fixed-size-button">Upcoming Courses -></button>
-          </div>
-        </div>
-      </div>
+<section class="py-5">
+  <div class="container-boxed">
+    <h2
+      class="section-title text-center font-36 nmc-dark-grey font-family-poppins pb-3"
+    >
+      Meet Our Mentors
+    </h2>
 
-      <div class="company-bar mt-4">
-        <div class="row justify-content-center">
-          <div class="col-auto" *ngIf="instructor.Company1">
-            <p class="company-name">{{ instructor.Company1 }}</p>
-          </div>
-          <div class="col-auto" *ngIf="instructor.Company2">
-            <p class="company-name">{{ instructor.Company2 }}</p>
-          </div>
-          <div class="col-auto" *ngIf="instructor.Company3">
-            <p class="company-name">{{ instructor.Company3 }}</p>
-          </div>
-          <div class="col-auto" *ngIf="instructor.Company4">
-            <p class="company-name">{{ instructor.Company4 }}</p>
+    <div class="wrapper mt-5">
+      @for(instructor of instructors$ | async; track instructor; let i =
+      $index;){
+      <ng-container>
+        @if(instructor){
+        <div class="mentor-section">
+          <div class="row justify-content-between">
+            <div
+              class="col-12 col-md-6 text-center d-flex image-container"
+              [ngClass]="{ 'order-md-2': i % 2 !== 0 }"
+            >
+              <img
+                [src]="instructor.InstructorImg || 'default-image-url.jpg'"
+                class="img-fluid mentor-img"
+                alt="Mentor Image"
+              />
+            </div>
+
+            <div
+              class="col-12 col-md-6 text-left d-flex flex-column justify-content-center p-5"
+            >
+              <h1 class="font-family-poppins font-48 nmc-dark-grey">
+                {{ instructor.Name }}
+              </h1>
+
+              <p class="font-18 nmc-medium-grey mt-2">{{ instructor.Bio }}</p>
+
+              <div class="d-flex align-items-center justify-content-start my-2">
+                <span
+                  class="d-inline-block font-14 fw-semibold rounded-1 py-1 px-3 text-orange-600 bg-orange-100"
+                >
+                  {{ instructor.Skill1 }}
+                </span>
+
+                @if(instructor.Skill2){
+                <span
+                  class="d-inline-block font-14 fw-semibold rounded-1 py-1 px-3 text-orange-600 bg-orange-100 ms-2"
+                >
+                  {{ instructor.Skill2 }}</span
+                >} @if(instructor.Skill3){
+                <span
+                  class="d-inline-block font-14 fw-semibold rounded-1 py-1 px-3 text-orange-600 bg-orange-100 ms-2"
+                >
+                  {{ instructor.Skill3 }}</span
+                >} @if(instructor.Skill4){
+                <span
+                  class="d-inline-block font-14 fw-semibold rounded-1 py-1 px-3 text-orange-600 bg-orange-100 ms-2"
+                >
+                  {{ instructor.Skill4 }}</span
+                >}
+              </div>
+
+              <div class="social-links mt-3 d-flex gap-3">
+                <a
+                  *ngIf="instructor.Email"
+                  [href]="'mailto:' + instructor.Email"
+                  target="_blank"
+                  class="nmc-dark-grey font-22"
+                >
+                  <i class="bi bi-envelope"></i>
+                </a>
+
+                <a
+                  *ngIf="instructor.Twitter"
+                  [href]="instructor.Twitter"
+                  target="_blank"
+                  class="nmc-dark-grey font-22"
+                >
+                  <i class="bi bi-twitter"></i>
+                </a>
+
+                <a
+                  *ngIf="instructor.LinkedIn"
+                  [href]="instructor.LinkedIn"
+                  target="_blank"
+                  class="nmc-dark-grey font-22"
+                >
+                  <i class="bi bi-linkedin"></i>
+                </a>
+
+                <a
+                  *ngIf="instructor.YouTube"
+                  [href]="instructor.YouTube"
+                  target="_blank"
+                  class="nmc-dark-grey font-22"
+                >
+                  <i class="bi bi-youtube"></i>
+                </a>
+
+                <a
+                  *ngIf="instructor.Github"
+                  [href]="instructor.Github"
+                  target="_blank"
+                  class="nmc-dark-grey font-22"
+                >
+                  <i class="bi bi-github"></i>
+                </a>
+              </div>
+
+              <button
+                class="nmc-btn-primary w-50 h-auto py-2 px-2 mt-3 rounded-2 box-shadow-none nmc-bg-white nmc-primary"
+              >
+                Upcoming Courses ->
+              </button>
+            </div>
           </div>
         </div>
-      </div>
-    </ng-container>
+        }
+
+        <div class="company-bar mt-4">
+          <div class="row justify-content-center">
+            <div class="col-auto" *ngIf="instructor.Company1">
+              <p class="company-name">{{ instructor.Company1 }}</p>
+            </div>
+            <div class="col-auto" *ngIf="instructor.Company2">
+              <p class="company-name">{{ instructor.Company2 }}</p>
+            </div>
+            <div class="col-auto" *ngIf="instructor.Company3">
+              <p class="company-name">{{ instructor.Company3 }}</p>
+            </div>
+            <div class="col-auto" *ngIf="instructor.Company4">
+              <p class="company-name">{{ instructor.Company4 }}</p>
+            </div>
+          </div>
+        </div>
+      </ng-container>
+      }
+    </div>
   </div>
-</div>
+</section>

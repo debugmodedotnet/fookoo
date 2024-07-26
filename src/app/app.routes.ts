@@ -15,8 +15,8 @@ export const routes: Routes = [
   { path: 'event/:id', loadComponent: () => import('./event-details/event-details.component').then(m => m.EventDetailsComponent) },
   { path: 'events', loadComponent: () => import('./event-listing/event-listing.component').then(m => m.EventListingComponent) },
 
-  { path: 'instructor/:instructorId', loadComponent: () => import('./instructor-details/instructor-details.component').then(m => m.InstructorDetailsComponent) },
-  { path: 'instructor-listing', loadComponent: () => import('./instructor-listing/instructor-listing.component').then(m => m.InstructorListingComponent) },
+  { path: 'mentor/:instructorId', loadComponent: () => import('./instructor-details/instructor-details.component').then(m => m.InstructorDetailsComponent) },
+  { path: 'mentors', loadComponent: () => import('./instructor-listing/instructor-listing.component').then(m => m.InstructorListingComponent) },
 
   { path: 'job-list', loadComponent: () => import('./jobs/job-list/job-list.component').then(m => m.JobListComponent) },
   { path: 'job-detail', loadComponent: () => import('./jobs/job-detail/job-detail.component').then(m => m.JobDetailComponent) },

@@ -232,6 +232,7 @@
             </button>
           </div>
 
+          <!-- Speaker Form -->
           @if(speakerFormVisible){
           <div formArrayName="Speakers">
             <div class="row form-group">
@@ -329,7 +330,10 @@
               </div>
             </div>
           </div>
-          } @if(!speakerFormVisible){
+          }
+
+          <!-- Speaker Table -->
+          @if(!speakerFormVisible){
           <table class="table table-bordered table-striped">
             <thead>
               <tr>
@@ -382,6 +386,7 @@
             </button>
           </div>
 
+          <!-- Agenda Form -->
           @if(agendaFormVisible){
           <div formArrayName="Agenda">
             <div class="row form-group">
@@ -468,7 +473,10 @@
               </div>
             </div>
           </div>
-          } @if(!agendaFormVisible){
+          }
+
+          <!-- Agenda Table -->
+          @if(!agendaFormVisible){
           <table class="table table-bordered table-striped">
             <thead>
               <tr>
@@ -482,7 +490,9 @@
               @for(agenda of agendas; track agenda; let i = $index;){
               <tr [formGroupName]="i">
                 <td>{{ agenda.Time }}</td>
+
                 <td>{{ agenda.Title }}</td>
+
                 <td class="actions">
                   <button
                     type="button"
@@ -573,3 +583,4 @@
     }
   </div>
 </section>
+

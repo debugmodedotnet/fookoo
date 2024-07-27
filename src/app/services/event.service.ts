@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
@@ -11,11 +11,11 @@ import { IEventAgenda } from '../modules/event-agenda';
 })
 export class EventService {
 
-  constructor(private firestore: AngularFirestore) { }
+  private firestore = inject(AngularFirestore);
 
   // Events 
   getEvents(): Observable<IEvent[]> {
-    return this.firestore.collection<IEvent>('events').snapshotChanges().pipe(
+    return this.firestore.collection('events').snapshotChanges().pipe(
       map(actions => actions.map(a => {
         const data = a.payload.doc.data() as IEvent;
         const id = a.payload.doc.id;
@@ -30,16 +30,16 @@ export class EventService {
   }
 
   updateEvent(id: string, event: IEvent) {
-    return this.firestore.doc(`events/${id}`).update(event);
+    return this.firestore.collection('events').doc(id).update(event);
   }
 
   deleteEvent(id: string) {
-    return this.firestore.doc(`events/${id}`).delete();
+    return this.firestore.collection('events').doc(id).delete();
   }
 
   // Speakers 
   getEventSpeakers(eventId: string): Observable<IEventSpeakers[]> {
-    return this.firestore.collection<IEventSpeakers>(`events/${eventId}/speakers`).snapshotChanges().pipe(
+    return this.firestore.collection('events').doc(eventId).collection('speakers').snapshotChanges().pipe(
       map(actions => actions.map(a => {
         const data = a.payload.doc.data() as IEventSpeakers;
         const id = a.payload.doc.id;
@@ -47,22 +47,22 @@ export class EventService {
       }))
     );
   }
-  
+
   addSpeaker(eventId: string, speaker: IEventSpeakers) {
-    return this.firestore.collection(`events/${eventId}/speakers`).add(speaker);
+    return this.firestore.collection('events').doc(eventId).collection('speakers').add(speaker);
   }
 
   updateSpeaker(eventId: string, speakerId: string, speaker: IEventSpeakers) {
-    return this.firestore.collection(`events/${eventId}/speakers`).doc(speakerId).update(speaker);
+    return this.firestore.collection('events').doc(eventId).collection('speakers').doc(speakerId).update(speaker);
   }
 
   deleteSpeaker(eventId: string, speakerId: string) {
-    return this.firestore.collection(`events/${eventId}/speakers`).doc(speakerId).delete();
+    return this.firestore.collection('events').doc(eventId).collection('speakers').doc(speakerId).delete();
   }
 
   // Agenda
   getEventAgenda(eventId: string): Observable<IEventAgenda[]> {
-    return this.firestore.collection<IEventAgenda>(`events/${eventId}/agenda`).snapshotChanges().pipe(
+    return this.firestore.collection('events').doc(eventId).collection('agenda').snapshotChanges().pipe(
       map(actions => actions.map(a => {
         const data = a.payload.doc.data() as IEventAgenda;
         const id = a.payload.doc.id;
@@ -72,15 +72,15 @@ export class EventService {
   }
 
   addAgenda(eventId: string, agenda: IEventAgenda) {
-    return this.firestore.collection(`events/${eventId}/agenda`).add(agenda);
+    return this.firestore.collection('events').doc(eventId).collection('agenda').add(agenda);
   }
 
   updateAgenda(eventId: string, agendaId: string, agenda: IEventAgenda) {
-    return this.firestore.collection(`events/${eventId}/agenda`).doc(agendaId).update(agenda);
+    return this.firestore.collection('events').doc(eventId).collection('agenda').doc(agendaId).update(agenda);
   }
 
   deleteAgenda(eventId: string, agendaId: string) {
-    return this.firestore.collection(`events/${eventId}/agenda`).doc(agendaId).delete();
+    return this.firestore.collection('events').doc(eventId).collection('agenda').doc(agendaId).delete();
   }
 
 }

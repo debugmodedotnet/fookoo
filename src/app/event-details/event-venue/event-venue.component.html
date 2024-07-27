@@ -52,8 +52,18 @@
       {{ event?.Tagline }}
     </p>
 
-    <button class="nmc-btn-primary m-auto w-25 mt-4" (click)="attendEvent()">
-      Enroll Now
+    <button
+      class="nmc-btn-primary m-auto w-25 mt-4"
+      (click)="attendEvent()"
+      [disabled]="enrolled || isLoading"
+    >
+      {{
+        enrolled
+          ? "Already Enrolled"
+          : isLoading
+          ? "Processing..."
+          : "Enroll Now"
+      }}
     </button>
   </div>
 </section>

@@ -1,0 +1,69 @@
+<!-- <section class="py-5">
+  <div class="container-boxed">
+    <div class="form-wrapper rounded-3 p-5">
+      <form action="https://formbold.com/s/FORM_ID" method="POST">
+        <div class="steps">
+          <ul>
+            <li class="step-menu1" [class.active]="currentStep === 1">
+              <span>1</span>
+              Step 1
+            </li>
+
+            <li class="step-menu2" [class.active]="currentStep === 2">
+              <span>2</span>
+              Step 2
+            </li>
+          </ul>
+        </div>
+      </form>
+
+      <div class="col-lg mb-4">
+        <ng-container #postJobForm> </ng-container>
+      </div>
+
+      <div class="d-flex justify-content-end">
+        @if(currentStep > 1){
+        <button
+          type="button"
+          class="font-14 fw-semibold border-0 nmc-medium-grey nmc-bg-white"
+          (click)="onPreviousStep()"
+        >
+          Back</button
+        >}
+
+        <button
+          type="submit"
+          class="nmc-btn-primary font-14 fw-semibold box-shadow-none py-2 px-4 h-auto ms-2 rounded-2 d-flex align-items-center"
+          (click)="onNextStep()"
+          [disabled]="currentStep === lastStep"
+        >
+          Next 
+        </button>
+      </div>
+    </div>
+  </div>
+</section> -->
+
+<section class="p-5 p-992">
+  <ng-container #postJobForm> </ng-container>
+
+  <div class="d-flex justify-content-end">
+    @if(currentStep > 1){
+    <button
+      type="button"
+      class="font-14 fw-semibold border-0 nmc-medium-grey nmc-bg-white"
+      (click)="onPreviousStep()"
+    >
+      Back</button
+    >}
+
+    <button
+      type="submit"
+      class="nmc-btn-primary font-14 fw-semibold box-shadow-none py-2 px-5 h-auto ms-2 rounded-2 d-flex align-items-center"
+      (click)="onNextStep()"
+      [disabled]="currentStep === lastStep"
+    >
+      Next -->
+    </button>
+  </div>
+</section>

@@ -1,0 +1,26 @@
+<div class="row align-items-center justify-content-center">
+  <div class="col-lg-5 col-md-6 col-sm-12 mb-4">
+    <img src="assets/images/home/job-offer.svg" alt="Job-Image" class="m-auto-768" />
+  </div>
+
+  <div class="col-lg-7 col-md-6 col-sm-12">
+    <form [formGroup]="jobForm">
+      <div class="form-group">
+        <h3 class="font-family-poppins mb-4 font-30 font-992-28 text-center-768">
+          You are just a few steps away from posting your job!
+        </h3>
+
+        <label for="email" class="font-family-poppins mt-3 form-label font-20 nmc-dark-grey"
+          >Enter your email address</label
+        >
+        <input
+          id="email"
+          type="email"
+          formControlName="email"
+          class="form-control rounded-3 mt-2"
+          placeholder="Enter your email address"
+        />
+      </div>
+    </form>
+  </div>
+</div>

@@ -14,3 +14,10 @@
     width: 35px;
     border: 1px solid $nmc-primary;
 }
+
+
+@media (max-width: 420px) {
+    .logo {
+        width: 160px;
+    }
+}

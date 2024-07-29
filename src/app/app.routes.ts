@@ -21,11 +21,12 @@ export const routes: Routes = [
   { path: 'job-list', loadComponent: () => import('./jobs/job-list/job-list.component').then(m => m.JobListComponent) },
   { path: 'job-detail', loadComponent: () => import('./jobs/job-detail/job-detail.component').then(m => m.JobDetailComponent) },
   { path: 'view-job', loadComponent: () => import('./profile/viewjob/viewjob.component').then(m => m.ViewJobComponent) },
-  { path: 'applied-job', loadComponent: ()=> import('./profile/applied-job/applied-job.component').then(m=>m.AppliedJobComponent) },
+  { path: 'applied-job', loadComponent: () => import('./profile/applied-job/applied-job.component').then(m => m.AppliedJobComponent) },
   { path: 'job', loadComponent: () => import('./profile/job/job.component').then(m => m.JobComponent) },
   // { path: 'jobs', loadComponent: () => import('./jobs/jobs.component').then(m => m.JobsComponent) },
   { path: 'jobs', loadComponent: () => import('./jobs/all-jobs/all-jobs.component').then(m => m.AllJobsComponent) },
   { path: 'jobs/:id', loadComponent: () => import('./jobs/jobs.component').then(m => m.JobsComponent) },
+  { path: 'post-job', loadComponent: () => import('./post-jobs/post-jobs.component').then(m => m.PostJobsComponent) },
 
   { path: 'youtube-listing', loadComponent: () => import('./youtube-listing/youtube-listing.component').then(m => m.YoutubeListingComponent) },
 

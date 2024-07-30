@@ -1,44 +1,38 @@
-<div class="row align-items-center justify-content-center">
-  <div class="col-5">
-    <img src="assets/images/home/job-offer-1.svg" alt="Job-Image" class="m-auto" />
-  </div>
+<div class="spacer--medium"></div>
 
-  <div class="col-7">
-    <form [formGroup]="jobForm">
-      <div class="row form-group mt-3 mb-3 flex-column">
-        <div class="col-12">
-          <label
-            for="companyName"
-            class="font-family-poppins mt-3 form-label font-20 nmc-dark-grey"
-            >Enter Your Company Name</label
-          >
-          <input
-            id="companyName"
-            type="text"
-            formControlName="companyName"
-            class="form-control rounded-3"
-            placeholder="Enter your company name"
-          />
-        </div>
-
-        <div class="col-12 mt-4">
-          <label
-            for="position"
-            class="font-family-poppins mt-3 form-label font-20 nmc-dark-grey"
-            >Select Position</label
-          >
-          <select
-            id="position"
-            formControlName="position"
-            class="form-select rounded-3 cursor-pointer"
-          >
-            <option value="" selected>Select position</option>
-            @for(position of positions; track position;){
-            <option [value]="position">{{ position }}</option>
-            }
-          </select>
-        </div>
+<form [formGroup]="jobForm">
+  <div class="row form-group mt-3 mb-3 flex-column">
+    <div class="col-12">
+      <div class="input__group mt-5">
+        <input
+          id="companyName"
+          type="text"
+          formControlName="companyName"
+          class="input__field"
+          placeholder="Enter your company name"
+        />
+        <label for="companyName" class="input__label"
+          >Enter Your Company Name</label
+        >
       </div>
-    </form>
+    </div>
+
+    <div class="col-12 mt-5">
+      <label
+        for="position"
+        class="mt-3 form-label font-20 nmc-medium-grey"
+        >Select Position</label
+      >
+      <select
+        id="position"
+        formControlName="position"
+        class="form-select rounded-3 cursor-pointer"
+      >
+        <option value="" selected>Select position</option>
+        @for(position of positions; track position;){
+        <option [value]="position">{{ position }}</option>
+        }
+      </select>
+    </div>
   </div>
-</div>
+</form>

@@ -57,3 +57,12 @@
         color: $nmc-medium-grey;
     }
 }
+
+.chip {
+    background-color: #f1f1f1;
+    padding: 5px 10px;
+
+    button {
+        background: none;
+    }
+}

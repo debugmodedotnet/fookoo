@@ -16,7 +16,7 @@
         transition: border-color 0.2s;
 
         &:focus {
-            padding-bottom: 6px;
+            padding-bottom: 6px;            
             border-width: 3px;
             border-color: $nmc-primary;
             border-image-slice: 1;

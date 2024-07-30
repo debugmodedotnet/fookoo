@@ -1,0 +1,31 @@
+<div class="spacer--medium"></div>
+
+<form [formGroup]="jobForm">
+  <div class="row form-group mt-3 mb-3 flex-column">
+    <div class="col-12">
+      <div class="input__group mt-5">
+        <input
+          id="MinSalary"
+          type="text"
+          formControlName="MinSalary"
+          class="input__field"
+          placeholder="Enter minimum salary"
+        />
+        <label for="MinSalary" class="input__label">Enter Minimum Salary</label>
+      </div>
+    </div>
+
+    <div class="col-12 mt-4">
+      <div class="input__group mt-5">
+        <input
+          id="MaxSalary"
+          type="text"
+          formControlName="MaxSalary"
+          class="input__field"
+          placeholder="Enter maximum salary"
+        />
+        <label for="MaxSalary" class="input__label">Enter Maximum Salary</label>
+      </div>
+    </div>
+  </div>
+</form>

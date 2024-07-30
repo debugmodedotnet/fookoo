@@ -1,0 +1,10 @@
+@use "../../styles/variables" as *;
+
+.chips {
+    border: 1px solid #ccc;
+
+    &.selected {
+        background-color: $nmc-primary;
+        color: $nmc-white;
+    }
+}

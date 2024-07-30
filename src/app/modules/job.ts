@@ -18,5 +18,7 @@ export interface Job {
   ImageUrl: string;
   userId?: string; // ID of the user who created the job
   Private?: boolean;
+  MinSalary: number;
+  MaxSalary: number;
 }
 

@@ -1,0 +1,63 @@
+<div class="spacer--default"></div>
+
+<form [formGroup]="jobForm">
+  <div class="form-group">
+    <div class="chip-container me-2 mb-2 d-flex align-items-center">
+      @for(control of responsibilities.controls; track control; let i =
+      $index;){
+      <ng-container>
+        <div class="chip rounded-5 me-3 d-flex align-items-center">
+          {{ control.value }}
+
+          <div class="d-flex align-items-center ms-5">
+            <button
+              type="button"
+              (click)="editResponsibility(i)"
+              class="p-0 border-0 nmc-dark-grey cursor-pointer"
+            >
+              <i class="bi bi-pencil-fill"></i>
+            </button>
+
+            <button
+              type="button"
+              (click)="removeResponsibility(i)"
+              class="p-0 ms-2 border-0 nmc-primary cursor-pointer"
+            >
+              <i class="bi bi-x-circle-fill"></i>
+            </button>
+          </div>
+        </div>
+      </ng-container>
+      }
+    </div>
+
+    <div class="input__group mt-5">
+      <div formArrayName="Responsibilities" class="d-flex align-items-end">
+        <div class="d-flex flex-wrap align-items-center w-100">
+          <input
+            #newResponsibility
+            type="text"
+            class="input__field"
+            [value]="
+              editingIndex === -1
+                ? ''
+                : responsibilities.at(editingIndex).value || ''
+            "
+          />
+
+          <label for="Responsibilities" class="input__label"
+            >Responsibilities</label
+          >
+        </div>
+
+        <button
+          type="button"
+          (click)="addResponsibility(newResponsibility)"
+          class="nmc-btn-primary ms-3"
+        >
+          Add
+        </button>
+      </div>
+    </div>
+  </div>
+</form>

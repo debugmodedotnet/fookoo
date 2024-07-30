@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, Input, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { IJobStep1 } from '../../modules/post-job';
@@ -12,7 +12,7 @@ import { IJobStep1 } from '../../modules/post-job';
 })
 export class Jobform2Component implements OnInit {
 
-  jobForm: FormGroup;
+  @Input() jobForm!: FormGroup; 
   positions: string[] = [];
 
   private firestore = inject(AngularFirestore);
@@ -26,14 +26,17 @@ export class Jobform2Component implements OnInit {
 
   ngOnInit(): void {
     this.getPositions();
+
+    this.jobForm.patchValue({
+      companyName: this.jobForm.get('companyName')?.value,
+      position: this.jobForm.get('position')?.value
+    });
   }
 
   getPositions() {
     this.firestore.collection('post-job').doc<IJobStep1>('job-step-1').valueChanges()
       .subscribe((doc: IJobStep1 | undefined) => {
-        console.log('Fetched document:', doc); 
         this.positions = doc?.position ?? [];
-        console.log('Positions:', this.positions); // Log the positions array
       });
   }
 

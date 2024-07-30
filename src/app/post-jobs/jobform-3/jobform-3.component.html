@@ -1,0 +1,32 @@
+<div class="spacer--default"></div>
+
+<form [formGroup]="jobForm">
+  <div class="row form-group mt-3 mb-3 flex-column">
+    <div class="col-12 text-end">
+      <input
+        id="Remote"
+        formControlName="Remote"
+        type="checkbox"
+        class="form-check-input"
+      />
+      <label for="Remote" class="form-label font-20 nmc-medium-grey ms-2"
+        >Remote</label
+      >
+    </div>
+
+    <div class="col-12">
+      <div class="input__group">
+        <input
+          id="Location"
+          type="text"
+          formControlName="Location"
+          class="input__field"
+          placeholder="Enter your company name"
+        />
+        <label for="Location" class="input__label"
+          >Enter Your Company's Location</label
+        >
+      </div>
+    </div>
+  </div>
+</form>

@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { UserService } from '../../services/user.service';
 
@@ -11,7 +11,7 @@ import { UserService } from '../../services/user.service';
 })
 export class Jobform1Component implements OnInit {
 
-  jobForm: FormGroup;
+  @Input() jobForm!: FormGroup;  
 
   private userService = inject(UserService);
 
@@ -22,17 +22,16 @@ export class Jobform1Component implements OnInit {
   }
 
   ngOnInit(): void {
-    this.setEmail();
-  }
-
-  setEmail() {
     this.userService.getCurrentUser().subscribe(user => {
-      console.log("Email:", user.email);
-      if (user && user.email) {
+      if (user) {
+        this.jobForm.patchValue({ email: user.email || '' });
+      }
+      else{
         this.jobForm.patchValue({
-          email: user.email
+          email: this.jobForm.get('email')?.value,
         });
       }
     });
   }
+
 }

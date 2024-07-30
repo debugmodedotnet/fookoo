@@ -1,0 +1,18 @@
+<div class="spacer--medium"></div>
+
+<form [formGroup]="jobForm">
+  <div class="input__group mt-5">
+    <textarea
+      id="JobDescription"
+      type="text"
+      formControlName="JobDescription"
+      class="input__field"
+      placeholder="Enter job's description"
+      rows="4"
+    ></textarea>
+
+    <label for="JobDescription" class="input__label"
+      >Enter Job's Description</label
+    >
+  </div>
+</form>

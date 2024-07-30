@@ -1,8 +1,22 @@
-swiper-slide {
-  width: 320px !important;
-  height: 445px !important;
+.job-card {
+  width: 320px;
+  height: 445px;
   box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
-  margin: 40px;
+  //padding: 6rem;
+  transition: 0.4s ease-out;
+  //position: relative;
+  //z-index: 1000;
+
+  &:not(:first-child) {
+    margin-left: -100px;
+  }
+
+  &:hover {
+    cursor: pointer;
+    z-index: 9 !important;
+    transform: scale(1.1);
+    transition: all 0.4s ease-out;
+  }
 
   figure {
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;

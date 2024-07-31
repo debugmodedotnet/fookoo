@@ -1,5 +1,6 @@
 import { Component, model } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { SalValidator } from './sal-validator';
 
 @Component({
   selector: 'app-job-step6',
@@ -17,7 +18,7 @@ export class Jobstep6Component {
     this.jobForm = this.fb.group({
       MinSalary: ['', Validators.required],
       MaxSalary: ['', Validators.required],
-    });
+    }, { validator: SalValidator });
   }
 
   async next() {

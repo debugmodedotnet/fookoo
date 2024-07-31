@@ -1,12 +1,21 @@
 <section class="vh-100">
   <div class="container-boxed">
-    @if (currentStep == 1) { @defer (when currentStep==1) {
+    @if (currentStep === 1) { @defer (when currentStep===1) {
     <app-job-step1 [data]="currentJobId" (dataChange)="stepChange($event)" />
-    } } @if(currentStep == 2){ @defer (when currentStep==2) {
+    } } @if(currentStep === 2){ @defer (when currentStep===2) {
     <app-job-step2 [data]="currentJobId" (dataChange)="stepChange($event)" />
-    } }
-    @if(currentStep == 3){ @defer (when currentStep==3) {
+    } } @if(currentStep === 3){ @defer (when currentStep===3) {
     <app-job-step3 [data]="currentJobId" (dataChange)="stepChange($event)" />
+    } } @if(currentStep === 4){ @defer (when currentStep===4) {
+    <app-job-step4 [data]="currentJobId" (dataChange)="stepChange($event)" />
+    } } @if(currentStep === 5){ @defer (when currentStep===5) {
+    <app-job-step5 [data]="currentJobId" (dataChange)="stepChange($event)" />
+    } } @if(currentStep === 6){ @defer (when currentStep===6) {
+    <app-job-step6 [data]="currentJobId" (dataChange)="stepChange($event)" />
+    } } @if(currentStep === 7){ @defer (when currentStep===7) {
+    <app-job-step7 [data]="currentJobId" (dataChange)="stepChange($event)" />
+    } } @if(currentStep === 8){ @defer (when currentStep===8) {
+    <app-job-step8 [data]="currentJobId" (dataChange)="stepChange($event)" />
     } }
   </div>
 </section>

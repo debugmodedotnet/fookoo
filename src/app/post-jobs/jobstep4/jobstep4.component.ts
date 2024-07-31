@@ -1,17 +1,18 @@
-import { Component, Input } from '@angular/core';
+import { Component, model } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 
 @Component({
-  selector: 'app-jobform-4',
+  selector: 'app-job-step4',
   standalone: true,
   imports: [ReactiveFormsModule],
-  templateUrl: './jobform-4.component.html',
-  styleUrl: './jobform-4.component.scss'
+  templateUrl: './jobstep4.component.html',
+  styleUrl: './jobstep4.component.scss'
 })
-export class Jobform4Component {
+export class Jobstep4Component {
 
-  @Input() jobForm!: FormGroup;  
+  jobForm: FormGroup;
   availableSkills: string[] = ['Angular', 'React', 'Python', 'System Design'];
+  data = model<any>();
 
   constructor(private fb: FormBuilder) {
     this.jobForm = this.fb.group({
@@ -41,5 +42,10 @@ export class Jobform4Component {
     const selectedSkills = this.skillsRequired.controls.map(control => control.value);
     console.log('Selected Skills:', selectedSkills);
   }
+
+  async next() {
+    this.data.set({ nextStep: 5, jobId: this.data(), formData: this.jobForm.value });
+  }
+
 
 }

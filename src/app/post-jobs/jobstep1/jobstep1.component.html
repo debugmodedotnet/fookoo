@@ -18,4 +18,20 @@
     </div>
   </div>
 </form>
-<button (click)="next()">Next</button>
+
+<div class="d-flex justify-content-end align-items-center mt-5">
+  <button
+    type="button"
+    class="font-14 fw-semibold border-0 nmc-medium-grey nmc-bg-white"
+  >
+    Back
+  </button>
+
+  <button
+    type="submit"
+    class="nmc-btn-primary font-14 fw-semibold box-shadow-none py-2 px-5 h-auto ms-2 rounded-2 d-flex align-items-center"
+    (click)="next()"
+  >
+    Next
+  </button>
+</div>

@@ -1,91 +1,92 @@
-<div class="spacer--small"></div>
+<div class="vh-100">
+  <div class="spacer--small"></div>
 
-<form [formGroup]="jobForm">
-  <div class="row form-group mt-3 mb-3 flex-column">
-    <div class="col-12">
-      <div class="input__group mt-5">
-        <input
-          id="CompanyLinkedIn"
-          type="text"
-          (keyup)="cleanLinkedInMessage()"
-          formControlName="CompanyLinkedIn"
-          class="input__field"
-          placeholder="Enter your company's linkedIn"
-        />
-        <label for="CompanyLinkedIn" class="input__label"
-          >Enter Your Company's LinkedIn</label
-        >
+  <form [formGroup]="jobForm">
+    <div class="row form-group mt-3 mb-3 flex-column">
+      <div class="col-12">
+        <div class="input__group mt-5">
+          <input
+            id="CompanyLinkedIn"
+            type="text"
+            (keyup)="cleanLinkedInMessage()"
+            formControlName="CompanyLinkedIn"
+            class="input__field"
+            placeholder="Enter your company's linkedIn"
+          />
+          <label for="CompanyLinkedIn" class="input__label"
+            >Enter Your Company's LinkedIn</label
+          >
+        </div>
+
+        @if(isCompanyLinkedInInvalid){
+        <div class="error-label text-danger font-18">
+          <i class="bi bi-exclamation-triangle-fill me-2"></i>Please enter your
+          valid Company LinkedIn
+        </div>
+        }
       </div>
 
-      @if(isCompanyLinkedInInvalid){
-      <div class="error-label text-danger font-18">
-        <i class="bi bi-exclamation-triangle-fill me-2"></i>Please enter your
-        valid Company LinkedIn
+      <div class="col-12 mt-3">
+        <div class="input__group mt-5">
+          <input
+            id="CompanyGithub"
+            type="text"
+            (keyup)="cleanGithubMessage()"
+            formControlName="CompanyGithub"
+            class="input__field"
+            placeholder="Enter your company's github"
+          />
+          <label for="CompanyGithub" class="input__label"
+            >Enter Your Company's Github</label
+          >
+        </div>
+
+        @if(isCompanyGithubInvalid){
+        <div class="error-label text-danger font-18">
+          <i class="bi bi-exclamation-triangle-fill me-2"></i>Please enter your
+          valid Company Github
+        </div>
+        }
       </div>
-      }
+
+      <div class="col-12 mt-3">
+        <div class="input__group mt-5">
+          <input
+            id="CompanyTwitter"
+            type="text"
+            (keyup)="cleanTwitterMessage()"
+            formControlName="CompanyTwitter"
+            class="input__field"
+            placeholder="Enter your company's twitter"
+          />
+          <label for="CompanyTwitter" class="input__label"
+            >Enter Your Company's Twitter</label
+          >
+        </div>
+
+        @if(isCompanyTwitterInvalid){
+        <div class="error-label text-danger font-18">
+          <i class="bi bi-exclamation-triangle-fill me-2"></i>Please enter your
+          valid Company Twitter
+        </div>
+        }
+      </div>
     </div>
+  </form>
 
-    <div class="col-12 mt-3">
-      <div class="input__group mt-5">
-        <input
-          id="CompanyGithub"
-          type="text"
-          (keyup)="cleanGithubMessage()"
-          formControlName="CompanyGithub"
-          class="input__field"
-          placeholder="Enter your company's github"
-        />
-        <label for="CompanyGithub" class="input__label"
-          >Enter Your Company's Github</label
-        >
-      </div>
+  <div class="d-flex justify-content-end align-items-center mt-5">
+    <button
+      type="button"
+      class="font-14 fw-semibold border-0 nmc-medium-grey nmc-bg-white"
+    >
+      Back
+    </button>
 
-      @if(isCompanyGithubInvalid){
-      <div class="error-label text-danger font-18">
-        <i class="bi bi-exclamation-triangle-fill me-2"></i>Please enter your
-        valid Company Github
-      </div>
-      }
-    </div>
-
-    <div class="col-12 mt-3">
-      <div class="input__group mt-5">
-        <input
-          id="CompanyTwitter"
-          type="text"
-          (keyup)="cleanTwitterMessage()"
-          formControlName="CompanyTwitter"
-          class="input__field"
-          placeholder="Enter your company's twitter"
-        />
-        <label for="CompanyTwitter" class="input__label"
-          >Enter Your Company's Twitter</label
-        >
-      </div>
-
-      @if(isCompanyTwitterInvalid){
-      <div class="error-label text-danger font-18">
-        <i class="bi bi-exclamation-triangle-fill me-2"></i>Please enter your
-        valid Company Twitter
-      </div>
-      }
-    </div>
+    <button
+      class="nmc-btn-primary font-14 fw-semibold box-shadow-none py-2 px-5 h-auto ms-2 rounded-2 d-flex align-items-center"
+      (click)="next()"
+    >
+      Submit
+    </button>
   </div>
-</form>
-
-<div class="d-flex justify-content-end align-items-center mt-5">
-  <button
-    type="button"
-    class="font-14 fw-semibold border-0 nmc-medium-grey nmc-bg-white"
-  >
-    Back
-  </button>
-
-  <button
-    type="submit"
-    class="nmc-btn-primary font-14 fw-semibold box-shadow-none py-2 px-5 h-auto ms-2 rounded-2 d-flex align-items-center"
-    (click)="next()"
-  >
-    Next
-  </button>
 </div>

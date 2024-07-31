@@ -1,17 +1,17 @@
 export interface Job {
   id?: string;  
-  CompanyName: string;
+  companyName: string;
   CompanyUrl: string;
   JobDescription: string;
   Responsibilities: string[];
-  Qualification: string[];
+  qualification: string[];
   SkillsRequired: string;
   Location: string;
   Remote: boolean;
   CompanyTwitter?: string;
   CompanyLinkedIn?: string;
   CompanyGithub?: string;
-  Position: string;
+  position: string;
   Email?: string;
   PhoneNo?: string;
   Tag?: string;

@@ -1,38 +1,39 @@
-<div class="spacer--default"></div>
+<div class="vh-100">
+  <div class="spacer--default"></div>
 
-<form [formGroup]="jobForm">
-  <div class="form-group">
-    <h3 class="font-family-poppins mb-4 font-30 font-992-28 text-center">
-      You are just a few steps away from hiring a great talent !
-    </h3>
+  <form [formGroup]="jobForm">
+    <div class="form-group">
+      <h3 class="font-family-poppins mb-4 font-30 font-992-28 text-center">
+        You are just a few steps away from hiring a great talent !
+      </h3>
 
-    <div class="input__group mt-5">
-      <input
-        id="email"
-        type="email"
-        (keyup)="cleanMessage()"
-        formControlName="email"
-        class="input__field"
-        placeholder="Enter your email address"
-      />
-      <label for="email" class="input__label">Email</label>
+      <div class="input__group mt-5">
+        <input
+          id="email"
+          type="email"
+          (keyup)="cleanMessage()"
+          formControlName="email"
+          class="input__field"
+          placeholder="Enter your email address"
+        />
+        <label for="email" class="input__label">Email</label>
+      </div>
+
+      @if(isEmailInValid){
+      <div class="error-label text-danger font-18">
+        <i class="bi bi-exclamation-triangle-fill me-2"></i>Please provide a
+        valid email
+      </div>
+      }
     </div>
-    
-    @if(isEmailInValid){
-    <div class="error-label text-danger font-18">
-      <i class="bi bi-exclamation-triangle-fill me-2"></i>Please provide a valid
-      email
-    </div>
-    }
+  </form>
+
+  <div class="d-flex justify-content-end align-items-center mt-5">
+    <button
+      class="nmc-btn-primary font-14 fw-semibold box-shadow-none py-2 px-5 h-auto ms-2 rounded-2 d-flex align-items-center"
+      (click)="next()"
+    >
+      Next
+    </button>
   </div>
-</form>
-
-<div class="d-flex justify-content-end align-items-center mt-5">
-  <button
-    type="submit"
-    class="nmc-btn-primary font-14 fw-semibold box-shadow-none py-2 px-5 h-auto ms-2 rounded-2 d-flex align-items-center"
-    (click)="next()"
-  >
-    Next
-  </button>
 </div>

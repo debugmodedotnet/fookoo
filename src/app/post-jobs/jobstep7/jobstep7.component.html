@@ -1,43 +1,41 @@
-<div class="spacer--medium"></div>
+<div class="vh-100">
+  <div class="spacer--medium"></div>
 
-<form [formGroup]="jobForm">
-  <div class="input__group mt-5">
-    <textarea
-      id="JobDescription"
-      type="text"
-      formControlName="JobDescription"
-      class="input__field"
-      placeholder="Enter job's description"
-      rows="4"
-      (keyup)="cleanMessage()"
-    ></textarea>
+  <form [formGroup]="jobForm">
+    <div class="input__group mt-5">
+      <textarea
+        id="JobDescription"
+        type="text"
+        formControlName="JobDescription"
+        class="input__field"
+        placeholder="Enter job's description"
+        rows="4"
+        (keyup)="cleanMessage()"
+      ></textarea>
 
-    <label for="JobDescription" class="input__label"
-      >Enter Job's Description</label
+      <label for="JobDescription" class="input__label"
+        >Enter Job's Description</label
+      >
+    </div>
+
+    @if(isDescriptionInValid){
+    <div class="error-label text-danger font-18">
+      <i class="bi bi-exclamation-triangle-fill me-2"></i>Please provide a job
+      description
+    </div>
+    }
+  </form>
+
+  <div class="d-flex justify-content-end align-items-center mt-5">
+    <button class="font-14 fw-semibold border-0 nmc-medium-grey nmc-bg-white">
+      Back
+    </button>
+
+    <button
+      class="nmc-btn-primary font-14 fw-semibold box-shadow-none py-2 px-5 h-auto ms-2 rounded-2 d-flex align-items-center"
+      (click)="next()"
     >
+      Next
+    </button>
   </div>
-
-  @if(isDescriptionInValid){
-  <div class="error-label text-danger font-18">
-    <i class="bi bi-exclamation-triangle-fill me-2"></i>Please provide a job
-    description
-  </div>
-  }
-</form>
-
-<div class="d-flex justify-content-end align-items-center mt-5">
-  <button
-    type="button"
-    class="font-14 fw-semibold border-0 nmc-medium-grey nmc-bg-white"
-  >
-    Back
-  </button>
-
-  <button
-    type="submit"
-    class="nmc-btn-primary font-14 fw-semibold box-shadow-none py-2 px-5 h-auto ms-2 rounded-2 d-flex align-items-center"
-    (click)="next()"
-  >
-    Next
-  </button>
 </div>

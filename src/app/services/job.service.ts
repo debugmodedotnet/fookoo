@@ -36,7 +36,7 @@ export class JobService {
   }
 
   getJobById(jobId: string): Observable<Job | undefined> {
-    return this.firestore.collection('jobs').doc<Job>(jobId).valueChanges().pipe(
+    return this.firestore.collection('jobForms').doc<Job>(jobId).valueChanges().pipe(
       map(data => data ? { id: jobId, ...data } : undefined)
     );
   }

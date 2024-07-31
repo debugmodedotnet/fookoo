@@ -9,11 +9,12 @@ import { Jobstep5Component } from './jobstep5/jobstep5.component';
 import { Jobstep6Component } from './jobstep6/jobstep6.component';
 import { Jobstep7Component } from './jobstep7/jobstep7.component';
 import { Jobstep8Component } from './jobstep8/jobstep8.component';
+import { Jobstep9Component } from './jobstep9/jobstep9.component';
 
 @Component({
   selector: 'app-post-jobs',
   standalone: true,
-  imports: [Jobstep1Component, Jobstep2Component, Jobstep3Component, Jobstep4Component, Jobstep5Component, Jobstep6Component, Jobstep7Component, Jobstep8Component],
+  imports: [Jobstep1Component, Jobstep2Component, Jobstep3Component, Jobstep4Component, Jobstep5Component, Jobstep6Component, Jobstep7Component, Jobstep8Component, Jobstep9Component],
   templateUrl: './post-jobs.component.html',
   styleUrl: './post-jobs.component.scss',
 })

@@ -1,91 +1,91 @@
-<form [formGroup]="jobForm">
-  <div class="row form-group mt-3 mb-3 flex-column">
-    <div class="col-12">
-      <div class="input__group mt-5">
-        <input
-          id="companyName"
-          type="text"
-          (keyup)="cleanNameMessage()"
-          formControlName="companyName"
-          class="input__field"
-          placeholder="Enter your company name"
-        />
-        <label for="companyName" class="input__label"
-          >Enter Your Company Name</label
+<div class="vh-100 py-3">
+  <form [formGroup]="jobForm">
+    <div class="row form-group mt-3 mb-3 flex-column">
+      <div class="col-12">
+        <div class="input__group mt-5">
+          <input
+            id="companyName"
+            type="text"
+            (keyup)="cleanNameMessage()"
+            formControlName="companyName"
+            class="input__field"
+            placeholder="Enter your company name"
+          />
+          <label for="companyName" class="input__label"
+            >Enter Your Company Name</label
+          >
+        </div>
+
+        @if(isCompanyInValid){
+        <div class="error-label text-danger font-18">
+          <i class="bi bi-exclamation-triangle-fill me-2"></i>Please enter your
+          company's name
+        </div>
+        }
+      </div>
+
+      <div class="col-12 mt-4">
+        <label for="position" class="mt-3 form-label font-20 nmc-medium-grey"
+          >Select Position</label
         >
-      </div>
+        <select
+          id="position"
+          (focus)="cleanPositionMessage()"
+          formControlName="position"
+          class="form-select rounded-3 cursor-pointer"
+        >
+          <option value="" selected>Select position</option>
+          @for(position of positions; track position;){
+          <option [value]="position">{{ position }}</option>
+          }
+        </select>
 
-      @if(isCompanyInValid){
-      <div class="error-label text-danger font-18">
-        <i class="bi bi-exclamation-triangle-fill me-2"></i>Please enter your
-        company's name
-      </div>
-      }
-    </div>
-
-    <div class="col-12 mt-4">
-      <label for="position" class="mt-3 form-label font-20 nmc-medium-grey"
-        >Select Position</label
-      >
-      <select
-        id="position"
-        (focus)="cleanPositionMessage()"
-        formControlName="position"
-        class="form-select rounded-3 cursor-pointer"
-      >
-        <option value="" selected>Select position</option>
-        @for(position of positions; track position;){
-        <option [value]="position">{{ position }}</option>
+        @if(isPositionInValid){
+        <div class="error-label text-danger font-18">
+          <i class="bi bi-exclamation-triangle-fill me-2"></i>Please select a
+          position
+        </div>
         }
-      </select>
-
-      @if(isPositionInValid){
-      <div class="error-label text-danger font-18">
-        <i class="bi bi-exclamation-triangle-fill me-2"></i>Please select a
-        position
       </div>
-      }
-    </div>
 
-    <div class="col-12 mt-4">
-      <label for="qualification" class="mt-3 form-label font-20 nmc-medium-grey"
-        >Select Qualification</label
-      >
-      <select
-        id="qualification"
-        (focus)="cleanQualificationMessage()"
-        formControlName="qualification"
-        class="form-select rounded-3 cursor-pointer"
-      >
-        <option value="" selected>Select qualification</option>
-        @for(qualification of qualifications; track qualification;){
-        <option [value]="qualification">{{ qualification }}</option>
+      <div class="col-12 mt-4">
+        <label
+          for="qualification"
+          class="mt-3 form-label font-20 nmc-medium-grey"
+          >Select Qualification</label
+        >
+        <select
+          id="qualification"
+          (focus)="cleanQualificationMessage()"
+          formControlName="qualification"
+          class="form-select rounded-3 cursor-pointer"
+        >
+          <option value="" selected>Select qualification</option>
+          @for(qualification of qualifications; track qualification;){
+          <option [value]="qualification">{{ qualification }}</option>
+          }
+        </select>
+
+        @if(isQualificationInValid){
+        <div class="error-label text-danger font-18">
+          <i class="bi bi-exclamation-triangle-fill me-2"></i>Please select a
+          qualification
+        </div>
         }
-      </select>
-
-      @if(isQualificationInValid){
-      <div class="error-label text-danger font-18">
-        <i class="bi bi-exclamation-triangle-fill me-2"></i>Please select a
-        qualification
       </div>
-      }
     </div>
+  </form>
+
+  <div class="d-flex justify-content-end align-items-center mt-5">
+    <button class="font-14 fw-semibold border-0 nmc-medium-grey nmc-bg-white">
+      Back
+    </button>
+
+    <button
+      class="nmc-btn-primary font-14 fw-semibold box-shadow-none py-2 px-5 h-auto ms-2 rounded-2 d-flex align-items-center"
+      (click)="next()"
+    >
+      Next
+    </button>
   </div>
-</form>
-
-<div class="d-flex justify-content-end align-items-center mt-5">
-  <button
-    type="button"
-    class="font-14 fw-semibold border-0 nmc-medium-grey nmc-bg-white"
-  >
-    Back
-  </button>
-
-  <button
-    type="submit"
-    class="nmc-btn-primary font-14 fw-semibold box-shadow-none py-2 px-5 h-auto ms-2 rounded-2 d-flex align-items-center"
-    (click)="next()"
-  >
-    Next
-  </button>
 </div>

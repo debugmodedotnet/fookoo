@@ -1,5 +1,10 @@
 import { Component, inject, model, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import {
+  FormBuilder,
+  FormGroup,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
 import { UserService } from '../../services/user.service';
 
 @Component({
@@ -12,6 +17,7 @@ import { UserService } from '../../services/user.service';
 export class Jobstep1Component implements OnInit {
   jobForm: FormGroup;
   data = model<any>();
+  isEmailInValid = false;
 
   private userService = inject(UserService);
   constructor(private fb: FormBuilder) {
@@ -33,11 +39,21 @@ export class Jobstep1Component implements OnInit {
   }
 
   next() {
-     this.data.set({
-       nextStep: 2,
-       jobId: undefined,
-       formData: this.jobForm.value,
-     });
+    if (this.jobForm.valid) {
+      this.isEmailInValid = false;
+      this.data.set({
+        nextStep: 2,
+        jobId: undefined,
+        formData: this.jobForm.value,
+      });
+    } else {
+      this.isEmailInValid = true;
+    }
+  }
 
+  cleanMessage():void{
+    console.log('cleanMessage');
+    this.isEmailInValid = false;
+    console.log(this.isEmailInValid);
   }
 }

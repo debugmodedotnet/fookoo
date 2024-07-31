@@ -7,7 +7,7 @@
         <input
           id="CompanyLinkedIn"
           type="text"
-          (keyup)= cleanLinkedInMessage()
+          (keyup)="cleanLinkedInMessage()"
           formControlName="CompanyLinkedIn"
           class="input__field"
           placeholder="Enter your company's linkedIn"
@@ -16,6 +16,13 @@
           >Enter Your Company's LinkedIn</label
         >
       </div>
+
+      @if(isCompanyLinkedInInvalid){
+      <div class="error-label text-danger font-18">
+        <i class="bi bi-exclamation-triangle-fill me-2"></i>Please enter your
+        valid Company LinkedIn
+      </div>
+      }
     </div>
 
     <div class="col-12 mt-3">
@@ -23,7 +30,7 @@
         <input
           id="CompanyGithub"
           type="text"
-          (keyup)= cleanGithubMessage()
+          (keyup)="cleanGithubMessage()"
           formControlName="CompanyGithub"
           class="input__field"
           placeholder="Enter your company's github"
@@ -32,6 +39,13 @@
           >Enter Your Company's Github</label
         >
       </div>
+
+      @if(isCompanyGithubInvalid){
+      <div class="error-label text-danger font-18">
+        <i class="bi bi-exclamation-triangle-fill me-2"></i>Please enter your
+        valid Company Github
+      </div>
+      }
     </div>
 
     <div class="col-12 mt-3">
@@ -39,7 +53,7 @@
         <input
           id="CompanyTwitter"
           type="text"
-          (keyup)= cleanTwitterMessage()
+          (keyup)="cleanTwitterMessage()"
           formControlName="CompanyTwitter"
           class="input__field"
           placeholder="Enter your company's twitter"
@@ -48,21 +62,16 @@
           >Enter Your Company's Twitter</label
         >
       </div>
+
+      @if(isCompanyTwitterInvalid){
+      <div class="error-label text-danger font-18">
+        <i class="bi bi-exclamation-triangle-fill me-2"></i>Please enter your
+        valid Company Twitter
+      </div>
+      }
     </div>
   </div>
 </form>
-
-@if(isCompanyLinkedInInvalid){
-  <div class="mt-3 ms-3 text-danger font-18">Please enter Company LinkedIn</div>
-}
-
-@if(isCompanyGithubInvalid){
-  <div class="mt-3 ms-3 text-danger font-18">Please enter Company Github</div>
-}
-
-@if(isCompanyTwitterInvalid){
-  <div class="mt-3 ms-3 text-danger font-18">Please enter Company Twitter</div>
-}
 
 <div class="d-flex justify-content-end align-items-center mt-5">
   <button

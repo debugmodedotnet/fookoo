@@ -1,17 +1,18 @@
-import { Component, Input } from '@angular/core';
+import { Component, model } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 
 @Component({
-  selector: 'app-jobform-5',
+  selector: 'app-job-step5',
   standalone: true,
   imports: [ReactiveFormsModule],
-  templateUrl: './jobform-5.component.html',
-  styleUrl: './jobform-5.component.scss'
+  templateUrl: './jobstep5.component.html',
+  styleUrl: './jobstep5.component.scss'
 })
-export class Jobform5Component {
+export class Jobstep5Component {
 
-  @Input() jobForm!: FormGroup;  
+  jobForm: FormGroup;
   editingIndex = -1;
+  data = model<any>();
 
   constructor(private fb: FormBuilder) {
     this.jobForm = this.fb.group({
@@ -58,5 +59,7 @@ export class Jobform5Component {
     }
   }
 
-
+  async next() {
+    this.data.set({ nextStep: 6, jobId: this.data(), formData: this.jobForm.value });
+  }
 }

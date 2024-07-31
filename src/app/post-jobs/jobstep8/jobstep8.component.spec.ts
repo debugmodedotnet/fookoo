@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { Jobform5Component } from './jobform-5.component';
+import { Jobstep8Component } from './jobstep8.component';
 
-describe('Jobform5Component', () => {
-  let component: Jobform5Component;
-  let fixture: ComponentFixture<Jobform5Component>;
+describe('Jobstep8Component', () => {
+  let component: Jobstep8Component;
+  let fixture: ComponentFixture<Jobstep8Component>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [Jobform5Component]
+      imports: [Jobstep8Component]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(Jobform5Component);
+    fixture = TestBed.createComponent(Jobstep8Component);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

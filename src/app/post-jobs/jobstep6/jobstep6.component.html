@@ -12,6 +12,11 @@
           placeholder="Enter minimum salary"
         />
         <label for="MinSalary" class="input__label">Enter Minimum Salary</label>
+        <div *ngIf="jobForm.get('MinSalary')?.invalid && jobForm.get('MinSalary')?.touched">
+          <small *ngIf="jobForm.get('MinSalary')?.errors?.['required']" class="error-message">
+            Minimum Salary is required.
+          </small>
+        </div>
       </div>
     </div>
 
@@ -25,8 +30,20 @@
           placeholder="Enter maximum salary"
         />
         <label for="MaxSalary" class="input__label">Enter Maximum Salary</label>
+        <div *ngIf="jobForm.get('MaxSalary')?.invalid && jobForm.get('MaxSalary')?.touched">
+          <small *ngIf="jobForm.get('MaxSalary')?.errors?.['required']" class="error-message">
+            Maximum Salary is required.
+          </small>
+        </div>
       </div>
     </div>
+  </div>
+
+  <div *ngIf="jobForm.errors?.['minSalaryError']">
+    <div class="error-message">Minimum Salary should be at least 10,000.</div>
+  </div>
+  <div *ngIf="jobForm.errors?.['salError']">
+    <div class="error-message">Minimum Salary should be less than Maximum Salary.</div>
   </div>
 </form>
 
@@ -41,7 +58,9 @@
   <button
     [disabled]="jobForm.invalid"
     class="nmc-btn-primary font-14 fw-semibold box-shadow-none py-2 px-5 h-auto ms-2 rounded-2 d-flex align-items-center"
-    (click)="next()">
+    (click)="next()"
+  >
     Next
   </button>
 </div>
+

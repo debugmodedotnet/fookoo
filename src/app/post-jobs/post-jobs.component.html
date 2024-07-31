@@ -1,31 +1,12 @@
 <section class="vh-100">
   <div class="container-boxed">
-    <ng-container #postJobForm> </ng-container>
-
-    <div class="d-flex justify-content-end align-items-center mt-5">
-      @if(currentStep > 1 && !(currentStep === 2 && isUserLoggedIn) ){
-      <button
-        type="button"
-        class="font-14 fw-semibold border-0 nmc-medium-grey nmc-bg-white"
-        (click)="onPreviousStep()"
-      >
-        Back</button
-      >} @if(currentStep < lastStep && (currentStep !== 1 || !isUserLoggedIn)){
-      <button
-        type="submit"
-        class="nmc-btn-primary font-14 fw-semibold box-shadow-none py-2 px-5 h-auto ms-2 rounded-2 d-flex align-items-center"
-        (click)="onNextStep()" 
-      >
-        Next --></button
-      >} @if(currentStep === lastStep){
-      <button
-        type="submit"
-        class="nmc-btn-primary font-14 fw-semibold box-shadow-none py-2 px-5 h-auto ms-2 rounded-2 d-flex align-items-center"
-        (click)="onSubmit()" 
-      >
-        Submit
-      </button>
-      }
-    </div>
+    @if (currentStep == 1) { @defer (when currentStep==1) {
+    <app-job-step1 [data]="currentJobId" (dataChange)="stepChange($event)" />
+    } } @if(currentStep == 2){ @defer (when currentStep==2) {
+    <app-job-step2 [data]="currentJobId" (dataChange)="stepChange($event)" />
+    } }
+    @if(currentStep == 3){ @defer (when currentStep==3) {
+    <app-job-step3 [data]="currentJobId" (dataChange)="stepChange($event)" />
+    } }
   </div>
 </section>

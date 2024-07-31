@@ -1,20 +1,20 @@
-import { Component, inject, Input, OnInit } from '@angular/core';
+import { Component, inject, Input, model, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { UserService } from '../../services/user.service';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
 
 @Component({
-  selector: 'app-jobform-1',
+  selector: 'app-job-step1',
   standalone: true,
   imports: [ReactiveFormsModule],
-  templateUrl: './jobform-1.component.html',
-  styleUrl: './jobform-1.component.scss'
+  templateUrl: './jobstep1.component.html',
+  styleUrl: './jobstep1.component.scss',
 })
-export class Jobform1Component implements OnInit {
-
-  @Input() jobForm!: FormGroup;  
+export class Jobstep1Component implements OnInit {
+  jobForm: FormGroup;
+  data = model<any>();
 
   private userService = inject(UserService);
-
   constructor(private fb: FormBuilder) {
     this.jobForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
@@ -22,11 +22,10 @@ export class Jobform1Component implements OnInit {
   }
 
   ngOnInit(): void {
-    this.userService.getCurrentUser().subscribe(user => {
+    this.userService.getCurrentUser().subscribe((user) => {
       if (user) {
         this.jobForm.patchValue({ email: user.email || '' });
-      }
-      else{
+      } else {
         this.jobForm.patchValue({
           email: this.jobForm.get('email')?.value,
         });
@@ -34,4 +33,12 @@ export class Jobform1Component implements OnInit {
     });
   }
 
+  next() {
+     this.data.set({
+       nextStep: 2,
+       jobId: undefined,
+       formData: this.jobForm.value,
+     });
+
+  }
 }

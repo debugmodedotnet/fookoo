@@ -33,7 +33,7 @@ export class Jobstep8Component {
       this.isCompanyTwitterInvalid = false;
 
       this.data.set({
-        nextStep: 8,
+        nextStep: 9,
         jobId: this.data(),
         formData: this.jobForm.value
       });

@@ -1,89 +1,88 @@
-<div class="spacer--default"></div>
-
-<form [formGroup]="jobForm">
-  <div class="form-group">
-    <div class="chip-container mb-2 row g-2">
-      @for(control of responsibilities.controls; track control; let i =
-      $index;){
-      <ng-container>
-        <div class="col-4 chip rounded-5 d-flex align-items-center">
-          {{ control.value }}
-
-          <div class="d-flex align-items-center ms-5">
-            <button
-              type="button"
-              (click)="editResponsibility(i)"
-              class="p-0 border-0 nmc-dark-grey cursor-pointer"
+<div class="py-5 min-height-700">
+  <form [formGroup]="jobForm">
+    <div class="form-group mt-5">
+      <div class="chip-container mb-2 row g-4">
+        @for(control of responsibilities.controls; track control; let i =
+        $index;){
+        <ng-container>
+          <div class="col-4">
+            <div
+              class="chip rounded-4 d-flex align-items-start justify-content-between"
             >
-              <i class="bi bi-pencil-fill"></i>
-            </button>
+              <p class="m-0 word-break">{{ control.value }}</p>
 
-            <button
-              type="button"
-              (click)="removeResponsibility(i)"
-              class="p-0 ms-2 border-0 nmc-primary cursor-pointer"
-            >
-              <i class="bi bi-x-circle-fill"></i>
-            </button>
+              <div class="d-flex align-items-center ms-5">
+                <button
+                  type="button"
+                  (click)="editResponsibility(i)"
+                  class="p-0 border-0 nmc-dark-grey cursor-pointer"
+                >
+                  <i class="bi bi-pencil-fill"></i>
+                </button>
+
+                <button
+                  type="button"
+                  (click)="removeResponsibility(i)"
+                  class="p-0 ms-2 border-0 nmc-primary cursor-pointer"
+                >
+                  <i class="bi bi-x-circle-fill"></i>
+                </button>
+              </div>
+            </div>
           </div>
+        </ng-container>
+        }
+      </div>
+
+      <div class="input__group mt-5">
+        <div formArrayName="Responsibilities" class="d-flex align-items-end">
+          <div class="d-flex flex-wrap align-items-center w-100">
+            <input
+              #newResponsibility
+              type="text"
+              class="input__field"
+              (keyup)="cleanMessage()"
+              [value]="
+                editingIndex === -1
+                  ? ''
+                  : responsibilities.at(editingIndex).value || ''
+              "
+            />
+
+            <label for="Responsibilities" class="input__label"
+              >Responsibilities</label
+            >
+          </div>
+
+          <button
+            type="button"
+            (click)="addResponsibility(newResponsibility)"
+            class="nmc-btn-primary ms-3"
+          >
+            Add
+          </button>
         </div>
-      </ng-container>
+      </div>
+
+      @if(isResponsibilitiesInValid){
+      <div class="error-label text-danger font-18">
+        <i class="bi bi-exclamation-triangle-fill me-2"></i>Please provide at
+        least one Responsibility
+      </div>
       }
     </div>
+  </form>
 
-    <div class="input__group mt-5">
-      <div formArrayName="Responsibilities" class="d-flex align-items-end">
-        <div class="d-flex flex-wrap align-items-center w-100">
-          <input
-            #newResponsibility
-            type="text"
-            class="input__field"
-            (keyup)="cleanMessage()"
-            [value]="
-              editingIndex === -1
-                ? ''
-                : responsibilities.at(editingIndex).value || ''
-            "
-          />
+  <div class="d-flex justify-content-end align-items-center mt-5">
+    <button class="font-14 fw-semibold border-0 nmc-medium-grey nmc-bg-white">
+      Back
+    </button>
 
-          <label for="Responsibilities" class="input__label"
-            >Responsibilities</label
-          >
-        </div>
-
-        <button
-          type="button"
-          (click)="addResponsibility(newResponsibility)"
-          class="nmc-btn-primary ms-3"
-        >
-          Add
-        </button>
-      </div>
-    </div>
-
-    @if(isResponsibilitiesInValid){
-    <div class="error-label text-danger font-18">
-      <i class="bi bi-exclamation-triangle-fill me-2"></i>Please provide at
-      least one Responsibility
-    </div>
-
-    }
+    <button
+      class="nmc-btn-primary font-14 fw-semibold box-shadow-none py-2 px-5 h-auto ms-2 rounded-2 d-flex align-items-center"
+      (click)="next()"
+    >
+      Next
+    </button>
   </div>
-</form>
-
-<div class="d-flex justify-content-end align-items-center mt-5">
-  <button
-    type="button"
-    class="font-14 fw-semibold border-0 nmc-medium-grey nmc-bg-white"
-  >
-    Back
-  </button>
-
-  <button
-    type="submit"
-    class="nmc-btn-primary font-14 fw-semibold box-shadow-none py-2 px-5 h-auto ms-2 rounded-2 d-flex align-items-center"
-    (click)="next()"
-  >
-    Next
-  </button>
 </div>

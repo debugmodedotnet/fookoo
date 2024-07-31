@@ -78,7 +78,7 @@ export class JobComponent implements OnInit {
         if (job) {
           this.jobForm.patchValue(job);
           this.setArrayValues('Responsibilities', job.Responsibilities || []);
-          this.setArrayValues('Qualification', job.Qualification || []);
+          this.setArrayValues('Qualification', job.qualification || []);
         } else {
           console.error('Job not found');
         }

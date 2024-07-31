@@ -1,57 +1,100 @@
-<div class="spacer--default"></div>
+<div class="vh-100 py-5">
 
-<form [formGroup]="jobForm">
-  <div class="row form-group mt-3 mb-3 flex-column">
-    <div class="col-12 text-end">
-      <input
-        id="Remote"
-        formControlName="Remote"
-        type="checkbox"
-        class="form-check-input"
-      />
-      <label for="Remote" class="form-label font-20 nmc-medium-grey ms-2"
-        >Remote</label
-      >
-    </div>
-
-    <div class="col-12">
-      <div class="input__group">
+  <form [formGroup]="jobForm">
+    <div class="row form-group mt-3 mb-3 flex-column">
+      <div class="col-12 text-end">
         <input
-          id="Location"
-          type="text"
-          (keyup)="cleanMessage()"
-          formControlName="Location"
-          class="input__field"
-          placeholder="Enter your company name"
+          id="Remote"
+          formControlName="Remote"
+          type="checkbox"
+          class="form-check-input"
         />
-        <label for="Location" class="input__label"
-          >Enter Your Company's Location</label
+        <label for="Remote" class="form-label font-20 nmc-medium-grey ms-2"
+          >Remote</label
         >
       </div>
 
-      @if(isLocationInValid){
-      <div class="error-label text-danger font-18">
-        <i class="bi bi-exclamation-triangle-fill me-2"></i>Please provide a job
-        location
+      <div class="col-12">
+        <div class="input__group">
+          <input
+            id="Location"
+            type="text"
+            (keyup)="cleanLocationMessage()"
+            formControlName="Location"
+            class="input__field"
+            placeholder="Enter your company name"
+          />
+          <label for="Location" class="input__label"
+            >Enter Your Company's Location</label
+          >
+        </div>
+
+        @if(isLocationInValid){
+        <div class="error-label text-danger font-18">
+          <i class="bi bi-exclamation-triangle-fill me-2"></i>Please provide a
+          job location
+        </div>
+        }
       </div>
-      }
+
+      <div class="col-12 mt-5">
+        <div class="input__group">
+          <input
+            id="CompanyUrl"
+            type="text"
+            (keyup)="cleanURLMessage()"
+            formControlName="CompanyUrl"
+            class="input__field"
+            placeholder="Enter your company's URL"
+          />
+          <label for="CompanyUrl" class="input__label"
+            >Enter Your Company's URL</label
+          >
+        </div>
+
+        @if(isCompanyUrlInValid){
+        <div class="error-label text-danger font-18">
+          <i class="bi bi-exclamation-triangle-fill me-2"></i>Please provide a
+          valid URL
+        </div>
+        }
+      </div>
+
+      <div class="col-12 mt-5">
+        <div class="input__group">
+          <input
+            id="ImageUrl"
+            type="text"
+            (keyup)="cleanImageMessage()"
+            formControlName="ImageUrl"
+            class="input__field"
+            placeholder="Enter your company's Image URL"
+          />
+          <label for="ImageUrl" class="input__label"
+            >Enter Your Company's Logo URL</label
+          >
+        </div>
+
+        @if(isImageUrlInValid){
+        <div class="error-label text-danger font-18">
+          <i class="bi bi-exclamation-triangle-fill me-2"></i>Please provide a
+          valid Logo URL
+        </div>
+        }
+      </div>
     </div>
+  </form>
+
+  <div class="d-flex justify-content-end align-items-center mt-5">
+    <button class="font-14 fw-semibold border-0 nmc-medium-grey nmc-bg-white">
+      Back
+    </button>
+
+    <button
+      class="nmc-btn-primary font-14 fw-semibold box-shadow-none py-2 px-5 h-auto ms-2 rounded-2 d-flex align-items-center"
+      (click)="next()"
+    >
+      Next
+    </button>
   </div>
-</form>
-
-<div class="d-flex justify-content-end align-items-center mt-5">
-  <button
-    type="button"
-    class="font-14 fw-semibold border-0 nmc-medium-grey nmc-bg-white"
-  >
-    Back
-  </button>
-
-  <button
-    type="submit"
-    class="nmc-btn-primary font-14 fw-semibold box-shadow-none py-2 px-5 h-auto ms-2 rounded-2 d-flex align-items-center"
-    (click)="next()"
-  >
-    Next
-  </button>
 </div>

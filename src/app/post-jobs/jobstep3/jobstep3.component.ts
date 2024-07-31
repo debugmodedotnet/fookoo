@@ -13,11 +13,15 @@ export class Jobstep3Component {
   jobForm: FormGroup;
   data = model<any>();
   isLocationInValid = false;
+  isCompanyUrlInValid = false;
+  isImageUrlInValid = false;
 
   constructor(private fb: FormBuilder) {
     this.jobForm = this.fb.group({
       Location: ['', [Validators.required]],
       Remote: [false],
+      CompanyUrl: ['', [Validators.required, Validators.pattern('https?://.+')]],
+      ImageUrl: ['', [Validators.required, Validators.pattern('https?://.+')]],
     });
   }
 
@@ -38,11 +42,21 @@ export class Jobstep3Component {
     }
     else {
       this.isLocationInValid = true;
+      this.isCompanyUrlInValid = true;
+      this.isImageUrlInValid = true;
     }
   }
 
-  cleanMessage(): void {
+  cleanLocationMessage(): void {
     this.isLocationInValid = false;
+  }
+
+  cleanURLMessage(): void {
+    this.isCompanyUrlInValid = false;
+  }
+
+  cleanImageMessage(): void {
+    this.isImageUrlInValid = false;
   }
 
 }

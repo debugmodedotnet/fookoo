@@ -11,15 +11,19 @@ import { FormArray, FormBuilder, FormGroup, ReactiveFormsModule, Validators, Val
 export class Jobstep4Component {
 
   jobForm: FormGroup;
-  availableSkills: string[] = ['Angular', 'React', 'Python', 'System Design'];
   data = model<any>();
+
+  availableSkills: string[] = ['Angular', 'React', 'Python', 'System Design'];
+  tags: string[] = ['Angular', 'React', 'GenAI', 'JavaScript', 'TypeScript'];
+
   minSkillsError = false;
   maxSkillsError = false;
-
+  isTagInValid = false;
 
   constructor(private fb: FormBuilder) {
     this.jobForm = this.fb.group({
       SkillsRequired: this.fb.array([], [Validators.required, this.minMaxArrayValidator(1, 3)]),
+      Tag: ['', [Validators.required]],
     });
   }
 
@@ -36,28 +40,29 @@ export class Jobstep4Component {
         this.maxSkillsError = length > max;
         return this.minSkillsError || this.maxSkillsError ? { minMaxSkills: true } : null;
       }
-      return null; // No error if the array is empty
+      return null;
     };
   }
 
-
-    toggleSkill(skill: string): void {
-      const index = this.skillsRequired.controls.findIndex(x => x.value === skill);
-      if (index === -1) {
-        if (this.skillsRequired.length < 3) {
-          this.skillsRequired.push(this.fb.control(skill));
-          this.minSkillsError = false;
-          this.maxSkillsError = false;
-        } else {
-          this.maxSkillsError = true; // Show max skills error
-        }
-      } else {
-        this.skillsRequired.removeAt(index);
-        this.minSkillsError = this.skillsRequired.length < 1; // Check min skills error
+  toggleSkill(skill: string): void {
+    const index = this.skillsRequired.controls.findIndex(x => x.value === skill);
+    if (index === -1) {
+      if (this.skillsRequired.length < 3) {
+        this.skillsRequired.push(this.fb.control(skill));
+        this.minSkillsError = false;
+        this.maxSkillsError = false;
       }
-      this.logSelectedSkills();
+      else {
+        this.maxSkillsError = true;
+      }
     }
-  
+    else {
+      this.skillsRequired.removeAt(index);
+      this.minSkillsError = this.skillsRequired.length < 1;
+    }
+    this.logSelectedSkills();
+  }
+
 
   isSelected(skill: string): boolean {
     return this.skillsRequired.controls.some(x => x.value === skill);
@@ -70,24 +75,34 @@ export class Jobstep4Component {
 
   async next() {
     if (this.jobForm.valid) {
+      this.isTagInValid = false;
       if (this.skillsRequired.length < 1) {
         this.minSkillsError = true;
         this.maxSkillsError = false;
-      } else if (this.skillsRequired.length > 3) {
+      }
+      else if (this.skillsRequired.length > 3) {
         this.maxSkillsError = true;
-      } else {
+      }
+      else {
         this.minSkillsError = false;
         this.maxSkillsError = false;
         this.data.set({ nextStep: 5, jobId: this.data(), formData: this.jobForm.value });
       }
-    } else {
+    }
+
+    else {
       this.minSkillsError = true;
+      this.isTagInValid = true;
     }
   }
 
   cleanMessage(): void {
     this.minSkillsError = false;
     this.maxSkillsError = false;
+  }
+
+  cleanTagMessage(): void {
+    this.isTagInValid = false;
   }
 
 }

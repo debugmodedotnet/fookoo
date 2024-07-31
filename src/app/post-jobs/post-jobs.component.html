@@ -1,4 +1,4 @@
-<section class="vh-100">
+<section>
   <div class="container-boxed">
     @if (currentStep === 1) { @defer (when currentStep===1) {
     <app-job-step1 [data]="currentJobId" (dataChange)="stepChange($event)" />
@@ -16,6 +16,8 @@
     <app-job-step7 [data]="currentJobId" (dataChange)="stepChange($event)" />
     } } @if(currentStep === 8){ @defer (when currentStep===8) {
     <app-job-step8 [data]="currentJobId" (dataChange)="stepChange($event)" />
+    } }@if(currentStep === 9){ @defer (when currentStep===9) {
+    <app-job-step9 [data]="currentJobId" (dataChange)="stepChange($event)" />
     } }
   </div>
 </section>

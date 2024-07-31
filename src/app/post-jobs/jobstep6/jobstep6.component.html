@@ -6,7 +6,7 @@
       <div class="input__group mt-5">
         <input
           id="MinSalary"
-          type="text"
+          type="number"
           formControlName="MinSalary"
           class="input__field"
           placeholder="Enter minimum salary"
@@ -19,7 +19,7 @@
       <div class="input__group mt-5">
         <input
           id="MaxSalary"
-          type="text"
+          type="number"
           formControlName="MaxSalary"
           class="input__field"
           placeholder="Enter maximum salary"
@@ -39,10 +39,9 @@
   </button>
 
   <button
-    type="submit"
+    [disabled]="jobForm.invalid"
     class="nmc-btn-primary font-14 fw-semibold box-shadow-none py-2 px-5 h-auto ms-2 rounded-2 d-flex align-items-center"
-    (click)="next()"
-  >
+    (click)="next()">
     Next
   </button>
 </div>

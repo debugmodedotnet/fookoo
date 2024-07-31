@@ -625,7 +625,7 @@ inset-0 {
 }
 
 .nmc-underline-btn {
-    display: inline-block;   
+    display: inline-block;
     letter-spacing: 2px;
     text-decoration: none;
     position: relative;
@@ -867,4 +867,13 @@ inset-0 {
     .font-20 {
         font-size: 18px;
     }
+}
+
+
+.error-label {
+    border-radius: 5px;
+    padding: 5px 15px;
+    display: inline-block;
+    margin-top: 20px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
 }

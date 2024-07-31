@@ -1,4 +1,4 @@
-import { Component, inject, Input, model, OnInit } from '@angular/core';
+import { Component, inject, model, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import {
   FormBuilder,
@@ -16,26 +16,28 @@ import { IJobStep1 } from '../../modules/post-job';
   styleUrl: './jobstep2.component.scss',
 })
 export class Jobstep2Component implements OnInit {
+
   jobForm: FormGroup;
   positions: string[] = [];
+  qualifications: string[] = ['BCA', 'B.Tech', 'Diploma', 'BSc'];
   data = model<any>();
+
   isCompanyInValid = false;
   isPositionInValid = false;
+  isQualificationInValid = false;
+
   private firestore = inject(AngularFirestore);
+
   constructor(private fb: FormBuilder) {
     this.jobForm = this.fb.group({
       companyName: ['', Validators.required],
       position: ['', Validators.required],
+      qualification: ['', Validators.required],
     });
   }
 
   ngOnInit(): void {
     this.getPositions();
-    // this.jobForm.patchValue({
-    //   companyName: this.jobForm.get('companyName')?.value,
-    //   position: this.jobForm.get('position')?.value,
-    // });
-    console.log(this.data());
   }
 
   getPositions() {
@@ -50,27 +52,43 @@ export class Jobstep2Component implements OnInit {
 
   async next() {
     if (this.jobForm.valid) {
-      this.isPositionInValid = false;
-      this.isCompanyInValid = false;
-      this.data.set({
-        nextStep: 3,
-        jobId: this.data(),
-        formData: this.jobForm.value,
-      });
+      if (this.jobForm.controls['companyName'].value.trim().length > 2) {
+
+        this.isCompanyInValid = false;
+        this.isPositionInValid = false;
+        this.isQualificationInValid = false;
+
+        this.data.set({
+          nextStep: 3,
+          jobId: this.data(),
+          formData: this.jobForm.value,
+        });
+      } else {
+        this.isCompanyInValid = true
+      }
     } else {
       if (!this.jobForm.get('companyName')?.valid) {
         this.isCompanyInValid = true;
-      } else if (!this.jobForm.get('position')?.valid) {
+      }
+      else if (!this.jobForm.get('position')?.valid) {
         this.isPositionInValid = true;
       }
+      else if (!this.jobForm.get('qualification')?.valid) {
+        this.isQualificationInValid = true;
+      }
     }
-  }
-
-  cleanPositionMessage(): void {
-      this.isPositionInValid = false;
   }
 
   cleanNameMessage(): void {
     this.isCompanyInValid = false;
   }
+
+  cleanPositionMessage(): void {
+    this.isPositionInValid = false;
+  }
+
+  cleanQualificationMessage(): void {
+    this.isQualificationInValid = false;
+  }
+
 }

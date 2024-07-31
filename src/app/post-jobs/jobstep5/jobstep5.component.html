@@ -2,12 +2,12 @@
 
 <form [formGroup]="jobForm">
   <div class="form-group">
-    <div class="chip-container me-2 mb-2 d-flex align-items-center">
+    <div class="chip-container mb-2 row g-2">
       @for(control of responsibilities.controls; track control; let i =
       $index;){
       <ng-container>
-        <div class="chip rounded-5 me-3 d-flex align-items-center">
-          {{ control.value }}
+        <div class="col-4 chip rounded-5 d-flex align-items-center">
+          <p class="m-0 truncate">{{ control.value }}</p>
 
           <div class="d-flex align-items-center ms-5">
             <button
@@ -38,6 +38,7 @@
             #newResponsibility
             type="text"
             class="input__field"
+            (keyup)="cleanMessage()"
             [value]="
               editingIndex === -1
                 ? ''
@@ -59,6 +60,14 @@
         </button>
       </div>
     </div>
+
+    @if(isResponsibilitiesInValid){
+    <div class="error-label text-danger font-18">
+      <i class="bi bi-exclamation-triangle-fill me-2"></i>Please provide at
+      least one Responsibility
+    </div>
+
+    }
   </div>
 </form>
 

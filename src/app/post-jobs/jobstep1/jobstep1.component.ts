@@ -15,6 +15,7 @@ import { UserService } from '../../services/user.service';
   styleUrl: './jobstep1.component.scss',
 })
 export class Jobstep1Component implements OnInit {
+  
   jobForm: FormGroup;
   data = model<any>();
   isEmailInValid = false;
@@ -51,7 +52,7 @@ export class Jobstep1Component implements OnInit {
     }
   }
 
-  cleanMessage():void{
+  cleanMessage(): void {
     console.log('cleanMessage');
     this.isEmailInValid = false;
     console.log(this.isEmailInValid);

@@ -9,12 +9,20 @@
       class="input__field"
       placeholder="Enter job's description"
       rows="4"
+      (keyup)="cleanMessage()"
     ></textarea>
 
     <label for="JobDescription" class="input__label"
       >Enter Job's Description</label
     >
   </div>
+
+  @if(isDescriptionInValid){
+  <div class="error-label text-danger font-18">
+    <i class="bi bi-exclamation-triangle-fill me-2"></i>Please provide a job
+    description
+  </div>
+  }
 </form>
 
 <div class="d-flex justify-content-end align-items-center mt-5">

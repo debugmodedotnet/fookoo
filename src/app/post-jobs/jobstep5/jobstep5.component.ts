@@ -13,6 +13,7 @@ export class Jobstep5Component {
   jobForm: FormGroup;
   editingIndex = -1;
   data = model<any>();
+  isResponsibilitiesInValid = false;
 
   constructor(private fb: FormBuilder) {
     this.jobForm = this.fb.group({
@@ -60,6 +61,21 @@ export class Jobstep5Component {
   }
 
   async next() {
-    this.data.set({ nextStep: 6, jobId: this.data(), formData: this.jobForm.value });
+    if (this.jobForm.valid) {
+      this.isResponsibilitiesInValid = false;
+      
+      this.data.set({
+        nextStep: 6,
+        jobId: this.data(),
+        formData: this.jobForm.value
+      });
+    }
+    else {
+      this.isResponsibilitiesInValid = true;
+    }
+  }
+
+  cleanMessage(): void {
+    this.isResponsibilitiesInValid = false;
   }
 }

@@ -19,6 +19,8 @@ export class Jobstep2Component implements OnInit {
   jobForm: FormGroup;
   positions: string[] = [];
   data = model<any>();
+  isCompanyInValid = false;
+  isPositionInValid = false;
   private firestore = inject(AngularFirestore);
   constructor(private fb: FormBuilder) {
     this.jobForm = this.fb.group({
@@ -47,21 +49,28 @@ export class Jobstep2Component implements OnInit {
   }
 
   async next() {
-    this.data.set({ nextStep: 3, jobId: this.data(), formData: this.jobForm.value });
+    if (this.jobForm.valid) {
+      this.isPositionInValid = false;
+      this.isCompanyInValid = false;
+      this.data.set({
+        nextStep: 3,
+        jobId: this.data(),
+        formData: this.jobForm.value,
+      });
+    } else {
+      if (!this.jobForm.get('companyName')?.valid) {
+        this.isCompanyInValid = true;
+      } else if (!this.jobForm.get('position')?.valid) {
+        this.isPositionInValid = true;
+      }
+    }
   }
 
-  // async saveData() {
-  //   const formData = this.jobForm.value;
-  //   const docId = this.data();
-  //   await this.firestore
-  //     .collection('jobForms')
-  //     .doc(docId)
-  //     .set(formData, { merge: true })
-  //     .then(() => {
-  //       console.log('Data added successfully with ID:', docId);
-  //     })
-  //     .catch((error) => {
-  //       console.error('Error adding data: ', error);
-  //     });
-  // }
+  cleanPositionMessage(): void {
+      this.isPositionInValid = false;
+  }
+
+  cleanNameMessage(): void {
+    this.isCompanyInValid = false;
+  }
 }

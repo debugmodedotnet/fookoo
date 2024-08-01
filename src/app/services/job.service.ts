@@ -30,15 +30,25 @@ export class JobService {
     );
   }
 
-  async addJob(job: Job): Promise<string> {
-    const jobRef = await this.firestore.collection('jobForms').add(job);
-    return jobRef.id;
-  }
-
   getJobById(jobId: string): Observable<Job | undefined> {
     return this.firestore.collection('jobForms').doc<Job>(jobId).valueChanges().pipe(
       map(data => data ? { id: jobId, ...data } : undefined)
     );
+  }
+
+  getLimitedJobs(limit: number): Observable<Job[]> {
+    return this.firestore.collection<Job>('jobForms', ref => ref.limit(limit)).snapshotChanges().pipe(
+      map(actions => actions.map(a => {
+        const data = a.payload.doc.data() as Job;
+        const id = a.payload.doc.id;
+        return { id, ...data };
+      }))
+    );
+  }
+
+  async addJob(job: Job): Promise<string> {
+    const jobRef = await this.firestore.collection('jobForms').add(job);
+    return jobRef.id;
   }
 
   updateJob(jobId: string, job: Partial<Job>): Promise<void> {

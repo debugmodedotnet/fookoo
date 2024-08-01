@@ -23,12 +23,12 @@
     <div class="mentor-card-wrapper d-flex align-items-center py-5">
       @for(instructor of instructors; track instructor; let i = $index;){
       <div
-        class="mentor-card position-relative overflow-hidden rounded-4 py-4 d-grid align-items-center"
+        class="mentor-card position-relative overflow-hidden rounded-4 d-grid align-items-center"
         [ngClass]="getColorClass(i)"
         [ngStyle]="{ 'z-index': 4 - i }"
       >
         <div
-          class="inner text-center d-flex align-items-center justify-content-center flex-column p-3"
+          class="inner text-center d-flex align-items-center justify-content-center flex-column p-4"
         >
           <figure class="mb-4 m-0 p-2 nmc-bg-white rounded-3">
             <img
@@ -42,31 +42,37 @@
             />
           </figure>
 
-          <h2 class="font-28 nmc-white font-family-poppins">
-            {{ instructor.Name }}
-          </h2>
+          <div class="py-3 text-center">
+            <h2 class="font-28 nmc-white font-family-poppins">
+              {{ instructor.Name }}
+            </h2>
 
-          <h4 class="font-22 fw-light nmc-white mt-2">
-            {{ instructor.Position }}
-          </h4>
+            <h4 class="font-22 fw-light nmc-white mt-2">
+              {{ instructor.Position }}
+            </h4>
 
-          <!-- <h5 class="font-20 fw-light nmc-white mb-0 mt-4 py-4 w-100 truncate">
-            {{ instructor.Bio }}
-          </h5> -->
+            <!-- <h5
+              class="font-20 fw-light nmc-white mb-0 mt-4 py-4 w-100 truncate"
+            >
+              {{ instructor.Bio }}
+            </h5> -->
 
-          <div class="social w-100 py-4 mt-4">
-            <a [href]="instructor.Email"><i class="bi bi-envelope-fill"></i></a>
-            <a [href]="instructor.Twitter"><i class="bi bi-twitter-x"></i></a>
-            <a [href]="instructor.Github"><i class="bi bi-github"></i></a>
-            <a [href]="instructor.LinkedIn"><i class="bi bi-linkedin"></i></a>
+            <div class="social w-100 py-4 mt-4">
+              <a [href]="instructor.Email"
+                ><i class="bi bi-envelope-fill"></i
+              ></a>
+              <a [href]="instructor.Twitter"><i class="bi bi-twitter-x"></i></a>
+              <a [href]="instructor.Github"><i class="bi bi-github"></i></a>
+              <a [href]="instructor.LinkedIn"><i class="bi bi-linkedin"></i></a>
+            </div>
+
+            <button
+              class="nmc-btn-primary nmc-bg-white nmc-dark-grey m-auto" 
+              [routerLink]="['/mentor', instructor.id]"
+            >
+              Learn More
+            </button>
           </div>
-
-          <button
-            class="nmc-btn-primary nmc-bg-white nmc-dark-grey"
-            [routerLink]="['/mentor', instructor.id]"
-          >
-            Learn More
-          </button>
         </div>
         <div class="hidden w-60 max-w-md"></div>
       </div>

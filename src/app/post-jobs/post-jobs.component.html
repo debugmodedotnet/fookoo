@@ -3,11 +3,11 @@
     @if (currentStep === 1) { @defer (when currentStep===1) {
     <app-job-step1 [data]="currentJobId" (dataChange)="stepChange($event)" />
     } } @if(currentStep === 2){ @defer (when currentStep===2) {
-    <app-job-step2 [data]="currentJobId" (dataChange)="stepChange($event)" />
+    <app-job-step2 [data]="currentJobId" (dataChange)="stepChange($event)" [backdata]="selectedJob" (backdataChange)="backChange($event)"  />
     } } @if(currentStep === 3){ @defer (when currentStep===3) {
-    <app-job-step3 [data]="currentJobId" (dataChange)="stepChange($event)" />
+    <app-job-step3 [data]="currentJobId" (dataChange)="stepChange($event)" [backdata]="selectedJob" (backdataChange)="backChange($event)" />
     } } @if(currentStep === 4){ @defer (when currentStep===4) {
-    <app-job-step4 [data]="currentJobId" (dataChange)="stepChange($event)" />
+    <app-job-step4 [data]="currentJobId" (dataChange)="stepChange($event)" [backdata]="selectedJob" (backdataChange)="backChange($event)" />
     } } @if(currentStep === 5){ @defer (when currentStep===5) {
     <app-job-step5 [data]="currentJobId" (dataChange)="stepChange($event)" />
     } } @if(currentStep === 6){ @defer (when currentStep===6) {

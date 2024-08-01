@@ -1,4 +1,4 @@
-import { Component, inject, model, OnInit } from '@angular/core';
+import { Component, effect, inject, Input, input, model, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import {
   FormBuilder,
@@ -16,12 +16,11 @@ import { IJobStep1 } from '../../modules/post-job';
   styleUrl: './jobstep2.component.scss',
 })
 export class Jobstep2Component implements OnInit {
-
   jobForm: FormGroup;
   positions: string[] = [];
   qualifications: string[] = ['BCA', 'B.Tech', 'Diploma', 'BSc'];
   data = model<any>();
-
+  backdata = model<any>();
   isCompanyInValid = false;
   isPositionInValid = false;
   isQualificationInValid = false;
@@ -34,26 +33,19 @@ export class Jobstep2Component implements OnInit {
       position: ['', Validators.required],
       qualification: ['', Validators.required],
     });
+
+    effect(() => {
+      this.jobForm.patchValue(this.backdata());
+    });
   }
 
   ngOnInit(): void {
     this.getPositions();
   }
 
-  getPositions() {
-    this.firestore
-      .collection('post-job')
-      .doc<IJobStep1>('job-step-1')
-      .valueChanges()
-      .subscribe((doc: IJobStep1 | undefined) => {
-        this.positions = doc?.position ?? [];
-      });
-  }
-
-  async next() {
+  next(): void {
     if (this.jobForm.valid) {
       if (this.jobForm.controls['companyName'].value.trim().length > 2) {
-
         this.isCompanyInValid = false;
         this.isPositionInValid = false;
         this.isQualificationInValid = false;
@@ -64,19 +56,21 @@ export class Jobstep2Component implements OnInit {
           formData: this.jobForm.value,
         });
       } else {
-        this.isCompanyInValid = true
+        this.isCompanyInValid = true;
       }
     } else {
       if (!this.jobForm.get('companyName')?.valid) {
         this.isCompanyInValid = true;
-      }
-      else if (!this.jobForm.get('position')?.valid) {
+      } else if (!this.jobForm.get('position')?.valid) {
         this.isPositionInValid = true;
-      }
-      else if (!this.jobForm.get('qualification')?.valid) {
+      } else if (!this.jobForm.get('qualification')?.valid) {
         this.isQualificationInValid = true;
       }
     }
+  }
+
+  back(): void {
+    this.backdata.set({ previousStep: 1, jobId: this.data() });
   }
 
   cleanNameMessage(): void {
@@ -91,4 +85,13 @@ export class Jobstep2Component implements OnInit {
     this.isQualificationInValid = false;
   }
 
+  getPositions():void {
+    this.firestore
+      .collection('post-job')
+      .doc<IJobStep1>('job-step-1')
+      .valueChanges()
+      .subscribe((doc: IJobStep1 | undefined) => {
+        this.positions = doc?.position ?? [];
+      });
+  }
 }

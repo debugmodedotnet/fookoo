@@ -11,33 +11,45 @@ import { Jobstep7Component } from './jobstep7/jobstep7.component';
 import { Jobstep8Component } from './jobstep8/jobstep8.component';
 import { Jobstep9Component } from './jobstep9/jobstep9.component';
 
+import { UserService } from '../services/user.service';
+import { lastValueFrom } from 'rxjs';
+
 @Component({
   selector: 'app-post-jobs',
   standalone: true,
-  imports: [Jobstep1Component, Jobstep2Component, Jobstep3Component, Jobstep4Component, Jobstep5Component, Jobstep6Component, Jobstep7Component, Jobstep8Component, Jobstep9Component],
+  imports: [
+    Jobstep1Component,
+    Jobstep2Component,
+    Jobstep3Component,
+    Jobstep4Component,
+    Jobstep5Component,
+    Jobstep6Component,
+    Jobstep7Component,
+    Jobstep8Component,
+    Jobstep9Component,
+  ],
   templateUrl: './post-jobs.component.html',
   styleUrl: './post-jobs.component.scss',
 })
 export class PostJobsComponent {
-
   isUserLoggedIn = false;
   currentJobId?: string;
-  currentStep = 1;
+  currentStep = 2;
   dataToSave: any;
+  selectedJob: any;
 
   private firestore = inject(AngularFirestore);
+  private userService = inject(UserService);
 
   stepChange(data: any) {
     this.currentStep = data.nextStep;
     this.dataToSave = data.formData;
 
-    if (this.currentStep === 2) {
+    if (this.currentStep === 3) {
       this.saveInitialData();
     } else {
       this.saveData();
     }
-
-    console.log(this.currentJobId);
   }
 
   async saveData() {
@@ -57,19 +69,49 @@ export class PostJobsComponent {
       });
   }
 
-  saveInitialData() {
-    const formData = this.dataToSave;
-    const collectionRef = this.firestore.collection('jobForms');
-    const docRef = collectionRef.doc();
-    formData.id = docRef.ref.id;
-    this.currentJobId = formData.id;
-    docRef
-      .set(formData)
-      .then(() => {
-        console.log('Data saved successfully with ID:', formData.id);
-      })
-      .catch((error) => {
-        console.error('Error Posting Job data: ', error);
-      });
+   saveInitialData() {
+   this.userService.getCurrentUser().subscribe((user:any)=>{
+     const formData = this.dataToSave;
+     const collectionRef = this.firestore.collection('jobForms');
+     const docRef = collectionRef.doc();
+     formData.id = docRef.ref.id;
+     formData.email = user.email;
+     this.currentJobId = formData.id;
+     docRef
+       .set(formData)
+       .then(() => {
+         console.log('Data saved successfully with ID:', formData.id);
+       })
+       .catch((error) => {
+         console.error('Error Posting Job data: ', error);
+       });
+   })
+    
+  }
+
+  backChange(data: any) {
+    this.currentStep = data.previousStep;
+    this.fetchJobDocument();
+  }
+
+  fetchJobDocument(): void {
+    this.firestore
+      .collection('jobForms')
+      .doc(this.currentJobId)
+      .get()
+      .subscribe(
+        (doc) => {
+          if (doc.exists) {
+            console.log('Job document:', doc.data());
+            // Populate the form with the fetched data
+            this.selectedJob = doc.data();
+          } else {
+            console.error('No such document!');
+          }
+        },
+        (error) => {
+          console.error('Error fetching job document:', error);
+        }
+      );
   }
 }

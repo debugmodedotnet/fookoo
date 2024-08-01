@@ -1,4 +1,4 @@
-import { Component, model } from '@angular/core';
+import { Component, Input, model, OnChanges, SimpleChanges } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 
 @Component({
@@ -8,10 +8,11 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
   templateUrl: './jobstep3.component.html',
   styleUrl: './jobstep3.component.scss',
 })
-export class Jobstep3Component {
-
+export class Jobstep3Component implements OnChanges {
   jobForm: FormGroup;
   data = model<any>();
+  backdata = model<any>();
+  @Input() savedJob: any;
   isLocationInValid = false;
   isCompanyUrlInValid = false;
   isImageUrlInValid = false;
@@ -20,9 +21,17 @@ export class Jobstep3Component {
     this.jobForm = this.fb.group({
       Location: ['', [Validators.required]],
       Remote: [false],
-      CompanyUrl: ['', [Validators.required, Validators.pattern('https?://.+')]],
+      CompanyUrl: [
+        '',
+        [Validators.required, Validators.pattern('https?://.+')],
+      ],
       ImageUrl: ['', [Validators.required, Validators.pattern('https?://.+')]],
     });
+  }
+
+  ngOnChanges(changes:SimpleChanges): void {
+    console.log(this.savedJob);
+    this.jobForm.patchValue(this.savedJob);
   }
 
   async next() {
@@ -35,12 +44,10 @@ export class Jobstep3Component {
           jobId: this.data(),
           formData: this.jobForm.value,
         });
+      } else {
+        this.isLocationInValid = true;
       }
-      else {
-        this.isLocationInValid = true
-      }
-    }
-    else {
+    } else {
       this.isLocationInValid = true;
       this.isCompanyUrlInValid = true;
       this.isImageUrlInValid = true;
@@ -59,4 +66,7 @@ export class Jobstep3Component {
     this.isImageUrlInValid = false;
   }
 
+  back(): void {
+    this.backdata.set({ previousStep: 2, jobId: this.data() });
+  }
 }

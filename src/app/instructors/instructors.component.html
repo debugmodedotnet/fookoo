@@ -28,9 +28,9 @@
         [ngStyle]="{ 'z-index': 4 - i }"
       >
         <div
-          class="inner text-center d-flex align-items-center justify-content-center flex-column p-4"
+          class="inner text-center d-flex align-items-center justify-content-center flex-column pb-4"
         >
-          <figure class="mb-4 m-0 p-2 nmc-bg-white rounded-3">
+          <figure class="mb-4 m-0 nmc-bg-white">
             <img
               [src]="
                 instructor.InstructorImg
@@ -38,7 +38,7 @@
                   : defaultImage
               "
               [alt]="instructor.Name"
-              class="w-100 h-100 object-fit-cover rounded-3"
+              class="w-100 h-100 object-fit-cover"
             />
           </figure>
 
@@ -47,7 +47,7 @@
               {{ instructor.Name }}
             </h2>
 
-            <h4 class="font-22 fw-light nmc-white mt-2">
+            <h4 class="font-22 fw-light nmc-white pt-2 m-0">
               {{ instructor.Position }}
             </h4>
 
@@ -57,7 +57,7 @@
               {{ instructor.Bio }}
             </h5> -->
 
-            <div class="social w-100 py-4 mt-4">
+            <div class="social w-100 py-4">
               <a [href]="instructor.Email"
                 ><i class="bi bi-envelope-fill"></i
               ></a>
@@ -67,7 +67,7 @@
             </div>
 
             <button
-              class="nmc-btn-primary nmc-bg-white nmc-dark-grey m-auto" 
+              class="nmc-btn-primary nmc-bg-white nmc-dark-grey m-auto"
               [routerLink]="['/mentor', instructor.id]"
             >
               Learn More

@@ -1,5 +1,9 @@
 @use "../styles/variables" as *;
 
+.nmc-btn-primary {
+    font-size: 1.25rem;
+}
+
 .sticky-wrapper {
     li {
         &:nth-child(even)>a {

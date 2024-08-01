@@ -22,7 +22,7 @@ export class JobsSectionComponent implements OnInit {
   constructor(private jobService: JobService) { }
 
   ngOnInit() {
-    this.jobs$ = this.jobService.getJobs();
+    this.jobs$ = this.jobService.getLimitedJobs(4);
   }
 
   getColorClass(index: number): string {

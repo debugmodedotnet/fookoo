@@ -14,12 +14,49 @@
         Post a job
       </button>
     </div>
+
+    <div class="filters my-4 row gap-1">
+      <div class="form-group col-3 d-flex align-items-center">
+        <i class="bi bi-funnel-fill me-2 nmc-medium-grey"></i>
+        <input
+          type="text"
+          id="companyFilter"
+          [(ngModel)]="companyFilter"
+          (input)="applyFilters()"
+          placeholder="Search Company"
+          class="form-control"
+        />
+      </div>
+
+      <div class="form-group col-3 d-flex align-items-center">
+        <i class="bi bi-funnel-fill me-2 nmc-medium-grey"></i>
+        <input
+          type="text"
+          id="positionFilter"
+          [(ngModel)]="positionFilter"
+          (input)="applyFilters()"
+          placeholder="Search Position"
+          class="form-control"
+        />
+      </div>
+
+      <div class="form-group col-3 d-flex align-items-center">
+        <input
+          type="checkbox"
+          id="remoteFilter"
+          [(ngModel)]="remoteFilter"
+          (change)="applyFilters()"
+        />
+        <label for="remoteFilter" class="ms-1">Remote</label>
+      </div>
+    </div>
   </div>
 
   <ul
     class="sticky-wrapper d-flex align-items-center justify-content-evenly flex-wrap py-4 gap-4 overflow-hidden"
   >
-    @for(job of jobs$ | async ; track job; let i = $index){
+    @for(job of filteredJobs ; track job; let i = $index){ @if(
+    job.companyName){
     <li class="mt-4">
       <a class="job-link" [routerLink]="['/jobs', job.id]">
         <div class="pin rounded-circle m-auto"></div>
@@ -46,6 +83,6 @@
         </div>
       </a>
     </li>
-    }
+    } }
   </ul>
 </section>

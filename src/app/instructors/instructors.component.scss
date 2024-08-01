@@ -11,7 +11,6 @@
 
 .mentor-card {
     width: 320px;
-    height: 445px;
     box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
     transition: 0.4s ease-out;
 
@@ -27,9 +26,9 @@
     }
 
     figure {
-        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-        height: 100px;
-        width: 100px;
+        //box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+        height: 250px;
+        width: 100%;
     }
 
     h5 {
@@ -37,7 +36,7 @@
     }
 
     .social {
-        border-top: 1px solid #fff;
+        //border-top: 1px solid #fff;
 
         a {
             color: $nmc-white;

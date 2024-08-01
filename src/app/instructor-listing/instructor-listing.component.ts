@@ -13,9 +13,10 @@ import { CommonModule, NgFor, NgIf } from '@angular/common';
   styleUrl: './instructor-listing.component.scss'
 })
 export class InstructorListingComponent implements OnInit {
-  instructors$!: Observable<IInstructor[]>; // Using definite assignment assertion
 
-  constructor(private firestore: AngularFirestore) {}
+  instructors$!: Observable<IInstructor[]>;
+
+  constructor(private firestore: AngularFirestore) { }
 
   ngOnInit(): void {
     this.instructors$ = this.firestore.collection<IInstructor>('instructor').valueChanges();

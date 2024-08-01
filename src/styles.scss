@@ -676,11 +676,19 @@ inset-0 {
 /*-------------------------------------------------------------------------
 # Navigation
 -------------------------------------------------------------------------*/
+.nav-item .nav-link {
+    border: 1px solid transparent;
+    border-radius: 50px;
+    transition: all ease-in-out;
+}
+
 .navbar-nav .nav-link.active,
 .navbar-nav .nav-link.show,
 .nav-link:focus,
 .nav-link:hover {
     color: $nmc-primary !important;
+    border-color: $nmc-grey !important;
+    box-shadow: 0 0 #0000, 0 0 #0000, 0 0 #0000, 0 0 #0000, 0px 0px 0px 3px rgba(220, 95, 0, .1);
 }
 
 .dropdown-toggle::after {

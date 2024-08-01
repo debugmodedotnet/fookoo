@@ -106,20 +106,16 @@
             -moz-transition: -moz-transform .15s linear;
             -o-transition: -o-transform .15s linear;
 
-            // &:hover,
-            // &:focus {
-            //     box-shadow: 10px 10px 7px rgba(0, 0, 0, .7);
-            //     -webkit-box-shadow: 10px 10px 7px rgba(0, 0, 0, .7);
-            //     -moz-box-shadow: 10px 10px 7px rgba(0, 0, 0, .7);
-            //     -o-box-shadow: 10px 10px 7px rgba(0, 0, 0, .7);
-            //     transform: scale(1.25);
-            //     -webkit-transform: scale(1.25);
-            //     -moz-transform: scale(1.25);
-            //     -o-transform: scale(1.25);
+            &:hover,
+            &:focus {
+                transform: scale(1.1);
+                -webkit-transform: scale(1.1);
+                -moz-transform: scale(1.1);
+                -o-transform: scale(1.1);
 
-            //     position: relative;
-            //     z-index: 5;
-            // }
+                position: relative;
+                z-index: 5;
+            }
         }
 
         h5 {

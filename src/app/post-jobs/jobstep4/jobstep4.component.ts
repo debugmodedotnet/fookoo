@@ -6,12 +6,12 @@ import { FormArray, FormBuilder, FormGroup, ReactiveFormsModule, Validators, Val
   standalone: true,
   imports: [ReactiveFormsModule],
   templateUrl: './jobstep4.component.html',
-  styleUrl: './jobstep4.component.scss'
+  styleUrl: './jobstep4.component.scss',
 })
 export class Jobstep4Component {
-
   jobForm: FormGroup;
   data = model<any>();
+  backdata = model<any>();
 
   availableSkills: string[] = ['Angular', 'React', 'Python', 'System Design'];
   tags: string[] = ['Angular', 'React', 'GenAI', 'JavaScript', 'TypeScript'];
@@ -22,7 +22,10 @@ export class Jobstep4Component {
 
   constructor(private fb: FormBuilder) {
     this.jobForm = this.fb.group({
-      SkillsRequired: this.fb.array([], [Validators.required, this.minMaxArrayValidator(1, 3)]),
+      SkillsRequired: this.fb.array(
+        [],
+        [Validators.required, this.minMaxArrayValidator(1, 3)]
+      ),
       Tag: ['', [Validators.required]],
     });
   }
@@ -38,59 +41,62 @@ export class Jobstep4Component {
       if (length > 0) {
         this.minSkillsError = length < min;
         this.maxSkillsError = length > max;
-        return this.minSkillsError || this.maxSkillsError ? { minMaxSkills: true } : null;
+        return this.minSkillsError || this.maxSkillsError
+          ? { minMaxSkills: true }
+          : null;
       }
       return null;
     };
   }
 
   toggleSkill(skill: string): void {
-    const index = this.skillsRequired.controls.findIndex(x => x.value === skill);
+    const index = this.skillsRequired.controls.findIndex(
+      (x) => x.value === skill
+    );
     if (index === -1) {
       if (this.skillsRequired.length < 3) {
         this.skillsRequired.push(this.fb.control(skill));
         this.minSkillsError = false;
         this.maxSkillsError = false;
-      }
-      else {
+      } else {
         this.maxSkillsError = true;
       }
-    }
-    else {
+    } else {
       this.skillsRequired.removeAt(index);
       this.minSkillsError = this.skillsRequired.length < 1;
     }
     this.logSelectedSkills();
   }
 
-
   isSelected(skill: string): boolean {
-    return this.skillsRequired.controls.some(x => x.value === skill);
+    return this.skillsRequired.controls.some((x) => x.value === skill);
   }
 
   logSelectedSkills(): void {
-    const selectedSkills = this.skillsRequired.controls.map(control => control.value);
+    const selectedSkills = this.skillsRequired.controls.map(
+      (control) => control.value
+    );
     console.log('Selected Skills:', selectedSkills);
   }
 
-  async next() {
+   next() :void{
     if (this.jobForm.valid) {
       this.isTagInValid = false;
       if (this.skillsRequired.length < 1) {
         this.minSkillsError = true;
         this.maxSkillsError = false;
-      }
-      else if (this.skillsRequired.length > 3) {
+      } else if (this.skillsRequired.length > 3) {
         this.maxSkillsError = true;
-      }
-      else {
+      } else {
         this.minSkillsError = false;
         this.maxSkillsError = false;
-        this.data.set({ nextStep: 5, jobId: this.data(), formData: this.jobForm.value });
+        this.data.set({
+          nextStep: 5,
+          jobId: this.data(),
+          formData: this.jobForm.value,
+        });
       }
-    }
-
-    else {
+    } else {
       this.minSkillsError = true;
       this.isTagInValid = true;
     }
@@ -105,4 +111,7 @@ export class Jobstep4Component {
     this.isTagInValid = false;
   }
 
+  back(): void {
+    this.backdata.set({ previousStep: 3, jobId: this.data() });
+  }
 }

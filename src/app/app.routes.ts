@@ -24,9 +24,10 @@ export const routes: Routes = [
   { path: 'applied-job', loadComponent: () => import('./profile/applied-job/applied-job.component').then(m => m.AppliedJobComponent) },
   { path: 'job', loadComponent: () => import('./profile/job/job.component').then(m => m.JobComponent) },
   // { path: 'jobs', loadComponent: () => import('./jobs/jobs.component').then(m => m.JobsComponent) },
-  { path: 'jobs', loadComponent: () => import('./jobs/all-jobs/all-jobs.component').then(m => m.AllJobsComponent) },
+  //{ path: 'jobs', loadComponent: () => import('./jobs/all-jobs/all-jobs.component').then(m => m.AllJobsComponent) },
   { path: 'jobs/:id', loadComponent: () => import('./jobs/jobs.component').then(m => m.JobsComponent) },
   { path: 'post-job', loadComponent: () => import('./post-jobs/post-jobs.component').then(m => m.PostJobsComponent) },
+  { path: 'jobs', loadComponent: () => import('./job-listing/job-listing.component').then(m => m.JobListingComponent) },
 
   { path: 'youtube-listing', loadComponent: () => import('./youtube-listing/youtube-listing.component').then(m => m.YoutubeListingComponent) },
 

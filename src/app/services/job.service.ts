@@ -11,7 +11,7 @@ export class JobService {
   constructor(private firestore: AngularFirestore) { }
 
   getJobs(): Observable<Job[]> {
-    return this.firestore.collection<Job>('jobs').snapshotChanges().pipe(
+    return this.firestore.collection<Job>('jobForms').snapshotChanges().pipe(
       map(actions => actions.map(a => {
         const data = a.payload.doc.data() as Job;
         const id = a.payload.doc.id;
@@ -21,7 +21,7 @@ export class JobService {
   }
 
   getJobsByUserId(userId: string): Observable<Job[]> {
-    return this.firestore.collection<Job>('jobs', ref => ref.where('userId', '==', userId)).snapshotChanges().pipe(
+    return this.firestore.collection<Job>('jobForms', ref => ref.where('userId', '==', userId)).snapshotChanges().pipe(
       map(actions => actions.map(a => {
         const data = a.payload.doc.data() as Job;
         const id = a.payload.doc.id;
@@ -31,7 +31,7 @@ export class JobService {
   }
 
   async addJob(job: Job): Promise<string> {
-    const jobRef = await this.firestore.collection('jobs').add(job);
+    const jobRef = await this.firestore.collection('jobForms').add(job);
     return jobRef.id;
   }
 
@@ -42,24 +42,24 @@ export class JobService {
   }
 
   updateJob(jobId: string, job: Partial<Job>): Promise<void> {
-    return this.firestore.collection('jobs').doc(jobId).update(job);
+    return this.firestore.collection('jobForms').doc(jobId).update(job);
   }
 
   deleteJob(jobId: string): Promise<void> {
-    return this.firestore.collection('jobs').doc(jobId).delete();
+    return this.firestore.collection('jobForms').doc(jobId).delete();
   }
 
   async saveStepData(jobId: string, step: number, data: Partial<Job>): Promise<void> {
-    await this.firestore.collection('jobs').doc(jobId).collection('steps').doc(`step${step}`).set(data);
+    await this.firestore.collection('jobForms').doc(jobId).collection('steps').doc(`step${step}`).set(data);
   }
 
   getStepData(jobId: string, step: number): Observable<Partial<Job> | undefined> {
-    return this.firestore.collection('jobs').doc(jobId).collection('steps').doc(`step${step}`).valueChanges().pipe(
+    return this.firestore.collection('jobForms').doc(jobId).collection('steps').doc(`step${step}`).valueChanges().pipe(
       map(data => data as Partial<Job> | undefined)
     );
   }
 
   async updateStepData(jobId: string, step: number, data: Partial<Job>): Promise<void> {
-    await this.firestore.collection('jobs').doc(jobId).collection('steps').doc(`step${step}`).update(data);
+    await this.firestore.collection('jobForms').doc(jobId).collection('steps').doc(`step${step}`).update(data);
   }
 }

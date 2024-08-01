@@ -1,5 +1,5 @@
 <header class="sticky-header nmc-bg-white fixed-top">
-  @if(!isQuizPageActive){
+  <!-- @if(!isQuizPageActive){
   <div class="nmc-bg-dark-grey">
     <div class="container-boxed text-center nmc-white py-3">
       <div
@@ -18,10 +18,10 @@
       </div>
     </div>
   </div>
-  }
+  } -->
 
   <div
-    class="d-flex align-items-center justify-content-between container-boxed py-3"
+    class="d-flex align-items-center justify-content-between container-boxed py-2"
   >
     <!-- Logo -->
     <a href="#">
@@ -51,51 +51,71 @@
           class="collapse navbar-collapse justify-content-end align-items-center"
           id="navbar"
         >
-          <button
+          <!-- <button
             class="nmc-btn-primary me-4 px-3 fw-normal"
             type="submit"
             routerLink="/post-job"
           >
             Post a job
-          </button>
+          </button> -->
 
           <ul class="navbar-nav mb-lg-0 gap-3 align-items-center">
             <li class="nav-item d-lg-none d-block">
               <a
-                class="nav-link font-16 nmc-medium-grey font-uppercase"
+                class="nav-link font-16 nmc-dark-grey font-uppercase px-3 py-1"
                 routerLink="/profile"
+                routerLinkActive="active"
+                [routerLinkActiveOptions]="{ exact: true }"
                 >Profile</a
               >
             </li>
 
             <li class="nav-item">
               <a
-                class="nav-link font-16 nmc-medium-grey font-uppercase"
+                class="nav-link font-16 nmc-dark-grey font-uppercase px-3 py-1"
+                routerLink="/jobs"
+                routerLinkActive="active"
+                [routerLinkActiveOptions]="{ exact: true }"
+                >Jobs</a
+              >
+            </li>
+
+            <li class="nav-item">
+              <a
+                class="nav-link font-16 nmc-dark-grey font-uppercase px-3 py-1"
                 routerLink="/events"
+                routerLinkActive="active"
+                [routerLinkActiveOptions]="{ exact: true }"
                 >Events</a
               >
             </li>
 
             <li class="nav-item">
               <a
-                class="nav-link font-16 nmc-medium-grey font-uppercase"
+                class="nav-link font-16 nmc-dark-grey font-uppercase px-3 py-1"
                 routerLink="/mentors"
+                routerLinkActive="active"
+                [routerLinkActiveOptions]="{ exact: true }"
                 >Mentors</a
               >
             </li>
 
             <!-- <li class="nav-item">
             <a
-              class="nav-link font-16 nmc-medium-grey font-uppercase"
+              class="nav-link font-16 nmc-dark-grey font-uppercase px-3 py-1"
               routerLink="/youtube-listing"
+                 routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: true }"
               >Youtube</a
             >
           </li> -->
 
             <li class="nav-item">
               <a
-                class="nav-link font-16 nmc-medium-grey font-uppercase"
+                class="nav-link font-16 nmc-dark-grey font-uppercase px-3 py-1"
                 routerLink="/ng-india"
+                routerLinkActive="active"
+                [routerLinkActiveOptions]="{ exact: true }"
                 >ng-India</a
               >
             </li>

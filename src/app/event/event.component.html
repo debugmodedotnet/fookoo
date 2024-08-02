@@ -1,6 +1,6 @@
 <section class="py-5">
   <div class="container-boxed">
-    <div class="d-flex align-items-center justify-content-between mb-5">
+    <div class="d-flex align-items-center justify-content-between mb-lg-5 mb-2">
       <h2
         class="section-title left font-36 nmc-dark-grey font-family-poppins pb-3 mb-0"
       >
@@ -11,7 +11,7 @@
         class="nmc-view-all d-flex align-items-center justify-content-start"
         routerLink="/events"
       >
-        <span class="nmc-dark-grey">VIEW ALL</span>
+        <span class="nmc-dark-grey d-none d-md-block">VIEW ALL</span>
 
         <div
           class="d-flex align-items-center justify-content-center rounded-circle nmc-view-all-btn nmc-white"
@@ -23,7 +23,7 @@
     <div class="events-container d-flex flex-column justify-content-center">
       <div class="row">
         @for(e of events; track e){
-        <div class="col-4">
+        <div class="col-12 col-md-6 col-lg-4 m-auto mt-4 mt-lg-0">
           <div
             class="events-card card overflow-hidden nmc-bg-white overflow-hidden rounded-3 position-relative"
           >
@@ -69,7 +69,7 @@
               </h4>
 
               <a
-                class="nmc-btn-primary text-center w-50 pt-2 mt-3"
+                class="nmc-btn-primary text-center w-50 w-md-100 pt-2 mt-3"
                 [routerLink]="['/event', e.id]"
               >
                 Enroll Now

@@ -13,3 +13,61 @@
 .tech-stack:hover {
     transform: scale(1.05);
 }
+
+@media (max-width:804px) {
+
+    .techs {
+        margin-top: 20px;
+    }
+
+    .tech-stack img {
+        max-width: 50px;
+    }
+}
+
+@media (max-width:767px) {
+    .tech-stack {
+        img {
+            max-width: 40px;
+        }
+
+        p {
+            font-size: 14px;
+        }
+    }
+}
+
+@media (max-width:690px) {
+    .tech-stack {
+        width: 33.33% !important;
+
+        p {
+            font-size: 13px;
+        }
+    }
+}
+
+@media (max-width:565px) {
+    .tech-stack {
+        width: 50% !important;
+    }
+}
+
+@media (max-width:380px) {
+    .tech-stack {
+        width: 25% !important;
+
+        img {
+            max-width: 30px;
+        }
+
+        div {
+            justify-content: center !important;
+            padding: .6rem !important;
+        }
+
+        p {
+            display: none;
+        }
+    }
+}

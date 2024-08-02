@@ -20,6 +20,60 @@
   </div>
   } -->
 
+  <ul
+    class="mobile-menu d-flex flex-column align-items-center justify-content-center position-absolute text-center rounded-3"
+  >
+    <li class="w-100 py-3">
+      <a
+        class="font-18 font-family-poppins nmc-dark-grey"
+        routerLink="/profile"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }"
+        >Profile</a
+      >
+    </li>
+
+    <li class="w-100 py-3">
+      <a
+        class="font-18 font-family-poppins nmc-dark-grey"
+        routerLink="/jobs"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }"
+        >Jobs</a
+      >
+    </li>
+
+    <li class="w-100 py-3">
+      <a
+        class="font-18 font-family-poppins nmc-dark-grey"
+        routerLink="/events"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }"
+        >Events</a
+      >
+    </li>
+
+    <li class="w-100 py-3">
+      <a
+        class="font-18 font-family-poppins nmc-dark-grey"
+        routerLink="/mentors"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }"
+        >Mentors</a
+      >
+    </li>
+
+    <li class="w-100 py-3">
+      <a
+        class="font-18 font-family-poppins nmc-dark-grey"
+        routerLink="/ng-india"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }"
+        >ng-India</a
+      >
+    </li>
+  </ul>
+
   <div
     class="d-flex align-items-center justify-content-between container-boxed py-2"
   >
@@ -38,11 +92,7 @@
         <button
           class="navbar-toggler border-0"
           type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbar"
-          aria-controls="navbar"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
+          (click)="toggleMobileMenu()"
         >
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -52,16 +102,6 @@
           id="navbar"
         >
           <ul class="navbar-nav mb-lg-0 gap-3 align-items-center">
-            <li class="nav-item d-lg-none d-block">
-              <a
-                class="nav-link font-16 nmc-dark-grey font-uppercase px-3 py-1"
-                routerLink="/profile"
-                routerLinkActive="active"
-                [routerLinkActiveOptions]="{ exact: true }"
-                >Profile</a
-              >
-            </li>
-
             <li class="nav-item">
               <a
                 class="nav-link font-16 nmc-dark-grey font-uppercase px-3 py-1"

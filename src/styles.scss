@@ -851,11 +851,33 @@ inset-0 {
     // }
 }
 
+.error-label {
+    border-radius: 5px;
+    padding: 5px 15px;
+    display: inline-block;
+    margin-top: 20px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
+}
+
+
+/*-------------------------------------------------------------------------
+# Responsive CSS
+-------------------------------------------------------------------------*/
 
 @media (max-width: 768px) {
     .py-768-1 {
         padding-top: 1rem !important;
         padding-bottom: 1rem !important;
+    }
+
+    .section-title {
+        font-size: 32px !important;
+    }
+}
+
+@media (max-width: 576px) {
+    .section-title {
+        font-size: 28px !important;
     }
 }
 
@@ -875,13 +897,8 @@ inset-0 {
     .font-20 {
         font-size: 18px;
     }
-}
 
-
-.error-label {
-    border-radius: 5px;
-    padding: 5px 15px;
-    display: inline-block;
-    margin-top: 20px;
-    box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
+    .section-title {
+        font-size: 26px !important;
+    }
 }

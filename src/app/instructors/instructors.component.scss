@@ -50,6 +50,37 @@
     }
 }
 
+
+@media (max-width: 1200px) {
+
+    .font-28 {
+        font-size: 24px !important;
+    }
+}
+
+@media (max-width: 991px) {
+    .mentor-card-wrapper {
+        gap: 3rem !important;
+    }
+
+    .mentor-card:not(:first-child) {
+        margin-left: 0;
+    }
+}
+
+@media (max-width: 768px) {
+    .mentor-card-wrapper {
+        gap: 2rem !important;
+    }
+
+    .mentor-card {
+        width: 280px;
+    }
+}
+
+@media (max-width: 576px) {}
+
+
 // .trainers {
 //     figure {
 //         height: 200px;

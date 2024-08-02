@@ -11,7 +11,7 @@
         class="nmc-view-all d-flex align-items-center justify-content-start"
         [routerLink]="['/jobs']"
       >
-        <span class="nmc-dark-grey">VIEW ALL</span>
+        <span class="nmc-dark-grey d-none d-md-block">VIEW ALL</span>
 
         <div
           class="d-flex align-items-center justify-content-center rounded-circle nmc-view-all-btn nmc-white"
@@ -20,7 +20,9 @@
       ></a>
     </div>
 
-    <div class="mentor-card-wrapper d-flex align-items-center py-5">
+    <div
+      class="mentor-card-wrapper d-flex align-items-center justify-content-center flex-wrap flex-lg-nowrap py-lg-5 pt-5 pb-0"
+    >
       @for(instructor of instructors; track instructor; let i = $index;){
       <div
         class="mentor-card position-relative overflow-hidden rounded-4 d-grid align-items-center"

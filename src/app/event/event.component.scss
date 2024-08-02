@@ -28,3 +28,10 @@
     top: 15px;
     padding-top: 7px;
 }
+
+@media (max-width: 767px) {
+
+    .nmc-btn-primary {
+        width: 100% !important;
+    }
+}

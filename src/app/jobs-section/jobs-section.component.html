@@ -1,4 +1,4 @@
-<section class="py-5">
+<section class="jobs-section py-sm-5 py-4">
   <div class="container-boxed">
     <div class="d-flex align-items-center justify-content-between">
       <h2
@@ -11,7 +11,7 @@
         class="nmc-view-all d-flex align-items-center justify-content-start"
         [routerLink]="['/jobs']"
       >
-        <span class="nmc-dark-grey">VIEW ALL</span>
+        <span class="nmc-dark-grey d-none d-md-block">VIEW ALL</span>
 
         <div
           class="d-flex align-items-center justify-content-center rounded-circle nmc-view-all-btn nmc-white"
@@ -60,7 +60,7 @@
   </div>
 
   <ul
-    class="sticky-wrapper d-flex align-items-center justify-content-evenly flex-wrap py-5 gap-4 overflow-hidden"
+    class="sticky-wrapper d-flex align-items-center justify-content-evenly flex-wrap py-5 px-3 gap-4 overflow-hidden"
   >
     @for(job of jobs$ | async; track job; let i = $index){ @if(
     job.companyName){

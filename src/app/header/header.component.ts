@@ -16,7 +16,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   user: any;
   profileImg = 'assets/images/home/defaultUser.jpg';
-
+  mobileMenuOpen = false;
   header?: IHeader;
   isQuizPageActive?: boolean;
   $routerSubscription = new Subscription();
@@ -26,7 +26,6 @@ export class HeaderComponent implements OnInit, OnDestroy {
   private router = inject(Router);
 
   ngOnInit(): void {
-
     this.userService.getCurrentUser().subscribe((user) => {
       if (user) {
         console.log('User is logged in', user);
@@ -66,7 +65,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
       console.log(header);
       this.header = header as IHeader;
     });
-  }  
+  }
 
   logout(): void {
     this.userService.logout().subscribe(() => {
@@ -78,4 +77,20 @@ export class HeaderComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.$routerSubscription.unsubscribe();
   }
+
+  toggleMobileMenu() {
+    this.mobileMenuOpen = !this.mobileMenuOpen;
+    const mobileMenu = document.querySelector('.mobile-menu') as HTMLElement;
+    const hamburger = document.querySelector('.navbar-toggler') as HTMLElement;
+
+    if (this.mobileMenuOpen) {
+      hamburger.className = "navbar-toggler border-0 opened"
+      mobileMenu.style.right = '0';
+
+    } else {
+      hamburger.className = "navbar-toggler border-0 closed"
+      mobileMenu.style.right = '-320px';
+    }
+  }
+
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, Input, OnInit, inject } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { IEventAttendees } from '../../modules/event-attendees';
 
@@ -12,18 +12,24 @@ import { IEventAttendees } from '../../modules/event-attendees';
 export class EventAttendeesComponent implements OnInit {
 
   eventAttendees?: IEventAttendees[];
+  userDefaultImg = 'assets/images/home/defaultUser.jpg';
+
+  @Input() eventId: string | null = null;
 
   private firestore = inject(AngularFirestore);
 
   ngOnInit(): void {
-    this.getEventAttendees();
+    if (this.eventId) {
+      this.getEventAttendees(this.eventId);
+    }
   }
 
-  getEventAttendees() {
-    this.firestore.collection('event-details').doc('who-all-attending').collection('attendees').valueChanges().subscribe(eventAttendees => {
+  getEventAttendees(eventId: string) {
+    this.firestore.collection('event-transactions').doc(eventId).collection('users').valueChanges().subscribe(eventAttendees => {
       console.log("eventAttendees:", eventAttendees);
       this.eventAttendees = eventAttendees as IEventAttendees[];
     });
   }
+
 
 }

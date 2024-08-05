@@ -1,7 +1,10 @@
-<div class="vh-100 py-5">
-
+<div class="vh-100 py-5 nmc-bg-white">
   <form [formGroup]="jobForm">
     <div class="row form-group mt-3 mb-3 flex-column">
+      <h3 class="font-family-poppins mb-4 font-30 font-992-28">
+        Step 2: Enter your company details
+      </h3>
+
       <div class="col-12 text-end">
         <input
           id="Remote"
@@ -86,7 +89,10 @@
   </form>
 
   <div class="d-flex justify-content-end align-items-center mt-5">
-    <button class="font-14 fw-semibold border-0 nmc-medium-grey nmc-bg-white" (click)="back()">
+    <button
+      class="font-14 fw-semibold border-0 nmc-medium-grey nmc-bg-white"
+      (click)="back()"
+    >
       Back
     </button>
 

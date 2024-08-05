@@ -4,7 +4,7 @@
       <h2
         class="section-title left text-center font-36 nmc-dark-grey font-family-poppins"
       >
-        Job Opportunities For You
+        Jobs Board
       </h2>
 
       <button
@@ -75,10 +75,15 @@
           </h5>
 
           <div class="social py-3">
-            <a [href]="job.Email"><i class="bi bi-envelope-fill"></i></a>
-            <a [href]="job.CompanyTwitter"><i class="bi bi-twitter-x"></i></a>
-            <a [href]="job.CompanyGithub"><i class="bi bi-github"></i></a>
-            <a [href]="job.CompanyLinkedIn"><i class="bi bi-linkedin"></i></a>
+            @if(job.email){<a [href]="job.email"
+              ><i class="bi bi-envelope-fill"></i></a
+            >} @if(job.CompanyTwitter){<a [href]="job.CompanyTwitter"
+              ><i class="bi bi-twitter-x"></i></a
+            >} @if(job.CompanyGithub){<a [href]="job.CompanyGithub"
+              ><i class="bi bi-github"></i></a
+            >} @if(job.CompanyLinkedIn){<a [href]="job.CompanyLinkedIn"
+              ><i class="bi bi-linkedin"></i></a
+            >}
           </div>
         </div>
       </a>

@@ -1,4 +1,4 @@
-<section class="py-5">
+<section class="py-5 nmc-bg-light-grey">
   <div class="container-boxed">
     <h2
       class="section-title text-center font-36 nmc-dark-grey font-family-poppins pb-3"
@@ -6,10 +6,9 @@
       Upcoming Events
     </h2>
 
-    <div class="events-container d-flex flex-column justify-content-center">
-      <div class="row">
-        @for(e of events; track e){
-        <!-- <div class="col-12 mt-4">
+    <div class="events-container row g-4">
+      @for(e of events; track e){
+      <!-- <div class="col-12 mt-4">
           <div
             class="events-card card overflow-hidden nmc-bg-white overflow-hidden rounded-3 position-relative"
           >
@@ -64,7 +63,8 @@
           </div>
         </div> -->
 
-        <div class="wrapper rounded-4 nmc-bg-white mt-4 pb-4">
+      <div class="col-12 col-md-6">
+        <div class="wrapper rounded-4 nmc-bg-white">
           <div
             class="d-flex align-items-center justify-content-between border-bottom p-4"
           >
@@ -109,24 +109,24 @@
 
           <div class="p-4">
             <!-- <h5 class="nmc-dark-grey fw-semibold font-18">Details:</h5> -->
-            <p class="nmc-medium-grey">{{ e.Description }}</p>
+            <p class="nmc-medium-grey truncate">{{ e.Description }}</p>
 
             <button
-              class="nmc-btn-primary h-auto py-2 px-4 rounded-2 box-shadow-none border-0 float-end"
+              class="nmc-btn-primary h-auto py-2 px-4 rounded-2 box-shadow-none border-0"
               [routerLink]="['/event', e.id]"
             >
               Enroll Now
             </button>
           </div>
         </div>
-        } @if(showLoadMoreButton){
-        <div class="mt-5 d-flex">
-          <button class="nmc-btn-outline m-auto" (click)="loadMore()">
-            Load More<i class="bi bi-chevron-down ms-2"></i>
-          </button>
-        </div>
-        }
       </div>
+      } @if(showLoadMoreButton){
+      <div class="mt-5 d-flex">
+        <button class="nmc-btn-outline m-auto" (click)="loadMore()">
+          Load More<i class="bi bi-chevron-down ms-2"></i>
+        </button>
+      </div>
+      }
     </div>
   </div>
 </section>

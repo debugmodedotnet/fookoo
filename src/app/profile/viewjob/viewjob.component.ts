@@ -91,7 +91,7 @@ export class ViewJobComponent implements OnInit {
         CompanyLinkedIn: job.CompanyLinkedIn,
         CompanyGithub: job.CompanyGithub,
         Position: job.position,
-        Email: job.Email,
+        Email: job.email,
         PhoneNo: job.PhoneNo,
         Tag: job.Tag,
         ImageUrl: job.ImageUrl,

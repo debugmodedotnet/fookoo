@@ -1,7 +1,11 @@
-<div class="vh-100 py-2">
+<div class="vh-100 py-2 nmc-bg-white">
   <form [formGroup]="jobForm">
     <div class="row form-group my-5">
-      <div class="col-12 mt-4">
+      <h3 class="font-family-poppins mb-4 font-30 font-992-28">
+        Step 3: Select the skills you prefer
+      </h3>
+
+      <div class="col-12">
         <label for="Tag" class="mt-3 form-label font-20 nmc-medium-grey"
           >Select Tag</label
         >
@@ -26,7 +30,9 @@
       </div>
     </div>
 
-    <h5 class="mt-3 form-label font-20 nmc-medium-grey fw-normal">Select Skills</h5>
+    <h5 class="mt-3 form-label font-20 nmc-medium-grey fw-normal">
+      Select Skills
+    </h5>
 
     <div class="row form-group my-3">
       @for(skill of availableSkills; track skill ){
@@ -58,7 +64,10 @@
   </form>
 
   <div class="d-flex justify-content-end align-items-center mt-5">
-    <button class="font-14 fw-semibold border-0 nmc-medium-grey nmc-bg-white" (click)="back()">
+    <button
+      class="font-14 fw-semibold border-0 nmc-medium-grey nmc-bg-white"
+      (click)="back()"
+    >
       Back
     </button>
 

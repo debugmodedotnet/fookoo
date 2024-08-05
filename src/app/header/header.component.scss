@@ -5,7 +5,7 @@
     border-bottom: 3px solid $nmc-primary;
 }
 
-.dropdown-menu li {
+.dropdown-menu li:not(:last-child) {
     border-bottom: 1px solid $nmc-light-grey;
 }
 
@@ -17,6 +17,16 @@
 
 .navbar-toggler:focus {
     box-shadow: none !important;
+}
+
+
+.profile-link.active,
+.profile-link.show,
+.profile-link:focus,
+.profile-link:hover {
+    color: $nmc-primary !important;
+    border-color: transparent !important;
+    box-shadow: none;
 }
 
 .mobile-menu {
@@ -43,7 +53,7 @@
         width: 160px;
     }
 
-    .container-boxed{
+    .container-boxed {
         padding-left: 1rem;
         padding-right: 1rem;
     }

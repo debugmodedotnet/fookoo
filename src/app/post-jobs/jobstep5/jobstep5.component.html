@@ -1,6 +1,10 @@
-<div class="py-5 min-height-700">
+<div class="pb-5 min-height-700 nmc-bg-white">
   <form [formGroup]="jobForm">
-    <div class="form-group mt-5">
+    <div class="form-group pt-5">
+      <h3 class="font-family-poppins mb-5 font-30 font-992-28">
+        Step 4: Enter job responsibilities
+      </h3>
+
       <div class="chip-container mb-2 row g-4">
         @for(control of responsibilities.controls; track control; let i =
         $index;){

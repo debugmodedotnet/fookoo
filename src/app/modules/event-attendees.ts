@@ -1,3 +1,5 @@
 export interface IEventAttendees {
-    EventAttendees: string;
+    email: string;
+    image: string;
+    name: string;
 }

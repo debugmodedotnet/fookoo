@@ -79,3 +79,11 @@
     line-clamp: 1;
     display: -webkit-box;
 }
+
+.nmc-btn-primary {
+    font-size: 1.3rem;
+}
+
+.back-btn:hover {
+    color: $nmc-primary !important;
+}

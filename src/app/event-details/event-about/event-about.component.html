@@ -3,13 +3,15 @@
     <div class="d-flex align-items-center justify-content-between mb-4">
       <div class="d-flex align-items-center justify-content-center gap-3">
         <h4
-          class="font-20 font-family-poppins d-inline-block rounded-1 py-2 px-3 bg-orange-100"
+          class="font-20 font-family-poppins d-inline-block py-2 px-3 bg-orange-100"
         >
           Total Seats:
           <span class="nmc-primary">{{ eventAbout?.TotalSeats }}</span>
         </h4>
 
-        <h4 class="font-20 font-family-poppins d-inline-block rounded-1 py-2 px-3 bg-orange-100">
+        <h4
+          class="font-20 font-family-poppins d-inline-block py-2 px-3 bg-orange-100"
+        >
           Total Registered:
           <span class="nmc-primary">{{ eventAbout?.RegisteredSeats }}</span>
         </h4>
@@ -92,7 +94,7 @@
         <img
           [src]="eventAbout?.EventImage"
           alt="Hero-Image"
-          class="object-fit-contain rounded-3"
+          class="object-fit-contain"
         />
       </div>
     </div>

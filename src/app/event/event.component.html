@@ -25,14 +25,14 @@
         @for(e of events; track e){
         <div class="col-12 col-md-6 col-lg-4 m-auto mt-4 mt-lg-0">
           <div
-            class="events-card card overflow-hidden nmc-bg-white overflow-hidden rounded-3 position-relative"
+            class="events-card card overflow-hidden nmc-bg-white overflow-hidden position-relative rounded-0"
           >
             <div class="pricing-table-ribbon fw-bold position-absolute">
               {{ e.isPaid ? "Paid" : "Free" }}
             </div>
 
             <figure
-              class="m-0 p-0 zoom-effect overflow-hidden m-3 rounded-3 d-flex"
+              class="m-0 p-0 zoom-effect overflow-hidden m-3 rounded-0 d-flex"
             >
               <img
                 [src]="e.Logo"
@@ -45,7 +45,7 @@
             <figcaption class="m-0 p-3 pt-0">
               <div class="d-flex align-items-center justify-content-start mb-2">
                 <span
-                  class="d-inline-block font-12 fw-semibold rounded-1 py-1 px-2 text-red-600 bg-orange-100"
+                  class="d-inline-block font-12 fw-semibold py-1 px-2 text-red-600 bg-orange-100"
                   >{{ e.isOffline ? "Offline" : "Online" }}
                 </span>
 

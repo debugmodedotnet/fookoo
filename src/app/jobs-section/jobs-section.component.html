@@ -52,8 +52,8 @@
             >} @if(job.CompanyLinkedIn){<a [href]="job.CompanyLinkedIn"
               ><i class="bi bi-linkedin"></i></a
             >} -->
-            
-            @if(job.email){<a [href]="job.email"
+
+            @if(job.email){<a [href]="'mailto:' + job.email"
               ><i class="bi bi-envelope-fill"></i></a
             >} @if(job.CompanyTwitter){<a [href]="job.CompanyTwitter"
               ><i class="bi bi-twitter-x"></i></a

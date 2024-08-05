@@ -70,3 +70,11 @@
         color: $nmc-medium-grey;
     }
 }
+
+.nmc-btn-primary {
+    font-size: 1.3rem;
+}
+
+.back-btn:hover {
+    color: $nmc-primary !important;
+}

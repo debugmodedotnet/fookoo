@@ -1,29 +1,33 @@
-<div class="vh-100">
-  <div class="spacer--medium"></div>
-
+<div class="vh-100 nmc-bg-white">
   <form [formGroup]="jobForm">
-    <div class="input__group mt-5">
-      <textarea
-        id="JobDescription"
-        type="text"
-        formControlName="JobDescription"
-        class="input__field"
-        placeholder="Enter job's description"
-        rows="4"
-        (keyup)="cleanMessage()"
-      ></textarea>
+    <div class="row form-group pt-5 flex-column">
+      <h3 class="font-family-poppins mb-5 font-30 font-992-28 p-0">
+        Step 6: Tell us more about the job
+      </h3>
 
-      <label for="JobDescription" class="input__label"
-        >Enter Job's Description</label
-      >
-    </div>
+      <div class="input__group">
+        <textarea
+          id="JobDescription"
+          type="text"
+          formControlName="JobDescription"
+          class="input__field"
+          placeholder="Enter job's description"
+          rows="7"
+          (keyup)="cleanMessage()"
+        ></textarea>
 
-    @if(isDescriptionInValid){
-    <div class="error-label text-danger font-18">
-      <i class="bi bi-exclamation-triangle-fill me-2"></i>Please provide a job
-      description
+        <label for="JobDescription" class="input__label"
+          >Enter Job's Description</label
+        >
+      </div>
+
+      @if(isDescriptionInValid){
+      <div class="error-label text-danger font-18">
+        <i class="bi bi-exclamation-triangle-fill me-2"></i>Please provide a job
+        description
+      </div>
+      }
     </div>
-    }
   </form>
 
   <div class="d-flex justify-content-end align-items-center mt-5">

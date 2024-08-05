@@ -12,7 +12,7 @@ export interface Job {
   CompanyLinkedIn?: string;
   CompanyGithub?: string;
   position: string;
-  Email?: string;
+  email?: string;
   PhoneNo?: string;
   Tag?: string;
   ImageUrl: string;

@@ -4,7 +4,7 @@
       <h2
         class="section-title left font-36 nmc-dark-grey font-family-poppins pb-3 mb-0"
       >
-        Trending Job Offers
+        Trending Jobs
       </h2>
 
       <a
@@ -19,51 +19,12 @@
           <i class="bi bi-arrow-right font-24"></i></div
       ></a>
     </div>
-
-    <!-- <div class="job-card-wrapper d-flex align-items-center py-5">
-      @for(job of jobs$ | async | slice:0:5; track job; let i = $index){
-      <div
-        class="job-card position-relative overflow-hidden rounded-4 py-4 d-grid align-items-center"
-        [ngClass]="getColorClass(i)"
-        [ngStyle]="{'z-index': 4 - i}"
-      >
-        <div
-          class="inner text-center d-flex align-items-center justify-content-center flex-column p-3"
-        >
-          <figure class="mb-4 m-0 p-2 nmc-bg-white rounded-3">
-            <img
-              [src]="job.ImageUrl ? job.ImageUrl : defaultImage"
-              alt=""
-              class="w-100 h-100 object-fit-contain"
-            />
-          </figure>
-
-          <h2 class="font-30 nmc-white font-family-poppins">
-            {{ job.companyName }}
-          </h2>
-          <h4 class="font-22 fw-light nmc-white mt-2">{{ job.position }}</h4>
-          <h5 class="font-20 fw-light nmc-white mb-0 mt-4 py-4 w-100">
-            {{ job.Location }}
-          </h5>
-
-          <button
-            class="nmc-btn-primary nmc-bg-white nmc-dark-grey"
-            [routerLink]="['/jobs', job.id]"
-          >
-            Apply Now
-          </button>
-        </div>
-        <div class="hidden w-60 max-w-md"></div>
-      </div>
-      }
-    </div> -->
   </div>
 
   <ul
     class="sticky-wrapper d-flex align-items-center justify-content-evenly flex-wrap py-5 px-3 gap-4 overflow-hidden"
   >
-    @for(job of jobs$ | async; track job; let i = $index){ @if(
-    job.companyName){
+    @for(job of jobs$ | async; track job; let i = $index){ @if(job.companyName){
     <li class="mt-4">
       <a class="job-link" [routerLink]="['/jobs', job.id]">
         <div class="pin rounded-circle m-auto"></div>
@@ -82,10 +43,25 @@
           </h5>
 
           <div class="social py-3">
-            <a [href]="job.Email"><i class="bi bi-envelope-fill"></i></a>
-            <a [href]="job.CompanyTwitter"><i class="bi bi-twitter-x"></i></a>
-            <a [href]="job.CompanyGithub"><i class="bi bi-github"></i></a>
-            <a [href]="job.CompanyLinkedIn"><i class="bi bi-linkedin"></i></a>
+            <!-- @if(job.Email){<a [href]="job.Email"
+              ><i class="bi bi-envelope-fill"></i></a
+            >} @if(job.CompanyTwitter){<a [href]="job.CompanyTwitter"
+              ><i class="bi bi-twitter-x"></i></a
+            >} @if(job.CompanyGithub){<a [href]="job.CompanyGithub"
+              ><i class="bi bi-github"></i></a
+            >} @if(job.CompanyLinkedIn){<a [href]="job.CompanyLinkedIn"
+              ><i class="bi bi-linkedin"></i></a
+            >} -->
+            
+            @if(job.email){<a [href]="job.email"
+              ><i class="bi bi-envelope-fill"></i></a
+            >} @if(job.CompanyTwitter){<a [href]="job.CompanyTwitter"
+              ><i class="bi bi-twitter-x"></i></a
+            >} @if(job.CompanyGithub){<a [href]="job.CompanyGithub"
+              ><i class="bi bi-github"></i></a
+            >} @if(job.CompanyLinkedIn){<a [href]="job.CompanyLinkedIn"
+              ><i class="bi bi-linkedin"></i></a
+            >}
           </div>
         </div>
       </a>

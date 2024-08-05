@@ -8,63 +8,8 @@
 
     <div class="events-container row g-4 mt-2">
       @for(e of events; track e){
-      <!-- <div class="col-12 mt-4">
-          <div
-            class="events-card card overflow-hidden nmc-bg-white overflow-hidden rounded-3 position-relative"
-          >
-            <div class="pricing-table-ribbon fw-bold position-absolute">
-              {{ e.isPaid ? "Paid" : "Free" }}
-            </div>
-
-            <figure
-              class="m-0 p-0 zoom-effect overflow-hidden m-3 rounded-3 d-flex"
-            >
-              <img
-                [src]="e.Logo"
-                class="w-100 h-auto object-fit-fill m-auto p-3"
-                alt="Event Tech"
-                loading="lazy"
-              />
-            </figure>
-
-            <figcaption class="m-0 p-3 pt-0">
-              <div class="d-flex align-items-center justify-content-start mb-2">
-                <span
-                  class="d-inline-block font-12 fw-semibold rounded-1 py-1 px-2 text-red-600 bg-orange-100"
-                  >{{ e.isOffline ? "Offline" : "Online" }}
-                </span>
-
-                @if(e.isOffline){
-                <span
-                  class="d-inline-block font-12 fw-semibold rounded-1 py-1 px-2 text-orange-600 bg-orange-100 ms-2"
-                  >{{ e.City }} </span
-                >}
-              </div>
-
-              <h4 class="font-22 nmc-dark-grey my-3 font-family-poppins">
-                {{ e.Title }}
-              </h4>
-
-              <h3 class="font-18 nmc-dark-grey mb-3 fw-normal">
-                {{ e.ShortDescription }}
-              </h3>
-
-              <h4 class="font-16 nmc-medium-grey mb-3 fw-normal">
-                Date: {{ e.Date }}
-              </h4>
-
-              <a
-                class="nmc-btn-primary text-center w-50 pt-2 mt-3"
-                [routerLink]="['/event', e.id]"
-              >
-                Enroll Now
-              </a>
-            </figcaption>
-          </div>
-        </div> -->
-
       <div class="col-12">
-        <div class="wrapper rounded-4 nmc-bg-white">
+        <div class="wrapper nmc-bg-white">
           <div
             class="d-flex align-items-center justify-content-between border-bottom p-4"
           >
@@ -75,7 +20,7 @@
                 </h2>
 
                 <span
-                  class="d-inline-block font-12 fw-semibold rounded-1 py-1 px-3 text-red-600 bg-orange-100"
+                  class="d-inline-block font-12 fw-semibold py-1 px-3 text-red-600 bg-orange-100"
                   >{{ e.isPaid ? "Paid" : "Free" }}
                 </span>
               </div>
@@ -112,7 +57,7 @@
             <p class="nmc-medium-grey truncate">{{ e.Description }}</p>
 
             <button
-              class="nmc-btn-primary h-auto py-2 px-4 rounded-2 box-shadow-none border-0"
+              class="nmc-btn-primary h-auto py-2 px-4 box-shadow-none border-0"
               [routerLink]="['/event', e.id]"
             >
               Enroll Now

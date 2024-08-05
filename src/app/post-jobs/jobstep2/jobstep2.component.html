@@ -38,9 +38,9 @@
           formControlName="position"
           class="form-select rounded-3 cursor-pointer"
         >
-          <option value="" selected>Select position</option>
+          <option value="" selected class="font-24">Select position</option>
           @for(position of positions; track position;){
-          <option [value]="position">{{ position }}</option>
+          <option [value]="position" class="font-24">{{ position }}</option>
           }
         </select>
 
@@ -82,14 +82,14 @@
 
   <div class="d-flex justify-content-end align-items-center mt-5">
     <button
-      class="font-14 fw-semibold border-0 nmc-medium-grey nmc-bg-white"
+      class="back-btn font-20 fw-semibold border-0 nmc-medium-grey nmc-bg-white"
       (click)="back()"
     >
       Back
     </button>
 
     <button
-      class="nmc-btn-primary font-14 fw-semibold box-shadow-none py-2 px-5 h-auto ms-2 rounded-2 d-flex align-items-center"
+      class="nmc-btn-primary fw-semibold box-shadow-none py-3 px-5 h-auto ms-3 d-flex align-items-center rounded-0"
       (click)="next()"
     >
       Next

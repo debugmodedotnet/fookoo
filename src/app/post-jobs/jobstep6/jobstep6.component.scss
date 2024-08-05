@@ -57,8 +57,16 @@
         color: $nmc-medium-grey;
     }
 }
+
 .error-message {
     color: red;
     font-size: 12px;
-  }
-  
+}
+
+.nmc-btn-primary {
+    font-size: 1.3rem;
+}
+
+.back-btn:hover {
+    color: $nmc-primary !important;
+}

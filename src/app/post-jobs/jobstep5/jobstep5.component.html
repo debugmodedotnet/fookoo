@@ -63,7 +63,7 @@
             (click)="addResponsibility(newResponsibility)"
             class="nmc-btn-primary ms-3"
           >
-            Add
+            +
           </button>
         </div>
       </div>
@@ -78,12 +78,14 @@
   </form>
 
   <div class="d-flex justify-content-end align-items-center mt-5">
-    <button class="font-14 fw-semibold border-0 nmc-medium-grey nmc-bg-white">
+    <button
+      class="back-btn font-20 fw-semibold border-0 nmc-medium-grey nmc-bg-white"
+    >
       Back
     </button>
 
     <button
-      class="nmc-btn-primary font-14 fw-semibold box-shadow-none py-2 px-5 h-auto ms-2 rounded-2 d-flex align-items-center"
+      class="nmc-btn-primary fw-semibold box-shadow-none py-3 px-5 h-auto ms-3 d-flex align-items-center rounded-0"
       (click)="next()"
     >
       Next

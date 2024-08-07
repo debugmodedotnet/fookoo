@@ -30,9 +30,9 @@
         [ngStyle]="{ 'z-index': 4 - i }"
       >
         <div
-          class="inner text-center d-flex align-items-center justify-content-center flex-column pb-4"
+          class="inner text-center d-flex align-items-center justify-content-center flex-column"
         >
-          <figure class="mb-4 m-0 nmc-bg-white">
+          <figure class="m-0 nmc-bg-white">
             <img
               [src]="
                 instructor.InstructorImg
@@ -44,7 +44,7 @@
             />
           </figure>
 
-          <div class="py-3 text-center">
+          <div class="info p-4 text-center d-grid">
             <h2 class="font-28 nmc-white font-family-poppins">
               {{ instructor.Name }}
             </h2>
@@ -76,7 +76,8 @@
             </button>
           </div>
         </div>
-        <div class="hidden w-60 max-w-md"></div>
+
+        <!-- <div class="hidden w-60 max-w-md"></div> -->
       </div>
       }
     </div>

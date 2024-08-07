@@ -12,22 +12,21 @@ import { getRandomInt } from '../utils/common-util';
 export class QuizService {
 
   private readonly maxOrderValue = 10;
-  private readonly quizCollection = 'quiz';
   private readonly quizAttemptCollection = 'quiz-attempt';
 
   private firestore = inject(AngularFirestore);
 
-  getQuestion(questionIdsToExclude: string[], orderValue: number = getRandomInt(1, this.maxOrderValue)): Observable<IQuizQuestion[]> {
+  getQuestion(technologyName: string, questionIdsToExclude: string[], orderValue: number = getRandomInt(1, this.maxOrderValue)): Observable<IQuizQuestion[]> {
     let collection: AngularFirestoreCollection<IQuizQuestion>;
     if (questionIdsToExclude.length) {
-      collection = this.firestore.collection<IQuizQuestion>(this.quizCollection, ref => ref
+      collection = this.firestore.collection<IQuizQuestion>(`quiz/${technologyName}/questions`, ref => ref
         .where(documentId(), 'not-in', questionIdsToExclude)
         .where('order', '>=', orderValue)
         .orderBy('order')
         .limit(1)
       );
     } else {
-      collection = this.firestore.collection<IQuizQuestion>(this.quizCollection, ref => ref
+      collection = this.firestore.collection<IQuizQuestion>(`quiz/${technologyName}/questions`, ref => ref
         .where('order', '>=', orderValue)
         .orderBy('order')
         .limit(1)

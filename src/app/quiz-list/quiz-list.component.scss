@@ -1,3 +1,17 @@
+.text-bottom-line::after {
+    background-image: url('../../assets/images/home/bottom-text-line.svg');
+    background-repeat: no-repeat;
+    content: "";
+    height: 4px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 55px;
+    margin: 0 auto;
+    position: absolute;
+    width: 191px;
+}
+
 .tech-stack div {
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }

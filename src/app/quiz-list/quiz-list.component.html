@@ -1,0 +1,33 @@
+<section class="techs py-5 vh-100 nmc-bg-white">
+  <div class="container-boxed">
+    <h2 class="font-36 nmc-dark-grey font-family-poppins text-center">
+      <span class="text-bottom-line position-relative"
+        >Choose your favorite technology</span
+      >
+    </h2>
+
+    <div class="row gy-4 justify-content-center mt-5">
+      @for(tech of techStack; track tech){
+      <div class="col-3 tech-stack">
+        <a [routerLink]="['/test-skills', tech.Name]" class="nmc-dark-grey">
+          <div
+            class="rounded-3 py-3 ps-3 pe-5 d-flex align-items-center justify-content-start"
+          >
+            <figure class="m-0 p-0">
+              <img
+                [src]="tech.logo"
+                alt=""
+                class="h-100 w-100 object-fit-contain"
+              />
+            </figure>
+
+            <p class="m-0 ps-2">
+              {{ tech.Name }}
+            </p>
+          </div>
+        </a>
+      </div>
+      }
+    </div>
+  </div>
+</section>

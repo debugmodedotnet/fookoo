@@ -1,7 +1,7 @@
 import { CUSTOM_ELEMENTS_SCHEMA, Component, OnInit } from '@angular/core';
 import { JobService } from '../services/job.service';
 import { Job } from '../modules/job';
-import { Observable, of } from 'rxjs';
+import { map, Observable, of } from 'rxjs';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
@@ -22,7 +22,9 @@ export class JobsSectionComponent implements OnInit {
   constructor(private jobService: JobService) { }
 
   ngOnInit() {
-    this.jobs$ = this.jobService.getLimitedJobs(4);
+    this.jobs$ = this.jobService.getJobs().pipe(
+      map(jobs => jobs.filter(job => job.companyName).slice(0, 4)),
+    );
   }
 
   getColorClass(index: number): string {

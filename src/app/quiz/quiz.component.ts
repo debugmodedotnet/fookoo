@@ -6,6 +6,7 @@ import { first } from 'rxjs';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { shuffleItems } from '../utils/common-util';
 import { ActivatedRoute } from '@angular/router';
+import { IQuizTechnology } from '../modules/quiz-technology';
 
 @Component({
   selector: 'app-quiz',
@@ -22,6 +23,7 @@ export class QuizComponent implements OnInit {
   question?: IQuizQuestion;
   userId?: string;
   technologyName = '';
+  technology?: IQuizTechnology;
 
   private quizService = inject(QuizService);
   private afAuth = inject(AngularFireAuth);
@@ -38,10 +40,20 @@ export class QuizComponent implements OnInit {
     this.route.params.subscribe(params => {
       this.technologyName = params['Name'];
       this.afAuth.user.pipe(first()).subscribe(async res => {
-        console.log(res)
         this.userId = res?.uid;
+        await this.loadTechnologyData();
         this.loadNewQuestion();
       });
+    });
+  }
+
+  async loadTechnologyData(): Promise<void> {
+    this.quizService.getTechnology(this.technologyName).pipe(first()).subscribe(res => {
+      this.technology = res;
+
+      if (this.technology) {
+        this.loadNewQuestion();
+      }
     });
   }
 

@@ -5,23 +5,25 @@
         class="d-flex justify-content-between align-items-center border-bottom pb-3 mb-3"
       >
         <div class="d-flex align-items-center">
-          <figure class="m-0 p-2 overflow-hidden rounded-2 bg-orange-100">
+          <figure class="m-0 p-2 overflow-hidden">
             <img
-              src="assets/images/home/angular.png"
+              [src]="technology?.logo"
               alt="logo"
               class="w-100 h-100 object-fit-contain"
             />
           </figure>
 
           <div class="ms-3">
-            <h3 class="mb-0 font-family-poppins font-22">Angular Quiz</h3>
+            <h3 class="mb-0 font-family-poppins font-22">
+              {{ technology?.Name || "Quiz" }} Quiz
+            </h3>
           </div>
         </div>
 
         <div>
-          <span class="text-danger"
-            ><i class="bi bi-clock me-1 align-middle"></i>00:05:55</span
-          >
+          <span class="text-danger">
+            <i class="bi bi-clock me-1 align-middle"></i>00:05:55
+          </span>
         </div>
       </div>
 
@@ -54,12 +56,14 @@
 
       <div class="mt-5">
         @if(totalAttemptedQuestions < TOTAL_ALLOWED_ATTEMPTS){
+
         <div>
           <form [formGroup]="quizForm">
             <div class="form-group mt-3">
-              <span class="nmc-medium-grey font-16 fw-light"
-                >Question {{ totalAttemptedQuestions + 1 }}</span
-              >
+              <span class="nmc-medium-grey font-16 fw-light">
+                Question {{ totalAttemptedQuestions + 1 }}
+              </span>
+
               <h3 class="mb-3 mt-1 nmc-dark-grey font-24 lh-base">
                 {{ question?.question }}
               </h3>
@@ -75,8 +79,8 @@
                         [value]="option.id"
                         formControlName="optionId"
                       />
-                      <span>{{ option.value }}</span></label
-                    >
+                      <span>{{ option.value }}</span>
+                    </label>
                   </div>
                 </div>
                 }
@@ -93,13 +97,16 @@
                     totalAttemptedQuestions === TOTAL_ALLOWED_ATTEMPTS - 1
                       ? "Submit"
                       : "Next ->"
-                  }}</button
-                >}
+                  }}
+                </button>
+                }
               </div>
             </div>
           </form>
         </div>
+
         } @if(!(totalAttemptedQuestions < TOTAL_ALLOWED_ATTEMPTS)){
+
         <div class="text-center">
           <div class="mb-4">
             <h2 class="nmc-dark-grey font-22">
@@ -116,6 +123,7 @@
               <span class="progress-left">
                 <span class="progress-bar"></span>
               </span>
+
               <span class="progress-right">
                 <span class="progress-bar"></span>
               </span>
@@ -138,11 +146,13 @@
             <a href="#" class="btn btn-primary nmc-bg-primary border-0"
               >Finish</a
             >
+
             <a href="#" class="btn btn-outline-secondary ms-2"
               >Share <i class="bi bi-box-arrow-up-right ms-1"></i
             ></a>
           </div>
         </div>
+
         }
       </div>
     </div>

@@ -24,7 +24,7 @@
   <ul
     class="sticky-wrapper d-flex align-items-center justify-content-evenly flex-wrap py-5 px-3 gap-4 overflow-hidden"
   >
-    @for(job of jobs$ | async; track job; let i = $index){ @if(job.companyName){
+    @for(job of jobs$ | async; track job; let i = $index){
     <li class="mt-4">
       <a class="job-link" [routerLink]="['/jobs', job.id]">
         <div class="pin rounded-circle m-auto"></div>
@@ -66,6 +66,6 @@
         </div>
       </a>
     </li>
-    } }
+    } 
   </ul>
 </section>

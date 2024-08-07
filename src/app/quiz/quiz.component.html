@@ -7,14 +7,16 @@
         <div class="d-flex align-items-center">
           <figure class="m-0 p-2 overflow-hidden rounded-2 bg-orange-100">
             <img
-              src="assets/images/home/angular.png"
+              [src]="technology?.logo"
               alt="logo"
               class="w-100 h-100 object-fit-contain"
             />
           </figure>
 
           <div class="ms-3">
-            <h3 class="mb-0 font-family-poppins font-22">Angular Quiz</h3>
+            <h3 class="mb-0 font-family-poppins font-22">
+              {{ technology?.Name || "Quiz" }} Quiz
+            </h3>
           </div>
         </div>
 

@@ -5,6 +5,7 @@ import { IQuizQuestion } from '../modules/quiz-question';
 import { Observable, map } from 'rxjs';
 import { IQuizAttemptedQuestion } from '../modules/quiz-attempted-question';
 import { getRandomInt } from '../utils/common-util';
+import { IQuizTechnology } from '../modules/quiz-technology';
 
 @Injectable({
   providedIn: 'root'
@@ -41,6 +42,18 @@ export class QuizService {
             return { ...data, id };
           })
         )
+      );
+  }
+
+  getTechnology(name: string): Observable<IQuizTechnology> {
+    return this.firestore.collection<IQuizTechnology>('quiz', ref => ref.where('Name', '==', name)).snapshotChanges()
+      .pipe(
+        map(changes => {
+          const doc = changes[0]?.payload.doc;
+          const data = doc?.data() as IQuizTechnology;
+          const id = doc?.id;
+          return { ...data, id };
+        })
       );
   }
 

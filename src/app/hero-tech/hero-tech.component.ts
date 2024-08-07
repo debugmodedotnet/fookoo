@@ -11,14 +11,14 @@ import { AngularFirestore } from '@angular/fire/compat/firestore';
 })
 export class HeroTechComponent implements OnInit {
 
-
   techStack?: ITechStack[];
 
   private firestore = inject(AngularFirestore);
+
   ngOnInit(): void {
-    this.firestore.collection('homepagedata').doc('technology-stack').collection('techs').valueChanges().subscribe(techStack => {
-      console.log("techStack:", techStack);
+    this.firestore.collection('homepagedata').doc('technology-stack').collection('techs').valueChanges().subscribe(techStack => {     
       this.techStack = techStack as ITechStack[];
     });
   }
+
 }

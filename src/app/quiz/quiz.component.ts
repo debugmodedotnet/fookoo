@@ -5,6 +5,7 @@ import { IQuizQuestion } from '../modules/quiz-question';
 import { first } from 'rxjs';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { shuffleItems } from '../utils/common-util';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-quiz',
@@ -20,10 +21,12 @@ export class QuizComponent implements OnInit {
   totalAttemptedQuestions = 0;
   question?: IQuizQuestion;
   userId?: string;
+  technologyName = '';
 
   private quizService = inject(QuizService);
   private afAuth = inject(AngularFireAuth);
   private fb = inject(FormBuilder);
+  private route = inject(ActivatedRoute);
 
   constructor() {
     this.quizForm = this.fb.group({
@@ -32,10 +35,13 @@ export class QuizComponent implements OnInit {
   }
 
   async ngOnInit(): Promise<void> {
-    this.afAuth.user.pipe(first()).subscribe(async res => {
-      console.log(res)
-      this.userId = res?.uid;
-      this.loadNewQuestion();
+    this.route.params.subscribe(params => {
+      this.technologyName = params['Name'];
+      this.afAuth.user.pipe(first()).subscribe(async res => {
+        console.log(res)
+        this.userId = res?.uid;
+        this.loadNewQuestion();
+      });
     });
   }
 
@@ -63,14 +69,14 @@ export class QuizComponent implements OnInit {
   }
 
   getQuestion(questionIdsToExclude: string[]): void {
-    this.quizService.getQuestion(questionIdsToExclude).pipe(first()).subscribe(firstRes => {
+    this.quizService.getQuestion(this.technologyName, questionIdsToExclude).pipe(first()).subscribe(firstRes => {
       console.log(">>>>> first res", firstRes, questionIdsToExclude)
       if (firstRes.length) {
         this.question = firstRes[0];
         shuffleItems(this.question.options);
       }
       else {
-        this.quizService.getQuestion(questionIdsToExclude, 1).pipe(first()).subscribe(secondRes => {
+        this.quizService.getQuestion(this.technologyName, questionIdsToExclude, 1).pipe(first()).subscribe(secondRes => {
           console.log(">>>>> second res", firstRes, questionIdsToExclude)
           if (!secondRes.length) {
             throw new Error("Didn't find question");

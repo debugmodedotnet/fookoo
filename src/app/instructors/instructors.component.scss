@@ -15,7 +15,7 @@
     transition: 0.4s ease-out;
 
     .info {
-        min-height: 280px;
+        min-height: 310px;
         place-content: center;
     }
 
@@ -34,6 +34,10 @@
         //box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
         height: 250px;
         width: 100%;
+
+        img {
+            object-position: top;
+        }
     }
 
     h5 {

@@ -17,7 +17,7 @@
     justify-content: space-between;
     align-items: center;
     padding-right: 20px;
-    background: linear-gradient(45deg, #ff6f00, #ffcc80); /* Gradient background */
+    background: linear-gradient(45deg,black, grey); /* Gradient background */
     background-size: 400% 400%; /* For animation effect */
     animation: gradientShift 10s ease infinite; /* Animation for gradient movement */
 }
@@ -53,7 +53,7 @@
 
 .profile-name {
     font-size: 52px;
-    font-family:  'Alegreya', serif;/* Stylish font for names */
+    font-family:  'Alegreya', serif;
     text-transform: uppercase;
     color:orangered;
 }
@@ -120,7 +120,7 @@
 
 .skill-box {
     display: inline-block; /* Keep boxes on the same line */
-    background-color: #ffe0b2; /* Light orange background */
+    background-color: white; /* Light orange background */
     color: #ff6f00; /* Dark orange text color */
     border: 1px solid #ff6f00; /* Dark orange border */
     border-radius: 5px; /* Rounded corners */

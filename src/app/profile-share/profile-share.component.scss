@@ -11,14 +11,17 @@
 }
   
 .upper-grid {
-    background-color: grey;
     flex: 0 1 30%;
     position: relative;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding-right: 20px;
+    background: linear-gradient(45deg,black, grey); /* Gradient background */
+    background-size: 400% 400%; /* For animation effect */
+    animation: gradientShift 10s ease infinite; /* Animation for gradient movement */
 }
+  
   
 .lower-grid {
     background-color: white;
@@ -50,9 +53,9 @@
 
 .profile-name {
     font-size: 52px;
-    font-family: 'Raleway', sans-serif; /* Stylish font for names */
+    font-family:  'Alegreya', serif;
     text-transform: uppercase;
-    color:#ff6f00;
+    color:orangered;
 }
 
 .profile-position {
@@ -90,21 +93,42 @@
     padding: 20px;
 }
   
-.skills, .education, .contacts, .bio, .experience {
+.education, .contacts, .bio, .experience {
     margin-bottom: 20px;
 }
 
-.skills h3, .education h3, .contacts h3, .bio h3, .experience h3 {
+.education h3, .contacts h3, .bio h3, .experience h3 {
     font-family: 'Raleway', sans-serif; /* Stylish font for section headings */
     color: #ff6f00; 
-    border-bottom: 2px solid #ff6f00; /* Orange underline for headings */
+    border-bottom: 1px solid #ff6f00; /* Orange underline for headings */
     padding-bottom: 5px;
     margin-bottom: 15px;
 }
 
 .skills {
+    margin-bottom: 20px;
     margin-top: 100px;
-} 
+}
+
+.skills h3 {
+    margin-bottom: 15px;
+    font-family: 'Raleway', sans-serif; /* Stylish font for section headings */
+    color: #ff6f00; 
+    border-bottom: 1px solid #ff6f00;/* Orange underline for headings */
+    padding-bottom: 5px;
+}
+
+.skill-box {
+    display: inline-block; /* Keep boxes on the same line */
+    background-color: white; /* Light orange background */
+    color: #ff6f00; /* Dark orange text color */
+    border: 1px solid #ff6f00; /* Dark orange border */
+    border-radius: 5px; /* Rounded corners */
+    padding: 5px 10px; /* Smaller padding */
+    margin: 5px; /* Margin between skill boxes */
+    font-family: 'Roboto', sans-serif; /* Consistent font for skills */
+    font-size: 14px; /* Smaller text size */
+}
 
 .bio, .experience {
     margin-top: 30px;
@@ -124,120 +148,15 @@ p {
 }
 
 
-/*
-.profile-share-container {
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    padding: 0 20%;
-    border: 1px solid black;
-    background-color: #f8f9fa; 
+/* Animation for gradient background */
+@keyframes gradientShift {
+    0% {
+        background-position: 0% 0%;
+    }
+    50% {
+        background-position: 100% 100%;
+    }
+    100% {
+        background-position: 0% 0%;
+    }
 }
-  
-.upper-grid {
-    background-color: grey;
-    flex: 0 1 30%;
-    position: relative;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding-right: 20px;
-}
-  
-.lower-grid {
-    background-color: white;
-    flex: 1 1 70%;
-    display: flex;
-}
-  
-.profile-image {
-    position: absolute;
-    bottom: -40px; 
-    left: 15%;
-    transform: translateX(-40%);
-    border: 5px solid white;
-    top: 25%;
-    width: 200px; 
-    height: 200px; 
-    object-fit: cover; 
-}
-
-.profile-info {
-    position: absolute; 
-    right: 20px; 
-    top: 50%;
-    transform: translateY(-50%); 
-    text-align: right;
-    color: white;
-    margin-right:70px;
-}
-
-.profile-name {
-    font-size: 52px;
-    font-family: 'Any Stylish Font', sans-serif; 
-    text-transform: uppercase;
-    color:#ff6f00;
-   
-}
-
-.profile-position {
-    font-size: 20px;
-    font-family: Arial, sans-serif;
-    margin: 5px 0;
-}
-
-.social-icons {
-    display: flex;
-    justify-content: flex-end;
-    margin-top: 10px;
-}
-
-.social-icons .btn {
-    margin-left: 5px;
-    background-color: transparent;
-    color: white;
-    border-color: white;
-}
-
-.social-icons .btn:hover {
-    color: #ddd;
-    border-color: #ddd;
-}
-
-.left-column {
-    flex: 1;
-    padding: 20px;
-}
-  
-.right-column {
-    flex: 2;
-    padding: 20px;
-}
-  
-.skills, .education, .contacts, .bio, .experience {
-    margin-bottom: 20px;
-}
-
-.skills h3, .education h3, .contacts h3, .bio h3, .experience h3 {
-    font-family: 'Different Font', sans-serif; 
-    color: #ff6f00; 
-}
-
-.skills {
-    margin-top: 100px;
-} 
-
-.bio, .experience {
-    margin-top: 30px;
-}
-  
-ul {
-    list-style-type: disc;
-    padding-left: 20px;
-}
-  
-p {
-    margin: 0;
-    margin-bottom: 10px;
-}
-*/

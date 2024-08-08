@@ -8,7 +8,7 @@ export const routes: Routes = [
   { path: 'signup', loadComponent: () => import('./signup/signup.component').then(m => m.SignupComponent) },
   { path: 'login', loadComponent: () => import('./login/login.component').then(m => m.LoginComponent) },
   { path: 'profile', loadComponent: () => import('./profile/profile.component').then(m => m.ProfileComponent), canActivate: [userAuthGuard] },
-
+  { path: 'profile-share', loadComponent: () => import('./profile-share/profile-share.component').then(m=> m.ProfileShareComponent)},
   { path: 'event/:id', loadComponent: () => import('./event-details/event-details.component').then(m => m.EventDetailsComponent) },
   { path: 'events', loadComponent: () => import('./event-listing/event-listing.component').then(m => m.EventListingComponent) },
 

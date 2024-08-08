@@ -1,0 +1,33 @@
+.profile-share-container {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    padding: 0 20%; /* 20% padding on left and right */
+    border: 1px solid black; /* Thin black border */
+    position: relative;
+  }
+  
+  .upper-grid {
+    background-color: grey;
+    height: 20%;
+    border: 1px solid black;
+    position: relative;
+    overflow: visible; /* Allow the image to overflow into the lower grid */
+  }
+  
+  .lower-grid {
+    background-color: white;
+    height: 80%;
+    border: 1px solid black;
+    position: relative;
+  }
+  
+  .profile-image {
+    position: absolute;
+    left: 0;
+    padding-left: 10px; /* Padding on the left */
+    height: 160%; /* Height to ensure it spans both grids */
+    top: 50%; /* Move the image up to overlap the lower grid */
+    transform: translateY(-50%); /* Adjust so half of the image is in each grid */
+  }
+  

@@ -89,4 +89,8 @@ export class UserService {
     await this.firestore.doc(`users/${uid}`).update(userDetails);
   }
 
+  getUserById(uid: string): Observable<any> {
+    return this.firestore.doc(`users/${uid}`).valueChanges();
+  }
+
 }

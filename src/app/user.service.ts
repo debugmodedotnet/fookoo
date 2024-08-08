@@ -20,5 +20,6 @@ export class UserService {
   logout(): Observable<void> {
     return from(this.afAuth.signOut());
   }
+  
 
 }

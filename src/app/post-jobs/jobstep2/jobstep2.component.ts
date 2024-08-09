@@ -1,4 +1,4 @@
-import { Component, effect, inject, Input, input, model, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { Component, effect, inject, model, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import {
   FormBuilder,
@@ -85,7 +85,7 @@ export class Jobstep2Component implements OnInit {
     this.isQualificationInValid = false;
   }
 
-  getPositions():void {
+  getPositions(): void {
     this.firestore
       .collection('post-job')
       .doc<IJobStep1>('job-step-1')

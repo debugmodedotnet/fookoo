@@ -2,11 +2,12 @@ import { Component, OnInit, inject } from '@angular/core';
 import { UserService } from '../../services/user.service';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { NgIf } from '@angular/common';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-about',
   standalone: true,
-  imports: [ReactiveFormsModule, NgIf],
+  imports: [ReactiveFormsModule, NgIf, RouterLink],
   templateUrl: './about.component.html',
   styleUrl: './about.component.scss'
 })
@@ -54,5 +55,10 @@ export class AboutComponent implements OnInit {
     console.log(this.user.id);
     this.userService.updateUserProfile(userDetails);
   }
+
+  formattedName(name: string): string {
+    return name.toLowerCase().replace(/\s+/g, '');
+  }
+
 
 }

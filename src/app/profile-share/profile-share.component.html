@@ -1,55 +1,75 @@
 <div class="profile-share-container">
-    <div class="upper-grid">
-        <img src="https://static.toiimg.com/photo/83890830/83890830.jpg" alt="Profile Image" class="profile-image">
-        <div class="profile-info">
-            <h1 class="profile-name">JOHN DOE</h1>
-            <h2 class="profile-position">Software Developer</h2>
-            <div class="social-icons">
-                <a href="#" class="btn btn-outline-light btn-sm"><i class="bi bi-facebook"></i></a>
-                <a href="#" class="btn btn-outline-light btn-sm"><i class="bi bi-twitter"></i></a>
-                <a href="#" class="btn btn-outline-light btn-sm"><i class="bi bi-linkedin"></i></a>
-            </div>
-        </div>
-        <div class="particle-container">
-            <div class="particle"></div>
-            <div class="particle"></div>
-            <div class="particle"></div>
-            <div class="particle"></div>
-            <div class="particle"></div>
-        </div>
-    </div>
-    <div class="lower-grid">
-        <div class="left-column">
-            <div class="skills">
-                <h3>Skills</h3>
-                <div class="skill-box">HTML</div>
-                <div class="skill-box">CSS</div>
-                <div class="skill-box">JavaScript</div>
-                <div class="skill-box">SQL</div>
-            </div>
-            <div class="education">
-                <h3>Education</h3>
-                <p>XYZ University, B.Tech in Computer Science</p>
-            </div>
-            <div class="contacts">
-                <h3>Contacts</h3>
-                <p>Email: your.emailexample.com</p>
-                <p>Phone: +1234567890</p>
-            </div>
-        </div>
-        <div class="right-column">
-            <div class="bio">
-                <h3>Bio</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
-            </div>
-            <div class="experience">
-                <h3>Experience</h3>
-                <p>Software Developer at ABC Corp. (Jan 2022 - Present)</p>
-                <p>Frontend Developer at DEF Inc. (Jun 2020 - Dec 2021)</p>
-            </div>
-        </div>
-    </div>
-</div>
+  <div class="upper-grid">
+    <img [src]="userData.photoURL" alt="Profile Image" class="profile-image" />
 
+    <div class="profile-info">
+      <h1 class="profile-name">{{ userData.name }}</h1>
+      <h2 class="profile-position">{{ userData.position }}</h2>
+
+      <div class="social-icons">
+        @if(userData.github){
+        <a [href]="userData.github" class="btn btn-outline-light btn-sm"
+          ><i class="bi bi-github"></i></a
+        >} @if(userData.twitter){
+        <a [href]="userData.twitter" class="btn btn-outline-light btn-sm"
+          ><i class="bi bi-twitter"></i></a
+        >} @if(userData.linkedin){
+        <a [href]="userData.linkedin" class="btn btn-outline-light btn-sm"
+          ><i class="bi bi-linkedin"></i></a
+        >}
+      </div>
+    </div>
+
+    <div class="particle-container">
+      <div class="particle"></div>
+      <div class="particle"></div>
+      <div class="particle"></div>
+      <div class="particle"></div>
+      <div class="particle"></div>
+    </div>
+  </div>
+
+  <div class="lower-grid">
+    <div class="left-column">
+      <div class="skills">
+        <h3>Skills</h3>
+
+        @if(userData.skill1){
+        <div class="skill-box">{{ userData.skill1 }}</div>
+        } @if(userData.skill2){
+        <div class="skill-box">{{ userData.skill2 }}</div>
+        } @if(userData.skill3){
+        <div class="skill-box">{{ userData.skill3 }}</div>
+        } @if(userData.skill4){
+        <div class="skill-box">{{ userData.skill4 }}</div>
+        }
+      </div>
+
+      <div class="education">
+        <h3>Education</h3>
+        <p>{{ userData.education }}</p>
+      </div>
+
+      <div class="contacts">
+        <h3>Contacts</h3>
+        <p>Email: {{ userData.email }}</p>
+        <p>Phone: +1234567890</p>
+      </div>
+    </div>
+
+    <div class="right-column">
+      <div class="bio">
+        <h3>Bio</h3>
+        <p>
+          {{ userData.bio }}
+        </p>
+      </div>
+
+      <div class="experience">
+        <h3>Experience</h3>
+
+        <p>{{ userData.experience }}</p>
+      </div>
+    </div>
+  </div>
+</div>

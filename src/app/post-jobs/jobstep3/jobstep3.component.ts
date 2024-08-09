@@ -1,4 +1,4 @@
-import { Component, Input, model, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, Input, model, OnChanges } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 
 @Component({
@@ -29,7 +29,7 @@ export class Jobstep3Component implements OnChanges {
     });
   }
 
-  ngOnChanges(changes:SimpleChanges): void {
+  ngOnChanges(): void {
     console.log(this.savedJob);
     this.jobForm.patchValue(this.savedJob);
   }

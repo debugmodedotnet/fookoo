@@ -12,7 +12,6 @@ import { Jobstep8Component } from './jobstep8/jobstep8.component';
 import { Jobstep9Component } from './jobstep9/jobstep9.component';
 
 import { UserService } from '../services/user.service';
-import { lastValueFrom } from 'rxjs';
 
 @Component({
   selector: 'app-post-jobs',

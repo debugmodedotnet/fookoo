@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { UserService } from '../../services/user.service';
 import { IEvent } from '../../modules/event';
+import { IUser } from '../../modules/user';
 
 @Component({
   selector: 'app-event-venue',
@@ -75,7 +76,7 @@ export class EventVenueComponent implements OnInit {
     });
   }
 
-  enrollUser(user: any) {
+  enrollUser(user: IUser) {
     if (!this.eventId) {
       console.error('No event ID provided');
       return;

@@ -4,6 +4,7 @@ import { IEvent } from '../../modules/event';
 import { UserService } from '../../services/user.service';
 import { Router } from '@angular/router';
 import { DatePipe } from '@angular/common';
+import { IUser } from '../../modules/user';
 
 @Component({
   selector: 'app-event-about',
@@ -66,7 +67,7 @@ export class EventAboutComponent implements OnInit {
     });
   }
 
-  enrollUser(user: any) {
+  enrollUser(user: IUser) {
     if (!this.eventId) {
       console.error('No event ID provided');
       return;

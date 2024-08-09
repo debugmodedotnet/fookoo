@@ -72,7 +72,7 @@ export class ProfileComponent implements OnInit {
   }
 
   async loadViewJob() {
-    const { ViewJobComponent } = await import ('./viewjob/viewjob.component');
+    const { ViewJobComponent } = await import('./viewjob/viewjob.component');
     if (this.profileView) {
       this.profileView.clear();
       this.profileView.createComponent(ViewJobComponent);
@@ -96,11 +96,11 @@ export class ProfileComponent implements OnInit {
       const filePath = `users/${userId}/photos/${new Date().getTime()}_${file.name}`;
       const fileRef = this.storage.ref(filePath);
       const task = this.storage.upload(filePath, file);
-  
+
       task.snapshotChanges().pipe(
         finalize(() => {
           fileRef.getDownloadURL().subscribe(url => {
-  
+
             const userDetails = { ...this.user, photoURL: url };
             this.userService.updateUserProfile(userDetails);
           });

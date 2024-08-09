@@ -9,7 +9,7 @@
   <div class="d-flex align-items-center justify-content-center gap-2">
     <button
       (click)="saveProfile()"
-      class="nmc-btn-primary font-14 fw-semibold box-shadow-none mt-5 mb-2 px-4 py-2 h-auto"
+      class="nmc-btn-primary font-14 fw-semibold box-shadow-none mb-2 px-4 py-2 h-auto"
       [disabled]="
         userProfileForm.get('github')?.invalid ||
         userProfileForm.get('linkedin')?.invalid ||
@@ -18,6 +18,10 @@
     >
       Save
     </button>
+
+    <a [routerLink]="['/p', formattedName(user.name), user.uid]">
+      <i class="bi bi-share-fill nmc-medium-grey ms-3 font-20"></i
+    ></a>
   </div>
 </div>
 

@@ -6,6 +6,7 @@ export interface IUser {
   city: string;
   name: string;
   email: string;
+  phone: number;
   tagline: string;
   github: string;
   twitter: string;

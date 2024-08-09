@@ -1,161 +1,62 @@
-/* Import Google Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Raleway:wght@400;700&display=swap');
+@use "../styles/variables" as *;
 
-.profile-share-container {
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    padding: 0 20%;
-    border: 1px solid black;
-    background-color: #f8f9fa; 
-}
-  
-.upper-grid {
-    flex: 0 1 30%;
-    position: relative;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding-right: 20px;
-    background: linear-gradient(45deg,black, grey); /* Gradient background */
-    background-size: 400% 400%; /* For animation effect */
-    animation: gradientShift 10s ease infinite; /* Animation for gradient movement */
-}
-  
-  
-.lower-grid {
-    background-color: white;
-    flex: 1 1 70%;
-    display: flex;
-}
-  
-.profile-image {
-    position: absolute;
-    bottom: -40px; 
-    left: 15%;
-    transform: translateX(-40%);
-    border: 5px solid white;
-    top: 25%;
-    width: 200px; 
-    height: 200px; 
-    object-fit: cover; 
-}
+.profile-wrapper {
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 
-.profile-info {
-    position: absolute; 
-    right: 20px; 
-    top: 50%;
-    transform: translateY(-50%); 
-    text-align: right;
-    color: white;
-    margin-right:70px;
+    .upper-grid {
+        flex: 0 1 30%;
+        position: relative;
+        background: linear-gradient(45deg, $nmc-dark-grey, grey);
+        background-size: 400% 400%;
+        animation: gradientShift 10s ease infinite;
+
+        .profile-image {
+            position: absolute;
+            bottom: -40px;
+            top: 20%;
+            left: 10%;
+            transform: translateX(-40%);
+            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+            width: 200px;
+            height: 200px;
+
+            img {
+                object-position: top;
+                border: 2px solid $nmc-light-grey;
+
+            }
+        }
+
+        .social-icons .btn {
+            background-color: transparent;
+            color: $nmc-white;
+            border-color: $nmc-white;
+
+            &:hover {
+                color: $nmc-primary;
+                border-color: $nmc-primary;
+            }
+        }
+    }
+
+    .lower-grid {
+        flex: 1 1 70%;
+
+        h3 {
+            border-bottom: 1px solid $nmc-primary;
+        }
+    }
 }
 
-.profile-name {
-    font-size: 52px;
-    font-family:  'Alegreya', serif;
-    text-transform: uppercase;
-    color:orangered;
-}
-
-.profile-position {
-    font-size: 20px;
-    font-family: 'Roboto', sans-serif; /* Clean, readable font for roles */
-    margin: 5px 0;
-    color: #fff; /* Ensure readability against dark background */
-}
-
-.social-icons {
-    display: flex;
-    justify-content: flex-end;
-    margin-top: 10px;
-}
-
-.social-icons .btn {
-    margin-left: 5px;
-    background-color: transparent;
-    color: white;
-    border-color: white;
-}
-
-.social-icons .btn:hover {
-    color: #ddd;
-    border-color: #ddd;
-}
-
-.left-column {
-    flex: 1;
-    padding: 20px;
-}
-  
-.right-column {
-    flex: 2;
-    padding: 20px;
-}
-  
-.education, .contacts, .bio, .experience {
-    margin-bottom: 20px;
-}
-
-.education h3, .contacts h3, .bio h3, .experience h3 {
-    font-family: 'Raleway', sans-serif; /* Stylish font for section headings */
-    color: #ff6f00; 
-    border-bottom: 1px solid #ff6f00; /* Orange underline for headings */
-    padding-bottom: 5px;
-    margin-bottom: 15px;
-}
-
-.skills {
-    margin-bottom: 20px;
-    margin-top: 100px;
-}
-
-.skills h3 {
-    margin-bottom: 15px;
-    font-family: 'Raleway', sans-serif; /* Stylish font for section headings */
-    color: #ff6f00; 
-    border-bottom: 1px solid #ff6f00;/* Orange underline for headings */
-    padding-bottom: 5px;
-}
-
-.skill-box {
-    display: inline-block; /* Keep boxes on the same line */
-    background-color: white; /* Light orange background */
-    color: #ff6f00; /* Dark orange text color */
-    border: 1px solid #ff6f00; /* Dark orange border */
-    border-radius: 5px; /* Rounded corners */
-    padding: 5px 10px; /* Smaller padding */
-    margin: 5px; /* Margin between skill boxes */
-    font-family: 'Roboto', sans-serif; /* Consistent font for skills */
-    font-size: 14px; /* Smaller text size */
-}
-
-.bio, .experience {
-    margin-top: 30px;
-}
-  
-ul {
-    list-style-type: disc;
-    padding-left: 20px;
-    font-family: 'Roboto', sans-serif; /* Consistent font for list items */
-}
-  
-p {
-    margin: 0;
-    margin-bottom: 10px;
-    font-family: 'Roboto', sans-serif; /* Consistent font for paragraphs */
-    color: #333; /* Darker text for readability */
-}
-
-
-/* Animation for gradient background */
 @keyframes gradientShift {
     0% {
         background-position: 0% 0%;
     }
+
     50% {
         background-position: 100% 100%;
     }
+
     100% {
         background-position: 0% 0%;
     }

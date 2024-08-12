@@ -25,7 +25,7 @@ export class EventAgendaComponent implements OnInit {
   }
 
   getEventAgenda(eventId: string) {
-    this.firestore.collection('events').doc(eventId).collection('agenda').snapshotChanges().pipe(
+    this.firestore.collection('events').doc(eventId).collection('agendas').snapshotChanges().pipe(
       map(actions => actions.map(a => {
         const data = a.payload.doc.data() as IEventAgenda;
         const id = a.payload.doc.id;

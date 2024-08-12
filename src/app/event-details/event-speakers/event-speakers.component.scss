@@ -1,19 +1,26 @@
 @use "../../styles/variables" as *;
 
-.speakers .member figure::before {
-    content: '';
-    width: 100%;
-    height: 100%;
-    border: 2px solid $nmc-primary;
-    position: absolute;
-    z-index: -1;
-    top: -15px;
-}
+.speakers .member {
 
-.speakers .member:nth-child(odd) figure::before {
-    right: 15px;
-}
+    .speaker-img figure {
+        height: 240px;
+    }
 
-.speakers .member:nth-child(even) figure::before {
-    left: 15px;
+    .speaker-img::before {
+        content: '';
+        width: 100%;
+        height: 100%;
+        border: 2px solid $nmc-primary;
+        position: absolute;
+        z-index: -1;
+        top: -15px;
+    }
+
+    &:nth-child(odd) .speaker-img::before {
+        right: 15px;
+    }
+
+    &:nth-child(even) .speaker-img::before {
+        left: 15px;
+    }
 }

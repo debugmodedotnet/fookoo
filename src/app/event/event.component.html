@@ -27,54 +27,59 @@
           <div
             class="events-card card overflow-hidden nmc-bg-white overflow-hidden position-relative rounded-3"
           >
-            <div class="pricing-table-ribbon fw-bold position-absolute">
-              {{ e.isPaid ? "Paid" : "Free" }}
-            </div>
+            <a [routerLink]="['/event', e.id]">
+              <div class="pricing-table-ribbon fw-bold position-absolute">
+                {{ e.isPaid ? "Paid" : "Free" }}
+              </div>
 
-            <figure
-              class="m-0 p-0 zoom-effect overflow-hidden m-3 rounded-3 d-flex"
-            >
-              <img
-                [src]="e.Logo"
-                class="w-100 h-auto object-fit-contain m-auto p-3"
-                alt="Event Tech"
-                loading="lazy"
-              />
-            </figure>
+              <figure
+                class="m-0 p-0 zoom-effect overflow-hidden m-3 rounded-3 d-flex"
+              >
+                <img
+                  [src]="e.Logo"
+                  class="w-100 h-auto object-fit-contain m-auto p-3"
+                  alt="Event Tech"
+                  loading="lazy"
+                />
+              </figure>
 
-            <figcaption class="m-0 p-3 pt-0">
-              <div class="d-flex align-items-center justify-content-start mb-2">
-                <span
-                  class="d-inline-block font-12 fw-semibold py-1 px-2 text-red-600 bg-orange-100"
-                  >{{ e.isOffline ? "Offline" : "Online" }}
-                </span>
+              <figcaption class="m-0 p-3 pt-0">
+                <div
+                  class="d-flex align-items-center justify-content-start mb-2"
+                >
+                  <span
+                    class="d-inline-block font-12 fw-semibold py-1 px-2 text-red-600 bg-orange-100"
+                    >{{ e.isOffline ? "Offline" : "Online" }}
+                  </span>
 
-                <!-- @if(e.isOffline){
+                  <!-- @if(e.isOffline){
                 <span
                   class="d-inline-block font-12 fw-semibold rounded-1 py-1 px-2 text-orange-600 bg-orange-100 ms-2"
                   >{{ e.City }} </span
                 >} -->
-              </div>
+                </div>
 
-              <h4 class="font-22 nmc-dark-grey my-3 font-family-poppins">
-                {{ e.Title }}
-              </h4>
+                <h4 class="font-22 nmc-dark-grey my-3 font-family-poppins">
+                  {{ e.Title }}
+                </h4>
 
-              <h3 class="font-18 nmc-dark-grey mb-3 fw-normal">
+                <h3 class="font-16 nmc-medium-grey mb-3 fw-normal">
                 {{ e.ShortDescription }}
               </h3>
 
-              <h4 class="font-16 nmc-medium-grey mb-3 fw-normal">
-                {{ e.Date | date : "MMMM d" }} @if(e.isOffline){| {{ e.City }}}
-              </h4>
+                <h4 class="font-16 nmc-medium-grey mb-3 fw-normal">
+                  {{ e.Date | date : "MMMM d" }} @if(e.isOffline){|
+                  {{ e.City }}}
+                </h4>
 
-              <a
+                <a
                 class="nmc-btn-primary text-center w-50 w-md-100 pt-2 mt-3"
                 [routerLink]="['/event', e.id]"
               >
                 Enroll Now
               </a>
-            </figcaption>
+              </figcaption>
+            </a>
           </div>
         </div>
         }

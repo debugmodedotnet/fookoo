@@ -23,9 +23,9 @@
     <div class="events-container d-flex flex-column justify-content-center">
       <div class="row">
         @for(e of events; track e){
-        <div class="col-12 col-md-6 col-lg-4 m-auto mt-4 mt-lg-0">
+        <div class="col-12 col-md-6 col-lg-4 mt-4 mt-lg-0">
           <div
-            class="events-card card overflow-hidden nmc-bg-white overflow-hidden position-relative rounded-3"
+            class="events-card card overflow-hidden nmc-bg-white overflow-hidden position-relative rounded-3 h-100 m-auto"
           >
             <a [routerLink]="['/event', e.id]">
               <!-- <div class="pricing-table-ribbon fw-bold position-absolute">
@@ -41,7 +41,7 @@
                 />
               </figure>
 
-              <figcaption class="m-0 p-3">
+              <figcaption class="m-0 p-4">
                 <div
                   class="d-flex align-items-center justify-content-start mb-2"
                 >
@@ -70,14 +70,14 @@
                 </h3>
 
                 <div class="d-flex align-items-center gap-3">
-                  <h4 class="font-16 nmc-dark-grey mb-3">
+                  <h4 class="font-16 nmc-dark-grey m-0">
                     <i
                       class="bi bi-calendar-event-fill me-2 font-20 nmc-primary"
                     ></i>
                     {{ e.Date | date : "MMMM d" }}
                   </h4>
 
-                  <h4 class="font-16 nmc-dark-grey mb-3">
+                  <h4 class="font-16 nmc-dark-grey m-0">
                     <i class="bi bi-geo-alt-fill me-1 font-20 nmc-primary"></i>
                     {{ e.City }}
                   </h4>

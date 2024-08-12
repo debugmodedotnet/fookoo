@@ -28,35 +28,37 @@
             class="events-card card overflow-hidden nmc-bg-white overflow-hidden position-relative rounded-3"
           >
             <a [routerLink]="['/event', e.id]">
-              <div class="pricing-table-ribbon fw-bold position-absolute">
+              <!-- <div class="pricing-table-ribbon fw-bold position-absolute">
                 {{ e.isPaid ? "Paid" : "Free" }}
-              </div>
+              </div> -->
 
-              <figure
-                class="m-0 p-0 zoom-effect overflow-hidden m-3 rounded-3 d-flex"
-              >
+              <figure class="m-0 p-0 zoom-effect overflow-hidden">
                 <img
-                  [src]="e.Logo"
-                  class="w-100 h-auto object-fit-contain m-auto p-3"
+                  [src]="e.EventImage"
+                  class="w-100 h-100 object-fit-cover"
                   alt="Event Tech"
                   loading="lazy"
                 />
               </figure>
 
-              <figcaption class="m-0 p-3 pt-0">
+              <figcaption class="m-0 p-3">
                 <div
                   class="d-flex align-items-center justify-content-start mb-2"
                 >
                   <span
-                    class="d-inline-block font-12 fw-semibold py-1 px-2 text-red-600 bg-orange-100"
+                    class="d-inline-block font-12 fw-semibold rounded-1 py-1 px-2 text-blue-600 bg-blue-100"
                     >{{ e.isOffline ? "Offline" : "Online" }}
                   </span>
 
-                  <!-- @if(e.isOffline){
-                <span
-                  class="d-inline-block font-12 fw-semibold rounded-1 py-1 px-2 text-orange-600 bg-orange-100 ms-2"
-                  >{{ e.City }} </span
-                >} -->
+                  @if(e.isPaid){
+                  <span
+                    class="d-inline-block font-12 fw-semibold rounded-1 py-1 px-2 text-red-600 bg-red-100 ms-2"
+                    >{{ "Paid" }} </span
+                  >}@else {
+                  <span
+                    class="d-inline-block font-12 fw-semibold rounded-1 py-1 px-2 text-green-600 bg-green-100 ms-2"
+                    >{{ "Free" }} </span
+                  >}
                 </div>
 
                 <h4 class="font-22 nmc-dark-grey my-3 font-family-poppins">
@@ -64,20 +66,29 @@
                 </h4>
 
                 <h3 class="font-16 nmc-medium-grey mb-3 fw-normal">
-                {{ e.ShortDescription }}
-              </h3>
+                  {{ e.ShortDescription }}
+                </h3>
 
-                <h4 class="font-16 nmc-medium-grey mb-3 fw-normal">
-                  {{ e.Date | date : "MMMM d" }} @if(e.isOffline){|
-                  {{ e.City }}}
-                </h4>
+                <div class="d-flex align-items-center gap-3">
+                  <h4 class="font-16 nmc-dark-grey mb-3">
+                    <i
+                      class="bi bi-calendar-event-fill me-2 font-20 nmc-primary"
+                    ></i>
+                    {{ e.Date | date : "MMMM d" }}
+                  </h4>
 
-                <a
-                class="nmc-btn-primary text-center w-50 w-md-100 pt-2 mt-3"
-                [routerLink]="['/event', e.id]"
-              >
-                Enroll Now
-              </a>
+                  <h4 class="font-16 nmc-dark-grey mb-3">
+                    <i class="bi bi-geo-alt-fill me-1 font-20 nmc-primary"></i>
+                    {{ e.City }}
+                  </h4>
+                </div>
+
+                <!-- <a
+                  class="nmc-btn-primary text-center w-50 w-md-100 pt-2 mt-3"
+                  [routerLink]="['/event', e.id]"
+                >
+                  Enroll Now
+                </a> -->
               </figcaption>
             </a>
           </div>

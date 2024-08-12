@@ -13,20 +13,22 @@
         class="member rounded-3 d-flex align-items-center justify-content-between gap-5 mt-5"
       >
         @if(i % 2 === 0){
-        <figure class="position-relative m-0 w-30">
-          <img
-            [src]="speaker.Image"
-            class="img-fluid w-100 object-fit-contain"
-            alt=""
-          />
-        </figure>
+        <div class="speaker-img position-relative w-30">
+          <figure class="m-0 overflow-hidden">
+            <img
+              [src]="speaker.Image"
+              class="h-100 w-100 object-fit-cover"
+              alt=""
+            />
+          </figure>
+        </div>
 
-        <div class="member-info text-start w-75">
-          <h3 class="font-family-poppins nmc-primary">
-            {{ speaker.Name }}
-            <span class="nmc-medium-grey font-18 ps-2">{{
-              speaker.Position
-            }}</span>
+        <div class="member-info text-start w-75"> 
+          <h3 class="font-family-poppins">
+            <a href="" class="nmc-primary font-family-poppins pe-2">
+              {{ speaker.Name }}
+            </a>
+            <span class="nmc-medium-grey font-18">{{ speaker.Position }}</span>
           </h3>
 
           <p class="nmc-medium-grey">
@@ -58,9 +60,9 @@
         }@else {
         <div class="member-info text-start w-75">
           <h3 class="font-family-poppins">
-            <a href="" class="nmc-primary font-family-poppins pe-2">{{
-              speaker.Name
-            }}</a>
+            <a href="" class="nmc-primary font-family-poppins pe-2">
+              {{ speaker.Name }}
+            </a>
             <span class="nmc-medium-grey font-18">{{ speaker.Position }}</span>
           </h3>
 
@@ -83,13 +85,15 @@
           </div>
         </div>
 
-        <figure class="position-relative m-0 w-30">
-          <img
-            [src]="speaker.Image"
-            class="img-fluid w-100 object-fit-contain"
-            alt=""
-          />
-        </figure>
+        <div class="speaker-img position-relative w-30">
+          <figure class="m-0 overflow-hidden">
+            <img
+              [src]="speaker.Image"
+              class="h-100 w-100 object-fit-cover"
+              alt=""
+            />
+          </figure>
+        </div>
         }
       </div>
       }

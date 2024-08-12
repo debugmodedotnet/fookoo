@@ -1,21 +1,23 @@
 @use "../styles/variables" as *;
 
 .events-card {
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-    min-height: 425px;
-
-    h3 {
-        min-height: 44px;
-    }
+    //box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    box-shadow: 0 1px 10px rgba(0, 0, 0, .1);
+    border: 0 solid #e2e8f0;
 
     figure {
-        height: 150px;
+        height: 200px;
         //border: 1px solid $nmc-primary;
-        box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 5px 0px, rgba(220, 95, 0, 0.1) 0px 0px 1px 0px;
+        //box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 5px 0px, rgba(220, 95, 0, 0.1) 0px 0px 1px 0px;
 
-        img {
-            max-height: 150px;
-        }
+        // img {
+        //     max-height: 150px;
+        // }
+    }
+
+    &:hover {
+        transform: scale(1.05);
+        transition: ease all .5s;
     }
 }
 

@@ -31,3 +31,7 @@
 .profile-tabs li.active a {
     color: $nmc-primary !important;
 }
+
+.profile-content {
+    min-height: 70vh;
+}

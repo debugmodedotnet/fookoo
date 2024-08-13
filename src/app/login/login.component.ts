@@ -3,13 +3,13 @@ import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { UserService } from '../services/user.service';
-import { NgClass, NgIf } from '@angular/common';
+import { NgClass } from '@angular/common';
 import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [NgIf, NgClass, ReactiveFormsModule],
+  imports: [NgClass, ReactiveFormsModule],
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })

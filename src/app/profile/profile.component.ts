@@ -62,14 +62,14 @@ export class ProfileComponent implements OnInit {
     }
   }
 
-  async loadJob() {
-    const { JobComponent } = await import('./job/job.component');
-    if (this.profileView) {
-      this.profileView.clear();
-      this.profileView.createComponent(JobComponent);
-      this.currentTab = 'job';
-    }
-  }
+  // async loadJob() {
+  //   const { JobComponent } = await import('./job/job.component');
+  //   if (this.profileView) {
+  //     this.profileView.clear();
+  //     this.profileView.createComponent(JobComponent);
+  //     this.currentTab = 'job';
+  //   }
+  // }
 
   async loadViewJob() {
     const { ViewJobComponent } = await import('./viewjob/viewjob.component');

@@ -1,13 +1,12 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { UserService } from '../../services/user.service';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { NgIf } from '@angular/common';
 import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-about',
   standalone: true,
-  imports: [ReactiveFormsModule, NgIf, RouterLink],
+  imports: [ReactiveFormsModule, RouterLink],
   templateUrl: './about.component.html',
   styleUrl: './about.component.scss'
 })

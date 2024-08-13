@@ -94,21 +94,15 @@
           formControlName="linkedin"
           id="linkedin"
         />
-        <div
-          *ngIf="
-            userProfileForm.get('linkedin')?.invalid &&
-            (userProfileForm.get('linkedin')?.dirty ||
-              userProfileForm.get('linkedin')?.touched)
-          "
-          class="nmc-alert mt-1"
-        >
-          <p
-            *ngIf="userProfileForm.get('linkedin')?.errors?.['pattern']"
-            class="font-14 m-0"
-          >
-            *Please enter a valid LinkedIn URL
-          </p>
+        @if(userProfileForm.get('linkedin')?.invalid &&
+        (userProfileForm.get('linkedin')?.dirty ||
+        userProfileForm.get('linkedin')?.touched)){
+        <div class="nmc-alert mt-1">
+          @if(userProfileForm.get('linkedin')?.errors?.['pattern']){
+          <p class="font-14 m-0">*Please enter a valid LinkedIn URL</p>
+          }
         </div>
+        }
       </div>
 
       <div class="col-3 mt-3">
@@ -121,21 +115,15 @@
           formControlName="github"
           id="github"
         />
-        <div
-          *ngIf="
-            userProfileForm.get('github')?.invalid &&
-            (userProfileForm.get('github')?.dirty ||
-              userProfileForm.get('github')?.touched)
-          "
-          class="nmc-alert mt-1"
-        >
-          <p
-            *ngIf="userProfileForm.get('github')?.errors?.['pattern']"
-            class="font-14 m-0"
-          >
-            *Please enter a valid GitHub URL
-          </p>
+        @if(userProfileForm.get('github')?.invalid &&
+        (userProfileForm.get('github')?.dirty ||
+        userProfileForm.get('github')?.touched)){
+        <div class="nmc-alert mt-1">
+          @if(userProfileForm.get('github')?.errors?.['pattern']){
+          <p class="font-14 m-0">*Please enter a valid GitHub URL</p>
+          }
         </div>
+        }
       </div>
 
       <div class="col-3 mt-3">
@@ -148,21 +136,15 @@
           formControlName="twitter"
           id="twitter"
         />
-        <div
-          *ngIf="
-            userProfileForm.get('twitter')?.invalid &&
-            (userProfileForm.get('twitter')?.dirty ||
-              userProfileForm.get('twitter')?.touched)
-          "
-          class="nmc-alert mt-1"
-        >
-          <p
-            *ngIf="userProfileForm.get('twitter')?.errors?.['pattern']"
-            class="font-14 m-0"
-          >
-            *Please enter a valid Twitter URL
-          </p>
+        @if(userProfileForm.get('twitter')?.invalid &&
+        (userProfileForm.get('twitter')?.dirty ||
+        userProfileForm.get('twitter')?.touched)){
+        <div class="nmc-alert mt-1">
+          @if(userProfileForm.get('twitter')?.errors?.['pattern']){
+          <p class="font-14 m-0">*Please enter a valid Twitter URL</p>
+          }
         </div>
+        }
       </div>
 
       <div class="col-3 mt-3">

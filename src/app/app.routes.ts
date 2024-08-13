@@ -20,7 +20,6 @@ export const routes: Routes = [
 
   { path: 'view-job', loadComponent: () => import('./profile/viewjob/viewjob.component').then(m => m.ViewJobComponent) },
   { path: 'applied-job', loadComponent: () => import('./profile/applied-job/applied-job.component').then(m => m.AppliedJobComponent) },
-  { path: 'job', loadComponent: () => import('./profile/job/job.component').then(m => m.JobComponent) },
   { path: 'jobs/:id', loadComponent: () => import('./job-details/job-details.component').then(m => m.JobDetailsComponent) },
   { path: 'jobs', loadComponent: () => import('./job-listing/job-listing.component').then(m => m.JobListingComponent) },
   { path: 'post-job', loadComponent: () => import('./post-jobs/post-jobs.component').then(m => m.PostJobsComponent) },

@@ -22,7 +22,6 @@ export class AppliedJobComponent {
       location: 'Mumbai',
       tag: 'React'
     }
-    // Add more sample data as needed
   ];
 
 }

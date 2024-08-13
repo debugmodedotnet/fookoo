@@ -1,20 +1,17 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
-import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { CommonModule } from '@angular/common';
 import firebase from 'firebase/compat/app';
 
 @Component({
   selector: 'app-settings',
   standalone: true,
-  imports: [ReactiveFormsModule, CommonModule],
+  imports: [ReactiveFormsModule],
   templateUrl: './settings.component.html',
   styleUrl: './settings.component.scss'
 })
 export class SettingsComponent implements OnInit {
-  private afAuth = inject(AngularFireAuth);
-  private firestore = inject(AngularFirestore);
+  private afAuth = inject(AngularFireAuth);  
   private fb = inject(FormBuilder);
 
   user?: firebase.User;

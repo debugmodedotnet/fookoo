@@ -12,7 +12,6 @@ import { IAdvertisement } from '../modules/home-ads';
 })
 export class HeroAdvertisementComponent implements OnInit {
 
-
   advertisements?: IAdvertisement[];
 
   private firestore = inject(AngularFirestore);

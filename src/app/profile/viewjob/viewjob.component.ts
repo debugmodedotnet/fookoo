@@ -101,7 +101,7 @@ export class ViewJobComponent implements OnInit {
       // Clear existing responsibilities and qualifications
       this.responsibilities.clear();
       job.Responsibilities.forEach(res => this.addResponsibility(res));
-      
+
       this.qualifications.clear();
       job.qualification.forEach(qual => this.addQualification(qual));
 

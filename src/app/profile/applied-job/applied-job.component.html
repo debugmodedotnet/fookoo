@@ -1,9 +1,12 @@
 <section class="applied-job-section">
-    <div class="container">
-      <h2 class="section-title left font-30 nmc-dark-grey font-family-poppins pb-3">Applied Jobs</h2>
-      <br>
-      <table class="table table-bordered">
-        <thead>
+  <h2 class="section-title left font-24 nmc-dark-grey font-family-poppins pb-3">
+    Applied Jobs
+  </h2>
+
+  <div class="wrapper">
+    <div class="table-responsive">
+      <table class="table mb-0">
+        <thead class="thead-light">
           <tr>
             <th>Company Name</th>
             <th>Position</th>
@@ -11,18 +14,18 @@
             <th>Tag</th>
           </tr>
         </thead>
+
         <tbody>
-            @for(job of appliedJobs; track job){
-          <tr >
+          @for(job of appliedJobs; track job){
+          <tr>
             <td>{{ job.companyName }}</td>
             <td>{{ job.position }}</td>
             <td>{{ job.location }}</td>
             <td>{{ job.tag }}</td>
           </tr>
-        }
+          }
         </tbody>
       </table>
     </div>
-  </section>
-  
-  
+  </div>
+</section>

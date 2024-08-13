@@ -2,41 +2,74 @@
   Settings
 </h2>
 
-
-<div *ngIf="user" class="settings-container">
-  <h2>User Settings</h2>
+@if(user){
+<div class="wrapper position-relative rounded-3 p-4">
   <div class="user-info">
-    <p><strong>Email:</strong> {{ user.email }}</p>
-    <!-- <p>
-      <strong>Password:</strong> 
-      <span [class.password-hidden]="!showPassword">{{ user.password }}</span>
-      <button class="icon-button" (click)="togglePasswordVisibility()">
-        <span class="eye-icon" [class.open]="showPassword"></span>
-      </button>
-    </p> -->
+    <p><strong class="nmc-medium-grey me-2">Email:</strong> {{ user.email }}</p>
   </div>
 
-  <button class="update-password-btn" (click)="toggleUpdatePasswordForm()">
-    {{ showUpdatePasswordForm ? 'Cancel' : 'Update Password' }}
+  <button class="nmc-btn-primary" (click)="toggleUpdatePasswordForm()">
+    {{ showUpdatePasswordForm ? "Cancel" : "Update Password" }}
   </button>
 
-  <form *ngIf="showUpdatePasswordForm" [formGroup]="updatePasswordForm" (ngSubmit)="updatePassword()" class="update-password-form">
+  @if(showUpdatePasswordForm){
+  <form
+    [formGroup]="updatePasswordForm"
+    (ngSubmit)="updatePassword()"
+    class="update-password-form mt-4 p-4 rounded-3"
+  >
     <div class="form-group">
-      <label for="currentPassword">Current Password:</label>
-      <input type="password" id="currentPassword" formControlName="currentPassword">
+      <label
+        class="form-label fw-semibold nmc-medium-grey"
+        for="currentPassword"
+        >Current Password:</label
+      >
+      <input
+        class="form-control rounded-2 h-3"
+        type="password"
+        id="currentPassword"
+        formControlName="currentPassword"
+      />
     </div>
-    <div class="form-group">
-      <label for="newPassword">New Password:</label>
-      <input type="password" id="newPassword" formControlName="newPassword">
-    </div>
-    <div class="form-group">
-      <label for="confirmPassword">Confirm New Password:</label>
-      <input type="password" id="confirmPassword" formControlName="confirmPassword">
-    </div>
-    <button type="submit" [disabled]="!updatePasswordForm.valid">Update Password</button>
-  </form>
 
-  <div *ngIf="showPopup" class="popup">
+    <div class="form-group mt-3">
+      <label class="form-label fw-semibold nmc-medium-grey" for="newPassword"
+        >New Password:</label
+      >
+      <input
+        class="form-control rounded-2 h-3"
+        type="password"
+        id="newPassword"
+        formControlName="newPassword"
+      />
+    </div>
+
+    <div class="form-group mt-3">
+      <label
+        class="form-label fw-semibold nmc-medium-grey"
+        for="confirmPassword"
+        >Confirm New Password:</label
+      >
+      <input
+        class="form-control rounded-2 h-3"
+        type="password"
+        id="confirmPassword"
+        formControlName="confirmPassword"
+      />
+    </div>
+
+    <button
+      type="submit"
+      class="nmc-btn-primary mt-3"
+      [disabled]="!updatePasswordForm.valid"
+    >
+      Update Password
+    </button>
+  </form>
+  } @if(showPopup){
+  <div class="popup fw-bold font-16 rounded-2 nmc-white">
     Password updated successfully!
   </div>
+  }
 </div>
+}

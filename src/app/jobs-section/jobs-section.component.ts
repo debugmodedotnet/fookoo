@@ -2,13 +2,13 @@ import { CUSTOM_ELEMENTS_SCHEMA, Component, OnInit } from '@angular/core';
 import { JobService } from '../services/job.service';
 import { Job } from '../modules/job';
 import { map, Observable, of } from 'rxjs';
-import { CommonModule } from '@angular/common';
+import { AsyncPipe } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-jobs-section',
   standalone: true,
-  imports: [CommonModule, RouterModule],
+  imports: [AsyncPipe, RouterModule],
   templateUrl: './jobs-section.component.html',
   styleUrl: './jobs-section.component.scss',
   schemas: [CUSTOM_ELEMENTS_SCHEMA]

@@ -1,69 +1,54 @@
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
-
-interface Certificate {
-  id: number;
-  image: string;
-}
+import { ICertificate } from '../../modules/certificate';
 
 @Component({
   selector: 'app-certificates',
   standalone: true,
-  imports: [CommonModule],
+  imports: [],
   templateUrl: './certificates.component.html',
   styleUrls: ['./certificates.component.scss']
 })
 export class CertificatesComponent {
-  certificates: any[] = [
+
+  certificates: ICertificate[] = [
     { id: 1, image: 'assets/images/certificates/certificate-1.png' },
+    { id: 2, image: 'assets/images/certificates/certificate-2.jpg' },
     { id: 3, image: 'assets/images/certificates/certificate-3.png' },
+    { id: 4, image: 'assets/images/certificates/certificate-4.jpg' },
   ];
 
-  showSharePopup = false;
-  showConfirmationPopup = false;
-  selectedPlatform = '';
-  shareUrl = '';
+  selectedCertificate?: ICertificate;
 
-  addCertificate() {
-    const fileInput = document.createElement('input');
-    fileInput.type = 'file';
-    fileInput.accept = 'image/*';
-    fileInput.onchange = (event: any) => {
-      const file = event.target.files[0];
-      if (file) {
-        const reader = new FileReader();
-        reader.onload = (e: any) => {
-          const newCertificate: Certificate = {
-            id: this.certificates.length + 1,
-            image: e.target.result
-          };
-          this.certificates.push(newCertificate);
-        };
-        reader.readAsDataURL(file);
-      }
-    };
-    fileInput.click();
+  openShareModal(certificate: ICertificate) {
+    this.selectedCertificate = certificate;
+    console.log('Modal opened for certificate:', this.selectedCertificate);
   }
-
-  openSharePopup(certificate: any) {
-    this.showSharePopup = true;
-    console.log(certificate);
-  }
-
-  closeSharePopup() {
-    this.showSharePopup = false;
-  }
-
-  confirmShare(platform: string, url: string) {
-    this.selectedPlatform = platform;
-    this.shareUrl = url;
-    this.showConfirmationPopup = true;
-  }
-
-  share(confirm: boolean) {
-    if (confirm) {
-      window.open(this.shareUrl, '_blank');
+  
+  shareOnLinkedIn() {
+    if (this.selectedCertificate) {
+      const url = `https://www.linkedin.com/shareArticle?mini=true&url=${encodeURIComponent(window.location.href)}&title=${encodeURIComponent('Certificate')}&summary=${encodeURIComponent('Check out this certificate!')}&source=LinkedIn`;
+      window.open(url, '_blank');
     }
-    this.showConfirmationPopup = false;
   }
+
+  shareOnWhatsApp() {
+    if (this.selectedCertificate) {
+      const url = `https://wa.me/?text=${encodeURIComponent('Check out this certificate: ' + window.location.href)}`;
+      window.open(url, '_blank');
+    }
+  }
+
+  shareOnTwitter() {
+    if (this.selectedCertificate) {
+      const url = `https://twitter.com/intent/tweet?text=${encodeURIComponent('Check out this certificate: ' + window.location.href)}`;
+      window.open(url, '_blank');
+    }
+  }
+
+  shareOnInstagram() {
+    if (this.selectedCertificate) {
+      alert('Instagram sharing is not supported directly via a URL. Consider implementing a custom solution.');
+    }
+  }
+
 }

@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { NgClass, NgIf } from '@angular/common';
+import { NgClass } from '@angular/common';
 import { Router } from '@angular/router';
 import { AbstractControl, FormBuilder, FormGroup, ReactiveFormsModule, ValidationErrors, Validators } from '@angular/forms';
 import { UserService } from '../services/user.service';
@@ -7,7 +7,7 @@ import { UserService } from '../services/user.service';
 @Component({
   selector: 'app-signup',
   standalone: true,
-  imports: [NgIf, NgClass, ReactiveFormsModule],
+  imports: [NgClass, ReactiveFormsModule],
   templateUrl: './signup.component.html',
   styleUrl: './signup.component.scss'
 })

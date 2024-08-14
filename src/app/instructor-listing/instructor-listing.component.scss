@@ -1,7 +1,7 @@
 @use "../styles/variables" as *;
 
 .wrapper {
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  //  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 
   button {
     border: 1px solid #ccc;
@@ -28,6 +28,25 @@
       margin-right: auto;
     }
   }
+
+  .company-bar .row .col-auto:not(:last-child) {
+    border-right: 2px solid $nmc-primary;
+  }
+
+}
+
+.text-bottom-line::after {
+  background-image: url('../../assets/images/home/bottom-text-line.svg');
+  background-repeat: no-repeat;
+  content: "";
+  height: 4px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 55px;
+  margin: 0 auto;
+  position: absolute;
+  width: 191px;
 }
 
 

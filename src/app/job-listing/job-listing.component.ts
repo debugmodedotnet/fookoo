@@ -26,7 +26,6 @@ export class JobListingComponent implements OnInit {
   private jobService = inject(JobService);
 
   ngOnInit() {
-    // this.jobs$ = this.jobService.getJobs();
     this.jobs$ = this.jobService.getJobs();
     this.jobs$.subscribe(jobs => {
       this.filteredJobs = jobs;
@@ -36,8 +35,8 @@ export class JobListingComponent implements OnInit {
   applyFilters() {
     this.jobs$.subscribe(jobs => {
       this.filteredJobs = jobs.filter(job => {
-        const companyMatch = job.companyName.toLowerCase().includes(this.companyFilter.toLowerCase());
-        const positionMatch = job.position.toLowerCase().includes(this.positionFilter.toLowerCase());
+        const companyMatch = job.companyName?.toLowerCase().includes(this.companyFilter.toLowerCase()) ?? false;
+        const positionMatch = job.position?.toLowerCase().includes(this.positionFilter.toLowerCase()) ?? false;
         const remoteMatch = !this.remoteFilter || (this.remoteFilter && job.Remote);
         return companyMatch && positionMatch && remoteMatch;
       });

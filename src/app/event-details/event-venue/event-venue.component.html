@@ -1,4 +1,4 @@
-<section class="venue text-center overflow-hidden">
+<section class="venue text-center overflow-hidden py-5">
   <div class="container-boxed">
     <h2
       class="section-title font-36 nmc-dark-grey font-family-poppins text-center mb-5"
@@ -22,7 +22,7 @@
         ></div>
 
         <img
-          [src]="event?.VenueImg"
+          [src]="event?.VenueImg ? event?.VenueImg : defaultImage"
           alt=""
           class="position-absolute top-0 w-100 h-100 object-fit-cover"
         />
@@ -42,8 +42,6 @@
     </div>
   </div>
 </section>
-
-<div class="spacer--medium"></div>
 
 <!-- Enroll Now -->
 <section class="text-center">

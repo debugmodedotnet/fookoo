@@ -13,6 +13,8 @@ import { AsyncPipe, NgClass } from '@angular/common';
 })
 export class InstructorListingComponent implements OnInit {
 
+  defaultImage = 'assets/images/home/instructor-default.jpg';
+
   instructors$!: Observable<IInstructor[]>;
 
   constructor(private firestore: AngularFirestore) { }

@@ -12,6 +12,7 @@ import { map } from 'rxjs';
 })
 export class EventSpeakersComponent implements OnInit {
 
+  defaultImage = 'assets/images/home/defaultUser.jpg';
   eventSpeakers?: IEventSpeakers[];
 
   @Input() eventId: string | null = null;

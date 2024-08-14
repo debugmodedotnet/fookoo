@@ -6,6 +6,7 @@
       Event Agenda
     </h2>
 
+    @if(eventAgenda && eventAgenda.length > 0){
     <div class="row justify-content-center">
       <div class="col-lg-9">
         @for(agenda of eventAgenda; track agenda){
@@ -46,5 +47,6 @@
         }
       </div>
     </div>
+    }@else {Revealing Soon...}
   </div>
 </section>

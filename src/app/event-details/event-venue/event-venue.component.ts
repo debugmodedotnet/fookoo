@@ -18,6 +18,8 @@ export class EventVenueComponent implements OnInit {
   //eventVenue?: IEventVenue;
   //eventEnroll?: IEventEnroll;
 
+  defaultImage = 'assets/images/events/default-venue.jpg';
+
   event?: IEvent;
 
   enrolled = false;

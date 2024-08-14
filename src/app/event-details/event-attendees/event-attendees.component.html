@@ -6,6 +6,7 @@
       Who All Attending
     </h2>
 
+    @if(eventAttendees && eventAttendees.length > 0){
     <div
       class="d-flex flex-wrap align-items-center justify-content-center mt-5 gap-2"
     >
@@ -23,5 +24,6 @@
         <p class="nmc-white m-auto">+99</p>
       </div> -->
     </div>
+    }@else {Revealing Soon...}
   </div>
 </section>

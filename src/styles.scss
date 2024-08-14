@@ -342,6 +342,11 @@ textarea {
     color: $nmc-black !important;
 }
 
+.text-orange-100 {
+    --tw-bg-opacity: 1;
+    color: rgb(255 237 213/var(--tw-bg-opacity));
+}
+
 .text-orange-600 {
     --tw-text-opacity: 1;
     color: rgb(234 88 12/var(--tw-text-opacity));

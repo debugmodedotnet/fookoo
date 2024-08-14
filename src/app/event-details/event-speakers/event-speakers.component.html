@@ -1,13 +1,13 @@
-<!-- Event Speakers -->
-<section class="speakers text-center">
+<section class="speakers text-center py-5">
   <div class="container-boxed">
     <h2
-      class="section-title font-36 nmc-dark-grey font-family-poppins text-center mb-5"
+      class="section-title font-36 nmc-dark-grey font-family-poppins text-center"
     >
       Event Speakers
     </h2>
 
-    <div class="speakers-list px-5">
+    @if(eventSpeakers && eventSpeakers.length > 0){
+    <div class="speakers-list px-5 mt-5">
       @for (speaker of eventSpeakers; track speaker.id; let i = $index) {
       <div
         class="member rounded-3 d-flex align-items-center justify-content-between gap-5 mt-5"
@@ -16,14 +16,14 @@
         <div class="speaker-img position-relative w-30">
           <figure class="m-0 overflow-hidden">
             <img
-              [src]="speaker.Image"
+              [src]="speaker.Image ? speaker.Image : defaultImage"
               class="h-100 w-100 object-fit-cover"
               alt=""
             />
           </figure>
         </div>
 
-        <div class="member-info text-start w-75"> 
+        <div class="member-info text-start w-75">
           <h3 class="font-family-poppins">
             <a href="" class="nmc-primary font-family-poppins pe-2">
               {{ speaker.Name }}
@@ -98,5 +98,6 @@
       </div>
       }
     </div>
+    }@else {Revealing Soon...}
   </div>
 </section>

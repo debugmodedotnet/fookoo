@@ -7,7 +7,7 @@
     </h2>
 
     <div class="row g-0">
-      <div class="col-lg-6 venue-map">
+      <div class="col-md-6 venue-map">
         <iframe
           [src]="safeUrl"
           frameborder="0"
@@ -16,7 +16,7 @@
         ></iframe>
       </div>
 
-      <div class="col-lg-6 venue-info">
+      <div class="col-md-6 venue-info">
         <div
           class="overlay position-absolute top-0 start-0 w-100 h-100 z-1"
         ></div>
@@ -27,13 +27,13 @@
           class="position-absolute top-0 w-100 h-100 object-fit-cover"
         />
 
-        <div class="row justify-content-center position-relative z-2">
-          <div class="col-11 col-lg-8 position-relative text-start">
+        <div class="row justify-content-center position-relative z-2 h-100 d-flex align-items-center">
+          <div class="col-11 col-md-10 col-lg-9 position-relative text-start">
             <h3 class="font-34 font-family-poppins nmc-white mb-2">
               {{ event?.VenueName }}
             </h3>
 
-            <p class="nmc-white mt-3">
+            <p class="nmc-white mt-3 mb-0">
               {{ event?.VenueInfo }}
             </p>
           </div>

@@ -1,46 +1,62 @@
-.bg-custom-peach {
-  background-color: #FFEDD5;
+@use "../styles/variables" as *;
+
+.profile-wrapper {
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+
+  .upper-grid {
+    flex: 0 1 30%;
+    position: relative;
+    background: linear-gradient(45deg, $nmc-dark-grey, $nmc-black);
+    background-size: 400% 400%;
+    animation: gradientShift 10s ease infinite;
+
+    .profile-image {
+      position: absolute;
+      bottom: -40px;
+      top: 10px;
+      left: 1.5rem;
+      box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+      width: 240px;
+      height: 240px;
+
+      img {
+        object-position: top;
+        border: 2px solid $nmc-light-grey;
+
+      }
+    }
+
+    .social-icons .btn {
+      background-color: transparent;
+      color: $nmc-white;
+      border-color: $nmc-white;
+
+      &:hover {
+        color: $nmc-primary;
+        border-color: $nmc-primary;
+      }
+    }
+  }
+
+  .lower-grid {
+    flex: 1 1 70%;
+
+    h3 {
+      border-bottom: 1px solid $nmc-primary;
+    }
+  }
 }
 
-.text-custom-ff7e5f {
-  color: #ff7e5f;
-}
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 0%;
+  }
 
-.text-black {
-  color: black;
-}
+  50% {
+    background-position: 100% 100%;
+  }
 
-.text-orange {
-  color: #ff7e5f;
-}
-
-.text-dark-orange {
-  color: #d35400;
-}
-
-.bg-light-orange {
-  background-color: #ffe6e6;
-}
-
-.bg-light-brown {
-  background-color: #f5f5dc;
-}
-
-.border-orange {
-  border: 1px solid #ff7e5f;
-}
-
-.course-card {
-  border-radius: 10px;
-}
-
-.skill-box {
-  border: 1px solid #ff7e5f;
-  border-radius: 5px;
-  background-color: white;
-}
-
-.badge-custom-paid {
-  background-color: #ff7e5f;
-  color: white;
+  100% {
+    background-position: 0% 0%;
+  }
 }

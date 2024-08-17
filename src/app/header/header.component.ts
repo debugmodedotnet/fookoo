@@ -82,14 +82,21 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.mobileMenuOpen = !this.mobileMenuOpen;
     const mobileMenu = document.querySelector('.mobile-menu') as HTMLElement;
     const hamburger = document.querySelector('.navbar-toggler') as HTMLElement;
+    const hamburgerIcon = document.querySelector('.burger') as HTMLElement;
 
     if (this.mobileMenuOpen) {
       hamburger.className = "navbar-toggler border-0 opened"
-      mobileMenu.style.right = '0';
+      hamburgerIcon.className = "burger isOpened"
+      //mobileMenu.style.visibility = 'visible';
+      mobileMenu.style.display = 'flex';
+      mobileMenu.style.opacity = '1';
 
     } else {
       hamburger.className = "navbar-toggler border-0 closed"
-      mobileMenu.style.right = '-320px';
+      hamburgerIcon.className = "burger isClosed"
+      //mobileMenu.style.visibility = 'hidden';
+      mobileMenu.style.display = 'none';
+      mobileMenu.style.opacity = '0';
     }
   }
 

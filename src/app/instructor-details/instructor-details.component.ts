@@ -15,6 +15,8 @@ import { of } from 'rxjs';
 })
 export class InstructorDetailsComponent implements OnInit {
 
+  defaultImage = 'assets/images/home/instructor-default.jpg';
+
   instructor?: IInstructor;
   courses: ICourse[] = [];
 

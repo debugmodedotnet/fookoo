@@ -1,20 +1,22 @@
-<section class="py-5">
+<section class="py-5 min-vh-100">
   <div class="container-boxed">
-    <div class="d-flex align-items-start justify-content-between mb-5">
+    <div class="heading d-flex align-items-center justify-content-between mb-5">
       <h2 class="font-36 nmc-dark-grey font-family-poppins">
         <span class="text-bottom-line position-relative">Jobs Board</span>
       </h2>
 
       <button
-        class="nmc-btn-primary me-4 px-5 py-3 h-auto fw-normal"
+        class="nmc-btn-primary px-sm-5 px-4 py-3 h-auto fw-normal"
         routerLink="/post-job"
       >
         Post a job
       </button>
     </div>
 
-    <div class="filters my-4 row gap-1">
-      <div class="form-group col-3 d-flex align-items-center">
+    <div class="filters my-2 my-md-4 row gap-0 gap-md-1">
+      <div
+        class="form-group col-12 col-sm-6 col-md-5 d-flex align-items-center"
+      >
         <i class="bi bi-funnel-fill me-2 nmc-medium-grey"></i>
         <input
           type="text"
@@ -26,7 +28,9 @@
         />
       </div>
 
-      <div class="form-group col-3 d-flex align-items-center">
+      <div
+        class="form-group position col-12 col-sm-6 col-md-5 d-flex align-items-center"
+      >
         <i class="bi bi-funnel-fill me-2 nmc-medium-grey"></i>
         <input
           type="text"
@@ -38,7 +42,7 @@
         />
       </div>
 
-      <div class="form-group col-3 d-flex align-items-center">
+      <div class="form-group remote col-12 col-md-1 d-flex align-items-center">
         <input
           type="checkbox"
           id="remoteFilter"
@@ -51,7 +55,7 @@
   </div>
 
   <ul
-    class="sticky-wrapper d-flex align-items-center justify-content-evenly flex-wrap py-4 gap-4 overflow-hidden"
+    class="sticky-wrapper d-flex align-items-center justify-content-evenly flex-wrap py-5 px-3 gap-4 overflow-hidden"    
   >
     @for(job of filteredJobs ; track job; let i = $index){ @if(
     job.companyName){

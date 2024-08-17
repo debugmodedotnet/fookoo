@@ -28,3 +28,45 @@
 
     }
 }
+
+
+@media (max-width: 992px) {
+    .login-card {
+        width: 350px;
+    }
+}
+
+@media (max-width: 420px) {
+    .font-420-14 {
+        font-size: 14px !important;
+    }
+
+    .w-420-100 {
+        width: 100%;
+    }
+
+    .login-container {
+        padding: 30px 0 !important;
+
+        .login-card {
+            width: 100%;
+            padding: 15px !important;
+
+            .form-group:not(:first-child) {
+                margin-top: .5rem !important;
+            }
+
+            .form-control {
+                height: 2.5rem !important;
+            }
+
+            .show-password {
+                bottom: 11px;
+            }
+
+            .create {
+                margin-left: 0 !important;
+            }
+        }
+    }
+}

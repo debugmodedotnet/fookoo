@@ -62,58 +62,51 @@
     <div
       class="socials d-flex flex-wrap align-items-center justify-content-center gap-4"
     >
+      @if(footer?.Facebook){
       <a
         rel="noopener noreferrer"
         target="_blank"
         class="nmc-white font-24"
         [href]="footer?.Facebook"
       >
-        <i class="bi bi-facebook"></i>
-      </a>
-
+        <i class="bi bi-facebook"></i> </a
+      >} @if(footer?.Instagram){
       <a
         rel="noopener noreferrer"
         target="_blank"
         class="nmc-white font-24"
         [href]="footer?.Instagram"
       >
-        <i class="bi bi-instagram"></i>
-      </a>
-
+        <i class="bi bi-instagram"></i> </a
+      >} @if(footer?.Twitter){
       <a
         rel="noopener noreferrer"
         target="_blank"
         class="nmc-white font-24"
         [href]="footer?.Twitter"
       >
-        <i class="bi bi-twitter-x"></i>
-      </a>
-
+        <i class="bi bi-twitter-x"></i> </a
+      >} @if(footer?.LinkedIn){
       <a
         rel="noopener noreferrer"
         target="_blank"
         class="nmc-white font-24"
         [href]="footer?.LinkedIn"
       >
-        <i class="bi bi-linkedin"></i>
-      </a>
-
+        <i class="bi bi-linkedin"></i> </a
+      >} @if(footer?.Youtube){
       <a
         rel="noopener noreferrer"
         target="_blank"
         class="nmc-white font-30"
         [href]="footer?.Youtube"
       >
-        <i class="bi bi-youtube"></i>
-      </a>
+        <i class="bi bi-youtube"></i> </a
+      >}
     </div>
 
-    <div
-  class="font-14 py-2 text-center font-family-poppins nmc-white mt-2"
->
-  {{ footer?.CopyrightText }}
-</div>
+    <div class="font-14 py-2 text-center font-family-poppins nmc-white mt-2">
+      {{ footer?.CopyrightText }}
+    </div>
   </div>
 </footer>
-
-

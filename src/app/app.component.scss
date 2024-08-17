@@ -2,6 +2,8 @@
     margin-top: 66px;
 }
 
-:host-context(.start-quiz-active) .content {
-    margin-top: 66px;
+@media (max-width: 1199px) {
+    .content {
+        margin-top: 56px;
+    }
 }

@@ -9,7 +9,7 @@
 
     .venue-map,
     .venue-info {
-        min-height: 400px;
+        min-height: 450px;
     }
 
     .venue-map iframe {
@@ -20,11 +20,18 @@
 
     .venue-info {
         position: relative;
-        padding-top: 60px;
-        padding-bottom: 60px;
 
         .overlay {
             background: color-mix(in srgb, $nmc-dark-grey, transparent 30%);
         }
+    }
+}
+
+
+@media (max-width: 991px) {
+
+    .venue-map,
+    .venue-info {
+        min-height: 400px;
     }
 }

@@ -27,11 +27,7 @@
           <div
             class="events-card card overflow-hidden nmc-bg-white overflow-hidden position-relative rounded-3 h-100 m-auto"
           >
-            <a [routerLink]="['/event', e.id]">
-              <!-- <div class="pricing-table-ribbon fw-bold position-absolute">
-                {{ e.isPaid ? "Paid" : "Free" }}
-              </div> -->
-
+            <a [routerLink]="['/event', e.id]">              
               <figure class="m-0 p-0 zoom-effect overflow-hidden">
                 <img
                   [src]="e.EventImage"
@@ -70,25 +66,18 @@
                 </h3>
 
                 <div class="d-flex align-items-center gap-3">
-                  <h4 class="font-16 nmc-dark-grey m-0">
+                  <h4 class="city font-14 nmc-dark-grey m-0">
                     <i
-                      class="bi bi-calendar-event-fill me-2 font-20 nmc-primary"
+                      class="bi bi-calendar-event-fill me-2 font-18 nmc-primary"
                     ></i>
                     {{ e.Date | date : "MMMM d" }}
                   </h4>
 
-                  <h4 class="font-16 nmc-dark-grey m-0">
-                    <i class="bi bi-geo-alt-fill me-1 font-20 nmc-primary"></i>
+                  <h4 class="city font-14 nmc-dark-grey m-0">
+                    <i class="bi bi-geo-alt-fill me-1 font-18 nmc-primary"></i>
                     {{ e.City }}
                   </h4>
                 </div>
-
-                <!-- <a
-                  class="nmc-btn-primary text-center w-50 w-md-100 pt-2 mt-3"
-                  [routerLink]="['/event', e.id]"
-                >
-                  Enroll Now
-                </a> -->
               </figcaption>
             </a>
           </div>

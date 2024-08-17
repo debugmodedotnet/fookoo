@@ -1,4 +1,4 @@
-@if(instructor){
+<!-- @if(instructor){
 <div class="bg-custom-peach p-5">
   <div class="profile-header d-flex flex-column align-items-center text-center">
     <img
@@ -103,4 +103,203 @@
     </div>
   </div>
 </div>
+} -->
+
+@if(instructor){
+<section>
+  <div class="profile-wrapper d-flex flex-column nmc-bg-white">
+    <div class="upper-grid py-5">
+      <div
+        class="container-boxed w-100 d-flex align-items-center justify-content-between position-relative"
+      >
+        <figure class="profile-image m-0 p-0 overflow-hidden nmc-bg-white p-2">
+          <img
+            [src]="
+              instructor.InstructorImg ? instructor.InstructorImg : defaultImage
+            "
+            alt="Profile Image"
+            class="w-100 h-100 object-fit-cover"
+          />
+        </figure>
+
+        <div
+          class="profile-info d-flex justify-content-end flex-column w-100 text-end"
+        >
+          <h1 class="font-family-poppins text-orange-600 font-52">
+            {{ instructor.Name }}
+          </h1>
+
+          <h4 class="nmc-white mt-2">{{ instructor.Position }}</h4>
+
+          <div
+            class="social-icons d-flex align-items-center justify-content-end gap-2 mt-3"
+          >
+            @if(instructor.Github){
+            <a [href]="instructor.Github" class="btn btn-outline-light btn-sm"
+              ><i class="bi bi-github"></i></a
+            >} @if(instructor.Twitter){
+            <a [href]="instructor.Twitter" class="btn btn-outline-light btn-sm"
+              ><i class="bi bi-twitter"></i></a
+            >} @if(instructor.LinkedIn){
+            <a [href]="instructor.LinkedIn" class="btn btn-outline-light btn-sm"
+              ><i class="bi bi-linkedin"></i></a
+            >}
+          </div>
+        </div>
+
+        <div class="particle-container">
+          <div class="particle"></div>
+          <div class="particle"></div>
+          <div class="particle"></div>
+          <div class="particle"></div>
+          <div class="particle"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container-boxed">
+      <div class="lower-grid row nmc-bg-white py-5">
+        <div class="col-4">
+          <div class="skills">
+            <h3 class="font-family-poppins mt-4 nmc-dark-grey mb-3 pb-1">
+              Skills
+            </h3>
+
+            <div class="d-flex align-center gap-2">
+              @if(instructor.Skill1){
+              <div
+                class="fw-semibold py-2 px-3 text-red-600 bg-orange-100 rounded-2 font-14"
+              >
+                {{ instructor.Skill1 }}
+              </div>
+              } @if(instructor.Skill2){
+              <div
+                class="fw-semibold py-2 px-3 text-red-600 bg-orange-100 rounded-2 font-14"
+              >
+                {{ instructor.Skill2 }}
+              </div>
+              } @if(instructor.Skill3){
+              <div
+                class="fw-semibold py-2 px-3 text-red-600 bg-orange-100 rounded-2 font-14"
+              >
+                {{ instructor.Skill3 }}
+              </div>
+              } @if(instructor.Skill4){
+              <div
+                class="fw-semibold py-2 px-3 text-red-600 bg-orange-100 rounded-2 font-14"
+              >
+                {{ instructor.Skill4 }}
+              </div>
+              }
+            </div>
+          </div>
+
+          <div class="company">
+            <h3 class="font-family-poppins mt-4 nmc-dark-grey mb-3 pb-1">
+              Work History
+            </h3>
+
+            <div class="d-flex align-center gap-2 flex-wrap">
+              @if(instructor.Company1){
+              <div
+                class="fw-semibold py-2 px-3 text-red-600 bg-orange-100 rounded-2 font-14"
+              >
+                {{ instructor.Company1 }}
+              </div>
+              } @if(instructor.Company2){
+              <div
+                class="fw-semibold py-2 px-3 text-red-600 bg-orange-100 rounded-2 font-14"
+              >
+                {{ instructor.Company2 }}
+              </div>
+              } @if(instructor.Company3){
+              <div
+                class="fw-semibold py-2 px-3 text-red-600 bg-orange-100 rounded-2 font-14"
+              >
+                {{ instructor.Company3 }}
+              </div>
+              } @if(instructor.Company4){
+              <div
+                class="fw-semibold py-2 px-3 text-red-600 bg-orange-100 rounded-2 font-14"
+              >
+                {{ instructor.Company4 }}
+              </div>
+              }
+            </div>
+          </div>
+
+          <!-- @if(instructor.education){
+          <div class="education">
+            <h3 class="font-family-poppins mt-4 nmc-dark-grey mb-3 pb-1">
+              Education
+            </h3>
+            <p>{{ instructor.education }}</p>
+          </div>
+          } -->
+
+          @if(instructor.Email){
+          <div class="contacts">
+            <h3 class="font-family-poppins mt-4 nmc-dark-grey mb-3 pb-1">
+              Contacts
+            </h3>
+
+            <p>
+              <i class="bi bi-envelope-fill nmc-primary font-20 me-2"></i>
+              {{ instructor.Email }}
+            </p>
+          </div>
+          }
+        </div>
+
+        <div class="col-8">
+          @if(instructor.Bio){
+          <div class="bio">
+            <h3 class="font-family-poppins mt-4 nmc-dark-grey mb-3 pb-1">
+              About
+            </h3>
+
+            <p>
+              {{ instructor.Bio }}
+            </p>
+          </div>
+          }
+
+          <!-- @if(instructor.experience){
+          <div class="experience">
+            <h3 class="font-family-poppins mt-4 nmc-dark-grey mb-3 pb-1">
+              Experience
+            </h3>
+
+            <p>{{ instructor.experience }}</p>
+          </div>
+          }  -->
+
+          @if(instructor.Courses){
+          <div class="experience">
+            <h3 class="font-family-poppins mt-4 nmc-dark-grey mb-3 pb-1">
+              Courses
+            </h3>
+
+            @for(course of instructor.Courses; track course){
+            <div
+              class="course-card bg-light-orange p-4 mb-4 border-orange position-relative"
+            >
+              <h4 class="text-black">{{ course.Title }}</h4>
+              <p class="text-dark-orange">
+                {{ course.Duration }} | {{ course.Level }} | ⭐
+                {{ course.Rating }}
+              </p>
+              <span
+                class="badge badge-custom-paid position-absolute top-0 end-0 m-2"
+                >{{ course.Price }}</span
+              >
+            </div>
+            }
+          </div>
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 }

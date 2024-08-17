@@ -53,19 +53,17 @@
               {{ instructor.Position }}
             </h4>
 
-            <!-- <h5
-              class="font-20 fw-light nmc-white mb-0 mt-4 py-4 w-100 truncate"
-            >
-              {{ instructor.Bio }}
-            </h5> -->
-
             <div class="social w-100 py-4">
-              <a [href]="instructor.Email"
-                ><i class="bi bi-envelope-fill"></i
-              ></a>
-              <a [href]="instructor.Twitter"><i class="bi bi-twitter-x"></i></a>
-              <a [href]="instructor.Github"><i class="bi bi-github"></i></a>
-              <a [href]="instructor.LinkedIn"><i class="bi bi-linkedin"></i></a>
+              @if (instructor.Email) {
+              <a [href]="instructor.Email">
+                <i class="bi bi-envelope-fill"></i> </a
+              >} @if (instructor.Twitter) {<a [href]="instructor.Twitter"
+                ><i class="bi bi-twitter-x"></i></a
+              >} @if (instructor.Github) {<a [href]="instructor.Github"
+                ><i class="bi bi-github"></i></a
+              >} @if (instructor.LinkedIn) {<a [href]="instructor.LinkedIn"
+                ><i class="bi bi-linkedin"></i></a
+              >}
             </div>
 
             <button
@@ -76,8 +74,6 @@
             </button>
           </div>
         </div>
-
-        <!-- <div class="hidden w-60 max-w-md"></div> -->
       </div>
       }
     </div>

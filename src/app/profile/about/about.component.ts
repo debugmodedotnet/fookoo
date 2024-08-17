@@ -56,8 +56,7 @@ export class AboutComponent implements OnInit {
   }
 
   formattedName(name: string): string {
-    return name.toLowerCase().replace(/\s+/g, '');
-  }
-
+    return name ? name.toLowerCase().replace(/\s+/g, '') : '';
+  }  
 
 }

@@ -1,12 +1,12 @@
-<section class="py-5 nmc-bg-light-grey">
+<section class="py-5 min-vh-100">
   <div class="container-boxed">
     <h2 class="font-36 nmc-dark-grey font-family-poppins text-center mb-5">
       <span class="text-bottom-line position-relative">Upcoming Events</span>
     </h2>
 
-    <div class="events-container row g-4 mt-2">
+    <div class="events-container row g-4 pt-0 pt-lg-4">
       @for(e of events; track e){
-      <div class="col-12">
+      <!-- <div class="col-12">
         <div class="wrapper nmc-bg-white rounded-4">
           <div
             class="d-flex align-items-center justify-content-between border-bottom p-4"
@@ -52,8 +52,7 @@
             </div>
           </div>
 
-          <div class="p-4">
-            <!-- <h5 class="nmc-dark-grey fw-semibold font-18">Details:</h5> -->
+          <div class="p-4">           
             <p class="nmc-medium-grey truncate">{{ e.ShortDescription }}</p>
 
             <button
@@ -63,6 +62,64 @@
               Enroll Now
             </button>
           </div>
+        </div>
+      </div> -->
+
+      <div class="col-12 col-md-6 col-lg-4 mt-4 mt-lg-0">
+        <div
+          class="events-card card overflow-hidden nmc-bg-white overflow-hidden position-relative rounded-3 h-100 m-auto"
+        >
+          <a [routerLink]="['/event', e.id]">
+            <figure class="m-0 p-0 zoom-effect overflow-hidden">
+              <img
+                [src]="e.EventImage"
+                class="w-100 h-100 object-fit-cover"
+                alt="Event Tech"
+                loading="lazy"
+              />
+            </figure>
+
+            <figcaption class="m-0 p-4">
+              <div class="d-flex align-items-center justify-content-start mb-2">
+                <span
+                  class="d-inline-block font-12 fw-semibold rounded-1 py-1 px-2 text-blue-600 bg-blue-100"
+                  >{{ e.isOffline ? "Offline" : "Online" }}
+                </span>
+
+                @if(e.isPaid){
+                <span
+                  class="d-inline-block font-12 fw-semibold rounded-1 py-1 px-2 text-red-600 bg-red-100 ms-2"
+                  >{{ "Paid" }} </span
+                >}@else {
+                <span
+                  class="d-inline-block font-12 fw-semibold rounded-1 py-1 px-2 text-green-600 bg-green-100 ms-2"
+                  >{{ "Free" }} </span
+                >}
+              </div>
+
+              <h4 class="font-22 nmc-dark-grey my-3 font-family-poppins">
+                {{ e.Title }}
+              </h4>
+
+              <h3 class="font-16 nmc-medium-grey mb-3 fw-normal">
+                {{ e.ShortDescription }}
+              </h3>
+
+              <div class="d-flex align-items-center gap-3">
+                <h4 class="city font-14 nmc-dark-grey m-0">
+                  <i
+                    class="bi bi-calendar-event-fill me-2 font-18 nmc-primary"
+                  ></i>
+                  {{ e.Date | date : "MMMM d" }}
+                </h4>
+
+                <h4 class="city font-14 nmc-dark-grey m-0">
+                  <i class="bi bi-geo-alt-fill me-1 font-18 nmc-primary"></i>
+                  {{ e.City }}
+                </h4>
+              </div>
+            </figcaption>
+          </a>
         </div>
       </div>
       } @if(showLoadMoreButton){

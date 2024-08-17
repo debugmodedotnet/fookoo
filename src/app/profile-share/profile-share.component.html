@@ -1,37 +1,35 @@
 <section>
-  <div class="container-boxed">
-    <div class="profile-wrapper d-flex flex-column nmc-bg-white">
-      <div
-        class="upper-grid d-flex align-items-center justify-content-between py-4"
-      >
+  <div class="profile-wrapper d-flex flex-column nmc-bg-white">
+    <div class="upper-grid py-5">
+      <div class="container-boxed w-100 d-flex align-items-center justify-content-between position-relative">
         <figure class="profile-image m-0 p-0 overflow-hidden nmc-bg-white p-2">
           <img
-            [src]="userData.photoURL"
+            [src]="userData?.photoURL"
             alt="Profile Image"
             class="w-100 h-100 object-fit-cover"
           />
         </figure>
 
         <div
-          class="profile-info pe-5 d-flex justify-content-end flex-column w-100 text-end"
+          class="profile-info d-flex justify-content-end flex-column w-100 text-end"
         >
           <h1 class="font-family-poppins text-orange-600 font-52">
-            {{ userData.name }}
+            {{ userData?.name }}
           </h1>
 
-          <h4 class="nmc-white mt-2">{{ userData.position }}</h4>
+          <h4 class="nmc-white mt-2">{{ userData?.position }}</h4>
 
           <div
             class="social-icons d-flex align-items-center justify-content-end gap-2 mt-3"
           >
-            @if(userData.github){
-            <a [href]="userData.github" class="btn btn-outline-light btn-sm"
+            @if(userData?.github){
+            <a [href]="userData?.github" class="btn btn-outline-light btn-sm"
               ><i class="bi bi-github"></i></a
-            >} @if(userData.twitter){
-            <a [href]="userData.twitter" class="btn btn-outline-light btn-sm"
+            >} @if(userData?.twitter){
+            <a [href]="userData?.twitter" class="btn btn-outline-light btn-sm"
               ><i class="bi bi-twitter"></i></a
-            >} @if(userData.linkedin){
-            <a [href]="userData.linkedin" class="btn btn-outline-light btn-sm"
+            >} @if(userData?.linkedin){
+            <a [href]="userData?.linkedin" class="btn btn-outline-light btn-sm"
               ><i class="bi bi-linkedin"></i></a
             >}
           </div>
@@ -45,8 +43,10 @@
           <div class="particle"></div>
         </div>
       </div>
+    </div>
 
-      <div class="lower-grid row d-flex nmc-bg-white p-5">
+    <div class="container-boxed">
+      <div class="lower-grid row nmc-bg-white py-5">
         <div class="col-4">
           <div class="skills">
             <h3 class="font-family-poppins mt-4 nmc-dark-grey mb-3 pb-1">
@@ -54,44 +54,44 @@
             </h3>
 
             <div class="d-flex align-center gap-2">
-              @if(userData.skill1){
+              @if(userData?.skill1){
               <div
-                class="d-inline-block font-12 fw-semibold py-2 px-3 text-red-600 bg-orange-100 rounded-2 font-14"
+                class="d-inline-block fw-semibold py-2 px-3 text-red-600 bg-orange-100 rounded-2 font-14"
               >
-                {{ userData.skill1 }}
+                {{ userData?.skill1 }}
               </div>
-              <!-- <div class="skill-box">{{ userData.skill1 }}</div> -->
-              } @if(userData.skill2){
+              <!-- <div class="skill-box">{{ userData?.skill1 }}</div> -->
+              } @if(userData?.skill2){
               <div
-                class="d-inline-block font-12 fw-semibold py-2 px-3 text-red-600 bg-orange-100 rounded-2 font-14"
+                class="d-inline-block fw-semibold py-2 px-3 text-red-600 bg-orange-100 rounded-2 font-14"
               >
-                {{ userData.skill2 }}
+                {{ userData?.skill2 }}
               </div>
-              <!-- <div class="skill-box">{{ userData.skill2 }}</div> -->
-              } @if(userData.skill3){
+              <!-- <div class="skill-box">{{ userData?.skill2 }}</div> -->
+              } @if(userData?.skill3){
               <div
-                class="d-inline-block font-12 fw-semibold py-2 px-3 text-red-600 bg-orange-100 rounded-2 font-14"
+                class="d-inline-block fw-semibold py-2 px-3 text-red-600 bg-orange-100 rounded-2 font-14"
               >
-                {{ userData.skill3 }}
+                {{ userData?.skill3 }}
               </div>
-              <!-- <div class="skill-box">{{ userData.skill3 }}</div> -->
-              } @if(userData.skill4){
+              <!-- <div class="skill-box">{{ userData?.skill3 }}</div> -->
+              } @if(userData?.skill4){
               <div
-                class="d-inline-block font-12 fw-semibold py-2 px-3 text-red-600 bg-orange-100 rounded-2 font-14"
+                class="d-inline-block fw-semibold py-2 px-3 text-red-600 bg-orange-100 rounded-2 font-14"
               >
-                {{ userData.skill4 }}
+                {{ userData?.skill4 }}
               </div>
-              <!-- <div class="skill-box">{{ userData.skill4 }}</div> -->
+              <!-- <div class="skill-box">{{ userData?.skill4 }}</div> -->
               }
             </div>
           </div>
 
-          @if(userData.education){
+          @if(userData?.education){
           <div class="education">
             <h3 class="font-family-poppins mt-4 nmc-dark-grey mb-3 pb-1">
               Education
             </h3>
-            <p>{{ userData.education }}</p>
+            <p>{{ userData?.education }}</p>
           </div>
           }
 
@@ -99,15 +99,15 @@
             <h3 class="font-family-poppins mt-4 nmc-dark-grey mb-3 pb-1">
               Contacts
             </h3>
-            @if(userData.email){
+            @if(userData?.email){
             <p>
               <i class="bi bi-envelope-fill nmc-primary font-20 me-2"></i>
-              {{ userData.email }}
+              {{ userData?.email }}
             </p>
-            } @if(userData.phone){
+            } @if(userData?.phone){
             <p>
               <i class="bi bi-telephone-fill nmc-primary font-20 me-2"></i>
-              {{ userData.phone }}
+              {{ userData?.phone }}
             </p>
 
             }
@@ -115,23 +115,23 @@
         </div>
 
         <div class="col-8">
-          @if(userData.bio){
+          @if(userData?.bio){
           <div class="bio">
             <h3 class="font-family-poppins mt-4 nmc-dark-grey mb-3 pb-1">
               Bio
             </h3>
 
             <p>
-              {{ userData.bio }}
+              {{ userData?.bio }}
             </p>
           </div>
-          } @if(userData.experience){
+          } @if(userData?.experience){
           <div class="experience">
             <h3 class="font-family-poppins mt-4 nmc-dark-grey mb-3 pb-1">
               Experience
             </h3>
 
-            <p>{{ userData.experience }}</p>
+            <p>{{ userData?.experience }}</p>
           </div>
           }
         </div>

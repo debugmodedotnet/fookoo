@@ -2,14 +2,7 @@
 
 // Hero Section
 .text-bottom-line::after {
-    background-image: url('../../assets/images/home/bottom-text-line.svg');
-    background-repeat: no-repeat;
-    content: "";
-    height: 4px;
     inset: 65px 0 0 0;
-    margin: 0 auto;
-    position: absolute;
-    width: 191px;
 }
 
 .event-summary .ng-tracker {

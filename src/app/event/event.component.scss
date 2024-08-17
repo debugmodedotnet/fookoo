@@ -1,18 +1,11 @@
 @use "../styles/variables" as *;
 
-.events-card {
-    //box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+.events-card {    
     box-shadow: 0 1px 10px rgba(0, 0, 0, .1);
     border: 0 solid #e2e8f0;
 
     figure {
         height: 200px;
-        //border: 1px solid $nmc-primary;
-        //box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 5px 0px, rgba(220, 95, 0, 0.1) 0px 0px 1px 0px;
-
-        // img {
-        //     max-height: 150px;
-        // }
     }
 
     &:hover {
@@ -21,23 +14,12 @@
     }
 }
 
-.pricing-table-ribbon {
-    width: 200px;
-    height: 35px;
-    text-align: center;
-    color: $nmc-white;
-    background-color: $nmc-primary;
-    -webkit-box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.1);
-    box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.1);
-    transform: rotate(45deg);
-    right: -72px;
-    top: 15px;
-    padding-top: 7px;
-}
+@media (max-width: 450px) {
+    .events-card i {
+        font-size: 14px;
+    }
 
-@media (max-width: 767px) {
-
-    .nmc-btn-primary {
-        width: 100% !important;
+    .events-card h4.city {
+        font-size: 12px !important;
     }
 }

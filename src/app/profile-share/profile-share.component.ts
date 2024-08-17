@@ -14,7 +14,7 @@ export class ProfileShareComponent implements OnInit {
 
   name?: string | null = null;
   uid: string | null = null;
-  userData!: IUser;
+  userData?: IUser;
 
   private userService = inject(UserService);
   private route = inject(ActivatedRoute);

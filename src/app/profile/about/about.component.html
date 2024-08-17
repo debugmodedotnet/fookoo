@@ -3,7 +3,7 @@
     <h2 class="nmc-dark-grey font-family-poppins">
       {{ user?.name }}
     </h2>
-    <h6 class="nmc-primary m-0">Web Developer and Designer</h6>
+    <h6 class="nmc-primary m-0">{{user?.position}}</h6>
   </div>
 
   <div class="d-flex align-items-center justify-content-center gap-2">
@@ -18,10 +18,10 @@
     >
       Save
     </button>
-
-    <a [routerLink]="['/p', formattedName(user.name), user.uid]">
+    <a [routerLink]="['/p', formattedName(user?.name), user?.uid]">    
       <i class="bi bi-share-fill nmc-medium-grey ms-3 font-20"></i
     ></a>
+    
   </div>
 </div>
 

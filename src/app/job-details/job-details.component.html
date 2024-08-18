@@ -55,7 +55,16 @@
               Apply
             </button>
 
-            <a><i class="bi bi-share-fill nmc-medium-grey ms-3 font-20"></i></a>
+            <a
+              class="cursor-pointer"
+              type="button"
+              data-bs-toggle="modal"
+              data-bs-target="#jobModal"
+              (click)="openShareModal()"
+              (keydown.enter)="openShareModal()"
+              tabindex="0"
+              ><i class="bi bi-share-fill nmc-medium-grey ms-3 font-20"></i
+            ></a>
           </div>
         </div>
       </div>
@@ -119,6 +128,52 @@
           <a [href]="job?.CompanyGithub" class="font-18 nmc-medium-grey"
             ><i class="bi bi-github"></i
           ></a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Job Share Modal -->
+    <div
+      class="modal fade"
+      id="jobModal"
+      tabindex="-1"
+      aria-labelledby="jobModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title font-18" id="jobModalLabel">
+              Share
+            </h1>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+
+          <div class="modal-body">
+            <div class="share-options d-flex align-items-center gap-4">
+              <a class="cursor-pointer linkedin" (click)="shareOnLinkedIn()">
+                <i class="bi bi-linkedin font-30"></i>
+              </a>
+          
+              <a class="cursor-pointer whatsapp" (click)="shareOnWhatsApp()">
+                <i class="bi bi-whatsapp font-30"></i>
+              </a>
+          
+              <a class="cursor-pointer twitter" (click)="shareOnTwitter()">
+                <i class="bi bi-twitter-x font-30"></i>
+              </a>
+          
+              <a class="cursor-pointer instagram" (click)="shareOnInstagram()">
+                <i class="bi bi-instagram font-30"></i>
+              </a>
+            </div>
+          </div>
+          
         </div>
       </div>
     </div>

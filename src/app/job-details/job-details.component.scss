@@ -1,7 +1,6 @@
 .wrapper {
     box-shadow: 0 1px 2px 0 rgba(60, 64, 67, .3), 0 1px 3px 1px rgba(60, 64, 67, .15);
 
-
     li {
         list-style: disc;
     }
@@ -15,5 +14,23 @@
         width: 100px;
         top: 1.5rem;
         right: 1.5rem;
+    }
+}
+
+.modal-body {
+    .linkedin i {
+        color: #0077B5;
+    }
+
+    .whatsapp i {
+        color: #25D366;
+    }
+
+    .twitter i {
+        color: #000;
+    }
+
+    .instagram i {
+        color: #d6249f;
     }
 }

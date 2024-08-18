@@ -2,12 +2,14 @@
   @if(editMode){Edit Job} @else {Job Listings}
 </h2>
 
-<div *ngIf="loading">Loading job details...</div>
+<!-- Loading -->
+@if(loading){
+<div>Loading job details...</div>
+}
 
-<table
-  class="table table-bordered table-striped"
-  *ngIf="!loading && jobs.length > 0 && !editMode"
->
+<!-- Jobs Table -->
+@if(!loading && jobs.length > 0 && !editMode){
+<table class="table table-bordered table-striped">
   <thead>
     <tr>
       <th>Company Name</th>
@@ -17,7 +19,8 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let job of jobs">
+    @for(job of jobs; track job;){
+    <tr>
       <td>{{ job.companyName }}</td>
       <td>{{ job.position }}</td>
       <td>{{ job.Location }}</td>
@@ -34,12 +37,19 @@
         </button>
       </td>
     </tr>
+    }
   </tbody>
 </table>
+}
 
-<div *ngIf="!loading && jobs.length === 0">No jobs available.</div>
+<!-- No Jobs -->
+@if(!loading && jobs.length === 0){
+<div>No jobs available.</div>
+}
 
-<div *ngIf="editMode">
+<!-- Jobs Form -->
+@if(editMode){
+<!-- <div>
   <form [formGroup]="jobForm" (ngSubmit)="updateJob()">
     <div class="row mb-3">
       <div class="col-md-6">
@@ -83,7 +93,6 @@
       </div>
     </div>
 
-    <!-- Responsibilities -->
     <div class="row mb-3">
       <div class="col-md-12">
         <label
@@ -124,7 +133,6 @@
       </div>
     </div>
 
-    <!-- Qualification -->
     <div class="row mb-3">
       <div class="col-md-12">
         <label
@@ -316,7 +324,7 @@
     </div>
 
     <div class="row mb-3">
-      <div class="col-md-4">        
+      <div class="col-md-4">
         <input
           id="Private"
           formControlName="Private"
@@ -347,4 +355,5 @@
       </button>
     </div>
   </form>
-</div>
+</div> -->
+}

@@ -1,3 +1,5 @@
+@use "../../styles/variables" as *;
+
 .breadcrumb {
     top: -40px;
     left: -40px;
@@ -14,4 +16,9 @@
 
 .event-banner {
     height: 300px;
+}
+
+.seats h4 {
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+    border: 1px solid $nmc-primary;
 }

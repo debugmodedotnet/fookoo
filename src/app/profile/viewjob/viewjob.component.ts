@@ -66,7 +66,7 @@ export class ViewJobComponent implements OnInit {
     this.loading = true;
     this.jobService.getJobsByUserId(this.getUserId()).subscribe(
       (jobs: Job[]) => {
-        console.log('Loaded jobs:', jobs); // Debugging line to check the jobs array
+        console.log('Loaded jobs:', jobs); 
         this.jobs = jobs;
         this.loading = false;
       },
@@ -79,7 +79,7 @@ export class ViewJobComponent implements OnInit {
 
   editJob(job: Job): void {
     if (job && job.id) {
-      console.log('Editing job:', job); // Debugging line to check the job object
+      console.log('Editing job:', job); 
       this.jobForm.patchValue({
         CompanyName: job.companyName,
         CompanyUrl: job.CompanyUrl,
@@ -98,7 +98,6 @@ export class ViewJobComponent implements OnInit {
         Private: job.Private
       });
 
-      // Clear existing responsibilities and qualifications
       this.responsibilities.clear();
       job.Responsibilities.forEach(res => this.addResponsibility(res));
 
@@ -129,7 +128,7 @@ export class ViewJobComponent implements OnInit {
         console.error('Update failed', err);
       });
     } else {
-      this.jobForm.markAllAsTouched(); // Show validation errors
+      this.jobForm.markAllAsTouched(); 
     }
   }
 

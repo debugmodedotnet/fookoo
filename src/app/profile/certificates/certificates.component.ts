@@ -23,7 +23,7 @@ export class CertificatesComponent {
     this.selectedCertificate = certificate;
     console.log('Modal opened for certificate:', this.selectedCertificate);
   }
-  
+
   shareOnLinkedIn() {
     if (this.selectedCertificate) {
       const url = `https://www.linkedin.com/shareArticle?mini=true&url=${encodeURIComponent(window.location.href)}&title=${encodeURIComponent('Certificate')}&summary=${encodeURIComponent('Check out this certificate!')}&source=LinkedIn`;
@@ -47,7 +47,7 @@ export class CertificatesComponent {
 
   shareOnInstagram() {
     if (this.selectedCertificate) {
-      alert('Instagram sharing is not supported directly via a URL. Consider implementing a custom solution.');
+      alert('Instagram sharing is not supported directly via a URL.');
     }
   }
 

@@ -1,16 +1,16 @@
 <section class="pt-5 position-relative overflow-hidden">
   <div class="container-boxed">
     <div class="d-flex align-items-center justify-content-between">
-      <div class="d-flex align-items-center justify-content-center gap-3">
+      <div class="seats d-flex align-items-center justify-content-center gap-3">
         <h4
-          class="font-20 font-family-poppins d-inline-block py-2 px-3 bg-orange-100"
+          class="font-22 font-family-inter fw-semibold tracking-wider d-inline-block p-3 bg-orange-100 rounded-0"
         >
           Total Seats:
           <span class="nmc-primary">{{ eventAbout?.TotalSeats }}</span>
         </h4>
 
         <h4
-          class="font-20 font-family-poppins d-inline-block py-2 px-3 bg-orange-100"
+          class="font-22 font-family-inter fw-semibold tracking-wider d-inline-block p-3 bg-orange-100 rounded-0"
         >
           Total Registered:
           <span class="nmc-primary">{{ eventAbout?.RegisteredSeats }}</span>
@@ -22,13 +22,7 @@
         (click)="attendEvent()"
         [disabled]="enrolled || isLoading"
       >
-        {{
-          enrolled
-            ? "Enrolled"
-            : isLoading
-            ? "Processing..."
-            : "Enroll Now"
-        }}
+        {{ enrolled ? "Enrolled" : isLoading ? "Processing..." : "Enroll Now" }}
       </button>
     </div>
 

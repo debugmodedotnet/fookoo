@@ -1,53 +1,32 @@
 <div class="vh-100 nmc-bg-white">
   <form [formGroup]="jobForm">
-    <div class="row form-group mt-5 flex-column">
-      <h3 class="font-family-poppins mb-5 font-30 font-992-28 mt-5">
-        Step 5: Enter minimum and maximum salary range
+    <div class="row form-group pt-5 flex-column">
+      <h3 class="font-family-poppins mb-5 font-30 font-992-28 p-0">
+        Step 6: Tell us more about the job
       </h3>
 
-      <div class="col-12">
-        <div class="input__group">
-          <input
-            id="MinSalary"
-            type="number"
-            formControlName="MinSalary"
-            class="input__field"
-            placeholder="Enter minimum salary"
-          />
-          <label for="MinSalary" class="input__label"
-            >Enter Minimum Salary</label
-          >
-        </div>
+      <div class="input__group">
+        <textarea
+          id="JobDescription"
+          type="text"
+          formControlName="JobDescription"
+          class="input__field"
+          placeholder="Enter job's description"
+          rows="7"
+          (keyup)="cleanMessage()"
+        ></textarea>
 
-        @if(jobForm.errors?.['minSalaryError']){
-        <div class="error-label text-danger font-18">
-          <i class="bi bi-exclamation-triangle-fill me-2"></i>Minimum Salary
-          should be at least 10,000.
-        </div>
-        }
+        <label for="JobDescription" class="input__label"
+          >Enter Job's Description</label
+        >
       </div>
 
-      <div class="col-12 mt-4">
-        <div class="input__group mt-5">
-          <input
-            id="MaxSalary"
-            type="number"
-            formControlName="MaxSalary"
-            class="input__field"
-            placeholder="Enter maximum salary"
-          />
-          <label for="MaxSalary" class="input__label"
-            >Enter Maximum Salary</label
-          >
-        </div>
-
-        @if(jobForm.errors?.['salError']){
-        <div class="error-label text-danger font-18">
-          <i class="bi bi-exclamation-triangle-fill me-2"></i>Maximum Salary
-          should be greater than Minimum Salary.
-        </div>
-        }
+      @if(isDescriptionInValid){
+      <div class="error-label text-danger font-18">
+        <i class="bi bi-exclamation-triangle-fill me-2"></i>Please provide a job
+        description
       </div>
+      }
     </div>
   </form>
 

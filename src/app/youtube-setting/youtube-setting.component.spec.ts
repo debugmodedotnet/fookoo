@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { Jobstep3Component } from './jobstep3.component';
+import { YoutubeSettingComponent } from './youtube-setting.component';
 
-describe('Jobstep3Component', () => {
-  let component: Jobstep3Component;
-  let fixture: ComponentFixture<Jobstep3Component>;
+describe('YoutubeSettingComponent', () => {
+  let component: YoutubeSettingComponent;
+  let fixture: ComponentFixture<YoutubeSettingComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [Jobstep3Component]
+      imports: [YoutubeSettingComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(Jobstep3Component);
+    fixture = TestBed.createComponent(YoutubeSettingComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

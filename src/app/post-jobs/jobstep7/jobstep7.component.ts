@@ -1,4 +1,4 @@
-import { Component, model } from '@angular/core';
+import { Component, model, } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 
 @Component({
@@ -6,42 +6,78 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
   standalone: true,
   imports: [ReactiveFormsModule],
   templateUrl: './jobstep7.component.html',
-  styleUrl: './jobstep7.component.scss'
+  styleUrl: './jobstep7.component.scss',
 })
 export class Jobstep7Component {
-
-  data = model<any>();
   jobForm: FormGroup;
-  isDescriptionInValid = false;
+  data = model<any>();
+  backdata = model<any>();
+
+  isCompanyTwitterInvalid = false;
+  isCompanyLinkedInInvalid = false;
+  isCompanyGithubInvalid = false;
 
   constructor(private fb: FormBuilder) {
     this.jobForm = this.fb.group({
-      JobDescription: ['', Validators.required],
+      CompanyLinkedIn: [
+        '',
+        [
+          Validators.pattern('https?://www.linkedin.com/in/.+'),
+          Validators.minLength(5),
+          Validators.required,
+        ],
+      ],
+      CompanyGithub: [
+        '',
+        [
+          Validators.pattern('https?://github.com/.+'),
+          Validators.minLength(5),
+          Validators.required,
+        ],
+      ],
+      CompanyTwitter: [
+        '',
+        [
+          Validators.pattern('https?://x.com/.+'),
+          Validators.minLength(5),
+          Validators.required,
+        ],
+      ],
     });
   }
 
   async next() {
     if (this.jobForm.valid) {
-      if (this.jobForm.controls['JobDescription'].value.trim().length > 3) {
-        this.isDescriptionInValid = false;
-        this.data.set({
-          nextStep: 8,
-          jobId: this.data(),
-          formData: this.jobForm.value
-        });
-      }
-      else {
-        this.isDescriptionInValid = true
+      this.isCompanyLinkedInInvalid = false;
+      this.isCompanyGithubInvalid = false;
+      this.isCompanyTwitterInvalid = false;
+
+      this.data.set({
+        nextStep: 9,
+        jobId: this.data(),
+        formData: this.jobForm.value,
+      });
+    } else {
+      if (!this.jobForm.get('companyLinkedIn')?.valid) {
+        this.isCompanyLinkedInInvalid = true;
+      } else if (!this.jobForm.get('companyGithub')?.valid) {
+        this.isCompanyGithubInvalid = true;
+      } else if (!this.jobForm.get('companyTwitter')?.valid) {
+        this.isCompanyTwitterInvalid = true;
       }
     }
-    else {
-      this.isDescriptionInValid = true;
-    }
-
   }
 
-  cleanMessage(): void {
-    this.isDescriptionInValid = false;
+  cleanLinkedInMessage(): void {
+    this.isCompanyLinkedInInvalid = false;
   }
 
+  cleanGithubMessage(): void {
+    this.isCompanyGithubInvalid = false;
+  }
+
+  cleanTwitterMessage(): void {
+    this.isCompanyTwitterInvalid = false;
+  }
 }
+

@@ -1,5 +1,5 @@
-import { Component, Input, model, OnChanges } from '@angular/core';
-import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { Component, model } from '@angular/core';
+import { FormArray, FormBuilder, FormGroup, ReactiveFormsModule, Validators, ValidatorFn, ValidationErrors, AbstractControl } from '@angular/forms';
 
 @Component({
   selector: 'app-job-step3',
@@ -8,65 +8,110 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
   templateUrl: './jobstep3.component.html',
   styleUrl: './jobstep3.component.scss',
 })
-export class Jobstep3Component implements OnChanges {
+export class Jobstep3Component {
   jobForm: FormGroup;
   data = model<any>();
   backdata = model<any>();
-  @Input() savedJob: any;
-  isLocationInValid = false;
-  isCompanyUrlInValid = false;
-  isImageUrlInValid = false;
+
+  availableSkills: string[] = ['Angular', 'React', 'Python', 'System Design'];
+  tags: string[] = ['Angular', 'React', 'GenAI', 'JavaScript', 'TypeScript'];
+
+  minSkillsError = false;
+  maxSkillsError = false;
+  isTagInValid = false;
 
   constructor(private fb: FormBuilder) {
     this.jobForm = this.fb.group({
-      Location: ['', [Validators.required]],
-      Remote: [false],
-      CompanyUrl: [
-        '',
-        [Validators.required, Validators.pattern('https?://.+')],
-      ],
-      ImageUrl: ['', [Validators.required, Validators.pattern('https?://.+')]],
+      SkillsRequired: this.fb.array(
+        [],
+        [Validators.required, this.minMaxArrayValidator(1, 3)]
+      ),
+      Tag: ['', [Validators.required]],
     });
   }
 
-  ngOnChanges(): void {
-    console.log(this.savedJob);
-    this.jobForm.patchValue(this.savedJob);
+  get skillsRequired(): FormArray {
+    return this.jobForm.get('SkillsRequired') as FormArray;
   }
 
-  async next() {
-    if (this.jobForm.valid) {
-      if (this.jobForm.controls['Location'].value.trim().length > 3) {
-        this.isLocationInValid = false;
+  minMaxArrayValidator(min: number, max: number): ValidatorFn {
+    return (control: AbstractControl): ValidationErrors | null => {
+      const formArray = control as FormArray;
+      const length = formArray.length;
+      if (length > 0) {
+        this.minSkillsError = length < min;
+        this.maxSkillsError = length > max;
+        return this.minSkillsError || this.maxSkillsError
+          ? { minMaxSkills: true }
+          : null;
+      }
+      return null;
+    };
+  }
 
+  toggleSkill(skill: string): void {
+    const index = this.skillsRequired.controls.findIndex(
+      (x) => x.value === skill
+    );
+    if (index === -1) {
+      if (this.skillsRequired.length < 3) {
+        this.skillsRequired.push(this.fb.control(skill));
+        this.minSkillsError = false;
+        this.maxSkillsError = false;
+      } else {
+        this.maxSkillsError = true;
+      }
+    } else {
+      this.skillsRequired.removeAt(index);
+      this.minSkillsError = this.skillsRequired.length < 1;
+    }
+    this.logSelectedSkills();
+  }
+
+  isSelected(skill: string): boolean {
+    return this.skillsRequired.controls.some((x) => x.value === skill);
+  }
+
+  logSelectedSkills(): void {
+    const selectedSkills = this.skillsRequired.controls.map(
+      (control) => control.value
+    );
+    console.log('Selected Skills:', selectedSkills);
+  }
+
+   next() :void{
+    if (this.jobForm.valid) {
+      this.isTagInValid = false;
+      if (this.skillsRequired.length < 1) {
+        this.minSkillsError = true;
+        this.maxSkillsError = false;
+      } else if (this.skillsRequired.length > 3) {
+        this.maxSkillsError = true;
+      } else {
+        this.minSkillsError = false;
+        this.maxSkillsError = false;
         this.data.set({
-          nextStep: 4,
+          nextStep: 5,
           jobId: this.data(),
           formData: this.jobForm.value,
         });
-      } else {
-        this.isLocationInValid = true;
       }
     } else {
-      this.isLocationInValid = true;
-      this.isCompanyUrlInValid = true;
-      this.isImageUrlInValid = true;
+      this.minSkillsError = true;
+      this.isTagInValid = true;
     }
   }
 
-  cleanLocationMessage(): void {
-    this.isLocationInValid = false;
+  cleanMessage(): void {
+    this.minSkillsError = false;
+    this.maxSkillsError = false;
   }
 
-  cleanURLMessage(): void {
-    this.isCompanyUrlInValid = false;
-  }
-
-  cleanImageMessage(): void {
-    this.isImageUrlInValid = false;
+  cleanTagMessage(): void {
+    this.isTagInValid = false;
   }
 
   back(): void {
-    this.backdata.set({ previousStep: 2, jobId: this.data() });
+    this.backdata.set({ previousStep: 3, jobId: this.data() });
   }
 }

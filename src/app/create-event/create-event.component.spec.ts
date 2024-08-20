@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { Jobstep3Component } from './jobstep3.component';
+import { CreateEventComponent } from './create-event.component';
 
-describe('Jobstep3Component', () => {
-  let component: Jobstep3Component;
-  let fixture: ComponentFixture<Jobstep3Component>;
+describe('CreateEventComponent', () => {
+  let component: CreateEventComponent;
+  let fixture: ComponentFixture<CreateEventComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [Jobstep3Component]
+      imports: [CreateEventComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(Jobstep3Component);
+    fixture = TestBed.createComponent(CreateEventComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

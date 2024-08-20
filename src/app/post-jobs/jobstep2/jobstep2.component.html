@@ -1,79 +1,87 @@
-<div class="vh-100 py-3 nmc-bg-white">
+<div class="vh-100 py-5 nmc-bg-white">
   <form [formGroup]="jobForm">
-    <div class="row form-group mt-5 mb-3 flex-column">
+    <div class="row form-group mt-3 mb-3 flex-column">
       <h3 class="font-family-poppins mb-4 font-30 font-992-28">
-        Step 1: Let us know your recruitment requirements
+        Step 2: Enter your company details
       </h3>
 
-      <div class="col-12 mt-4">
+      <div class="col-12 text-end">
+        <input
+          id="Remote"
+          formControlName="Remote"
+          type="checkbox"
+          class="form-check-input"
+        />
+        <label for="Remote" class="form-label font-20 nmc-medium-grey ms-2"
+          >Remote</label
+        >
+      </div>
+
+      <div class="col-12">
         <div class="input__group">
           <input
-            id="companyName"
+            id="Location"
             type="text"
-            (keyup)="cleanNameMessage()"
-            formControlName="companyName"
+            (keyup)="cleanLocationMessage()"
+            formControlName="Location"
             class="input__field"
             placeholder="Enter your company name"
           />
-          <label for="companyName" class="input__label"
-            >Enter Your Company Name</label
+          <label for="Location" class="input__label"
+            >Enter Your Company's Location</label
           >
         </div>
 
-        @if(isCompanyInValid){
+        @if(isLocationInValid){
         <div class="error-label text-danger font-18">
-          <i class="bi bi-exclamation-triangle-fill me-2"></i>Please enter your
-          company's name
+          <i class="bi bi-exclamation-triangle-fill me-2"></i>Please provide a
+          job location
         </div>
         }
       </div>
 
-      <div class="col-12 mt-4">
-        <label for="position" class="mt-3 form-label font-20 nmc-medium-grey"
-          >Select Position</label
-        >
-        <select
-          id="position"
-          (focus)="cleanPositionMessage()"
-          formControlName="position"
-          class="form-select rounded-3 cursor-pointer"
-        >
-          <option value="" selected class="font-24">Select position</option>
-          @for(position of positions; track position;){
-          <option [value]="position" class="font-24">{{ position }}</option>
-          }
-        </select>
+      <div class="col-12 mt-5">
+        <div class="input__group">
+          <input
+            id="CompanyUrl"
+            type="text"
+            (keyup)="cleanURLMessage()"
+            formControlName="CompanyUrl"
+            class="input__field"
+            placeholder="Enter your company's URL"
+          />
+          <label for="CompanyUrl" class="input__label"
+            >Enter Your Company's URL</label
+          >
+        </div>
 
-        @if(isPositionInValid){
+        @if(isCompanyUrlInValid){
         <div class="error-label text-danger font-18">
-          <i class="bi bi-exclamation-triangle-fill me-2"></i>Please select a
-          position
+          <i class="bi bi-exclamation-triangle-fill me-2"></i>Please provide a
+          valid URL
         </div>
         }
       </div>
 
-      <div class="col-12 mt-4">
-        <label
-          for="qualification"
-          class="mt-3 form-label font-20 nmc-medium-grey"
-          >Select Qualification</label
-        >
-        <select
-          id="qualification"
-          (focus)="cleanQualificationMessage()"
-          formControlName="qualification"
-          class="form-select rounded-3 cursor-pointer"
-        >
-          <option value="" selected>Select qualification</option>
-          @for(qualification of qualifications; track qualification;){
-          <option [value]="qualification">{{ qualification }}</option>
-          }
-        </select>
+      <div class="col-12 mt-5">
+        <div class="input__group">
+          <input
+            id="ImageUrl"
+            type="text"
+            (keyup)="cleanImageMessage()"
+            formControlName="ImageUrl"
+            class="input__field"
+            placeholder="Enter your company's Image URL"
+          />
+          <label for="ImageUrl" class="input__label"
+            >Enter Your Company's Logo URL</label
+          >
+        </div>
 
-        @if(isQualificationInValid){
+        @if(isImageUrlInValid){
         <div class="error-label text-danger font-18">
-          <i class="bi bi-exclamation-triangle-fill me-2"></i>Please select a
-          qualification
+          <i class="bi bi-exclamation-triangle-fill me-2"></i>Please provide a
+          valid Logo URL
         </div>
         }
       </div>

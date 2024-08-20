@@ -1,9 +1,5 @@
 @use "../../styles/variables" as *;
 
-.min-height-700 {
-    min-height: 700px;
-}
-
 .input__group {
     position: relative;
     padding: 15px 0 0;
@@ -62,22 +58,9 @@
     }
 }
 
-.chip {
-    background-color: #f1f1f1;
-    padding: 15px;
-
-    button {
-        background: none;
-    }
-}
-
-.truncate {
-    width: 100%;
-    overflow: hidden;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 1;
-    line-clamp: 1;
-    display: -webkit-box;
+.error-message {
+    color: red;
+    font-size: 12px;
 }
 
 .nmc-btn-primary {

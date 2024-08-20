@@ -1,35 +1,43 @@
 import { Component, model } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { SalValidator } from './sal-validator';
-import { NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-job-step6',
   standalone: true,
-  imports: [ReactiveFormsModule, NgIf],
+  imports: [ReactiveFormsModule],
   templateUrl: './jobstep6.component.html',
-  styleUrl: './jobstep6.component.scss'
+  styleUrl: './jobstep6.component.scss',
 })
 export class Jobstep6Component {
-
-  jobForm: FormGroup;
   data = model<any>();
+  jobForm: FormGroup;
+  isDescriptionInValid = false;
+  backdata = model<any>();
 
   constructor(private fb: FormBuilder) {
     this.jobForm = this.fb.group({
-      MinSalary: ['', Validators.required],
-      MaxSalary: ['', Validators.required],
-    }, { validator: SalValidator });
-
-    //this.jobForm.markAllAsTouched();
+      JobDescription: ['', Validators.required],
+    });
   }
 
   async next() {
     if (this.jobForm.valid) {
-      this.data.set({ nextStep: 7, jobId: this.data(), formData: this.jobForm.value });
+      if (this.jobForm.controls['JobDescription'].value.trim().length > 3) {
+        this.isDescriptionInValid = false;
+        this.data.set({
+          nextStep: 8,
+          jobId: this.data(),
+          formData: this.jobForm.value,
+        });
+      } else {
+        this.isDescriptionInValid = true;
+      }
     } else {
-      this.jobForm.markAllAsTouched(); 
+      this.isDescriptionInValid = true;
     }
   }
 
+  cleanMessage(): void {
+    this.isDescriptionInValid = false;
+  }
 }

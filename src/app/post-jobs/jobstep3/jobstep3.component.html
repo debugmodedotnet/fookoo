@@ -1,91 +1,66 @@
-<div class="vh-100 py-5 nmc-bg-white">
+<div class="vh-100 py-2 nmc-bg-white">
   <form [formGroup]="jobForm">
-    <div class="row form-group mt-3 mb-3 flex-column">
+    <div class="row form-group my-5">
       <h3 class="font-family-poppins mb-4 font-30 font-992-28">
-        Step 2: Enter your company details
+        Step 3: Select the skills you prefer
       </h3>
 
-      <div class="col-12 text-end">
-        <input
-          id="Remote"
-          formControlName="Remote"
-          type="checkbox"
-          class="form-check-input"
-        />
-        <label for="Remote" class="form-label font-20 nmc-medium-grey ms-2"
-          >Remote</label
-        >
-      </div>
-
       <div class="col-12">
-        <div class="input__group">
-          <input
-            id="Location"
-            type="text"
-            (keyup)="cleanLocationMessage()"
-            formControlName="Location"
-            class="input__field"
-            placeholder="Enter your company name"
-          />
-          <label for="Location" class="input__label"
-            >Enter Your Company's Location</label
-          >
-        </div>
+        <label for="Tag" class="mt-3 form-label font-20 nmc-medium-grey"
+          >Select Tag</label
+        >
+        <select
+          id="Tag"
+          (focus)="cleanTagMessage()"
+          formControlName="Tag"
+          class="form-select rounded-3 cursor-pointer"
+        >
+          <option value="" selected>Select tag</option>
+          @for(tag of tags; track tag;){
+          <option [value]="tag">{{ tag }}</option>
+          }
+        </select>
 
-        @if(isLocationInValid){
+        @if(isTagInValid){
         <div class="error-label text-danger font-18">
-          <i class="bi bi-exclamation-triangle-fill me-2"></i>Please provide a
-          job location
-        </div>
-        }
-      </div>
-
-      <div class="col-12 mt-5">
-        <div class="input__group">
-          <input
-            id="CompanyUrl"
-            type="text"
-            (keyup)="cleanURLMessage()"
-            formControlName="CompanyUrl"
-            class="input__field"
-            placeholder="Enter your company's URL"
-          />
-          <label for="CompanyUrl" class="input__label"
-            >Enter Your Company's URL</label
-          >
-        </div>
-
-        @if(isCompanyUrlInValid){
-        <div class="error-label text-danger font-18">
-          <i class="bi bi-exclamation-triangle-fill me-2"></i>Please provide a
-          valid URL
-        </div>
-        }
-      </div>
-
-      <div class="col-12 mt-5">
-        <div class="input__group">
-          <input
-            id="ImageUrl"
-            type="text"
-            (keyup)="cleanImageMessage()"
-            formControlName="ImageUrl"
-            class="input__field"
-            placeholder="Enter your company's Image URL"
-          />
-          <label for="ImageUrl" class="input__label"
-            >Enter Your Company's Logo URL</label
-          >
-        </div>
-
-        @if(isImageUrlInValid){
-        <div class="error-label text-danger font-18">
-          <i class="bi bi-exclamation-triangle-fill me-2"></i>Please provide a
-          valid Logo URL
+          <i class="bi bi-exclamation-triangle-fill me-2"></i>Please select a
+          tag
         </div>
         }
       </div>
     </div>
+
+    <h5 class="mt-3 form-label font-20 nmc-medium-grey fw-normal">
+      Select Skills
+    </h5>
+
+    <div class="row form-group my-3">
+      @for(skill of availableSkills; track skill ){
+      <div class="col-2">
+        <div
+          class="chips rounded-5 p-2 text-center cursor-pointer"
+          [class.selected]="isSelected(skill)"
+          (click)="toggleSkill(skill)"
+          (keydown)="toggleSkill(skill)"
+          tabindex="0"
+        >
+          {{ skill }}
+        </div>
+      </div>
+      }
+    </div>
+
+    @if(minSkillsError){
+    <div class="error-label text-danger font-18">
+      <i class="bi bi-exclamation-triangle-fill me-2"></i>Please select at least
+      1 skill
+    </div>
+    } @if(maxSkillsError){
+    <div class="error-label text-danger font-18">
+      <i class="bi bi-exclamation-triangle-fill me-2"></i>You can select a
+      maximum of 3 skills
+    </div>
+    }
   </form>
 
   <div class="d-flex justify-content-end align-items-center mt-5">

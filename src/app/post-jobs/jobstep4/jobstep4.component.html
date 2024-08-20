@@ -1,72 +1,85 @@
-<div class="vh-100 py-2 nmc-bg-white">
+<div class="pb-5 min-height-700 nmc-bg-white">
   <form [formGroup]="jobForm">
-    <div class="row form-group my-5">
-      <h3 class="font-family-poppins mb-4 font-30 font-992-28">
-        Step 3: Select the skills you prefer
+    <div class="form-group pt-5">
+      <h3 class="font-family-poppins mb-5 font-30 font-992-28">
+        Step 4: Enter job responsibilities
       </h3>
 
-      <div class="col-12">
-        <label for="Tag" class="mt-3 form-label font-20 nmc-medium-grey"
-          >Select Tag</label
-        >
-        <select
-          id="Tag"
-          (focus)="cleanTagMessage()"
-          formControlName="Tag"
-          class="form-select rounded-3 cursor-pointer"
-        >
-          <option value="" selected>Select tag</option>
-          @for(tag of tags; track tag;){
-          <option [value]="tag">{{ tag }}</option>
-          }
-        </select>
+      <div class="chip-container mb-2 row g-4">
+        @for(control of responsibilities.controls; track control; let i =
+        $index;){
+        <ng-container>
+          <div class="col-4">
+            <div
+              class="chip rounded-4 d-flex align-items-start justify-content-between"
+            >
+              <p class="m-0 word-break">{{ control.value }}</p>
 
-        @if(isTagInValid){
-        <div class="error-label text-danger font-18">
-          <i class="bi bi-exclamation-triangle-fill me-2"></i>Please select a
-          tag
-        </div>
+              <div class="d-flex align-items-center ms-5">
+                <button
+                  type="button"
+                  (click)="editResponsibility(i)"
+                  class="p-0 border-0 nmc-dark-grey cursor-pointer"
+                >
+                  <i class="bi bi-pencil-fill"></i>
+                </button>
+
+                <button
+                  type="button"
+                  (click)="removeResponsibility(i)"
+                  class="p-0 ms-2 border-0 nmc-primary cursor-pointer"
+                >
+                  <i class="bi bi-x-circle-fill"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </ng-container>
         }
       </div>
-    </div>
 
-    <h5 class="mt-3 form-label font-20 nmc-medium-grey fw-normal">
-      Select Skills
-    </h5>
+      <div class="input__group mt-5">
+        <div formArrayName="Responsibilities" class="d-flex align-items-end">
+          <div class="d-flex flex-wrap align-items-center w-100">
+            <input
+              #newResponsibility
+              type="text"
+              class="input__field"
+              (keyup)="cleanMessage()"
+              [value]="
+                editingIndex === -1
+                  ? ''
+                  : responsibilities.at(editingIndex).value || ''
+              "
+            />
 
-    <div class="row form-group my-3">
-      @for(skill of availableSkills; track skill ){
-      <div class="col-2">
-        <div
-          class="chips rounded-5 p-2 text-center cursor-pointer"
-          [class.selected]="isSelected(skill)"
-          (click)="toggleSkill(skill)"
-          (keydown)="toggleSkill(skill)"
-          tabindex="0"
-        >
-          {{ skill }}
+            <label for="Responsibilities" class="input__label"
+              >Responsibilities</label
+            >
+          </div>
+
+          <button
+            type="button"
+            (click)="addResponsibility(newResponsibility)"
+            class="nmc-btn-primary ms-3"
+          >
+            +
+          </button>
         </div>
+      </div>
+
+      @if(isResponsibilitiesInValid){
+      <div class="error-label text-danger font-18">
+        <i class="bi bi-exclamation-triangle-fill me-2"></i>Please provide at
+        least one Responsibility
       </div>
       }
     </div>
-
-    @if(minSkillsError){
-    <div class="error-label text-danger font-18">
-      <i class="bi bi-exclamation-triangle-fill me-2"></i>Please select at least
-      1 skill
-    </div>
-    } @if(maxSkillsError){
-    <div class="error-label text-danger font-18">
-      <i class="bi bi-exclamation-triangle-fill me-2"></i>You can select a
-      maximum of 3 skills
-    </div>
-    }
   </form>
 
   <div class="d-flex justify-content-end align-items-center mt-5">
     <button
       class="back-btn font-20 fw-semibold border-0 nmc-medium-grey nmc-bg-white"
-      (click)="back()"
     >
       Back
     </button>

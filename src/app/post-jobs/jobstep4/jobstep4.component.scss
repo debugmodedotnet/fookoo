@@ -1,16 +1,7 @@
 @use "../../styles/variables" as *;
 
-.chips {
-    border: 1px solid #ccc;
-
-    &.selected {
-        background-color: $nmc-primary;
-        color: $nmc-white;
-    }
-}
-
-.form-select {
-    height: 60px !important;
+.min-height-700 {
+    min-height: 700px;
 }
 
 .input__group {
@@ -69,6 +60,24 @@
         font-size: 1.2rem;
         color: $nmc-medium-grey;
     }
+}
+
+.chip {
+    background-color: #f1f1f1;
+    padding: 15px;
+
+    button {
+        background: none;
+    }
+}
+
+.truncate {
+    width: 100%;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    line-clamp: 1;
+    display: -webkit-box;
 }
 
 .nmc-btn-primary {

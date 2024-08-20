@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { ChangeDetectorRef, Component, inject } from '@angular/core';
 import { NgClass } from '@angular/common';
 import { Router } from '@angular/router';
 import { AbstractControl, FormBuilder, FormGroup, ReactiveFormsModule, ValidationErrors, Validators } from '@angular/forms';
@@ -18,8 +18,9 @@ export class SignupComponent {
   showConfirmPassword = false;
   signupError: string | null = null;
 
-  private signupservice = inject(UserService);
+  private signupService = inject(UserService);
   private router = inject(Router);
+  private cdr = inject(ChangeDetectorRef);
 
   constructor(private fb: FormBuilder) {
     this.signupForm = this.fb.group({
@@ -54,25 +55,25 @@ export class SignupComponent {
     const password = this.signupForm?.value.password;
     const userDetails = {
       name: this.signupForm?.value.name,
-      age: 30,
-      city: ""
     };
-
-    this.signupservice.signUp(email, password, userDetails).then(() => {
-      // Handle successful signup, such as navigating to a different page
-      //this.router.navigate(['/login']);
+  
+    this.signupService.signUp(email, password, userDetails).then(() => {
+      this.router.navigate(['/login']);
       this.signupError = null;
     }).catch(error => {
-      // Handle signup error
+      console.log('Entered catch block:', error);
+  
       if (error.code === 'auth/email-already-in-use') {
         this.signupError = 'This email is already registered. Please sign in instead.';
-        
       } else {
         this.signupError = 'An error occurred. Please try again.';
       }
+  
+      this.cdr.detectChanges();
       console.error('Error signing up:', error);
     });
   }
+  
 
   togglePasswordVisibility(): void {
     this.showPassword = !this.showPassword;

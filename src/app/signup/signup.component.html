@@ -137,6 +137,13 @@
             </div>
             }
 
+            <!-- Error Message for Email Already Exists -->
+            <div class="nmc-alert mt-1">
+              @if(signupError){
+                <p class="font-14 m-0">{{ signupError }}</p>
+              }
+            </div> 
+
             <button
               type="submit"
               class="nmc-btn-primary w-100 font-14 fw-semibold box-shadow-none mt-4 py-2 h-auto"

@@ -16,6 +16,7 @@ export class SignupComponent {
   signupForm: FormGroup;
   showPassword = false;
   showConfirmPassword = false;
+  signupError: string | null = null;
 
   private signupservice = inject(UserService);
   private router = inject(Router);
@@ -59,10 +60,17 @@ export class SignupComponent {
 
     this.signupservice.signUp(email, password, userDetails).then(() => {
       // Handle successful signup, such as navigating to a different page
-      this.router.navigate(['/login']);
+      //this.router.navigate(['/login']);
+      this.signupError = null;
     }).catch(error => {
       // Handle signup error
-      console.error(error);
+      if (error.code === 'auth/email-already-in-use') {
+        this.signupError = 'This email is already registered. Please sign in instead.';
+        
+      } else {
+        this.signupError = 'An error occurred. Please try again.';
+      }
+      console.error('Error signing up:', error);
     });
   }
 

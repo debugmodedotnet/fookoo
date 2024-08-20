@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { NgClass, NgIf } from '@angular/common';
@@ -9,12 +9,12 @@ import { Router } from '@angular/router';
   standalone: true,
   imports: [NgClass, ReactiveFormsModule, NgIf],
   templateUrl: './forgot-password.component.html',
-  styleUrls: ['./forgot-password.component.scss'] // You'll use the same SCSS file as the login component
+  styleUrls: ['./forgot-password.component.scss']
 })
 export class ForgotPasswordComponent {
   forgotPasswordForm: FormGroup;
   message: string | null = null;
-  isSuccess: boolean = false;
+  isSuccess = false;
 
   constructor(
     private fb: FormBuilder,
@@ -35,7 +35,6 @@ export class ForgotPasswordComponent {
         .then(() => {
           this.isSuccess = true;
           this.message = 'Password reset email sent. Please check your inbox.';
-          // Optionally, redirect to login page after a delay
           setTimeout(() => this.router.navigate(['/login']), 5000);
         })
         .catch((error) => {

@@ -1,7 +1,5 @@
 <section class="login-container py-5">
-  <div
-    class="container-boxed d-flex align-items-center justify-content-between"
-  >
+  <div class="container-boxed d-flex align-items-center justify-content-center">
     <div class="w-50 pe-3 ps-0 px-lg-5 d-none d-md-block">
       <h1 class="font-52 nmc-primary mb-4 font-family-poppins">
         Welcome to NomadCoder!
@@ -12,7 +10,7 @@
       </h4>
     </div>
 
-    <div class="w-50 w-420-100">
+    <div class="w-50 w-767-100">
       <div class="font-15 mb-3 text-center">
         <span>Already have an account?</span>
         <a
@@ -64,6 +62,10 @@
               } @if(signupForm.get('email')?.errors?.['email']){
               <p class="font-14 m-0">*Invalid email format</p>
               }
+            </div>
+            } @if(signupError){
+            <div class="nmc-alert mt-1">
+              <p class="font-14 m-0">{{ signupError }}</p>
             </div>
             }
 
@@ -136,13 +138,6 @@
               }
             </div>
             }
-
-            <!-- Error Message for Email Already Exists -->
-            <div class="nmc-alert mt-1">
-              @if(signupError){
-                <p class="font-14 m-0">{{ signupError }}</p>
-              }
-            </div> 
 
             <button
               type="submit"

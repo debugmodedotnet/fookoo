@@ -50,10 +50,10 @@ export class UserService {
     return this.firestore.doc(`users/${userId}`).set(userDetails, { merge: true });
   }
 
-  async signUp(email: string, password: string, userDetails: { name: string; age: number; city: string }) {
+  async signUp(email: string, password: string, userDetails: { name: string; }) {
     try {
       const userCredential = await this.afAuth.createUserWithEmailAndPassword(email, password);
-      const uid = userCredential!.user!.uid;
+      const uid = userCredential.user!.uid;
       await this.firestore.doc(`users/${uid}`).set({
         email,
         uid,
@@ -62,8 +62,10 @@ export class UserService {
       console.log('User signed up and additional information added');
     } catch (error) {
       console.error('Error signing up:', error);
+      throw error; 
     }
   }
+  
 
   getCurrentUser(): Observable<any> {
     return this.afAuth.authState.pipe(

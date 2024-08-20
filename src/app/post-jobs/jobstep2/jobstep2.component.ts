@@ -1,12 +1,5 @@
-import { Component, effect, inject, model, OnInit } from '@angular/core';
-import { AngularFirestore } from '@angular/fire/compat/firestore';
-import {
-  FormBuilder,
-  FormGroup,
-  ReactiveFormsModule,
-  Validators,
-} from '@angular/forms';
-import { IJobStep1 } from '../../modules/post-job';
+import { Component, Input, model, OnChanges } from '@angular/core';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-job-step2',
@@ -15,83 +8,65 @@ import { IJobStep1 } from '../../modules/post-job';
   templateUrl: './jobstep2.component.html',
   styleUrl: './jobstep2.component.scss',
 })
-export class Jobstep2Component implements OnInit {
+export class Jobstep2Component implements OnChanges {
   jobForm: FormGroup;
-  positions: string[] = [];
-  qualifications: string[] = ['BCA', 'B.Tech', 'Diploma', 'BSc'];
   data = model<any>();
   backdata = model<any>();
-  isCompanyInValid = false;
-  isPositionInValid = false;
-  isQualificationInValid = false;
-
-  private firestore = inject(AngularFirestore);
+  @Input() savedJob: any;
+  isLocationInValid = false;
+  isCompanyUrlInValid = false;
+  isImageUrlInValid = false;
 
   constructor(private fb: FormBuilder) {
     this.jobForm = this.fb.group({
-      companyName: ['', Validators.required],
-      position: ['', Validators.required],
-      qualification: ['', Validators.required],
-    });
-
-    effect(() => {
-      this.jobForm.patchValue(this.backdata());
+      Location: ['', [Validators.required]],
+      Remote: [false],
+      CompanyUrl: [
+        '',
+        [Validators.required, Validators.pattern('https?://.+')],
+      ],
+      ImageUrl: ['', [Validators.required, Validators.pattern('https?://.+')]],
     });
   }
 
-  ngOnInit(): void {
-    this.getPositions();
+  ngOnChanges(): void {
+    console.log(this.savedJob);
+    this.jobForm.patchValue(this.savedJob);
   }
 
-  next(): void {
+  async next() {
     if (this.jobForm.valid) {
-      if (this.jobForm.controls['companyName'].value.trim().length > 2) {
-        this.isCompanyInValid = false;
-        this.isPositionInValid = false;
-        this.isQualificationInValid = false;
+      if (this.jobForm.controls['Location'].value.trim().length > 3) {
+        this.isLocationInValid = false;
 
         this.data.set({
-          nextStep: 3,
+          nextStep: 4,
           jobId: this.data(),
           formData: this.jobForm.value,
         });
       } else {
-        this.isCompanyInValid = true;
+        this.isLocationInValid = true;
       }
     } else {
-      if (!this.jobForm.get('companyName')?.valid) {
-        this.isCompanyInValid = true;
-      } else if (!this.jobForm.get('position')?.valid) {
-        this.isPositionInValid = true;
-      } else if (!this.jobForm.get('qualification')?.valid) {
-        this.isQualificationInValid = true;
-      }
+      this.isLocationInValid = true;
+      this.isCompanyUrlInValid = true;
+      this.isImageUrlInValid = true;
     }
   }
 
+  cleanLocationMessage(): void {
+    this.isLocationInValid = false;
+  }
+
+  cleanURLMessage(): void {
+    this.isCompanyUrlInValid = false;
+  }
+
+  cleanImageMessage(): void {
+    this.isImageUrlInValid = false;
+  }
+
   back(): void {
-    this.backdata.set({ previousStep: 1, jobId: this.data() });
-  }
-
-  cleanNameMessage(): void {
-    this.isCompanyInValid = false;
-  }
-
-  cleanPositionMessage(): void {
-    this.isPositionInValid = false;
-  }
-
-  cleanQualificationMessage(): void {
-    this.isQualificationInValid = false;
-  }
-
-  getPositions(): void {
-    this.firestore
-      .collection('post-job')
-      .doc<IJobStep1>('job-step-1')
-      .valueChanges()
-      .subscribe((doc: IJobStep1 | undefined) => {
-        this.positions = doc?.position ?? [];
-      });
+    this.backdata.set({ previousStep: 2, jobId: this.data() });
   }
 }

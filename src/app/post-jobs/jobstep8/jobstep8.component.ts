@@ -1,66 +1,37 @@
-import { Component, model, } from '@angular/core';
-import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { Component, inject, model, OnInit } from '@angular/core';
+import { JobService } from '../../services/job.service';
+import { Job } from '../../modules/job';
 
 @Component({
   selector: 'app-job-step8',
   standalone: true,
-  imports: [ReactiveFormsModule],
+  imports: [],
   templateUrl: './jobstep8.component.html',
-  styleUrl: './jobstep8.component.scss'
+  styleUrl: './jobstep8.component.scss',
 })
-export class Jobstep8Component {
-
-  jobForm: FormGroup;
+export class Jobstep8Component implements OnInit {
   data = model<any>();
+  job: Job | null = null;
+  defaultImage = 'assets/images/home/default_company.png';
+  backdata = model<any>();
 
-  isCompanyTwitterInvalid = false;
-  isCompanyLinkedInInvalid = false;
-  isCompanyGithubInvalid = false;
+  private jobService = inject(JobService);
 
-  constructor(private fb: FormBuilder) {
-    this.jobForm = this.fb.group({
-      CompanyLinkedIn: ['', [Validators.pattern('https?://www.linkedin.com/in/.+'), Validators.minLength(5), Validators.required]],
-      CompanyGithub: ['', [Validators.pattern('https?://github.com/.+'), Validators.minLength(5), Validators.required]],
-      CompanyTwitter: ['', [Validators.pattern('https?://x.com/.+'), Validators.minLength(5), Validators.required]],
-    });
-  }
+  ngOnInit(): void {
+    const jobId = this.data();
+    console.log(jobId);
 
-  async next() {
-    if (this.jobForm.valid) {
-
-      this.isCompanyLinkedInInvalid = false;
-      this.isCompanyGithubInvalid = false;
-      this.isCompanyTwitterInvalid = false;
-
-      this.data.set({
-        nextStep: 9,
-        jobId: this.data(),
-        formData: this.jobForm.value
+    if (jobId) {
+      this.jobService.getJobById(jobId).subscribe({
+        next: (data) => {
+          if (data) {
+            this.job = data;
+          }
+        },
+        error: (e) => {
+          console.log('Error occurred while fetching job: ', e);
+        },
       });
     }
-    else {
-      if (!this.jobForm.get('companyLinkedIn')?.valid) {
-        this.isCompanyLinkedInInvalid = true;
-      }
-      else if (!this.jobForm.get('companyGithub')?.valid) {
-        this.isCompanyGithubInvalid = true;
-      }
-      else if (!this.jobForm.get('companyTwitter')?.valid) {
-        this.isCompanyTwitterInvalid = true;
-      }
-    }
-  }
-
-  cleanLinkedInMessage(): void {
-    this.isCompanyLinkedInInvalid = false;
-  }
-
-  cleanGithubMessage(): void {
-    this.isCompanyGithubInvalid = false;
-  }
-
-  cleanTwitterMessage(): void {
-    this.isCompanyTwitterInvalid = false;
   }
 }
-

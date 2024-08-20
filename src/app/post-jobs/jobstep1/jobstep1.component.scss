@@ -1,5 +1,9 @@
 @use "../../styles/variables" as *;
 
+.form-select {
+    height: 60px !important;
+}
+
 .input__group {
     position: relative;
     padding: 15px 0 0;
@@ -60,4 +64,8 @@
 
 .nmc-btn-primary {
     font-size: 1.3rem;
+}
+
+.back-btn:hover {
+    color: $nmc-primary !important;
 }

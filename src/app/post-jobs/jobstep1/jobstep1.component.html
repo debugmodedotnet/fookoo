@@ -1,34 +1,93 @@
-<div class="vh-100 nmc-bg-white">
-  <div class="spacer--default"></div>
-
+<div class="vh-100 py-3 nmc-bg-white">
   <form [formGroup]="jobForm">
-    <div class="form-group">
-      <h3 class="font-family-poppins mb-4 font-30 font-992-28 text-center">
-        You are just a few steps away from hiring a great talent !
+    <div class="row form-group mt-5 mb-3 flex-column">
+      <h3 class="font-family-poppins mb-4 font-30 font-992-28">
+        Step 1: Let us know your recruitment requirements
       </h3>
 
-      <div class="input__group mt-5">
-        <input
-          id="email"
-          type="email"
-          (keyup)="cleanMessage()"
-          formControlName="email"
-          class="input__field"
-          placeholder="Enter your email address"
-        />
-        <label for="email" class="input__label">Email</label>
+      <div class="col-12 mt-4">
+        <div class="input__group">
+          <input
+            id="companyName"
+            type="text"
+            (keyup)="cleanNameMessage()"
+            formControlName="companyName"
+            class="input__field"
+            placeholder="Enter your company name"
+          />
+          <label for="companyName" class="input__label"
+            >Enter Your Company Name</label
+          >
+        </div>
+
+        @if(isCompanyInValid){
+        <div class="error-label text-danger font-18">
+          <i class="bi bi-exclamation-triangle-fill me-2"></i>Please enter your
+          company's name
+        </div>
+        }
       </div>
 
-      @if(isEmailInValid){
-      <div class="error-label text-danger font-18">
-        <i class="bi bi-exclamation-triangle-fill me-2"></i>Please provide a
-        valid email
+      <div class="col-12 mt-4">
+        <label for="position" class="mt-3 form-label font-20 nmc-medium-grey"
+          >Select Position</label
+        >
+        <select
+          id="position"
+          (focus)="cleanPositionMessage()"
+          formControlName="position"
+          class="form-select rounded-3 cursor-pointer"
+        >
+          <option value="" selected class="font-24">Select position</option>
+          @for(position of positions; track position;){
+          <option [value]="position" class="font-24">{{ position }}</option>
+          }
+        </select>
+
+        @if(isPositionInValid){
+        <div class="error-label text-danger font-18">
+          <i class="bi bi-exclamation-triangle-fill me-2"></i>Please select a
+          position
+        </div>
+        }
       </div>
-      }
+
+      <div class="col-12 mt-4">
+        <label
+          for="qualification"
+          class="mt-3 form-label font-20 nmc-medium-grey"
+          >Select Qualification</label
+        >
+        <select
+          id="qualification"
+          (focus)="cleanQualificationMessage()"
+          formControlName="qualification"
+          class="form-select rounded-3 cursor-pointer"
+        >
+          <option value="" selected>Select qualification</option>
+          @for(qualification of qualifications; track qualification;){
+          <option [value]="qualification">{{ qualification }}</option>
+          }
+        </select>
+
+        @if(isQualificationInValid){
+        <div class="error-label text-danger font-18">
+          <i class="bi bi-exclamation-triangle-fill me-2"></i>Please select a
+          qualification
+        </div>
+        }
+      </div>
     </div>
   </form>
 
   <div class="d-flex justify-content-end align-items-center mt-5">
+    <button
+      class="back-btn font-20 fw-semibold border-0 nmc-medium-grey nmc-bg-white"
+      (click)="back()"
+    >
+      Back
+    </button>
+
     <button
       class="nmc-btn-primary fw-semibold box-shadow-none py-3 px-5 h-auto ms-3 d-flex align-items-center rounded-0"
       (click)="next()"

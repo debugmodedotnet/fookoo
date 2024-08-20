@@ -1,6 +1,9 @@
 import { Component, inject } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 
+
+
+import { UserService } from '../services/user.service';
 import { Jobstep1Component } from './jobstep1/jobstep1.component';
 import { Jobstep2Component } from './jobstep2/jobstep2.component';
 import { Jobstep3Component } from './jobstep3/jobstep3.component';
@@ -9,9 +12,6 @@ import { Jobstep5Component } from './jobstep5/jobstep5.component';
 import { Jobstep6Component } from './jobstep6/jobstep6.component';
 import { Jobstep7Component } from './jobstep7/jobstep7.component';
 import { Jobstep8Component } from './jobstep8/jobstep8.component';
-import { Jobstep9Component } from './jobstep9/jobstep9.component';
-
-import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-post-jobs',
@@ -24,8 +24,7 @@ import { UserService } from '../services/user.service';
     Jobstep5Component,
     Jobstep6Component,
     Jobstep7Component,
-    Jobstep8Component,
-    Jobstep9Component,
+    Jobstep8Component
   ],
   templateUrl: './post-jobs.component.html',
   styleUrl: './post-jobs.component.scss',
@@ -33,7 +32,7 @@ import { UserService } from '../services/user.service';
 export class PostJobsComponent {
   isUserLoggedIn = false;
   currentJobId?: string;
-  currentStep = 2;
+  currentStep = 1;
   dataToSave: any;
   selectedJob: any;
 
@@ -44,7 +43,7 @@ export class PostJobsComponent {
     this.currentStep = data.nextStep;
     this.dataToSave = data.formData;
 
-    if (this.currentStep === 3) {
+    if (this.currentStep === 2) {
       this.saveInitialData();
     } else {
       this.saveData();

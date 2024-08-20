@@ -1,32 +1,78 @@
-<div class="vh-100 nmc-bg-white">
+<div class="vh-100">
   <form [formGroup]="jobForm">
-    <div class="row form-group pt-5 flex-column">
+    <div class="row form-group pt-5 mb-3 flex-column">
       <h3 class="font-family-poppins mb-5 font-30 font-992-28 p-0">
-        Step 6: Tell us more about the job
+        Step 7: Enter your social media
       </h3>
 
-      <div class="input__group">
-        <textarea
-          id="JobDescription"
-          type="text"
-          formControlName="JobDescription"
-          class="input__field"
-          placeholder="Enter job's description"
-          rows="7"
-          (keyup)="cleanMessage()"
-        ></textarea>
+      <div class="col-12">
+        <div class="input__group">
+          <input
+            id="CompanyLinkedIn"
+            type="text"
+            (keyup)="cleanLinkedInMessage()"
+            formControlName="CompanyLinkedIn"
+            class="input__field"
+            placeholder="Enter your company's linkedIn"
+          />
+          <label for="CompanyLinkedIn" class="input__label"
+            >Enter Your Company's LinkedIn</label
+          >
+        </div>
 
-        <label for="JobDescription" class="input__label"
-          >Enter Job's Description</label
-        >
+        @if(isCompanyLinkedInInvalid){
+        <div class="error-label text-danger font-18">
+          <i class="bi bi-exclamation-triangle-fill me-2"></i>Please enter your
+          valid Company LinkedIn
+        </div>
+        }
       </div>
 
-      @if(isDescriptionInValid){
-      <div class="error-label text-danger font-18">
-        <i class="bi bi-exclamation-triangle-fill me-2"></i>Please provide a job
-        description
+      <div class="col-12 mt-3">
+        <div class="input__group mt-5">
+          <input
+            id="CompanyGithub"
+            type="text"
+            (keyup)="cleanGithubMessage()"
+            formControlName="CompanyGithub"
+            class="input__field"
+            placeholder="Enter your company's github"
+          />
+          <label for="CompanyGithub" class="input__label"
+            >Enter Your Company's Github</label
+          >
+        </div>
+
+        @if(isCompanyGithubInvalid){
+        <div class="error-label text-danger font-18">
+          <i class="bi bi-exclamation-triangle-fill me-2"></i>Please enter your
+          valid Company Github
+        </div>
+        }
       </div>
-      }
+
+      <div class="col-12 mt-3">
+        <div class="input__group mt-5">
+          <input
+            id="CompanyTwitter"
+            type="text"
+            (keyup)="cleanTwitterMessage()"
+            formControlName="CompanyTwitter"
+            class="input__field"
+            placeholder="Enter your company's twitter"
+          />
+          <label for="CompanyTwitter" class="input__label"
+            >Enter Your Company's Twitter</label
+          >
+        </div>
+
+        @if(isCompanyTwitterInvalid){
+        <div class="error-label text-danger font-18">
+          <i class="bi bi-exclamation-triangle-fill me-2"></i>Please enter your
+          valid Company Twitter
+        </div>
+        }
+      </div>
     </div>
   </form>
 

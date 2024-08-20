@@ -1,5 +1,18 @@
 @use "../../styles/variables" as *;
 
+.chips {
+    border: 1px solid #ccc;
+
+    &.selected {
+        background-color: $nmc-primary;
+        color: $nmc-white;
+    }
+}
+
+.form-select {
+    height: 60px !important;
+}
+
 .input__group {
     position: relative;
     padding: 15px 0 0;

@@ -1,0 +1,235 @@
+<section class="pt-4 pb-5">
+  <div class="container-boxed">
+    <h2
+      class="section-title font-36 nmc-dark-grey font-family-poppins text-center mb-4"
+    >
+      Create Event
+    </h2>
+
+    <div class="form-wrapper rounded-4 p-4 w-100">
+      <form [formGroup]="eventForm" (ngSubmit)="addOrUpdateEvent()">
+        <div class="row form-group mt-3">
+          <div class="col-6">
+            <label for="title" class="form-label required">Title</label>
+            <input
+              id="title"
+              type="text"
+              class="form-control h-3 rounded-3"
+              formControlName="Title"
+              placeholder="Enter Title"
+            />
+          </div>
+
+          <div class="col-3">
+            <label for="totalSeats" class="form-label required"
+              >Total Seats</label
+            >
+            <input
+              id="totalSeats"
+              type="text"
+              class="form-control h-3 rounded-3"
+              formControlName="TotalSeats"
+              placeholder="Enter Total Seats"
+            />
+          </div>
+
+          <div class="col-3">
+            <label for="registeredSeats" class="form-label required"
+              >Registered Seats</label
+            >
+            <input
+              id="registeredSeats"
+              type="text"
+              class="form-control h-3 rounded-3"
+              formControlName="RegisteredSeats"
+              placeholder="Enter Registered Seats"
+            />
+          </div>
+
+          <div class="col-4 mt-4">
+            <label for="tech" class="form-label required">Technology</label>
+
+            <select
+              class="form-select form-control h-3 rounded-3"
+              id="tech"
+              formControlName="Tech"
+            >
+              <option selected>Choose...</option>
+              <option value="Angular">Angular</option>
+              <option value="React">React</option>
+              <option value="Vue">Vue</option>
+            </select>
+          </div>
+
+          <!-- <div class="col-4 mt-4">
+            <label for="tech" class="form-label required">Technology</label>
+            <input
+              id="tech"
+              type="text"
+              class="form-control h-3 rounded-3"
+              formControlName="Tech"
+              placeholder="Enter Technology"
+            />
+          </div> -->
+
+          <div class="col-4 mt-4">
+            <label for="logo" class="form-label required">Logo</label>
+            <input
+              id="logo"
+              type="text"
+              class="form-control h-3 rounded-3"
+              formControlName="Logo"
+              placeholder="Enter Logo URL"
+            />
+          </div>
+
+          <div class="col-4 mt-4">
+            <label for="tagline" class="form-label required">Tagline</label>
+            <input
+              id="tagline"
+              type="text"
+              class="form-control h-3 rounded-3"
+              formControlName="Tagline"
+              placeholder="Enter Tagline"
+            />
+          </div>
+
+          <div class="col-4 mt-4">
+            <label for="shortDescription" class="form-label required"
+              >Short Description</label
+            >
+            <input
+              id="shortDescription"
+              type="text"
+              class="form-control h-3 rounded-3"
+              formControlName="ShortDescription"
+              placeholder="Enter Short Description"
+            />
+          </div>
+
+          <div class="col-8 mt-4">
+            <label for="longDescription" class="form-label required"
+              >Long Description</label
+            >
+            <textarea
+              id="longDescription"
+              type="text"
+              class="form-control h-3 rounded-3"
+              formControlName="Description"
+              placeholder="Enter Long Description"
+              rows="4"
+            ></textarea>
+          </div>
+
+          <div class="col-3 mt-4">
+            <label for="date" class="form-label required">Date</label>
+            <input
+              id="date"
+              formControlName="Date"
+              type="date"
+              class="form-control h-3 rounded-3"
+            />
+          </div>
+
+          <div class="col-3 mt-4">
+            <label for="city" class="form-label required">City</label>
+            <input
+              id="city"
+              type="text"
+              class="form-control h-3 rounded-3"
+              formControlName="City"
+              placeholder="Enter City"
+            />
+          </div>
+
+          <div class="col-6 mt-4">
+            <label for="eventImage" class="form-label">Event Image</label>
+            <input
+              type="file"
+              id="eventImage"
+              class="form-control h-3 rounded-3"
+              formControlName="EventImage"
+            />
+          </div>
+
+          <div class="col-6 mt-4">
+            <label for="venueName" class="form-label required"
+              >Venue Name</label
+            >
+            <input
+              id="venueName"
+              type="text"
+              class="form-control h-3 rounded-3"
+              formControlName="VenueName"
+              placeholder="Enter Venue Name"
+            />
+          </div>
+
+          <div class="col-6 mt-4">
+            <label for="venueImage" class="form-label">Venue Image</label>
+            <input
+              type="file"
+              id="venueImage"
+              class="form-control h-3 rounded-3"
+              formControlName="VenueImg"
+            />
+          </div>
+
+          <div class="col-6 mt-4">
+            <label for="venueInfo" class="form-label required"
+              >Venue Info</label
+            >
+            <textarea
+              id="venueInfo"
+              type="text"
+              class="form-control h-3 rounded-3"
+              formControlName="VenueInfo"
+              placeholder="Venue Info"
+            ></textarea>
+          </div>
+
+          <div class="col-6 mt-4">
+            <label for="venueIframe" class="form-label"
+              >Venue Map Location</label
+            >
+            <input
+              id="venueIframe"
+              type="text"
+              class="form-control h-3 rounded-3"
+              formControlName="VenueIframe"
+              placeholder="Enter Iframe"
+            />
+          </div>
+
+          <div class="col-2 mt-4">
+            <input type="checkbox" formControlName="isOffline" />
+            Is Offline?
+          </div>
+
+          <div class="col-2 mt-4">
+            <input type="checkbox" formControlName="isPaid" />
+            Is Paid?
+          </div>
+
+          <div class="col-3 mt-4">
+            <input type="checkbox" formControlName="isCertificateProvided" />
+            Is Certificate Provided?
+          </div>
+
+          <div class="col-3 mt-4">
+            <input type="checkbox" formControlName="displayAtHomePage" />
+            Display At HomePage
+          </div>
+
+          <button
+            type="submit"
+            class="nmc-btn-primary w-50 font-14 fw-semibold box-shadow-none mt-5 mb-2 m-auto py-2 h-auto"
+            [disabled]="!eventForm.valid"
+          >
+            Create Event
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>

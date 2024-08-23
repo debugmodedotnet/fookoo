@@ -1,27 +1,27 @@
-<section class="hero-section py-5">
-  <div class="container-boxed">
+<section class="hero-section pt-5 gradient-bg overflow-hidden">
+  <div class="container-boxed pt-3">
     <div
       class="position-relative d-flex align-items-center justify-content-between gap-5"
     >
       <div class="w-45">
-        <h1 class="font-big nmc-primary font-family-poppins">
+        <h1 class="font-big nmc-white font-family-poppins">
           {{ ngIndia?.Title }}
         </h1>
 
-        <h2 class="font-48 nmc-dark-grey mt-4">
+        <h2 class="font-48 nmc-white mt-4">
           India's Largest
           <span class="text-bottom-line position-relative">Angular</span>
           Conference
         </h2>
 
-        <p class="font-18 nmc-dark-grey mt-4">
+        <p class="font-18 nmc-white mt-4">
           {{ ngIndia?.Info }}
         </p>
       </div>
 
       <figure class="w-55 h-auto overflow-hidden rounded-3">
         <img
-          class="img-fluid m-auto object-fit-fill"
+          class="img-fluid m-auto object-fit-cover"
           loading="lazy"
           [src]="ngIndia?.Banner"
           alt="ngIndia Banner"
@@ -29,9 +29,9 @@
       </figure>
     </div>
 
-    <div class="event-summary row g-4 my-3">
+    <div class="event-summary row g-4 mt-3 mb-5 pb-2">
       <div class="col-2">
-        <div class="rounded-2 p-3 ng-tracker text-center">
+        <div class="rounded-2 p-3 ng-tracker text-center nmc-bg-white">
           <i class="bi bi-fire font-36 nmc-primary"></i>
           <div>
             <h3
@@ -45,7 +45,7 @@
       </div>
 
       <div class="col-2">
-        <div class="rounded-2 p-3 ng-tracker text-center">
+        <div class="rounded-2 p-3 ng-tracker text-center nmc-bg-white">
           <i class="bi bi-mic font-36 nmc-primary"></i>
           <div>
             <h3
@@ -59,7 +59,7 @@
       </div>
 
       <div class="col-2">
-        <div class="rounded-2 p-3 ng-tracker text-center">
+        <div class="rounded-2 p-3 ng-tracker text-center nmc-bg-white">
           <i class="bi bi-megaphone font-36 nmc-primary"></i>
           <div>
             <h3
@@ -73,7 +73,7 @@
       </div>
 
       <div class="col-2">
-        <div class="rounded-2 p-3 ng-tracker text-center">
+        <div class="rounded-2 p-3 ng-tracker text-center nmc-bg-white">
           <i class="bi bi-people font-36 nmc-primary"></i>
           <div>
             <h3
@@ -87,7 +87,7 @@
       </div>
 
       <div class="col-2">
-        <div class="rounded-2 p-3 ng-tracker text-center">
+        <div class="rounded-2 p-3 ng-tracker text-center nmc-bg-white">
           <i class="bi bi-bank font-36 nmc-primary"></i>
           <div>
             <h3
@@ -101,7 +101,7 @@
       </div>
 
       <div class="col-2">
-        <div class="rounded-2 p-3 ng-tracker text-center">
+        <div class="rounded-2 p-3 ng-tracker text-center nmc-bg-white">
           <i class="bi bi-graph-up-arrow font-36 nmc-primary"></i>
           <div>
             <h3
@@ -115,9 +115,23 @@
       </div>
     </div>
   </div>
+
+  <div class="custom-shape-divider w-100 position-relative">
+    <svg
+      data-name="Layer 1"
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 900 110"
+      preserveAspectRatio="none"
+    >
+      <path
+        d="M985.66,92.83C906.67,72,823.78,31,743.84,14.19c-82.26-17.34-168.06-16.33-250.45.39-57.84,11.73-114,31.07-172,41.86A600.21,600.21,0,0,1,0,27.35V120H1200V95.8C1132.19,118.92,1055.71,111.31,985.66,92.83Z"
+        class="shape-fill"
+      ></path>
+    </svg>
+  </div>
 </section>
 
-<section class="previous-editions-wrapper pt-5">
+<section class="previous-editions-wrapper">
   <h2
     class="section-title font-36 nmc-dark-grey font-family-poppins text-center mb-5"
   >

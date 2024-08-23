@@ -1,12 +1,30 @@
 @use "../../styles/variables" as *;
 
-.breadcrumb {
-    top: -40px;
-    left: -40px;
+.gradient-bg {
+    background: rgb(255, 171, 107);
+    background: linear-gradient(0deg, rgb(255, 161, 89) 0%, rgb(244, 125, 34) 35%, rgb(206, 89, 0) 100%);
+}
+
+.custom-shape-divider svg {
+    position: relative;
+    display: block;
+    width: calc(100% + 1.3px);
+    height: 150px;
+}
+
+.custom-shape-divider .shape-fill {
+    fill: #FFFFFF;
 }
 
 .nmc-btn-primary {
-    font-size: 20px !important;
+    font-size: 24px !important;
+    padding: 1rem 5rem;
+}
+
+.nmc-btn-primary:disabled {
+    background-color: rgb(95 99 104 / 50%) !important;
+    color: #fff !important;
+
 }
 
 .logo {

@@ -25,7 +25,7 @@ export class Jobstep6Component {
       if (this.jobForm.controls['JobDescription'].value.trim().length > 3) {
         this.isDescriptionInValid = false;
         this.data.set({
-          nextStep: 8,
+          nextStep: 7,
           jobId: this.data(),
           formData: this.jobForm.value,
         });

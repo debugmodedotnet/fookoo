@@ -1,4 +1,4 @@
-import { Component, Input, model, OnChanges } from '@angular/core';
+import { Component, effect, Input, model, OnChanges } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 
 @Component({
@@ -27,11 +27,16 @@ export class Jobstep2Component implements OnChanges {
       ],
       ImageUrl: ['', [Validators.required, Validators.pattern('https?://.+')]],
     });
+
+    effect(()=>{
+      console.log(this.backdata());
+      this.jobForm.patchValue(this.backdata());
+    })
   }
 
   ngOnChanges(): void {
-    console.log(this.savedJob);
-    this.jobForm.patchValue(this.savedJob);
+    // console.log(this.savedJob);
+    // this.jobForm.patchValue(this.backdata());
   }
 
   async next() {
@@ -40,9 +45,10 @@ export class Jobstep2Component implements OnChanges {
         this.isLocationInValid = false;
 
         this.data.set({
-          nextStep: 4,
+          nextStep: 3,
           jobId: this.data(),
           formData: this.jobForm.value,
+          persisted:true
         });
       } else {
         this.isLocationInValid = true;
@@ -67,6 +73,6 @@ export class Jobstep2Component implements OnChanges {
   }
 
   back(): void {
-    this.backdata.set({ previousStep: 2, jobId: this.data() });
+    this.backdata.set({ previousStep: 1, jobId: this.data() });
   }
 }

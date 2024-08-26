@@ -25,6 +25,7 @@ export class ViewJobComponent implements OnInit {
   private router = inject(Router);
   private fb = inject(FormBuilder);
   userId?: string;
+  logedInEmail : string | null | undefined; 
 
   tags: string[] = ['Angular', 'React', 'GenAI', 'JavaScript', 'TypeScript'];
   positions: string[] = ['Software Engineer', 'ML Engineer', 'Software Developer', 'Social Media Management', 'Senior Software Engineer', 'Intern'];
@@ -58,16 +59,18 @@ export class ViewJobComponent implements OnInit {
     this.afAuth.user.pipe(first()).subscribe(res => {
       console.log(res)
       this.userId = res?.uid;
+      this.logedInEmail = res?.email ;
       this.loadJobs();
     });
   }
 
   loadJobs(): void {
     this.loading = true;
-    this.jobService.getJobsByUserId(this.getUserId()).subscribe(
+    this.jobService.getJobsByUserId(this.logedInEmail as string).subscribe(
       (jobs: Job[]) => {
         console.log('Loaded jobs:', jobs); 
         this.jobs = jobs;
+        console.log(this.jobs);
         this.loading = false;
       },
       (error: any) => {

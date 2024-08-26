@@ -91,7 +91,7 @@ export class Jobstep3Component {
         this.minSkillsError = false;
         this.maxSkillsError = false;
         this.data.set({
-          nextStep: 5,
+          nextStep: 4,
           jobId: this.data(),
           formData: this.jobForm.value,
         });
@@ -112,6 +112,6 @@ export class Jobstep3Component {
   }
 
   back(): void {
-    this.backdata.set({ previousStep: 3, jobId: this.data() });
+    this.backdata.set({ previousStep: 2, jobId: this.data() });
   }
 }

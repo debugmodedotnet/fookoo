@@ -30,7 +30,7 @@ export class Jobstep5Component {
   async next() {
     if (this.jobForm.valid) {
       this.data.set({
-        nextStep: 7,
+        nextStep: 6,
         jobId: this.data(),
         formData: this.jobForm.value,
       });

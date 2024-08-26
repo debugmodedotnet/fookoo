@@ -35,26 +35,30 @@ export class PostJobsComponent {
   currentStep = 1;
   dataToSave: any;
   selectedJob: any;
+  persisted = false;
 
   private firestore = inject(AngularFirestore);
   private userService = inject(UserService);
 
   stepChange(data: any) {
     this.currentStep = data.nextStep;
-    this.dataToSave = data.formData;
-
-    if (this.currentStep === 2) {
+    this.dataToSave = data.formData ;
+    this.persisted = data.persisted || false; 
+    console.log('Step change:', data);
+    if (this.currentStep === 2 && this.persisted === false) {
+      console.log('Saving initial data');
       this.saveInitialData();
     } else {
+      console.log('Saving data');
       this.saveData();
     }
+
+    this.fetchJobDocument();
   }
 
   async saveData() {
     const formData = this.dataToSave;
     const docId = this.currentJobId;
-    console.log(formData);
-    console.log(docId);
     await this.firestore
       .collection('jobForms')
       .doc(docId)
@@ -88,6 +92,7 @@ export class PostJobsComponent {
   }
 
   backChange(data: any) {
+    console.log('Back data:', data);
     this.currentStep = data.previousStep;
     this.fetchJobDocument();
   }

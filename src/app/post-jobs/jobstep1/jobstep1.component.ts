@@ -35,6 +35,7 @@ export class Jobstep1Component implements OnInit {
     });
 
     effect(() => {
+      console.log(this.backdata());
       this.jobForm.patchValue(this.backdata());
     });
   }
@@ -51,9 +52,9 @@ export class Jobstep1Component implements OnInit {
         this.isQualificationInValid = false;
 
         this.data.set({
-          nextStep: 3,
+          nextStep: 2,
           jobId: this.data(),
-          formData: this.jobForm.value,
+          formData: this.jobForm.value
         });
       } else {
         this.isCompanyInValid = true;

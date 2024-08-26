@@ -68,7 +68,7 @@ export class Jobstep4Component {
       this.isResponsibilitiesInValid = false;
 
       this.data.set({
-        nextStep: 6,
+        nextStep: 5,
         jobId: this.data(),
         formData: this.jobForm.value,
       });
@@ -82,6 +82,6 @@ export class Jobstep4Component {
   }
 
   back(): void {
-    this.backdata.set({ previousStep: 4, jobId: this.data() });
+    this.backdata.set({ previousStep: 3, jobId: this.data() });
   }
 }

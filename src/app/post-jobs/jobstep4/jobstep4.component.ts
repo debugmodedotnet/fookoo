@@ -9,6 +9,7 @@ import { FormArray, FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Va
   styleUrl: './jobstep4.component.scss',
 })
 export class Jobstep4Component {
+  
   jobForm: FormGroup;
   editingIndex = -1;
   data = model<any>();

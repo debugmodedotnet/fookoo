@@ -16,6 +16,7 @@ import { IJobStep1 } from '../../modules/post-job';
   styleUrl: './jobstep1.component.scss',
 })
 export class Jobstep1Component implements OnInit {
+  
   jobForm: FormGroup;
   positions: string[] = [];
   qualifications: string[] = ['BCA', 'B.Tech', 'Diploma', 'BSc'];

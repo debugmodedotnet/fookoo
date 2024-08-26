@@ -9,6 +9,7 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
   styleUrl: './jobstep2.component.scss',
 })
 export class Jobstep2Component implements OnChanges {
+
   jobForm: FormGroup;
   data = model<any>();
   backdata = model<any>();
@@ -25,17 +26,17 @@ export class Jobstep2Component implements OnChanges {
         '',
         [Validators.required, Validators.pattern('https?://.+')],
       ],
-      ImageUrl: ['', [Validators.required, Validators.pattern('https?://.+')]],
+      //ImageUrl: ['', [Validators.required, Validators.pattern('https?://.+')]],
     });
 
-    effect(()=>{
+    effect(() => {
       console.log(this.backdata());
       this.jobForm.patchValue(this.backdata());
     })
   }
 
   ngOnChanges(): void {
-    // console.log(this.savedJob);
+    console.log(this.savedJob);
     // this.jobForm.patchValue(this.backdata());
   }
 
@@ -48,7 +49,7 @@ export class Jobstep2Component implements OnChanges {
           nextStep: 3,
           jobId: this.data(),
           formData: this.jobForm.value,
-          persisted:true
+          persisted: true
         });
       } else {
         this.isLocationInValid = true;

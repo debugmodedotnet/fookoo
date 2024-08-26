@@ -1,24 +1,23 @@
 export interface Job {
-  id?: string;  
+  id?: string;
+  userId?: string;
+  email?: string;
+  PhoneNo?: string;
   companyName: string;
+  position: string;
   CompanyUrl: string;
-  JobDescription: string;
-  Responsibilities: string[];
-  qualification: string[];
-  SkillsRequired: string;
+  qualification: string;
   Location: string;
   Remote: boolean;
+  Tag?: string;
+  SkillsRequired: string[];
+  Responsibilities: string[];
+  MinSalary: number;
+  MaxSalary: number;
+  JobDescription: string;
   CompanyTwitter?: string;
   CompanyLinkedIn?: string;
   CompanyGithub?: string;
-  position: string;
-  email?: string;
-  PhoneNo?: string;
-  Tag?: string;
-  ImageUrl: string;
-  userId?: string; 
-  Private?: boolean;
-  MinSalary: number;
-  MaxSalary: number;
+  isActive?: boolean;
 }
 

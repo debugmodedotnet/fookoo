@@ -1,5 +1,5 @@
-<section class="pt-5 position-relative overflow-hidden">
-  <div class="container-boxed">
+<section class="pt-5 position-relative overflow-hidden gradient-bg">
+  <div class="container-boxed mb-5">
     <div class="d-flex align-items-center justify-content-between">
       <div class="seats d-flex align-items-center justify-content-center gap-3">
         <h4
@@ -18,16 +18,16 @@
       </div>
 
       <button
-        class="nmc-btn-primary px-5 py-3 h-auto font-20"
+        class="nmc-btn-primary nmc-bg-white nmc-primary h-auto"
         (click)="attendEvent()"
         [disabled]="enrolled || isLoading"
       >
-        {{ enrolled ? "Enrolled" : isLoading ? "Processing..." : "Enroll Now" }}
+        {{ enrolled ? "Enrolled 🎉" : isLoading ? "Processing..." : "Enroll Now" }}
       </button>
     </div>
 
     <div
-      class="position-relative d-flex flex-column align-items-center justify-content-center text-center z-2"
+      class="position-relative d-flex flex-column align-items-center justify-content-center text-center z-2 mt-4"
     >
       <figure class="logo m-0 p-0 overflow-hidden">
         <img
@@ -38,18 +38,18 @@
         />
       </figure>
 
-      <h1 class="font-52 nmc-primary fw-bolder w-50 font-family-poppins">
+      <h1 class="font-52 nmc-white fw-bolder font-family-poppins">
         {{ eventAbout?.Title }}
       </h1>
 
       <div class="d-flex align-items-center justify-center gap-4 mt-3">
-        <h4 class="nmc-dark-grey">
-          <i class="bi bi-calendar-event-fill me-1 font-20 nmc-primary"></i>
+        <h4 class="nmc-white">
+          <i class="bi bi-calendar-event-fill me-1 font-20 nmc-white"></i>
           {{ eventAbout?.Date | date : "MMMM d" }}
         </h4>
 
-        <h4 class="nmc-dark-grey">
-          <i class="bi bi-geo-alt-fill me-1 font-20 nmc-primary"></i>
+        <h4 class="nmc-white">
+          <i class="bi bi-geo-alt-fill me-1 font-20 nmc-white"></i>
           @if(eventAbout?.isOffline){ {{ eventAbout?.City }} }@else{ Online}
         </h4>
       </div>
@@ -74,9 +74,23 @@
       </button> -->
     </div>
   </div>
+
+  <div class="custom-shape-divider w-100 position-relative">
+    <svg
+      data-name="Layer 1"
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 900 110"
+      preserveAspectRatio="none"
+    >
+      <path
+        d="M985.66,92.83C906.67,72,823.78,31,743.84,14.19c-82.26-17.34-168.06-16.33-250.45.39-57.84,11.73-114,31.07-172,41.86A600.21,600.21,0,0,1,0,27.35V120H1200V95.8C1132.19,118.92,1055.71,111.31,985.66,92.83Z"
+        class="shape-fill"
+      ></path>
+    </svg>
+  </div>
 </section>
 
-<section class="position-relative overflow-hidden py-5">
+<section class="position-relative overflow-hidden pb-5">
   <div class="container-boxed">
     <div class="row gx-5">
       <div class="col-6">

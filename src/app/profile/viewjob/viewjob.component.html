@@ -32,9 +32,19 @@
           Edit
         </button>
 
-        <button class="btn btn-danger btn-sm ms-2" (click)="deleteJob(job.id)">
-          Delete
-        </button>
+        @if(job.isActive){
+        <button
+          class="btn btn-danger btn-sm ms-2"
+          (click)="deactivateJob(job.id, job.isActive)"
+        >
+          Disable</button
+        >} @else{
+        <button
+          class="btn btn-success btn-sm ms-2"
+          (click)="deactivateJob(job.id, job.isActive)"
+        >
+          Enable</button
+        >}
       </td>
     </tr>
     }
@@ -49,36 +59,249 @@
 
 <!-- Jobs Form -->
 @if(editMode){
-<!-- <div>
+<div>
   <form [formGroup]="jobForm" (ngSubmit)="updateJob()">
-    <div class="row mb-3">
+    <div class="row mb-3 align-items-end">
+      <!-- Company Name -->
       <div class="col-md-6">
         <label for="CompanyName" class="form-label fw-semibold font-14 required"
           >Company Name</label
         >
         <input
-          id="CompanyName"
-          formControlName="CompanyName"
+          id="companyName"
           type="text"
-          class="form-control h-3 rounded-3"
+          formControlName="companyName"
+          class="form-control h-3 rounded-3 cursor-pointer"
+          placeholder="Enter your company name"
+          readonly
         />
       </div>
 
+      <!-- Position -->
       <div class="col-md-6">
+        <label for="Position" class="form-label fw-semibold font-14 required"
+          >Position</label
+        >
+
+        <input
+          id="position"
+          type="text"
+          formControlName="position"
+          class="form-control h-3 rounded-3 cursor-pointer"
+          placeholder="Select your company position"
+          readonly
+        />
+
+        <!-- <select
+          id="position"
+          formControlName="position"
+          class="form-select h-3 rounded-3 cursor-pointer"
+          readonly
+        >
+          <option value="" selected class="font-24">Select position</option>
+          @for(position of positions; track position;){
+          <option [value]="position" class="font-24">{{ position }}</option>
+          }
+        </select> -->
+      </div>
+
+      <!-- Company URL -->
+      <div class="col-md-6 mt-3">
         <label for="CompanyUrl" class="form-label fw-semibold font-14 required"
           >Company URL</label
         >
         <input
           id="CompanyUrl"
-          formControlName="CompanyUrl"
           type="text"
-          class="form-control h-3 rounded-3"
+          formControlName="CompanyUrl"
+          class="form-control h-3 rounded-3 cursor-pointer"
+          placeholder="Enter your company's URL"
         />
       </div>
-    </div>
 
-    <div class="row mb-3">
-      <div class="col-md-12">
+      <!-- Location -->
+      <div class="col-md-4 mt-3">
+        <label for="Location" class="form-label fw-semibold font-14 required"
+          >Location</label
+        >
+        <input
+          id="Location"
+          type="text"
+          formControlName="Location"
+          class="form-control h-3 rounded-3 cursor-pointer"
+          placeholder="Enter your company name"
+        />
+      </div>
+
+      <!-- Remote -->
+      <div class="col-md-2 mt-3">
+        <input
+          id="Remote"
+          formControlName="Remote"
+          type="checkbox"
+          class="form-check-input"
+        />
+        <label for="Remote" class="form-label fw-semibold font-14 ms-2"
+          >Remote</label
+        >
+      </div>
+
+      <!-- Qualification -->
+      <div class="col-md-6 mt-3">
+        <label
+          for="qualification"
+          class="form-label fw-semibold font-14 required"
+          >Qualification</label
+        >
+        <select
+          id="qualification"
+          formControlName="qualification"
+          class="form-select rounded-3 h-3 cursor-pointer"
+        >
+          <option value="" selected>Select qualification</option>
+          @for(qualification of qualifications; track qualification;){
+          <option [value]="qualification">{{ qualification }}</option>
+          }
+        </select>
+      </div>
+
+      <!-- Tech Tag -->
+      <div class="col-md-6 mt-3">
+        <label for="Tag" class="form-label fw-semibold font-14 required"
+          >Technology Tag</label
+        >
+        <select
+          id="Tag"
+          formControlName="Tag"
+          class="form-select rounded-3 h-3 cursor-pointer"
+        >
+          <option value="" selected>Select tag</option>
+          @for(tag of tags; track tag;){
+          <option [value]="tag">{{ tag }}</option>
+          }
+        </select>
+      </div>
+
+      <!-- Skills -->
+      <div class="col-md-12 mt-3">
+        <label for="Skills" class="form-label fw-semibold font-14 required"
+          >Select Skills</label
+        >
+
+        <div class="row gap-3">
+          @for(skill of availableSkills; track skill ){
+          <div class="col-auto p-0">
+            <div
+              class="chips rounded-5 py-2 px-3 text-center cursor-pointer"
+              [class.selected]="isSelected(skill)"
+              (click)="toggleSkill(skill)"
+              (keydown)="toggleSkill(skill)"
+              tabindex="0"
+            >
+              {{ skill }}
+            </div>
+          </div>
+          }
+        </div>
+      </div>
+
+      <!-- Responsibilities -->
+      <div class="col-md-12 mt-3">
+        <label
+          for="Responsibilities"
+          class="form-label fw-semibold font-14 required"
+          >Responsibilities</label
+        >
+
+        @if(responsibilities.length>0){
+        <div class="chip-container mb-2 row g-4">
+          @for(control of responsibilities.controls; track control; let i =
+          $index;){
+          <ng-container>
+            <div class="col-4">
+              <div
+                class="chip rounded-4 d-flex align-items-start justify-content-between"
+              >
+                <p class="m-0 word-break">{{ control.value }}</p>
+
+                <div class="d-flex align-items-center ms-5">
+                  <button
+                    type="button"
+                    (click)="editResponsibility(i)"
+                    class="p-0 border-0 nmc-dark-grey cursor-pointer"
+                  >
+                    <i class="bi bi-pencil-fill"></i>
+                  </button>
+
+                  <button
+                    type="button"
+                    (click)="removeResponsibility(i)"
+                    class="p-0 ms-2 border-0 nmc-primary cursor-pointer"
+                  >
+                    <i class="bi bi-x-circle-fill"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </ng-container>
+          }
+        </div>
+        }
+
+        <div formArrayName="Responsibilities" class="d-flex align-items-center">
+          <div class="d-flex flex-wrap align-items-center w-100">
+            <input
+              #newResponsibility
+              type="text"
+              class="form-control h-3 rounded-3 cursor-pointer"
+              [value]="
+                editingIndex === -1
+                  ? ''
+                  : responsibilities.at(editingIndex).value || ''
+              "
+            />
+          </div>
+
+          <button
+            type="button"
+            (click)="addResponsibility(newResponsibility)"
+            class="nmc-btn-primary ms-3"
+          >
+            +
+          </button>
+        </div>
+      </div>
+
+      <!-- Min Salary -->
+      <div class="col-md-6 mt-3">
+        <label for="MinSalary" class="form-label fw-semibold font-14 required"
+          >Minimum Salary</label
+        >
+        <input
+          id="MinSalary"
+          type="number"
+          formControlName="MinSalary"
+          class="form-control h-3 rounded-3 cursor-pointer"
+          placeholder="Enter minimum salary"
+        />
+      </div>
+
+      <!-- Max Salary -->
+      <div class="col-md-6 mt-3">
+        <label for="MaxSalary" class="form-label fw-semibold font-14 required"
+          >Maximum Salary</label
+        >
+        <input
+          id="MaxSalary"
+          type="number"
+          formControlName="MaxSalary"
+          class="form-control h-3 rounded-3 cursor-pointer"
+          placeholder="Enter maximum salary"
+        />
+      </div>
+
+      <!-- Description -->
+      <div class="col-md-12 mt-3">
         <label
           for="JobDescription"
           class="form-label fw-semibold font-14 required"
@@ -86,253 +309,72 @@
         >
         <textarea
           id="JobDescription"
+          type="text"
           formControlName="JobDescription"
-          class="form-control rounded-3"
-          rows="5"
+          class="form-control rounded-3 cursor-pointer"
+          placeholder="Enter job's description"
+          rows="4"
         ></textarea>
       </div>
-    </div>
 
-    <div class="row mb-3">
-      <div class="col-md-12">
+      <!-- LinkedIn -->
+      <div class="col-md-4 mt-3">
         <label
-          for="Responsibilities"
+          for="CompanyLinkedIn"
           class="form-label fw-semibold font-14 required"
-          >Responsibilities</label
-        >
-        <div formArrayName="Responsibilities">
-          <div class="d-flex flex-wrap align-items-center">
-            <ng-container
-              *ngFor="let control of responsibilities.controls; let i = index"
-            >
-              <div class="chip-container me-2 mb-2">
-                <div class="chip">
-                  {{ control.value }}
-                  <button
-                    type="button"
-                    (click)="removeResponsibility(i)"
-                    class="btn btn-danger btn-sm ms-2"
-                  >
-                    ×
-                  </button>
-                </div>
-              </div>
-            </ng-container>
-
-            <input
-              #newResponsibility
-              type="text"
-              class="form-control h-3 rounded-3"
-              (keydown.enter)="
-                addResponsibility(newResponsibility.value);
-                newResponsibility.value = ''
-              "
-            />
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="row mb-3">
-      <div class="col-md-12">
-        <label
-          for="Qualification"
-          class="form-label fw-semibold font-14 required"
-          >Qualification</label
-        >
-
-        <div formArrayName="Qualification">
-          <div class="d-flex flex-wrap align-items-center">
-            <ng-container
-              *ngFor="let control of qualifications.controls; let i = index"
-            >
-              <div class="chip-container me-2 mb-2">
-                <div class="chip">
-                  {{ control.value }}
-                  <button
-                    type="button"
-                    (click)="removeQualification(i)"
-                    class="btn btn-danger btn-sm ms-2"
-                  >
-                    ×
-                  </button>
-                </div>
-              </div>
-            </ng-container>
-
-            <input
-              #newQualification
-              type="text"
-              class="form-control h-3 rounded-3"
-              (keydown.enter)="
-                addQualification(newQualification.value);
-                newQualification.value = ''
-              "
-            />
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="row mb-3">
-      <div class="col-md-12">
-        <label
-          for="SkillsRequired"
-          class="form-label fw-semibold font-14 required"
-          >Skills Required</label
-        >
-        <textarea
-          id="SkillsRequired"
-          formControlName="SkillsRequired"
-          class="form-control rounded-3"
-          rows="3"
-        ></textarea>
-      </div>
-    </div>
-
-    <div class="row mb-3">
-      <div class="col-md-6">
-        <label for="Location" class="form-label fw-semibold font-14 required"
-          >Location</label
-        >
-        <input
-          id="Location"
-          formControlName="Location"
-          type="text"
-          class="form-control h-3 rounded-3"
-        />
-      </div>
-
-      <div class="col-md-6">
-        <label for="Remote" class="form-label fw-semibold font-14"
-          >Remote</label
-        >
-        <input
-          id="Remote"
-          formControlName="Remote"
-          type="checkbox"
-          class="form-check-input"
-        />
-      </div>
-    </div>
-
-    <div class="row mb-3">
-      <div class="col-md-4">
-        <label for="CompanyGithub" class="form-label fw-semibold font-14"
-          >Company Github</label
-        >
-        <input
-          id="CompanyGithub"
-          formControlName="CompanyGithub"
-          type="text"
-          class="form-control h-3 rounded-3"
-        />
-      </div>
-
-      <div class="col-md-4">
-        <label for="CompanyTwitter" class="form-label fw-semibold font-14"
-          >Company Twitter</label
-        >
-        <input
-          id="CompanyTwitter"
-          formControlName="CompanyTwitter"
-          type="text"
-          class="form-control h-3 rounded-3"
-        />
-      </div>
-
-      <div class="col-md-4">
-        <label for="CompanyLinkedIn" class="form-label fw-semibold font-14"
           >Company LinkedIn</label
         >
         <input
           id="CompanyLinkedIn"
+          type="text"
           formControlName="CompanyLinkedIn"
+          class="form-control h-3 rounded-3 cursor-pointer"
+          placeholder="Enter your company's linkedIn"
+        />
+      </div>
+
+      <!-- Github -->
+      <div class="col-md-4 mt-3">
+        <label
+          for="CompanyGithub"
+          class="form-label fw-semibold font-14 required"
+          >Company Github</label
+        >
+        <input
+          id="CompanyGithub"
           type="text"
-          class="form-control h-3 rounded-3"
-        />
-      </div>
-    </div>
-
-    <div class="row mb-3">
-      <div class="col-md-6">
-        <label for="Position" class="form-label fw-semibold font-14 required"
-          >Position</label
-        >
-        <select id="Position" formControlName="Position" class="form-select">
-          <option *ngFor="let position of positions" [value]="position">
-            {{ position }}
-          </option>
-        </select>
-        <div
-          *ngIf="
-            jobForm.get('Position')?.invalid &&
-            (jobForm.get('Position')?.touched || jobForm.dirty)
-          "
-          class="text-danger"
-        >
-          Position is required.
-        </div>
-      </div>
-
-      <div class="col-md-6">
-        <label for="Tag" class="form-label fw-semibold font-14 required"
-          >Tag</label
-        >
-        <select id="Tag" formControlName="Tag" class="form-select">
-          <option *ngFor="let tag of tags" [value]="tag">{{ tag }}</option>
-        </select>
-      </div>
-    </div>
-
-    <div class="row mb-3">
-      <div class="col-md-6">
-        <label for="Email" class="form-label fw-semibold font-14">Email</label>
-        <input
-          id="Email"
-          formControlName="Email"
-          type="email"
-          class="form-control h-3 rounded-3"
+          formControlName="CompanyGithub"
+          class="form-control h-3 rounded-3 cursor-pointer"
+          placeholder="Enter your company's github"
         />
       </div>
 
-      <div class="col-md-6">
-        <label for="PhoneNo" class="form-label fw-semibold font-14"
-          >Phone No</label
+      <!-- Twitter -->
+      <div class="col-md-4 mt-3">
+        <label
+          for="CompanyTwitter"
+          class="form-label fw-semibold font-14 required"
+          >Company Twitter</label
         >
         <input
-          id="PhoneNo"
-          formControlName="PhoneNo"
+          id="CompanyTwitter"
           type="text"
-          class="form-control h-3 rounded-3"
+          formControlName="CompanyTwitter"
+          class="form-control h-3 rounded-3 cursor-pointer"
+          placeholder="Enter your company's twitter"
         />
       </div>
-    </div>
 
-    <div class="row mb-3">
-      <div class="col-md-12">
-        <label for="ImageUrl" class="form-label fw-semibold font-14 required"
-          >Image URL</label
-        >
+      <!-- Is Active -->
+      <div class="col-md-4 mt-3">
         <input
-          id="ImageUrl"
-          formControlName="ImageUrl"
-          type="text"
-          class="form-control h-3 rounded-3"
-        />
-      </div>
-    </div>
-
-    <div class="row mb-3">
-      <div class="col-md-4">
-        <input
-          id="Private"
-          formControlName="Private"
+          id="isActive"
+          formControlName="isActive"
           type="checkbox"
           class="form-check-input"
         />
-        <label for="Private" class="form-label fw-semibold font-14 ms-1"
-          >Private</label
+        <label for="isActive" class="form-label fw-semibold font-14 ms-2"
+          >Active</label
         >
       </div>
     </div>
@@ -355,5 +397,5 @@
       </button>
     </div>
   </form>
-</div> -->
+</div>
 }

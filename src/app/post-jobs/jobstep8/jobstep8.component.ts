@@ -41,14 +41,10 @@ export class Jobstep8Component implements OnInit {
   }
 
   async next() {
-    if (this.jobForm.valid) {
-
-      this.data.set({
-        nextStep: 9,
-        jobId: this.data(),
-        formData: this.jobForm.value,
-      });
-    }
+    this.data.set({
+      nextStep: 9,
+      jobId: this.data(),
+    });
   }
 
   openShareModal() {

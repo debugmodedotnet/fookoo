@@ -1,4 +1,4 @@
-<section class="">
+<section class="py-5">
   <div class="container-boxed">
     <div class="d-flex align-items-center justify-content-between mb-lg-5 mb-4">
       <h2
@@ -23,8 +23,10 @@
     <div class="row mentor-card-wrapper g-3">
       @for(instructor of instructors; track instructor; let i = $index;){
       <div class="col-12 col-sm-6 col-lg-3 d-grid">
-        <div class="mentor-card inner rounded-0 overflow-hidden">
-          <figure class="position-relative overflow-hidden m-auto rounded-circle">
+        <div class="mentor-card inner rounded-0">
+          <figure
+            class="position-relative overflow-hidden m-auto rounded-circle"
+          >
             <img
               class="z-1 w-100 h-100 object-fit-cover"
               loading="lazy"
@@ -46,8 +48,8 @@
             </div>
           </figure>
 
-          <div class="info p-4 text-center d-grid">
-            <h2 class="font-26 nmc-dark-grey font-family-poppins">
+          <div class="info p-4 text-center d-grid rounded-2">
+            <h2 class="font-26 nmc-dark-grey font-family-poppins pt-4">
               {{ instructor.Name }}
             </h2>
 

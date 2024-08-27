@@ -84,7 +84,9 @@
       @if( job?.JobDescription){
       <div class="about p-4 border-bottom">
         <h5 class="nmc-dark-grey fw-semibold font-18">About the job :</h5>
-        <p class="mt-3 nmc-medium-grey m-0">{{ job?.JobDescription }}</p>
+        <p class="mt-3 nmc-medium-grey m-0 text-break">
+          {{ job?.JobDescription }}
+        </p>
       </div>
       }
 

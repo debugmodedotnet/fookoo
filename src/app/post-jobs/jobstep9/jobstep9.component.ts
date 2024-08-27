@@ -19,7 +19,6 @@ import { IJobSteps } from '../../modules/post-job';
 })
 export class Jobstep9Component implements OnInit {
 
-
   backdata = model<any>();
   data = model<any>();
   job: Job | null = null;

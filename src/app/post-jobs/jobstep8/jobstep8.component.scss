@@ -1,3 +1,5 @@
+@use "../../styles/variables" as *;
+
 .wrapper {
     box-shadow: 0 1px 2px 0 rgba(60, 64, 67, .3), 0 1px 3px 1px rgba(60, 64, 67, .15);
 
@@ -14,6 +16,29 @@
         width: 100px;
         top: 1.5rem;
         right: 1.5rem;
+    }
+
+    .form-label.required::after {
+        content: " *";
+        color: red;
+    }
+
+    .chips {
+        border: 1px solid #ccc;
+
+        &.selected {
+            background-color: $nmc-primary;
+            color: $nmc-white;
+        }
+    }
+
+    .chip {
+        background-color: #f1f1f1;
+        padding: 15px;
+
+        button {
+            background: none;
+        }
     }
 }
 

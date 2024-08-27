@@ -1,5 +1,7 @@
-import { Component, model } from '@angular/core';
+import { Component, inject, model, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, ReactiveFormsModule, Validators, ValidatorFn, ValidationErrors, AbstractControl } from '@angular/forms';
+import { IJobSteps } from '../../modules/post-job';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
 
 @Component({
   selector: 'app-job-step3',
@@ -8,19 +10,23 @@ import { FormArray, FormBuilder, FormGroup, ReactiveFormsModule, Validators, Val
   templateUrl: './jobstep3.component.html',
   styleUrl: './jobstep3.component.scss',
 })
-export class Jobstep3Component {
+export class Jobstep3Component implements OnInit {
+
   jobForm: FormGroup;
   data = model<any>();
   backdata = model<any>();
 
-  availableSkills: string[] = ['Angular', 'React', 'Python', 'System Design'];
-  tags: string[] = ['Angular', 'React', 'GenAI', 'JavaScript', 'TypeScript'];
+  availableSkills: string[] = [];
+  tags: string[] = [];
 
   minSkillsError = false;
   maxSkillsError = false;
   isTagInValid = false;
 
-  constructor(private fb: FormBuilder) {
+  private fb = inject(FormBuilder);  
+  private firestore = inject(AngularFirestore);
+
+  constructor() {
     this.jobForm = this.fb.group({
       SkillsRequired: this.fb.array(
         [],
@@ -28,6 +34,21 @@ export class Jobstep3Component {
       ),
       Tag: ['', [Validators.required]],
     });
+  }
+
+  ngOnInit(): void {
+    this.getFirestoreData();
+  }
+
+  getFirestoreData(): void {
+    this.firestore
+      .collection('post-job')
+      .doc<IJobSteps>('job-steps-data')
+      .valueChanges()
+      .subscribe((doc: IJobSteps | undefined) => {
+        this.availableSkills = doc?.skills ?? [];
+        this.tags = doc?.tag ?? [];
+      });
   }
 
   get skillsRequired(): FormArray {
@@ -79,7 +100,7 @@ export class Jobstep3Component {
     console.log('Selected Skills:', selectedSkills);
   }
 
-   next() :void{
+  next(): void {
     if (this.jobForm.valid) {
       this.isTagInValid = false;
       if (this.skillsRequired.length < 1) {
@@ -114,4 +135,5 @@ export class Jobstep3Component {
   back(): void {
     this.backdata.set({ previousStep: 2, jobId: this.data() });
   }
+
 }

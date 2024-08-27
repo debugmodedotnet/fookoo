@@ -1,13 +1,13 @@
 import { ChangeDetectorRef, Component, inject } from '@angular/core';
 import { NgClass } from '@angular/common';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { AbstractControl, FormBuilder, FormGroup, ReactiveFormsModule, ValidationErrors, Validators } from '@angular/forms';
 import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-signup',
   standalone: true,
-  imports: [NgClass, ReactiveFormsModule],
+  imports: [NgClass, ReactiveFormsModule, RouterLink],
   templateUrl: './signup.component.html',
   styleUrl: './signup.component.scss'
 })
@@ -56,24 +56,24 @@ export class SignupComponent {
     const userDetails = {
       name: this.signupForm?.value.name,
     };
-  
+
     this.signupService.signUp(email, password, userDetails).then(() => {
       this.router.navigate(['/login']);
       this.signupError = null;
     }).catch(error => {
       console.log('Entered catch block:', error);
-  
+
       if (error.code === 'auth/email-already-in-use') {
         this.signupError = 'This email is already registered. Please sign in instead.';
       } else {
         this.signupError = 'An error occurred. Please try again.';
       }
-  
+
       this.cdr.detectChanges();
       console.error('Error signing up:', error);
     });
   }
-  
+
 
   togglePasswordVisibility(): void {
     this.showPassword = !this.showPassword;

@@ -1,3 +1,6 @@
-export interface IJobStep1 {
+export interface IJobSteps {
     position: string[];
+    qualification: string[];
+    skills: string[];
+    tag: string[];
 }

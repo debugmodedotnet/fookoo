@@ -8,7 +8,7 @@ import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { JobService } from '../../services/job.service';
 import { SalValidator } from '../../post-jobs/jobstep5/sal-validator';
 import { Job } from '../../modules/job';
-import { IJobStep1 } from '../../modules/post-job';
+import { IJobSteps } from '../../modules/post-job';
 
 @Component({
   selector: 'app-view-job',
@@ -28,9 +28,9 @@ export class ViewJobComponent implements OnInit {
   loggedInEmail: string | null | undefined;
 
   positions: string[] = [];
-  qualifications: string[] = ['BCA', 'B.Tech', 'Diploma', 'BSc'];
-  availableSkills: string[] = ['Angular', 'React', 'Python', 'System Design'];
-  tags: string[] = ['Angular', 'React', 'GenAI', 'JavaScript', 'TypeScript'];
+  qualifications: string[] = [];
+  availableSkills: string[] = [];
+  tags: string[] = [];
   minSkillsError = false;
   maxSkillsError = false;
   editingIndex = -1;
@@ -55,45 +55,39 @@ export class ViewJobComponent implements OnInit {
         MinSalary: ['', Validators.required],
         MaxSalary: ['', Validators.required],
         JobDescription: ['', Validators.required],
-        CompanyLinkedIn: [
-          '',
-          [
-            Validators.pattern('https?://www.linkedin.com/in/.+'),
-            Validators.minLength(5),
-            Validators.required,
-          ],
-        ],
-        CompanyGithub: [
-          '',
-          [
-            Validators.pattern('https?://github.com/.+'),
-            Validators.minLength(5),
-            Validators.required,
-          ],
-        ],
-        CompanyTwitter: [
-          '',
-          [
-            Validators.pattern('https?://x.com/.+'),
-            Validators.minLength(5),
-            Validators.required,
-          ],
-        ],
+        CompanyLinkedIn: ['', [Validators.pattern('https?://www.linkedin.com/in/.+'), Validators.minLength(5)]],
+        CompanyGithub: ['', [Validators.pattern('https?://github.com/.+'), Validators.minLength(5)]],
+        CompanyTwitter: ['', [Validators.pattern('https?://x.com/.+'), Validators.minLength(5)]],
         isActive: [false]
       },
       { validator: SalValidator });
   }
 
-  getPositions(): void {
+  ngOnInit(): void {
+    this.afAuth.user.pipe(first()).subscribe(res => {
+      console.log(res);
+      this.userId = res?.uid;
+      this.loggedInEmail = res?.email;
+      this.loadJobs();
+    });
+
+    this.getFirestoreData();
+  }
+
+  getFirestoreData(): void {
     this.firestore
       .collection('post-job')
-      .doc<IJobStep1>('job-step-1')
+      .doc<IJobSteps>('job-steps-data')
       .valueChanges()
-      .subscribe((doc: IJobStep1 | undefined) => {
+      .subscribe((doc: IJobSteps | undefined) => {
         this.positions = doc?.position ?? [];
+        this.qualifications = doc?.qualification ?? [];
+        this.availableSkills = doc?.skills ?? [];
+        this.tags = doc?.tag ?? [];
       });
   }
 
+  /********************* Skills *********************/
   get skillsRequired(): FormArray {
     return this.jobForm.get('SkillsRequired') as FormArray;
   }
@@ -126,8 +120,10 @@ export class ViewJobComponent implements OnInit {
       (control) => control.value
     );
     console.log('Selected Skills:', selectedSkills);
-  }
+  }  /********************* Skill End *********************/
 
+
+  /********************* Responsibilities *********************/
   get responsibilities(): FormArray {
     return this.jobForm.get('Responsibilities') as FormArray;
   }
@@ -168,18 +164,8 @@ export class ViewJobComponent implements OnInit {
     if (this.responsibilities.length > 1) {
       this.responsibilities.removeAt(index);
     }
-  }
+  }  /********************* Responsibilities End *********************/
 
-  ngOnInit(): void {
-    this.afAuth.user.pipe(first()).subscribe(res => {
-      console.log(res);
-      this.userId = res?.uid;
-      this.loggedInEmail = res?.email;
-      this.loadJobs();
-    });
-
-    this.getPositions();
-  }
 
   loadJobs(): void {
     this.loading = true;
@@ -236,29 +222,6 @@ export class ViewJobComponent implements OnInit {
       console.error('Job is undefined or job ID is missing:', job);
     }
   }
-
-  // updateJob(): void {
-  //   if (this.jobForm.valid && this.currentJobId) {
-  //     const updatedJob = {
-  //       ...this.jobForm.value,
-  //       SkillsRequired: (this.jobForm.get('SkillsRequired') as FormArray).controls.map(control => control.value) || [],
-  //       Responsibilities: (this.jobForm.get('Responsibilities') as FormArray).controls.map(control => control.value) || [],
-  //       userId: this.getUserId()
-  //     };
-
-  //     this.jobService.updateJob(this.currentJobId, updatedJob)
-  //       .then(() => {
-  //         this.editMode = false;
-  //         this.resetForm();
-  //         this.loadJobs();
-  //       })
-  //       .catch((err: any) => {
-  //         console.error('Update failed', err);
-  //       });
-  //   } else {
-  //     this.jobForm.markAllAsTouched();
-  //   }
-  // }
 
   updateJob(): void {
     if (this.jobForm.valid && this.currentJobId) {

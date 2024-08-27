@@ -188,9 +188,9 @@
           >Select Skills</label
         >
 
-        <div class="row gap-3">
+        <div class="row g-3">
           @for(skill of availableSkills; track skill ){
-          <div class="col-auto p-0">
+          <div class="col-auto">
             <div
               class="chips rounded-5 py-2 px-3 text-center cursor-pointer"
               [class.selected]="isSelected(skill)"
@@ -319,9 +319,7 @@
 
       <!-- LinkedIn -->
       <div class="col-md-4 mt-3">
-        <label
-          for="CompanyLinkedIn"
-          class="form-label fw-semibold font-14 required"
+        <label for="CompanyLinkedIn" class="form-label fw-semibold font-14"
           >Company LinkedIn</label
         >
         <input
@@ -335,9 +333,7 @@
 
       <!-- Github -->
       <div class="col-md-4 mt-3">
-        <label
-          for="CompanyGithub"
-          class="form-label fw-semibold font-14 required"
+        <label for="CompanyGithub" class="form-label fw-semibold font-14"
           >Company Github</label
         >
         <input
@@ -351,9 +347,7 @@
 
       <!-- Twitter -->
       <div class="col-md-4 mt-3">
-        <label
-          for="CompanyTwitter"
-          class="form-label fw-semibold font-14 required"
+        <label for="CompanyTwitter" class="form-label fw-semibold font-14"
           >Company Twitter</label
         >
         <input

@@ -9,10 +9,12 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
   styleUrl: './jobstep6.component.scss',
 })
 export class Jobstep6Component {
+
   data = model<any>();
   jobForm: FormGroup;
-  isDescriptionInValid = false;
   backdata = model<any>();
+  
+  isDescriptionInValid = false;
 
   constructor(private fb: FormBuilder) {
     this.jobForm = this.fb.group({
@@ -40,4 +42,5 @@ export class Jobstep6Component {
   cleanMessage(): void {
     this.isDescriptionInValid = false;
   }
+
 }

@@ -10,11 +10,12 @@ import { FormArray, FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Va
 })
 export class Jobstep4Component {
   
-  jobForm: FormGroup;
-  editingIndex = -1;
-  data = model<any>();
-  isResponsibilitiesInValid = false;
+  jobForm: FormGroup; 
+  data = model<any>();  
   backdata = model<any>();
+
+  editingIndex = -1;
+  isResponsibilitiesInValid = false;
 
   constructor(private fb: FormBuilder) {
     this.jobForm = this.fb.group({
@@ -85,4 +86,5 @@ export class Jobstep4Component {
   back(): void {
     this.backdata.set({ previousStep: 3, jobId: this.data() });
   }
+  
 }

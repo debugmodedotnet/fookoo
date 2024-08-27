@@ -10,8 +10,10 @@ import { Job } from '../../modules/job';
   styleUrl: './jobstep8.component.scss',
 })
 export class Jobstep8Component implements OnInit {
+
   data = model<any>();
   job: Job | null = null;
+
   defaultImage = 'assets/images/home/default_company.png';
   backdata = model<any>();
 
@@ -33,5 +35,33 @@ export class Jobstep8Component implements OnInit {
         },
       });
     }
+  }
+
+  openShareModal() {
+    if (this.job) {
+      console.log('Opening share modal for job:', this.job);
+    }
+  }
+
+  shareOnLinkedIn(): void {
+    const position = this.job?.position || '';
+    const url = `https://www.linkedin.com/shareArticle?mini=true&url=${encodeURIComponent(window.location.href)}&title=${encodeURIComponent(position)}`;
+    window.open(url, '_blank');
+  }
+
+  shareOnWhatsApp(): void {
+    const position = this.job?.position || '';
+    const url = `https://wa.me/?text=${encodeURIComponent(position + ' - ' + window.location.href)}`;
+    window.open(url, '_blank');
+  }
+
+  shareOnTwitter(): void {
+    const position = this.job?.position || '';
+    const url = `https://twitter.com/intent/tweet?text=${encodeURIComponent(position)}&url=${encodeURIComponent(window.location.href)}`;
+    window.open(url, '_blank');
+  }
+
+  shareOnInstagram(): void {
+    alert('Instagram sharing is not supported directly via a URL.');
   }
 }

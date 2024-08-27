@@ -6,6 +6,15 @@
   <div class="job-detail-content">
     <div class="wrapper rounded-4 nmc-bg-white">
       <div class="company-info p-4 border-bottom position-relative">
+        <!-- <div class="company-img position-absolute">
+          <a [href]="job?.CompanyUrl"
+            ><img
+              [src]="job?.ImageUrl ? job?.ImageUrl : defaultImage"
+              alt="{{ job?.position }}"
+              class="h-100 w-100 object-fit-contain"
+          /></a>          
+        </div> -->
+
         <div class="d-flex align-items-start justify-content-between">
           <div>
             <h2 class="font-32 nmc-dark-grey fw-normal">
@@ -23,11 +32,15 @@
               >
 
               <h6 class="nmc-medium-grey fw-light font-16 m-0">
-                <i class="bi bi-geo-alt me-2 font-20"></i
-                >{{ job?.Location }}@if(job?.Remote){ (Remote)}
+                <i class="bi bi-geo-alt me-2 font-20"></i>{{ job?.Location }}
               </h6>
 
-              @if(job?.email){
+              <h6 class="nmc-medium-grey fw-light font-16 m-0">
+                <i class="bi bi-laptop me-2 font-20"></i>
+                @if(job?.Remote){Remote}@else {On site}
+              </h6>
+
+              <!-- @if(job?.email){
               <h6 class="nmc-medium-grey fw-light font-16 m-0">
                 <i class="bi bi-envelope me-2 font-20"></i>{{ job?.email }}
               </h6>
@@ -35,12 +48,28 @@
               <h6 class="nmc-medium-grey fw-light font-16 m-0">
                 <i class="bi bi-telephone me-2 font-20"></i>{{ job?.PhoneNo }}
               </h6>
-              }
+              } -->
             </div>
           </div>
 
           <div class="d-flex align-items-center justify-content-end">
-            <a><i class="bi bi-share-fill nmc-medium-grey ms-3 font-20"></i></a>
+            <button
+              class="nmc-btn-primary h-auto py-2 px-4 rounded-2 box-shadow-none"
+              routerLink="/view-job"
+            >
+              Edit
+            </button>
+
+            <a
+              class="cursor-pointer"
+              type="button"
+              data-bs-toggle="modal"
+              data-bs-target="#jobModal"
+              (click)="openShareModal()"
+              (keydown.enter)="openShareModal()"
+              tabindex="0"
+              ><i class="bi bi-share-fill nmc-medium-grey ms-3 font-20"></i
+            ></a>
           </div>
         </div>
       </div>
@@ -85,6 +114,49 @@
           <a [href]="job?.CompanyGithub" class="font-18 nmc-medium-grey"
             ><i class="bi bi-github"></i></a
           >}
+        </div>
+      </div>
+    </div>
+
+    <!-- Job Share Modal -->
+    <div
+      class="modal fade"
+      id="jobModal"
+      tabindex="-1"
+      aria-labelledby="jobModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title font-18" id="jobModalLabel">Share</h1>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+
+          <div class="modal-body">
+            <div class="share-options d-flex align-items-center gap-4">
+              <a class="cursor-pointer linkedin" (click)="shareOnLinkedIn()">
+                <i class="bi bi-linkedin font-30"></i>
+              </a>
+
+              <a class="cursor-pointer whatsapp" (click)="shareOnWhatsApp()">
+                <i class="bi bi-whatsapp font-30"></i>
+              </a>
+
+              <a class="cursor-pointer twitter" (click)="shareOnTwitter()">
+                <i class="bi bi-twitter-x font-30"></i>
+              </a>
+
+              <a class="cursor-pointer instagram" (click)="shareOnInstagram()">
+                <i class="bi bi-instagram font-30"></i>
+              </a>
+            </div>
+          </div>
         </div>
       </div>
     </div>

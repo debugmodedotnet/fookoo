@@ -1,12 +1,13 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterLink } from '@angular/router';
 import { JobService } from '../services/job.service';
 import { Job } from '../modules/job';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-job-details',
   standalone: true,
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './job-details.component.html',
   styleUrl: './job-details.component.scss'
 })
@@ -14,9 +15,11 @@ export class JobDetailsComponent implements OnInit {
 
   job: Job | null = null;
   defaultImage = 'assets/images/home/default_company.png';
+  user: any;
 
   private route = inject(ActivatedRoute);
   private jobService = inject(JobService);
+  private userService = inject(UserService);
 
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('id')
@@ -34,6 +37,12 @@ export class JobDetailsComponent implements OnInit {
         }
       });
     }
+
+    this.userService.getCurrentUser().subscribe((user) => {
+      if (user) {
+        this.user = user;
+      }
+    });
   }
 
   openShareModal() {
@@ -63,6 +72,5 @@ export class JobDetailsComponent implements OnInit {
   shareOnInstagram(): void {
     alert('Instagram sharing is not supported directly via a URL.');
   }
-
 
 }

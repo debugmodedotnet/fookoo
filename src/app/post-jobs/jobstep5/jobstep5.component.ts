@@ -1,16 +1,16 @@
 import { Component, model } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { SalValidator } from './sal-validator';
-import { NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-job-step5',
   standalone: true,
-  imports: [ReactiveFormsModule, NgIf],
+  imports: [ReactiveFormsModule],
   templateUrl: './jobstep5.component.html',
   styleUrl: './jobstep5.component.scss',
 })
 export class Jobstep5Component {
+
   jobForm: FormGroup;
   data = model<any>();
   backdata = model<any>();
@@ -38,4 +38,5 @@ export class Jobstep5Component {
       this.jobForm.markAllAsTouched();
     }
   }
+
 }

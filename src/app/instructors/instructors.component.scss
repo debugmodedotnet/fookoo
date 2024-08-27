@@ -1,133 +1,73 @@
 @use "../styles/variables" as *;
 
-.truncate {
-    width: 100%;
-    overflow: hidden;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 2;
-    line-clamp: 2;
-    display: -webkit-box;
-}
 
 .mentor-card {
-    width: 320px;
-    box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+    box-shadow: 0 1px 10px rgba(0, 0, 0, .1);
     transition: 0.4s ease-out;
 
-    .info {
-        min-height: 310px;
-        place-content: center;
-    }
-
-    &:not(:first-child) {
-        margin-left: -10px;
-    }
-
-    &:hover {
-        cursor: pointer;
-        z-index: 9 !important;
-        transform: scale(1.1);
+    &:hover {    
+        transform: scale(1.01);
         transition: all 0.4s ease-out;
     }
 
     figure {
-        //box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-        height: 250px;
+        height: 300px;
         width: 100%;
 
         img {
             object-position: top;
         }
-    }
 
-    h5 {
-        border-top: 1px solid #fff;
-    }
+        .social {
+            position: absolute;
+            inset: 0;
+            background-color: rgba(0, 0, 0, 0.6);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 2;
+            padding-bottom: 20px;
+            transition: 0.3s;
+            visibility: hidden;
+            opacity: 0;
+        }
 
-    .social {
-        //border-top: 1px solid #fff;
-
-        a {
+        .social a {
+            transition: 0.3s;
             color: $nmc-white;
             font-size: 20px;
             margin: 0 8px;
+        }
 
-            &:hover {
-                color: $nmc-primary;
-            }
+        .social a:hover {
+            color: $nmc-primary;
+        }
+    }
+
+    &:hover figure .social {
+        padding-bottom: 0;
+        visibility: visible;
+        opacity: 1;
+    }
+}
+
+@media (max-width: 1200px) {
+    .font-26 {
+        font-size: 24px !important;
+    }
+
+    .mentor-card {
+        figure {
+            height: 350px;
         }
     }
 }
 
 
-@media (max-width: 1200px) {
-
-    .font-28 {
-        font-size: 24px !important;
-    }
-}
-
-@media (max-width: 991px) {
-    .mentor-card-wrapper {
-        gap: 3rem !important;
-    }
-
-    .mentor-card:not(:first-child) {
-        margin-left: 0;
-    }
-}
-
 @media (max-width: 768px) {
-    .mentor-card-wrapper {
-        gap: 2rem !important;
-    }
-
     .mentor-card {
-        width: 280px;
+        figure {
+            height: 400px;
+        }
     }
 }
-
-// .trainers {
-//     figure {
-//         height: 200px;
-//         width: 200px;
-//         box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-
-//         .social {
-//             position: absolute;
-//             inset: 0;
-//             background-color: rgba(0, 0, 0, 0.6);
-//             display: flex;
-//             justify-content: center;
-//             align-items: center;
-//             z-index: 2;
-//             padding-bottom: 20px;
-//             transition: 0.3s;
-//             visibility: hidden;
-//             opacity: 0;
-//         }
-
-//         .social a {
-//             transition: 0.3s;
-//             color: $nmc-white;
-//             font-size: 20px;
-//             margin: 0 8px;
-//         }
-
-//         .social a:hover {
-//             color: $nmc-primary;
-//         }
-//     }
-
-//     &:hover figure .social {
-//         padding-bottom: 0;
-//         visibility: visible;
-//         opacity: 1;
-//     }
-
-// }
-
-// .instructor .card {
-//     border-bottom: 3px solid $nmc-primary;
-//     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-// }

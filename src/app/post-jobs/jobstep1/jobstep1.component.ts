@@ -6,7 +6,7 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { IJobStep1 } from '../../modules/post-job';
+import { IJobSteps } from '../../modules/post-job';
 
 @Component({
   selector: 'app-job-step1',
@@ -19,9 +19,11 @@ export class Jobstep1Component implements OnInit {
   
   jobForm: FormGroup;
   positions: string[] = [];
-  qualifications: string[] = ['BCA', 'B.Tech', 'Diploma', 'BSc'];
+  qualifications: string[] = [];
+  
   data = model<any>();
   backdata = model<any>();
+
   isCompanyInValid = false;
   isPositionInValid = false;
   isQualificationInValid = false;
@@ -36,13 +38,24 @@ export class Jobstep1Component implements OnInit {
     });
 
     effect(() => {
-      console.log(this.backdata());
+      //console.log(this.backdata());
       this.jobForm.patchValue(this.backdata());
     });
   }
 
   ngOnInit(): void {
-    this.getPositions();
+    this.getFirestoreData();
+  }
+
+  getFirestoreData(): void {
+    this.firestore
+      .collection('post-job')
+      .doc<IJobSteps>('job-steps-data')
+      .valueChanges()
+      .subscribe((doc: IJobSteps | undefined) => {
+        this.positions = doc?.position ?? [];
+        this.qualifications = doc?.qualification ?? [];
+      });
   }
 
   next(): void {
@@ -87,13 +100,4 @@ export class Jobstep1Component implements OnInit {
     this.isQualificationInValid = false;
   }
 
-  getPositions(): void {
-    this.firestore
-      .collection('post-job')
-      .doc<IJobStep1>('job-step-1')
-      .valueChanges()
-      .subscribe((doc: IJobStep1 | undefined) => {
-        this.positions = doc?.position ?? [];
-      });
-  }
 }

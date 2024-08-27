@@ -9,6 +9,7 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
   styleUrl: './jobstep7.component.scss',
 })
 export class Jobstep7Component {
+
   jobForm: FormGroup;
   data = model<any>();
   backdata = model<any>();
@@ -23,24 +24,21 @@ export class Jobstep7Component {
         '',
         [
           Validators.pattern('https?://www.linkedin.com/in/.+'),
-          Validators.minLength(5),
-          Validators.required,
+          Validators.minLength(5)
         ],
       ],
       CompanyGithub: [
         '',
         [
           Validators.pattern('https?://github.com/.+'),
-          Validators.minLength(5),
-          Validators.required,
+          Validators.minLength(5)
         ],
       ],
       CompanyTwitter: [
         '',
         [
           Validators.pattern('https?://x.com/.+'),
-          Validators.minLength(5),
-          Validators.required,
+          Validators.minLength(5)
         ],
       ],
     });
@@ -79,5 +77,5 @@ export class Jobstep7Component {
   cleanTwitterMessage(): void {
     this.isCompanyTwitterInvalid = false;
   }
+  
 }
-

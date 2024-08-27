@@ -14,6 +14,7 @@ export class Jobstep2Component implements OnChanges {
   data = model<any>();
   backdata = model<any>();
   @Input() savedJob: any;
+  
   isLocationInValid = false;
   isCompanyUrlInValid = false;
   isImageUrlInValid = false;
@@ -76,4 +77,5 @@ export class Jobstep2Component implements OnChanges {
   back(): void {
     this.backdata.set({ previousStep: 1, jobId: this.data() });
   }
+  
 }

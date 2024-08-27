@@ -117,6 +117,19 @@
           class="form-control h-3 rounded-3 cursor-pointer"
           placeholder="Enter your company's URL"
         />
+
+        <!-- Display validation errors -->
+        @if(jobForm.get('CompanyUrl')?.invalid &&
+        (jobForm.get('CompanyUrl')?.dirty ||
+        jobForm.get('CompanyUrl')?.touched)){
+        <div class="nmc-alert mt-1">
+          @if(jobForm.get('CompanyUrl')?.errors?.['required']){
+          <p class="font-14 m-0">*Please enter your Company's Url</p>
+          } @if(jobForm.get('CompanyUrl')?.errors?.['pattern']){
+          <p class="font-14 m-0">*Invalid Url format</p>
+          }
+        </div>
+        }
       </div>
 
       <!-- Location -->
@@ -131,6 +144,20 @@
           class="form-control h-3 rounded-3 cursor-pointer"
           placeholder="Enter your company name"
         />
+
+        <!-- Display validation errors -->
+        @if(jobForm.get('Location')?.invalid && (jobForm.get('Location')?.dirty
+        || jobForm.get('Location')?.touched)){
+        <div class="nmc-alert mt-1">
+          @if(jobForm.get('Location')?.errors?.['required']){
+          <p class="font-14 m-0">*Please enter a Location</p>
+          }@if(jobForm.get('Location')?.errors?.['minlength']){
+          <p class="font-14 m-0">
+            *Location must be at least 3 characters long
+          </p>
+          }
+        </div>
+        }
       </div>
 
       <!-- Remote -->
@@ -163,6 +190,17 @@
           <option [value]="qualification">{{ qualification }}</option>
           }
         </select>
+
+        <!-- Display validation errors -->
+        @if(jobForm.get('qualification')?.invalid &&
+        (jobForm.get('qualification')?.dirty ||
+        jobForm.get('qualification')?.touched)){
+        <div class="nmc-alert mt-1">
+          @if(jobForm.get('qualification')?.errors?.['required']){
+          <p class="font-14 m-0">*Please select a Qualification</p>
+          }
+        </div>
+        }
       </div>
 
       <!-- Tech Tag -->
@@ -180,6 +218,16 @@
           <option [value]="tag">{{ tag }}</option>
           }
         </select>
+
+        <!-- Display validation errors -->
+        @if(jobForm.get('Tag')?.invalid && (jobForm.get('Tag')?.dirty ||
+        jobForm.get('Tag')?.touched)){
+        <div class="nmc-alert mt-1">
+          @if(jobForm.get('Tag')?.errors?.['required']){
+          <p class="font-14 m-0">*Please select a Tag</p>
+          }
+        </div>
+        }
       </div>
 
       <!-- Skills -->
@@ -188,9 +236,9 @@
           >Select Skills</label
         >
 
-        <div class="row gap-3">
+        <div class="row g-3">
           @for(skill of availableSkills; track skill ){
-          <div class="col-auto p-0">
+          <div class="col-auto">
             <div
               class="chips rounded-5 py-2 px-3 text-center cursor-pointer"
               [class.selected]="isSelected(skill)"
@@ -203,6 +251,16 @@
           </div>
           }
         </div>
+
+        @if(minSkillsError){
+        <div class="nmc-alert mt-1">
+          <p class="font-14 m-0">Please select at least 1 skill</p>
+        </div>
+        } @if(maxSkillsError){
+        <div class="nmc-alert mt-1">
+          <p class="font-14 m-0">You can select a maximum of 3 skills</p>
+        </div>
+        }
       </div>
 
       <!-- Responsibilities -->
@@ -270,6 +328,17 @@
             +
           </button>
         </div>
+
+        <!-- Display validation errors -->
+        @if(responsibilities.at(editingIndex).invalid &&
+        (responsibilities.at(editingIndex).dirty ||
+        responsibilities.at(editingIndex).touched)){
+        <div class="nmc-alert mt-1">
+          @if(editingIndex !== -1){
+          <p class="font-14 m-0">*Please provide at least one Responsibility</p>
+          }
+        </div>
+        }
       </div>
 
       <!-- Min Salary -->
@@ -284,6 +353,19 @@
           class="form-control h-3 rounded-3 cursor-pointer"
           placeholder="Enter minimum salary"
         />
+
+        <!-- Display validation errors -->
+        @if(jobForm.get('MinSalary')?.touched){
+        <div class="nmc-alert mt-1">
+          @if(jobForm.get('MinSalary')?.errors?.['required'] &&
+          jobForm.get('MinSalary')?.touched){
+          <p class="font-14 m-0">*Please enter a Minimum Salary</p>
+          } @if(jobForm.errors?.['minSalaryError'] &&
+          !jobForm.get('MinSalary')?.errors?.['required']){
+          <p class="font-14 m-0">Minimum Salary should be at least 10,000.</p>
+          }
+        </div>
+        }
       </div>
 
       <!-- Max Salary -->
@@ -298,6 +380,21 @@
           class="form-control h-3 rounded-3 cursor-pointer"
           placeholder="Enter maximum salary"
         />
+
+        <!-- Display validation errors -->
+        @if(jobForm.get('MaxSalary')?.touched){
+        <div class="nmc-alert mt-1">
+          @if(jobForm.get('MaxSalary')?.errors?.['required'] &&
+          jobForm.get('MaxSalary')?.touched){
+          <p class="font-14 m-0">*Please enter a Minimum Salary</p>
+          } @if(jobForm.errors?.['salError'] &&
+          !jobForm.get('MaxSalary')?.errors?.['required']){
+          <p class="font-14 m-0">
+            Maximum Salary should be greater than Minimum Salary.
+          </p>
+          }
+        </div>
+        }
       </div>
 
       <!-- Description -->
@@ -315,13 +412,26 @@
           placeholder="Enter job's description"
           rows="4"
         ></textarea>
+
+        <!-- Display validation errors -->
+        @if(jobForm.get('JobDescription')?.invalid &&
+        (jobForm.get('JobDescription')?.dirty ||
+        jobForm.get('JobDescription')?.touched)){
+        <div class="nmc-alert mt-1">
+          @if(jobForm.get('JobDescription')?.errors?.['required']){
+          <p class="font-14 m-0">*Please enter a Job Description</p>
+          }@if(jobForm.get('JobDescription')?.errors?.['minlength']){
+          <p class="font-14 m-0">
+            *Job Description must be at least 300 characters long
+          </p>
+          }
+        </div>
+        }
       </div>
 
       <!-- LinkedIn -->
       <div class="col-md-4 mt-3">
-        <label
-          for="CompanyLinkedIn"
-          class="form-label fw-semibold font-14 required"
+        <label for="CompanyLinkedIn" class="form-label fw-semibold font-14"
           >Company LinkedIn</label
         >
         <input
@@ -331,13 +441,22 @@
           class="form-control h-3 rounded-3 cursor-pointer"
           placeholder="Enter your company's linkedIn"
         />
+
+        <!-- Display validation errors -->
+        @if(jobForm.get('CompanyLinkedIn')?.invalid &&
+        (jobForm.get('CompanyLinkedIn')?.dirty ||
+        jobForm.get('CompanyLinkedIn')?.touched)){
+        <div class="nmc-alert mt-1">
+          @if(jobForm.get('CompanyLinkedIn')?.errors?.['pattern']){
+          <p class="font-14 m-0">*Invalid LinkedIn format</p>
+          }
+        </div>
+        }
       </div>
 
       <!-- Github -->
       <div class="col-md-4 mt-3">
-        <label
-          for="CompanyGithub"
-          class="form-label fw-semibold font-14 required"
+        <label for="CompanyGithub" class="form-label fw-semibold font-14"
           >Company Github</label
         >
         <input
@@ -347,13 +466,22 @@
           class="form-control h-3 rounded-3 cursor-pointer"
           placeholder="Enter your company's github"
         />
+
+        <!-- Display validation errors -->
+        @if(jobForm.get('CompanyGithub')?.invalid &&
+        (jobForm.get('CompanyGithub')?.dirty ||
+        jobForm.get('CompanyGithub')?.touched)){
+        <div class="nmc-alert mt-1">
+          @if(jobForm.get('CompanyGithub')?.errors?.['pattern']){
+          <p class="font-14 m-0">*Invalid Github format</p>
+          }
+        </div>
+        }
       </div>
 
       <!-- Twitter -->
       <div class="col-md-4 mt-3">
-        <label
-          for="CompanyTwitter"
-          class="form-label fw-semibold font-14 required"
+        <label for="CompanyTwitter" class="form-label fw-semibold font-14"
           >Company Twitter</label
         >
         <input
@@ -363,6 +491,17 @@
           class="form-control h-3 rounded-3 cursor-pointer"
           placeholder="Enter your company's twitter"
         />
+
+        <!-- Display validation errors -->
+        @if(jobForm.get('CompanyTwitter')?.invalid &&
+        (jobForm.get('CompanyTwitter')?.dirty ||
+        jobForm.get('CompanyTwitter')?.touched)){
+        <div class="nmc-alert mt-1">
+          @if(jobForm.get('CompanyTwitter')?.errors?.['pattern']){
+          <p class="font-14 m-0">*Invalid Twitter format</p>
+          }
+        </div>
+        }
       </div>
 
       <!-- Is Active -->

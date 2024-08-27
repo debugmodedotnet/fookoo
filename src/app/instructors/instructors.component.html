@@ -1,5 +1,83 @@
 <section class="py-5 bg-orange-100">
   <div class="container-boxed">
+    <div class="d-flex align-items-center justify-content-between mb-lg-5 mb-4">
+      <h2
+        class="section-title left font-36 nmc-dark-grey font-family-poppins pb-3 mb-0"
+      >
+        Meet Our Mentors
+      </h2>
+
+      <a
+        class="nmc-view-all d-flex align-items-center justify-content-start"
+        [routerLink]="['/mentors']"
+      >
+        <span class="nmc-dark-grey d-none d-md-block">VIEW ALL</span>
+
+        <div
+          class="d-flex align-items-center justify-content-center rounded-circle nmc-view-all-btn nmc-white"
+        >
+          <i class="bi bi-arrow-right font-24"></i></div
+      ></a>
+    </div>
+
+    <div class="row mentor-card-wrapper g-3">
+      @for(instructor of instructors; track instructor; let i = $index;){
+      <div class="col-12 col-sm-6 col-lg-3 d-grid">
+        <div class="mentor-card inner rounded-2 nmc-bg-white overflow-hidden">
+          <figure class="position-relative overflow-hidden m-auto">
+            <img
+              class="z-1 w-100 h-100 object-fit-cover"
+              loading="lazy"
+              [src]="
+                instructor.InstructorImg
+                  ? instructor.InstructorImg
+                  : defaultImage
+              "
+              [alt]="instructor.Name"
+            />
+
+            <div class="social">
+              <a [href]="instructor.Email"
+                ><i class="bi bi-envelope-fill"></i
+              ></a>
+              <a [href]="instructor.Twitter"><i class="bi bi-twitter-x"></i></a>
+              <a [href]="instructor.Github"><i class="bi bi-github"></i></a>
+              <a [href]="instructor.LinkedIn"><i class="bi bi-linkedin"></i></a>
+            </div>
+          </figure>
+
+          <div class="info p-4 text-center d-grid">
+            <h2 class="font-26 nmc-dark-grey font-family-poppins">
+              {{ instructor.Name }}
+            </h2>
+
+            <h4 class="font-18 fw-normal nmc-medium-grey pt-2 m-0">
+              {{ instructor.Position }}
+            </h4>
+
+            <!-- <button
+              class="nmc-btn-primary m-auto mt-3"
+              [routerLink]="['/mentor', instructor.id]"
+            >
+              Learn More
+            </button> -->
+
+            <a
+              [routerLink]="['/mentor', instructor.id]"
+              class="d-flex align-items-center justify-content-center nmc-primary mt-2 fw-bold"
+            >
+              Learn More <i class="bi bi-arrow-right-short font-20 ms-2"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- <section class="py-5 bg-orange-100">
+  <div class="container-boxed">
     <div class="d-flex align-items-center justify-content-between">
       <h2
         class="section-title left font-36 nmc-dark-grey font-family-poppins pb-3 mb-0"
@@ -78,7 +156,7 @@
       }
     </div>
   </div>
-</section>
+</section> -->
 
 <!-- <section class="instructor text-center py-5">
   <div class="container-boxed">

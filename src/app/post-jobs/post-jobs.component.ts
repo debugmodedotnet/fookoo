@@ -1,8 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 
-
-
 import { UserService } from '../services/user.service';
 import { Jobstep1Component } from './jobstep1/jobstep1.component';
 import { Jobstep2Component } from './jobstep2/jobstep2.component';

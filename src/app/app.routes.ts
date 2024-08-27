@@ -24,7 +24,6 @@ export const routes: Routes = [
   { path: 'jobs/:id', loadComponent: () => import('./job-details/job-details.component').then(m => m.JobDetailsComponent) },
   { path: 'jobs', loadComponent: () => import('./job-listing/job-listing.component').then(m => m.JobListingComponent) },
   { path: 'post-job', loadComponent: () => import('./post-jobs/post-jobs.component').then(m => m.PostJobsComponent) },
-  { path: 'edit-job', loadComponent: () => import('./post-jobs/jobstep9/jobstep9.component').then(m => m.Jobstep9Component) },
 
   { path: 'youtube-listing', loadComponent: () => import('./youtube-listing/youtube-listing.component').then(m => m.YoutubeListingComponent) },
 

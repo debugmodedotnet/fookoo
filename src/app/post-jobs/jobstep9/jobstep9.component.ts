@@ -1,24 +1,28 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, OnInit, inject, model } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators, FormArray, FormControl } from '@angular/forms';
 import { first } from 'rxjs';
 
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 
-import { JobService } from '../../services/job.service';
-import { SalValidator } from '../../post-jobs/jobstep5/sal-validator';
 import { Job } from '../../modules/job';
+import { JobService } from '../../services/job.service';
+import { SalValidator } from '../jobstep5/sal-validator';
 import { IJobSteps } from '../../modules/post-job';
 
 @Component({
-  selector: 'app-view-job',
+  selector: 'app-job-step9',
   standalone: true,
   imports: [ReactiveFormsModule],
-  templateUrl: './viewjob.component.html',
-  styleUrls: ['./viewjob.component.scss']
+  templateUrl: './jobstep9.component.html',
+  styleUrl: './jobstep9.component.scss'
 })
-export class ViewJobComponent implements OnInit {
+export class Jobstep9Component implements OnInit {
 
+
+  backdata = model<any>();
+  data = model<any>();
+  job: Job | null = null;
   jobs: Job[] = [];
   loading = true;
   jobForm: FormGroup;
@@ -69,8 +73,23 @@ export class ViewJobComponent implements OnInit {
       console.log(res);
       this.userId = res?.uid;
       this.loggedInEmail = res?.email;
-      this.loadJobs();
     });
+
+    const jobId = this.data();
+    console.log(jobId);
+
+    if (jobId) {
+      this.jobService.getJobById(jobId).subscribe({
+        next: (data) => {
+          if (data) {
+            this.job = data;
+          }
+        },
+        error: (e) => {
+          console.log('Error occurred while fetching job: ', e);
+        },
+      });
+    }
 
     this.getFirestoreData();
   }
@@ -168,22 +187,6 @@ export class ViewJobComponent implements OnInit {
   }  /********************* Responsibilities End *********************/
 
 
-  loadJobs(): void {
-    this.loading = true;
-    this.jobService.getJobsByUserId(this.loggedInEmail as string).subscribe(
-      (jobs: Job[]) => {
-        //console.log('Loaded jobs:', jobs);
-        this.jobs = jobs;
-        //console.log(this.jobs);
-        this.loading = false;
-      },
-      (error: any) => {
-        console.error('Error loading jobs:', error);
-        this.loading = false;
-      }
-    );
-  }
-
   editJob(job: Job): void {
     if (job && job.id) {
       console.log('Editing job:', job);
@@ -256,41 +259,12 @@ export class ViewJobComponent implements OnInit {
         .then(() => {
           this.editMode = false;
           this.resetForm();
-          this.loadJobs();
         })
         .catch((err: any) => {
           console.error('Update failed', err);
         });
     } else {
       this.jobForm.markAllAsTouched();
-    }
-  }
-
-  deleteJob(jobId?: string): void {
-    if (jobId) {
-      this.jobService.deleteJob(jobId)
-        .then(() => {
-          this.loadJobs();
-        })
-        .catch(error => {
-          console.error('Error deleting job:', error);
-        });
-    } else {
-      console.error('Job ID is undefined.');
-    }
-  }
-
-  deactivateJob(jobId?: string, jobStatus?: boolean): void {
-    if (jobId) {
-      this.jobService.updateJob(jobId, { isActive: !jobStatus })
-        .then(() => {
-          this.loadJobs();
-        })
-        .catch(error => {
-          console.error('Error deactivating job:', error);
-        });
-    } else {
-      console.error('Job ID is undefined.');
     }
   }
 
@@ -329,4 +303,3 @@ export class ViewJobComponent implements OnInit {
     return this.userId;
   }
 }
-

@@ -1,6 +1,7 @@
 import { Component, inject, model, OnInit } from '@angular/core';
 import { JobService } from '../../services/job.service';
 import { Job } from '../../modules/job';
+import { FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-job-step8',
@@ -13,6 +14,8 @@ export class Jobstep8Component implements OnInit {
 
   data = model<any>();
   job: Job | null = null;
+  jobForm!: FormGroup;
+
 
   defaultImage = 'assets/images/home/default_company.png';
   backdata = model<any>();
@@ -33,6 +36,17 @@ export class Jobstep8Component implements OnInit {
         error: (e) => {
           console.log('Error occurred while fetching job: ', e);
         },
+      });
+    }
+  }
+
+  async next() {
+    if (this.jobForm.valid) {
+
+      this.data.set({
+        nextStep: 9,
+        jobId: this.data(),
+        formData: this.jobForm.value,
       });
     }
   }

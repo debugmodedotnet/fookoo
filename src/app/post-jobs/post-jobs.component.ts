@@ -1,8 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 
-
-
 import { UserService } from '../services/user.service';
 import { Jobstep1Component } from './jobstep1/jobstep1.component';
 import { Jobstep2Component } from './jobstep2/jobstep2.component';
@@ -12,6 +10,7 @@ import { Jobstep5Component } from './jobstep5/jobstep5.component';
 import { Jobstep6Component } from './jobstep6/jobstep6.component';
 import { Jobstep7Component } from './jobstep7/jobstep7.component';
 import { Jobstep8Component } from './jobstep8/jobstep8.component';
+import { Jobstep9Component } from './jobstep9/jobstep9.component';
 
 @Component({
   selector: 'app-post-jobs',
@@ -24,7 +23,8 @@ import { Jobstep8Component } from './jobstep8/jobstep8.component';
     Jobstep5Component,
     Jobstep6Component,
     Jobstep7Component,
-    Jobstep8Component
+    Jobstep8Component,
+    Jobstep9Component
   ],
   templateUrl: './post-jobs.component.html',
   styleUrl: './post-jobs.component.scss',

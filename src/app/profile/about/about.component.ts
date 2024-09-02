@@ -30,6 +30,8 @@ export class AboutComponent implements OnInit {
       skill3: new FormControl(''),
       skill4: new FormControl(''),
       bio: new FormControl(''),
+      education: new FormControl(''),
+      experience: new FormControl(''),
       openforjob: new FormControl(''),
       tagline: new FormControl(''),
     });
@@ -57,6 +59,6 @@ export class AboutComponent implements OnInit {
 
   formattedName(name: string): string {
     return name ? name.toLowerCase().replace(/\s+/g, '') : '';
-  }  
+  }
 
 }

@@ -18,7 +18,7 @@ export class Jobstep6Component {
 
   constructor(private fb: FormBuilder) {
     this.jobForm = this.fb.group({
-      JobDescription: ['', Validators.required],
+      JobDescription: ['', [Validators.required, Validators.minLength(200)]],
     });
   }
 

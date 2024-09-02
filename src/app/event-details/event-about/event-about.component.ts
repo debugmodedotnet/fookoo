@@ -45,13 +45,14 @@ export class EventAboutComponent implements OnInit {
     this.userService.getCurrentUser().subscribe(user => {
       if (user) {
         if (this.enrolled) {
-          console.log("User is already enrolled");
+          //console.log("User is already enrolled");
           return;
         }
         this.enrollUser(user);
       } else {
-        console.log("No user is logged in");
-        this.router.navigate(['/login']);
+        //console.log("No user is logged in");
+        // this.router.navigate(['/login']);
+        this.router.navigate(['/login'], { queryParams: { returnUrl: this.router.url } });
       }
     });
   }

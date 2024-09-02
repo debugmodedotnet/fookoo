@@ -55,7 +55,7 @@ export class ViewJobComponent implements OnInit {
         Responsibilities: this.fb.array([], [Validators.required]),
         MinSalary: ['', Validators.required],
         MaxSalary: ['', Validators.required],
-        JobDescription: ['', [Validators.required, Validators.minLength(300)]],
+        JobDescription: ['', [Validators.required, Validators.minLength(200)]],
         CompanyLinkedIn: ['', [Validators.pattern('https?://www.linkedin.com/in/.+'), Validators.minLength(5)]],
         CompanyGithub: ['', [Validators.pattern('https?://github.com/.+'), Validators.minLength(5)]],
         CompanyTwitter: ['', [Validators.pattern('https?://x.com/.+'), Validators.minLength(5)]],

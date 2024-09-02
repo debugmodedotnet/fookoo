@@ -53,4 +53,12 @@ export class JobListingComponent implements OnInit {
     });
   }
 
+  postJob() {
+    if (this.user) {
+      this.router.navigate(['/post-job']);
+    } else {
+      this.router.navigate(['/login'], { queryParams: { returnUrl: this.router.url } });
+    }
+  }
+
 }

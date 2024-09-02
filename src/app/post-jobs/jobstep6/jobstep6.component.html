@@ -26,6 +26,12 @@
         <i class="bi bi-exclamation-triangle-fill me-2"></i>Please provide a job
         description
       </div>
+      } @if(isDescriptionInValid ||
+      jobForm.controls['JobDescription'].hasError('minlength')){
+      <div class="error-label text-danger font-18">
+        <i class="bi bi-exclamation-triangle-fill me-2"></i>
+        Please provide a job description with at least 200 characters.
+      </div>
       }
     </div>
   </form>

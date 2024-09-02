@@ -7,8 +7,8 @@
 
       <button
         class="nmc-btn-primary px-sm-5 px-4 py-3 h-auto fw-normal"
-        [routerLink]="user ? '/post-job' : ['/login', { returnUrl: router.url }]"
-        >
+        (click)="postJob()"
+      >
         Post a job
       </button>
     </div>

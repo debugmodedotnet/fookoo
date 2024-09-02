@@ -252,6 +252,33 @@
         </div>
 
         <div class="col-8">
+          <!-- Courses -->
+          @if(instructor.Courses){
+          <div class="experience">
+            <h3 class="font-family-poppins mt-4 nmc-dark-grey mb-3 pb-1">
+              Courses
+            </h3>
+
+            @if(instructor.Courses.length){ @for(course of instructor.Courses;
+            track course){
+            <div
+              class="course-card bg-light-orange p-4 mb-4 border-orange position-relative"
+            >
+              <h4 class="text-black">{{ course.Title }}</h4>
+              <p class="text-dark-orange">
+                {{ course.Duration }} | {{ course.Level }} | ⭐
+                {{ course.Rating }}
+              </p>
+              <span
+                class="badge badge-custom-paid position-absolute top-0 end-0 m-2"
+                >{{ course.Price }}</span
+              >
+            </div>
+            }}@else {Coming Soon...}
+          </div>
+          }
+
+          <!-- Bio -->
           @if(instructor.Bio){
           <div class="bio">
             <h3 class="font-family-poppins mt-4 nmc-dark-grey mb-3 pb-1">
@@ -273,30 +300,6 @@
             <p>{{ instructor.experience }}</p>
           </div>
           }  -->
-
-          @if(instructor.Courses){
-          <div class="experience">
-            <h3 class="font-family-poppins mt-4 nmc-dark-grey mb-3 pb-1">
-              Courses
-            </h3>
-
-            @for(course of instructor.Courses; track course){
-            <div
-              class="course-card bg-light-orange p-4 mb-4 border-orange position-relative"
-            >
-              <h4 class="text-black">{{ course.Title }}</h4>
-              <p class="text-dark-orange">
-                {{ course.Duration }} | {{ course.Level }} | ⭐
-                {{ course.Rating }}
-              </p>
-              <span
-                class="badge badge-custom-paid position-absolute top-0 end-0 m-2"
-                >{{ course.Price }}</span
-              >
-            </div>
-            }
-          </div>
-          }
         </div>
       </div>
     </div>

@@ -3,7 +3,7 @@
     <h2 class="nmc-dark-grey font-family-poppins">
       {{ user?.name }}
     </h2>
-    <h6 class="nmc-primary m-0">{{user?.position}}</h6>
+    <h6 class="nmc-primary m-0">{{ user?.position }}</h6>
   </div>
 
   <div class="d-flex align-items-center justify-content-center gap-2">
@@ -18,10 +18,9 @@
     >
       Save
     </button>
-    <a [routerLink]="['/p', formattedName(user?.name), user?.uid]">    
+    <a [routerLink]="['/p', formattedName(user?.name), user?.uid]">
       <i class="bi bi-share-fill nmc-medium-grey ms-3 font-20"></i
     ></a>
-    
   </div>
 </div>
 
@@ -193,6 +192,32 @@
           formControlName="skill4"
           id="skill4"
         />
+      </div>
+
+      <div class="col-6 mt-3">
+        <label for="education" class="form-label fw-semibold font-14"
+          >Education</label
+        >
+        <textarea
+          type="text"
+          class="form-control rounded-3"
+          rows="5"
+          formControlName="education"
+          id="education"
+        ></textarea>
+      </div>
+
+      <div class="col-6 mt-3">
+        <label for="experience" class="form-label fw-semibold font-14"
+          >Experience</label
+        >
+        <textarea
+          type="text"
+          class="form-control rounded-3"
+          rows="5"
+          formControlName="experience"
+          id="experience"
+        ></textarea>
       </div>
 
       <div class="col-4 mt-3 fw-semibold font-14">

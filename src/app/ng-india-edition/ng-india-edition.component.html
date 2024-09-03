@@ -43,16 +43,16 @@
           </div>
         </div>
 
-        <div class="mt-4 d-flex align-items-center justify-content-start gap-4">
+        <div class="mt-4 d-flex align-items-center justify-content-start gap-3">
           <a
-            class="nmc-btn-primary h-auto py-2 text-center w-30"
+            class="nmc-btn-primary h-auto py-2 px-5 text-center"
             target="_blank"
             [href]="event?.PhotosLink"
           >
             <i class="bi bi-card-image me-2"></i>Photos
           </a>
           <a
-            class="nmc-btn-primary h-auto py-2 text-center w-30"
+            class="nmc-btn-primary h-auto py-2 px-5 text-center"
             target="_blank"
             [href]="event?.VideosLink"
           >
@@ -100,7 +100,7 @@
 
       <div class="row gx-3 gy-2">
         @for(speaker of event?.SpeakersCollection; track speaker){
-        <div class="col-2 speakers">
+        <div class="col-6 col-sm-3 col-lg-2 speakers">
           <figure class="rounded-3 overflow-hidden">
             <img
               [src]="speaker.Image ? speaker.Image : defaultSpeakerImage"

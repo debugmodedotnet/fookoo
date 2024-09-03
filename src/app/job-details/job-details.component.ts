@@ -3,6 +3,7 @@ import { ActivatedRoute, RouterLink } from '@angular/router';
 import { JobService } from '../services/job.service';
 import { Job } from '../modules/job';
 import { UserService } from '../services/user.service';
+import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-job-details',
@@ -16,10 +17,12 @@ export class JobDetailsComponent implements OnInit {
   job: Job | null = null;
   defaultImage = 'assets/images/home/default_company.png';
   user: any;
+  jobDescriptionHtml!: SafeHtml;
 
   private route = inject(ActivatedRoute);
   private jobService = inject(JobService);
   private userService = inject(UserService);
+  private sanitizer = inject(DomSanitizer);
 
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('id')
@@ -30,6 +33,7 @@ export class JobDetailsComponent implements OnInit {
         next: (data) => {
           if (data) {
             this.job = data;
+            this.jobDescriptionHtml = this.sanitizer.bypassSecurityTrustHtml(data.JobDescription || '');
           }
         },
         error: (e) => {

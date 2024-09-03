@@ -1,5 +1,5 @@
-import { Component, OnInit, inject, model } from '@angular/core';
-import { FormBuilder, FormGroup, ReactiveFormsModule, Validators, FormArray, FormControl } from '@angular/forms';
+import { CUSTOM_ELEMENTS_SCHEMA, Component, OnInit, inject, model } from '@angular/core';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators, FormArray, FormControl, FormsModule } from '@angular/forms';
 import { first } from 'rxjs';
 
 import { AngularFireAuth } from '@angular/fire/compat/auth';
@@ -9,13 +9,16 @@ import { Job } from '../../modules/job';
 import { JobService } from '../../services/job.service';
 import { SalValidator } from '../jobstep5/sal-validator';
 import { IJobSteps } from '../../modules/post-job';
+import { QuillModule } from 'ngx-quill';
+import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-job-step8',
   standalone: true,
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, FormsModule, QuillModule],
   templateUrl: './jobstep8.component.html',
   styleUrl: './jobstep8.component.scss',
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class Jobstep8Component implements OnInit {
 
@@ -29,6 +32,8 @@ export class Jobstep8Component implements OnInit {
   currentJobId: string | null = null;
   userId?: string;
   loggedInEmail: string | null | undefined;
+  quillConfig: any;
+  jobDescriptionHtml!: SafeHtml;
 
   positions: string[] = [];
   qualifications: string[] = [];
@@ -43,6 +48,7 @@ export class Jobstep8Component implements OnInit {
   private fb = inject(FormBuilder);
   private afAuth = inject(AngularFireAuth);
   private firestore = inject(AngularFirestore);
+  private sanitizer = inject(DomSanitizer);
 
   constructor() {
     this.jobForm = this.fb.group(
@@ -76,6 +82,7 @@ export class Jobstep8Component implements OnInit {
         next: (data) => {
           if (data) {
             this.job = data;
+            this.jobDescriptionHtml = this.sanitizer.bypassSecurityTrustHtml(data.JobDescription || '');
           }
         },
         error: (e) => {

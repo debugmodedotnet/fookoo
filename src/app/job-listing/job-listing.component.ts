@@ -53,11 +53,39 @@ export class JobListingComponent implements OnInit {
     });
   }
 
+  closeModal() {
+    const modalElement = document.getElementById('jobModal');
+    if (modalElement) {
+      modalElement.classList.remove('show');
+      modalElement.style.display = 'none';
+      modalElement.setAttribute('aria-hidden', 'true');
+      modalElement.removeAttribute('aria-modal');
+      modalElement.removeAttribute('role');
+
+      const closeButton = modalElement.querySelector('.btn-close');
+      if (closeButton) {
+        (closeButton as HTMLElement).click();
+      }
+      
+      const backdrop = document.querySelector('.modal-backdrop');
+      if (backdrop) {
+        backdrop.parentNode?.removeChild(backdrop);
+      }
+
+      document.body.classList.remove('modal-open');
+      document.body.style.overflow = '';
+      document.body.style.paddingRight = '';
+    }
+  }
+
+  redirectToLogin() {
+    this.closeModal();
+    this.router.navigate(['/login'], { queryParams: { returnUrl: this.router.url } });
+  }
+
   postJob() {
     if (this.user) {
       this.router.navigate(['/post-job']);
-    } else {
-      this.router.navigate(['/login'], { queryParams: { returnUrl: this.router.url } });
     }
   }
 

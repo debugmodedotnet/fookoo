@@ -1,4 +1,4 @@
-<section class="py-5">
+<section class="job-details py-5">
   <div class="container-boxed">
     <div class="wrapper rounded-4 nmc-bg-white">
       <div class="company-info p-4 border-bottom position-relative">
@@ -84,9 +84,10 @@
       @if( job?.JobDescription){
       <div class="about p-4 border-bottom">
         <h5 class="nmc-dark-grey fw-semibold font-18">About the job :</h5>
-        <p class="mt-3 nmc-medium-grey m-0 text-break">
-          {{ job?.JobDescription }}
-        </p>
+        <p
+          class="mt-3 nmc-medium-grey m-0 text-break"
+          [innerHTML]="job?.JobDescription"
+        ></p>
       </div>
       }
 

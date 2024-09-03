@@ -1,4 +1,4 @@
-<section class="py-5">
+<section class="">
   <div class="container-boxed">
     <div class="d-flex align-items-center justify-content-between mb-lg-5 mb-4">
       <h2
@@ -20,10 +20,12 @@
       ></a>
     </div>
 
-    <div class="row mentor-card-wrapper g-3">
+    <div class="mentor-card-wrapper row g-3">
       @for(instructor of instructors; track instructor; let i = $index;){
-      <div class="col-12 col-sm-6 col-lg-3 d-grid">
-        <div class="mentor-card inner rounded-0">
+      <div class="col-12 col-sm-6 col-lg-3 d-flex">
+        <div
+          class="mentor-card inner rounded-0 d-flex flex-column justify-content-between flex-grow-1"
+        >
           <figure
             class="position-relative overflow-hidden m-auto rounded-circle"
           >
@@ -48,28 +50,32 @@
             </div>
           </figure>
 
-          <div class="info p-4 text-center d-grid rounded-2">
-            <h2 class="font-26 nmc-dark-grey font-family-poppins pt-4">
-              {{ instructor.Name }}
-            </h2>
+          <div
+            class="info text-center d-grid rounded-2 d-flex flex-column justify-content-between flex-grow-1"
+          >
+            <div>
+              <h2 class="font-24 nmc-dark-grey font-family-poppins pt-4">
+                {{ instructor.Name }}
+              </h2>
 
-            <h4 class="font-18 fw-normal nmc-medium-grey pt-2 m-0">
-              {{ instructor.Position }}
-            </h4>
+              <h4 class="font-18 fw-normal nmc-medium-grey pt-2 m-0">
+                {{ instructor.Position }}
+              </h4>
 
-            <!-- <button
-              class="nmc-btn-primary m-auto mt-3"
-              [routerLink]="['/mentor', instructor.id]"
-            >
-              Learn More
-            </button> -->
-
-            <!-- <a
-              [routerLink]="['/mentor', instructor.id]"
-              class="d-flex align-items-center justify-content-center nmc-primary mt-2 fw-bold"
-            >
-              Learn More <i class="bi bi-arrow-right-short font-20 ms-2"></i>
-            </a> -->
+              <!-- <button
+                class="nmc-btn-primary m-auto mt-3"
+                [routerLink]="['/mentor', instructor.id]"
+              >
+                Learn More
+              </button>
+              
+              <a
+                [routerLink]="['/mentor', instructor.id]"
+                class="d-flex align-items-center justify-content-center nmc-primary mt-2 fw-bold"
+              >
+                Learn More <i class="bi bi-arrow-right-short font-20 ms-2"></i>
+              </a> -->
+            </div>
           </div>
         </div>
       </div>

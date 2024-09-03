@@ -141,6 +141,10 @@
     }
 }
 
+.modal-header{
+    border-bottom: none !important;
+}
+
 @media (max-width: 1255px) {
     .sticky-wrapper {
         padding-top: 1rem !important;

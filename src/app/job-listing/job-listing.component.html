@@ -7,10 +7,47 @@
 
       <button
         class="nmc-btn-primary px-sm-5 px-4 py-3 h-auto fw-normal"
-        (click)="postJob()"
+        (click)="user ? postJob() : null"
+        data-bs-toggle="modal"
+        [attr.data-bs-target]="user ? '' : '#jobModal'"
       >
         Post a job
       </button>
+    </div>
+
+    <div
+      class="modal fade"
+      id="jobModal"
+      tabindex="-1"
+      aria-labelledby="jobModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header p-4">
+            <!-- <h1 class="modal-title font-18" id="jobModalLabel">Share</h1> -->
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+
+          <div class="modal-body p-4 pt-0">
+            <p class="nmc-dark-grey font-18 mb-3 text-center font-family-poppins">
+              You need to log in to post a job. Please log in to continue.
+            </p>
+
+            <button
+              class="nmc-btn-primary px-sm-5 px-4 py-3 h-auto fw-bold m-auto"
+              (click)="redirectToLogin()"
+            >
+              Go to Login
+            </button>
+          </div>
+        </div>
+      </div>
     </div>
 
     <div class="filters my-2 my-md-4 row gap-0 gap-md-1">
@@ -60,7 +97,10 @@
     @for(job of filteredJobs ; track job; let i = $index){ @if(
     job.companyName){
     <li class="mt-4">
-      <a class="job-link d-grid align-items-center" [routerLink]="['/jobs', job.id]">
+      <a
+        class="job-link d-grid align-items-center"
+        [routerLink]="['/jobs', job.id]"
+      >
         <div class="pin rounded-circle m-auto"></div>
 
         <div class="text-center mt-4">

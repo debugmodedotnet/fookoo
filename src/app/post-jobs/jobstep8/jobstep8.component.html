@@ -1,4 +1,4 @@
-<div class="py-5">
+<div class="job-details py-5">
   <h3 class="font-family-poppins mb-4 font-30 font-992-28 text-center">
     @if(editMode){ Edit the job details you wish to change.} @else { 🎉
     Congratulations your job has been created!}
@@ -82,9 +82,10 @@
       @if( job?.JobDescription){
       <div class="about p-4 border-bottom">
         <h5 class="nmc-dark-grey fw-semibold font-18">About the job :</h5>
-        <p class="mt-3 nmc-medium-grey m-0 text-break">
-          {{ job?.JobDescription }}
-        </p>
+        <p
+          class="mt-3 nmc-medium-grey m-0 text-break"
+          [innerHTML]="job?.JobDescription"
+        ></p>
       </div>
       }
 
@@ -549,14 +550,21 @@
             class="form-label fw-semibold font-14 required"
             >Job Description</label
           >
-          <textarea
+          <!-- <textarea
             id="JobDescription"
             type="text"
             formControlName="JobDescription"
             class="form-control rounded-3 cursor-pointer"
             placeholder="Enter job's description"
             rows="4"
-          ></textarea>
+          ></textarea> -->
+
+          <quill-editor
+            formControlName="JobDescription"
+            [modules]="{ toolbar: true }"
+            style="height: 200px"
+            placeholder="Enter job's description"
+          ></quill-editor>
 
           <!-- Display validation errors -->
           @if(jobForm.get('JobDescription')?.invalid &&

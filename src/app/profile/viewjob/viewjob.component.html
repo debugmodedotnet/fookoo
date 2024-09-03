@@ -404,14 +404,20 @@
           class="form-label fw-semibold font-14 required"
           >Job Description</label
         >
-        <textarea
+        <!-- <textarea
           id="JobDescription"
           type="text"
           formControlName="JobDescription"
           class="form-control rounded-3 cursor-pointer"
           placeholder="Enter job's description"
           rows="4"
-        ></textarea>
+        ></textarea> -->
+        <quill-editor
+          formControlName="JobDescription"
+          [modules]="{ toolbar: true }"
+          style="height: 200px"
+          placeholder="Enter job's description"
+        ></quill-editor>
 
         <!-- Display validation errors -->
         @if(jobForm.get('JobDescription')?.invalid &&

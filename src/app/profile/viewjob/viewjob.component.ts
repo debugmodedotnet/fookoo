@@ -1,5 +1,5 @@
-import { Component, OnInit, inject } from '@angular/core';
-import { FormBuilder, FormGroup, ReactiveFormsModule, Validators, FormArray, FormControl } from '@angular/forms';
+import { CUSTOM_ELEMENTS_SCHEMA, Component, OnInit, inject } from '@angular/core';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators, FormArray, FormControl, FormsModule } from '@angular/forms';
 import { first } from 'rxjs';
 
 import { AngularFireAuth } from '@angular/fire/compat/auth';
@@ -9,13 +9,15 @@ import { JobService } from '../../services/job.service';
 import { SalValidator } from '../../post-jobs/jobstep5/sal-validator';
 import { Job } from '../../modules/job';
 import { IJobSteps } from '../../modules/post-job';
+import { QuillModule } from 'ngx-quill';
 
 @Component({
   selector: 'app-view-job',
   standalone: true,
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, FormsModule, QuillModule],
   templateUrl: './viewjob.component.html',
-  styleUrls: ['./viewjob.component.scss']
+  styleUrls: ['./viewjob.component.scss'],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class ViewJobComponent implements OnInit {
 
@@ -26,6 +28,7 @@ export class ViewJobComponent implements OnInit {
   currentJobId: string | null = null;
   userId?: string;
   loggedInEmail: string | null | undefined;
+  quillConfig: any;
 
   positions: string[] = [];
   qualifications: string[] = [];

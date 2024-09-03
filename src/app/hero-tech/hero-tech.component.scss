@@ -72,6 +72,11 @@
 }
 
 @media (max-width:380px) {
+    .row {
+        --bs-gutter-y: 0.8rem;
+        --bs-gutter-x: 0.8rem;
+    }
+
     .tech-stack {
         width: 25% !important;
 
@@ -84,7 +89,7 @@
 
         div {
             justify-content: center !important;
-            padding: .6rem !important;
+            padding: 15px 0 !important;
         }
 
         p {

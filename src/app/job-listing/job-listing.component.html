@@ -60,15 +60,15 @@
     @for(job of filteredJobs ; track job; let i = $index){ @if(
     job.companyName){
     <li class="mt-4">
-      <a class="job-link" [routerLink]="['/jobs', job.id]">
+      <a class="job-link d-grid align-items-center" [routerLink]="['/jobs', job.id]">
         <div class="pin rounded-circle m-auto"></div>
 
         <div class="text-center mt-4">
-          <h2 class="font-28 nmc-dark-grey font-family-poppins">
+          <h2 class="font-26 nmc-dark-grey font-family-poppins">
             {{ job.companyName }}
           </h2>
 
-          <h4 class="font-22 nmc-dark-grey mt-3">
+          <h4 class="font-20 nmc-dark-grey mt-3">
             {{ job.position }}
           </h4>
 

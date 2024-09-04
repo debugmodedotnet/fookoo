@@ -66,7 +66,7 @@ export class JobListingComponent implements OnInit {
       if (closeButton) {
         (closeButton as HTMLElement).click();
       }
-      
+
       const backdrop = document.querySelector('.modal-backdrop');
       if (backdrop) {
         backdrop.parentNode?.removeChild(backdrop);
@@ -80,7 +80,8 @@ export class JobListingComponent implements OnInit {
 
   redirectToLogin() {
     this.closeModal();
-    this.router.navigate(['/login'], { queryParams: { returnUrl: this.router.url } });
+    //    this.router.navigate(['/login'], { queryParams: { returnUrl: this.router.url } });
+    this.router.navigate(['/login'], { queryParams: { returnUrl: '/post-job' } });
   }
 
   postJob() {

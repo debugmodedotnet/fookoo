@@ -3,12 +3,12 @@ import { DatePipe } from '@angular/common';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { IHero } from '../modules/hero';
 import { HeroAdvertisementComponent } from '../hero-advertisement/hero-advertisement.component';
-import { HeroTechComponent } from '../hero-tech/hero-tech.component';
+import { WorkFlowComponent } from '../work-flow/work-flow.component';
 
 @Component({
   selector: 'app-hero',
   standalone: true,
-  imports: [DatePipe, HeroAdvertisementComponent, HeroTechComponent],
+  imports: [DatePipe, HeroAdvertisementComponent, WorkFlowComponent],
   templateUrl: './hero.component.html',
   styleUrl: './hero.component.scss',
   schemas: [CUSTOM_ELEMENTS_SCHEMA]

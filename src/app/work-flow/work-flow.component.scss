@@ -1,0 +1,108 @@
+@use "../styles/variables" as *;
+
+#svg-container {
+    top: 48px;
+    width: 1305px !important;
+}
+
+.work-flow-wrapper {
+    height: 400px;
+
+    .item {
+        position: relative;
+
+        &::before {
+            content: "";
+            position: absolute;
+            border-style: solid;
+            z-index: -1;
+            border-width: 20px 20px 20px 0;
+            border-color: transparent #ccc transparent transparent;
+            left: 52%;
+        }
+
+        &:nth-of-type(odd):not(:first-child)::before {
+            top: 48%;
+            transform: translate(-52%, -50%) rotate(90deg);
+        }
+
+        &:nth-of-type(even)::before {
+            top: 53%;
+            transform: translate(-52%, -53%) rotate(270deg);
+        }
+
+        // &::after {
+        //     border-width: 15px 0 15px 15px; /* Arrow size */
+        //     border-color: transparent transparent transparent #ccc;
+        //     top: 50%; /* Position vertically centered */
+        //     right: -15px; /* Position the arrow on the right side */
+        //     transform: translateY(-50%);
+        // }
+
+        // &:nth-of-type(even)::before {
+        //     border-width: 15px 0 15px 15px; /* Flip arrow */
+        //     border-color: transparent transparent transparent #ccc;
+        //     left: -15px;
+        // }
+
+        // &:nth-of-type(even)::after {
+        //     border-width: 15px 15px 15px 0; /* Flip arrow */
+        //     border-color: transparent #ccc transparent transparent;
+        //     right: -15px;
+        // }
+
+        .ng-tracker {
+            box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+            transition: transform .5s;
+            border: none;
+            height: 180px;
+            width: 180px;
+            display: grid;
+            place-content: center;
+            position: relative;
+
+            &::before,
+            &::after {
+                content: "";
+                position: absolute;
+                height: 150px;
+                border: 1px dashed #ccc;
+                z-index: -1;
+            }
+        }
+
+        .ng-tracker::before,
+        &:nth-of-type(even):not(:last-child) .ng-tracker::after {
+            transform: rotate(90deg);
+            right: -50px;
+            top: 15px;
+        }
+
+        &:nth-of-type(even) .ng-tracker::before {
+            transform: rotate(180deg);
+            top: -130px;
+            right: 86px;
+        }
+
+        &:nth-of-type(odd):not(:first-child) .ng-tracker::after {
+            bottom: -130px;
+            right: 86px;
+
+        }
+    }
+}
+
+// .work-flow-wrapper::before {
+//     content: '';
+//     height: 600px;
+//     width: 600px;
+//     border-radius: 50%;
+//     border: 1px solid #ccc;
+//     display: block;
+//     position: absolute;
+//     left: 50%;
+//     top: 50%;
+//     transform: translate(-50%, -50%);
+//     z-index: -1;
+
+// }

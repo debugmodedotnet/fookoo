@@ -1,5 +1,5 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { ActivatedRoute, RouterLink } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { JobService } from '../services/job.service';
 import { Job } from '../modules/job';
 import { UserService } from '../services/user.service';
@@ -22,6 +22,7 @@ export class JobDetailsComponent implements OnInit {
   private route = inject(ActivatedRoute);
   private jobService = inject(JobService);
   private userService = inject(UserService);
+  public router = inject(Router);
   private sanitizer = inject(DomSanitizer);
 
   ngOnInit(): void {
@@ -47,6 +48,15 @@ export class JobDetailsComponent implements OnInit {
         this.user = user;
       }
     });
+  }
+
+  applyJob() {
+    if (this.user) {
+      //this.router.navigate(['/post-job']);
+      console.log("Job has been applied");
+    } else {
+      this.router.navigate(['/login'], { queryParams: { returnUrl: this.router.url } });
+    }
   }
 
   openShareModal() {

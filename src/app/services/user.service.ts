@@ -62,10 +62,10 @@ export class UserService {
       console.log('User signed up and additional information added');
     } catch (error) {
       console.error('Error signing up:', error);
-      throw error; 
+      throw error;
     }
   }
-  
+
 
   getCurrentUser(): Observable<any> {
     return this.afAuth.authState.pipe(
@@ -77,6 +77,10 @@ export class UserService {
         }
       })
     );
+  }
+
+  async setQuizAttemptsCount(userId: string, attemptsCount: number): Promise<void> {
+    await this.firestore.doc(`users/${userId}`).update({ quizAttempts: attemptsCount });
   }
 
   isAdmin(): Observable<boolean> {

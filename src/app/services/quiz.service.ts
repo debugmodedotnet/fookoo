@@ -58,11 +58,11 @@ export class QuizService {
   }
 
   async addAttempt(attemptedQuestion: IQuizAttemptedQuestion): Promise<void> {
-    await this.firestore.collection(this.quizAttemptCollection).add(attemptedQuestion);
+    await this.firestore.collection(this.quizAttemptCollection).doc(attemptedQuestion.userId).collection(attemptedQuestion.userId).add(attemptedQuestion);
   }
 
   getAttemptedQuestions(userId: string): Observable<IQuizAttemptedQuestion[]> {
-    return this.firestore.collection<IQuizAttemptedQuestion>(this.quizAttemptCollection, ref => ref
+    return this.firestore.collection<IQuizAttemptedQuestion>(this.quizAttemptCollection + '/' + userId + '/' + userId, ref => ref
       .where('userId', '==', userId)
     ).snapshotChanges().pipe(
       map(changes =>

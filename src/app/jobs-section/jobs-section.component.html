@@ -4,7 +4,7 @@
       <h2
         class="section-title left font-36 nmc-dark-grey font-family-poppins pb-3 mb-0"
       >
-        Trending Jobs
+        Jobs
       </h2>
 
       <a
@@ -26,7 +26,10 @@
   >
     @for(job of jobs$ | async; track job; let i = $index){
     <li class="mt-4">
-      <a class="job-link d-grid align-items-center" [routerLink]="['/jobs', job.id]">
+      <a
+        class="job-link d-grid align-items-center"
+        [routerLink]="['/jobs', job.id]"
+      >
         <div class="pin rounded-circle m-auto"></div>
 
         <div class="text-center mt-4">

@@ -1,4 +1,4 @@
-<div class="vh-100 py-3 nmc-bg-white">
+<div class="pt-3 pb-5 nmc-bg-white">
   <form [formGroup]="jobForm">
     <div class="row form-group mt-5 mb-3 flex-column">
       <h3 class="font-family-poppins mb-4 font-30 font-992-28">
@@ -74,6 +74,27 @@
         <div class="error-label text-danger font-18">
           <i class="bi bi-exclamation-triangle-fill me-2"></i>Please select a
           qualification
+        </div>
+        }
+      </div>
+
+      <div class="col-12 mt-4">
+        <div class="input__group">
+          <input
+            id="tagline"
+            type="text"
+            (keyup)="cleanTaglineMessage()"
+            formControlName="tagline"
+            class="input__field"
+            placeholder="Enter tagline"
+          />
+          <label for="tagline" class="input__label">Enter Tagline </label>
+        </div>
+
+        @if(isTaglineInValid){
+        <div class="error-label text-danger font-18">
+          <i class="bi bi-exclamation-triangle-fill me-2"></i>Please enter
+          tagline - why one should join you
         </div>
         }
       </div>

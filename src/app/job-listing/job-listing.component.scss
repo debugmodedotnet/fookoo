@@ -141,8 +141,38 @@
     }
 }
 
-.modal-header{
+.modal-header {
     border-bottom: none !important;
+}
+
+.jobs-container .wrapper {
+    //box-shadow: 0 1px 10px rgba(0, 0, 0, .1);
+    //border: 1px solid #e2e8f0;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+    min-height: 100px;
+
+    // &:hover {
+    //     background-color: $nmc-light-grey !important;
+    //     transition: all ease 0.3s;
+    // }
+
+    .nmc-btn-primary{
+        font-size: 16px !important;
+    }
+
+    .nmc-btn-primary:hover {
+        background-color: $nmc-primary !important;
+        transition: all ease 0.3s;
+    }
+
+    .job-img {
+        height: 50px;
+        width: 50px;
+        padding: 10px;
+        background-color: #fff2ee;
+    }
+
+
 }
 
 @media (max-width: 1255px) {

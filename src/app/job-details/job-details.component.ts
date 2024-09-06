@@ -4,6 +4,8 @@ import { JobService } from '../services/job.service';
 import { Job } from '../modules/job';
 import { UserService } from '../services/user.service';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
+import { IUser } from '../modules/user';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
 
 @Component({
   selector: 'app-job-details',
@@ -18,27 +20,37 @@ export class JobDetailsComponent implements OnInit {
   defaultImage = 'assets/images/home/default_company.png';
   user: any;
   jobDescriptionHtml!: SafeHtml;
+  applied = false;
+  isLoading = false;
+  private id: string | null = null;
 
   private route = inject(ActivatedRoute);
   private jobService = inject(JobService);
   private userService = inject(UserService);
   public router = inject(Router);
   private sanitizer = inject(DomSanitizer);
+  private firestore = inject(AngularFirestore);
 
   ngOnInit(): void {
-    const id = this.route.snapshot.paramMap.get('id')
-    console.log(id);
+    this.id = this.route.snapshot.paramMap.get('id');
 
-    if (id) {
-      this.jobService.getJobById(id).subscribe({
+    if (this.id) {
+      this.jobService.getJobById(this.id).subscribe({
         next: (data) => {
           if (data) {
             this.job = data;
             this.jobDescriptionHtml = this.sanitizer.bypassSecurityTrustHtml(data.JobDescription || '');
+
+            this.userService.getCurrentUser().subscribe(user => {
+              if (user) {
+                this.user = user;
+                this.checkIfApplied(user);
+              }
+            });
           }
         },
         error: (e) => {
-          console.log("Error occurred while fetching job: ", e)
+          console.log("Error occurred while fetching job: ", e);
         }
       });
     }
@@ -52,11 +64,64 @@ export class JobDetailsComponent implements OnInit {
 
   applyJob() {
     if (this.user) {
-      //this.router.navigate(['/post-job']);
       console.log("Job has been applied");
     } else {
       this.router.navigate(['/login'], { queryParams: { returnUrl: this.router.url } });
     }
+  }
+
+  jobApply(): void {
+    this.userService.getCurrentUser().subscribe(user => {
+      if (user) {
+        if (this.applied || this.isLoading) {
+          return;
+        }
+        this.submitApplication(user);
+      } else {
+        this.router.navigate(['/login'], { queryParams: { returnUrl: this.router.url } });
+      }
+    });
+  }
+
+  submitApplication(user: IUser) {
+    if (!this.id) {
+      console.error('No Job ID provided');
+      return;
+    }
+
+    this.isLoading = true;
+    const userData = {
+      name: user.name || '',
+      image: user.photoURL || '',
+      email: user.email || ''
+    };
+
+    const eventRef = this.firestore.collection('job-transactions').doc(this.id);
+    const userRef = eventRef.collection('users').doc(user.uid);
+
+    userRef.set(userData).then(() => {
+      this.applied = true;
+      this.isLoading = false;
+      console.log("Job application successfully submitted.");
+    }).catch(error => {
+      this.isLoading = false;
+      console.error('Error applying:', error);
+    });
+  }
+
+  checkIfApplied(user: IUser) {
+    if (!this.id) {
+      return;
+    }
+
+    const eventRef = this.firestore.collection('job-transactions').doc(this.id);
+    const userRef = eventRef.collection('users').doc(user.uid);
+
+    userRef.get().subscribe((doc) => {
+      if (doc.exists) {
+        this.applied = true;
+      }
+    });
   }
 
   openShareModal() {

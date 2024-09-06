@@ -61,8 +61,12 @@
             }@else{
             <button
               class="nmc-btn-primary h-auto py-2 px-4 rounded-2 box-shadow-none"
+              (click)="jobApply()"
+              [disabled]="applied || isLoading"
             >
-              Apply
+              {{
+                applied ? "Applied 🎉" : isLoading ? "Processing..." : "Apply "
+              }}
             </button>
             }
 

@@ -26,17 +26,4 @@ export class JobsSectionComponent implements OnInit {
       map(jobs => jobs.filter(job => job.companyName).slice(0, 4)),
     );
   }
-
-  getColorClass(index: number): string {
-    const colorClasses = [
-      'purple-bg-gradient',
-      'orange-bg-gradient',
-      'blue-bg-gradient',
-      'green-bg-gradient',
-      'pink-bg-gradient',
-      'yellow-bg-gradient',
-      'red-bg-gradient'
-    ];
-    return colorClasses[index % colorClasses.length];
-  }
 }

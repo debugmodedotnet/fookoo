@@ -19,5 +19,6 @@ export interface Job {
   CompanyLinkedIn?: string;
   CompanyGithub?: string;
   isActive?: boolean;
+  //postedTime?: string;
 }
 

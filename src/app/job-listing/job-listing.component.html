@@ -2,11 +2,11 @@
   <div class="container-boxed">
     <div class="heading d-flex align-items-center justify-content-between mb-5">
       <h2 class="font-36 nmc-dark-grey font-family-poppins">
-        <span class="text-bottom-line position-relative">Jobs Board</span>
+        <span class="text-bottom-line position-relative ps-5">Jobs</span>
       </h2>
 
       <button
-        class="nmc-btn-primary px-sm-5 px-4 py-3 h-auto fw-normal"
+        class="nmc-btn-primary px-sm-5 px-4 py-3 h-auto"
         (click)="user ? postJob() : null"
         data-bs-toggle="modal"
         [attr.data-bs-target]="user ? '' : '#jobModal'"
@@ -52,31 +52,17 @@
       </div>
     </div>
 
-    <div class="filters my-2 my-md-4 row gap-0 gap-md-1 px-5">
+    <div class="filters my-2 my-md-4 row px-5">
       <div
-        class="form-group col-14 col-sm-6 col-md-5 d-flex align-items-center"
+        class="form-group col-12 col-sm-6 col-md-7 d-flex align-items-center"
       >
         <i class="bi bi-funnel-fill me-2 nmc-medium-grey"></i>
         <input
           type="text"
-          id="companyFilter"
-          [(ngModel)]="companyFilter"
+          id="jobFilter"
+          [(ngModel)]="jobFilter"
           (input)="applyFilters()"
-          placeholder="Search Company"
-          class="form-control"
-        />
-      </div>
-
-      <div
-        class="form-group position col-12 col-sm-6 col-md-5 d-flex align-items-center"
-      >
-        <i class="bi bi-funnel-fill me-2 nmc-medium-grey"></i>
-        <input
-          type="text"
-          id="positionFilter"
-          [(ngModel)]="positionFilter"
-          (input)="applyFilters()"
-          placeholder="Search Position"
+          placeholder="Search by Company, Position, Salary, Technology"
           class="form-control"
         />
       </div>
@@ -90,11 +76,33 @@
         />
         <label for="remoteFilter" class="ms-1">Remote</label>
       </div>
+
+      <div
+        class="form-group remote col-12 col-md-4 d-flex align-items-center gap-4"
+      >
+        <a
+          class="cursor-pointer nmc-dark-grey"
+          (keydown)="toggleSortByPostedTime()"
+          (click)="toggleSortByPostedTime()"
+          tabindex="0"
+        >
+          <i class="bi bi-filter me-2 nmc-medium-grey"></i> Sort by Posted Time
+        </a>
+
+        <a
+          class="cursor-pointer nmc-dark-grey"
+          (keydown)="toggleSortBySalary()"
+          (click)="toggleSortBySalary()"
+          tabindex="0"
+        >
+          <i class="bi bi-filter me-2 nmc-medium-grey"></i> Sort by Salary
+        </a>
+      </div>
     </div>
 
     <div class="jobs-container row g-4 pt-0 pt-lg-4 px-5">
-      @for(job of filteredJobs ; track job; let i = $index){ @if(
-      job.companyName){
+      @for(job of filteredJobs| slice:0:displayedJobsCount; track job; let i =
+      $index){ @if( job.companyName){
       <div class="col-12">
         <div class="wrapper nmc-bg-white rounded-0 p-3">
           <div
@@ -105,28 +113,34 @@
                 <h2
                   class="font-24 nmc-dark-grey fw-normal m-0 font-family-poppins"
                 >
-                  <a href="" class="nmc-dark-grey">
-                    {{ job.position }} at {{ job.companyName }}</a
-                  >
+                  <a href="" class="nmc-dark-grey"> {{ job.position }}</a>
                 </h2>
               </div>
-
-              <!-- <h5 class="font-22 nmc-dark-grey fw-normal m-0 mt-3">
-                <a href="#" class="nmc-dark-grey">{{ job.companyName }}</a>
-              </h5> -->
             </div>
 
             <div>
-              <h6 class="nmc-dark-grey font-family-poppins font-18 m-0">
-                <i class="bi bi-coin me-2 font-20 nmc-primary"></i
-                ><i class="bi bi-currency-rupee"></i>{{ job.MaxSalary }}
-                <span
-                  class="font-14 nmc-medium-grey font-family-robot fw-semibold"
-                  >/Year</span
-                >
-              </h6>
+              <h5 class="font-24 nmc-dark-grey font-family-poppins m-0 mt-3">
+                <a href="#" class="nmc-primary">{{ job.companyName }}</a>
+              </h5>
             </div>
           </div>
+
+          @if(job.MaxSalary){
+          <h6 class="nmc-dark-grey font-family-poppins font-18 m-0 mt-2">
+            <i class="bi bi-cash-coin me-2 font-20 nmc-primary"></i>
+            <i class="bi bi-currency-rupee"></i>
+            {{ job.MaxSalary }}
+
+            <span class="font-14 nmc-medium-grey font-family-robot fw-semibold">
+              /Year
+            </span>
+          </h6>
+          }@else{
+          <h6 class="nmc-medium-grey font-16 m-0 mt-2">
+            <i class="bi bi-cash-coin me-2 font-20 nmc-primary"></i>
+            Not Disclosed.
+          </h6>
+          }
 
           <div class="pt-3 d-flex align-items-center justify-content-between">
             <div class="job-chips d-flex align-items-center gap-3">
@@ -142,8 +156,9 @@
                 >{{ job.Tag }}
               </span>
 
-              <span class="d-inline-block font-14 fw-semibold py-1 px-3"
-                >Fulltime
+              <span
+                class="d-inline-block font-14 fw-semibold py-1 px-3 nmc-medium-grey"
+                >12-9-2024
               </span>
             </div>
 
@@ -155,7 +170,16 @@
           </div>
         </div>
       </div>
-      }}
+      }}@if(showLoadMoreButton){
+      <div class="mt-5 d-flex">
+        <button
+          class="nmc-btn-primary px-sm-5 px-4 py-3 h-auto m-auto"
+          (click)="loadMore()"
+        >
+          Load More
+        </button>
+      </div>
+      }
     </div>
   </div>
 

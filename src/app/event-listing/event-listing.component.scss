@@ -1,52 +1,5 @@
 @use "../styles/variables" as *;
 
-// .events-card {
-//     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-
-//     figure {
-//         height: 150px;
-//         border: 1px solid $nmc-primary;
-
-//         img {
-//             max-height: 150px;
-//         }
-//     }
-// }
-
-// .truncate {
-//     width: 100%;
-//     overflow: hidden;
-//     -webkit-box-orient: vertical;
-//     -webkit-line-clamp: 3;
-//     line-clamp: 3;
-//     display: -webkit-box;
-// }
-
-// .wrapper {
-//     box-shadow: 0 1px 2px 0 rgba(60, 64, 67, .3), 0 1px 3px 1px rgba(60, 64, 67, .15);
-
-//     li {
-//         list-style: disc;
-//     }
-
-//     .border-bottom {
-//         border-bottom: 1px solid #ccc;
-//     }
-
-//     .event-img {
-//         height: 100px;
-//         width: 100px;
-//         top: 1.5rem;
-//         right: 1.5rem;
-//     }
-
-//     button {
-//         border: 1px solid #ccc;
-//     }
-// }
-
-
-
 .events-card {
     box-shadow: 0 1px 10px rgba(0, 0, 0, .1);
     border: 0 solid #e2e8f0;

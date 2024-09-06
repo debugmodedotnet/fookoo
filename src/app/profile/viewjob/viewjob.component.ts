@@ -32,6 +32,7 @@ export class ViewJobComponent implements OnInit {
 
   positions: string[] = [];
   qualifications: string[] = [];
+  noticePeriods: string[] = [];
   availableSkills: string[] = [];
   tags: string[] = [];
   minSkillsError = false;
@@ -51,6 +52,7 @@ export class ViewJobComponent implements OnInit {
         position: ['', Validators.required],
         CompanyUrl: ['', [Validators.required, Validators.pattern('https?://.+')]],
         qualification: ['', Validators.required],
+        tagline: ['', Validators.required],
         Location: ['', [Validators.required, Validators.minLength(3)]],
         Remote: [false],
         Tag: ['', [Validators.required]],
@@ -58,6 +60,7 @@ export class ViewJobComponent implements OnInit {
         Responsibilities: this.fb.array([], [Validators.required]),
         MinSalary: ['', Validators.required],
         MaxSalary: ['', Validators.required],
+        noticePeriod: ['', Validators.required],
         JobDescription: ['', [Validators.required, Validators.minLength(200)]],
         CompanyLinkedIn: ['', [Validators.pattern('https?://www.linkedin.com/in/.+'), Validators.minLength(5)]],
         CompanyGithub: ['', [Validators.pattern('https?://github.com/.+'), Validators.minLength(5)]],
@@ -86,6 +89,7 @@ export class ViewJobComponent implements OnInit {
       .subscribe((doc: IJobSteps | undefined) => {
         this.positions = doc?.position ?? [];
         this.qualifications = doc?.qualification ?? [];
+        this.noticePeriods = doc?.noticePeriod ?? [];
         this.availableSkills = doc?.skills ?? [];
         this.tags = doc?.tag ?? [];
       });
@@ -196,11 +200,13 @@ export class ViewJobComponent implements OnInit {
         position: job.position,
         CompanyUrl: job.CompanyUrl,
         qualification: job.qualification,
+        tagline: job.tagline,
         Location: job.Location,
         Remote: job.Remote,
         Tag: job.Tag,
         MinSalary: job.MinSalary,
         MaxSalary: job.MaxSalary,
+        noticePeriod: job.noticePeriod,
         JobDescription: job.JobDescription,
         CompanyTwitter: job.CompanyTwitter,
         CompanyLinkedIn: job.CompanyLinkedIn,
@@ -227,7 +233,7 @@ export class ViewJobComponent implements OnInit {
     }
   }
 
-  updateJob(): void {
+  updateJob(): void {      
     if (this.jobForm.valid && this.currentJobId) {
       const formValues = this.jobForm.value;
 
@@ -236,6 +242,7 @@ export class ViewJobComponent implements OnInit {
         position: formValues.position || '',
         CompanyUrl: formValues.CompanyUrl || '',
         qualification: formValues.qualification || '',
+        tagline: formValues.tagline || '',
         Location: formValues.Location || '',
         Remote: formValues.Remote || false,
         Tag: formValues.Tag || '',
@@ -243,11 +250,12 @@ export class ViewJobComponent implements OnInit {
         Responsibilities: (this.jobForm.get('Responsibilities') as FormArray).controls.map(control => control.value) || [],
         MinSalary: formValues.MinSalary || '',
         MaxSalary: formValues.MaxSalary || '',
+        noticePeriod: formValues.noticePeriod || '',
         JobDescription: formValues.JobDescription || '',
         CompanyTwitter: formValues.CompanyTwitter || '',
         CompanyLinkedIn: formValues.CompanyLinkedIn || '',
         CompanyGithub: formValues.CompanyGithub || '',
-        isActive: formValues.isActive !== undefined ? formValues.isActive : false, // Ensure boolean value
+        isActive: formValues.isActive !== undefined ? formValues.isActive : false, 
         userId: this.getUserId()
       };
 
@@ -303,6 +311,7 @@ export class ViewJobComponent implements OnInit {
       position: '',
       CompanyUrl: '',
       qualification: '',
+      tagline: '',
       Location: '',
       Remote: false,
       Tag: '',
@@ -310,6 +319,7 @@ export class ViewJobComponent implements OnInit {
       Responsibilities: [],
       MinSalary: '',
       MaxSalary: '',
+      noticePeriod: '',
       JobDescription: '',
       CompanyGithub: '',
       CompanyTwitter: '',

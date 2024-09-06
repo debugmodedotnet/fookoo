@@ -36,7 +36,7 @@ export class Jobstep1Component implements OnInit {
       companyName: ['', Validators.required],
       position: ['', Validators.required],
       qualification: ['', Validators.required],
-      tagline: ['', Validators.required],
+      tagline: [''],
     });
 
     effect(() => {
@@ -62,7 +62,7 @@ export class Jobstep1Component implements OnInit {
 
   next(): void {
     if (this.jobForm.valid) {
-      if (this.jobForm.controls['companyName'].value.trim().length > 2 && this.jobForm.controls['tagline'].value.trim().length > 50) {
+      if (this.jobForm.controls['companyName'].value.trim().length > 2) {
         this.isCompanyInValid = false;
         this.isPositionInValid = false;
         this.isQualificationInValid = false;

@@ -6,9 +6,8 @@ export interface Job {
   position: string;
   CompanyUrl: string;
   qualification: string;
-  tagline: string;
   Location: string;
-  Remote: boolean;
+  jobType: string;
   Tag: string;
   SkillsRequired: string[];
   Responsibilities: string[];
@@ -21,6 +20,5 @@ export interface Job {
   CompanyGithub?: string;
   isActive?: boolean;
   createdTime: string;
-
 }
 

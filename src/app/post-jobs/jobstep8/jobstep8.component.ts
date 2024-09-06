@@ -39,6 +39,7 @@ export class Jobstep8Component implements OnInit {
   qualifications: string[] = [];
   availableSkills: string[] = [];
   noticePeriods: string[] = [];
+  jobTypes: string[] = [];
   tags: string[] = [];
   minSkillsError = false;
   maxSkillsError = false;
@@ -58,9 +59,9 @@ export class Jobstep8Component implements OnInit {
         position: ['', Validators.required],
         CompanyUrl: ['', [Validators.required, Validators.pattern('https?://.+')]],
         qualification: ['', Validators.required],
-        tagline: ['', Validators.required],
+        //tagline: ['', Validators.required],
         Location: ['', [Validators.required, Validators.minLength(3)]],
-        Remote: [false],
+        jobType: ['', [Validators.required]],
         Tag: ['', [Validators.required]],
         SkillsRequired: this.fb.array([], [Validators.required]),
         Responsibilities: this.fb.array([], [Validators.required]),
@@ -114,6 +115,7 @@ export class Jobstep8Component implements OnInit {
         this.noticePeriods = doc?.noticePeriod ?? [];
         this.availableSkills = doc?.skills ?? [];
         this.tags = doc?.tag ?? [];
+        this.jobTypes = doc?.jobType ?? [];
       });
   }
 
@@ -206,9 +208,9 @@ export class Jobstep8Component implements OnInit {
         position: job.position,
         CompanyUrl: job.CompanyUrl,
         qualification: job.qualification,
-        tagline: job.tagline,
+        //tagline: job.tagline,
         Location: job.Location,
-        Remote: job.Remote,
+        jobType: job.jobType,
         Tag: job.Tag,
         MinSalary: job.MinSalary,
         MaxSalary: job.MaxSalary,
@@ -248,9 +250,9 @@ export class Jobstep8Component implements OnInit {
         position: formValues.position || '',
         CompanyUrl: formValues.CompanyUrl || '',
         qualification: formValues.qualification || '',
-        tagline: formValues.tagline || '',
+        //tagline: formValues.tagline || '',
         Location: formValues.Location || '',
-        Remote: formValues.Remote || false,
+        jobType: formValues.jobType || '',
         Tag: formValues.Tag || '',
         SkillsRequired: (this.jobForm.get('SkillsRequired') as FormArray).controls.map(control => control.value) || [],
         Responsibilities: (this.jobForm.get('Responsibilities') as FormArray).controls.map(control => control.value) || [],
@@ -290,7 +292,7 @@ export class Jobstep8Component implements OnInit {
       qualification: '',
       tagline: '',
       Location: '',
-      Remote: false,
+      jobType: '',
       Tag: '',
       SkillsRequired: [],
       Responsibilities: [],

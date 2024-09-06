@@ -34,6 +34,7 @@ export class ViewJobComponent implements OnInit {
   qualifications: string[] = [];
   noticePeriods: string[] = [];
   availableSkills: string[] = [];
+  jobTypes: string[] = [];
   tags: string[] = [];
   minSkillsError = false;
   maxSkillsError = false;
@@ -52,9 +53,9 @@ export class ViewJobComponent implements OnInit {
         position: ['', Validators.required],
         CompanyUrl: ['', [Validators.required, Validators.pattern('https?://.+')]],
         qualification: ['', Validators.required],
-        tagline: ['', Validators.required],
+        //tagline: ['', Validators.required],
         Location: ['', [Validators.required, Validators.minLength(3)]],
-        Remote: [false],
+        jobType: ['', [Validators.required]],
         Tag: ['', [Validators.required]],
         SkillsRequired: this.fb.array([], [Validators.required]),
         Responsibilities: this.fb.array([], [Validators.required]),
@@ -92,6 +93,7 @@ export class ViewJobComponent implements OnInit {
         this.noticePeriods = doc?.noticePeriod ?? [];
         this.availableSkills = doc?.skills ?? [];
         this.tags = doc?.tag ?? [];
+        this.jobTypes = doc?.jobType ?? [];
       });
   }
 
@@ -200,9 +202,9 @@ export class ViewJobComponent implements OnInit {
         position: job.position,
         CompanyUrl: job.CompanyUrl,
         qualification: job.qualification,
-        tagline: job.tagline,
+        //tagline: job.tagline,
         Location: job.Location,
-        Remote: job.Remote,
+        jobType: job.jobType,
         Tag: job.Tag,
         MinSalary: job.MinSalary,
         MaxSalary: job.MaxSalary,
@@ -233,7 +235,7 @@ export class ViewJobComponent implements OnInit {
     }
   }
 
-  updateJob(): void {      
+  updateJob(): void {
     if (this.jobForm.valid && this.currentJobId) {
       const formValues = this.jobForm.value;
 
@@ -242,9 +244,9 @@ export class ViewJobComponent implements OnInit {
         position: formValues.position || '',
         CompanyUrl: formValues.CompanyUrl || '',
         qualification: formValues.qualification || '',
-        tagline: formValues.tagline || '',
+        //tagline: formValues.tagline || '',
         Location: formValues.Location || '',
-        Remote: formValues.Remote || false,
+        jobType: formValues.jobType || '',
         Tag: formValues.Tag || '',
         SkillsRequired: (this.jobForm.get('SkillsRequired') as FormArray).controls.map(control => control.value) || [],
         Responsibilities: (this.jobForm.get('Responsibilities') as FormArray).controls.map(control => control.value) || [],
@@ -255,7 +257,7 @@ export class ViewJobComponent implements OnInit {
         CompanyTwitter: formValues.CompanyTwitter || '',
         CompanyLinkedIn: formValues.CompanyLinkedIn || '',
         CompanyGithub: formValues.CompanyGithub || '',
-        isActive: formValues.isActive !== undefined ? formValues.isActive : false, 
+        isActive: formValues.isActive !== undefined ? formValues.isActive : false,
         userId: this.getUserId()
       };
 
@@ -313,7 +315,7 @@ export class ViewJobComponent implements OnInit {
       qualification: '',
       tagline: '',
       Location: '',
-      Remote: false,
+      jobType: '',
       Tag: '',
       SkillsRequired: [],
       Responsibilities: [],

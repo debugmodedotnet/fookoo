@@ -4,4 +4,5 @@ export interface IJobSteps {
     skills: string[];
     tag: string[];
     noticePeriod: string[];
+    jobType: string[];
 }

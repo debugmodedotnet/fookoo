@@ -7,6 +7,8 @@ import { Router, RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { UserService } from '../services/user.service';
 import { IUser } from '../modules/user';
+import { IJobSteps } from '../modules/post-job';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
 
 @Component({
   selector: 'app-job-listing',
@@ -20,10 +22,11 @@ export class JobListingComponent implements OnInit {
   jobs$: Observable<Job[]> = of([]);
   jobs: Job[] = [];
   filteredJobs: Job[] = [];
+  jobTypes: string[] = [];
   user?: IUser;
 
   jobFilter = '';
-  remoteFilter = false;
+  jobTypeFilter = ''
   sortByPostedTime = false;
   sortBySalary = false;
 
@@ -33,6 +36,7 @@ export class JobListingComponent implements OnInit {
   private jobService = inject(JobService);
   private userService = inject(UserService);
   public router = inject(Router);
+  private firestore = inject(AngularFirestore);
 
   ngOnInit() {
     this.jobs$ = this.jobService.getJobs();
@@ -47,6 +51,18 @@ export class JobListingComponent implements OnInit {
         this.user = user;
       }
     });
+
+    this.getFirestoreData();
+  }
+
+  getFirestoreData(): void {
+    this.firestore
+      .collection('post-job')
+      .doc<IJobSteps>('job-steps-data')
+      .valueChanges()
+      .subscribe((doc: IJobSteps | undefined) => {
+        this.jobTypes = doc?.jobType ?? [];
+      });
   }
 
   applyFilters() {
@@ -58,15 +74,17 @@ export class JobListingComponent implements OnInit {
       const salaryString = `${job.MinSalary}-${job.MaxSalary}`;
       const salaryMatch = salaryString.includes(filterValue);
       const tagMatch = job.Tag?.toLowerCase().includes(filterValue) ?? false;
-      const remoteMatch = !this.remoteFilter || job.Remote;
 
-      return (companyMatch || positionMatch || salaryMatch || tagMatch) && remoteMatch;
+      const jobTypeMatch = !this.jobTypeFilter || job.jobType === this.jobTypeFilter;
+
+      return (companyMatch || positionMatch || salaryMatch || tagMatch) && jobTypeMatch;
     });
 
     this.displayedJobsCount = 10;
     this.updateLoadMoreButton();
     this.applySorting();
   }
+
 
   applySorting() {
     // if (this.sortByPostedTime) {

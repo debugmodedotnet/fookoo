@@ -62,17 +62,18 @@ export class UserService {
       console.log('User signed up and additional information added');
     } catch (error) {
       console.error('Error signing up:', error);
-      throw error; 
+      throw error;
     }
   }
-  
 
   getCurrentUser(): Observable<any> {
     return this.afAuth.authState.pipe(
       switchMap((user: any) => {
         if (user) {
+          console.log('Current user UID:', user.uid);
           return this.firestore.doc(`users/${user.uid}`).valueChanges();
         } else {
+          console.log('No current user');
           return of(null);
         }
       })

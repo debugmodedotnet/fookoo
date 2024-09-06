@@ -1,5 +1,30 @@
 @use "../styles/variables" as *;
 
+.jobs-container .wrapper {
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+  min-height: 100px;
+
+  // &:hover {
+  //     transform: scale(1.01);
+  //     transition: all ease 0.5s;
+  // }
+
+  .nmc-btn-primary {
+      font-size: 16px !important;
+  }
+
+  .nmc-btn-primary:hover {
+      background-color: $nmc-primary !important;
+      transition: all ease 0.3s;
+  }
+
+  .job-img {
+      height: 50px;
+      width: 50px;
+      padding: 10px;
+      background-color: #fff2ee;
+  }
+}
 .sticky-wrapper {
   li {
     &:nth-child(even)>a {

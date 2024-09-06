@@ -41,7 +41,7 @@
 
               <h6 class="nmc-medium-grey fw-light font-16 m-0">
                 <i class="bi bi-laptop me-2 font-20"></i>
-                @if(job?.Remote){Remote}@else {On site}
+                {{ job?.jobType }}
               </h6>
 
               <!-- @if(job?.email){
@@ -259,7 +259,7 @@
         </div> -->
 
         <!-- Company URL -->
-        <div class="col-md-6 mt-3">
+        <div class="col-md-5 mt-3">
           <label
             for="CompanyUrl"
             class="form-label fw-semibold font-14 required"
@@ -297,7 +297,7 @@
             type="text"
             formControlName="Location"
             class="form-control h-3 rounded-3 cursor-pointer"
-            placeholder="Enter your company name"
+            placeholder="Enter your company location"
           />
 
           <!-- Display validation errors -->
@@ -315,17 +315,31 @@
           }
         </div>
 
-        <!-- Remote -->
-        <div class="col-md-2 mt-3">
-          <input
-            id="Remote"
-            formControlName="Remote"
-            type="checkbox"
-            class="form-check-input"
-          />
-          <label for="Remote" class="form-label fw-semibold font-14 ms-2"
-            >Remote</label
+        <!-- Job Type -->
+        <div class="col-md-3 mt-3">
+          <label for="jobType" class="form-label fw-semibold font-14 required"
+            >Job Type</label
           >
+          <select
+            id="jobType"
+            formControlName="jobType"
+            class="form-select rounded-3 h-3 cursor-pointer"
+          >
+            <option value="" selected>Select job type</option>
+            @for(jobType of jobTypes; track jobType;){
+            <option [value]="jobType">{{ jobType }}</option>
+            }
+          </select>
+
+          <!-- Display validation errors -->
+          @if(jobForm.get('jobType')?.invalid && (jobForm.get('jobType')?.dirty
+          || jobForm.get('jobType')?.touched)){
+          <div class="nmc-alert mt-1">
+            @if(jobForm.get('jobType')?.errors?.['required']){
+            <p class="font-14 m-0">*Please select a job type</p>
+            }
+          </div>
+          }
         </div>
 
         <!-- Qualification -->

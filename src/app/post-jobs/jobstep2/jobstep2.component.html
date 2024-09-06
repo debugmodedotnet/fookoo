@@ -5,18 +5,6 @@
         Step 2: Enter your company details
       </h3>
 
-      <div class="col-12 text-end">
-        <input
-          id="Remote"
-          formControlName="Remote"
-          type="checkbox"
-          class="form-check-input"
-        />
-        <label for="Remote" class="form-label font-20 nmc-medium-grey ms-2"
-          >Remote</label
-        >
-      </div>
-
       <div class="col-12">
         <div class="input__group">
           <input
@@ -36,6 +24,30 @@
         <div class="error-label text-danger font-18">
           <i class="bi bi-exclamation-triangle-fill me-2"></i>Please provide a
           job location
+        </div>
+        }
+      </div>
+
+      <div class="col-12 mt-4">
+        <label for="position" class="mt-3 form-label font-20 nmc-medium-grey"
+          >Select Job Type</label
+        >
+        <select
+          id="jobType"
+          (focus)="cleanJobtypeMessage()"
+          formControlName="jobType"
+          class="form-select rounded-3 cursor-pointer"
+        >
+          <option value="" selected class="font-24">Select job type</option>
+          @for(jobType of jobTypes; track jobType;){
+          <option [value]="jobType" class="font-24">{{ jobType }}</option>
+          }
+        </select>
+
+        @if(isJobTypeInValid){
+        <div class="error-label text-danger font-18">
+          <i class="bi bi-exclamation-triangle-fill me-2"></i>Please select a
+          job type
         </div>
         }
       </div>
@@ -62,8 +74,7 @@
         </div>
         }
       </div>
-
-   </div>
+    </div>
   </form>
 
   <div class="d-flex justify-content-end align-items-center mt-5">

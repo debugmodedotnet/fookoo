@@ -8,7 +8,8 @@ export interface Job {
   qualification: string;
   //tagline: string;
   Location: string;
-  Remote: boolean;
+  //Remote: boolean;
+  jobType: string;
   Tag: string;
   SkillsRequired: string[];
   Responsibilities: string[];

@@ -54,7 +54,7 @@
 
     <div class="filters my-2 my-md-4 row px-5">
       <div
-        class="form-group col-12 col-sm-6 col-md-7 d-flex align-items-center"
+        class="form-group col-12 col-sm-6  d-flex align-items-center"
       >
         <i class="bi bi-funnel-fill me-2 nmc-medium-grey"></i>
         <input
@@ -67,14 +67,18 @@
         />
       </div>
 
-      <div class="form-group remote col-12 col-md-1 d-flex align-items-center">
-        <input
-          type="checkbox"
-          id="remoteFilter"
-          [(ngModel)]="remoteFilter"
+      <div class="form-group remote col-12 col-md-2 d-flex align-items-center">
+        <select
+          id="jobTypeFilter"
+          class="form-select rounded-3 cursor-pointer"
+          [(ngModel)]="jobTypeFilter"
           (change)="applyFilters()"
-        />
-        <label for="remoteFilter" class="ms-1">Remote</label>
+        >
+          <option value="" selected class="font-24">Select job type</option>
+          @for(jobType of jobTypes; track jobType;){
+          <option [value]="jobType" class="font-24">{{ jobType }}</option>
+          }
+        </select>
       </div>
 
       <div
@@ -144,8 +148,8 @@
 
           <div class="pt-3 d-flex align-items-center justify-content-between">
             <div class="job-chips d-flex align-items-center gap-3">
-              <span class="d-inline-block font-14 fw-semibold py-1 px-3"
-                >{{ job.Remote ? "Remote" : "Onsite" }}
+              <span class="d-inline-block font-14 fw-semibold py-1 px-3">
+                {{ job?.jobType }}
               </span>
 
               <span class="d-inline-block font-14 fw-semibold py-1 px-3"

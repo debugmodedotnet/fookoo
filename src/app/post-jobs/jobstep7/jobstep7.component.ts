@@ -41,6 +41,7 @@ export class Jobstep7Component {
           Validators.minLength(5)
         ],
       ],
+      isActive: [false]
     });
   }
 
@@ -49,6 +50,8 @@ export class Jobstep7Component {
       this.isCompanyLinkedInInvalid = false;
       this.isCompanyGithubInvalid = false;
       this.isCompanyTwitterInvalid = false;
+
+      this.jobForm.patchValue({ isActive: true });
 
       this.data.set({
         nextStep: 8,
@@ -77,5 +80,5 @@ export class Jobstep7Component {
   cleanTwitterMessage(): void {
     this.isCompanyTwitterInvalid = false;
   }
-  
+
 }

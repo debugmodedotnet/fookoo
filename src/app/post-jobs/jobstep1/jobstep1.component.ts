@@ -66,7 +66,7 @@ export class Jobstep1Component implements OnInit {
         this.isCompanyInValid = false;
         this.isPositionInValid = false;
         this.isQualificationInValid = false;
-        this.isTaglineInValid = true;
+        this.isTaglineInValid = false;
 
         this.data.set({
           nextStep: 2,
@@ -75,7 +75,7 @@ export class Jobstep1Component implements OnInit {
         });
       } else {
         this.isCompanyInValid = true;
-        this.isTaglineInValid = false;
+        this.isTaglineInValid = true;
       }
     } else {
       if (!this.jobForm.get('companyName')?.valid) {

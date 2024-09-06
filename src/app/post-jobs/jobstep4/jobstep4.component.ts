@@ -82,9 +82,5 @@ export class Jobstep4Component {
   cleanMessage(): void {
     this.isResponsibilitiesInValid = false;
   }
-
-  back(): void {
-    this.backdata.set({ previousStep: 3, jobId: this.data() });
-  }
   
 }

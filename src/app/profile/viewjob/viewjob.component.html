@@ -106,7 +106,7 @@
       </div>
 
       <!-- Tagline Name -->
-      <div class="col-md-12 mt-3">
+      <!-- <div class="col-md-12 mt-3">
         <label for="tagline" class="form-label fw-semibold font-14 required"
           >Tagline</label
         >
@@ -117,7 +117,7 @@
           class="form-control h-3 rounded-3 cursor-pointer"
           placeholder="Enter tagline"
         />
-      </div>
+      </div> -->
 
       <!-- Company URL -->
       <div class="col-md-6 mt-3">
@@ -428,7 +428,9 @@
             Select notice period
           </option>
           @for(noticePeriod of noticePeriods; track noticePeriod;){
-          <option [value]="noticePeriod" class="font-24">{{ noticePeriod }}</option>
+          <option [value]="noticePeriod" class="font-24">
+            {{ noticePeriod }}
+          </option>
           }
         </select>
       </div>

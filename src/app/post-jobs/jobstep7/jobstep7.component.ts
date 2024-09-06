@@ -59,11 +59,11 @@ export class Jobstep7Component {
         formData: this.jobForm.value,
       });
     } else {
-      if (!this.jobForm.get('companyLinkedIn')?.valid) {
+      if (!this.jobForm.get('CompanyLinkedIn')?.valid) {
         this.isCompanyLinkedInInvalid = true;
-      } else if (!this.jobForm.get('companyGithub')?.valid) {
+      } else if (!this.jobForm.get('CompanyGithub')?.valid) {
         this.isCompanyGithubInvalid = true;
-      } else if (!this.jobForm.get('companyTwitter')?.valid) {
+      } else if (!this.jobForm.get('CompanyTwitter')?.valid) {
         this.isCompanyTwitterInvalid = true;
       }
     }

@@ -6,7 +6,7 @@ export interface Job {
   position: string;
   CompanyUrl: string;
   qualification: string;
-  tagline: string;
+  //tagline: string;
   Location: string;
   Remote: boolean;
   Tag: string;

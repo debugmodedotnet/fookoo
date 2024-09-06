@@ -31,8 +31,6 @@ export class Jobstep5Component implements OnInit {
       },
       { validator: SalValidator }
     );
-
-    //this.jobForm.markAllAsTouched();
   }
 
   ngOnInit(): void {

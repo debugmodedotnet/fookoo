@@ -15,6 +15,7 @@ export class ProfileShareComponent implements OnInit {
   name?: string | null = null;
   uid: string | null = null;
   userData?: IUser;
+  defaultImage = 'assets/images/home/defaultUser.jpg';
 
   private userService = inject(UserService);
   private route = inject(ActivatedRoute);

@@ -1,62 +1,81 @@
-@use "../styles/variables" as *;
+// @use "../styles/variables" as *;
 
-.profile-wrapper {
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+// .profile-wrapper {
+//     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 
-    .upper-grid {
-        flex: 0 1 30%;
-        position: relative;
-        background: linear-gradient(45deg, $nmc-dark-grey, $nmc-black);
-        background-size: 400% 400%;
-        animation: gradientShift 10s ease infinite;
+//     .upper-grid {
+//         flex: 0 1 30%;
+//         position: relative;
+//         background: linear-gradient(45deg, $nmc-dark-grey, $nmc-black);
+//         background-size: 400% 400%;
+//         animation: gradientShift 10s ease infinite;
 
-        .profile-image {
-            position: absolute;
-            bottom: -40px;
-            top: 10px;
-            left: 1.5rem;
-            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-            width: 240px;
-            height: 240px;
+//         .profile-image {
+//             position: absolute;
+//             bottom: -40px;
+//             top: 10px;
+//             left: 1.5rem;
+//             box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+//             width: 240px;
+//             height: 240px;
 
-            img {
-                object-position: top;
-                border: 2px solid $nmc-light-grey;
+//             img {
+//                 object-position: top;
+//                 border: 2px solid $nmc-light-grey;
 
-            }
-        }
+//             }
+//         }
 
-        .social-icons .btn {
-            background-color: transparent;
-            color: $nmc-white;
-            border-color: $nmc-white;
+//         .social-icons .btn {
+//             background-color: transparent;
+//             color: $nmc-white;
+//             border-color: $nmc-white;
 
-            &:hover {
-                color: $nmc-primary;
-                border-color: $nmc-primary;
-            }
-        }
-    }
+//             &:hover {
+//                 color: $nmc-primary;
+//                 border-color: $nmc-primary;
+//             }
+//         }
+//     }
 
-    .lower-grid {
-        flex: 1 1 70%;
+//     .lower-grid {
+//         flex: 1 1 70%;
 
-        h3 {
-            border-bottom: 1px solid $nmc-primary;
-        }
+//         h3 {
+//             border-bottom: 1px solid $nmc-primary;
+//         }
+//     }
+// }
+
+// @keyframes gradientShift {
+//     0% {
+//         background-position: 0% 0%;
+//     }
+
+//     50% {
+//         background-position: 100% 100%;
+//     }
+
+//     100% {
+//         background-position: 0% 0%;
+//     }
+// }
+
+@use "../styles/shine" as *;
+
+
+@media (max-width: 425px) {
+    .resume-name {
+        font-size: 1.4rem !important;
     }
 }
 
-@keyframes gradientShift {
-    0% {
-        background-position: 0% 0%;
+@media (max-width: 390px) {
+    .resume-name {
+        font-size: 1.3rem !important;
     }
 
-    50% {
-        background-position: 100% 100%;
-    }
-
-    100% {
-        background-position: 0% 0%;
+    .resume-role-title {
+        font-size: 1rem !important;
     }
 }

@@ -41,6 +41,7 @@ export class Jobstep7Component {
           Validators.minLength(5)
         ],
       ],
+      isActive: [false]
     });
   }
 
@@ -50,17 +51,19 @@ export class Jobstep7Component {
       this.isCompanyGithubInvalid = false;
       this.isCompanyTwitterInvalid = false;
 
+      this.jobForm.patchValue({ isActive: true });
+
       this.data.set({
         nextStep: 8,
         jobId: this.data(),
         formData: this.jobForm.value,
       });
     } else {
-      if (!this.jobForm.get('companyLinkedIn')?.valid) {
+      if (!this.jobForm.get('CompanyLinkedIn')?.valid) {
         this.isCompanyLinkedInInvalid = true;
-      } else if (!this.jobForm.get('companyGithub')?.valid) {
+      } else if (!this.jobForm.get('CompanyGithub')?.valid) {
         this.isCompanyGithubInvalid = true;
-      } else if (!this.jobForm.get('companyTwitter')?.valid) {
+      } else if (!this.jobForm.get('CompanyTwitter')?.valid) {
         this.isCompanyTwitterInvalid = true;
       }
     }
@@ -77,5 +80,5 @@ export class Jobstep7Component {
   cleanTwitterMessage(): void {
     this.isCompanyTwitterInvalid = false;
   }
-  
+
 }

@@ -3,6 +3,7 @@
     Applied Jobs
   </h2>
 
+  @if(appliedJobs.length > 0 ){
   <div class="wrapper">
     <div class="table-responsive">
       <table class="table mb-0">
@@ -16,16 +17,19 @@
         </thead>
 
         <tbody>
-          @for(job of appliedJobs; track job){
+          @for(job of appliedJobs; track job;){
           <tr>
             <td>{{ job.companyName }}</td>
             <td>{{ job.position }}</td>
-            <td>{{ job.location }}</td>
-            <td>{{ job.tag }}</td>
+            <td>{{ job.Location }}</td>
+            <td>{{ job.Tag }}</td>
           </tr>
           }
         </tbody>
       </table>
     </div>
   </div>
+  }@else{
+  <p>No jobs found.</p>
+  }
 </section>

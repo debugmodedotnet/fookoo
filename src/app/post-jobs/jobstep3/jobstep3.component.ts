@@ -23,7 +23,7 @@ export class Jobstep3Component implements OnInit {
   maxSkillsError = false;
   isTagInValid = false;
 
-  private fb = inject(FormBuilder);  
+  private fb = inject(FormBuilder);
   private firestore = inject(AngularFirestore);
 
   constructor() {
@@ -117,9 +117,13 @@ export class Jobstep3Component implements OnInit {
           formData: this.jobForm.value,
         });
       }
-    } else {
-      this.minSkillsError = true;
-      this.isTagInValid = true;
+    }
+    else {
+      if (!this.jobForm.get('Tag')?.valid) {
+        this.isTagInValid = true;
+      } else if (!this.jobForm.get('SkillsRequired')?.valid) {
+        this.minSkillsError = true;
+      }
     }
   }
 
@@ -130,10 +134,6 @@ export class Jobstep3Component implements OnInit {
 
   cleanTagMessage(): void {
     this.isTagInValid = false;
-  }
-
-  back(): void {
-    this.backdata.set({ previousStep: 2, jobId: this.data() });
   }
 
 }

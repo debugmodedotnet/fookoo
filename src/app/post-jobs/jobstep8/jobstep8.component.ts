@@ -38,6 +38,8 @@ export class Jobstep8Component implements OnInit {
   positions: string[] = [];
   qualifications: string[] = [];
   availableSkills: string[] = [];
+  noticePeriods: string[] = [];
+  jobTypes: string[] = [];
   tags: string[] = [];
   minSkillsError = false;
   maxSkillsError = false;
@@ -57,13 +59,15 @@ export class Jobstep8Component implements OnInit {
         position: ['', Validators.required],
         CompanyUrl: ['', [Validators.required, Validators.pattern('https?://.+')]],
         qualification: ['', Validators.required],
+        //tagline: ['', Validators.required],
         Location: ['', [Validators.required, Validators.minLength(3)]],
-        Remote: [false],
+        jobType: ['', [Validators.required]],
         Tag: ['', [Validators.required]],
         SkillsRequired: this.fb.array([], [Validators.required]),
         Responsibilities: this.fb.array([], [Validators.required]),
         MinSalary: ['', Validators.required],
         MaxSalary: ['', Validators.required],
+        noticePeriod: ['', Validators.required],
         JobDescription: ['', [Validators.required, Validators.minLength(200)]],
         CompanyLinkedIn: ['', [Validators.pattern('https?://www.linkedin.com/in/.+'), Validators.minLength(5)]],
         CompanyGithub: ['', [Validators.pattern('https?://github.com/.+'), Validators.minLength(5)]],
@@ -108,8 +112,10 @@ export class Jobstep8Component implements OnInit {
       .subscribe((doc: IJobSteps | undefined) => {
         this.positions = doc?.position ?? [];
         this.qualifications = doc?.qualification ?? [];
+        this.noticePeriods = doc?.noticePeriod ?? [];
         this.availableSkills = doc?.skills ?? [];
         this.tags = doc?.tag ?? [];
+        this.jobTypes = doc?.jobType ?? [];
       });
   }
 
@@ -196,43 +202,45 @@ export class Jobstep8Component implements OnInit {
   editJob(job: Job | null): void {
     if (job && job.id) {
       console.log('Editing job:', job);
-  
+
       this.jobForm.patchValue({
         companyName: job.companyName,
         position: job.position,
         CompanyUrl: job.CompanyUrl,
         qualification: job.qualification,
+        //tagline: job.tagline,
         Location: job.Location,
-        Remote: job.Remote,
+        jobType: job.jobType,
         Tag: job.Tag,
         MinSalary: job.MinSalary,
         MaxSalary: job.MaxSalary,
+        noticePeriod: job.noticePeriod,
         JobDescription: job.JobDescription,
         CompanyTwitter: job.CompanyTwitter,
         CompanyLinkedIn: job.CompanyLinkedIn,
         CompanyGithub: job.CompanyGithub,
         isActive: job.isActive
       });
-  
+
       const skillsRequiredArray = this.jobForm.get('SkillsRequired') as FormArray;
       skillsRequiredArray.clear();
       (job.SkillsRequired || []).forEach(skill => {
         skillsRequiredArray.push(new FormControl(skill));
       });
-  
+
       const responsibilitiesArray = this.jobForm.get('Responsibilities') as FormArray;
       responsibilitiesArray.clear();
       (job.Responsibilities || []).forEach(responsibility => {
         responsibilitiesArray.push(new FormControl(responsibility));
       });
-  
+
       this.currentJobId = job.id;
       this.editMode = true;
     } else {
       console.error('Job is undefined or job ID is missing:', job);
     }
   }
-  
+
   updateJob(): void {
     if (this.jobForm.valid && this.currentJobId) {
       const formValues = this.jobForm.value;
@@ -242,18 +250,20 @@ export class Jobstep8Component implements OnInit {
         position: formValues.position || '',
         CompanyUrl: formValues.CompanyUrl || '',
         qualification: formValues.qualification || '',
+        //tagline: formValues.tagline || '',
         Location: formValues.Location || '',
-        Remote: formValues.Remote || false,
+        jobType: formValues.jobType || '',
         Tag: formValues.Tag || '',
         SkillsRequired: (this.jobForm.get('SkillsRequired') as FormArray).controls.map(control => control.value) || [],
         Responsibilities: (this.jobForm.get('Responsibilities') as FormArray).controls.map(control => control.value) || [],
         MinSalary: formValues.MinSalary || '',
         MaxSalary: formValues.MaxSalary || '',
+        noticePeriod: formValues.noticePeriod || '',
         JobDescription: formValues.JobDescription || '',
         CompanyTwitter: formValues.CompanyTwitter || '',
         CompanyLinkedIn: formValues.CompanyLinkedIn || '',
         CompanyGithub: formValues.CompanyGithub || '',
-        isActive: formValues.isActive !== undefined ? formValues.isActive : false, // Ensure boolean value
+        isActive: formValues.isActive !== undefined ? formValues.isActive : false, 
         userId: this.getUserId()
       };
 
@@ -280,13 +290,15 @@ export class Jobstep8Component implements OnInit {
       position: '',
       CompanyUrl: '',
       qualification: '',
+      tagline: '',
       Location: '',
-      Remote: false,
+      jobType: '',
       Tag: '',
       SkillsRequired: [],
       Responsibilities: [],
       MinSalary: '',
       MaxSalary: '',
+      noticePeriod: '',
       JobDescription: '',
       CompanyGithub: '',
       CompanyTwitter: '',

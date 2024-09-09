@@ -77,27 +77,6 @@
         </div>
         }
       </div>
-
-      <div class="col-12 mt-4">
-        <div class="input__group">
-          <input
-            id="tagline"
-            type="text"
-            (keyup)="cleanTaglineMessage()"
-            formControlName="tagline"
-            class="input__field"
-            placeholder="Enter tagline"
-          />
-          <label for="tagline" class="input__label">Enter Tagline </label>
-        </div>
-
-        @if(isTaglineInValid){
-        <div class="error-label text-danger font-18">
-          <i class="bi bi-exclamation-triangle-fill me-2"></i>Please enter
-          tagline - why one should join you
-        </div>
-        }
-      </div>
     </div>
   </form>
 

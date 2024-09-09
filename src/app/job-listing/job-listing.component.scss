@@ -146,17 +146,15 @@
 }
 
 .jobs-container .wrapper {
-    //box-shadow: 0 1px 10px rgba(0, 0, 0, .1);
-    //border: 1px solid #e2e8f0;
     box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
     min-height: 100px;
 
     // &:hover {
-    //     background-color: $nmc-light-grey !important;
-    //     transition: all ease 0.3s;
+    //     transform: scale(1.01);
+    //     transition: all ease 0.5s;
     // }
 
-    .nmc-btn-primary{
+    .nmc-btn-primary {
         font-size: 16px !important;
     }
 
@@ -171,8 +169,6 @@
         padding: 10px;
         background-color: #fff2ee;
     }
-
-
 }
 
 @media (max-width: 1255px) {

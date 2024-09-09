@@ -2,37 +2,48 @@ import { Component, inject, OnInit } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { JobService } from '../services/job.service';
 import { Job } from '../modules/job';
-import { AsyncPipe } from '@angular/common';
+import { AsyncPipe, SlicePipe } from '@angular/common';
 import { Router, RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { UserService } from '../services/user.service';
 import { IUser } from '../modules/user';
+import { IJobSteps } from '../modules/post-job';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
 
 @Component({
   selector: 'app-job-listing',
   standalone: true,
-  imports: [AsyncPipe, RouterModule, FormsModule],
+  imports: [AsyncPipe, RouterModule, FormsModule, SlicePipe],
   templateUrl: './job-listing.component.html',
   styleUrl: './job-listing.component.scss'
 })
 export class JobListingComponent implements OnInit {
 
   jobs$: Observable<Job[]> = of([]);
+  jobs: Job[] = [];
   filteredJobs: Job[] = [];
+  jobTypes: string[] = [];
   user?: IUser;
 
-  companyFilter = '';
-  positionFilter = '';
-  remoteFilter = false;
+  jobFilter = '';
+  jobTypeFilter = ''
+  sortByPostedTime = false;
+  sortBySalary = false;
+
+  displayedJobsCount = 10;
+  showLoadMoreButton = false;
 
   private jobService = inject(JobService);
   private userService = inject(UserService);
   public router = inject(Router);
+  private firestore = inject(AngularFirestore);
 
   ngOnInit() {
     this.jobs$ = this.jobService.getJobs();
     this.jobs$.subscribe(jobs => {
+      this.jobs = jobs;
       this.filteredJobs = jobs;
+      this.updateLoadMoreButton();
     });
 
     this.userService.getCurrentUser().subscribe((user) => {
@@ -40,17 +51,76 @@ export class JobListingComponent implements OnInit {
         this.user = user;
       }
     });
+
+    this.getFirestoreData();
+  }
+
+  getFirestoreData(): void {
+    this.firestore
+      .collection('post-job')
+      .doc<IJobSteps>('job-steps-data')
+      .valueChanges()
+      .subscribe((doc: IJobSteps | undefined) => {
+        this.jobTypes = doc?.jobType ?? [];
+      });
   }
 
   applyFilters() {
-    this.jobs$.subscribe(jobs => {
-      this.filteredJobs = jobs.filter(job => {
-        const companyMatch = job.companyName?.toLowerCase().includes(this.companyFilter.toLowerCase()) ?? false;
-        const positionMatch = job.position?.toLowerCase().includes(this.positionFilter.toLowerCase()) ?? false;
-        const remoteMatch = !this.remoteFilter || (this.remoteFilter && job.Remote);
-        return companyMatch && positionMatch && remoteMatch;
-      });
+    const filterValue = this.jobFilter?.toLowerCase() || '';
+
+    this.filteredJobs = this.jobs.filter(job => {
+      const companyMatch = job.companyName?.toLowerCase().includes(filterValue) ?? false;
+      const positionMatch = job.position?.toLowerCase().includes(filterValue) ?? false;
+      const salaryString = `${job.MinSalary}-${job.MaxSalary}`;
+      const salaryMatch = salaryString.includes(filterValue);
+      const tagMatch = job.Tag?.toLowerCase().includes(filterValue) ?? false;
+
+      const jobTypeMatch = !this.jobTypeFilter || job.jobType === this.jobTypeFilter;
+
+      return (companyMatch || positionMatch || salaryMatch || tagMatch) && jobTypeMatch;
     });
+
+    this.displayedJobsCount = 10;
+    this.updateLoadMoreButton();
+    this.applySorting();
+  }
+
+
+  applySorting() {
+    // if (this.sortByPostedTime) {
+    //   this.filteredJobs.sort((a, b) => {
+    //     const dateA = new Date(a.postedTime).getTime();
+    //     const dateB = new Date(b.postedTime).getTime();
+    //     return dateB - dateA; 
+    //   });
+    // }
+
+    if (this.sortBySalary) {
+      this.filteredJobs.sort((a, b) => {
+        const salaryA = a.MaxSalary ?? a.MinSalary;
+        const salaryB = b.MaxSalary ?? b.MinSalary;
+        return salaryB - salaryA;
+      });
+    }
+  }
+
+  toggleSortByPostedTime() {
+    this.sortByPostedTime = !this.sortByPostedTime;
+    this.applyFilters(); // Reapply filters to trigger sorting
+  }
+
+  toggleSortBySalary() {
+    this.sortBySalary = !this.sortBySalary;
+    this.applyFilters();
+  }
+
+  updateLoadMoreButton() {
+    this.showLoadMoreButton = this.filteredJobs.length > this.displayedJobsCount;
+  }
+
+  loadMore() {
+    this.displayedJobsCount += 10;
+    this.updateLoadMoreButton();
   }
 
   closeModal() {

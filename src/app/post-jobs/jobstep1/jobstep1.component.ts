@@ -27,7 +27,6 @@ export class Jobstep1Component implements OnInit {
   isCompanyInValid = false;
   isPositionInValid = false;
   isQualificationInValid = false;
-  isTaglineInValid = false;
 
   private firestore = inject(AngularFirestore);
 
@@ -35,12 +34,10 @@ export class Jobstep1Component implements OnInit {
     this.jobForm = this.fb.group({
       companyName: ['', Validators.required],
       position: ['', Validators.required],
-      qualification: ['', Validators.required],
-      tagline: ['', Validators.required],
+      qualification: ['', Validators.required]
     });
 
     effect(() => {
-      //console.log(this.backdata());
       this.jobForm.patchValue(this.backdata());
     });
   }
@@ -62,11 +59,10 @@ export class Jobstep1Component implements OnInit {
 
   next(): void {
     if (this.jobForm.valid) {
-      if (this.jobForm.controls['companyName'].value.trim().length > 2 && this.jobForm.controls['tagline'].value.trim().length > 50) {
+      if (this.jobForm.controls['companyName'].value.trim().length > 2) {
         this.isCompanyInValid = false;
         this.isPositionInValid = false;
         this.isQualificationInValid = false;
-        this.isTaglineInValid = true;
 
         this.data.set({
           nextStep: 2,
@@ -75,7 +71,6 @@ export class Jobstep1Component implements OnInit {
         });
       } else {
         this.isCompanyInValid = true;
-        this.isTaglineInValid = false;
       }
     } else {
       if (!this.jobForm.get('companyName')?.valid) {
@@ -84,14 +79,8 @@ export class Jobstep1Component implements OnInit {
         this.isPositionInValid = true;
       } else if (!this.jobForm.get('qualification')?.valid) {
         this.isQualificationInValid = true;
-      } else if (!this.jobForm.get('tagline')?.valid) {
-        this.isTaglineInValid = true;
       }
     }
-  }
-
-  back(): void {
-    this.backdata.set({ previousStep: 1, jobId: this.data() });
   }
 
   cleanNameMessage(): void {
@@ -104,10 +93,6 @@ export class Jobstep1Component implements OnInit {
 
   cleanQualificationMessage(): void {
     this.isQualificationInValid = false;
-  }
-
-  cleanTaglineMessage(): void {
-    this.isTaglineInValid = false;
   }
 
 }

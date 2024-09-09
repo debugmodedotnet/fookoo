@@ -66,13 +66,14 @@ export class UserService {
     }
   }
 
-
   getCurrentUser(): Observable<any> {
     return this.afAuth.authState.pipe(
       switchMap((user: any) => {
         if (user) {
+          console.log('Current user UID:', user.uid);
           return this.firestore.doc(`users/${user.uid}`).valueChanges();
         } else {
+          console.log('No current user');
           return of(null);
         }
       })

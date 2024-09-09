@@ -19,9 +19,82 @@
           <i class="bi bi-arrow-right font-24"></i></div
       ></a>
     </div>
+
+    <div class="jobs-container row g-4 pt-0 pt-lg-4">
+      @for(job of jobs$ | async; track job; let i = $index){
+      <div class="col-12">
+        <div class="wrapper nmc-bg-white rounded-0 p-3">
+          <div
+            class="job-info d-flex align-items-center justify-content-between"
+          >
+            <div>
+              <div class="d-flex align-items-center gap-3">
+                <h2
+                  class="font-24 nmc-dark-grey fw-normal m-0 font-family-poppins"
+                >
+                  <a href="" class="nmc-dark-grey"> {{ job.position }}</a>
+                </h2>
+              </div>
+            </div>
+
+            <div>
+              <h5 class="font-24 nmc-dark-grey font-family-poppins m-0 mt-3">
+                <a href="#" class="nmc-primary">{{ job.companyName }}</a>
+              </h5>
+            </div>
+          </div>
+
+          @if(job.MaxSalary){
+          <h6 class="nmc-dark-grey font-family-poppins font-18 m-0 mt-2">
+            <i class="bi bi-cash-coin me-2 font-20 nmc-primary"></i>
+            <i class="bi bi-currency-rupee"></i>
+            {{ job.MaxSalary }}
+
+            <span class="font-14 nmc-medium-grey font-family-robot fw-semibold">
+              /Year
+            </span>
+          </h6>
+          }@else{
+          <h6 class="nmc-medium-grey font-16 m-0 mt-2">
+            <i class="bi bi-cash-coin me-2 font-20 nmc-primary"></i>
+            Not Disclosed.
+          </h6>
+          }
+
+          <div class="pt-3 d-flex align-items-center justify-content-between">
+            <div class="job-chips d-flex align-items-center gap-3">
+              <span class="d-inline-block font-14 fw-semibold py-1 px-3">
+                {{ job?.jobType }}
+              </span>
+
+              <span class="d-inline-block font-14 fw-semibold py-1 px-3"
+                >{{ job.Location }}
+              </span>
+
+              <span class="d-inline-block font-14 fw-semibold py-1 px-3"
+                >{{ job.Tag }}
+              </span>
+
+              <span
+                class="d-inline-block font-14 fw-semibold py-1 px-3 nmc-medium-grey"
+                >12-9-2024
+              </span>
+            </div>
+
+            <button
+              class="nmc-btn-primary h-auto py-2 px-3 box-shadow-none border-0 nmc-bg-dark-grey fw-normal"
+              [routerLink]="['/jobs', job.id]"
+            >
+              Apply
+            </button>
+          </div>
+        </div>
+      </div>
+      }
+    </div>
   </div>
 
-  <ul
+  <!-- <ul
     class="sticky-wrapper d-flex align-items-center justify-content-evenly flex-wrap py-5 px-3 gap-4 overflow-hidden"
   >
     @for(job of jobs$ | async; track job; let i = $index){
@@ -46,16 +119,6 @@
           </h5>
 
           <div class="social py-3">
-            <!-- @if(job.Email){<a [href]="job.Email"
-              ><i class="bi bi-envelope-fill"></i></a
-            >} @if(job.CompanyTwitter){<a [href]="job.CompanyTwitter"
-              ><i class="bi bi-twitter-x"></i></a
-            >} @if(job.CompanyGithub){<a [href]="job.CompanyGithub"
-              ><i class="bi bi-github"></i></a
-            >} @if(job.CompanyLinkedIn){<a [href]="job.CompanyLinkedIn"
-              ><i class="bi bi-linkedin"></i></a
-            >} -->
-
             @if(job.email){<a [href]="'mailto:' + job.email"
               ><i class="bi bi-envelope-fill"></i></a
             >} @if(job.CompanyTwitter){<a [href]="job.CompanyTwitter"
@@ -70,5 +133,5 @@
       </a>
     </li>
     }
-  </ul>
+  </ul> -->
 </section>

@@ -7,6 +7,7 @@ import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { shuffleItems } from '../utils/common-util';
 import { ActivatedRoute } from '@angular/router';
 import { IQuizTechnology } from '../modules/quiz-technology';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-quiz',
@@ -17,15 +18,19 @@ import { IQuizTechnology } from '../modules/quiz-technology';
 })
 export class QuizComponent implements OnInit {
 
-  readonly TOTAL_ALLOWED_ATTEMPTS = 10;
+  readonly TOTAL_ALLOWED_QUESTIONS_ATTEMPTS = 10;
+  readonly TOTAL_ALLOWED_QUIZ_ATTEMPTS = 3;
   quizForm: FormGroup;
   totalAttemptedQuestions = 0;
   question?: IQuizQuestion;
   userId?: string;
   technologyName = '';
   technology?: IQuizTechnology;
+  initializingInfo = true;
+  exceededMaxQuizAttempts = true;
 
   private quizService = inject(QuizService);
+  private userService = inject(UserService);
   private afAuth = inject(AngularFireAuth);
   private fb = inject(FormBuilder);
   private route = inject(ActivatedRoute);
@@ -41,8 +46,16 @@ export class QuizComponent implements OnInit {
       this.technologyName = params['Name'];
       this.afAuth.user.pipe(first()).subscribe(async res => {
         this.userId = res?.uid;
-        await this.loadTechnologyData();
-        this.loadNewQuestion();
+        this.userService.getCurrentUser().pipe(first()).subscribe(async user => {
+          this.initializingInfo = false;
+          const quizAttempts = (user?.quizAttempts ?? 0);
+          if (quizAttempts < this.TOTAL_ALLOWED_QUIZ_ATTEMPTS) {
+            this.exceededMaxQuizAttempts = false;
+            await this.loadTechnologyData();
+            this.loadNewQuestion();
+            await this.userService.setQuizAttemptsCount(this.getUserId(), quizAttempts + 1);
+          }
+        });
       });
     });
   }
@@ -104,7 +117,7 @@ export class QuizComponent implements OnInit {
     this.quizService.getAttemptedQuestions(this.getUserId()).pipe(first()).subscribe(res => {
       console.log(res)
       this.totalAttemptedQuestions = res.length;
-      if (this.totalAttemptedQuestions < this.TOTAL_ALLOWED_ATTEMPTS) {
+      if (this.totalAttemptedQuestions < this.TOTAL_ALLOWED_QUESTIONS_ATTEMPTS) {
         this.getQuestion(res.map((attemptedQuestion) => attemptedQuestion.questionId));
       }
     });

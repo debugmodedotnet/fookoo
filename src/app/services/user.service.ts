@@ -80,6 +80,10 @@ export class UserService {
     );
   }
 
+  async setQuizAttemptsCount(userId: string, attemptsCount: number): Promise<void> {
+    await this.firestore.doc(`users/${userId}`).update({ quizAttempts: attemptsCount });
+  }
+
   isAdmin(): Observable<boolean> {
     return this.getCurrentUser().pipe(
       map(user => user?.isadmin === true)

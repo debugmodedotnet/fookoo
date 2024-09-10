@@ -44,13 +44,9 @@
             <div
               class="progress-bar bg-success"
               role="progressbar"
-              [style.width.%]="
-                (totalAttemptedQuestions / totalQuestions) *
-                100
-              "
+              [style.width.%]="(totalAttemptedQuestions / totalQuestions) * 100"
               [attr.aria-valuenow]="
-                (totalAttemptedQuestions / totalQuestions) *
-                100
+                (totalAttemptedQuestions / totalQuestions) * 100
               "
               aria-valuemin="0"
               aria-valuemax="100"
@@ -98,8 +94,7 @@
                   (click)="handleNextClick()"
                 >
                   {{
-                    totalAttemptedQuestions ===
-                    totalQuestions - 1
+                    totalAttemptedQuestions === totalQuestions - 1
                       ? "Submit"
                       : "Next ->"
                   }}
@@ -110,7 +105,7 @@
           </form>
         </div>
 
-        } @if(!(totalAttemptedQuestions < totalQuestions)){
+        } @if(totalAttemptedQuestions >= totalQuestions){
         <div class="text-center">
           <div class="mb-4">
             <h2 class="nmc-dark-grey font-22">
@@ -125,24 +120,35 @@
           <div class="final-progress d-flex justify-content-center">
             <div class="progress">
               <span class="progress-left">
-                <span class="progress-bar"></span>
+                <span
+                  class="progress-bar"
+                  [style.transform]="'rotate(' + scorePercentage * 3.6 + 'deg)'"
+                ></span>
               </span>
 
               <span class="progress-right">
-                <span class="progress-bar"></span>
+                <span
+                  class="progress-bar"
+                  [style.transform]="'rotate(' + scorePercentage * 3.6 + 'deg)'"
+                ></span>
               </span>
-              <div class="progress-value bg-orange-100">50%</div>
+              <div class="progress-value bg-orange-100">
+                {{ scorePercentage | number : "1.0-0" }}%
+              </div>
             </div>
           </div>
 
           <div class="mt-3">
             <h6 class="fw-light nmc-medium-grey">
               Your Score:
-              <span class="nmc-dark-grey fw-normal">50%</span>
+              <span class="nmc-dark-grey fw-normal"
+                >{{ scorePercentage | number : "1.0-0" }}%</span
+              >
             </h6>
 
             <h6 class="mt-2 fw-light nmc-medium-grey">
-              Passing Score: <span class="nmc-dark-grey fw-normal">80%</span>
+              Passing Score:
+              <span class="nmc-dark-grey fw-normal">{{ passingScore }}%</span>
             </h6>
           </div>
 
@@ -150,7 +156,6 @@
             <a href="#" class="btn btn-primary nmc-bg-primary border-0"
               >Finish</a
             >
-
             <a href="#" class="btn btn-outline-secondary ms-2"
               >Share <i class="bi bi-box-arrow-up-right ms-1"></i
             ></a>

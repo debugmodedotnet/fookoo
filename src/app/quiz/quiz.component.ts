@@ -8,11 +8,12 @@ import { shuffleItems } from '../utils/common-util';
 import { ActivatedRoute } from '@angular/router';
 import { IQuizTechnology } from '../modules/quiz-technology';
 import { UserService } from '../services/user.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-quiz',
   standalone: true,
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, CommonModule],
   templateUrl: './quiz.component.html',
   styleUrl: './quiz.component.scss'
 })
@@ -39,6 +40,10 @@ export class QuizComponent implements OnInit {
   timeLeft = '00:00:00';
   private readonly TIMER_DURATION = 5 * 60 * 1000;
   private readonly TIMER_INTERVAL = 1000;
+
+  userScore = 0;
+  passingScore = 80;
+  scorePercentage = 0;
 
   constructor() {
     this.quizForm = this.fb.group({
@@ -119,14 +124,48 @@ export class QuizComponent implements OnInit {
     });
   }
 
-  loadNewQuestion(): void {
-    this.quizService.getAttemptedQuestions(this.getUserId()).pipe(first()).subscribe(res => {
-      console.log(res);
-      this.totalAttemptedQuestions = res.length;
-      if (this.totalAttemptedQuestions < this.totalQuestions) {
-        this.getQuestion(res.map(attemptedQuestion => attemptedQuestion.questionId));
+  async loadNewQuestion(): Promise<void> {
+    this.quizService.getAttemptedQuestions(this.getUserId()).pipe(first()).subscribe(async res => {
+      console.log("test", res);
+      if (res) {
+        this.totalAttemptedQuestions = res.length;
+        if (this.totalAttemptedQuestions < this.totalQuestions) {
+          this.getQuestion(res.map(attemptedQuestion => attemptedQuestion.questionId));
+        } else {
+          console.log('All questions attempted. Calculating score...');
+          await this.calculateScore();
+        }
+      } else {
+        console.error('Attempted questions data is undefined.');
+        this.totalAttemptedQuestions = 0;
       }
     });
+  }
+
+  async calculateScore(): Promise<void> {
+    const attemptedQuestions = await this.quizService.getAttemptedQuestions(this.getUserId()).toPromise();
+
+    if (attemptedQuestions && this.totalQuestions > 0) {
+      const totalQuestions = this.totalQuestions;
+
+      const correctAnswersPromises = attemptedQuestions.map(async attempt => {
+        const question = await this.quizService.getQuestionById(this.technologyName, attempt.questionId).toPromise();
+        console.log(`Question ID: ${question?.id}, Answer ID: ${question?.answerId}, Attempted Option ID: ${attempt.optionId}`);
+        return question && question.answerId === attempt.optionId;
+      });
+
+      const correctAnswersArray = await Promise.all(correctAnswersPromises);
+      const correctAnswers = correctAnswersArray.filter(isCorrect => isCorrect).length;
+
+      this.userScore = correctAnswers;
+      this.scorePercentage = (this.userScore / totalQuestions) * 100;
+
+      console.log(`Total Questions: ${totalQuestions}, Correct Answers: ${correctAnswers}, Score Percentage: ${this.scorePercentage}`);
+    } else {
+      console.error('Attempted questions data is undefined or totalQuestions is 0.');
+      this.userScore = 0;
+      this.scorePercentage = 0;
+    }
   }
 
   startTimer(): void {

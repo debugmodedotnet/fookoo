@@ -53,9 +53,7 @@
     </div>
 
     <div class="filters my-2 my-md-4 row px-5">
-      <div
-        class="form-group col-12 col-sm-6  d-flex align-items-center"
-      >
+      <div class="form-group col-12 col-sm-6 d-flex align-items-center">
         <i class="bi bi-funnel-fill me-2 nmc-medium-grey"></i>
         <input
           type="text"
@@ -117,14 +115,16 @@
                 <h2
                   class="font-24 nmc-dark-grey fw-normal m-0 font-family-poppins"
                 >
-                  <a href="" class="nmc-dark-grey"> {{ job.position }}</a>
+                  {{ job.position }}
                 </h2>
               </div>
             </div>
 
             <div>
               <h5 class="font-24 nmc-dark-grey font-family-poppins m-0 mt-3">
-                <a href="#" class="nmc-primary">{{ job.companyName }}</a>
+                <a [href]="job.CompanyUrl" class="nmc-primary">{{
+                  job.companyName
+                }}</a>
               </h5>
             </div>
           </div>

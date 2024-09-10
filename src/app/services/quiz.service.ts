@@ -74,4 +74,21 @@ export class QuizService {
       )
     );
   }
+
+  getTotalQuestions(technologyName: string): Observable<number> {
+    return this.firestore.collection<IQuizQuestion>(`quiz/${technologyName}/questions`).get().pipe(
+      map(snapshot => snapshot.size || 0)
+    );
+  }
+
+  getQuestionById(technologyName: string, questionId: string): Observable<IQuizQuestion> {
+    return this.firestore.collection<IQuizQuestion>(`quiz/${technologyName}/questions`).doc(questionId).snapshotChanges()
+      .pipe(
+        map(a => {
+          const data = a.payload.data() as IQuizQuestion;
+          const id = a.payload.id;
+          return { ...data, id };
+        })
+      );
+  }
 }

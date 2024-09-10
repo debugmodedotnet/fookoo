@@ -1,15 +1,19 @@
 <section class="py-5">
   <div class="container-boxed">
-    @if (!initializingInfo) {
-    @if (exceededMaxQuizAttempts) {
+    @if (!initializingInfo) { @if (exceededMaxQuizAttempts) {
     <h3>You have exceeded maximum quiz attempts.</h3>
-    }
-    @else {
+    } @else {
     <div class="form-wrapper rounded-3 p-5">
-      <div class="d-flex justify-content-between align-items-center border-bottom pb-3 mb-3">
+      <div
+        class="d-flex justify-content-between align-items-center border-bottom pb-3 mb-3"
+      >
         <div class="d-flex align-items-center">
           <figure class="m-0 p-2 overflow-hidden">
-            <img [src]="technology?.logo" alt="logo" class="w-100 h-100 object-fit-contain" />
+            <img
+              [src]="technology?.logo"
+              alt="logo"
+              class="w-100 h-100 object-fit-contain"
+            />
           </figure>
 
           <div class="ms-3">
@@ -21,7 +25,7 @@
 
         <div>
           <span class="text-danger">
-            <i class="bi bi-clock me-1 align-middle"></i>00:05:55
+            <i class="bi bi-clock me-1 align-middle"></i>{{ timeLeft }}
           </span>
         </div>
       </div>
@@ -31,22 +35,29 @@
           <span>Progress: </span>
           <span>
             Question {{ totalAttemptedQuestions }} out of
-            {{ TOTAL_ALLOWED_QUESTIONS_ATTEMPTS }}</span>
+            {{ totalQuestions }}</span
+          >
         </div>
 
         <div class="mt-2">
           <div class="progress" style="height: 6px">
-            <div class="progress-bar bg-success" role="progressbar" [style.width.%]="
-                      (totalAttemptedQuestions / TOTAL_ALLOWED_QUESTIONS_ATTEMPTS) * 100
-                    " [attr.aria-valuenow]="
-                      (totalAttemptedQuestions / TOTAL_ALLOWED_QUESTIONS_ATTEMPTS) * 100
-                    " aria-valuemin="0" aria-valuemax="100"></div>
+            <div
+              class="progress-bar bg-success"
+              role="progressbar"
+              [style.width.%]="(totalAttemptedQuestions / totalQuestions) * 100"
+              [attr.aria-valuenow]="
+                (totalAttemptedQuestions / totalQuestions) * 100
+              "
+              aria-valuemin="0"
+              aria-valuemax="100"
+            ></div>
           </div>
         </div>
       </div>
 
       <div class="mt-5">
-        @if(totalAttemptedQuestions < TOTAL_ALLOWED_QUESTIONS_ATTEMPTS){ <div>
+        @if(totalAttemptedQuestions < totalQuestions){
+        <div>
           <form [formGroup]="quizForm">
             <div class="form-group mt-3">
               <span class="nmc-medium-grey font-16 fw-light">
@@ -62,7 +73,12 @@
                 <div class="list-group-item list-group-item-action p-3">
                   <div class="form-check">
                     <label class="form-check-label stretched-link">
-                      <input class="form-check-input" type="radio" [value]="option.id" formControlName="optionId" />
+                      <input
+                        class="form-check-input"
+                        type="radio"
+                        [value]="option.id"
+                        formControlName="optionId"
+                      />
                       <span>{{ option.value }}</span>
                     </label>
                   </div>
@@ -71,66 +87,83 @@
               </div>
 
               <div class="d-flex align-items-center justify-content-end">
-                @if(totalAttemptedQuestions < TOTAL_ALLOWED_QUESTIONS_ATTEMPTS){ <button type="submit"
-                  class="nmc-btn-primary rounded-2 px-3 box-shadow-none" (click)="handleNextClick()">
+                @if(totalAttemptedQuestions < totalQuestions){
+                <button
+                  type="submit"
+                  class="nmc-btn-primary rounded-2 px-3 box-shadow-none"
+                  (click)="handleNextClick()"
+                >
                   {{
-                  totalAttemptedQuestions === TOTAL_ALLOWED_QUESTIONS_ATTEMPTS - 1
-                  ? "Submit"
-                  : "Next ->"
+                    totalAttemptedQuestions === totalQuestions - 1
+                      ? "Submit"
+                      : "Next ->"
                   }}
-                  </button>
-                  }
+                </button>
+                }
               </div>
             </div>
           </form>
-      </div>
-
-      } @if(!(totalAttemptedQuestions < TOTAL_ALLOWED_QUESTIONS_ATTEMPTS)){ <div class="text-center">
-        <div class="mb-4">
-          <h2 class="nmc-dark-grey font-22">
-            🎉 Congratulations. You passed!
-          </h2>
-
-          <p class="mb-0 px-lg-14 nmc-medium-grey fw-light font-16">
-            You have successfully completed the quiz.
-          </p>
         </div>
 
-        <div class="final-progress d-flex justify-content-center">
-          <div class="progress">
-            <span class="progress-left">
-              <span class="progress-bar"></span>
-            </span>
+        } @if(totalAttemptedQuestions >= totalQuestions){
+        <div class="text-center">
+          <div class="mb-4">
+            <h2 class="nmc-dark-grey font-22">
+              🎉 Congratulations. You passed!
+            </h2>
 
-            <span class="progress-right">
-              <span class="progress-bar"></span>
-            </span>
-            <div class="progress-value bg-orange-100">85%</div>
+            <p class="mb-0 px-lg-14 nmc-medium-grey fw-light font-16">
+              You have successfully completed the quiz.
+            </p>
+          </div>
+
+          <div class="final-progress d-flex justify-content-center">
+            <div class="progress">
+              <span class="progress-left">
+                <span
+                  class="progress-bar"
+                  [style.transform]="'rotate(' + scorePercentage * 3.6 + 'deg)'"
+                ></span>
+              </span>
+
+              <span class="progress-right">
+                <span
+                  class="progress-bar"
+                  [style.transform]="'rotate(' + scorePercentage * 3.6 + 'deg)'"
+                ></span>
+              </span>
+              <div class="progress-value bg-orange-100">
+                {{ scorePercentage | number : "1.0-0" }}%
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-3">
+            <h6 class="fw-light nmc-medium-grey">
+              Your Score:
+              <span class="nmc-dark-grey fw-normal"
+                >{{ scorePercentage | number : "1.0-0" }}%</span
+              >
+            </h6>
+
+            <h6 class="mt-2 fw-light nmc-medium-grey">
+              Passing Score:
+              <span class="nmc-dark-grey fw-normal">{{ passingScore }}%</span>
+            </h6>
+          </div>
+
+          <div class="mt-4">
+            <a href="#" class="btn btn-primary nmc-bg-primary border-0"
+              >Finish</a
+            >
+            <a href="#" class="btn btn-outline-secondary ms-2"
+              >Share <i class="bi bi-box-arrow-up-right ms-1"></i
+            ></a>
           </div>
         </div>
-
-        <div class="mt-3">
-          <h6 class="fw-light nmc-medium-grey">
-            Your Score:
-            <span class="nmc-dark-grey fw-normal">85%</span>
-          </h6>
-
-          <h6 class="mt-2 fw-light nmc-medium-grey">
-            Passing Score: <span class="nmc-dark-grey fw-normal">80%</span>
-          </h6>
-        </div>
-
-        <div class="mt-4">
-          <a href="#" class="btn btn-primary nmc-bg-primary border-0">Finish</a>
-
-          <a href="#" class="btn btn-outline-secondary ms-2">Share <i class="bi bi-box-arrow-up-right ms-1"></i></a>
-        </div>
+        }
+      </div>
     </div>
-
-    }
-  </div>
-  </div>
-  }
-  }
+    } }
   </div>
 </section>

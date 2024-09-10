@@ -9,6 +9,7 @@ import { ActivatedRoute } from '@angular/router';
 import { IQuizTechnology } from '../modules/quiz-technology';
 import { UserService } from '../services/user.service';
 import { CommonModule } from '@angular/common';
+import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-quiz',
@@ -29,12 +30,14 @@ export class QuizComponent implements OnInit {
   technology?: IQuizTechnology;
   initializingInfo = true;
   exceededMaxQuizAttempts = true;
+  innerHtml!: SafeHtml;
 
   private quizService = inject(QuizService);
   private userService = inject(UserService);
   private afAuth = inject(AngularFireAuth);
   private fb = inject(FormBuilder);
   private route = inject(ActivatedRoute);
+  private sanitizer = inject(DomSanitizer);
 
   private timerSubscription?: Subscription;
   timeLeft = '00:00:00';
@@ -69,6 +72,10 @@ export class QuizComponent implements OnInit {
         });
       });
     });
+  }
+
+  sanitizeHtml(html: string): SafeHtml {
+    return this.sanitizer.bypassSecurityTrustHtml(html);
   }
 
   async loadTechnologyData(): Promise<void> {

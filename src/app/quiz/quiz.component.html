@@ -64,9 +64,10 @@
                 Question {{ totalAttemptedQuestions + 1 }}
               </span>
 
-              <h3 class="mb-3 mt-1 nmc-dark-grey font-24 lh-base">
-                {{ question?.question }}
-              </h3>
+              <h3
+                class="mb-3 mt-1 nmc-dark-grey font-24 lh-base"
+                [innerHTML]="sanitizeHtml(question!.question)"
+              ></h3>
 
               <div class="list-group my-4">
                 @for(option of question?.options; track option){
@@ -79,7 +80,8 @@
                         [value]="option.id"
                         formControlName="optionId"
                       />
-                      <span>{{ option.value }}</span>
+                      <span [innerHTML]="sanitizeHtml(option.value)"></span>
+                      <!-- <span>{{ option.value }}</span> -->
                     </label>
                   </div>
                 </div>

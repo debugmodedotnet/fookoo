@@ -74,4 +74,10 @@ export class QuizService {
       )
     );
   }
+
+  getTotalQuestions(technologyName: string): Observable<number> {
+    return this.firestore.collection<IQuizQuestion>(`quiz/${technologyName}/questions`).get().pipe(
+      map(snapshot => snapshot.size || 0) 
+    );
+  }
 }

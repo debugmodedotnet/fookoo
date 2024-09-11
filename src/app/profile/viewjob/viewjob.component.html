@@ -9,51 +9,76 @@
 
 <!-- Jobs Table -->
 @if(!loading && jobs.length > 0 && !editMode){
-<table class="table table-bordered table-striped">
-  <thead>
-    <tr>
-      <th>Company Name</th>
-      <th>Position</th>
-      <th>Location</th>
-      <th>Actions</th>
-    </tr>
-  </thead>
-  <tbody>
-    @for(job of jobs; track job;){
-    <tr>
-      <td>{{ job.companyName }}</td>
-      <td>{{ job.position }}</td>
-      <td>{{ job.Location }}</td>
-      <td>
-        <button
-          class="btn btn-class btn-sm ms-2 nmc-bg-primary nmc-white"
-          (click)="editJob(job)"
-        >
-          Edit
-        </button>
+<div class="wrapper">
+  <div class="table-responsive">
+    <table class="table mb-0">
+      <thead class="thead-light">
+        <tr>
+          <th>Company Name</th>
+          <th>Position</th>
+          <th>Location</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
 
-        <!-- <button class="btn btn-danger btn-sm ms-2" (click)="deleteJob(job.id)">
-          Delete
-        </button> -->
+      <tbody>
+        @for(job of jobs; track job;){
+        <tr>
+          <td>{{ job.companyName }}</td>
+          <td>{{ job.position }}</td>
+          <td>{{ job.Location }}</td>
+          <td>
+            <div class="d-flex align-items-center gap-3">
+              <a
+                class="nmc-dark-grey cursor-pointer"
+                (click)="editJob(job)"
+                (keydown)="editJob(job)"
+                tabindex="0"
+              >
+                <i class="bi bi-pencil-square font-20"></i>
+              </a>
 
-        @if(job.isActive){
-        <button
-          class="btn btn-danger btn-sm ms-2"
-          (click)="deactivateJob(job.id, job.isActive)"
-        >
-          Disable</button
-        >} @else{
-        <button
-          class="btn btn-success btn-sm ms-2"
-          (click)="deactivateJob(job.id, job.isActive)"
-        >
-          Enable</button
-        >}
-      </td>
-    </tr>
-    }
-  </tbody>
-</table>
+              @if(job.isActive){
+              <a
+                class="text-success cursor-pointer"
+                (click)="deactivateJob(job.id, job.isActive)"
+                (keydown)="deactivateJob(job.id, job.isActive)"
+                tabindex="0"
+              >
+                <i class="bi bi-toggle-on font-22"> </i>
+              </a>
+              } @else{
+              <a
+                class="text-danger cursor-pointer"
+                (click)="deactivateJob(job.id, job.isActive)"
+                (keydown)="deactivateJob(job.id, job.isActive)"
+                tabindex="0"
+              >
+                <!-- <i class="bi bi-toggle-off font-22"></i> -->
+                <i class="close bi bi-toggle-on font-22"></i>
+              </a>
+              }
+
+              <a class="nmc-dark-grey cursor-pointer" title="Tooltip text here">
+                <i class="bi bi-file-earmark-text font-20"></i>
+              </a>
+
+              <!-- <a
+                class="text-danger cursor-pointer"
+                (click)="deleteJob(job.id)"
+                (keydown)="deleteJob(job.id)"
+                tabindex="0"
+              >
+                <i class="bi bi-trash3 font-20"></i>
+              </a> -->
+            </div>
+          </td>
+        </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+</div>
 }
 
 <!-- No Jobs -->

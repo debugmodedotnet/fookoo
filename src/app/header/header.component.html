@@ -3,87 +3,6 @@
   <ul
     class="mobile-menu flex-column align-items-center justify-content-center position-absolute text-center rounded-0"
   >
-    @if(!user){
-    <li class="w-100 py-3 start d-none">
-      <button class="nmc-btn-primary m-auto" type="submit" routerLink="/login">
-        Start Learning
-      </button>
-    </li>
-    }
-
-    <li class="w-100 py-3">
-      <a
-        class="font-18 font-family-poppins nmc-dark-grey"
-        routerLink="home"
-        routerLinkActive="active"
-        [routerLinkActiveOptions]="{ exact: true }"
-        >Home</a
-      >
-    </li>
-
-    @if(user){
-    <li class="w-100 py-3">
-      <a
-        class="font-18 font-family-poppins nmc-dark-grey"
-        routerLink="/profile"
-        routerLinkActive="active"
-        [routerLinkActiveOptions]="{ exact: true }"
-        >Profile</a
-      >
-    </li>
-    }
-
-    <li class="w-100 py-3">
-      <a
-        class="font-18 font-family-poppins nmc-dark-grey"
-        routerLink="/jobs"
-        routerLinkActive="active"
-        [routerLinkActiveOptions]="{ exact: true }"
-        >Jobs</a
-      >
-    </li>
-
-    <li class="w-100 py-3">
-      <a
-        class="font-18 font-family-poppins nmc-dark-grey"
-        routerLink="/events"
-        routerLinkActive="active"
-        [routerLinkActiveOptions]="{ exact: true }"
-        >Events</a
-      >
-    </li>
-
-    <li class="w-100 py-3">
-      <a
-        class="font-18 font-family-poppins nmc-dark-grey"
-        routerLink="/mentors"
-        routerLinkActive="active"
-        [routerLinkActiveOptions]="{ exact: true }"
-        >Mentors</a
-      >
-    </li>
-
-    <li class="w-100 py-3">
-      <a
-        class="font-18 font-family-poppins nmc-dark-grey"
-        routerLink="/ng-india"
-        routerLinkActive="active"
-        [routerLinkActiveOptions]="{ exact: true }"
-        >ng-India</a
-      >
-    </li>
-
-    @if(user){
-    <li class="w-100 py-3 d-block d-sm-none">
-      <a
-        class="font-18 font-family-poppins nmc-dark-grey"
-        (click)="logout()"
-        (keyup.enter)="logout()"
-        tabindex="0"
-        >Logout
-      </a>
-    </li>
-
     <li class="w-100 py-3">
       <button
         class="nmc-btn-primary m-auto"
@@ -92,6 +11,59 @@
       >
         Test Your Skills
       </button>
+    </li>
+
+    @if(!user){
+    <li class="w-100 py-3 start">
+      <a class="font-18 font-family-poppins nmc-dark-grey" href="/login"
+        >Login</a
+      >
+    </li>
+    }
+
+    <li class="w-100 py-3">
+      <a class="font-18 font-family-poppins nmc-dark-grey" href="home">Home</a>
+    </li>
+
+    @if(user){
+    <li class="w-100 py-3">
+      <a class="font-18 font-family-poppins nmc-dark-grey" href="/profile"
+        >Profile</a
+      >
+    </li>
+    }
+
+    <li class="w-100 py-3">
+      <a class="font-18 font-family-poppins nmc-dark-grey" href="/jobs">Jobs</a>
+    </li>
+
+    <li class="w-100 py-3">
+      <a class="font-18 font-family-poppins nmc-dark-grey" href="/events"
+        >Events</a
+      >
+    </li>
+
+    <li class="w-100 py-3">
+      <a class="font-18 font-family-poppins nmc-dark-grey" href="/mentors"
+        >Mentors</a
+      >
+    </li>
+
+    <li class="w-100 py-3">
+      <a class="font-18 font-family-poppins nmc-dark-grey" href="/ng-india"
+        >ng-India</a
+      >
+    </li>
+
+    @if(user){
+    <li class="w-100 py-3">
+      <a
+        class="font-18 font-family-poppins nmc-dark-grey"
+        (click)="logout()"
+        (keyup.enter)="logout()"
+        tabindex="0"
+        >Logout
+      </a>
     </li>
     }
   </ul>
@@ -167,30 +139,29 @@
                 >ng-India</a
               >
             </li>
-
-            @if(user){
-            <li>
-              <button
-                class="nmc-btn-primary ms-4"
-                type="submit"
-                routerLink="/test-skills"
-              >
-                Test Your Skills
-              </button>
-            </li>
-            }
           </ul>
         </div>
       </nav>
 
       @if(!user){
-      <button
+      <!-- <button
         class="start-learning nmc-btn-primary ms-2 ms-xl-5 font-18"
         type="submit"
         routerLink="/login"
       >
-        Start Learning</button
-      >}@else{
+        Start Learning
+      </button> -->
+
+      <li class="nav-item ms-2 d-none d-xl-block">
+        <a
+          class="nav-link font-16 nmc-dark-grey font-uppercase px-3 py-1"
+          routerLink="/login"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: true }"
+          >Login</a
+        >
+      </li>
+      }@else{
       <div class="logged-in d-flex align-items-center ms-2 ms-xl-5">
         <figure class="user-img overflow-hidden m-0 p-0 rounded-5">
           <img
@@ -248,6 +219,14 @@
         </li>
       </div>
       }
+
+      <button
+        class="nmc-btn-primary ms-4 d-none d-xl-block"
+        type="submit"
+        routerLink="/test-skills"
+      >
+        Test Your Skills
+      </button>
     </div>
   </div>
 </header>

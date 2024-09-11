@@ -11,43 +11,42 @@
             object-position: top;
         }
 
-        .social {
-            position: absolute;
-            inset: 0;
-            background-color: rgba(0, 0, 0, 0.6);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 2;
-            padding-bottom: 20px;
-            transition: 0.3s;
-            visibility: hidden;
-            opacity: 0;
-        }
-
-        .social a {
-            transition: 0.3s;
-            color: $nmc-white;
-            font-size: 20px;
-            margin: 0 8px;
-        }
-
-        .social a:hover {
-            color: $nmc-primary;
-        }
+        // .social {
+        //     position: absolute;
+        //     inset: 0;
+        //     background-color: rgba(0, 0, 0, 0.6);
+        //     display: flex;
+        //     justify-content: center;
+        //     align-items: center;
+        //     z-index: 2;
+        //     padding-bottom: 20px;
+        //     transition: 0.3s;
+        //     visibility: hidden;
+        //     opacity: 0;
+        // }
     }
 
-    &:hover figure .social {
-        padding-bottom: 0;
-        visibility: visible;
-        opacity: 1;
+    &:hover figure img {
+        transition: all ease 0.3s;
+        transform: scale(1.1);
     }
 
     .info {
         box-shadow: 0 1px 10px rgba(0, 0, 0, 0.1);
         margin-top: -150px;
-        padding: 170px 10px 50px !important;
+        padding: 170px 10px 30px !important;
         border: 1px solid #efefef;
+    }
+
+    .social a {
+        transition: 0.3s;
+        color: $nmc-dark-grey;
+        font-size: 20px;
+        margin: 0 8px;
+    }
+
+    .social a:hover {
+        color: $nmc-primary;
     }
 }
 

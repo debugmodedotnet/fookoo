@@ -20,5 +20,6 @@ export class HeroAdvertisementComponent implements OnInit {
       console.log("advertisements:", advertisements);
       this.advertisements = advertisements as IAdvertisement[];
     });
+
   }
 }

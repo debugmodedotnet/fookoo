@@ -16,7 +16,7 @@ export class HeroTechComponent implements OnInit {
   private firestore = inject(AngularFirestore);
 
   ngOnInit(): void {
-    this.firestore.collection('homepagedata').doc('technology-stack').collection('techs').valueChanges().subscribe(techStack => {     
+    this.firestore.collection('homepagedata').doc('technology-stack').collection('techs').valueChanges().subscribe(techStack => {
       this.techStack = techStack as ITechStack[];
     });
   }

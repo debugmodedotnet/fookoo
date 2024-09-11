@@ -28,26 +28,21 @@ export class AppliedJobComponent implements OnInit {
   }
 
   async loadAppliedJobs(userId: string): Promise<void> {
-    try {
-      const jobSnapshots = await this.firestore.collection('job-transactions').ref.get();
-      const jobs: Job[] = [];
+    const jobSnapshots = await this.firestore.collection('job-transactions').ref.get();
+    const jobs: Job[] = [];
 
-      for (const jobSnapshot of jobSnapshots.docs) {
-        const userApplication = await this.firestore.collection(`job-transactions/${jobSnapshot.id}/users`).doc(userId).ref.get();
+    for (const jobSnapshot of jobSnapshots.docs) {
+      const userApplication = await this.firestore.collection(`job-transactions/${jobSnapshot.id}/users`).doc(userId).ref.get();
 
-    
-        if (userApplication.exists) {
-          const jobDoc = await this.firestore.doc<Job>(`jobForms/${jobSnapshot.id}`).ref.get();
-          if (jobDoc.exists) {
-            jobs.push(jobDoc.data() as Job);
-          }
+
+      if (userApplication.exists) {
+        const jobDoc = await this.firestore.doc<Job>(`jobForms/${jobSnapshot.id}`).ref.get();
+        if (jobDoc.exists) {
+          jobs.push(jobDoc.data() as Job);
         }
       }
-
-      this.appliedJobs = jobs;
-
-    } catch (error) {
-      console.error('Error fetching applied jobs:', error);
     }
+
+    this.appliedJobs = jobs;
   }
 }

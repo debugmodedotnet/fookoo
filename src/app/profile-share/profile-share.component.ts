@@ -23,10 +23,7 @@ export class ProfileShareComponent implements OnInit {
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
       this.name = params.get('name');
-      this.uid = params.get('uid');
-
-      console.log(this.uid);
-      console.log(this.name);
+      this.uid = params.get('uid');      
 
       if (this.uid) {
         this.loadUserData(this.uid);
@@ -37,7 +34,6 @@ export class ProfileShareComponent implements OnInit {
   private loadUserData(uid: string): void {
     this.userService.getUserById(uid).subscribe(data => {
       this.userData = data;
-      console.log(this.userData);
     });
   }
 }

@@ -25,7 +25,6 @@ export class EventService {
   }
 
   addEvent(event: IEvent, id: string) {
-    console.log('Adding event:', event);
     return this.firestore.collection('events').doc(id).set(event);
   }
 

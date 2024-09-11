@@ -20,8 +20,7 @@ export class CertificatesComponent {
   selectedCertificate?: ICertificate;
 
   openShareModal(certificate: ICertificate) {
-    this.selectedCertificate = certificate;
-    console.log('Modal opened for certificate:', this.selectedCertificate);
+    this.selectedCertificate = certificate;    
   }
 
   shareOnLinkedIn() {

@@ -31,14 +31,13 @@ export class EventListingComponent implements OnInit {
         return { id, ...data };
       }))
     ).subscribe(events => {
-      console.log(events);
       this.events = events as IEvent[];
       this.showLoadMoreButton = this.events.length > 8;
     });
   }
 
   loadMore() {
-    console.log('Load more clicked');
+    return true;
   }
 
 }

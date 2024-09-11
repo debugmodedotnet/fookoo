@@ -30,13 +30,14 @@ export class UserService {
         }
       }),
       catchError(error => {
-        console.error('Login error object:', error);
         let errorMessage = 'An error occurred during login.';
+
         if (error && error.code === 'auth/user-not-found') {
           errorMessage = 'No account found with this email. Please create an account.';
         } else if (error && error.code === 'auth/wrong-password') {
           errorMessage = 'Incorrect password. Please try again.';
         }
+
         return throwError(() => new Error(errorMessage));
       })
     );
@@ -51,29 +52,21 @@ export class UserService {
   }
 
   async signUp(email: string, password: string, userDetails: { name: string; }) {
-    try {
-      const userCredential = await this.afAuth.createUserWithEmailAndPassword(email, password);
-      const uid = userCredential.user!.uid;
-      await this.firestore.doc(`users/${uid}`).set({
-        email,
-        uid,
-        name: userDetails.name,
-      });
-      console.log('User signed up and additional information added');
-    } catch (error) {
-      console.error('Error signing up:', error);
-      throw error;
-    }
+    const userCredential = await this.afAuth.createUserWithEmailAndPassword(email, password);
+    const uid = userCredential.user!.uid;
+    await this.firestore.doc(`users/${uid}`).set({
+      email,
+      uid,
+      name: userDetails.name,
+    });
   }
 
   getCurrentUser(): Observable<any> {
     return this.afAuth.authState.pipe(
       switchMap((user: any) => {
         if (user) {
-          console.log('Current user UID:', user.uid);
           return this.firestore.doc(`users/${user.uid}`).valueChanges();
         } else {
-          console.log('No current user');
           return of(null);
         }
       })

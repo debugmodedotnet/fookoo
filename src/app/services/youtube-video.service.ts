@@ -22,7 +22,6 @@ export class YoutubeVideoService {
   }
 
   addVideo(video: IYoutubeVideos) {
-    console.log('Adding video:', video);
     return this.firestore.collection('youtube-videos').add(video);
   }
 

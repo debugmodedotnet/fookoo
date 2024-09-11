@@ -21,7 +21,6 @@ export class InstructorService {
   }
 
   addInstructor(instructor: IInstructor) {
-    console.log('Adding instructor:', instructor);
     return this.firestore.collection('instructor').add(instructor);
   }
 

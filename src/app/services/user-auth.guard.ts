@@ -11,10 +11,8 @@ export const userAuthGuard: CanActivateFn = () => {
   return userService.getCurrentUser().pipe(
     map(user => {
       if (user) {
-        console.log('User logged in');
         return true;
       } else {
-        console.log('User not logged in');
         return false;
       }
     }),
@@ -23,8 +21,7 @@ export const userAuthGuard: CanActivateFn = () => {
         router.navigate(['/login']);
       }
     }),
-    catchError((err) => {
-      console.error(err);
+    catchError(() => {      
       router.navigate(['/login']);
       return of(false);
     })

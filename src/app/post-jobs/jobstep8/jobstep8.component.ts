@@ -78,8 +78,7 @@ export class Jobstep8Component implements OnInit {
   }
 
   ngOnInit(): void {
-    const jobId = this.data();
-    console.log(jobId);
+    const jobId = this.data();    
 
     if (jobId) {
       this.jobService.getJobById(jobId).subscribe({
@@ -89,14 +88,10 @@ export class Jobstep8Component implements OnInit {
             this.jobDescriptionHtml = this.sanitizer.bypassSecurityTrustHtml(data.JobDescription || '');
           }
         },
-        error: (e) => {
-          console.log('Error occurred while fetching job: ', e);
-        },
       });
     }
 
-    this.afAuth.user.pipe(first()).subscribe(res => {
-      console.log(res);
+    this.afAuth.user.pipe(first()).subscribe(res => {      
       this.userId = res?.uid;
       this.loggedInEmail = res?.email;
     });
@@ -150,8 +145,7 @@ export class Jobstep8Component implements OnInit {
   logSelectedSkills(): void {
     const selectedSkills = this.skillsRequired.controls.map(
       (control) => control.value
-    );
-    console.log('Selected Skills:', selectedSkills);
+    );    
   }  /********************* Skill End *********************/
 
 
@@ -200,9 +194,7 @@ export class Jobstep8Component implements OnInit {
 
 
   editJob(job: Job | null): void {
-    if (job && job.id) {
-      console.log('Editing job:', job);
-
+    if (job && job.id) {      
       this.jobForm.patchValue({
         companyName: job.companyName,
         position: job.position,
@@ -236,8 +228,6 @@ export class Jobstep8Component implements OnInit {
 
       this.currentJobId = job.id;
       this.editMode = true;
-    } else {
-      console.error('Job is undefined or job ID is missing:', job);
     }
   }
 
@@ -275,9 +265,6 @@ export class Jobstep8Component implements OnInit {
         .then(() => {
           this.editMode = false;
           this.resetForm();
-        })
-        .catch((err: any) => {
-          console.error('Update failed', err);
         });
     } else {
       this.jobForm.markAllAsTouched();
@@ -319,12 +306,6 @@ export class Jobstep8Component implements OnInit {
       throw new Error("UserId not found");
     }
     return this.userId;
-  }
-
-  openShareModal() {
-    if (this.job) {
-      console.log('Opening share modal for job:', this.job);
-    }
   }
 
   shareOnLinkedIn(): void {

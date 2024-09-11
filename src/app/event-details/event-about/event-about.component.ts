@@ -33,8 +33,7 @@ export class EventAboutComponent implements OnInit {
 
   getEventDetails(eventId: string) {
     if (eventId) {
-      this.firestore.collection('events').doc(eventId).valueChanges().subscribe(eventAbout => {
-        console.log("eventAbout:", eventAbout);
+      this.firestore.collection('events').doc(eventId).valueChanges().subscribe(eventAbout => {        
         this.eventAbout = eventAbout as IEvent;
         this.checkEnrollment();
       });
@@ -45,13 +44,10 @@ export class EventAboutComponent implements OnInit {
     this.userService.getCurrentUser().subscribe(user => {
       if (user) {
         if (this.enrolled) {
-          //console.log("User is already enrolled");
           return;
         }
         this.enrollUser(user);
       } else {
-        //console.log("No user is logged in");
-        // this.router.navigate(['/login']);
         this.router.navigate(['/login'], { queryParams: { returnUrl: this.router.url } });
       }
     });
@@ -70,7 +66,6 @@ export class EventAboutComponent implements OnInit {
 
   enrollUser(user: IUser) {
     if (!this.eventId) {
-      console.error('No event ID provided');
       return;
     }
 
@@ -87,10 +82,9 @@ export class EventAboutComponent implements OnInit {
     userRef.set(userData).then(() => {
       this.enrolled = true;
       this.isLoading = false;
-      console.log("User enrolled successfully");
-    }).catch(error => {
+
+    }).catch(() => {
       this.isLoading = false;
-      console.error('Error enrolling user:', error);
     });
   }
 

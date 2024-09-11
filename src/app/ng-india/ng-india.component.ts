@@ -35,8 +35,7 @@ export class NgIndiaComponent implements OnInit {
   }
 
   getBannerDetails() {
-    this.firestore.collection('ng-india').doc('about-ng-india').valueChanges().subscribe(ngIndia => {
-      console.log("ngIndia:", ngIndia);
+    this.firestore.collection('ng-india').doc('about-ng-india').valueChanges().subscribe(ngIndia => {      
       this.ngIndia = ngIndia as INgIndia;
     });
   }
@@ -48,8 +47,7 @@ export class NgIndiaComponent implements OnInit {
         const id = a.payload.doc.id;
         return { id, ...data };
       })), map(prevEvents => prevEvents.reverse())
-    ).subscribe(prevEvents => {
-      console.log(prevEvents);
+    ).subscribe(prevEvents => {      
       this.prevEvents = prevEvents;
       this.prevEvents.forEach(event => this.loadSpeakersForEvent(event));
       this.prevEvents.forEach(event => this.loadSponsorsForEvent(event));

@@ -27,8 +27,7 @@ export class ViewJobComponent implements OnInit {
   editMode = false;
   currentJobId: string | null = null;
   userId?: string;
-  loggedInEmail: string | null | undefined;
-  quillConfig: any;
+  loggedInEmail: string | null | undefined;  
 
   positions: string[] = [];
   qualifications: string[] = [];
@@ -73,7 +72,6 @@ export class ViewJobComponent implements OnInit {
 
   ngOnInit(): void {
     this.afAuth.user.pipe(first()).subscribe(res => {
-      console.log(res);
       this.userId = res?.uid;
       this.loggedInEmail = res?.email;
       this.loadJobs();
@@ -129,7 +127,7 @@ export class ViewJobComponent implements OnInit {
     const selectedSkills = this.skillsRequired.controls.map(
       (control) => control.value
     );
-    console.log('Selected Skills:', selectedSkills);
+
   }  /********************* Skill End *********************/
 
 
@@ -181,13 +179,10 @@ export class ViewJobComponent implements OnInit {
     this.loading = true;
     this.jobService.getJobsByUserId(this.loggedInEmail as string).subscribe(
       (jobs: Job[]) => {
-        //console.log('Loaded jobs:', jobs);
         this.jobs = jobs;
-        //console.log(this.jobs);
         this.loading = false;
       },
-      (error: any) => {
-        console.error('Error loading jobs:', error);
+      () => {
         this.loading = false;
       }
     );
@@ -195,7 +190,6 @@ export class ViewJobComponent implements OnInit {
 
   editJob(job: Job): void {
     if (job && job.id) {
-      console.log('Editing job:', job);
 
       this.jobForm.patchValue({
         companyName: job.companyName,
@@ -230,8 +224,6 @@ export class ViewJobComponent implements OnInit {
 
       this.currentJobId = job.id;
       this.editMode = true;
-    } else {
-      console.error('Job is undefined or job ID is missing:', job);
     }
   }
 
@@ -270,9 +262,6 @@ export class ViewJobComponent implements OnInit {
           this.editMode = false;
           this.resetForm();
           this.loadJobs();
-        })
-        .catch((err: any) => {
-          console.error('Update failed', err);
         });
     } else {
       this.jobForm.markAllAsTouched();
@@ -284,12 +273,7 @@ export class ViewJobComponent implements OnInit {
       this.jobService.deleteJob(jobId)
         .then(() => {
           this.loadJobs();
-        })
-        .catch(error => {
-          console.error('Error deleting job:', error);
         });
-    } else {
-      console.error('Job ID is undefined.');
     }
   }
 
@@ -298,12 +282,7 @@ export class ViewJobComponent implements OnInit {
       this.jobService.updateJob(jobId, { isActive: !jobStatus })
         .then(() => {
           this.loadJobs();
-        })
-        .catch(error => {
-          console.error('Error deactivating job:', error);
         });
-    } else {
-      console.error('Job ID is undefined.');
     }
   }
 

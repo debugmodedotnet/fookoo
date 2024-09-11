@@ -20,8 +20,7 @@ export class FooterComponent implements OnInit {
   }
 
   getFooterDetails() {
-    this.firestore.collection('layout').doc('footer').valueChanges().subscribe(footer => {
-      console.log(footer);
+    this.firestore.collection('layout').doc('footer').valueChanges().subscribe(footer => {      
       this.footer = footer as IFooter;
     });
   }

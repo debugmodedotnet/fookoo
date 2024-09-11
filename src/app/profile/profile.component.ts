@@ -24,10 +24,8 @@ export class ProfileComponent implements OnInit {
   ngOnInit(): void {
     this.userService.getCurrentUser().subscribe(user => {
       if (user) {
-        console.log("User is logged in", user);
         this.user = user;
       } else {
-        console.log("No user is logged in");
         this.user = null;
       }
     });
@@ -105,9 +103,7 @@ export class ProfileComponent implements OnInit {
             this.userService.updateUserProfile(userDetails);
           });
         })
-      ).subscribe(data => {
-        console.log(data);
-      });
+      );
     }
   }
 

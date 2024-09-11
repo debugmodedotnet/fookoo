@@ -30,8 +30,7 @@ export class InstructorsComponent implements OnInit {
         const id = a.payload.doc.id;
         return { id, ...data };
       }))
-    ).subscribe(instructors => {
-      console.log(instructors);
+    ).subscribe(instructors => {      
       this.instructors = instructors as IInstructor[];
     });
   }

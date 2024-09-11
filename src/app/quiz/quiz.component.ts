@@ -93,7 +93,6 @@ export class QuizComponent implements OnInit {
       if (!this.question?.id) {
         throw new Error("questionId not found");
       }
-      console.log("submitted: ", this.quizForm.get('optionId')?.value);
       await this.quizService.addAttempt({
         userId: this.getUserId(),
         questionId: this.question?.id,
@@ -113,14 +112,12 @@ export class QuizComponent implements OnInit {
 
   getQuestion(questionIdsToExclude: string[]): void {
     this.quizService.getQuestion(this.technologyName, questionIdsToExclude).pipe(first()).subscribe(firstRes => {
-      console.log(">>>>> first res", firstRes, questionIdsToExclude);
       if (firstRes.length) {
         this.question = firstRes[0];
         shuffleItems(this.question.options);
       }
       else {
         this.quizService.getQuestion(this.technologyName, questionIdsToExclude, 1).pipe(first()).subscribe(secondRes => {
-          console.log(">>>>> second res", secondRes, questionIdsToExclude);
           if (!secondRes.length) {
             throw new Error("Didn't find question");
           }
@@ -133,17 +130,14 @@ export class QuizComponent implements OnInit {
 
   async loadNewQuestion(): Promise<void> {
     this.quizService.getAttemptedQuestions(this.getUserId()).pipe(first()).subscribe(async res => {
-      console.log("test", res);
       if (res) {
         this.totalAttemptedQuestions = res.length;
         if (this.totalAttemptedQuestions < this.totalQuestions) {
           this.getQuestion(res.map(attemptedQuestion => attemptedQuestion.questionId));
         } else {
-          console.log('All questions attempted. Calculating score...');
           await this.calculateScore();
         }
       } else {
-        console.error('Attempted questions data is undefined.');
         this.totalAttemptedQuestions = 0;
       }
     });
@@ -156,8 +150,7 @@ export class QuizComponent implements OnInit {
       const totalQuestions = this.totalQuestions;
 
       const correctAnswersPromises = attemptedQuestions.map(async attempt => {
-        const question = await this.quizService.getQuestionById(this.technologyName, attempt.questionId).toPromise();
-        console.log(`Question ID: ${question?.id}, Answer ID: ${question?.answerId}, Attempted Option ID: ${attempt.optionId}`);
+        const question = await this.quizService.getQuestionById(this.technologyName, attempt.questionId).toPromise();       
         return question && question.answerId === attempt.optionId;
       });
 
@@ -165,11 +158,8 @@ export class QuizComponent implements OnInit {
       const correctAnswers = correctAnswersArray.filter(isCorrect => isCorrect).length;
 
       this.userScore = correctAnswers;
-      this.scorePercentage = (this.userScore / totalQuestions) * 100;
-
-      console.log(`Total Questions: ${totalQuestions}, Correct Answers: ${correctAnswers}, Score Percentage: ${this.scorePercentage}`);
+      this.scorePercentage = (this.userScore / totalQuestions) * 100;      
     } else {
-      console.error('Attempted questions data is undefined or totalQuestions is 0.');
       this.userScore = 0;
       this.scorePercentage = 0;
     }

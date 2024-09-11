@@ -37,15 +37,11 @@ export class LoginComponent {
       const { email, password } = this.loginForm.value;
 
       this.afAuth.signInWithEmailAndPassword(email, password)
-        .then(() => {
-          console.log('User signed in successfully');
+        .then(() => {          
           //this.router.navigate(['/home']);
           this.router.navigateByUrl(this.returnUrl);
         })
-        .catch((error) => {
-          console.error('Login error code:', error.code);
-          console.error('Login error message:', error.message);
-
+        .catch((error) => {          
           if (error.code === 'auth/user-not-found') {
             this.errorMessage = 'User not found. Please sign up or try a different email.';
           }
@@ -62,8 +58,7 @@ export class LoginComponent {
             this.errorMessage = 'The credentials provided are incorrect or malformed. Please check and try again.';
           }
 
-          else {
-            console.error('Login error:', error);
+          else {            
             this.errorMessage = error.message || 'An unexpected error occurred. Please try again.';
           }
         });

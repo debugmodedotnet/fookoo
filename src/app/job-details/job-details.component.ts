@@ -48,10 +48,7 @@ export class JobDetailsComponent implements OnInit {
               }
             });
           }
-        },
-        error: (e) => {
-          console.log("Error occurred while fetching job: ", e);
-        }
+        },        
       });
     }
 
@@ -63,9 +60,7 @@ export class JobDetailsComponent implements OnInit {
   }
 
   applyJob() {
-    if (this.user) {
-      console.log("Job has been applied");
-    } else {
+    if (!this.user) {     
       this.router.navigate(['/login'], { queryParams: { returnUrl: this.router.url } });
     }
   }
@@ -84,8 +79,7 @@ export class JobDetailsComponent implements OnInit {
   }
 
   submitApplication(user: IUser) {
-    if (!this.id) {
-      console.error('No Job ID provided');
+    if (!this.id) {      
       return;
     }
 
@@ -102,10 +96,8 @@ export class JobDetailsComponent implements OnInit {
     userRef.set(userData).then(() => {
       this.applied = true;
       this.isLoading = false;
-      console.log("Job application successfully submitted.");
-    }).catch(error => {
+    }).catch(() => {
       this.isLoading = false;
-      console.error('Error applying:', error);
     });
   }
 
@@ -122,12 +114,6 @@ export class JobDetailsComponent implements OnInit {
         this.applied = true;
       }
     });
-  }
-
-  openShareModal() {
-    if (this.job) {
-      console.log('Opening share modal for job:', this.job);
-    }
   }
 
   shareOnLinkedIn(): void {

@@ -16,8 +16,7 @@ export class HeroAdvertisementComponent implements OnInit {
 
   private firestore = inject(AngularFirestore);
   ngOnInit(): void {
-    this.firestore.collection('homepagedata').doc('advertisements').collection('ads-list').valueChanges().subscribe(advertisements => {
-      console.log("advertisements:", advertisements);
+    this.firestore.collection('homepagedata').doc('advertisements').collection('ads-list').valueChanges().subscribe(advertisements => {      
       this.advertisements = advertisements as IAdvertisement[];
     });
 

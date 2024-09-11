@@ -20,8 +20,7 @@ export class JobService {
     );
   }
 
-  getJobsByUserId(userId: string): Observable<Job[]> {
-    console.log(userId);
+  getJobsByUserId(userId: string): Observable<Job[]> {    
     return this.firestore.collection<Job>('jobForms', ref => ref.where('email', '==', userId)).snapshotChanges().pipe(
       map(actions => actions.map(a => {
         const data = a.payload.doc.data() as Job;

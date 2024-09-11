@@ -28,8 +28,7 @@ export class EventComponent implements OnInit {
         const id = a.payload.doc.id;
         return { id, ...data };
       }))
-    ).subscribe(events => {
-      console.log(events);
+    ).subscribe(events => {      
       this.events = events as IEvent[];
     });
   }

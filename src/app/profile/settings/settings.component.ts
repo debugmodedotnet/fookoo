@@ -11,7 +11,7 @@ import firebase from 'firebase/compat/app';
   styleUrl: './settings.component.scss'
 })
 export class SettingsComponent implements OnInit {
-  private afAuth = inject(AngularFireAuth);  
+  private afAuth = inject(AngularFireAuth);
   private fb = inject(FormBuilder);
 
   user?: firebase.User;
@@ -41,7 +41,6 @@ export class SettingsComponent implements OnInit {
 
   // loadUserData(uid: string) {
   //   this.firestore.collection('users').doc(uid).get().subscribe(doc => {
-  //     console.log(doc.data())
   //     if (doc.exists) {
   //       this.user = doc.data();
   //     }
@@ -66,7 +65,6 @@ export class SettingsComponent implements OnInit {
       const confirmPassword = this.updatePasswordForm.get('confirmPassword')?.value;
 
       if (newPassword !== confirmPassword) {
-        console.error('New passwords do not match');
         return;
       }
 
@@ -75,26 +73,12 @@ export class SettingsComponent implements OnInit {
           const credential = firebase.auth.EmailAuthProvider.credential(user.email, currentPassword);
           user.reauthenticateWithCredential(credential).then(() => {
             user.updatePassword(newPassword).then(() => {
-              // Update password in Firestore
-              // this.firestore.collection('users').doc(user.uid).update({
-              //   password: newPassword
-              // }).then(() => {
-              console.log('Password updated successfully');
-              // this.user.password = newPassword;
               this.toggleUpdatePasswordForm();
               this.showPopup = true;
               setTimeout(() => {
                 this.showPopup = false;
               }, 3000);
-              // }).catch(error => {
-              //   console.error('Error updating password in Firestore:', error);
-              // });
-            }).catch(error => {
-              console.error('Error updating password:', error);
             });
-          }).catch(error => {
-            console.error('Re-authentication error:', error);
-            // Handle re-authentication error (e.g., wrong current password)
           });
         }
       });

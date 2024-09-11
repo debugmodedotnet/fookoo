@@ -2,9 +2,56 @@
 
 <app-hero-tech></app-hero-tech>
 
- <app-event></app-event>
+<section class="">
+  <div class="container-boxed">
+    <div class="input__group mt-5">
+      <div class="d-flex align-items-center justify-content-center">
+        <div class="col-10">
+          <div class="d-flex flex-wrap align-items-center">
+            <input
+              id="newsletter"
+              type="email"
+              formControlName="newsletter"
+              placeholder="Enter email address"
+              class="input__field"
+            />
 
- <app-instructors></app-instructors>
+            <label for="newsletter" class="input__label"
+              >Enter email address</label
+            >
+          </div>
+        </div>
+
+        <div class="col-2">
+          <button type="button" class="nmc-btn-primary ms-3 h-auto py-3">
+            Join Newsletter
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- <div class="row justify-content-center align-items-center gx-3 mt-4">
+      <div class="col-10">
+        <input
+          type="text"
+          formControlName="newsletter"
+          class="form-control py-3 rounded-0"
+          placeholder="Enter email address"
+        />
+      </div>
+
+      <div class="col-2">
+        <button class="nmc-btn-primary h-auto py-3 w-100" type="submit">
+          Join Newsletter
+        </button>
+      </div>
+    </div> -->
+  </div>
+</section>
+
+<app-event></app-event>
+
+<app-instructors></app-instructors>
 
 <app-jobs-section></app-jobs-section>
 

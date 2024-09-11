@@ -23,22 +23,66 @@
   }
 }
 
+.wrapper {
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+
+  .close {
+    transform: rotate(180deg);
+    display: block;
+  }
+
+  table {
+    border: 1px solid #e9ecef;
+  }
+
+  .table th,
+  .table td {
+    padding: 1rem;
+    vertical-align: top;
+    border-top: 1px solid #e9ecef;
+  }
+
+  .table tbody+tbody {
+    border-top: 2px solid #e9ecef;
+  }
+
+  .table thead th {
+    color: $nmc-medium-grey;
+    background-color: #f6f9fc;
+    font-size: 0.75rem;
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    border-bottom: 1px solid #e9ecef;
+  }
+
+  .table tbody td {
+    font-size: .9rem;
+    white-space: nowrap;
+    color: $nmc-dark-grey;
+    letter-spacing: 1px;
+    border-bottom: 1px solid #e9ecef;
+    font-weight: 600;
+  }
+}
+
 // Table styling
-.table {
-  border-collapse: separate;
-  border-spacing: 0;
-}
+// .table {
+//   border-collapse: separate;
+//   border-spacing: 0;
+// }
 
-.table-bordered {
-  border: 1px solid #dee2e6;
-}
+// .table-bordered {
+//   border: 1px solid #dee2e6;
+// }
 
-.table th,
-.table td {
-  padding: 0.75rem;
-  vertical-align: middle;
-  border-top: 1px solid #dee2e6;
-}
+// .table th,
+// .table td {
+//   padding: 0.75rem;
+//   vertical-align: middle;
+//   border-top: 1px solid #dee2e6;
+// }
 
 quill-editor {
   width: 100%;

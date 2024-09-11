@@ -32,7 +32,6 @@ export class EventAgendaComponent implements OnInit {
         return { id, ...data };
       })), map(eventAgenda => eventAgenda)
     ).subscribe(eventAgenda => {
-      console.log("eventAgenda:", eventAgenda);
       this.eventAgenda = eventAgenda;
     });
   }  

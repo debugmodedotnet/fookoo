@@ -40,20 +40,16 @@ export class AboutComponent implements OnInit {
   ngOnInit(): void {
     this.userService.getCurrentUser().subscribe(user => {
       if (user) {
-        console.log("User is logged in", user);
         this.user = user;
         this.userProfileForm.patchValue(user);
-      } else {
-        console.log("No user is logged in");
+      } else {        
         this.user = null;
       }
     });
   }
 
-  saveProfile() {
-    console.log("hey");
-    const userDetails = { ...this.user, ...this.userProfileForm.value };
-    console.log(this.user.id);
+  saveProfile() {    
+    const userDetails = { ...this.user, ...this.userProfileForm.value };    
     this.userService.updateUserProfile(userDetails);
   }
 

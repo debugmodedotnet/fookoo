@@ -33,7 +33,6 @@ export class EventSpeakersComponent implements OnInit {
         return { id, ...data };
       })), map(eventSpeakers => eventSpeakers.reverse())
     ).subscribe(eventSpeakers => {
-      console.log("eventSpeakers:", eventSpeakers);
       this.eventSpeakers = eventSpeakers;
     });
   }

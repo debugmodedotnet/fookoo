@@ -25,8 +25,7 @@ export class EventAttendeesComponent implements OnInit {
   }
 
   getEventAttendees(eventId: string) {
-    this.firestore.collection('event-transactions').doc(eventId).collection('users').valueChanges().subscribe(eventAttendees => {
-      console.log("eventAttendees:", eventAttendees);
+    this.firestore.collection('event-transactions').doc(eventId).collection('users').valueChanges().subscribe(eventAttendees => {      
       this.eventAttendees = eventAttendees as IEventAttendees[];
     });
   }

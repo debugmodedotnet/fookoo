@@ -96,8 +96,7 @@ export class Jobstep3Component implements OnInit {
   logSelectedSkills(): void {
     const selectedSkills = this.skillsRequired.controls.map(
       (control) => control.value
-    );
-    console.log('Selected Skills:', selectedSkills);
+    );    
   }
 
   next(): void {

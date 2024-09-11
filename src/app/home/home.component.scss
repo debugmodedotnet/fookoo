@@ -1,0 +1,67 @@
+@use "../styles/variables" as *;
+
+.min-height-700 {
+    min-height: 700px;
+}
+
+.nmc-btn-primary {
+    font-size: 1.3rem;
+}
+
+.input__group {
+    position: relative;
+    padding: 15px 0 0;
+
+    .input__field {
+        width: 100%;
+        border: 0;
+        border-bottom: 2px solid #ccc;
+        outline: 0;
+        font-size: 1.3rem;
+        color: $nmc-dark-grey;
+        padding: 7px 0;
+        background: transparent;
+        transition: border-color 0.2s;
+
+        &:focus {
+            padding-bottom: 6px;
+            border-width: 3px;
+            border-color: $nmc-primary;
+            border-image-slice: 1;
+        }
+    }
+
+    .input__field::placeholder {
+        color: transparent;
+    }
+
+    .input__field:placeholder-shown~.input__label {
+        font-size: 1.3rem;
+        cursor: text;
+        top: 20px;
+    }
+
+    .input__field:focus~.input__label {
+        position: absolute;
+        top: -15px;
+        display: block;
+        transition: 0.2s;
+        font-size: 1.2rem;
+        color: $nmc-dark-grey;
+        font-weight: 500;
+    }
+
+    .input_field:required,
+    .input__field:invalid {
+        box-shadow: none;
+    }
+
+    .input__label {
+        position: absolute;
+        top: -15px;
+        display: block;
+        transition: 0.2s;
+        font-size: 1.2rem;
+        color: $nmc-medium-grey;
+    }
+}

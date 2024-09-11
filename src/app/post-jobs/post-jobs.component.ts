@@ -42,12 +42,10 @@ export class PostJobsComponent {
     this.currentStep = data.nextStep;
     this.dataToSave = data.formData ;
     this.persisted = data.persisted || false; 
-    console.log('Step change:', data);
+    
     if (this.currentStep === 2 && this.persisted === false) {
-      console.log('Saving initial data');
       this.saveInitialData();
     } else {
-      console.log('Saving data');
       this.saveData();
     }
 
@@ -60,13 +58,7 @@ export class PostJobsComponent {
     await this.firestore
       .collection('jobForms')
       .doc(docId)
-      .set(formData, { merge: true })
-      .then(() => {
-        console.log('Data added successfully with ID:', docId);
-      })
-      .catch((error) => {
-        console.error('Error adding data: ', error);
-      });
+      .set(formData, { merge: true });
   }
 
    saveInitialData() {
@@ -78,19 +70,12 @@ export class PostJobsComponent {
      formData.email = user.email;
      this.currentJobId = formData.id;
      docRef
-       .set(formData)
-       .then(() => {
-         console.log('Data saved successfully with ID:', formData.id);
-       })
-       .catch((error) => {
-         console.error('Error Posting Job data: ', error);
-       });
+       .set(formData);
    })
     
   }
 
   backChange(data: any) {
-    console.log('Back data:', data);
     this.currentStep = data.previousStep;
     this.fetchJobDocument();
   }
@@ -103,15 +88,8 @@ export class PostJobsComponent {
       .subscribe(
         (doc) => {
           if (doc.exists) {
-            console.log('Job document:', doc.data());
-            // Populate the form with the fetched data
             this.selectedJob = doc.data();
-          } else {
-            console.error('No such document!');
           }
-        },
-        (error) => {
-          console.error('Error fetching job document:', error);
         }
       );
   }

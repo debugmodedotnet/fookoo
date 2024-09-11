@@ -61,8 +61,6 @@ export class SignupComponent {
       this.router.navigate(['/login']);
       this.signupError = null;
     }).catch(error => {
-      console.log('Entered catch block:', error);
-
       if (error.code === 'auth/email-already-in-use') {
         this.signupError = 'This email is already registered. Please sign in instead.';
       } else {
@@ -70,7 +68,6 @@ export class SignupComponent {
       }
 
       this.cdr.detectChanges();
-      console.error('Error signing up:', error);
     });
   }
 

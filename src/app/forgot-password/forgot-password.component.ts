@@ -44,7 +44,6 @@ export class ForgotPasswordComponent {
           } else {
             this.message = 'An error occurred. Please try again later.';
           }
-          console.error('Password reset error:', error);
         });
     }
   }

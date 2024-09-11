@@ -7,7 +7,7 @@
       <button
         class="nmc-btn-primary m-auto"
         type="submit"
-        routerLink="/test-skills"
+        (click)="loginForTest()"
       >
         Test Your Skills
       </button>
@@ -100,6 +100,16 @@
           id="navbar"
         >
           <ul class="navbar-nav mb-lg-0 gap-3 align-items-center">
+            <li>
+              <button
+                class="nmc-btn-primary me-4 d-none d-xl-block"
+                type="submit"
+                (click)="loginForTest()"
+              >
+                Test Your Skills
+              </button>
+            </li>
+
             <li class="nav-item">
               <a
                 class="nav-link font-16 nmc-dark-grey font-uppercase px-3 py-1"
@@ -162,7 +172,7 @@
         >
       </li>
       }@else{
-      <div class="logged-in d-flex align-items-center ms-2 ms-xl-5">
+      <div class="logged-in d-flex align-items-center ms-2 ms-xl-4">
         <figure class="user-img overflow-hidden m-0 p-0 rounded-5">
           <img
             [src]="profileImg"
@@ -173,11 +183,11 @@
 
         <li class="nav-item dropdown m-0 ms-2 d-none d-sm-block">
           <a
-            class="nav-link profile-link font-16 nmc-dark-grey dropdown-toggle"
-            role="button"
+            class="nav-link profile-link font-16 nmc-dark-grey dropdown-toggle pe-none cursor-pointer"           
             data-bs-toggle="dropdown"
             aria-expanded="false"
-          >
+            id="dropdownMenuLink" 
+          >          
             Hi, {{ user.name }}
             <span class="text-xl ml-1 -mr-1 text-slate-500">
               <svg
@@ -196,7 +206,7 @@
             </span>
           </a>
 
-          <ul class="dropdown-menu">
+          <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
             <li class="py-2">
               <a
                 class="dropdown-item font-16 nmc-medium-grey text-center"
@@ -219,14 +229,6 @@
         </li>
       </div>
       }
-
-      <button
-        class="nmc-btn-primary ms-4 d-none d-xl-block"
-        type="submit"
-        routerLink="/test-skills"
-      >
-        Test Your Skills
-      </button>
     </div>
   </div>
 </header>

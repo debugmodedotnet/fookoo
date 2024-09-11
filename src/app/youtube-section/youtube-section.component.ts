@@ -23,8 +23,7 @@ export class YoutubeSectionComponent implements OnInit {
   }
 
   getEvents() {
-    this.firestore.collection('homepagedata').doc('learn-youtube').collection('youtube-videos').valueChanges().subscribe(youtubeVideos => {
-      console.log(youtubeVideos);
+    this.firestore.collection('homepagedata').doc('learn-youtube').collection('youtube-videos').valueChanges().subscribe(youtubeVideos => {      
       this.youtubeVideos = youtubeVideos as IYoutubeVideos[];
     });
   }

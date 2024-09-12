@@ -72,15 +72,27 @@
           [(ngModel)]="jobTypeFilter"
           (change)="applyFilters()"
         >
-          <option value="" selected class="font-24">Select job type</option>
+          <option value="" selected class="font-24">All Jobs</option>
           @for(jobType of jobTypes; track jobType;){
           <option [value]="jobType" class="font-24">{{ jobType }}</option>
           }
         </select>
       </div>
 
+      <div class="form-group salary col-12 col-md-2 d-flex align-items-center">
+        <select
+          [(ngModel)]="salarySortOption"
+          (ngModelChange)="applyFilters()"
+          class="form-select rounded-3 cursor-pointer"
+        >
+          <option value="none">All Salaries</option>
+          <option value="asc">Lowest First</option>
+          <option value="desc">Highest First</option>
+        </select>
+      </div>
+
       <div
-        class="form-group remote col-12 col-md-4 d-flex align-items-center gap-4"
+        class="form-group remote col-12 col-md-2 d-flex align-items-center gap-4"
       >
         <a
           class="cursor-pointer nmc-dark-grey"
@@ -88,21 +100,16 @@
           (click)="toggleSortByPostedTime()"
           tabindex="0"
         >
-          <i class="bi bi-filter me-2 nmc-medium-grey"></i> Sort by Posted Time
-        </a>
-
-        <a
-          class="cursor-pointer nmc-dark-grey"
-          (keydown)="toggleSortBySalary()"
-          (click)="toggleSortBySalary()"
-          tabindex="0"
-        >
-          <i class="bi bi-filter me-2 nmc-medium-grey"></i> Sort by Salary
+          <i class="bi bi-filter me-2 nmc-medium-grey"></i> Newest Job First
         </a>
       </div>
     </div>
 
     <div class="jobs-container row g-4 pt-0 pt-lg-4 px-5">
+      <h6 class="nmc-medium-grey fw-normal mb-0">
+        Total {{ filteredJobs.length }} jobs found
+      </h6>
+
       @for(job of filteredJobs| slice:0:displayedJobsCount; track job; let i =
       $index){ @if( job.companyName){
       <div class="col-12">

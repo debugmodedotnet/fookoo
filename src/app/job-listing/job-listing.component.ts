@@ -28,7 +28,8 @@ export class JobListingComponent implements OnInit {
   jobFilter = '';
   jobTypeFilter = ''
   sortByPostedTime = false;
-  sortBySalary = false;
+  //sortBySalary = false;
+  salarySortOption: 'none' | 'asc' | 'desc' = 'none';
 
   displayedJobsCount = 10;
   showLoadMoreButton = false;
@@ -95,22 +96,25 @@ export class JobListingComponent implements OnInit {
     //   });
     // }
 
-    if (this.sortBySalary) {
+    if (this.salarySortOption === 'asc') {
       this.filteredJobs.sort((a, b) => {
-        const salaryA = a.MaxSalary ?? a.MinSalary;
-        const salaryB = b.MaxSalary ?? b.MinSalary;
-        return salaryB - salaryA;
+        const salaryA = a.MaxSalary ?? a.MinSalary ?? 0;
+        const salaryB = b.MaxSalary ?? b.MinSalary ?? 0;
+        return salaryA - salaryB; 
+      });
+    }
+
+    if (this.salarySortOption === 'desc') {
+      this.filteredJobs.sort((a, b) => {
+        const salaryA = a.MaxSalary ?? a.MinSalary ?? 0;
+        const salaryB = b.MaxSalary ?? b.MinSalary ?? 0;
+        return salaryB - salaryA;  
       });
     }
   }
 
   toggleSortByPostedTime() {
     this.sortByPostedTime = !this.sortByPostedTime;
-    this.applyFilters(); // Reapply filters to trigger sorting
-  }
-
-  toggleSortBySalary() {
-    this.sortBySalary = !this.sortBySalary;
     this.applyFilters();
   }
 

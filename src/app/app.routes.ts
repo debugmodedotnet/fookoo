@@ -27,8 +27,8 @@ export const routes: Routes = [
 
   { path: 'youtube-listing', loadComponent: () => import('./youtube-listing/youtube-listing.component').then(m => m.YoutubeListingComponent) },
 
-  { path: 'test-skills', loadComponent: () => import('./quiz-list/quiz-list.component').then(m => m.QuizListComponent) },
-  { path: 'test-skills/:Name', loadComponent: () => import('./quiz/quiz.component').then(m => m.QuizComponent) },
+  { path: 'test-skills', loadComponent: () => import('./quiz-list/quiz-list.component').then(m => m.QuizListComponent), canActivate: [userAuthGuard] },
+  { path: 'test-skills/:Name', loadComponent: () => import('./quiz/quiz.component').then(m => m.QuizComponent), canActivate: [userAuthGuard] },
 
   { path: 'ng-india', loadComponent: () => import('./ng-india/ng-india.component').then(m => m.NgIndiaComponent) },
 

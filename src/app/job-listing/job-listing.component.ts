@@ -117,7 +117,6 @@ export class JobListingComponent implements OnInit {
 
   toggleSortByPostedTime() {
     this.sortByPostedTime = !this.sortByPostedTime;
-    console.log('Sorting by Posted Time: ', this.sortByPostedTime);
     this.applyFilters();
   }
 

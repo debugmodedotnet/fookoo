@@ -23,6 +23,7 @@
     "@angular/youtube-player": "^18.0.5",
     "bootstrap": "^5.3.3",
     "bootstrap-icons": "^1.11.3",
+    "date-fns": "^3.6.0",
     "firebase": "^10.12.2",
     "font-awesome": "^4.7.0",
     "ngx-quill": "^26.0.8",

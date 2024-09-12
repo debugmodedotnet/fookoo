@@ -9,11 +9,12 @@ import { UserService } from '../services/user.service';
 import { IUser } from '../modules/user';
 import { IJobSteps } from '../modules/post-job';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { TimeAgoPipePipe } from '../pipes/time-ago-pipe.pipe';
 
 @Component({
   selector: 'app-job-listing',
   standalone: true,
-  imports: [AsyncPipe, RouterModule, FormsModule, SlicePipe],
+  imports: [AsyncPipe, RouterModule, FormsModule, SlicePipe, TimeAgoPipePipe],
   templateUrl: './job-listing.component.html',
   styleUrl: './job-listing.component.scss'
 })
@@ -44,6 +45,7 @@ export class JobListingComponent implements OnInit {
     this.jobs$.subscribe(jobs => {
       this.jobs = jobs;
       this.filteredJobs = jobs;
+      this.applyFilters();
       this.updateLoadMoreButton();
     });
 
@@ -88,19 +90,19 @@ export class JobListingComponent implements OnInit {
 
 
   applySorting() {
-    // if (this.sortByPostedTime) {
-    //   this.filteredJobs.sort((a, b) => {
-    //     const dateA = new Date(a.postedTime).getTime();
-    //     const dateB = new Date(b.postedTime).getTime();
-    //     return dateB - dateA; 
-    //   });
-    // }
+    if (this.sortByPostedTime) {
+      this.filteredJobs.sort((a, b) => {
+        const dateA = new Date(a.createdTime).getTime();
+        const dateB = new Date(b.createdTime).getTime();
+        return dateB - dateA;
+      });
+    }
 
     if (this.salarySortOption === 'asc') {
       this.filteredJobs.sort((a, b) => {
         const salaryA = a.MaxSalary ?? a.MinSalary ?? 0;
         const salaryB = b.MaxSalary ?? b.MinSalary ?? 0;
-        return salaryA - salaryB; 
+        return salaryA - salaryB;
       });
     }
 
@@ -108,15 +110,17 @@ export class JobListingComponent implements OnInit {
       this.filteredJobs.sort((a, b) => {
         const salaryA = a.MaxSalary ?? a.MinSalary ?? 0;
         const salaryB = b.MaxSalary ?? b.MinSalary ?? 0;
-        return salaryB - salaryA;  
+        return salaryB - salaryA;
       });
     }
   }
 
   toggleSortByPostedTime() {
     this.sortByPostedTime = !this.sortByPostedTime;
+    console.log('Sorting by Posted Time: ', this.sortByPostedTime);
     this.applyFilters();
   }
+
 
   updateLoadMoreButton() {
     this.showLoadMoreButton = this.filteredJobs.length > this.displayedJobsCount;

@@ -41,7 +41,8 @@ export class Jobstep7Component {
           Validators.minLength(5)
         ],
       ],
-      isActive: [false]
+      isActive: [false],
+      createdTime: ['']
     });
   }
 
@@ -52,6 +53,9 @@ export class Jobstep7Component {
       this.isCompanyTwitterInvalid = false;
 
       this.jobForm.patchValue({ isActive: true });
+
+      const currentTime = new Date().toISOString();
+      this.jobForm.patchValue({ createdTime: currentTime });
 
       this.data.set({
         nextStep: 8,

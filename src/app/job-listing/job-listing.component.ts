@@ -88,7 +88,6 @@ export class JobListingComponent implements OnInit {
     this.applySorting();
   }
 
-
   applySorting() {
     if (this.sortByPostedTime) {
       this.filteredJobs.sort((a, b) => {
@@ -119,7 +118,6 @@ export class JobListingComponent implements OnInit {
     this.sortByPostedTime = !this.sortByPostedTime;
     this.applyFilters();
   }
-
 
   updateLoadMoreButton() {
     this.showLoadMoreButton = this.filteredJobs.length > this.displayedJobsCount;

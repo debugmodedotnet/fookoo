@@ -1,32 +1,49 @@
-<section class="hero-section pt-5 position-relative overflow-hidden">
-  <div
-    class="container-boxed position-relative d-flex align-items-center justify-content-between"
-  >
-    <div>
-      <h1 class="font-52 nmc-dark-grey fw-bolder font-family-poppins">
-        <!-- {{ hero?.Title}} -->
-        Creating
-        <span class="text-bottom-line position-relative">Job-Ready</span>
-        Developers
-      </h1>
+<div class="wrapper">
+  <section class="hero-section py-5 position-relative overflow-hidden">
+    <div
+      class="container-boxed position-relative d-flex align-items-center justify-content-between"
+    >
+      <div>
+        <h1 class="font-52 nmc-dark-grey fw-bolder font-family-poppins">
+          <!-- {{ hero?.Title}} -->
+          Creating
+          <span class="text-bottom-line position-relative">Job-Ready</span>
+          Developers
+        </h1>
 
-      <!-- <p class="font-22 nmc-dark-grey w-75 mt-4">
-        {{ hero?.Description }}
-      </p> -->
+        <!-- <p class="font-22 nmc-dark-grey w-75 mt-4">
+          {{ hero?.Description }}
+        </p> -->
 
-      <!-- <button class="nmc-btn-primary mt-4" type="submit">
-        {{ hero?.BtnText }}
-      </button> -->
+        <!-- <button class="nmc-btn-primary mt-4" type="submit">
+          {{ hero?.BtnText }}
+        </button> -->
+      </div>
+
+      <img
+        [src]="hero?.HeroImage"
+        alt="Hero-Image"
+        class="object-fit-contain w-40"
+      />
     </div>
+  </section>
 
-    <img
-      [src]="hero?.HeroImage"
-      alt="Hero-Image"
-      class="object-fit-contain w-50"
-    />
+  <div class="custom-shape-divider w-100 position-relative">
+    <svg
+      data-name="Layer 1"
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 900 110"
+      preserveAspectRatio="none"
+    >
+      <path
+        d="M985.66,92.83C906.67,72,823.78,31,743.84,14.19c-82.26-17.34-168.06-16.33-250.45.39-57.84,11.73-114,31.07-172,41.86A600.21,600.21,0,0,1,0,27.35V120H1200V95.8C1132.19,118.92,1055.71,111.31,985.66,92.83Z"
+        class="shape-fill"
+      ></path>
+    </svg>
   </div>
-</section>
+  
+</div>
 
-<app-work-flow></app-work-flow>
+<app-work-flow />
 
-<app-hero-advertisement></app-hero-advertisement>
+<app-hero-advertisement />

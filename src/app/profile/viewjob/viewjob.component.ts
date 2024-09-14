@@ -10,6 +10,7 @@ import { SalValidator } from '../../post-jobs/jobstep5/sal-validator';
 import { Job } from '../../modules/job';
 import { IJobSteps } from '../../modules/post-job';
 import { QuillModule } from 'ngx-quill';
+import { IJobApplications } from '../../modules/jobApplications';
 
 @Component({
   selector: 'app-view-job',
@@ -22,12 +23,14 @@ import { QuillModule } from 'ngx-quill';
 export class ViewJobComponent implements OnInit {
 
   jobs: Job[] = [];
+  jobApplications: IJobApplications[] = [];
   loading = true;
   jobForm: FormGroup;
   editMode = false;
+  viewMode = false;
   currentJobId: string | null = null;
   userId?: string;
-  loggedInEmail: string | null | undefined;  
+  loggedInEmail: string | null | undefined;
 
   positions: string[] = [];
   qualifications: string[] = [];
@@ -130,7 +133,6 @@ export class ViewJobComponent implements OnInit {
 
   }  /********************* Skill End *********************/
 
-
   /********************* Responsibilities *********************/
   get responsibilities(): FormArray {
     return this.jobForm.get('Responsibilities') as FormArray;
@@ -173,7 +175,6 @@ export class ViewJobComponent implements OnInit {
       this.responsibilities.removeAt(index);
     }
   }  /********************* Responsibilities End *********************/
-
 
   loadJobs(): void {
     this.loading = true;
@@ -322,5 +323,30 @@ export class ViewJobComponent implements OnInit {
     }
     return this.userId;
   }
+
+  openViewJob(job: Job) {
+    if (job && job.id) {
+      this.viewMode = true;
+
+      this.firestore
+        .collection('job-transactions')
+        .doc(job.id)
+        .collection('users')
+        .valueChanges()
+        .subscribe((users: any[]) => {
+          this.jobApplications = users.map(user => ({
+            name: user.name,
+            email: user.email,
+            image: user.image
+          }));
+        });
+    }
+  }
+
+  closeViewJob() {
+    this.viewMode = false;
+    this.jobApplications = [];
+  }
+
 }
 

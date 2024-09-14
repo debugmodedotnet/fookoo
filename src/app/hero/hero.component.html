@@ -1,32 +1,38 @@
-<section class="hero-section pt-5 position-relative overflow-hidden">
-  <div
-    class="container-boxed position-relative d-flex align-items-center justify-content-between"
-  >
-    <div>
-      <h1 class="font-52 nmc-dark-grey fw-bolder font-family-poppins">
-        <!-- {{ hero?.Title}} -->
-        Creating
-        <span class="text-bottom-line position-relative">Job-Ready</span>
-        Developers
-      </h1>
+<section class="wrapper">
+  <div class="blur"></div>
+  <div class="blur"></div>
+  <div class="blur"></div>
 
-      <!-- <p class="font-22 nmc-dark-grey w-75 mt-4">
+  <section class="hero-section pt-5 position-relative overflow-hidden">
+    <div
+      class="container-boxed position-relative d-flex align-items-center justify-content-between"
+    >
+      <div>
+        <h1 class="font-52 nmc-dark-grey fw-bolder font-family-poppins">
+          <!-- {{ hero?.Title}} -->
+          Creating
+          <span class="text-bottom-line position-relative">Job-Ready</span>
+          Developers
+        </h1>
+
+        <!-- <p class="font-22 nmc-dark-grey w-75 mt-4">
         {{ hero?.Description }}
       </p> -->
 
-      <!-- <button class="nmc-btn-primary mt-4" type="submit">
+        <!-- <button class="nmc-btn-primary mt-4" type="submit">
         {{ hero?.BtnText }}
       </button> -->
+      </div>
+
+      <img
+        [src]="hero?.HeroImage"
+        alt="Hero-Image"
+        class="object-fit-contain w-50"
+      />
     </div>
+  </section>
 
-    <img
-      [src]="hero?.HeroImage"
-      alt="Hero-Image"
-      class="object-fit-contain w-50"
-    />
-  </div>
+  <app-work-flow></app-work-flow>
 </section>
-
-<app-work-flow></app-work-flow>
 
 <app-hero-advertisement></app-hero-advertisement>

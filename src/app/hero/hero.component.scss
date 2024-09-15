@@ -4,51 +4,6 @@
     inset: 65px 0 0 0;
 }
 
-.wrapper {
-    background-color: rgb(255, 245, 237);
-    background-image:
-        // radial-gradient(at 86% 12%, hsla(25, 100%, 23%, 0.20) 0px, transparent 50%),
-        radial-gradient(at 62% 97%, hsla(25, 100%, 43%, 0.31) 0px, transparent 50%),
-        radial-gradient(at 80% 34%, hsla(41, 100%, 75%, 0.66) 0px, transparent 50%);
-    background-size: 200% 200%;
-    animation: moving 10s ease infinite;
-    overflow-x: hidden;
-}
-
-@keyframes moving {
-    0% {
-        background-position: 0% 0%, 100% 100%, 50% 50%;
-    }
-
-    25% {
-        background-position: 100% 0%, 0% 100%, 75% 25%;
-    }
-
-    50% {
-        background-position: 100% 100%, 0% 0%, 100% 100%;
-    }
-
-    75% {
-        background-position: 0% 100%, 100% 0%, 25% 75%;
-    }
-
-    100% {
-        background-position: 0% 0%, 100% 100%, 50% 50%;
-    }
-}
-
-.custom-shape-divider svg {
-    position: relative;
-    display: block;
-    width: calc(100% + 1.3px);
-    height: 150px;
-}
-
-.custom-shape-divider .shape-fill {
-    fill: #FFFFFF;
-}
-
-
 @media (max-width: 1087px) {
     .hero-section .container-boxed {
         h1 {

@@ -5,34 +5,36 @@
       slides-per-view="1"
       pagination="false"
       navigation="false"
-      autoplay="true"
-      class="single-slider d-flex align-items-center"
+      autoplay="false"
+      class="single-slider"
     >
       @for(a of advertisements; track a){
-      <swiper-slide
-        class="d-flex align-items-center justify-content-between overflow-hidden rounded-4 purple-bg-gradient py-4"
-      >
-        <div class="slider-info p-md-5 p-3 text-start position-relative z-50">
-          <h2 class="font-36 nmc-white font-family-poppins mb-5">
-            {{ a.Title }}
-          </h2>
+      <swiper-slide class="overflow-hidden rounded-4 purple-bg-gradient">
+        <div
+          class="inner px-4 px-md-5 py-3 p-sm-5 d-flex align-items-center justify-content-between gap-5 h-100"
+        >
+          <div class="slider-info text-start position-relative z-50">
+            <h2 class="font-36 nmc-white font-family-poppins mb-5">
+              {{ a.Title }}
+            </h2>
 
-          <a
-            [href]="a.BtnLink"
-            class="d-inline nmc-bg-white nmc-dark-grey p-3 fw-semibold"
-          >
-            {{ a.BtnText }}
-          </a>
-        </div>
+            <a
+              [href]="a.BtnLink"
+              class="d-inline nmc-bg-white nmc-dark-grey p-3 fw-semibold"
+            >
+              {{ a.BtnText }}
+            </a>
+          </div>
 
-        <div class="slider-img hidden w-60 max-w-md d-none d-sm-block">
-          <figure class="m-0 overflow-hidden p-5">
-            <img
-              [src]="a.Image"
-              alt=""
-              class="h-100 w-100 object-fit-contain"
-            />
-          </figure>
+          <div class="slider-img hidden w-60 max-w-md">
+            <figure class="m-0 overflow-hidden">
+              <img
+                [src]="a.Image"
+                alt=""
+                class="h-100 w-100 object-fit-contain"
+              />
+            </figure>
+          </div>
         </div>
       </swiper-slide>
       }

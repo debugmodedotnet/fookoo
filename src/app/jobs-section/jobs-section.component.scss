@@ -10,21 +10,22 @@
   // }
 
   .nmc-btn-primary {
-      font-size: 16px !important;
+    font-size: 16px !important;
   }
 
   .nmc-btn-primary:hover {
-      background-color: $nmc-primary !important;
-      transition: all ease 0.3s;
+    background-color: $nmc-primary !important;
+    transition: all ease 0.3s;
   }
 
   .job-img {
-      height: 50px;
-      width: 50px;
-      padding: 10px;
-      background-color: #fff2ee;
+    height: 50px;
+    width: 50px;
+    padding: 10px;
+    background-color: #fff2ee;
   }
 }
+
 .sticky-wrapper {
   li {
     &:nth-child(even)>a {
@@ -163,9 +164,7 @@
 }
 
 @media (max-width: 1255px) {
-  .jobs-section {
-    padding-bottom: 0 !important;
-  }
+
 
   .sticky-wrapper {
     padding-top: 1rem !important;

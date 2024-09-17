@@ -20,3 +20,43 @@
     background-position: top;
     background-size: cover;
 }
+
+
+@media (max-width: 1023px) {
+    .py-20 {
+        padding-top: 5rem;
+        padding-bottom: 5rem;
+    }
+}
+
+
+
+@media (max-width: 767px) {
+    .py-20 {
+        padding-top: 2.8rem;
+        padding-bottom: 2.8rem;
+    }
+
+    h2 {
+        font-size: 32px !important;
+        width: 70% !important;
+    }
+}
+
+@media (max-width: 575px) {
+    .py-20 {
+        padding-top: 2rem;
+        padding-bottom: 2rem;
+    }
+
+    h2 {
+        font-size: 30px !important;
+        width: 100% !important;
+    }
+}
+
+@media (max-width: 450px) {
+    h2 {
+        font-size: 26px !important;
+    }
+}

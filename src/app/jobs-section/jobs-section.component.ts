@@ -4,11 +4,12 @@ import { Job } from '../modules/job';
 import { map, Observable, of } from 'rxjs';
 import { AsyncPipe } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { TimeAgoPipePipe } from '../pipes/time-ago-pipe.pipe';
 
 @Component({
   selector: 'app-jobs-section',
   standalone: true,
-  imports: [AsyncPipe, RouterModule],
+  imports: [AsyncPipe, RouterModule, TimeAgoPipePipe],
   templateUrl: './jobs-section.component.html',
   styleUrl: './jobs-section.component.scss',
   schemas: [CUSTOM_ELEMENTS_SCHEMA]

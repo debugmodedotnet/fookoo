@@ -27,21 +27,19 @@
           <div
             class="job-info d-flex align-items-center justify-content-between"
           >
-            <div>
-              <div class="d-flex align-items-center gap-3">
-                <h2
-                  class="font-24 nmc-dark-grey fw-normal m-0 font-family-poppins"
-                >
-                  <a href="" class="nmc-dark-grey"> {{ job.position }}</a>
-                </h2>
-              </div>
-            </div>
+            <h2
+              class="font-24 nmc-dark-grey fw-normal font-family-poppins w-575-100"
+            >
+              {{ job.position }}
+            </h2>
 
-            <div>
-              <h5 class="font-24 nmc-dark-grey font-family-poppins m-0 mt-3">
-                <a href="#" class="nmc-primary">{{ job.companyName }}</a>
-              </h5>
-            </div>
+            <h5
+              class="font-24 nmc-dark-grey font-family-poppins mt-3 w-575-100"
+            >
+              <a [href]="job.CompanyUrl" class="nmc-primary">{{
+                job.companyName
+              }}</a>
+            </h5>
           </div>
 
           @if(job.MaxSalary){
@@ -61,32 +59,36 @@
           </h6>
           }
 
-          <div class="pt-3 d-flex align-items-center justify-content-between">
-            <div class="job-chips d-flex align-items-center gap-3">
-              <span class="d-inline-block font-14 fw-semibold py-1 px-3">
+          <div
+            class="job-apply pt-3 d-flex align-items-center justify-content-between gap-2"
+          >
+            <div class="job-chips row align-items-center gap-2 w-575-100">
+              <span class="col-auto font-14 fw-semibold py-1 px-3">
                 {{ job?.jobType }}
               </span>
 
-              <span class="d-inline-block font-14 fw-semibold py-1 px-3"
+              <span class="col-auto font-14 fw-semibold py-1 px-3"
                 >{{ job.Location }}
               </span>
 
-              <span class="d-inline-block font-14 fw-semibold py-1 px-3"
+              <span class="col-auto font-14 fw-semibold py-1 px-3"
                 >{{ job.Tag }}
               </span>
 
               <span
-                class="d-inline-block font-14 fw-semibold py-1 px-3 nmc-medium-grey"
-                >12-9-2024
+                class="col-auto font-14 fw-semibold py-1 px-3 nmc-medium-grey"
+                >{{ job.createdTime | timeAgoPipe }}
               </span>
             </div>
 
-            <button
-              class="nmc-btn-primary h-auto py-2 px-3 box-shadow-none border-0 nmc-bg-dark-grey fw-normal"
-              [routerLink]="['/jobs', job.id]"
-            >
-              Apply
-            </button>
+            <div class="job-apply-btn">
+              <button
+                class="nmc-btn-primary h-auto py-2 px-3 box-shadow-none border-0 nmc-bg-dark-grey fw-normal"
+                [routerLink]="['/jobs', job.id]"
+              >
+                Apply
+              </button>
+            </div>
           </div>
         </div>
       </div>

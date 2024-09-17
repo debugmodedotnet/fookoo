@@ -61,9 +61,21 @@
     }
 }
 
-
 @media (max-width:450px) {
     h2 {
         font-size: 18px !important;
+    }
+
+    .slider-img figure {
+        min-width: 100px;
+        height: 100px;
+    }
+
+    swiper-slide {
+        height: 350px;
+    }
+
+    .slider-info a {
+        padding: 10px !important;
     }
 }

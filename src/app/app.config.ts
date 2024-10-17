@@ -3,6 +3,7 @@ import { provideRouter, withComponentInputBinding } from '@angular/router';
 import { routes } from './app.routes';
 import { AngularFireModule } from '@angular/fire/compat';
 import { QuillModule } from 'ngx-quill'
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 
 const firebaseConfig = {
   apiKey: "AIzaSyBVl1Xpr8fF_Gc1G4KEcqJWX5eRWO7JNkE",
@@ -16,9 +17,12 @@ const firebaseConfig = {
 
 export const appConfig: ApplicationConfig = {
   providers: [
+    provideHttpClient(withInterceptorsFromDi()),
     provideZoneChangeDetection({ eventCoalescing: true }),
     provideRouter(routes, withComponentInputBinding()),
-    importProvidersFrom(AngularFireModule.initializeApp(firebaseConfig), QuillModule.forRoot()),
-
-  ]
+    importProvidersFrom(
+      AngularFireModule.initializeApp(firebaseConfig),
+      QuillModule.forRoot()
+    ),
+  ],
 };

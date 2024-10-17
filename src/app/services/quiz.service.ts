@@ -58,7 +58,7 @@ export class QuizService {
   }
 
   async addAttempt(attemptedQuestion: IQuizAttemptedQuestion): Promise<void> {
-    await this.firestore.collection(this.quizAttemptCollection).doc(attemptedQuestion.userId).collection(attemptedQuestion.userId).add(attemptedQuestion);
+    await this.firestore.collection(this.quizAttemptCollection).doc("angular").collection(attemptedQuestion.userId).add(attemptedQuestion);
   }
 
   getAttemptedQuestions(userId: string): Observable<IQuizAttemptedQuestion[]> {

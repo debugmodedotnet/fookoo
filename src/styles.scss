@@ -343,8 +343,8 @@ textarea {
 }
 
 .text-orange-100 {
-    --tw-bg-opacity: 1;
-    color: rgb(255 237 213/var(--tw-bg-opacity));
+    --tw-text-opacity: 1;
+    color: rgb(196 0 43);
 }
 
 .text-orange-600 {
@@ -429,7 +429,7 @@ textarea {
 
 .bg-orange-100 {
     --tw-bg-opacity: 1;
-    background-color: rgb(255 237 213/var(--tw-bg-opacity));
+    background-color: rgb(255 204 215/var(--tw-bg-opacity));
 }
 
 .bg-sky-100 {
@@ -840,7 +840,7 @@ inset-0 {
 
 .nmc-view-all {
     .nmc-view-all-btn {
-        background: linear-gradient(111.59deg, #e78235 16.69%, #dc5f00 74.35%);
+        background: linear-gradient(111.59deg, #fb6868 16.69%, #dc0000 74.35%);
         box-shadow: 0 3px 6px #f5cbab;
         width: 3rem;
         height: 3rem;

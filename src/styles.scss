@@ -343,13 +343,13 @@ textarea {
 }
 
 .text-orange-100 {
-    --tw-text-opacity: 1;
-    color: rgb(196 0 43);
+    --tw-bg-opacity: 1;
+    color: rgb(255 237 213/var(--tw-bg-opacity));
 }
 
 .text-orange-600 {
     --tw-text-opacity: 1;
-    color: rgb(234 88 12/var(--tw-text-opacity));
+    color: rgb(196 0 43);
 }
 
 .text-cyan-600 {

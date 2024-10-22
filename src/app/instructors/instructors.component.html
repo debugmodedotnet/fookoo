@@ -26,25 +26,23 @@
         <div
           class="mentor-card inner rounded-0 d-flex flex-column justify-content-between flex-grow-1"
         >
-          <figure
-            class="position-relative overflow-hidden m-auto rounded-circle"
-          >
-            <img
-              class="z-1 w-100 h-100 object-fit-cover"
-              loading="lazy"
-              [src]="
-                instructor.InstructorImg
-                  ? instructor.InstructorImg
-                  : defaultImage
-              "
-              [alt]="instructor.Name"
-            />
-          </figure>
-
           <div
             class="info text-center d-grid rounded-2 d-flex flex-column justify-content-between flex-grow-1"
           >
-            <div>
+            <figure class="position-relative overflow-hidden m-auto rounded-0">
+              <img
+                class="z-1 w-100 h-100 object-fit-cover"
+                loading="lazy"
+                [src]="
+                  instructor.InstructorImg
+                    ? instructor.InstructorImg
+                    : defaultImage
+                "
+                [alt]="instructor.Name"
+              />
+            </figure>
+            
+            <div class="p-3">
               <h2 class="font-24 nmc-dark-grey font-family-poppins pt-4">
                 {{ instructor.Name }}
               </h2>
@@ -54,19 +52,7 @@
               </h4>
 
               <div class="social mt-4">
-                @if(instructor.Email){
-                <a [href]="instructor.Email">
-                  <i class="bi bi-envelope-fill"></i>
-                </a>
-                } @if(instructor.Twitter){
-                <a [href]="instructor.Twitter">
-                  <i class="bi bi-twitter-x"></i>
-                </a>
-                } @if(instructor.Github){
-                <a [href]="instructor.Github">
-                  <i class="bi bi-github"></i>
-                </a>
-                } @if(instructor.LinkedIn){
+                @if(instructor.LinkedIn){
                 <a [href]="instructor.LinkedIn">
                   <i class="bi bi-linkedin"></i>
                 </a>

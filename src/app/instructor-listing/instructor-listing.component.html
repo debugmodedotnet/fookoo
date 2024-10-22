@@ -1,9 +1,10 @@
-<section class="pt-5">
-  <h2 class="font-36 nmc-dark-grey font-family-poppins text-center mb-3">
-    <span class="text-bottom-line position-relative">Meet Our Mentors</span>
-  </h2>
+<section class="py-5">
+  <div class="container-boxed">
+    <h2 class="font-36 nmc-dark-grey font-family-poppins text-center mb-3">
+      <span class="text-bottom-line position-relative">Our Mentors</span>
+    </h2>
 
-  <div class="wrapper pt-5 nmc-bg-white">
+    <!-- <div class="wrapper pt-5 nmc-bg-white">
     @for(instructor of instructors$ | async; track instructor; let i = $index;){
     <ng-container>
       @if(instructor){
@@ -150,5 +151,56 @@
       </div>
     </ng-container>
     }
+  </div> -->
+
+    <div class="mentor-card-wrapper row g-4 mt-4">
+      @for(instructor of instructors$ | async; track instructor; let i =
+      $index;){
+      <div class="col-12 col-sm-6 col-lg-4 d-flex">
+        <div
+          class="mentor-card inner d-flex flex-column justify-content-between flex-grow-1"
+        >
+          <figure
+            class="position-relative overflow-hidden m-auto rounded-0"
+          >
+            <img
+              class="z-1 w-100 h-100 object-fit-cover"
+              loading="lazy"
+              [src]="
+                instructor.InstructorImg
+                  ? instructor.InstructorImg
+                  : defaultImage
+              "
+              [alt]="instructor.Name"
+            />
+          </figure>
+
+          <div
+            class="info text-center d-grid rounded-2 d-flex flex-column justify-content-between flex-grow-1"
+          >
+            <div>
+              <a [routerLink]="['/mentor', instructor.id]">
+                <h2 class="font-24 nmc-primary font-family-poppins pt-4 mb-0">
+                  {{ instructor.Name }}
+                </h2>
+              </a>
+
+              <h4 class="font-18 fw-normal nmc-medium-grey pt-2 m-0">
+                {{ instructor.Position }}
+              </h4>
+
+              <div class="social mt-3">
+                @if(instructor.LinkedIn){
+                <a [href]="instructor.LinkedIn">
+                  <i class="bi bi-linkedin"></i>
+                </a>
+                }
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      }
+    </div>
   </div>
 </section>

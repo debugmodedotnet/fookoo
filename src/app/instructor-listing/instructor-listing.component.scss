@@ -1,58 +1,45 @@
 @use "../styles/variables" as *;
 
-.wrapper {
-  //  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+.mentor-card {
+  figure {
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+    height: 400px;
+    width: 100%;
 
-  button {
-    border: 1px solid #ccc;
-  }
-
-  .image-container {
-
-    figure {
-      height: 700px;
-      width: 100%;
-    }
-
-    &.order-md-2 {
-      order: 2;
-    }
-
-    &.order-md-2 img {
-      margin-left: auto;
-      margin-right: 0;
-    }
-
-    &:not(.order-md-2) img {
-      margin-left: 0;
-      margin-right: auto;
+    img {
+      object-position: top;
     }
   }
 
-  .company-bar .row .col-auto:not(:last-child) {
-    border-right: 2px solid $nmc-primary;
+  &:hover figure img {
+    transition: all ease 0.3s;
+    transform: scale(1.1);
   }
 
+  .social a {
+    transition: 0.3s;
+    color: $nmc-dark-grey;
+    font-size: 20px;
+    margin: 0 8px;
+  }
+
+  .social a:hover {
+    color: $nmc-primary;
+  }
 }
 
-// @media (max-width: 768px) {
-//   .row {
-//     flex-direction: column;
-//   }
+@media (max-width: 767px) {
+  .mentor-card {
+    figure {
+      height: 300px;
+    }
+  }
+}
 
-//   img {
-//     margin-top: 1rem;
-//   }
-// }
-
-// @media (max-width: 768px) {
-//   .image-container {
-//     max-width: none;
-//     flex: 1;
-//   }
-
-//   .text-container {
-//     padding: 1rem;
-//     margin: 0;
-//   }
-// }
+@media (max-width: 425px) {
+  .mentor-card {
+    figure {
+      max-height: 250px;
+    }
+  }
+}

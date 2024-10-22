@@ -24,49 +24,53 @@
       @for(instructor of instructors; track instructor; let i = $index;){
       <div class="col-12 col-sm-6 col-lg-3 d-flex">
         <div
-          class="mentor-card inner rounded-0 d-flex flex-column justify-content-between flex-grow-1"
+          class="mentor-card inner d-flex flex-column justify-content-between flex-grow-1"
         >
-          <figure
-            class="position-relative overflow-hidden m-auto rounded-circle"
+
+          <div
+            class="info text-center d-grid rounded-2 d-flex flex-column justify-content-between flex-grow-1"
           >
-            <img
-              class="z-1 w-100 h-100 object-fit-cover"
-              loading="lazy"
-              [src]="
-                instructor.InstructorImg
-                  ? instructor.InstructorImg
-                  : defaultImage
-              "
-              [alt]="instructor.Name"
-            />
-          </figure>
+            <figure class="position-relative overflow-hidden m-auto rounded-0">
+              <img
+                class="z-1 w-100 h-100 object-fit-cover"
+                loading="lazy"
+                [src]="
+                  instructor.InstructorImg
+                    ? instructor.InstructorImg
+                    : defaultImage
+                "
+                [alt]="instructor.Name"
+              />
+            </figure>
+            
+            <div class="p-3">
+              <h2 class="font-24 nmc-dark-grey font-family-poppins pt-4">
+                {{ instructor.Name }}
+              </h2>
+
+
 
           <div
             class="info text-center d-grid rounded-2 d-flex flex-column justify-content-between flex-grow-1"
           >
             <div>
-              <h2 class="font-24 nmc-dark-grey font-family-poppins pt-4">
-                {{ instructor.Name }}
-              </h2>
+              <a [routerLink]="['/mentor', instructor.id]">
+                <h2 class="font-24 nmc-primary font-family-poppins pt-4 mb-0">
+                  {{ instructor.Name }}
+                </h2>
+              </a>
+
 
               <h4 class="font-18 fw-normal nmc-medium-grey pt-2 m-0">
                 {{ instructor.Position }}
               </h4>
 
+
               <div class="social mt-4">
-                @if(instructor.Email){
-                <a [href]="instructor.Email">
-                  <i class="bi bi-envelope-fill"></i>
-                </a>
-                } @if(instructor.Twitter){
-                <a [href]="instructor.Twitter">
-                  <i class="bi bi-twitter-x"></i>
-                </a>
-                } @if(instructor.Github){
-                <a [href]="instructor.Github">
-                  <i class="bi bi-github"></i>
-                </a>
-                } @if(instructor.LinkedIn){
+
+            
+
+                @if(instructor.LinkedIn){
                 <a [href]="instructor.LinkedIn">
                   <i class="bi bi-linkedin"></i>
                 </a>
@@ -80,148 +84,3 @@
     </div>
   </div>
 </section>
-
-<!-- <section class="py-5 bg-orange-100">
-  <div class="container-boxed">
-    <div class="d-flex align-items-center justify-content-between">
-      <h2
-        class="section-title left font-36 nmc-dark-grey font-family-poppins pb-3 mb-0"
-      >
-        Meet Our Mentors
-      </h2>
-
-      <a
-        class="nmc-view-all d-flex align-items-center justify-content-start"
-        [routerLink]="['/mentors']"
-      >
-        <span class="nmc-dark-grey d-none d-md-block">VIEW ALL</span>
-
-        <div
-          class="d-flex align-items-center justify-content-center rounded-circle nmc-view-all-btn nmc-white"
-        >
-          <i class="bi bi-arrow-right font-24"></i></div
-      ></a>
-    </div>
-
-    <div
-      class="mentor-card-wrapper d-flex align-items-center justify-content-center flex-wrap flex-lg-nowrap py-lg-5 pt-5 pb-0"
-    >
-      @for(instructor of instructors; track instructor; let i = $index;){
-      <div
-        class="mentor-card position-relative overflow-hidden rounded-4 d-grid align-items-center"
-        [ngClass]="getColorClass(i)"
-        [ngStyle]="{ 'z-index': 4 - i }"
-      >
-        <div
-          class="inner text-center d-flex align-items-center justify-content-center flex-column"
-        >
-          <figure class="m-0 nmc-bg-white">
-            <img
-              [src]="
-                instructor.InstructorImg
-                  ? instructor.InstructorImg
-                  : defaultImage
-              "
-              [alt]="instructor.Name"
-              class="w-100 h-100 object-fit-cover"
-            />
-          </figure>
-
-          <div class="info p-4 text-center d-grid">
-            <h2 class="font-28 nmc-white font-family-poppins">
-              {{ instructor.Name }}
-            </h2>
-
-            <h4 class="font-22 fw-light nmc-white pt-2 m-0">
-              {{ instructor.Position }}
-            </h4>
-
-            <div class="social w-100 py-4">
-              @if (instructor.Email) {
-              <a [href]="instructor.Email">
-                <i class="bi bi-envelope-fill"></i> </a
-              >} @if (instructor.Twitter) {<a [href]="instructor.Twitter"
-                ><i class="bi bi-twitter-x"></i></a
-              >} @if (instructor.Github) {<a [href]="instructor.Github"
-                ><i class="bi bi-github"></i></a
-              >} @if (instructor.LinkedIn) {<a [href]="instructor.LinkedIn"
-                ><i class="bi bi-linkedin"></i></a
-              >}
-            </div>
-
-            <button
-              class="nmc-btn-primary nmc-bg-white nmc-dark-grey m-auto"
-              [routerLink]="['/mentor', instructor.id]"
-            >
-              Learn More
-            </button>
-          </div>
-        </div>
-      </div>
-      }
-    </div>
-  </div>
-</section> -->
-
-<!-- <section class="instructor text-center py-5">
-  <div class="container-boxed">
-    <div class="d-flex align-items-center justify-content-between mb-5">
-      <h2
-        class="section-title left font-36 nmc-dark-grey font-family-poppins pb-3 mb-0"
-      >
-        Meet Our Mentors
-      </h2>
-
-      <a
-        class="nmc-view-all d-flex align-items-center justify-content-start"
-        routerLink="/mentors"
-      >
-        <span class="nmc-dark-grey">VIEW ALL</span>
-
-        <div
-          class="d-flex align-items-center justify-content-center rounded-circle nmc-view-all-btn nmc-white"
-        >
-          <i class="bi bi-arrow-right font-24"></i></div
-      ></a>
-    </div>
-
-    <div class="container overflow-hidden">
-      <div class="row">
-        @for(i of instructors; track i){
-        <div class="col-4 gx-5 position-relative trainers mx-auto mt-4">
-          <figure
-            class="position-relative overflow-hidden rounded-circle m-auto"
-          >
-            <img
-              class="z-1 w-100 h-100 object-fit-cover"
-              loading="lazy"
-              [src]="i.InstructorImg ? i.InstructorImg : defaultImage"
-              [alt]="i.Name"
-            />
-
-            <div class="social">
-              <a [href]="i.Email"><i class="bi bi-envelope-fill"></i></a>
-              <a [href]="i.Twitter"><i class="bi bi-twitter-x"></i></a>
-              <a [href]="i.Github"><i class="bi bi-github"></i></a>
-              <a [href]="i.LinkedIn"><i class="bi bi-linkedin"></i></a>
-            </div>
-          </figure>
-
-          <figcaption class="m-0 p-4">
-            <h4 class="mb-1">{{ i.Name }}</h4>
-            <p class="text-secondary mb-3">{{ i.Position }}</p>
-            <p class="text-secondary mb-3 truncate">{{ i.Bio }}</p>
-
-            <a
-              class="nmc-btn-primary pt-2 px-4 w-40 m-auto"
-              [routerLink]="['/mentor', i.id]"
-            >
-              More
-            </a>
-          </figcaption>
-        </div>
-        }
-      </div>
-    </div>
-  </div>
-</section> -->

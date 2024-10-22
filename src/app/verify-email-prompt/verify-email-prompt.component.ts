@@ -16,6 +16,6 @@ export class VerifyEmailPromptComponent {
 
   async handleHomeClick(): Promise<void> {
     await this.userService.refreshUser();
-    this.router.navigateByUrl('');
+    setTimeout(() => this.router.navigateByUrl(''), 500);
   }
 }

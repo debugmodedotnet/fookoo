@@ -24,11 +24,9 @@
       @for(instructor of instructors; track instructor; let i = $index;){
       <div class="col-12 col-sm-6 col-lg-3 d-flex">
         <div
-          class="mentor-card inner rounded-0 d-flex flex-column justify-content-between flex-grow-1"
+          class="mentor-card inner d-flex flex-column justify-content-between flex-grow-1"
         >
-          <figure
-            class="position-relative overflow-hidden m-auto rounded-circle"
-          >
+          <figure class="position-relative overflow-hidden m-auto rounded-0">
             <img
               class="z-1 w-100 h-100 object-fit-cover"
               loading="lazy"
@@ -46,7 +44,7 @@
           >
             <div>
               <a [routerLink]="['/mentor', instructor.id]">
-                <h2 class="font-24 nmc-primary font-family-poppins pt-4">
+                <h2 class="font-24 nmc-primary font-family-poppins pt-4 mb-0">
                   {{ instructor.Name }}
                 </h2>
               </a>
@@ -55,20 +53,8 @@
                 {{ instructor.Position }}
               </h4>
 
-              <div class="social mt-4">
-                @if(instructor.Email){
-                <a [href]="instructor.Email">
-                  <i class="bi bi-envelope-fill"></i>
-                </a>
-                } @if(instructor.Twitter){
-                <a [href]="instructor.Twitter">
-                  <i class="bi bi-twitter-x"></i>
-                </a>
-                } @if(instructor.Github){
-                <a [href]="instructor.Github">
-                  <i class="bi bi-github"></i>
-                </a>
-                } @if(instructor.LinkedIn){
+              <div class="social mt-3">
+                @if(instructor.LinkedIn){
                 <a [href]="instructor.LinkedIn">
                   <i class="bi bi-linkedin"></i>
                 </a>

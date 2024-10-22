@@ -1,76 +1,73 @@
-// @use "../styles/variables" as *;
-
-// .profile-wrapper {
-//   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-
-//   .upper-grid {
-//     flex: 0 1 30%;
-//     position: relative;
-//     background: linear-gradient(45deg, $nmc-dark-grey, $nmc-black);
-//     background-size: 400% 400%;
-//     animation: gradientShift 10s ease infinite;
-
-//     .profile-image {
-//       position: absolute;
-//       bottom: -40px;
-//       top: 10px;
-//       left: 1.5rem;
-//       box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-//       width: 240px;
-//       height: 240px;
-
-//       img {
-//         object-position: top;
-//         border: 2px solid $nmc-light-grey;
-
-//       }
-//     }
-
-//     .social-icons .btn {
-//       background-color: transparent;
-//       color: $nmc-white;
-//       border-color: $nmc-white;
-
-//       &:hover {
-//         color: $nmc-primary;
-//         border-color: $nmc-primary;
-//       }
-//     }
-//   }
-
-//   .lower-grid {
-//     flex: 1 1 70%;
-
-//     h3 {
-//       border-bottom: 1px solid $nmc-primary;
-//     }
-//   }
-// }
-
-// @keyframes gradientShift {
-//   0% {
-//     background-position: 0% 0%;
-//   }
-
-//   50% {
-//     background-position: 100% 100%;
-//   }
-
-//   100% {
-//     background-position: 0% 0%;
-//   }
-// }
-
 @use "../styles/shine" as *;
+@use "../styles/variables" as *;
 
+.wrapper {
+  .image-container {
+    height: 500px;
+    width: 100%;
+    border: 5px groove $nmc-white;
+
+    img {
+      object-position: top;
+    }
+  }
+}
+
+@media (max-width: 1199px) {
+  h2 {
+    font-size: 48px !important;
+  }
+}
+
+@media (max-width: 991px) {
+  .w-md-100 {
+    width: 100%;
+  }
+
+  .wrapper {
+    .image-container {
+      height: 400px;
+      width: 400px;
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  h2 {
+    font-size: 42px !important;
+  }
+
+  .wrapper {
+    .image-container {
+      height: 300px;
+      width: 300px;
+    }
+  }
+}
 
 @media (max-width: 425px) {
+  h2 {
+    font-size: 38px !important;
+  }
+
   .resume-name {
     font-size: 1.4rem !important;
+  }
+
+  .wrapper {
+    .image-container {
+      height: 100%;
+      width: 100%;
+      max-height: 300px;
+    }
   }
 }
 
 @media (max-width: 390px) {
+  h2 {
+    font-size: 34px !important;
+  }
+
   .resume-name {
     font-size: 1.3rem !important;
   }

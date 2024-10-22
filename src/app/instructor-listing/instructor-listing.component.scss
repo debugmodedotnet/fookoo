@@ -1,58 +1,84 @@
 @use "../styles/variables" as *;
 
-.wrapper {
-  //  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+// .wrapper {
+//   //  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 
-  button {
-    border: 1px solid #ccc;
+//   button {
+//     border: 1px solid #ccc;
+//   }
+
+//   .image-container {
+//     figure {
+//       height: 700px;
+//       width: 100%;
+//     }
+
+//     &.order-md-2 {
+//       order: 2;
+//     }
+
+//     &.order-md-2 img {
+//       margin-left: auto;
+//       margin-right: 0;
+//     }
+
+//     &:not(.order-md-2) img {
+//       margin-left: 0;
+//       margin-right: auto;
+//     }
+//   }
+
+//   .company-bar .row .col-auto:not(:last-child) {
+//     border-right: 2px solid $nmc-primary;
+//   }
+
+// }
+
+.mentor-card {
+  figure {
+    border: 2px solid $nmc-primary;
+    height: 200px;
+    width: 200px;
+
+    img {
+      object-position: top;
+    }
   }
 
-  .image-container {
-
-    figure {
-      height: 700px;
-      width: 100%;
-    }
-
-    &.order-md-2 {
-      order: 2;
-    }
-
-    &.order-md-2 img {
-      margin-left: auto;
-      margin-right: 0;
-    }
-
-    &:not(.order-md-2) img {
-      margin-left: 0;
-      margin-right: auto;
-    }
+  &:hover figure img {
+    transition: all ease 0.3s;
+    transform: scale(1.1);
   }
 
-  .company-bar .row .col-auto:not(:last-child) {
-    border-right: 2px solid $nmc-primary;
+  .info {
+    box-shadow: 0 1px 10px rgba(0, 0, 0, 0.1);
+    margin-top: -150px;
+    padding: 170px 10px 30px !important;
+    border: 1px solid #efefef;
   }
 
+  .social a {
+    transition: 0.3s;
+    color: $nmc-dark-grey;
+    font-size: 20px;
+    margin: 0 8px;
+  }
+
+  .social a:hover {
+    color: $nmc-primary;
+  }
 }
 
-// @media (max-width: 768px) {
-//   .row {
-//     flex-direction: column;
-//   }
+@media (max-width: 1200px) {
+  .mentor-card {
+    figure {
+      height: 175px;
+      width: 175px;
+    }
 
-//   img {
-//     margin-top: 1rem;
-//   }
-// }
-
-// @media (max-width: 768px) {
-//   .image-container {
-//     max-width: none;
-//     flex: 1;
-//   }
-
-//   .text-container {
-//     padding: 1rem;
-//     margin: 0;
-//   }
-// }
+    .info {
+      margin-top: -120px;
+      padding: 130px 10px 30px !important;
+    }
+  }
+}

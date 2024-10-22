@@ -35,14 +35,4 @@ export class InstructorsComponent implements OnInit {
     });
   }
 
-  getColorClass(index: number): string {
-    const colorClasses = [
-      'purple-bg-gradient',
-      'orange-bg-gradient',
-      'green-bg-gradient',
-      'red-bg-gradient'
-    ];
-    return colorClasses[index % colorClasses.length];
-  }
-
 }

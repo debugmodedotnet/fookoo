@@ -290,195 +290,213 @@
 </section>
 }  -->
 
-@if (instructor) {
-<section class="light-mode py-5">
-  <div class="container-fluid">
-    <div class="main-content-wrapper">
-      <div class="container-fluid">
-        <div class="top-bar text-center position-relative">
-          <div class="top-bar-inner">
-            <ul class="social-list list-inline mx-auto">
-              @if(instructor.Github){
-              <li class="list-inline-item me-0 me-md-1 me-lg-2">
-                <a target="_blank" [href]="instructor.Github"
-                  ><i class="bi bi-github"></i
-                ></a>
-              </li>
-              } @if(instructor.Twitter){
-              <li class="list-inline-item me-0 me-md-1 me-lg-2">
-                <a target="_blank" [href]="instructor.Twitter"
-                  ><i class="bi bi-twitter"></i
-                ></a>
-              </li>
-              }@if(instructor.LinkedIn){
-              <li class="list-inline-item me-0 me-md-1 me-lg-2">
-                <a target="_blank" [href]="instructor.LinkedIn">
-                  <i class="bi bi-linkedin"></i>
-                </a>
-              </li>
-              }
-            </ul>
+<section class="nmc-bg-white overflow-hidden">
+  <div class="wrapper">
+    @if(instructor){
+    <div class="mentor-header gradient-bg py-4">
+      <div class="container-boxed">
+        <div
+          class="d-flex align-items-center justify-content-between flex-column flex-lg-row"
+        >
+          <div class="w-40 w-md-100">
+            <figure class="mx-auto my-0 p-0 overflow-hidden image-container">
+              <img
+                [src]="
+                  instructor.InstructorImg
+                    ? instructor.InstructorImg
+                    : defaultImage
+                "
+                class="img-fluid w-100 h-100 object-fit-cover"
+                alt="Mentor Image"
+              />
+            </figure>
           </div>
-        </div>
 
-        <div class="resume-wrapper mx-auto rounded-2">
-          <div class="resume-header px-4 px-lg-5">
-            <div class="resume-profile-holder text-center">
-              <figure
-                class="m-0 resume-profile-pic rounded-circle overflow-hidden m-auto"
-              >
-                <img
-                  class="w-100 h-100 object-fit-cover"
-                  [src]="
-                    instructor.InstructorImg
-                      ? instructor.InstructorImg
-                      : defaultImage
-                  "
-                  alt="image"
-                />
-              </figure>
+          <div class="w-60 w-md-100 px-0 py-4 p-lg-5 text-center text-lg-start">
+            <h2 class="font-family-poppins font-52 nmc-white">
+              {{ instructor.Name }}
+            </h2>
 
-              <h2 class="resume-name text-uppercase">{{ instructor.Name }}</h2>
+            <p class="font-18 nmc-white mt-2">{{ instructor.Bio }}</p>
 
-              <div class="resume-role-title text-uppercase">
-                {{ instructor.Position }}
-              </div>
+            <div
+              class="social-links mt-3 d-flex gap-3 justify-content-center justify-content-lg-start"
+            >
               @if(instructor.Email){
-              <div class="resume-contact mt-4">
-                <ul
-                  class="resume-contact-list list-unstyled list-inline mb-0 justify-content-between"
-                >
-                  <li class="list-inline-item me-md-3 me-lg-5">
-                    <i class="resume-contact-icon bi bi-envelope me-2"></i>
-                    {{ instructor.Email }}
-                  </li>
-                </ul>
-              </div>
-              }
+              <a
+                [href]="'mailto:' + instructor.Email"
+                target="_blank"
+                class="nmc-white font-22"
+              >
+                <i class="bi bi-envelope"></i> </a
+              >} @if(instructor.Twitter){
+              <a
+                [href]="instructor.Twitter"
+                target="_blank"
+                class="nmc-white font-22"
+              >
+                <i class="bi bi-twitter"></i> </a
+              >} @if(instructor.LinkedIn){
+              <a
+                [href]="instructor.LinkedIn"
+                target="_blank"
+                class="nmc-white font-22"
+              >
+                <i class="bi bi-linkedin"></i> </a
+              >} @if(instructor.YouTube){
+              <a
+                [href]="instructor.YouTube"
+                target="_blank"
+                class="nmc-white font-22"
+              >
+                <i class="bi bi-youtube"></i> </a
+              >} @if(instructor.Github){
+              <a
+                [href]="instructor.Github"
+                target="_blank"
+                class="nmc-white font-22"
+              >
+                <i class="bi bi-github"></i> </a
+              >}
             </div>
-          </div>
 
-          <div class="resume-body p-4 p-lg-5">
-            <div class="row">
-              <div class="col-main col-12 col-lg-8 pe-lg-4">
-                <!-- Courses -->
-                <section class="resume-skills-section resume-section">
-                  <h3
-                    class="resume-section-heading text-uppercase py-2 py-lg-3 py-3"
-                  >
-                    <i
-                      class="resume-section-heading-icon bi bi-display me-2"
-                    ></i>
-                    Courses
-                  </h3>
-
-                  <p>Coming Soon...</p>
-                </section>
-                <hr />
-
-                <!-- Skills -->
-                <section class="resume-skills-section resume-section">
-                  <h3
-                    class="resume-section-heading text-uppercase py-2 py-lg-3 py-3"
-                  >
-                    <i class="resume-section-heading-icon bi bi-gear me-2"></i>
-                    Skills
-                  </h3>
-
-                  <ul class="d-flex gap-2">
-                    @if(1){
-                    <li class="list-inline-item">
-                      <span class="badge resume-skill-badge">{{
-                        instructor.Skill1
-                      }}</span>
-                    </li>
-                    } @if(instructor.Skill2){
-                    <li class="list-inline-item">
-                      <span class="badge resume-skill-badge">{{
-                        instructor.Skill2
-                      }}</span>
-                    </li>
-                    } @if(instructor.Skill3){
-
-                    <li class="list-inline-item">
-                      <span class="badge resume-skill-badge">{{
-                        instructor.Skill3
-                      }}</span>
-                    </li>
-                    } @if(instructor.Skill4){
-                    <li class="list-inline-item">
-                      <span class="badge resume-skill-badge">{{
-                        instructor.Skill4
-                      }}</span>
-                    </li>
-                    }
-                  </ul>
-                </section>
-
-                <hr />
-
-                <!-- Work History -->
-                <section class="resume-skills-section resume-section">
-                  <h3
-                    class="resume-section-heading text-uppercase py-2 py-lg-3 py-3"
-                  >
-                    <i
-                      class="resume-section-heading-icon bi bi-briefcase me-2"
-                    ></i>
-                    Work History
-                  </h3>
-
-                  <ul class="d-flex gap-2">
-                    @if(instructor.Company1){
-                    <li class="list-inline-item">
-                      <span class="badge resume-skill-badge">{{
-                        instructor.Company1
-                      }}</span>
-                    </li>
-                    } @if(instructor.Company2){
-                    <li class="list-inline-item">
-                      <span class="badge resume-skill-badge">{{
-                        instructor.Company2
-                      }}</span>
-                    </li>
-                    } @if(instructor.Company3){
-                    <li class="list-inline-item">
-                      <span class="badge resume-skill-badge">{{
-                        instructor.Company3
-                      }}</span>
-                    </li>
-                    } @if(instructor.Company4){
-                    <li class="list-inline-item">
-                      <span class="badge resume-skill-badge">{{
-                        instructor.Company4
-                      }}</span>
-                    </li>
-                    }
-                  </ul>
-                </section>
-
-                <hr />
-
-                <!-- BIO -->
-                @if(instructor.Bio){
-                <section class="resume-summary-section resume-section">
-                  <h3
-                    class="resume-section-heading text-uppercase py-2 py-lg-3 py-2 py-lg-3"
-                  >
-                    <i class="resume-section-heading-icon bi bi-person me-2"></i
-                    >About {{ instructor.Name }}
-                  </h3>
-                  <div class="resume-summary-desc">
-                    {{ instructor.Bio }}
-                  </div>
-                </section>
-                }
-              </div>
-            </div>
+            <!-- <button
+              type="button"
+              class="nmc-btn-primary h-auto py-2 px-3 mt-3 rounded-2 box-shadow-none nmc-bg-white nmc-primary"
+              [routerLink]="['/mentor', instructor.id]"
+            >
+              Upcoming Courses ->
+            </button> -->
           </div>
         </div>
       </div>
     </div>
+
+    <div class="resume-body pt-5 pb-4 light-mode">
+      <div class="container-boxed">
+        <div class="row">
+          <div class="col-main col-12 col-lg-8 pe-lg-4">
+            <!-- Courses -->
+            <section class="resume-skills-section resume-section">
+              <h3
+                class="resume-section-heading text-uppercase py-2 py-lg-3 py-3"
+              >
+                <i class="resume-section-heading-icon bi bi-display me-2"></i>
+                Courses
+              </h3>
+
+              <p>Coming Soon...</p>
+            </section>
+            <hr />
+
+            <!-- Skills -->
+            <section class="resume-skills-section resume-section">
+              <h3
+                class="resume-section-heading text-uppercase py-2 py-lg-3 py-3"
+              >
+                <i class="resume-section-heading-icon bi bi-gear me-2"></i>
+                Skills
+              </h3>
+
+              <ul class="d-flex gap-2 flex-wrap">
+                @if(1){
+                <li class="list-inline-item">
+                  <span
+                    class="badge resume-skill-badge text-wrap lh-base text-start"
+                    >{{ instructor.Skill1 }}</span
+                  >
+                </li>
+                } @if(instructor.Skill2){
+                <li class="list-inline-item">
+                  <span
+                    class="badge resume-skill-badge text-wrap lh-base text-start"
+                    >{{ instructor.Skill2 }}</span
+                  >
+                </li>
+                } @if(instructor.Skill3){
+
+                <li class="list-inline-item">
+                  <span
+                    class="badge resume-skill-badge text-wrap lh-base text-start"
+                    >{{ instructor.Skill3 }}</span
+                  >
+                </li>
+                } @if(instructor.Skill4){
+                <li class="list-inline-item">
+                  <span
+                    class="badge resume-skill-badge text-wrap lh-base text-start"
+                    >{{ instructor.Skill4 }}</span
+                  >
+                </li>
+                }
+              </ul>
+            </section>
+
+            <hr />
+
+            <!-- Work History -->
+            <section class="resume-skills-section resume-section">
+              <h3
+                class="resume-section-heading text-uppercase py-2 py-lg-3 py-3"
+              >
+                <i class="resume-section-heading-icon bi bi-briefcase me-2"></i>
+                Work History
+              </h3>
+
+              <ul class="d-flex gap-2 flex-wrap">
+                @if(instructor.Company1){
+                <li class="list-inline-item">
+                  <span
+                    class="badge resume-skill-badge text-wrap lh-base text-start"
+                    >{{ instructor.Company1 }}</span
+                  >
+                </li>
+                } @if(instructor.Company2){
+                <li class="list-inline-item">
+                  <span
+                    class="badge resume-skill-badge text-wrap lh-base text-start"
+                    >{{ instructor.Company2 }}</span
+                  >
+                </li>
+                } @if(instructor.Company3){
+                <li class="list-inline-item">
+                  <span
+                    class="badge resume-skill-badge text-wrap lh-base text-start"
+                    >{{ instructor.Company3 }}</span
+                  >
+                </li>
+                } @if(instructor.Company4){
+                <li class="list-inline-item">
+                  <span
+                    class="badge resume-skill-badge text-wrap lh-base text-start"
+                    >{{ instructor.Company4 }}</span
+                  >
+                </li>
+                }
+              </ul>
+            </section>
+
+            <!-- <hr /> -->
+
+            <!-- BIO -->
+            <!-- @if(instructor.Bio){
+              <section class="resume-summary-section resume-section">
+                <h3
+                  class="resume-section-heading text-uppercase py-2 py-lg-3 py-2 py-lg-3"
+                >
+                  <i class="resume-section-heading-icon bi bi-person me-2"></i
+                  >About
+                  {{ instructor.Name }}
+                </h3>
+                <div class="resume-summary-desc">
+                  {{ instructor.Bio }}
+                </div>
+              </section>
+              } -->
+          </div>
+        </div>
+      </div>
+    </div>
+    }
   </div>
 </section>
-}

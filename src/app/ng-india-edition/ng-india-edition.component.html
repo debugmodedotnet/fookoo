@@ -63,7 +63,7 @@
         </div>
       </div>
       @if(event?.SummaryVideoId){
-      <div class="yt-video rounded-3 overflow-hidden w-60 w-991-100">
+      <div class="yt-video rounded-0 overflow-hidden w-60 w-991-100">
         <!-- <youtube-player
           [videoId]="event?.SummaryVideoId"
           placeholderImageQuality="high"
@@ -82,7 +82,7 @@
         ></iframe>
       </div>
       }@else {
-      <figure class="yt-image m-0 overflow-hidden rounded-3 w-60 w-991-100">
+      <figure class="yt-image m-0 overflow-hidden rounded-0 w-60 w-991-100">
         <img [src]="event?.SummaryImg" alt="Summary Image" />
       </figure>
       }
@@ -98,7 +98,7 @@
       <div class="row gx-3 gy-2">
         @for(speaker of event?.SpeakersCollection; track speaker){
         <div class="col-6 col-sm-3 col-lg-2 speakers">
-          <figure class="rounded-3 overflow-hidden">
+          <figure class="rounded-0 overflow-hidden">
             <img
               [src]="speaker.Image ? speaker.Image : defaultSpeakerImage"
               alt="Brenden Legros"

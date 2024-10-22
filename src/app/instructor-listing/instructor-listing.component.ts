@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Observable } from 'rxjs';
 import { IInstructor } from '../modules/instructors';
@@ -17,8 +17,7 @@ export class InstructorListingComponent implements OnInit {
   defaultImage = 'assets/images/home/instructor-default.jpg';
 
   instructors$!: Observable<IInstructor[]>;
-
-  constructor(private firestore: AngularFirestore) { }
+  private firestore = inject(AngularFirestore);
 
   ngOnInit(): void {
     this.instructors$ = this.firestore.collection<IInstructor>('instructor').valueChanges();

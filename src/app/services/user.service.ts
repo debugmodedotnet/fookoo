@@ -3,6 +3,9 @@ import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Observable, from, throwError, of } from 'rxjs';
 import { catchError, switchMap, map } from 'rxjs/operators';
+import {
+  sendEmailVerification
+} from '@angular/fire/auth';
 
 @Injectable({
   providedIn: 'root'
@@ -53,6 +56,7 @@ export class UserService {
 
   async signUp(email: string, password: string, userDetails: { name: string; }) {
     const userCredential = await this.afAuth.createUserWithEmailAndPassword(email, password);
+    await sendEmailVerification(userCredential.user!);
     const uid = userCredential.user!.uid;
     await this.firestore.doc(`users/${uid}`).set({
       email,
@@ -91,6 +95,10 @@ export class UserService {
 
   getUserById(uid: string): Observable<any> {
     return this.firestore.doc(`users/${uid}`).valueChanges();
+  }
+
+  async refreshUser(): Promise<void> {
+    (await this.afAuth.currentUser)?.reload();
   }
 
 }

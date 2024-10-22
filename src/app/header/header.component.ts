@@ -71,7 +71,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   logout(): void {
     this.userService.logout().subscribe(() => {
       this.router.navigate(['/home']);
-      window.location.reload();
+      // window.location.reload();
     });
   }
 

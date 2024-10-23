@@ -1,20 +1,16 @@
 <section class="py-5">
   <div class="container-boxed">
     <h2 class="font-36 nmc-dark-grey font-family-poppins text-center mb-3">
-      <span class="text-bottom-line position-relative">Our Mentors</span>
+      <span class="text-bottom-line position-relative">Mentors</span>
     </h2>
 
-    <!-- <div class="wrapper pt-5 nmc-bg-white">
-    @for(instructor of instructors$ | async; track instructor; let i = $index;){
-    <ng-container>
-      @if(instructor){
-      <div class="container-boxed">
-        <div class="mentor-section">
-          <div class="d-flex align-items-center justify-content-between">
-            <div
-              class="w-40 text-center d-flex image-container"
-              [ngClass]="{ 'order-md-2': i % 2 !== 0 }"
-            >
+    <div class="wrapper nmc-bg-white">
+      @for(instructor of instructors$ | async; track instructor; let i =
+      $index;){ @if(instructor){
+      <div class="mentor-section">
+        <div class="container-boxed">
+          <div class="row align-items-center justify-content-between py-5">
+            <div class="col-3 image-container">
               <figure class="m-0 p-0 overflow-hidden">
                 <img
                   [src]="
@@ -26,10 +22,16 @@
                   alt="Mentor Image"
                 />
               </figure>
+
+              <figcaption
+                class="font-family-poppins text-center mt-2 py-1 font-20 nmc-bg-light-grey"
+              >
+                {{ instructor.Company1 }}
+              </figcaption>
             </div>
 
-            <div class="w-60 text-left p-5 m-auto">
-              <h1 class="font-family-poppins font-48 nmc-dark-grey">
+            <div class="col-5 text-left m-auto">
+              <h1 class="font-family-poppins font-48 nmc-primary">
                 {{ instructor.Name }}
               </h1>
 
@@ -37,123 +39,201 @@
 
               <div class="d-flex align-items-center justify-content-start my-2">
                 <span
-                  class="d-inline-block font-14 fw-semibold rounded-1 py-1 px-3 text-orange-600 bg-orange-100"
+                  class="d-inline-block font-14 fw-semibold rounded-1 py-1 px-3 nmc-dark-grey nmc-bg-light-grey"
                 >
                   {{ instructor.Skill1 }}
                 </span>
 
                 @if(instructor.Skill2){
                 <span
-                  class="d-inline-block font-14 fw-semibold rounded-1 py-1 px-3 text-orange-600 bg-orange-100 ms-2"
+                  class="d-inline-block font-14 fw-semibold rounded-1 py-1 px-3 nmc-dark-grey nmc-bg-light-grey ms-2"
                 >
                   {{ instructor.Skill2 }}</span
                 >} @if(instructor.Skill3){
                 <span
-                  class="d-inline-block font-14 fw-semibold rounded-1 py-1 px-3 text-orange-600 bg-orange-100 ms-2"
+                  class="d-inline-block font-14 fw-semibold rounded-1 py-1 px-3 nmc-dark-grey nmc-bg-light-grey ms-2"
                 >
                   {{ instructor.Skill3 }}</span
                 >} @if(instructor.Skill4){
                 <span
-                  class="d-inline-block font-14 fw-semibold rounded-1 py-1 px-3 text-orange-600 bg-orange-100 ms-2"
+                  class="d-inline-block font-14 fw-semibold rounded-1 py-1 px-3 nmc-dark-grey nmc-bg-light-grey ms-2"
                 >
                   {{ instructor.Skill4 }}</span
                 >}
               </div>
 
-              <div class="social-links mt-3 d-flex gap-3">
-                @if(instructor.Email){
-                <a
-                  [href]="'mailto:' + instructor.Email"
-                  target="_blank"
-                  class="nmc-dark-grey font-22"
-                >
-                  <i class="bi bi-envelope"></i> </a
-                >} @if(instructor.Twitter){
-                <a
-                  [href]="instructor.Twitter"
-                  target="_blank"
-                  class="nmc-dark-grey font-22"
-                >
-                  <i class="bi bi-twitter"></i> </a
-                >} @if(instructor.LinkedIn){
-                <a
-                  [href]="instructor.LinkedIn"
-                  target="_blank"
-                  class="nmc-dark-grey font-22"
-                >
-                  <i class="bi bi-linkedin"></i> </a
-                >} @if(instructor.YouTube){
-                <a
-                  [href]="instructor.YouTube"
-                  target="_blank"
-                  class="nmc-dark-grey font-22"
-                >
-                  <i class="bi bi-youtube"></i> </a
-                >} @if(instructor.Github){
-                <a
-                  [href]="instructor.Github"
-                  target="_blank"
-                  class="nmc-dark-grey font-22"
-                >
-                  <i class="bi bi-github"></i> </a
-                >}
-              </div>
+              <div class="events mt-4">
+                <h3 class="text-uppercase font-20 font-family-poppins">
+                  Upcoming Events:
+                </h3>
 
-              <button
+                <ul class="ms-3">
+                  <li class="">
+                    <a
+                      class="nmc-dark-grey fw-semibold text-decoration-underline cursor-pointer"
+                    >
+                      Angular Summit 2024
+                    </a>
+                  </li>
+
+                  <li class="">
+                    <a
+                      class="nmc-dark-grey fw-semibold text-decoration-underline cursor-pointer"
+                    >
+                      React Meetup 2024
+                    </a>
+                  </li>
+
+                  <li class="">
+                    <a
+                      class="nmc-dark-grey fw-semibold text-decoration-underline cursor-pointer"
+                    >
+                      ng-India 2025
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="col-3 text-left">
+              <!-- <button
                 type="button"
                 class="nmc-btn-primary h-auto py-2 px-3 mt-3 rounded-2 box-shadow-none nmc-bg-white nmc-primary"
                 [routerLink]="['/mentor', instructor.id]"
               >
-                Upcoming Courses ->
-              </button>
+               Book Appointment
+              </button> -->
+
+              <div class="social-links">
+                <h3 class="text-uppercase font-20 font-family-poppins">
+                  Connect
+                </h3>
+
+                <div class="social-links d-flex gap-3">
+                  @if(instructor.Email){
+                  <a
+                    [href]="'mailto:' + instructor.Email"
+                    target="_blank"
+                    class="nmc-dark-grey font-22"
+                  >
+                    <i class="bi bi-envelope"></i> </a
+                  >} @if(instructor.Twitter){
+                  <a
+                    [href]="instructor.Twitter"
+                    target="_blank"
+                    class="nmc-dark-grey font-22"
+                  >
+                    <i class="bi bi-twitter"></i> </a
+                  >} @if(instructor.LinkedIn){
+                  <a
+                    [href]="instructor.LinkedIn"
+                    target="_blank"
+                    class="nmc-dark-grey font-22"
+                  >
+                    <i class="bi bi-linkedin"></i> </a
+                  >} @if(instructor.YouTube){
+                  <a
+                    [href]="instructor.YouTube"
+                    target="_blank"
+                    class="nmc-dark-grey font-22"
+                  >
+                    <i class="bi bi-youtube"></i> </a
+                  >} @if(instructor.Github){
+                  <a
+                    [href]="instructor.Github"
+                    target="_blank"
+                    class="nmc-dark-grey font-22"
+                  >
+                    <i class="bi bi-github"></i> </a
+                  >}
+                </div>
+              </div>
+
+              <div class="work-history pt-3 mt-3">
+                <h3 class="text-uppercase font-20 font-family-poppins">
+                  Experience
+                </h3>
+
+                <ul class="d-flex gap-2 flex-wrap">
+                  @if(instructor.Company1){
+                  <li class="list-inline-item">
+                    <span
+                      class="d-inline-block nmc-dark-grey nmc-bg-light-grey font-14 fw-semibold rounded-1 p-2 text-wrap lh-base text-start"
+                      >{{ instructor.Company1 }}</span
+                    >
+                  </li>
+                  } @if(instructor.Company2){
+                  <li class="list-inline-item">
+                    <span
+                      class="d-inline-block nmc-dark-grey nmc-bg-light-grey font-14 fw-semibold rounded-1 p-2 text-wrap lh-base text-start"
+                      >{{ instructor.Company2 }}</span
+                    >
+                  </li>
+                  } @if(instructor.Company3){
+                  <li class="list-inline-item">
+                    <span
+                      class="d-inline-block nmc-dark-grey nmc-bg-light-grey font-14 fw-semibold rounded-1 p-2 text-wrap lh-base text-start"
+                      >{{ instructor.Company3 }}</span
+                    >
+                  </li>
+                  } @if(instructor.Company4){
+                  <li class="list-inline-item">
+                    <span
+                      class="d-inline-block nmc-dark-grey nmc-bg-light-grey font-14 fw-semibold rounded-1 p-2 text-wrap lh-base text-start"
+                      >{{ instructor.Company4 }}</span
+                    >
+                  </li>
+                  }
+                </ul>
+              </div>
             </div>
           </div>
         </div>
       </div>
       }
 
-      <div class="company-bar bg-orange-100 p-4">
-        <div class="row justify-content-center gap-3">
-          @if(instructor.Company1){
-          <div class="col-auto">
-            <a
-              class="m-0 font-16 nmc-primary text-uppercase font-family-poppins tracking-wider px-3"
-              target="_blank"
-              >{{ instructor.Company1 }}</a
-            >
+      <!-- <div class="company-bar bg-orange-100 p-4">
+          <div class="row justify-content-center gap-3">
+            @if(instructor.Company1){
+            <div class="col-auto">
+              <a
+                class="m-0 font-16 nmc-primary text-uppercase font-family-poppins tracking-wider px-3"
+                target="_blank"
+                >{{ instructor.Company1 }}</a
+              >
+            </div>
+            } @if(instructor.Company2){
+            <div class="col-auto">
+              <a
+                class="m-0 font-16 nmc-primary text-uppercase font-family-poppins tracking-wider px-3"
+                target="_blank"
+                >{{ instructor.Company2 }}</a
+              >
+            </div>
+            } @if(instructor.Company3){
+            <div class="col-auto">
+              <a
+                class="m-0 font-16 nmc-primary text-uppercase font-family-poppins tracking-wider px-3"
+                target="_blank"
+                >{{ instructor.Company3 }}</a
+              >
+            </div>
+            } @if(instructor.Company4){
+            <div class="col-auto">
+              <a
+                class="m-0 font-16 nmc-primary text-uppercase font-family-poppins tracking-wider px-3"
+                target="_blank"
+                >{{ instructor.Company4 }}</a
+              >
+            </div>
+            }
           </div>
-          } @if(instructor.Company2){
-          <div class="col-auto">
-            <a
-              class="m-0 font-16 nmc-primary text-uppercase font-family-poppins tracking-wider px-3"
-              target="_blank"
-              >{{ instructor.Company2 }}</a
-            >
-          </div>
-          } @if(instructor.Company3){
-          <div class="col-auto">
-            <a
-              class="m-0 font-16 nmc-primary text-uppercase font-family-poppins tracking-wider px-3"
-              target="_blank"
-              >{{ instructor.Company3 }}</a
-            >
-          </div>
-          } @if(instructor.Company4){
-          <div class="col-auto">
-            <a
-              class="m-0 font-16 nmc-primary text-uppercase font-family-poppins tracking-wider px-3"
-              target="_blank"
-              >{{ instructor.Company4 }}</a
-            >
-          </div>
-          }
-        </div>
-      </div>
-    </ng-container>
-    }
-  </div> -->
+        </div> -->
 
-    <div class="mentor-card-wrapper row g-4 mt-4">
+      }
+    </div>
+
+    <!-- <div class="mentor-card-wrapper row g-4 mt-4">
       @for(instructor of instructors$ | async; track instructor; let i =
       $index;){
       <div class="col-12 col-sm-6 col-lg-4 d-flex">
@@ -201,6 +281,6 @@
         </div>
       </div>
       }
-    </div>
+    </div> -->
   </div>
 </section>

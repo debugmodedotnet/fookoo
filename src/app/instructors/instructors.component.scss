@@ -2,12 +2,7 @@
 
 .mentor-card {
     figure {
-
-       // border: 2px solid $nmc-primary;
         height: 300px;
-
-       
-
         width: 100%;
 
         img {
@@ -20,11 +15,8 @@
         transform: scale(1.1);
     }
 
-
     .info {
         box-shadow: 0 1px 10px rgba(0, 0, 0, 0.1);
-        //margin-top: -150px;
-       // padding: 170px 10px 30px !important;
         border: 1px solid #efefef;
     }
 

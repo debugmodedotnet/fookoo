@@ -2,13 +2,13 @@ import { Component, inject, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Observable } from 'rxjs';
 import { IInstructor } from '../modules/instructors';
-import { AsyncPipe, NgClass } from '@angular/common';
+import { AsyncPipe } from '@angular/common';
 import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-instructor-listing',
   standalone: true,
-  imports: [AsyncPipe, NgClass, RouterLink],
+  imports: [AsyncPipe, RouterLink],
   templateUrl: './instructor-listing.component.html',
   styleUrl: './instructor-listing.component.scss'
 })

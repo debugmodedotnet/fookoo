@@ -1,45 +1,109 @@
 @use "../styles/variables" as *;
 
-.mentor-card {
-  figure {
-    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
-    height: 400px;
-    width: 100%;
-
-    img {
-      object-position: top;
-    }
-  }
-
-  &:hover figure img {
-    transition: all ease 0.3s;
-    transform: scale(1.1);
-  }
-
-  .social a {
-    transition: 0.3s;
-    color: $nmc-dark-grey;
-    font-size: 20px;
-    margin: 0 8px;
-  }
-
-  .social a:hover {
-    color: $nmc-primary;
-  }
+.text-bottom-line::after {
+  inset: 55px 0 0 -24px;
 }
 
-@media (max-width: 767px) {
-  .mentor-card {
+.wrapper {
+  .mentor-section:not(:last-child) {
+    border-bottom: 1px solid $nmc-primary;
+  }
+
+  button {
+    border: 1px solid #ccc;
+  }
+
+  .image-container {
     figure {
       height: 300px;
+      width: 100%;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+      img {
+        object-position: top;
+      }
     }
   }
+
+  .events li {
+    list-style: disc;
+  }
+
+  .events li:hover a,
+  .social-links a:hover {
+    color: $nmc-primary !important;
+    transition: ease all 0.5s;
+  }
+
+  .work-history {
+    border-top: 1px solid $nmc-primary;
+    ;
+  }
+
 }
 
-@media (max-width: 425px) {
-  .mentor-card {
-    figure {
-      max-height: 250px;
-    }
-  }
-}
+// .mentor-card {
+//   figure {
+//     box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+//     height: 400px;
+//     width: 100%;
+
+//     img {
+//       object-position: top;
+//     }
+//   }
+
+//   &:hover figure img {
+//     transition: all ease 0.3s;
+//     transform: scale(1.1);
+//   }
+
+//   .social a {
+//     transition: 0.3s;
+//     color: $nmc-dark-grey;
+//     font-size: 20px;
+//     margin: 0 8px;
+//   }
+
+//   .social a:hover {
+//     color: $nmc-primary;
+//   }
+// }
+
+// @media (max-width: 767px) {
+//   .mentor-card {
+//     figure {
+//       height: 300px;
+//     }
+//   }
+// }
+
+// @media (max-width: 425px) {
+//   .mentor-card {
+//     figure {
+//       max-height: 250px;
+//     }
+//   }
+// }
+
+// @media (max-width: 768px) {
+//   .row {
+//     flex-direction: column;
+//   }
+
+//   img {
+//     margin-top: 1rem;
+//   }
+// }
+
+// @media (max-width: 768px) {
+//   .image-container {
+//     max-width: none;
+//     flex: 1;
+//   }
+
+//   .text-container {
+//     padding: 1rem;
+//     margin: 0;
+//   }
+// }

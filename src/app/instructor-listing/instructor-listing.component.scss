@@ -39,7 +39,28 @@
     border-top: 1px solid $nmc-primary;
     ;
   }
+}
 
+@media (max-width: 767px) {
+  .image-container {
+
+    figure,
+    figcaption {
+      max-width: 300px;
+    }
+  }
+}
+
+@media (max-width: 575px) {
+  h2 {
+    font-size: 42px !important;
+  }
+}
+
+@media (max-width: 420px) {
+  h2 {
+    font-size: 38px !important;
+  }
 }
 
 // .mentor-card {

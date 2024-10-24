@@ -34,11 +34,11 @@
       Select Skills
     </h5>
 
-    <div class="row form-group my-3 g-4">
+    <div class="row form-group my-3 g-3">
       @for(skill of availableSkills; track skill ){
-      <div class="col-2">
+      <div class="col-auto">
         <div
-          class="chips rounded-5 p-2 text-center cursor-pointer"
+          class="chips rounded-5 py-2 px-4 text-center cursor-pointer"
           [class.selected]="isSelected(skill)"
           (click)="toggleSkill(skill)"
           (keydown)="toggleSkill(skill)"

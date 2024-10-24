@@ -69,3 +69,15 @@
 .back-btn:hover {
     color: $nmc-primary !important;
 }
+
+@media (max-width: 575px) {
+    .input__group .input__field {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 425px) {
+    .input__group .input__field:placeholder-shown~.input__label {
+        font-size: 1rem;
+    }
+}

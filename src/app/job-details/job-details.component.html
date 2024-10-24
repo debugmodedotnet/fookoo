@@ -1,6 +1,6 @@
 <section class="job-details py-5">
   <div class="container-boxed">
-    <div class="wrapper rounded-4 nmc-bg-white">
+    <div class="wrapper rounded-0 nmc-bg-white">
       <div class="company-info p-4 border-bottom position-relative">
         <!-- <div class="company-img position-absolute">
           <a [href]="job?.CompanyUrl"
@@ -11,14 +11,16 @@
           /></a>          
         </div> -->
 
-        <div class="d-flex align-items-start justify-content-between">
+        <div
+          class="d-flex align-items-start justify-content-between flex-column flex-sm-row"
+        >
           <div>
             <h2 class="font-32 nmc-dark-grey fw-normal">
               {{ job?.position }}
             </h2>
 
             <div
-              class="pt-3 d-flex align-items-center justify-content-start gap-4"
+              class="pt-3 d-flex align-items-center justify-content-start flex-wrap gap-4"
             >
               <a [href]="job?.CompanyUrl">
                 <h6 class="nmc-medium-grey fw-light font-16 m-0">
@@ -50,7 +52,9 @@
             </div>
           </div>
 
-          <div class="d-flex align-items-center justify-content-end">
+          <div
+            class="d-flex align-items-center justify-content-end mt-4 mt-sm-0"
+          >
             @if(!user){
             <button
               class="nmc-btn-primary h-auto py-2 px-4 rounded-2 box-shadow-none"
@@ -60,7 +64,7 @@
             </button>
             }@else{
             <button
-              class="nmc-btn-primary h-auto py-2 px-4 rounded-2 box-shadow-none"
+              class="nmc-btn-primary h-auto py-2 px-4 box-shadow-none"
               (click)="jobApply()"
               [disabled]="applied || isLoading"
             >
@@ -110,7 +114,7 @@
         <div class="d-flex align-center gap-2">
           @for(skill of job?.SkillsRequired; track skill){
           <p
-            class="fw-semibold py-2 px-3 text-red-600 bg-orange-100 rounded-5 font-14 m-0 mt-2"
+            class="fw-semibold py-2 px-3 nmc-dark-grey nmc-bg-light-grey rounded-1 font-14 m-0 mt-2"
           >
             {{ skill }}
           </p>

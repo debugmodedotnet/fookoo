@@ -41,17 +41,17 @@
                 [alt]="instructor.Name"
               />
             </figure>
-            
-            <div class="p-3">
-              <h2 class="font-24 nmc-dark-grey font-family-poppins pt-4">
+
+            <div class="py-4 px-3">
+              <h2 class="font-24 nmc-dark-grey font-family-poppins mb-2">
                 {{ instructor.Name }}
               </h2>
 
-              <h4 class="font-18 fw-normal nmc-medium-grey pt-2 m-0">
+              <h4 class="font-18 fw-normal nmc-medium-grey mb-2">
                 {{ instructor.Position }}
               </h4>
 
-              <div class="social mt-4">
+              <div class="social">
                 @if(instructor.LinkedIn){
                 <a [href]="instructor.LinkedIn">
                   <i class="bi bi-linkedin"></i>

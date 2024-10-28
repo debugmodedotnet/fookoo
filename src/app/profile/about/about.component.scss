@@ -1,4 +1,24 @@
+@use "../../styles/variables" as *;
+
 .form-label.required::after {
     content: " *";
     color: red;
 }
+
+.chips {
+    border: 1px solid #ccc;
+  
+    &.selected {
+      background-color: $nmc-primary;
+      color: $nmc-white;
+    }
+  }
+  
+  .chip {
+    background-color: #f1f1f1;
+    padding: 15px;
+  
+    button {
+      background: none;
+    }
+  }

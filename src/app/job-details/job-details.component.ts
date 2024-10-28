@@ -48,7 +48,7 @@ export class JobDetailsComponent implements OnInit {
               }
             });
           }
-        },        
+        },
       });
     }
 
@@ -60,7 +60,7 @@ export class JobDetailsComponent implements OnInit {
   }
 
   applyJob() {
-    if (!this.user) {     
+    if (!this.user) {
       this.router.navigate(['/login'], { queryParams: { returnUrl: this.router.url } });
     }
   }
@@ -79,7 +79,7 @@ export class JobDetailsComponent implements OnInit {
   }
 
   submitApplication(user: IUser) {
-    if (!this.id) {      
+    if (!this.id) {
       return;
     }
 
@@ -93,9 +93,29 @@ export class JobDetailsComponent implements OnInit {
     const eventRef = this.firestore.collection('job-transactions').doc(this.id);
     const userRef = eventRef.collection('users').doc(user.uid);
 
+    // Create applied job document for the user
+    const appliedJobData = {
+      jobId: this.id,
+      position: this.job?.position,
+      companyName: this.job?.companyName,
+      Location: this.job?.Location,
+      Tag: this.job?.Tag,
+      appliedAt: new Date(),
+    };
+
     userRef.set(userData).then(() => {
-      this.applied = true;
-      this.isLoading = false;
+      // Ensure this.id is not null before proceeding
+      if (this.id) {
+        const userAppliedJobsRef = this.firestore.collection('users').doc(user.uid).collection('appliedJobs');
+        userAppliedJobsRef.doc(this.id).set(appliedJobData).then(() => {
+          this.applied = true;
+          this.isLoading = false;
+        }).catch(() => {
+          this.isLoading = false;
+        });
+      } else {
+        this.isLoading = false;
+      }
     }).catch(() => {
       this.isLoading = false;
     });

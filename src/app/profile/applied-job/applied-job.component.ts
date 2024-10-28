@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { UserService } from '../../services/user.service';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { AsyncPipe } from '@angular/common';
@@ -14,35 +14,22 @@ import { Job } from '../../modules/job';
 export class AppliedJobComponent implements OnInit {
 
   appliedJobs: Job[] = [];
+  private firestore = inject(AngularFirestore);
+  private userService = inject(UserService);
 
-  constructor(
-    private firestore: AngularFirestore,
-    private userService: UserService
-  ) { }
-
-  async ngOnInit(): Promise<void> {
-    const user = await this.userService.getCurrentUser().toPromise();
-    if (user?.uid) {
-      await this.loadAppliedJobs(user.uid);
-    }
+  ngOnInit() {
+    this.loadAppliedJobs();
   }
 
-  async loadAppliedJobs(userId: string): Promise<void> {
-    const jobSnapshots = await this.firestore.collection('job-transactions').ref.get();
-    const jobs: Job[] = [];
-
-    for (const jobSnapshot of jobSnapshots.docs) {
-      const userApplication = await this.firestore.collection(`job-transactions/${jobSnapshot.id}/users`).doc(userId).ref.get();
-
-
-      if (userApplication.exists) {
-        const jobDoc = await this.firestore.doc<Job>(`jobForms/${jobSnapshot.id}`).ref.get();
-        if (jobDoc.exists) {
-          jobs.push(jobDoc.data() as Job);
-        }
+  private loadAppliedJobs() {
+    this.userService.getCurrentUser().subscribe(user => {
+      if (user) {
+        const userId = user.uid;        
+        this.firestore.collection(`users/${userId}/appliedJobs`).valueChanges().subscribe(jobs => {
+          this.appliedJobs = jobs as Job[];
+        });
       }
-    }
-
-    this.appliedJobs = jobs;
+    });
   }
+
 }

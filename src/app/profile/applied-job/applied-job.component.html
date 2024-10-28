@@ -17,7 +17,7 @@
         </thead>
 
         <tbody>
-          @for(job of appliedJobs; track job;){
+          @for(job of appliedJobs; track job.id;){
           <tr>
             <td>{{ job.companyName }}</td>
             <td>{{ job.position }}</td>

@@ -3,9 +3,7 @@ import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Observable, from, throwError, of } from 'rxjs';
 import { catchError, switchMap, map } from 'rxjs/operators';
-import {
-  sendEmailVerification
-} from '@angular/fire/auth';
+import { sendEmailVerification } from '@angular/fire/auth';
 
 @Injectable({
   providedIn: 'root'

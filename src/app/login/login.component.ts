@@ -39,9 +39,9 @@ export class LoginComponent {
   async onSubmit() {
     try {
       const { email, password } = this.loginForm.value;
-      let res = await this.afAuth.signInWithEmailAndPassword(email, password);
+      const res = await this.afAuth.signInWithEmailAndPassword(email, password);
       console.log(res);
-      let t = await res.user?.getIdToken();
+      const t = await res.user?.getIdToken();
       console.log(t);
        if (t) {
          localStorage.setItem('token', t);

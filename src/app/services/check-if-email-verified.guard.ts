@@ -8,7 +8,7 @@ export const checkIfEmailVerifiedGuard: CanActivateFn = (route, state) => {
   const router = inject(Router);
   return new Observable<boolean>(obs => {
     afAuth.user.pipe(first()).subscribe(async user => {
-      console.log(user);
+      //console.log(user);
       if (user && !user.emailVerified) {
         router.navigateByUrl('verify-email');
         obs.next(false);

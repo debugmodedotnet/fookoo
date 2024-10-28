@@ -64,16 +64,6 @@
       </div>
 
       <div class="col-6 mt-3">
-        <label for="bio" class="form-label fw-semibold font-14">Bio</label>
-        <input
-          type="text"
-          class="form-control h-3 rounded-3"
-          formControlName="bio"
-          id="bio"
-        />
-      </div>
-
-      <div class="col-3 mt-3">
         <label for="city" class="form-label fw-semibold font-14">City</label>
         <input
           type="text"
@@ -83,67 +73,14 @@
         />
       </div>
 
-      <div class="col-3 mt-3">
-        <label for="linkedin" class="form-label fw-semibold font-14"
-          >Linkedin</label
-        >
-        <input
+      <div class="col-12 mt-3">
+        <label for="bio" class="form-label fw-semibold font-14">Bio</label>
+        <textarea
           type="text"
-          class="form-control h-3 rounded-3"
-          formControlName="linkedin"
-          id="linkedin"
-        />
-        @if(userProfileForm.get('linkedin')?.invalid &&
-        (userProfileForm.get('linkedin')?.dirty ||
-        userProfileForm.get('linkedin')?.touched)){
-        <div class="nmc-alert mt-1">
-          @if(userProfileForm.get('linkedin')?.errors?.['pattern']){
-          <p class="font-14 m-0">*Please enter a valid LinkedIn URL</p>
-          }
-        </div>
-        }
-      </div>
-
-      <div class="col-3 mt-3">
-        <label for="github" class="form-label fw-semibold font-14"
-          >Github</label
-        >
-        <input
-          type="text"
-          class="form-control h-3 rounded-3"
-          formControlName="github"
-          id="github"
-        />
-        @if(userProfileForm.get('github')?.invalid &&
-        (userProfileForm.get('github')?.dirty ||
-        userProfileForm.get('github')?.touched)){
-        <div class="nmc-alert mt-1">
-          @if(userProfileForm.get('github')?.errors?.['pattern']){
-          <p class="font-14 m-0">*Please enter a valid GitHub URL</p>
-          }
-        </div>
-        }
-      </div>
-
-      <div class="col-3 mt-3">
-        <label for="twitter" class="form-label fw-semibold font-14"
-          >Twitter</label
-        >
-        <input
-          type="text"
-          class="form-control h-3 rounded-3"
-          formControlName="twitter"
-          id="twitter"
-        />
-        @if(userProfileForm.get('twitter')?.invalid &&
-        (userProfileForm.get('twitter')?.dirty ||
-        userProfileForm.get('twitter')?.touched)){
-        <div class="nmc-alert mt-1">
-          @if(userProfileForm.get('twitter')?.errors?.['pattern']){
-          <p class="font-14 m-0">*Please enter a valid Twitter URL</p>
-          }
-        </div>
-        }
+          class="form-control rounded-3"
+          formControlName="bio"
+          id="bio"
+        ></textarea>
       </div>
 
       <div class="col-3 mt-3">
@@ -198,26 +135,175 @@
         <label for="education" class="form-label fw-semibold font-14"
           >Education</label
         >
-        <textarea
+        <!-- <textarea
           type="text"
           class="form-control rounded-3"
           rows="5"
           formControlName="education"
           id="education"
-        ></textarea>
+        ></textarea> -->
+
+        <select
+          id="education"
+          formControlName="education"
+          class="form-select rounded-3 h-3 cursor-pointer"
+        >
+          <option value="" selected>Select education</option>
+          @for(education of educations; track education;){
+          <option value="education">{{ education }}</option>
+          }
+        </select>
       </div>
 
       <div class="col-6 mt-3">
         <label for="experience" class="form-label fw-semibold font-14"
           >Experience</label
         >
-        <textarea
+        <!-- <textarea
           type="text"
           class="form-control rounded-3"
           rows="5"
           formControlName="experience"
           id="experience"
-        ></textarea>
+        ></textarea> -->
+
+        <select
+          id="experience"
+          formControlName="experience"
+          class="form-select rounded-3 h-3 cursor-pointer"
+        >
+          <option value="" selected>Select experience</option>
+          @for(experience of experiences; track experience;){
+          <option value="experience">{{ experience }}</option>
+          }
+        </select>
+      </div>
+
+      <div class="col-md-12 mt-3">
+        <label for="pastExperiences" class="form-label fw-semibold font-14"
+          >Past Experiences</label
+        >
+
+        @if(pastExperiences.length>0){
+        <div class="chip-container mb-2 row g-4">
+          @for(control of pastExperiences.controls; track control; let i =
+          $index;){
+          <ng-container>
+            <div class="col-4">
+              <div
+                class="chip rounded-4 d-flex align-items-start justify-content-between"
+              >
+                <p class="m-0 word-break">{{ control.value }}</p>
+
+                <div class="d-flex align-items-center ms-5">
+                  <button
+                    type="button"
+                    (click)="editExperience(i)"
+                    class="p-0 border-0 nmc-dark-grey cursor-pointer"
+                  >
+                    <i class="bi bi-pencil-fill"></i>
+                  </button>
+
+                  <button
+                    type="button"
+                    (click)="removeExperience(i)"
+                    class="p-0 ms-2 border-0 nmc-primary cursor-pointer"
+                  >
+                    <i class="bi bi-x-circle-fill"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </ng-container>
+          }
+        </div>
+        }
+
+        <div formArrayName="pastExperiences" class="d-flex align-items-center">
+          <div class="d-flex flex-wrap align-items-center w-100">
+            <input
+              #newExperience
+              type="text"
+              class="form-control h-3 rounded-3 cursor-pointer"
+              [value]="
+                editingIndex === -1
+                  ? ''
+                  : pastExperiences.at(editingIndex).value || ''
+              "
+            />
+          </div>
+
+          <button
+            type="button"
+            (click)="addExperience(newExperience)"
+            class="nmc-btn-primary ms-3"
+          >
+            +
+          </button>
+        </div>
+      </div>
+
+      <div class="col-4 mt-3">
+        <label for="linkedin" class="form-label fw-semibold font-14"
+          >Linkedin</label
+        >
+        <input
+          type="text"
+          class="form-control h-3 rounded-3"
+          formControlName="linkedin"
+          id="linkedin"
+        />
+        @if(userProfileForm.get('linkedin')?.invalid &&
+        (userProfileForm.get('linkedin')?.dirty ||
+        userProfileForm.get('linkedin')?.touched)){
+        <div class="nmc-alert mt-1">
+          @if(userProfileForm.get('linkedin')?.errors?.['pattern']){
+          <p class="font-14 m-0">*Please enter a valid LinkedIn URL</p>
+          }
+        </div>
+        }
+      </div>
+
+      <div class="col-4 mt-3">
+        <label for="github" class="form-label fw-semibold font-14"
+          >Github</label
+        >
+        <input
+          type="text"
+          class="form-control h-3 rounded-3"
+          formControlName="github"
+          id="github"
+        />
+        @if(userProfileForm.get('github')?.invalid &&
+        (userProfileForm.get('github')?.dirty ||
+        userProfileForm.get('github')?.touched)){
+        <div class="nmc-alert mt-1">
+          @if(userProfileForm.get('github')?.errors?.['pattern']){
+          <p class="font-14 m-0">*Please enter a valid GitHub URL</p>
+          }
+        </div>
+        }
+      </div>
+
+      <div class="col-4 mt-3">
+        <label for="twitter" class="form-label fw-semibold font-14"
+          >Twitter</label
+        >
+        <input
+          type="text"
+          class="form-control h-3 rounded-3"
+          formControlName="twitter"
+          id="twitter"
+        />
+        @if(userProfileForm.get('twitter')?.invalid &&
+        (userProfileForm.get('twitter')?.dirty ||
+        userProfileForm.get('twitter')?.touched)){
+        <div class="nmc-alert mt-1">
+          @if(userProfileForm.get('twitter')?.errors?.['pattern']){
+          <p class="font-14 m-0">*Please enter a valid Twitter URL</p>
+          }
+        </div>
+        }
       </div>
 
       <div class="col-4 mt-3 fw-semibold font-14">

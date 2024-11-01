@@ -1,4 +1,5 @@
-<section class="venue text-center overflow-hidden py-5">
+@if(event?.isOffline){
+<section class="venue text-center overflow-hidden pt-5">
   <div class="container-boxed">
     <h2
       class="section-title font-36 nmc-dark-grey font-family-poppins text-center mb-5"
@@ -44,13 +45,23 @@
     </div>
   </div>
 </section>
+}
 
 <!-- Enroll Now -->
-<section class="text-center">
+<section class="text-center pt-5">
   <div class="container-boxed">
     <p class="font-36 fw-bold m-auto nmc-dark-grey font-family-poppins">
       {{ event?.Tagline }}
     </p>
+
+    @if(event?.isPaid){
+    <span class="price d-block mb-4">
+      <sup>₹</sup>
+      <span class="number">{{ event?.price }}</span>
+      <sub>onwards</sub>
+    </span>
+
+    }
 
     <button
       class="nmc-btn-primary px-5 py-3 h-auto font-20 m-auto w-25 mt-4 mb-5"

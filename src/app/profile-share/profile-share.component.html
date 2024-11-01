@@ -2,6 +2,7 @@
   <div class="container-fluid">
     <div class="main-content-wrapper">
       <div class="container-fluid">
+        @if(userData?.github || userData?.twitter || userData?.linkedin){
         <div class="top-bar text-center position-relative">
           <div class="top-bar-inner">
             <ul class="social-list list-inline mx-auto">
@@ -27,6 +28,7 @@
             </ul>
           </div>
         </div>
+        }
 
         <div class="resume-wrapper mx-auto rounded-2">
           <div class="resume-header px-4 px-lg-5">
@@ -85,136 +87,13 @@
                     {{ userData?.bio }}
                   </div>
                 </section>
+
+                <hr />
                 }
 
-                <hr />
-
-                <!-- Work Experience -->
-                <section class="resume-experience-section resume-section">
-                  <h3
-                    class="resume-section-heading text-uppercase py-2 py-lg-3 py-3"
-                  >
-                    <i
-                      class="resume-section-heading-icon bi bi-briefcase me-2"
-                    ></i
-                    >Work Experience
-                  </h3>
-
-                  <div class="resume-timeline position-relative">
-                    <article
-                      class="resume-timeline-item position-relative pb-5"
-                    >
-                      <div class="resume-timeline-item-header mb-2">
-                        <div
-                          class="resume-position-meta d-flex justify-content-between mb-1"
-                        >
-                          <div class="resume-position-time">2023 - Present</div>
-                          <div class="resume-company-name">Google</div>
-                        </div>
-                        <h3 class="resume-position-title mb-1">Tech Lead</h3>
-                      </div>
-
-                      <div class="resume-timeline-item-desc">
-                        <ul class="resume-timeline-list">
-                          <li>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing
-                            elit. Aenean porta est diam, et blandit ipsum
-                            suscipit facilisis. Praesent nec semper eros.
-                            Aliquam quis turpis sed metus mollis luctus vitae
-                            rhoncus mi.
-                          </li>
-                          <li>
-                            Vivamus accumsan purus at urna tincidunt convallis.
-                            Sed nisi dolor, elementum eget tempus ac, blandit ac
-                            mi. Aliquam id tellus ut arcu luctus accumsan in at
-                            odio.
-                          </li>
-
-                          <li>
-                            Morbi condimentum, lorem in pharetra mollis, purus
-                            justo sollicitudin dolor, tristique vulputate mi
-                            odio sit amet ante.
-                          </li>
-                          <li>
-                            Blanditiis praesentium voluptatum deleniti atque
-                            corrupti.
-                          </li>
-                        </ul>
-                      </div>
-                    </article>
-
-                    <article
-                      class="resume-timeline-item position-relative pb-5"
-                    >
-                      <div class="resume-timeline-item-header mb-2">
-                        <div
-                          class="resume-position-meta d-flex justify-content-between mb-1"
-                        >
-                          <div class="resume-position-time">2019 - 2023</div>
-                          <div class="resume-company-name">Meta</div>
-                        </div>
-                        <h3 class="resume-position-title mb-1">
-                          Senior App Developer
-                        </h3>
-                      </div>
-
-                      <div class="resume-timeline-item-desc">
-                        <ul class="resume-timeline-list">
-                          <li>
-                            Praesent nec semper eros. Aliquam quis turpis sed
-                            metus mollis luctus vitae rhoncus mi. At vero eos et
-                            accusamus et iusto odio dignissimos.
-                          </li>
-                          <li>
-                            Proin tempus eu arcu in semper. Quisque gravida, sem
-                            ut vehicula ultrices, diam est viverra odio, eget
-                            tristique tortor tortor sed neque.
-                          </li>
-                          <li>
-                            Suspendisse quis pharetra elit. Curabitur vitae
-                            cursus lacus, et bibendum magna. Donec in orci eu
-                            augue posuere mattis ut in turpis.
-                          </li>
-                        </ul>
-                      </div>
-                    </article>
-
-                    <article class="resume-timeline-item position-relative">
-                      <div class="resume-timeline-item-header mb-2">
-                        <div
-                          class="resume-position-meta d-flex justify-content-between mb-1"
-                        >
-                          <div class="resume-position-time">2017 - 2019</div>
-                          <div class="resume-company-name">Coinbase</div>
-                        </div>
-                        <h3 class="resume-position-title mb-1">
-                          App Developer
-                        </h3>
-                      </div>
-
-                      <div class="resume-timeline-item-desc">
-                        <ul class="resume-timeline-list">
-                          <li>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing
-                            elit.
-                          </li>
-                          <li>
-                            Nulla velit dui, ultrices sit amet arcu eget,
-                            sodales lacinia lorem.
-                          </li>
-                          <li>
-                            Quisque semper nisi mauris, non ullamcorper nunc
-                            consectetur eget.
-                          </li>
-                        </ul>
-                      </div>
-                    </article>
-                  </div>
-                </section>
-
-                <hr />
-
                 <!-- Skills -->
+                @if(userData?.skill1 || userData?.skill2 || userData?.skill3 ||
+                userData?.skill4){
                 <section class="resume-skills-section resume-section">
                   <h3
                     class="resume-section-heading text-uppercase py-2 py-lg-3 py-3"
@@ -226,67 +105,104 @@
                   <ul class="d-flex gap-2 flex-wrap">
                     @if(userData?.skill1){
                     <li class="list-inline-item">
-                      <span class="badge resume-skill-badge text-wrap lh-base text-start">{{
-                        userData?.skill1
-                      }}</span>
+                      <span
+                        class="badge resume-skill-badge text-wrap lh-base text-start"
+                        >{{ userData?.skill1 }}</span
+                      >
                     </li>
                     } @if(userData?.skill2){
                     <li class="list-inline-item">
-                      <span class="badge resume-skill-badge text-wrap lh-base text-start">{{
-                        userData?.skill2
-                      }}</span>
+                      <span
+                        class="badge resume-skill-badge text-wrap lh-base text-start"
+                        >{{ userData?.skill2 }}</span
+                      >
                     </li>
                     } @if(userData?.skill3){
 
                     <li class="list-inline-item">
-                      <span class="badge resume-skill-badge text-wrap lh-base text-start">{{
-                        userData?.skill3
-                      }}</span>
+                      <span
+                        class="badge resume-skill-badge text-wrap lh-base text-start"
+                        >{{ userData?.skill3 }}</span
+                      >
                     </li>
                     } @if(userData?.skill4){
                     <li class="list-inline-item">
-                      <span class="badge resume-skill-badge text-wrap lh-base text-start">{{
-                        userData?.skill4
-                      }}</span>
+                      <span
+                        class="badge resume-skill-badge text-wrap lh-base text-start"
+                        >{{ userData?.skill4 }}</span
+                      >
                     </li>
                     }
                   </ul>
                 </section>
 
                 <hr />
+                }
 
-                <!-- Education -->
+                <!-- Experience -->
+                @if(userData?.experience){
                 <section class="resume-educate-section resume-section">
                   <h3
                     class="resume-section-heading text-uppercase py-2 py-lg-3 py-3"
                   >
                     <i class="resume-section-heading-icon bi bi-book me-2"></i
-                    >Education
+                    >Experience :
+                    <span
+                      class="nmc-medium-grey text-capitalize fw-semibold ms-3"
+                      >{{ userData?.experience }}</span
+                    >
                   </h3>
 
-                  <ul class="list-unstyled">
-                    <li class="mb-2">
-                      <div class="resume-degree font-weight-bold">
-                        MSc in Computer Science
-                      </div>
-
-                      <div class="resume-degree-org">Oxford University</div>
-                      <div class="resume-degree-time">2016 - 2017</div>
-                    </li>
-
-                    <li>
-                      <div class="resume-degree font-weight-bold">
-                        BSc Maths and Physics
-                      </div>
-
-                      <div class="resume-degree-org">
-                        University of California, Berkeley
-                      </div>
-
-                      <div class="resume-degree-time">2012 - 2016</div>
-                    </li>
-                  </ul>
+                  <hr />
                 </section>
+                }
+
+                <!-- Past Experience -->
+                @if(userData?.pastExperiences?.length){
+                <section class="resume-experience-section resume-section">
+                  <h3
+                    class="resume-section-heading text-uppercase py-2 py-lg-3 py-3"
+                  >
+                    <i
+                      class="resume-section-heading-icon bi bi-briefcase me-2"
+                    ></i
+                    >Past Experiences
+                  </h3>
+
+                  <div class="resume-timeline position-relative">
+                    @for(experience of userData?.pastExperiences; track
+                    experience;){
+                    <article
+                      class="resume-timeline-item position-relative pb-5"
+                    >
+                      <h3 class="resume-position-title mb-1 fw-normal">
+                        {{ experience }}
+                      </h3>
+                    </article>
+                    }
+                  </div>
+                </section>
+                }
+
+                <hr />
+
+                <!-- Qualification -->
+                @if(userData?.education){
+                <section class="resume-educate-section resume-section">
+                  <h3
+                    class="resume-section-heading text-uppercase py-2 py-lg-3 py-3"
+                  >
+                    <i class="resume-section-heading-icon bi bi-book me-2"></i
+                    >Qualification:
+                    <span
+                      class="nmc-medium-grey text-capitalize fw-semibold ms-3"
+                      >{{ userData?.education }}</span
+                    >
+                  </h3>
+
+                  <hr />
+                </section>
+                }
               </div>
 
               <!-- <div class="col-12 col-lg-4 ps-lg-4"> -->

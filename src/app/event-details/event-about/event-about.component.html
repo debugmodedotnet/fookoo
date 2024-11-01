@@ -22,7 +22,9 @@
         (click)="attendEvent()"
         [disabled]="enrolled || isLoading"
       >
-        {{ enrolled ? "Enrolled 🎉" : isLoading ? "Processing..." : "Enroll Now" }}
+        {{
+          enrolled ? "Enrolled 🎉" : isLoading ? "Processing..." : "Enroll Now"
+        }}
       </button>
     </div>
 
@@ -42,16 +44,27 @@
         {{ eventAbout?.Title }}
       </h1>
 
+      <span
+        class="d-inline-block font-18 fw-semibold rounded-1 py-1 px-2 text-red-600 bg-red-100"
+        >{{ eventAbout?.isOffline ? "Offline" : "Online" }}
+      </span>
+
       <div class="d-flex align-items-center justify-center gap-4 mt-3">
         <h4 class="nmc-white">
-          <i class="bi bi-calendar-event-fill me-1 font-20 nmc-white"></i>
+          <i class="bi bi-calendar-event me-1 font-20 nmc-white"></i>
           {{ eventAbout?.Date | date : "MMMM d" }}
         </h4>
 
+        @if(eventAbout?.isOffline){
         <h4 class="nmc-white">
-          <i class="bi bi-geo-alt-fill me-1 font-20 nmc-white"></i>
-          @if(eventAbout?.isOffline){ {{ eventAbout?.City }} }@else{ Online}
+          <i class="bi bi-geo-alt me-1 font-20 nmc-white"></i>
+          {{ eventAbout?.City }}
         </h4>
+        }@else{
+        <h4 class="nmc-white">
+          <i class="bi bi-laptop me-1 font-20 nmc-white"></i>Google Meet
+        </h4>
+        }
       </div>
 
       <!-- <span
@@ -108,7 +121,9 @@
       <div class="col-6">
         <figure class="event-banner m-0 p-0 overflow-hidden rounded-3">
           <img
-            [src]="eventAbout?.EventImage"
+            [src]="
+              eventAbout?.EventImage ? eventAbout?.EventImage : defaultImage
+            "
             alt="Hero-Image"
             class="object-fit-cover w-100 h-100"
           />

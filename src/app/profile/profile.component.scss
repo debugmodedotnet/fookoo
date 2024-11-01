@@ -2,8 +2,8 @@
 
 .profile-img {
     figure {
-        width: 150px;
-        height: 150px;
+        width: 100px;
+        height: 100px;
         border: 1px solid $nmc-primary;
 
         img {
@@ -16,20 +16,33 @@
         display: none;
     }
 
-    .custom-file-upload {
-        display: inline-block;
-        padding: 6px 12px;
-        cursor: pointer;
+    .dp-upload {
+        right: -10px;
+        bottom: -10px;
+
+        .custom-file-upload {
+            height: 30px;
+            width: 30px;
+            cursor: pointer;
+        }
     }
 }
 
 .divider {
-    border-right: 1px solid #ccc;
-    ;
+    border-bottom: 1px solid #ccc;
 }
 
 .profile-tabs li.active a {
     color: $nmc-primary !important;
+}
+
+.navbar-nav .nav-link.active,
+.navbar-nav .nav-link.show,
+.nav-link:focus,
+.nav-link:hover {
+    box-shadow: none;
+    border-color: transparent;
+
 }
 
 .profile-content {

@@ -21,4 +21,5 @@ export interface IUser {
   skill4: string;
   education: string;
   experience: string;
+  pastExperiences?: string[];
 }

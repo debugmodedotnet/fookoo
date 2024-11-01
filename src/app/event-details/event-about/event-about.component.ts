@@ -18,6 +18,7 @@ export class EventAboutComponent implements OnInit {
   eventAbout?: IEvent;
   enrolled = false;
   isLoading = false;
+  defaultImage = 'assets/images/events/event_default.svg';
 
   @Input() eventId: string | null = null;
 
@@ -33,7 +34,7 @@ export class EventAboutComponent implements OnInit {
 
   getEventDetails(eventId: string) {
     if (eventId) {
-      this.firestore.collection('events').doc(eventId).valueChanges().subscribe(eventAbout => {        
+      this.firestore.collection('events').doc(eventId).valueChanges().subscribe(eventAbout => {
         this.eventAbout = eventAbout as IEvent;
         this.checkEnrollment();
       });

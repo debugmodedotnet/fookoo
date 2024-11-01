@@ -15,6 +15,7 @@ import { map } from 'rxjs';
 export class EventComponent implements OnInit {
 
   events: IEvent[] = [];
+  defaultImage = 'assets/images/events/event_default.svg';
   private firestore = inject(AngularFirestore);
 
   ngOnInit(): void {
@@ -28,7 +29,7 @@ export class EventComponent implements OnInit {
         const id = a.payload.doc.id;
         return { id, ...data };
       }))
-    ).subscribe(events => {      
+    ).subscribe(events => {
       this.events = events as IEvent[];
     });
   }

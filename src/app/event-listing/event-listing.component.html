@@ -8,14 +8,14 @@
       @for(e of events| slice:0:displayedEventsCount; track e.id; let i =
       $index){
       <!-- @for(e of events; track e.id){ -->
-      <div class="col-12 col-md-6 col-lg-4 ">
+      <div class="col-12 col-md-6 col-lg-4">
         <div
           class="events-card card overflow-hidden nmc-bg-white overflow-hidden position-relative rounded-0 h-100 mt-4 mt-lg-0"
         >
           <a [routerLink]="['/event', e.id]">
             <figure class="m-0 p-0 zoom-effect overflow-hidden">
               <img
-                [src]="e.EventImage"
+                [src]="e.EventImage ? e.EventImage : defaultImage"
                 class="w-100 h-100 object-fit-cover"
                 alt="Event Tech"
                 loading="lazy"
@@ -56,10 +56,17 @@
                   {{ e.Date | date : "MMMM d" }}
                 </h4>
 
+                @if(e.isOffline){
                 <h4 class="city font-14 nmc-dark-grey m-0">
                   <i class="bi bi-geo-alt-fill me-1 font-18 nmc-primary"></i>
                   {{ e.City }}
                 </h4>
+                } @else{
+                <h4 class="city font-14 nmc-dark-grey m-0">
+                  <i class="bi bi-laptop-fill me-1 font-18 nmc-primary"></i>
+                  Google Meet
+                </h4>
+                }
               </div>
             </figcaption>
           </a>

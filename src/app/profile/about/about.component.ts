@@ -75,8 +75,6 @@ export class AboutComponent implements OnInit {
     });
   }
 
-
-
   ngOnInit(): void {
     this.userService.getCurrentUser().subscribe(user => {
       if (user) {

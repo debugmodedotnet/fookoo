@@ -2,11 +2,12 @@ import { Component, OnInit, ViewChild, ViewContainerRef, inject } from '@angular
 import { UserService } from '../services/user.service';
 import { AngularFireStorage } from '@angular/fire/compat/storage';
 import { finalize } from 'rxjs';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-profile',
   standalone: true,
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './profile.component.html',
   styleUrl: './profile.component.scss'
 })
@@ -104,6 +105,10 @@ export class ProfileComponent implements OnInit {
         })
       ).subscribe();
     }
+  }
+
+  formattedName(name: string): string {
+    return name ? name.toLowerCase().replace(/\s+/g, '') : '';
   }
 
 }

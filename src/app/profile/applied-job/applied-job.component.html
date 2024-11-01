@@ -1,35 +1,33 @@
-<section class="applied-job-section">
-  <h2 class="section-title left font-24 nmc-dark-grey font-family-poppins pb-3">
+<!-- <h2 class="section-title left font-24 nmc-dark-grey font-family-poppins pb-3">
     Applied Jobs
-  </h2>
+  </h2> -->
 
-  @if(appliedJobs.length > 0 ){
-  <div class="wrapper">
-    <div class="table-responsive">
-      <table class="table mb-0">
-        <thead class="thead-light">
-          <tr>
-            <th>Company Name</th>
-            <th>Position</th>
-            <th>Location</th>
-            <th>Tag</th>
-          </tr>
-        </thead>
+@if(appliedJobs.length > 0 ){
+<div class="wrapper">
+  <div class="table-responsive">
+    <table class="table mb-0">
+      <thead class="thead-light">
+        <tr>
+          <th>Company Name</th>
+          <th>Position</th>
+          <th>Location</th>
+          <!-- <th class="d-none d-md-block">Tech</th> -->
+        </tr>
+      </thead>
 
-        <tbody>
-          @for(job of appliedJobs; track job.id;){
-          <tr>
-            <td>{{ job.companyName }}</td>
-            <td>{{ job.position }}</td>
-            <td>{{ job.Location }}</td>
-            <td>{{ job.Tag }}</td>
-          </tr>
-          }
-        </tbody>
-      </table>
-    </div>
+      <tbody>
+        @for(job of appliedJobs; track job.id;){
+        <tr>
+          <td>{{ job.companyName }}</td>
+          <td>{{ job.position }}</td>
+          <td>{{ job.Location }}</td>
+          <!-- <td class="d-none d-md-block">{{ job.Tag }}</td> -->
+        </tr>
+        }
+      </tbody>
+    </table>
   </div>
-  }@else{
-  <p>No jobs found.</p>
-  }
-</section>
+</div>
+}@else{
+<p>No jobs found.</p>
+}

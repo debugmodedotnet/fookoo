@@ -63,6 +63,10 @@
 
 @use "../styles/shine" as *;
 
+article:last-child {
+    padding-bottom: 0 !important;
+}
+
 
 @media (max-width: 425px) {
     .resume-name {

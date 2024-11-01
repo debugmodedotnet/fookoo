@@ -1,7 +1,17 @@
-<h2 class="section-title left font-24 nmc-dark-grey font-family-poppins pb-3">
+<!-- <h2 class="section-title left font-24 nmc-dark-grey font-family-poppins pb-3">
   @if(editMode){Edit Job} @else if (viewMode) { Job Applications} @else {Job
   Listings}
+</h2> -->
+
+@if(editMode){
+<h2 class="section-title left font-24 nmc-dark-grey font-family-poppins pb-3">
+  Edit Job
 </h2>
+}@else if (viewMode){
+<h2 class="section-title left font-24 nmc-dark-grey font-family-poppins pb-3">
+  Job Applications
+</h2>
+}
 
 <!-- Loading -->
 @if(loading){
@@ -17,7 +27,7 @@
         <tr>
           <th>Company Name</th>
           <th>Position</th>
-          <th>Location</th>
+          <th class="d-none d-md-block">Location</th>
           <th>Actions</th>
         </tr>
       </thead>
@@ -27,7 +37,7 @@
         <tr>
           <td>{{ job.companyName }}</td>
           <td>{{ job.position }}</td>
-          <td>{{ job.Location }}</td>
+          <td class="d-none d-md-block">{{ job.Location }}</td>
           <td>
             <div class="d-flex align-items-center gap-3">
               <a

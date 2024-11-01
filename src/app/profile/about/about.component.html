@@ -1,11 +1,11 @@
-<div class="profile-head d-flex align-items-center justify-content-between">
-  <!-- <div>
+<!-- <div class="profile-head d-flex align-items-center justify-content-between">
+  <div>
     <h2 class="nmc-dark-grey font-family-poppins">
       {{ user?.name }}
     </h2>
     <h6 class="nmc-primary m-0">{{ user?.position }}</h6>
-  </div> -->
-  <!-- 
+  </div> 
+  
   <div class="d-flex align-items-center justify-content-center gap-2">
     <button
       (click)="saveProfile()"
@@ -19,11 +19,12 @@
       Save
     </button>
 
-    <a [routerLink]="['/p', formattedName(user?.name), user?.uid]">
-      <i class="bi bi-share-fill nmc-medium-grey ms-3 font-20"></i
-    ></a>
-  </div> -->
-</div>
+  </div> 
+</div>-->
+
+<!-- <h2 class="section-title left font-24 nmc-dark-grey font-family-poppins pb-3">
+    About Yourself
+  </h2> -->
 
 <div class="form-wrapper w-100">
   <form [formGroup]="userProfileForm">
@@ -151,7 +152,7 @@
         >
           <option value="" selected>Select education</option>
           @for(education of educations; track education;){
-          <option value="education">{{ education }}</option>
+          <option [value]="education">{{ education }}</option>
           }
         </select>
       </div>
@@ -175,7 +176,7 @@
         >
           <option value="" selected>Select experience</option>
           @for(experience of experiences; track experience;){
-          <option value="experience">{{ experience }}</option>
+          <option [value]="experience">{{ experience }}</option>
           }
         </select>
       </div>

@@ -31,7 +31,12 @@
         <h2 class="nmc-dark-grey font-family-poppins">
           {{ user?.name }}
         </h2>
-        <h6 class="nmc-primary m-0">{{ user?.position }}</h6>
+
+        <h6 class="nmc-primary mb-2">{{ user?.position }}</h6>
+
+        <a [routerLink]="['/p', formattedName(user?.name), user?.uid]">
+          <i class="bi bi-share-fill nmc-medium-grey ms-3 font-20"> </i>
+        </a>
       </div>
     </div>
 
@@ -84,7 +89,7 @@
           (click)="loadViewJob()"
           (keyup.enter)="loadViewJob()"
           tabindex="0"
-          >View Job</a
+          >Posted Jobs</a
         >
       </li>
 
@@ -94,7 +99,7 @@
           (click)="loadAppliedJob()"
           (keydown)="loadAppliedJob()"
           tabindex="0"
-          >Applied Job</a
+          >Applied Jobs</a
         >
       </li>
     </ul>

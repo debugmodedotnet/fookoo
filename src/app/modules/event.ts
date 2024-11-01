@@ -23,6 +23,7 @@ export interface IEvent {
   VenueImg: string;
   Tagline: string;
   VenueIframe: string;
+  price: number;
   Speakers?: IEventSpeakers[];
   Agenda?: IEventAgenda[];
 }

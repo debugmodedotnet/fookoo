@@ -1,11 +1,11 @@
 <div class="profile-head d-flex align-items-center justify-content-between">
-  <div>
+  <!-- <div>
     <h2 class="nmc-dark-grey font-family-poppins">
       {{ user?.name }}
     </h2>
     <h6 class="nmc-primary m-0">{{ user?.position }}</h6>
-  </div>
-
+  </div> -->
+  <!-- 
   <div class="d-flex align-items-center justify-content-center gap-2">
     <button
       (click)="saveProfile()"
@@ -18,10 +18,11 @@
     >
       Save
     </button>
+
     <a [routerLink]="['/p', formattedName(user?.name), user?.uid]">
       <i class="bi bi-share-fill nmc-medium-grey ms-3 font-20"></i
     ></a>
-  </div>
+  </div> -->
 </div>
 
 <div class="form-wrapper w-100">
@@ -312,4 +313,18 @@
       </div>
     </div>
   </form>
+
+  <div class="d-flex justify-content-end">
+    <button
+      (click)="saveProfile()"
+      class="nmc-btn-primary font-18 fw-semibold box-shadow-none px-5 py-3 h-auto"
+      [disabled]="
+        userProfileForm.get('github')?.invalid ||
+        userProfileForm.get('linkedin')?.invalid ||
+        userProfileForm.get('twitter')?.invalid
+      "
+    >
+      Save
+    </button>
+  </div>
 </div>

@@ -15,6 +15,7 @@ import { map } from 'rxjs';
 export class EventListingComponent implements OnInit {
 
   events: IEvent[] = [];
+  defaultImage = 'assets/images/events/event_default.svg';
   showLoadMoreButton = false;
   displayedEventsCount = 10;
 

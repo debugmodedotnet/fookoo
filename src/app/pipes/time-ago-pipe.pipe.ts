@@ -8,7 +8,12 @@ import { formatDistanceToNow, isToday, format } from 'date-fns';
 export class TimeAgoPipePipe implements PipeTransform {
 
   transform(value: string | Date): string {
+
     const createdTime = new Date(value);
+
+    if (!value) {
+      return 'Invalid date';
+    }
 
     if (isToday(createdTime)) {
       return formatDistanceToNow(createdTime, { addSuffix: true });

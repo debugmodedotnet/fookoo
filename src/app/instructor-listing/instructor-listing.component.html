@@ -38,24 +38,24 @@
 
             <div class="d-flex align-items-center my-2 flex-wrap gap-2">
               <span
-                class="font-14 fw-semibold rounded-1 py-1 px-3 nmc-dark-grey nmc-bg-light-grey text-wrap lh-base text-start"
+                class="font-14 fw-semibold rounded-0 py-1 px-3 nmc-dark-grey nmc-bg-light-grey text-wrap lh-base text-start"
               >
                 {{ instructor.Skill1 }}
               </span>
 
               @if(instructor.Skill2){
               <span
-                class="font-14 fw-semibold rounded-1 py-1 px-3 nmc-dark-grey nmc-bg-light-grey text-wrap lh-base text-start"
+                class="font-14 fw-semibold rounded-0 py-1 px-3 nmc-dark-grey nmc-bg-light-grey text-wrap lh-base text-start"
               >
                 {{ instructor.Skill2 }}</span
               >} @if(instructor.Skill3){
               <span
-                class="font-14 fw-semibold rounded-1 py-1 px-3 nmc-dark-grey nmc-bg-light-grey text-wrap lh-base text-start"
+                class="font-14 fw-semibold rounded-0 py-1 px-3 nmc-dark-grey nmc-bg-light-grey text-wrap lh-base text-start"
               >
                 {{ instructor.Skill3 }}</span
               >} @if(instructor.Skill4){
               <span
-                class="font-14 fw-semibold rounded-1 py-1 px-3 nmc-dark-grey nmc-bg-light-grey text-wrap lh-base text-start"
+                class="font-14 fw-semibold rounded-0 py-1 px-3 nmc-dark-grey nmc-bg-light-grey text-wrap lh-base text-start"
               >
                 {{ instructor.Skill4 }}</span
               >}
@@ -157,28 +157,28 @@
                 @if(instructor.Company1){
                 <li class="list-inline-item">
                   <span
-                    class="d-inline-block nmc-dark-grey nmc-bg-light-grey font-14 fw-semibold rounded-1 p-2 text-wrap lh-base text-start"
+                    class="d-inline-block nmc-dark-grey nmc-bg-light-grey font-14 fw-semibold rounded-0 p-2 text-wrap lh-base text-start"
                     >{{ instructor.Company1 }}</span
                   >
                 </li>
                 } @if(instructor.Company2){
                 <li class="list-inline-item">
                   <span
-                    class="d-inline-block nmc-dark-grey nmc-bg-light-grey font-14 fw-semibold rounded-1 p-2 text-wrap lh-base text-start"
+                    class="d-inline-block nmc-dark-grey nmc-bg-light-grey font-14 fw-semibold rounded-0 p-2 text-wrap lh-base text-start"
                     >{{ instructor.Company2 }}</span
                   >
                 </li>
                 } @if(instructor.Company3){
                 <li class="list-inline-item">
                   <span
-                    class="d-inline-block nmc-dark-grey nmc-bg-light-grey font-14 fw-semibold rounded-1 p-2 text-wrap lh-base text-start"
+                    class="d-inline-block nmc-dark-grey nmc-bg-light-grey font-14 fw-semibold rounded-0 p-2 text-wrap lh-base text-start"
                     >{{ instructor.Company3 }}</span
                   >
                 </li>
                 } @if(instructor.Company4){
                 <li class="list-inline-item">
                   <span
-                    class="d-inline-block nmc-dark-grey nmc-bg-light-grey font-14 fw-semibold rounded-1 p-2 text-wrap lh-base text-start"
+                    class="d-inline-block nmc-dark-grey nmc-bg-light-grey font-14 fw-semibold rounded-0 p-2 text-wrap lh-base text-start"
                     >{{ instructor.Company4 }}</span
                   >
                 </li>
@@ -188,97 +188,7 @@
           </div>
         </div>
       </div>
-      }
-
-      <!-- <div class="company-bar bg-orange-100 p-4">
-          <div class="row justify-content-center gap-3">
-            @if(instructor.Company1){
-            <div class="col-auto">
-              <a
-                class="m-0 font-16 nmc-primary text-uppercase font-family-poppins tracking-wider px-3"
-                target="_blank"
-                >{{ instructor.Company1 }}</a
-              >
-            </div>
-            } @if(instructor.Company2){
-            <div class="col-auto">
-              <a
-                class="m-0 font-16 nmc-primary text-uppercase font-family-poppins tracking-wider px-3"
-                target="_blank"
-                >{{ instructor.Company2 }}</a
-              >
-            </div>
-            } @if(instructor.Company3){
-            <div class="col-auto">
-              <a
-                class="m-0 font-16 nmc-primary text-uppercase font-family-poppins tracking-wider px-3"
-                target="_blank"
-                >{{ instructor.Company3 }}</a
-              >
-            </div>
-            } @if(instructor.Company4){
-            <div class="col-auto">
-              <a
-                class="m-0 font-16 nmc-primary text-uppercase font-family-poppins tracking-wider px-3"
-                target="_blank"
-                >{{ instructor.Company4 }}</a
-              >
-            </div>
-            }
-          </div>
-        </div> -->
-
-      }
+      } }
     </div>
-
-    <!-- <div class="mentor-card-wrapper row g-4 mt-4">
-      @for(instructor of instructors$ | async; track instructor; let i =
-      $index;){
-      <div class="col-12 col-sm-6 col-lg-4 d-flex">
-        <div
-          class="mentor-card inner d-flex flex-column justify-content-between flex-grow-1"
-        >
-          <figure
-            class="position-relative overflow-hidden m-auto rounded-0"
-          >
-            <img
-              class="z-1 w-100 h-100 object-fit-cover"
-              loading="lazy"
-              [src]="
-                instructor.InstructorImg
-                  ? instructor.InstructorImg
-                  : defaultImage
-              "
-              [alt]="instructor.Name"
-            />
-          </figure>
-
-          <div
-            class="info text-center d-grid rounded-2 d-flex flex-column justify-content-between flex-grow-1"
-          >
-            <div>
-              <a [routerLink]="['/mentor', instructor.id]">
-                <h2 class="font-24 nmc-primary font-family-poppins pt-4 mb-0">
-                  {{ instructor.Name }}
-                </h2>
-              </a>
-
-              <h4 class="font-18 fw-normal nmc-medium-grey pt-2 m-0">
-                {{ instructor.Position }}
-              </h4>
-
-              <div class="social mt-3">
-                @if(instructor.LinkedIn){
-                <a [href]="instructor.LinkedIn">
-                  <i class="bi bi-linkedin"></i>
-                </a>
-                }
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      }
-    </div> -->
   </div>
 </section>

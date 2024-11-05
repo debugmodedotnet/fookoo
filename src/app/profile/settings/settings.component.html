@@ -3,7 +3,7 @@
 </h2> -->
 
 @if(user){
-<div class="wrapper position-relative rounded-3 p-4">
+<div class="wrapper position-relative rounded-0 p-3">
   <div class="user-info">
     <p><strong class="nmc-medium-grey me-2">Email:</strong> {{ user.email }}</p>
   </div>
@@ -25,7 +25,7 @@
         >Current Password:</label
       >
       <input
-        class="form-control rounded-2 h-3"
+        class="form-control rounded-2"
         type="password"
         id="currentPassword"
         formControlName="currentPassword"
@@ -37,7 +37,7 @@
         >New Password:</label
       >
       <input
-        class="form-control rounded-2 h-3"
+        class="form-control rounded-2"
         type="password"
         id="newPassword"
         formControlName="newPassword"
@@ -48,10 +48,10 @@
       <label
         class="form-label fw-semibold nmc-medium-grey"
         for="confirmPassword"
-        >Confirm New Password:</label
+        >Confirm Password:</label
       >
       <input
-        class="form-control rounded-2 h-3"
+        class="form-control rounded-2"
         type="password"
         id="confirmPassword"
         formControlName="confirmPassword"

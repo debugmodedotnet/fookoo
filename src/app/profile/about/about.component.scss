@@ -1,24 +1,31 @@
 @use "../../styles/variables" as *;
 
 .form-label.required::after {
-    content: " *";
-    color: red;
+  content: " *";
+  color: red;
 }
 
 .chips {
-    border: 1px solid #ccc;
-  
-    &.selected {
-      background-color: $nmc-primary;
-      color: $nmc-white;
-    }
+  border: 1px solid #ccc;
+
+  &.selected {
+    background-color: $nmc-primary;
+    color: $nmc-white;
   }
-  
-  .chip {
-    background-color: #f1f1f1;
-    padding: 15px;
-  
-    button {
-      background: none;
-    }
+}
+
+.chip {
+  background-color: #f1f1f1;
+  padding: 15px;
+
+  button {
+    background: none;
   }
+}
+
+@media (max-width: 375px) {
+  .save {
+    justify-content: center !important;
+    margin-top: 30px;
+  }
+}

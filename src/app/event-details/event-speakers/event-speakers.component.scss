@@ -25,3 +25,57 @@
         left: 15px;
     }
 }
+
+@media (max-width: 991px) {
+    .speakers .member {
+        .speaker-img figure {
+            height: 200px;
+        }
+    }
+}
+
+@media (max-width: 767px) {
+    .w-767-100 {
+        width: 100% !important;
+    }
+
+    .speakers .member {
+        gap: 1.5rem !important;
+
+        .speaker-img {
+            width: 350px;
+            height: auto;
+
+            figure {
+                height: auto;
+            }
+        }
+    }
+}
+
+@media (max-width: 575px) {
+    .member-info span {
+        display: block;
+        margin-top: 10px;
+    }
+}
+
+@media (max-width: 425px) {
+    .speakers .member {
+        .speaker-img {
+            width: 280px;
+
+            &::before {
+                display: none;
+            }
+        }
+    }
+
+    .speakers-list {
+        margin-top: 0 !important;
+    }
+
+    .member {
+        margin-top: 30px !important;
+    }
+}

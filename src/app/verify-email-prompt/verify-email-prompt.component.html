@@ -1,7 +1,28 @@
-<div class="p-5">
-    <h3>Please verify your email address using verification link sent in your mailbox.</h3>
-    <span class="align-items-center d-flex">Once you complete verification, <button
-            class="post-job-btn nmc-btn-primary" (click)="handleHomeClick()">
-            Go to Home
-        </button></span>
-</div>
+<section class="py-5 d-flex align-items-center">
+  <div class="container-boxed text-center">
+    <figure class="my-0 overflow-hidden mx-auto">
+      <img
+        src="assets/images/home/email-verification.jpeg"
+        alt="email-verification"
+        class="v-100 h-100 object-fit-contain"
+      />
+    </figure>
+
+    <h2 class="font-family-poppins mt-4">Kindly check your inbox!</h2>
+
+    <h3 class="font-family-poppins mt-4">
+      Use the verification link to validate your email address.
+    </h3>
+
+    <h4 class="nmc-dark-grey mt-4">
+      Once you've finished the verification process, please click below.
+    </h4>
+
+    <button
+      class="post-job-btn nmc-btn-primary mx-auto px-4 py-3 h-auto font-20 mt-4"
+      (click)="handleHomeClick()"
+    >
+      Go to Home
+    </button>
+  </div>
+</section>

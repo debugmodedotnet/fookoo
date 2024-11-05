@@ -22,3 +22,54 @@
         max-width: 600px;
     }
 }
+
+
+@media (max-width: 991px) {
+    .schedule .schedule-item {
+        margin-top: 20px;
+
+        p {
+            max-width: 580px;
+        }
+    }
+
+    .tech {
+        top: -20px !important;
+    }
+}
+
+@media (max-width: 767px) {
+    .schedule .schedule-item {
+
+        margin-top: 0;
+
+        p {
+            max-width: 100%;
+        }
+
+        time {
+            margin-bottom: 15px;
+            display: block;
+        }
+    }
+
+    .tech {
+        top: -40px !important;
+    }
+}
+
+@media (max-width: 424px) {
+    .agenda-content {
+        flex-direction: column;
+        text-align: center;
+
+        .speaker {
+            margin-bottom: 20px;
+        }
+
+        h4 span {
+            display: block;
+            margin: 10px 0;
+        }
+    }
+}

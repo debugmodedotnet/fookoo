@@ -1,35 +1,7 @@
-<!-- <div class="profile-head d-flex align-items-center justify-content-between">
-  <div>
-    <h2 class="nmc-dark-grey font-family-poppins">
-      {{ user?.name }}
-    </h2>
-    <h6 class="nmc-primary m-0">{{ user?.position }}</h6>
-  </div> 
-  
-  <div class="d-flex align-items-center justify-content-center gap-2">
-    <button
-      (click)="saveProfile()"
-      class="nmc-btn-primary font-14 fw-semibold box-shadow-none mb-2 px-4 py-2 h-auto"
-      [disabled]="
-        userProfileForm.get('github')?.invalid ||
-        userProfileForm.get('linkedin')?.invalid ||
-        userProfileForm.get('twitter')?.invalid
-      "
-    >
-      Save
-    </button>
-
-  </div> 
-</div>-->
-
-<!-- <h2 class="section-title left font-24 nmc-dark-grey font-family-poppins pb-3">
-    About Yourself
-  </h2> -->
-
 <div class="form-wrapper w-100">
   <form [formGroup]="userProfileForm">
-    <div class="row form-group mt-3">
-      <div class="col-6">
+    <div class="row form-group">
+      <div class="col-12 col-sm-6">
         <label for="name" class="form-label fw-semibold font-14 required"
           >Name</label
         >
@@ -41,7 +13,7 @@
         />
       </div>
 
-      <div class="col-6">
+      <div class="col-12 col-sm-6 mt-3 mt-sm-0">
         <label for="position" class="form-label fw-semibold font-14 required"
           >Position</label
         >
@@ -53,7 +25,7 @@
         />
       </div>
 
-      <div class="col-6 mt-3">
+      <div class="col-12 col-sm-6 mt-3">
         <label for="tagline" class="form-label fw-semibold font-14"
           >Tagline</label
         >
@@ -65,7 +37,7 @@
         />
       </div>
 
-      <div class="col-6 mt-3">
+      <div class="col-12 col-sm-6 mt-3">
         <label for="city" class="form-label fw-semibold font-14">City</label>
         <input
           type="text"
@@ -85,7 +57,7 @@
         ></textarea>
       </div>
 
-      <div class="col-3 mt-3">
+      <div class="col-6 col-sm-3 mt-3">
         <label for="skill1" class="form-label fw-semibold font-14"
           >Skill-1</label
         >
@@ -97,7 +69,7 @@
         />
       </div>
 
-      <div class="col-3 mt-3">
+      <div class="col-6 col-sm-3 mt-3">
         <label for="skill2" class="form-label fw-semibold font-14"
           >Skill-2</label
         >
@@ -109,7 +81,7 @@
         />
       </div>
 
-      <div class="col-3 mt-3">
+      <div class="col-6 col-sm-3 mt-3">
         <label for="skill3" class="form-label fw-semibold font-14"
           >Skill-3</label
         >
@@ -121,7 +93,7 @@
         />
       </div>
 
-      <div class="col-3 mt-3">
+      <div class="col-6 col-sm-3 mt-3">
         <label for="skill4" class="form-label fw-semibold font-14"
           >Skill-4</label
         >
@@ -133,7 +105,7 @@
         />
       </div>
 
-      <div class="col-6 mt-3">
+      <div class="col-12 col-sm-6 mt-3">
         <label for="education" class="form-label fw-semibold font-14"
           >Education</label
         >
@@ -157,7 +129,7 @@
         </select>
       </div>
 
-      <div class="col-6 mt-3">
+      <div class="col-12 col-sm-6 mt-3">
         <label for="experience" class="form-label fw-semibold font-14"
           >Experience</label
         >
@@ -191,7 +163,7 @@
           @for(control of pastExperiences.controls; track control; let i =
           $index;){
           <ng-container>
-            <div class="col-4">
+            <div class="col-md-4 col-sm-6 col-12">
               <div
                 class="chip rounded-4 d-flex align-items-start justify-content-between"
               >
@@ -245,7 +217,7 @@
         </div>
       </div>
 
-      <div class="col-4 mt-3">
+      <div class="col-12 col-sm-4 mt-3">
         <label for="linkedin" class="form-label fw-semibold font-14"
           >Linkedin</label
         >
@@ -266,7 +238,7 @@
         }
       </div>
 
-      <div class="col-4 mt-3">
+      <div class="col-12 col-sm-4 mt-3">
         <label for="github" class="form-label fw-semibold font-14"
           >Github</label
         >
@@ -287,7 +259,7 @@
         }
       </div>
 
-      <div class="col-4 mt-3">
+      <div class="col-12 col-sm-4 mt-3">
         <label for="twitter" class="form-label fw-semibold font-14"
           >Twitter</label
         >
@@ -308,14 +280,14 @@
         }
       </div>
 
-      <div class="col-4 mt-3 fw-semibold font-14">
+      <div class="col-12 mt-3 fw-semibold font-14">
         <input type="checkbox" formControlName="openforjob" class="me-1" />
         Is Open For a Job?
       </div>
     </div>
   </form>
 
-  <div class="d-flex justify-content-end">
+  <div class="save d-flex justify-content-end">
     <button
       (click)="saveProfile()"
       class="nmc-btn-primary font-18 fw-semibold box-shadow-none px-5 py-3 h-auto"

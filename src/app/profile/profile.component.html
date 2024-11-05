@@ -1,7 +1,7 @@
 <section class="profile-section py-5">
   <div class="container-boxed pt-4">
     <div class="pb-4 d-flex">
-      <div class="profile-img position-relative">
+      <div class="profile-img position-relative h-100">
         <figure class="m-0 p-0 overflow-hidden rounded-0">
           <img
             [src]="user?.photoURL ? user?.photoURL : defaultImage"
@@ -41,7 +41,7 @@
     </div>
 
     <ul
-      class="text-start profile-tabs d-flex align-items-center gap-5 py-3 divider"
+      class="text-start profile-tabs d-flex align-items-center justofy-content-between gap-5 py-3 divider"
     >
       <li [class.active]="currentTab === 'about'">
         <a

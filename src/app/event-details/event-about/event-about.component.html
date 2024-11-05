@@ -1,24 +1,26 @@
 <section class="pt-5 position-relative overflow-hidden gradient-bg">
   <div class="container-boxed mb-5">
-    <div class="d-flex align-items-center justify-content-between">
+    <div
+      class="d-flex align-items-center justify-content-lg-between justify-content-center"
+    >
       <div class="seats d-flex align-items-center justify-content-center gap-3">
         <h4
           class="font-22 font-family-inter fw-semibold tracking-wider d-inline-block p-3 bg-orange-100 rounded-0"
         >
-          Total Seats:
+          Total <br class="d-none d-426" />Seats:
           <span class="nmc-primary">{{ eventAbout?.TotalSeats }}</span>
         </h4>
 
         <h4
           class="font-22 font-family-inter fw-semibold tracking-wider d-inline-block p-3 bg-orange-100 rounded-0"
         >
-          Total Registered:
+          Registered <br class="d-none d-426" />Seats:
           <span class="nmc-primary">{{ eventAbout?.RegisteredSeats }}</span>
         </h4>
       </div>
 
       <button
-        class="nmc-btn-primary nmc-bg-white nmc-primary h-auto"
+        class="nmc-btn-primary nmc-bg-white nmc-primary h-auto d-none d-lg-block"
         (click)="attendEvent()"
         [disabled]="enrolled || isLoading"
       >
@@ -45,11 +47,11 @@
       </h1>
 
       <span
-        class="d-inline-block font-18 fw-semibold rounded-1 py-1 px-2 text-red-600 bg-red-100"
+        class="d-inline-block font-18 fw-semibold rounded-0 py-1 px-2 text-red-600 bg-red-100"
         >{{ eventAbout?.isOffline ? "Offline" : "Online" }}
       </span>
 
-      <div class="d-flex align-items-center justify-center gap-4 mt-3">
+      <div class="banner-info d-flex align-items-center justify-center gap-4 mt-4">
         <h4 class="nmc-white">
           <i class="bi bi-calendar-event me-1 font-20 nmc-white"></i>
           {{ eventAbout?.Date | date : "MMMM d" }}
@@ -67,24 +69,15 @@
         }
       </div>
 
-      <!-- <span
-        class="d-inline-block font-18 fw-semibold rounded-1 py-1 px-3 mt-3 text-orange-600 bg-orange-100"
-        >{{ eventAbout?.isOffline ? "Offline" : "Online" }}</span
-      > -->
-
-      <!-- <ol class="breadcrumb nmc-primary my-4 position-absolute">
-      <li class="breadcrumb-item">
-        <a href="#" class="nmc-dark-grey me-2">Home</a>
-      </li>
-      <li class="breadcrumb-item active" aria-current="page">Event-Details</li>
-    </ol> -->
-
-      <!-- <button
-        class="nmc-btn-primary m-auto mt-4 px-5 py-2 h-auto"
+      <button
+        class="nmc-btn-primary nmc-bg-white nmc-primary h-auto mt-4 d-block d-lg-none"
         (click)="attendEvent()"
+        [disabled]="enrolled || isLoading"
       >
-        Enroll Now
-      </button> -->
+        {{
+          enrolled ? "Enrolled 🎉" : isLoading ? "Processing..." : "Enroll Now"
+        }}
+      </button>
     </div>
   </div>
 
@@ -106,7 +99,7 @@
 <section class="position-relative overflow-hidden pb-5">
   <div class="container-boxed">
     <div class="row gx-5">
-      <div class="col-6">
+      <div class="col-lg-6 col-12 text-center text-lg-start">
         <h2
           class="section-title left font-36 nmc-dark-grey font-family-poppins pb-3"
         >
@@ -118,8 +111,8 @@
         </p>
       </div>
 
-      <div class="col-6">
-        <figure class="event-banner m-0 p-0 overflow-hidden rounded-3">
+      <div class="col-lg-6 col-12">
+        <figure class="event-banner m-0 p-0 overflow-hidden rounded-0">
           <img
             [src]="
               eventAbout?.EventImage ? eventAbout?.EventImage : defaultImage

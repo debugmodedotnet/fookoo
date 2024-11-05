@@ -7,10 +7,11 @@
     </h2>
 
     @if(eventSpeakers && eventSpeakers.length > 0){
-    <div class="speakers-list px-5 mt-5">
+    <div class="speakers-list px-0 px-md-5 mt-5">
       @for (speaker of eventSpeakers; track speaker.id; let i = $index) {
       <div
-        class="member rounded-3 d-flex align-items-center justify-content-between gap-5 mt-5"
+        class="member rounded-3 d-flex align-items-center justify-content-between flex-column flex-md-row gap-5 mt-5"
+        [class.flex-column-reverse]="i % 2 !== 0"
       >
         @if(i % 2 === 0){
         <div class="speaker-img position-relative w-30">
@@ -23,7 +24,7 @@
           </figure>
         </div>
 
-        <div class="member-info text-start w-75">
+        <div class="member-info text-center text-md-start w-75 w-767-100">
           <h3 class="font-family-poppins">
             <a href="" class="nmc-primary font-family-poppins pe-2">
               {{ speaker.Name }}
@@ -36,7 +37,7 @@
           </p>
 
           <div
-            class="social d-flex align-items-center justify-content-start gap-2"
+            class="social d-flex align-items-center justify-content-center justify-content-md-start gap-2"
           >
             <a target="_blank" [href]="speaker.X" class="font-20 nmc-primary"
               ><i class="bi bi-twitter-x"></i
@@ -58,7 +59,7 @@
           </div>
         </div>
         }@else {
-        <div class="member-info text-start w-75">
+        <div class="member-info text-center text-md-start w-75 w-767-100">
           <h3 class="font-family-poppins">
             <a href="" class="nmc-primary font-family-poppins pe-2">
               {{ speaker.Name }}
@@ -71,15 +72,23 @@
           </p>
 
           <div
-            class="social d-flex align-items-center justify-content-start gap-2"
+            class="social d-flex align-items-center justify-content-center justify-content-md-start gap-2"
           >
-            <a [href]="speaker.X" class="font-20 nmc-primary"
+            <a target="_blank" [href]="speaker.X" class="font-20 nmc-primary"
               ><i class="bi bi-twitter-x"></i
             ></a>
-            <a [href]="speaker.Github" class="font-20 nmc-primary"
+
+            <a
+              target="_blank"
+              [href]="speaker.Github"
+              class="font-20 nmc-primary"
               ><i class="bi bi-github"></i
             ></a>
-            <a [href]="speaker.LinkedIn" class="font-20 nmc-primary"
+
+            <a
+              target="_blank"
+              [href]="speaker.LinkedIn"
+              class="font-20 nmc-primary"
               ><i class="bi bi-linkedin"></i
             ></a>
           </div>
@@ -88,7 +97,7 @@
         <div class="speaker-img position-relative w-30">
           <figure class="m-0 overflow-hidden">
             <img
-              [src]="speaker.Image"
+              [src]="speaker.Image ? speaker.Image : defaultImage"
               class="h-100 w-100 object-fit-cover"
               alt=""
             />

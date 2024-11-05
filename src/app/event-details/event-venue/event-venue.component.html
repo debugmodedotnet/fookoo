@@ -8,7 +8,7 @@
     </h2>
 
     <div class="row g-0">
-      <div class="col-md-6 venue-map">
+      <div class="col-12 col-md-6 venue-map">
         <iframe
           [src]="safeUrl"
           frameborder="0"
@@ -17,7 +17,7 @@
         ></iframe>
       </div>
 
-      <div class="col-md-6 venue-info">
+      <div class="col-12 col-md-6 venue-info">
         <div
           class="overlay position-absolute top-0 start-0 w-100 h-100 z-1"
         ></div>
@@ -29,9 +29,9 @@
         />
 
         <div
-          class="row justify-content-center position-relative z-2 h-100 d-flex align-items-center"
+          class="row justify-content-center position-relative z-2 h-100 d-flex align-items-center p-2"
         >
-          <div class="col-11 col-md-10 col-lg-9 position-relative text-start">
+          <div class="col-11 col-md-10 col-lg-9 position-relative text-center">
             <h3 class="font-34 font-family-poppins nmc-white mb-2">
               {{ event?.VenueName }}
             </h3>
@@ -48,23 +48,22 @@
 }
 
 <!-- Enroll Now -->
-<section class="text-center pt-5">
+<section class="enroll-section text-center pt-5">
   <div class="container-boxed">
     <p class="font-36 fw-bold m-auto nmc-dark-grey font-family-poppins">
       {{ event?.Tagline }}
     </p>
 
     @if(event?.isPaid){
-    <span class="price d-block mb-4">
+    <span class="price d-block my-4">
       <sup>₹</sup>
       <span class="number">{{ event?.price }}</span>
-      <sub>onwards</sub>
+      <span>onwards</span>
     </span>
-
     }
 
     <button
-      class="nmc-btn-primary px-5 py-3 h-auto font-20 m-auto w-25 mt-4 mb-5"
+      class="nmc-btn-primary px-5 py-3 h-auto font-20 m-auto mt-4 mb-5"
       (click)="attendEvent()"
       [disabled]="enrolled || isLoading"
     >

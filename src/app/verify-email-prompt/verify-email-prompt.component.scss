@@ -1,0 +1,10 @@
+figure {
+    width: 400px;
+    height: auto;
+}
+
+@media (max-width: 425px) {
+    figure {
+        width: 100%;
+    }
+}

@@ -1,6 +1,7 @@
 .login-card {
     box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
     width: 400px;
+    place-content: center;
 
     .card-content {
         max-width: 340px;
@@ -39,9 +40,24 @@
     .w-767-100 {
         width: 100% !important;
     }
+
+    h1 {
+        font-size: 48px !important;
+    }
+}
+
+@media(max-width: 576px) {
+    h1 {
+        font-size: 44px !important;
+        margin-bottom: 15px !important;
+    }
 }
 
 @media (max-width: 420px) {
+    h1 {
+        font-size: 38px !important;
+    }
+
     .font-420-14 {
         font-size: 14px !important;
     }

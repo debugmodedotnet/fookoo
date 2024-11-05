@@ -29,7 +29,7 @@
 .price {
 
     sup,
-    sub {
+    span {
         font-size: 24px;
         color: $nmc-dark-grey;
     }
@@ -38,7 +38,6 @@
         top: -1em;
     }
 
-
     .number {
         font-size: 60px;
         font-weight: 600;
@@ -46,42 +45,45 @@
     }
 }
 
-.pricing-table {
-    padding: 30px;
-    background: $nmc-white;
-    -webkit-box-shadow: 0px 24px 48px -13px rgba(0, 0, 0, 0.11);
-    -moz-box-shadow: 0px 24px 48px -13px rgba(0, 0, 0, 0.11);
-    box-shadow: 0px 24px 48px -13px rgba(0, 0, 0, 0.11);
-    transition: ease all .3s;
-    position: relative;
-
-    .price {
-        sup {
-            font-size: 24px;
-            top: -1em;
-            color: $nmc-primary;
-        }
-
-        .number {
-            font-size: 60px;
-            font-weight: 600;
-            color: $nmc-primary;
-        }
-    }
-
-    &:hover,
-    &:focus {
-        -webkit-box-shadow: 0px 24px 48px -13px rgba(0, 0, 0, 0.2);
-        -moz-box-shadow: 0px 24px 48px -13px rgba(0, 0, 0, 0.2);
-        box-shadow: 0px 24px 48px -13px rgba(0, 0, 0, 0.2);
-    }
-
-}
-
 @media (max-width: 991px) {
 
     .venue-map,
     .venue-info {
         min-height: 400px;
+    }
+}
+
+@media (max-width: 425px) {
+
+    .venue {
+        h3 {
+            font-size: 30px !important;
+        }
+    }
+
+    .enroll-section {
+        p {
+            font-size: 28px !important;
+        }
+    }
+
+    .price {
+        span {
+            font-size: 20px;
+        }
+
+        .number {
+            font-size: 38px;
+        }
+    }
+}
+
+
+@media (max-width: 375px) {
+
+    .venue {
+        h3 {
+            font-size: 24px !important;
+        }
     }
 }

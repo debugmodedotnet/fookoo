@@ -8,14 +8,14 @@
 
     @if(eventAgenda && eventAgenda.length > 0){
     <div class="row justify-content-center">
-      <div class="col-lg-9">
+      <div class="col-12 col-xl-10">
         @for(agenda of eventAgenda; track agenda){
         <div class="row schedule-item text-start py-3">
           <div class="col-md-2">
             <time>{{ agenda.Time }}</time>
           </div>
 
-          <div class="col-md-10 position-relative d-flex align-items-center">
+          <div class="col-md-10 agenda-content position-relative d-flex align-items-center">
             @if(agenda.SpeakerImg){
             <div class="speaker">
               <figure class="m-0 p-0 overflow-hidden rounded-circle">
@@ -39,7 +39,7 @@
 
             @if(agenda.Tech){
             <span
-              class="d-inline-block position-absolute font-12 fw-semibold rounded-1 py-1 px-2 top-0 end-0 text-red-600 bg-red-100"
+              class="tech d-inline-block position-absolute font-12 fw-semibold rounded-0 py-1 px-2 top-0 end-0 text-red-600 bg-red-100"
               >{{ agenda.Tech }}</span
             >}
           </div>

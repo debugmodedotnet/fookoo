@@ -48,3 +48,29 @@
 .profile-content {
     min-height: 70vh;
 }
+
+@media (max-width: 529px) {
+    .profile-tabs {
+        gap: 1.6rem !important;
+
+        li a {
+            font-size: 16px !important;
+        }
+    }
+}
+
+
+@media (max-width: 375px) {
+    .profile-tabs {
+        gap: 1rem !important;
+
+        li a {
+            font-size: 16px !important;
+        }
+    }
+
+    .profile-img figure {
+        width: 80px;
+        height: 80px;
+    }
+}

@@ -123,7 +123,7 @@
       </div>
 
       <!-- Position -->
-      <div class="col-md-6">
+      <div class="col-md-6 mt-3 mt-md-0">
         <label for="Position" class="form-label fw-semibold font-14 required"
           >Position</label
         >
@@ -345,15 +345,17 @@
         >
 
         @if(responsibilities.length>0){
-        <div class="chip-container mb-2 row g-4">
+        <div class="chip-container mb-2 row g-3 flex-wrap">
           @for(control of responsibilities.controls; track control; let i =
           $index;){
           <ng-container>
-            <div class="col-4">
+            <div class="col-auto">
               <div
                 class="chip rounded-4 d-flex align-items-start justify-content-between"
               >
-                <p class="m-0 word-break">{{ control.value }}</p>
+                <p class="m-0 word-break text-break text-wrap">
+                  {{ control.value }}
+                </p>
 
                 <div class="d-flex align-items-center ms-5">
                   <button

@@ -88,3 +88,27 @@ quill-editor {
 ::ng-deep .ql-editor ul {
     margin-left: 1.5rem !important;
 }
+
+
+@media (max-width: 575px) {
+
+    .input__group .input__field,
+    .input__group .input__label,
+    .input__group .input__field:focus~.input__label {
+        font-size: 1rem;
+    }
+
+    h3 {
+        font-size: 28px !important;
+    }
+}
+
+@media (max-width: 425px) {
+    .input__group .input__field:placeholder-shown~.input__label {
+        font-size: 1rem;
+    }
+
+    h3 {
+        font-size: 26px !important;
+    }
+}

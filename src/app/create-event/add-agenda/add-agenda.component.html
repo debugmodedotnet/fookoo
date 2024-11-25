@@ -1,0 +1,204 @@
+<section class="py-5 min-vh-100">
+  <div class="container-boxed">
+    <div class="d-flex justify-content-between mb-3">
+      <h2 class="font-36 nmc-dark-grey font-family-poppins pb-2">
+        Step 3 : Add Event Agenda
+      </h2>
+
+      <button
+        class="nmc-btn-primary font-24"
+        (click)="showForm()"
+        type="button"
+      >
+        +
+      </button>
+    </div>
+
+    <!-- Agenda Form -->
+    @if(formVisible){
+    <div class="form-wrapper rounded-0 w-100 mt-4">
+      <form [formGroup]="agendaForm" (ngSubmit)="addOrUpdateAgenda()">
+        <div class="row form-group mt-3 p-4">
+          <div class="col-8">
+            <label for="title" class="form-label required">Title</label>
+            <input
+              id="title"
+              type="text"
+              class="form-control h-3 rounded-3"
+              formControlName="Title"
+              placeholder="Enter Title"
+            />
+
+            @if( agendaForm.get('Title')?.invalid &&
+            agendaForm.get('Title')?.touched){
+            <div class="error">Title is required.</div>
+            }
+          </div>
+
+          <div class="col-4">
+            <label for="time" class="form-label required">Time</label>
+            <input
+              id="time"
+              type="text"
+              class="form-control h-3 rounded-3"
+              formControlName="Time"
+              placeholder="Enter Time"
+            />
+
+            @if( agendaForm.get('Time')?.invalid &&
+            agendaForm.get('Time')?.touched){
+            <div class="error">Time is required.</div>
+            }
+          </div>
+
+          <div class="col-4 mt-3">
+            <label for="tech" class="form-label">Technology</label>
+            <input
+              id="tech"
+              type="text"
+              class="form-control h-3 rounded-3"
+              formControlName="Tech"
+              placeholder="Enter Technology"
+            />
+
+            @if( agendaForm.get('Tech')?.invalid &&
+            agendaForm.get('Tech')?.touched){
+            <div class="error">Technology is required.</div>
+            }
+          </div>
+
+          <div class="col-4 mt-3">
+            <label for="speaker" class="form-label">Speaker</label>
+            <select
+              id="speaker"
+              class="form-control form-select h-3 rounded-3"
+              formControlName="Speaker"
+              (change)="onSpeakerChange($event)"
+            >
+              <option value="">None</option>
+              @for(speaker of speakers; track speaker;){
+              <option [value]="speaker.Name">
+                {{ speaker.Name }}
+              </option>
+              }
+            </select>
+
+            @if(agendaForm.get('Speaker')?.invalid &&
+            agendaForm.get('Speaker')?.touched){
+            <div class="error">Speaker is required.</div>
+            }
+          </div>
+
+          <div class="col-4 mt-3">
+            <label for="speakerImg" class="form-label">Speaker Image URL</label>
+            <input
+              id="speakerImg"
+              type="text"
+              class="form-control h-3 rounded-3"
+              formControlName="SpeakerImg"
+              placeholder="Enter Speaker Image URL"
+              readonly
+            />
+          </div>
+
+          <div class="col-12 mt-3">
+            <label for="info" class="form-label">Info</label>
+            <textarea
+              id="info"
+              type="text"
+              class="form-control rounded-3"
+              formControlName="Info"
+              placeholder="Enter Info"
+            ></textarea>
+
+            @if( agendaForm.get('Info')?.invalid &&
+            agendaForm.get('Info')?.touched){
+            <div class="error">Info is required.</div>
+            }
+          </div>
+        </div>
+
+        <div class="d-flex justify-content-end p-4 pt-0">
+          <button
+            type="button"
+            class="nmc-btn-primary px-sm-5 px-4 py-3 h-auto font-18 nmc-bg-medium-grey"
+            (click)="hideForm()"
+          >
+            Cancel
+          </button>
+
+          <button
+            class="nmc-btn-primary px-sm-5 px-4 py-3 h-auto ms-3 font-18"
+            type="submit"
+          >
+            {{ isEditMode ? "Update Agenda" : "Add Agenda" }}
+          </button>
+        </div>
+      </form>
+    </div>
+    }
+
+    <!-- Display Agendas Table -->
+    @if(!formVisible){
+    <div class="table-wrapper mt-4">
+      <div class="table-responsive">
+        @if(agendas.length === 0) {
+        <p class="text-center text-muted pt-3">No agenda added yet.</p>
+
+        } @else {
+        <table class="table mb-0">
+          <thead class="thead-light">
+            <tr>
+              <th>Title</th>
+              <th>Speaker</th>
+              <th>Time</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            @for(agenda of agendas; track agenda; let i = $index;){
+            <tr>
+              <td>{{ agenda.Title }}</td>
+              <td>@if(agenda.Speaker){{{ agenda.Speaker }}}@else{None}</td>
+              <td>{{ agenda.Time }}</td>
+              <td class="actions">
+                <div class="d-flex align-items-center gap-3">
+                  <a
+                    class="nmc-dark-grey cursor-pointer"
+                    (click)="editAgenda(agenda)"
+                    (keydown)="editAgenda(agenda)"
+                    tabindex="0"
+                  >
+                    <i class="bi bi-pencil-square font-20"></i>
+                  </a>
+
+                  <a
+                    class="text-danger cursor-pointer"
+                    (click)="deleteAgenda(agenda.id)"
+                    (keydown)="deleteAgenda(agenda.id)"
+                    tabindex="0"
+                  >
+                    <i class="bi bi-trash3 font-20"></i>
+                  </a>
+                </div>
+              </td>
+            </tr>
+            }
+          </tbody>
+        </table>
+        }
+      </div>
+    </div>
+
+    <div class="d-flex justify-content-end mt-5">
+      <button
+        class="nmc-btn-primary px-sm-5 px-4 py-3 h-auto font-18"
+        (click)="navigateToEventPage()"
+      >
+        Next
+      </button>
+    </div>
+    }
+  </div>
+</section>

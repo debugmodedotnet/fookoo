@@ -1,10 +1,11 @@
 <section class="py-5 min-vh-100">
   <div class="container-boxed">
-    <div class="heading d-flex align-items-center justify-content-between mb-4 mb-lg-5">
+    <div
+      class="heading d-flex align-items-center justify-content-between mb-4 mb-lg-5"
+    >
       <h2
         class="section-title left font-36 nmc-dark-grey font-family-poppins mb-0 pb-2"
       >
-        <!-- <span class="text-bottom-line position-relative ps-5">Jobs</span> -->
         Jobs
       </h2>
 
@@ -27,8 +28,7 @@
     >
       <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
-          <div class="modal-header p-4">
-            <!-- <h1 class="modal-title font-18" id="jobModalLabel">Share</h1> -->
+          <div class="modal-header p-4">            
             <button
               type="button"
               class="btn-close"
@@ -201,46 +201,4 @@
       }
     </div>
   </div>
-
-  <!-- <ul
-    class="sticky-wrapper d-flex align-items-center justify-content-evenly flex-wrap py-5 px-3 gap-4 overflow-hidden"
-  >
-    @for(job of filteredJobs ; track job; let i = $index){ @if(
-    job.companyName){
-    <li class="mt-4">
-      <a
-        class="job-link d-grid align-items-center"
-        [routerLink]="['/jobs', job.id]"
-      >
-        <div class="pin rounded-circle m-auto"></div>
-
-        <div class="text-center mt-4">
-          <h2 class="font-26 nmc-dark-grey font-family-poppins">
-            {{ job.companyName }}
-          </h2>
-
-          <h4 class="font-20 nmc-dark-grey mt-3">
-            {{ job.position }}
-          </h4>
-
-          <h5 class="font-20 nmc-dark-grey mb-0 mt-3 pt-3 w-100">
-            @if(job.Location){ {{ job.Location }} }@else{Unknown}
-          </h5>
-
-          <div class="social py-3">
-            @if(job.email){<a [href]="job.email"
-              ><i class="bi bi-envelope-fill"></i></a
-            >} @if(job.CompanyTwitter){<a [href]="job.CompanyTwitter"
-              ><i class="bi bi-twitter-x"></i></a
-            >} @if(job.CompanyGithub){<a [href]="job.CompanyGithub"
-              ><i class="bi bi-github"></i></a
-            >} @if(job.CompanyLinkedIn){<a [href]="job.CompanyLinkedIn"
-              ><i class="bi bi-linkedin"></i></a
-            >}
-          </div>
-        </div>
-      </a>
-    </li>
-    } }
-  </ul> -->
 </section>

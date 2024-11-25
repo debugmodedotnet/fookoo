@@ -1,0 +1,353 @@
+<section class="py-5">
+  <div class="container-boxed">
+    <h2 class="font-36 nmc-dark-grey font-family-poppins pb-2">
+      Step 1 : Fill Basic Event Details
+    </h2>
+
+    <div class="form-wrapper rounded-0 w-100">
+      <form [formGroup]="eventForm" (ngSubmit)="addEvent()">
+        <div class="row form-group mt-4 p-4">
+          <div class="col-12 d-flex gap-5">
+            <div class="mt-4">
+              <input type="checkbox" formControlName="isOffline" />
+              Is Offline?
+            </div>
+
+            <div class="mt-4">
+              <input type="checkbox" formControlName="isPaid" />
+              Is Paid?
+            </div>
+
+            <div class="mt-4">
+              <input type="checkbox" formControlName="isCertificateProvided" />
+              Is Certificate Provided?
+            </div>
+
+            <div class="mt-4">
+              <input type="checkbox" formControlName="displayAtHomePage" />
+              Display At HomePage
+            </div>
+
+            <div class="mt-4">
+              <input type="checkbox" formControlName="isActive" />
+              Is Active?
+            </div>
+
+            <div class="mt-4">
+              <input type="checkbox" formControlName="isPrivate" />
+              Is Private?
+            </div>
+          </div>
+
+          <div class="col-12 mt-4">
+            <label for="title" class="form-label required">Title</label>
+            <input
+              id="title"
+              type="text"
+              class="form-control h-3 rounded-3"
+              formControlName="Title"
+              placeholder="Enter Title"
+            />
+            @if(eventForm.get('Title')?.invalid &&
+            eventForm.get('Title')?.touched){
+            <div class="error">Title is required.</div>
+            }
+          </div>
+
+          <div class="col-3 mt-4">
+            <label for="totalSeats" class="form-label required"
+              >Total Seats</label
+            >
+            <input
+              id="totalSeats"
+              type="number"
+              class="form-control h-3 rounded-3"
+              formControlName="TotalSeats"
+              placeholder="Enter Total Seats"
+            />
+            @if( eventForm.get('TotalSeats')?.invalid &&
+            eventForm.get('TotalSeats')?.touched){
+            <div class="error">Total Seats is required.</div>
+            }
+          </div>
+
+          <div class="col-3 mt-4">
+            <label for="registeredSeats" class="form-label required"
+              >Registered Seats</label
+            >
+            <input
+              id="registeredSeats"
+              type="number"
+              class="form-control h-3 rounded-3"
+              formControlName="RegisteredSeats"
+              placeholder="Enter Registered Seats"
+            />
+            @if(eventForm.get('RegisteredSeats')?.invalid &&
+            eventForm.get('RegisteredSeats')?.touched){
+            <div class="error">Registered Seats is required.</div>
+            }
+          </div>
+
+          <div class="col-3 mt-4">
+            <label for="registeredSeats" class="form-label required"
+              >Price(₹)</label
+            >
+            <input
+              id="price"
+              type="number"
+              class="form-control h-3 rounded-3"
+              formControlName="price"
+              placeholder="Enter Price"
+            />
+            @if(eventForm.get('price')?.invalid &&
+            eventForm.get('price')?.touched){
+            <div class="error">Price is required.</div>
+            }
+          </div>
+
+          <div class="col-3 mt-4">
+            <label for="tech" class="form-label required">Technology</label>
+
+            <select
+              class="form-select form-control h-3 rounded-3"
+              id="tech"
+              formControlName="Tech"
+            >
+              <option selected>Choose...</option>
+              <option value="Angular">Angular</option>
+              <option value="React">React</option>
+              <option value="Vue">Vue</option>
+              <option value="GenAI">GenAI</option>
+            </select>
+            @if(eventForm.get('Tech')?.invalid &&
+            eventForm.get('Tech')?.touched){
+            <div class="error">Technology is required.</div>
+            }
+          </div>
+
+          <div class="col-6 mt-4">
+            <label for="logo" class="form-label required">Logo</label>
+            <input
+              id="logo"
+              type="text"
+              class="form-control h-3 rounded-3"
+              formControlName="Logo"
+              placeholder="Enter Logo URL"
+            />
+
+            @if( eventForm.get('Logo')?.invalid &&
+            eventForm.get('Logo')?.touched){
+            <div class="error">Logo is required.</div>
+            }
+          </div>
+
+          <div class="col-6 mt-4">
+            <label for="tagline" class="form-label required">Tagline</label>
+            <input
+              id="tagline"
+              type="text"
+              class="form-control h-3 rounded-3"
+              formControlName="Tagline"
+              placeholder="Enter Tagline"
+            />
+
+            @if( eventForm.get('Tagline')?.invalid &&
+            eventForm.get('Tagline')?.touched){
+            <div class="error">Tagline is required.</div>
+            }
+          </div>
+
+          <div class="col-4 mt-4">
+            <label for="shortDescription" class="form-label required"
+              >Short Description</label
+            >
+            <textarea
+              id="shortDescription"
+              type="text"
+              class="form-control rounded-3"
+              rows="4"
+              formControlName="ShortDescription"
+              placeholder="Enter Short Description"
+            ></textarea>
+
+            @if( eventForm.get('ShortDescription')?.invalid &&
+            eventForm.get('ShortDescription')?.touched){
+            <div class="error">
+              Short Description is required & should be less than 145 letters!
+            </div>
+            }
+          </div>
+
+          <div class="col-8 mt-4">
+            <label for="longDescription" class="form-label required"
+              >Long Description</label
+            >
+            <textarea
+              id="longDescription"
+              type="text"
+              class="form-control rounded-3"
+              formControlName="Description"
+              placeholder="Enter Long Description"
+              rows="4"
+            ></textarea>
+
+            @if( eventForm.get('Description')?.invalid &&
+            eventForm.get('Description')?.touched){
+            <div class="error">
+              Description is required & should be more than 300 letters and less
+              than 500 letters!
+            </div>
+            }
+          </div>
+
+          <div class="col-3 mt-4">
+            <label for="date" class="form-label required">Date</label>
+            <input
+              id="date"
+              formControlName="Date"
+              type="date"
+              class="form-control h-3 rounded-3"
+            />
+
+            @if( eventForm.get('Date')?.invalid &&
+            eventForm.get('Date')?.touched){
+            <div class="error">Date is required.</div>
+            }
+          </div>
+
+          <div class="col-3 mt-4">
+            <label for="city" class="form-label required">City</label>
+            <input
+              id="city"
+              type="text"
+              class="form-control h-3 rounded-3"
+              formControlName="City"
+              placeholder="Enter City"
+            />
+
+            @if( eventForm.get('City')?.invalid &&
+            eventForm.get('City')?.touched){
+            <div class="error">City is required.</div>
+            }
+          </div>
+
+          <div class="col-6 mt-4">
+            <label for="eventImage" class="form-label required"
+              >Event Image</label
+            >
+            <input
+              type="file"
+              id="eventImage"
+              class="form-control h-3 rounded-3"
+              (change)="uploadPhoto($event)"
+            />
+          </div>
+
+          <!-- Displaying the uploaded image -->
+          @if(photoURL){
+          <div class="mt-2">
+            <img
+              [src]="photoURL"
+              alt="Uploaded Event Image"
+              class="img-thumbnail"
+            />
+          </div>
+          }
+
+          <div class="col-6 mt-4">
+            <label for="venueName" class="form-label required"
+              >Venue Name</label
+            >
+            <input
+              id="venueName"
+              type="text"
+              class="form-control h-3 rounded-3"
+              formControlName="VenueName"
+              placeholder="Enter Venue Name"
+            />
+
+            @if( eventForm.get('VenueName')?.invalid &&
+            eventForm.get('VenueName')?.touched){
+            <div class="error">Venue Name is required.</div>
+            }
+          </div>
+
+          <div class="col-6 mt-4">
+            <label for="venueImage" class="form-label">Venue Image</label>
+            <input
+              type="file"
+              id="venueImage"
+              class="form-control h-3 rounded-3"
+              (change)="uploadVenueImage($event)"
+            />
+          </div>
+
+          <!-- Displaying the uploaded venue image -->
+          @if(venueImageURL){
+          <div class="mt-2">
+            <img
+              [src]="venueImageURL"
+              alt="Uploaded Venue Image"
+              class="img-thumbnail"
+            />
+          </div>
+          }
+
+          <div class="col-6 mt-4">
+            <label for="venueInfo" class="form-label required"
+              >Venue Info</label
+            >
+            <textarea
+              id="venueInfo"
+              type="text"
+              class="form-control rounded-3"
+              formControlName="VenueInfo"
+              placeholder="Venue Info"
+              rows="1"
+            ></textarea>
+            @if(eventForm.get('VenueInfo')?.invalid &&
+            eventForm.get('VenueInfo')?.touched){
+            <div class="error">Venue Info is required.</div>
+            }
+          </div>
+
+          <div class="col-6 mt-4">
+            <label for="venueIframe" class="form-label required"
+              >Venue Map Location</label
+            >
+            <input
+              id="venueIframe"
+              type="text"
+              class="form-control h-3 rounded-3"
+              formControlName="VenueIframe"
+              placeholder="Enter Iframe"
+            />
+
+            @if(eventForm.get('VenueIframe')?.invalid &&
+            eventForm.get('VenueIframe')?.touched){
+            <div class="error">Venue Iframe Locations is required.</div>
+            }
+          </div>
+        </div>
+
+        <div class="d-flex justify-content-end p-4">
+          <button
+            type="button"
+            class="nmc-btn-primary px-sm-5 px-4 py-3 h-auto font-18 nmc-bg-medium-grey"
+            (click)="cancel()"
+          >
+            Cancel
+          </button>
+
+          <button
+            (click)="addEvent()"
+            type="submit"
+            class="nmc-btn-primary px-sm-5 px-4 py-3 h-auto ms-3 font-18"
+          >
+            Next
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>

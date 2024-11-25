@@ -51,7 +51,9 @@
         >{{ eventAbout?.isOffline ? "Offline" : "Online" }}
       </span>
 
-      <div class="banner-info d-flex align-items-center justify-center gap-4 mt-4">
+      <div
+        class="banner-info d-flex align-items-center justify-center gap-4 mt-4"
+      >
         <h4 class="nmc-white">
           <i class="bi bi-calendar-event me-1 font-20 nmc-white"></i>
           {{ eventAbout?.Date | date : "MMMM d" }}
@@ -64,7 +66,7 @@
         </h4>
         }@else{
         <h4 class="nmc-white">
-          <i class="bi bi-laptop me-1 font-20 nmc-white"></i>Google Meet
+          <i class="bi bi-laptop me-1 font-20 nmc-white"></i>Online
         </h4>
         }
       </div>

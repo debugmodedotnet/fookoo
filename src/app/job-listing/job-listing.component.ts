@@ -2,7 +2,7 @@ import { Component, inject, OnInit } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { JobService } from '../services/job.service';
 import { Job } from '../modules/job';
-import { AsyncPipe, SlicePipe } from '@angular/common';
+import { SlicePipe } from '@angular/common';
 import { Router, RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { UserService } from '../services/user.service';
@@ -14,7 +14,7 @@ import { TimeAgoPipePipe } from '../pipes/time-ago-pipe.pipe';
 @Component({
   selector: 'app-job-listing',
   standalone: true,
-  imports: [AsyncPipe, RouterModule, FormsModule, SlicePipe, TimeAgoPipePipe],
+  imports: [RouterModule, FormsModule, SlicePipe, TimeAgoPipePipe],
   templateUrl: './job-listing.component.html',
   styleUrl: './job-listing.component.scss'
 })
@@ -42,6 +42,7 @@ export class JobListingComponent implements OnInit {
 
   ngOnInit() {
     this.jobs$ = this.jobService.getJobs();
+    
     this.jobs$.subscribe(jobs => {
       this.jobs = jobs;
       this.filteredJobs = jobs;
@@ -154,8 +155,7 @@ export class JobListingComponent implements OnInit {
   }
 
   redirectToLogin() {
-    this.closeModal();
-    //    this.router.navigate(['/login'], { queryParams: { returnUrl: this.router.url } });
+    this.closeModal(); 
     this.router.navigate(['/login'], { queryParams: { returnUrl: '/post-job' } });
   }
 

@@ -1,13 +1,67 @@
 <section class="py-5 min-vh-100">
   <div class="container-boxed">
-    <h2 class="font-36 nmc-dark-grey font-family-poppins text-center mb-5">
+    <div
+      class="heading d-flex align-items-center justify-content-between mb-4 mb-lg-5"
+    >
+      <h2
+        class="section-title left font-36 nmc-dark-grey font-family-poppins mb-0 pb-2"
+      >
+        Events
+      </h2>
+
+      <button
+        class="create-event-btn nmc-btn-primary px-sm-5 px-4 py-3 h-auto"
+        (click)="user ? createEvent() : null"
+        data-bs-toggle="modal"
+        [attr.data-bs-target]="user ? '' : '#eventModal'"
+      >
+        Create an event
+      </button>
+    </div>
+
+    <div
+      class="modal fade"
+      id="eventModal"
+      tabindex="-1"
+      aria-labelledby="eventModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header p-4">
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+
+          <div class="modal-body p-4 pt-0">
+            <p
+              class="nmc-dark-grey font-18 mb-3 text-center font-family-poppins"
+            >
+              You need to log in to create an event. Please log in to continue.
+            </p>
+
+            <button
+              class="nmc-btn-primary px-sm-5 px-4 py-3 h-auto fw-bold m-auto"
+              (click)="redirectToLogin()"
+            >
+              Go to Login
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- <h2 class="font-36 nmc-dark-grey font-family-poppins text-center mb-5">
       <span class="text-bottom-line position-relative">Upcoming Events</span>
-    </h2>
+    </h2> -->
 
     <div class="events-container row g-4 pt-0 pt-lg-4">
       @for(e of events| slice:0:displayedEventsCount; track e.id; let i =
       $index){
-      <!-- @for(e of events; track e.id){ -->
       <div class="col-12 col-md-6 col-lg-4">
         <div
           class="events-card card overflow-hidden nmc-bg-white overflow-hidden position-relative rounded-0 h-100 mt-4 mt-lg-0"

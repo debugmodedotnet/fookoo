@@ -1,0 +1,216 @@
+<section class="py-5 min-vh-100">
+  <div class="container-boxed">
+    <div class="d-flex justify-content-between mb-3">
+      <h2 class="font-36 nmc-dark-grey font-family-poppins pb-2">
+        Step 2 : Add Event Speakers
+      </h2>
+
+      <button
+        class="nmc-btn-primary font-24"
+        (click)="showForm()"
+        type="button"
+      >
+        +
+      </button>
+    </div>
+
+    <!-- Speaker Form -->
+    @if(formVisible){
+    <div class="form-wrapper rounded-0 w-100">
+      <form [formGroup]="speakerForm" (ngSubmit)="addOrUpdateSpeaker()">
+        <div class="row form-group mt-3 p-4">
+          <div class="col-6">
+            <label for="name" class="form-label required">Name</label>
+            <input
+              id="name"
+              type="text"
+              class="form-control h-3 rounded-3"
+              formControlName="Name"
+              placeholder="Enter Name"
+            />
+
+            @if(speakerForm.get('Name')?.invalid &&
+            speakerForm.get('Name')?.touched){
+            <div class="error">Name is required.</div>
+            }
+          </div>
+
+          <div class="col-6">
+            <label for="image" class="form-label">Speaker Image</label>
+            <input
+              type="file"
+              id="image"
+              class="form-control h-3 rounded-3"
+              (change)="uploadImage($event)"
+            />
+          </div>
+
+          <!-- Displaying the uploaded image -->
+          @if(imagePreviewUrl){
+          <div class="mt-2">
+            <img
+              [src]="imagePreviewUrl"
+              alt="Speaker Image"
+              class="img-thumbnail"
+            />
+          </div>
+          }
+
+          <div class="col-6 mt-3">
+            <label for="position" class="form-label required">Position</label>
+            <input
+              id="position"
+              type="text"
+              class="form-control h-3 rounded-3"
+              formControlName="Position"
+              placeholder="Enter Position"
+            />
+
+            @if(speakerForm.get('Position')?.invalid &&
+            speakerForm.get('Position')?.touched){
+            <div class="error">Position is required.</div>
+            }
+          </div>
+
+          <div class="col-6 mt-3">
+            <label for="info" class="form-label required">Info</label>
+            <input
+              id="info"
+              type="text"
+              class="form-control h-3 rounded-3"
+              formControlName="Info"
+              placeholder="Enter Info"
+            />
+
+            @if(speakerForm.get('Info')?.invalid &&
+            speakerForm.get('Info')?.touched){
+            <div class="error">Info is required.</div>
+            }
+          </div>
+
+          <div class="col-4 mt-3">
+            <label for="github" class="form-label">Github</label>
+            <input
+              id="github"
+              type="text"
+              class="form-control h-3 rounded-3"
+              formControlName="Github"
+              placeholder="Enter Github URL"
+            />
+          </div>
+
+          <div class="col-4 mt-3">
+            <label for="linkedin" class="form-label required">LinkedIn</label>
+            <input
+              id="linkedin"
+              type="url"
+              class="form-control h-3 rounded-3"
+              formControlName="LinkedIn"
+              placeholder="Enter LinkedIn URL"
+            />
+          </div>
+
+          @if(speakerForm.get('LinkedIn')?.invalid &&
+          speakerForm.get('LinkedIn')?.touched){
+          <div>
+            @if(speakerForm.get('LinkedIn')?.errors?.['required']){
+            <small>LinkedIn URL is required.</small>}
+            @if(speakerForm.get('LinkedIn')?.errors?.['pattern']){
+            <small>Invalid LinkedIn URL format.</small>}
+          </div>
+          }
+
+          <div class="col-4 mt-3">
+            <label for="x" class="form-label">X (Twitter)</label>
+            <input
+              id="x"
+              type="text"
+              class="form-control h-3 rounded-3"
+              formControlName="X"
+              placeholder="Enter Twitter URL"
+            />
+          </div>
+        </div>
+
+        <div class="d-flex justify-content-end p-4">
+          <button
+            type="button"
+            class="nmc-btn-primary px-sm-5 px-4 py-3 h-auto font-18 nmc-bg-medium-grey"
+            (click)="hideForm()"
+          >
+            Cancel
+          </button>
+
+          <button
+            class="nmc-btn-primary px-sm-5 px-4 py-3 h-auto ms-3 font-18"
+            type="submit"
+          >
+            {{ isEditMode ? "Update Speaker" : "Add Speaker" }}
+          </button>
+        </div>
+      </form>
+    </div>
+    }
+
+    <!-- Display Speakers Table -->
+    @if(!formVisible){
+    <div class="table-wrapper mt-4">
+      <div class="table-responsive">
+        @if(speakers.length === 0) {
+        <p class="text-center text-muted pt-3">No speaker added yet.</p>
+
+        } @else {
+        <table class="table mb-0">
+          <thead class="thead-light">
+            <tr>
+              <th>Name</th>
+              <th>Position</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            @for(speaker of speakers; track speaker; let i = $index;){
+            <tr>
+              <td>{{ speaker.Name }}</td>
+              <td>{{ speaker.Position }}</td>
+              <td class="actions">
+                <div class="d-flex align-items-center gap-3">
+                  <a
+                    class="nmc-dark-grey cursor-pointer"
+                    (click)="editSpeaker(speaker)"
+                    (keydown)="editSpeaker(speaker)"
+                    tabindex="0"
+                  >
+                    <i class="bi bi-pencil-square font-20"></i>
+                  </a>
+
+                  <a
+                    class="text-danger cursor-pointer"
+                    (click)="deleteSpeaker(speaker.id)"
+                    (keydown)="deleteSpeaker(speaker.id)"
+                    tabindex="0"
+                  >
+                    <i class="bi bi-trash3 font-20"></i>
+                  </a>
+                </div>
+              </td>
+            </tr>
+            }
+          </tbody>
+        </table>
+        }
+      </div>
+    </div>
+
+    <div class="d-flex justify-content-end mt-5">
+      <button
+        class="nmc-btn-primary px-sm-5 px-4 py-3 h-auto font-18"
+        (click)="navigateToAddAgenda()"
+      >
+        Next
+      </button>
+    </div>
+    }
+  </div>
+</section>

@@ -13,17 +13,17 @@
               Is Offline?
             </div>
 
-            <div class="mt-4">
+            <!-- <div class="mt-4">
               <input type="checkbox" formControlName="isPaid" />
               Is Paid?
-            </div>
+            </div> -->
 
             <div class="mt-4">
               <input type="checkbox" formControlName="isCertificateProvided" />
               Is Certificate Provided?
             </div>
 
-            <div class="mt-4">
+            <!-- <div class="mt-4">
               <input type="checkbox" formControlName="displayAtHomePage" />
               Display At HomePage
             </div>
@@ -36,10 +36,10 @@
             <div class="mt-4">
               <input type="checkbox" formControlName="isPrivate" />
               Is Private?
-            </div>
+            </div> -->
           </div>
 
-          <div class="col-12 mt-4">
+          <div class="col-9 mt-4">
             <label for="title" class="form-label required">Title</label>
             <input
               id="title"
@@ -71,7 +71,29 @@
             }
           </div>
 
-          <div class="col-3 mt-4">
+          <div class="col-12 mt-4">
+            <label for="longDescription" class="form-label required"
+              >Long Description</label
+            >
+            <textarea
+              id="longDescription"
+              type="text"
+              class="form-control rounded-3"
+              formControlName="Description"
+              placeholder="Enter Long Description"
+              rows="4"
+            ></textarea>
+
+            @if( eventForm.get('Description')?.invalid &&
+            eventForm.get('Description')?.touched){
+            <div class="error">
+              Description is required & should be more than 300 letters and less
+              than 500 letters!
+            </div>
+            }
+          </div>
+
+          <!-- <div class="col-3 mt-4">
             <label for="registeredSeats" class="form-label required"
               >Registered Seats</label
             >
@@ -86,9 +108,9 @@
             eventForm.get('RegisteredSeats')?.touched){
             <div class="error">Registered Seats is required.</div>
             }
-          </div>
+          </div> -->
 
-          <div class="col-3 mt-4">
+          <!-- <div class="col-3 mt-4">
             <label for="registeredSeats" class="form-label required"
               >Price(₹)</label
             >
@@ -103,7 +125,7 @@
             eventForm.get('price')?.touched){
             <div class="error">Price is required.</div>
             }
-          </div>
+          </div> -->
 
           <div class="col-3 mt-4">
             <label for="tech" class="form-label required">Technology</label>
@@ -125,7 +147,7 @@
             }
           </div>
 
-          <div class="col-6 mt-4">
+          <!-- <div class="col-6 mt-4">
             <label for="logo" class="form-label required">Logo</label>
             <input
               id="logo"
@@ -139,9 +161,9 @@
             eventForm.get('Logo')?.touched){
             <div class="error">Logo is required.</div>
             }
-          </div>
+          </div> -->
 
-          <div class="col-6 mt-4">
+          <!-- <div class="col-6 mt-4">
             <label for="tagline" class="form-label required">Tagline</label>
             <input
               id="tagline"
@@ -155,9 +177,9 @@
             eventForm.get('Tagline')?.touched){
             <div class="error">Tagline is required.</div>
             }
-          </div>
+          </div> -->
 
-          <div class="col-4 mt-4">
+          <!-- <div class="col-4 mt-4">
             <label for="shortDescription" class="form-label required"
               >Short Description</label
             >
@@ -176,29 +198,7 @@
               Short Description is required & should be less than 145 letters!
             </div>
             }
-          </div>
-
-          <div class="col-8 mt-4">
-            <label for="longDescription" class="form-label required"
-              >Long Description</label
-            >
-            <textarea
-              id="longDescription"
-              type="text"
-              class="form-control rounded-3"
-              formControlName="Description"
-              placeholder="Enter Long Description"
-              rows="4"
-            ></textarea>
-
-            @if( eventForm.get('Description')?.invalid &&
-            eventForm.get('Description')?.touched){
-            <div class="error">
-              Description is required & should be more than 300 letters and less
-              than 500 letters!
-            </div>
-            }
-          </div>
+          </div> -->
 
           <div class="col-3 mt-4">
             <label for="date" class="form-label required">Date</label>
@@ -231,7 +231,7 @@
             }
           </div>
 
-          <div class="col-6 mt-4">
+          <div class="col-3 mt-4">
             <label for="eventImage" class="form-label required"
               >Event Image</label
             >
@@ -244,7 +244,7 @@
           </div>
 
           <!-- Displaying the uploaded image -->
-          @if(photoURL){
+          <!-- @if(photoURL){
           <div class="mt-2">
             <img
               [src]="photoURL"
@@ -252,7 +252,7 @@
               class="img-thumbnail"
             />
           </div>
-          }
+          } -->
 
           <div class="col-6 mt-4">
             <label for="venueName" class="form-label required"
@@ -272,7 +272,7 @@
             }
           </div>
 
-          <div class="col-6 mt-4">
+          <!-- <div class="col-6 mt-4">
             <label for="venueImage" class="form-label">Venue Image</label>
             <input
               type="file"
@@ -280,10 +280,10 @@
               class="form-control h-3 rounded-3"
               (change)="uploadVenueImage($event)"
             />
-          </div>
+          </div> -->
 
           <!-- Displaying the uploaded venue image -->
-          @if(venueImageURL){
+          <!-- @if(venueImageURL){
           <div class="mt-2">
             <img
               [src]="venueImageURL"
@@ -291,25 +291,7 @@
               class="img-thumbnail"
             />
           </div>
-          }
-
-          <div class="col-6 mt-4">
-            <label for="venueInfo" class="form-label required"
-              >Venue Info</label
-            >
-            <textarea
-              id="venueInfo"
-              type="text"
-              class="form-control rounded-3"
-              formControlName="VenueInfo"
-              placeholder="Venue Info"
-              rows="1"
-            ></textarea>
-            @if(eventForm.get('VenueInfo')?.invalid &&
-            eventForm.get('VenueInfo')?.touched){
-            <div class="error">Venue Info is required.</div>
-            }
-          </div>
+          } -->
 
           <div class="col-6 mt-4">
             <label for="venueIframe" class="form-label required"
@@ -326,6 +308,24 @@
             @if(eventForm.get('VenueIframe')?.invalid &&
             eventForm.get('VenueIframe')?.touched){
             <div class="error">Venue Iframe Locations is required.</div>
+            }
+          </div>
+
+          <div class="col-12 mt-4">
+            <label for="venueInfo" class="form-label required"
+              >Venue Address</label
+            >
+            <textarea
+              id="venueInfo"
+              type="text"
+              class="form-control rounded-3"
+              formControlName="VenueInfo"
+              placeholder="Venue Info"
+              rows="1"
+            ></textarea>
+            @if(eventForm.get('VenueInfo')?.invalid &&
+            eventForm.get('VenueInfo')?.touched){
+            <div class="error">Venue Info is required.</div>
             }
           </div>
         </div>

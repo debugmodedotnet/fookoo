@@ -23,7 +23,7 @@
         ></div>
 
         <img
-          [src]="event?.VenueImg ? event?.VenueImg : defaultImage"
+          src="assets/images/events/default-venue.jpg"
           alt=""
           class="position-absolute top-0 w-100 h-100 object-fit-cover"
         />
@@ -51,7 +51,7 @@
 <section class="enroll-section text-center pt-5">
   <div class="container-boxed">
     <p class="font-36 fw-bold m-auto nmc-dark-grey font-family-poppins">
-      {{ event?.Tagline }}
+      Join {{ event?.Title }} and learn with the experts.
     </p>
 
     @if(event?.isPaid){

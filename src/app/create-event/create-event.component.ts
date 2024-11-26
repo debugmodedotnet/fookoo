@@ -33,27 +33,26 @@ export class CreateEventComponent implements OnInit {
       Id: [''],
       Title: ['', Validators.required],
       TotalSeats: ['', Validators.required],
-      RegisteredSeats: ['', Validators.required],
-      Tech: ['', Validators.required],
-      Logo: ['', Validators.required],
-      Tagline: ['', Validators.required],
-      ShortDescription: ['', [Validators.required, Validators.maxLength(145)]],
+      RegisteredSeats: [0],
+      Tech: ['Select Technology', Validators.required],
+      Logo: [''],
+      //Tagline: ['', Validators.required],
+      //ShortDescription: [''],
       Description: ['', [Validators.required, Validators.maxLength(500), Validators.minLength(300)]],
       Date: ['', Validators.required],
       City: ['', Validators.required],
       EventImage: [''],
       VenueName: [{ value: '', disabled: true }, Validators.required],
       VenueInfo: [{ value: '', disabled: true }, Validators.required],
-      VenueImg: [{ value: '', disabled: true }, Validators.required],
+      //VenueImg: [{ value: '', disabled: true }, Validators.required],
       VenueIframe: [{ value: '', disabled: true }, Validators.required],
       isOffline: [false],
-      isPaid: [false],
-      price: [{ value: '', disabled: true }, Validators.required],
+      //isPaid: [false],
+      //price: [{ value: '', disabled: true }, Validators.required],
       isCertificateProvided: [false],
-      displayAtHomePage: [false],
-      isActive: [false],
-      isPrivate: [false],
-
+      //displayAtHomePage: [false],
+      //isActive: [false],
+      //isPrivate: [false],
     });
   }
 
@@ -66,15 +65,27 @@ export class CreateEventComponent implements OnInit {
       }
     });
 
-    this.eventForm.get('isPaid')?.valueChanges.subscribe(isPaid => {
-      const priceControl = this.eventForm.get('price');
-      if (isPaid) {
-        priceControl?.enable();
-      } else {
-        priceControl?.disable();
-        priceControl?.reset();
-      }
+    this.eventForm.get('Tech')?.valueChanges.subscribe(selectedTech => {
+      const techLogos: { [key: string]: string } = {
+        Angular: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/Angular_full_color_logo.svg/1024px-Angular_full_color_logo.svg.png',
+        React: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/1024px-React-icon.svg.png',
+        Vue: 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Vue.js_Logo_2.svg/1024px-Vue.js_Logo_2.svg.png',
+        GenAI: 'https://static.wixstatic.com/media/0bad3c_220cea840d984c88a9f4f5db2740d301~mv2.png/v1/fill/w_560,h_190,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/0bad3c_220cea840d984c88a9f4f5db2740d301~mv2.png',
+      };
+
+      const logoUrl = techLogos[selectedTech] || '';
+      this.eventForm.patchValue({ Logo: logoUrl });
     });
+
+    // this.eventForm.get('isPaid')?.valueChanges.subscribe(isPaid => {
+    //   const priceControl = this.eventForm.get('price');
+    //   if (isPaid) {
+    //     priceControl?.enable();
+    //   } else {
+    //     priceControl?.disable();
+    //     priceControl?.reset();
+    //   }
+    // });
 
     this.disableVenueFields();
   }
@@ -124,26 +135,26 @@ export class CreateEventComponent implements OnInit {
       Id: '',
       Title: '',
       TotalSeats: '',
-      RegisteredSeats: '',
+      //RegisteredSeats: '',
       Tech: '',
       Logo: '',
-      Tagline: '',
-      ShortDescription: '',
+      //Tagline: '',
+      //ShortDescription: '',
       Description: '',
       Date: '',
       City: '',
       EventImage: '',
       VenueName: '',
       VenueInfo: '',
-      VenueImg: '',
+      //VenueImg: '',
       VenueIframe: '',
       isOffline: false,
-      isPaid: false,
+      //isPaid: false,
       isCertificateProvided: false,
-      displayAtHomePage: false,
-      isActive: false,
-      isPrivate: false,
-      price: ''
+      //displayAtHomePage: false,
+      //isActive: false,
+      //isPrivate: false,
+      //price: ''
     });
   }
 

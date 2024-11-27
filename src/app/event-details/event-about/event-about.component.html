@@ -1,4 +1,89 @@
-<section class="pt-5 position-relative overflow-hidden gradient-bg">
+<div class="company-info p-4 border-bottom position-relative">
+  <div
+    class="d-flex align-items-start justify-content-between flex-column flex-sm-row"
+  >
+    <div>
+      <div class="d-flex align-items-center">
+        <figure class="logo m-0 p-0 overflow-hidden me-2">
+          <img
+            [src]="eventAbout?.Logo"
+            class="w-100 h-100 object-fit-contain"
+            alt="Event Logo"
+            loading="lazy"
+          />
+        </figure>
+
+        <h2 class="font-42 nmc-dark-grey">
+          {{ eventAbout?.Title }}
+        </h2>
+      </div>
+
+      <div
+        class="pt-3 d-flex align-items-center justify-content-start flex-wrap gap-4"
+      >
+        <a [href]="eventAbout?.Tech">
+          <h6 class="nmc-medium-grey fw-light font-16 m-0">
+            <i class="bi bi-tag me-2 font-20"></i>{{ eventAbout?.Tech }}
+          </h6></a
+        >
+
+        @if( eventAbout?.City){
+        <h6 class="nmc-medium-grey fw-light font-16 m-0">
+          <i class="bi bi-geo-alt me-2 font-20"></i>{{ eventAbout?.City }}
+        </h6>
+        } @if(!eventAbout?.isOffline){
+        <h6 class="nmc-medium-grey fw-light font-16 m-0">
+          <i class="bi bi-laptop me-2 font-20"></i>
+          Online
+        </h6>
+        } @if(eventAbout?.Date){
+        <h6 class="nmc-medium-grey fw-light font-16 m-0">
+          <i class="bi bi-calendar-event me-2 font-20"></i>
+          {{ eventAbout?.Date | date : "MMMM d" }}
+        </h6>
+        }@if(eventAbout?.TotalSeats){
+        <h6 class="nmc-medium-grey fw-light font-16 m-0">
+          <i class="bi bi-ticket-perforated me-2 font-20"></i>
+          {{ eventAbout?.TotalSeats }} Seats
+        </h6>
+        }
+
+        <!-- @if(event.email){
+          <h6 class="nmc-medium-grey fw-light font-16 m-0">
+            <i class="bi bi-envelope me-2 font-20"></i>{{ event.email }}
+          </h6>
+          } @if(event.PhoneNo){
+          <h6 class="nmc-medium-grey fw-light font-16 m-0">
+            <i class="bi bi-telephone me-2 font-20"></i>{{ event.PhoneNo }}
+          </h6>
+          } -->
+      </div>
+    </div>
+
+    <div class="d-flex align-items-center justify-content-end mt-4 mt-sm-0">
+      <button
+        class="nmc-btn-primary h-auto py-2 px-4 box-shadow-none"
+        (click)="attendEvent()"
+        [disabled]="enrolled || isLoading"
+      >
+        {{
+          enrolled ? "Enrolled 🎉" : isLoading ? "Processing..." : "Enroll Now"
+        }}
+      </button>
+
+      <a
+        class="cursor-pointer"
+        type="button"
+        data-bs-toggle="modal"
+        data-bs-target="#jobModal"
+        tabindex="0"
+        ><i class="bi bi-share-fill nmc-medium-grey ms-3 font-20"></i
+      ></a>
+    </div>
+  </div>
+</div>
+
+<!-- <section class="pt-5 position-relative overflow-hidden gradient-bg">
   <div class="container-boxed mb-5">
     <div
       class="d-flex align-items-center justify-content-lg-between justify-content-center"
@@ -96,9 +181,9 @@
       ></path>
     </svg>
   </div>
-</section>
+</section> -->
 
-<section class="position-relative overflow-hidden pb-5">
+<section class="position-relative overflow-hidden mt-5 pb-5">
   <div class="container-boxed">
     <div class="row gx-5">
       <div class="col-lg-6 col-12 text-center text-lg-start">

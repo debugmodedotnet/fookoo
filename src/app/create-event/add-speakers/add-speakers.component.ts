@@ -1,6 +1,6 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, EventEmitter, inject, Input, OnChanges, Output, SimpleChanges } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { ActivatedRoute, Router, RouterModule } from '@angular/router';
+import { RouterModule } from '@angular/router';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { IEventSpeakers } from '../../modules/event-speakers';
 import { finalize } from 'rxjs';
@@ -13,9 +13,8 @@ import { AngularFireStorage } from '@angular/fire/compat/storage';
   templateUrl: './add-speakers.component.html',
   styleUrl: './add-speakers.component.scss'
 })
-export class AddSpeakersComponent implements OnInit {
+export class AddSpeakersComponent implements OnChanges {
 
-  eventId?: string;
   speakers: IEventSpeakers[] = [];
   speakerForm!: FormGroup;
   formVisible = false;
@@ -23,24 +22,18 @@ export class AddSpeakersComponent implements OnInit {
   editingSpeakerId?: string;
   imagePreviewUrl: string | ArrayBuffer | null = null;
 
+  @Input() eventId!: string;
+  @Output() next = new EventEmitter<string>();
+
   private storage = inject(AngularFireStorage);
   private fb = inject(FormBuilder);
   private firestore = inject(AngularFirestore);
-  private route = inject(ActivatedRoute);
-  private router = inject(Router);
 
-  ngOnInit(): void {
-    this.route.paramMap.subscribe(params => {
-      const paramEventId = params.get('eventId');
-      if (paramEventId) {
-        this.eventId = paramEventId;
-        //console.log("Event id", this.eventId);
-        this.initForm();
-        this.loadSpeakers();
-      } else {
-        //console.error('Event ID is not available');
-      }
-    });
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['eventId'] && this.eventId) {      
+      this.initForm();
+      this.loadSpeakers();
+    }
   }
 
   initForm(): void {
@@ -78,7 +71,9 @@ export class AddSpeakersComponent implements OnInit {
       this.speakerForm.patchValue(speaker);
     } else {
       this.isEditMode = false;
-      this.speakerForm.reset();
+      if (this.speakerForm) {
+        this.speakerForm.reset();
+      }
     }
     this.formVisible = true;
   }
@@ -146,7 +141,7 @@ export class AddSpeakersComponent implements OnInit {
 
   navigateToAddAgenda(): void {
     if (this.eventId) {
-      this.router.navigate(['/add-agenda', this.eventId]);
+      this.next.emit(this.eventId);
     }
   }
 }

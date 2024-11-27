@@ -26,8 +26,8 @@ export const routes: Routes = [
       { path: 'event/:id', loadComponent: () => import('./event-details/event-details.component').then(m => m.EventDetailsComponent) },
       { path: 'events', loadComponent: () => import('./event-listing/event-listing.component').then(m => m.EventListingComponent) },
       { path: 'create-event', loadComponent: () => import('./create-event/create-event.component').then(m => m.CreateEventComponent) },
-      { path: 'add-speakers/:eventId', loadComponent: () => import('./create-event/add-speakers/add-speakers.component').then(m => m.AddSpeakersComponent) },
-      { path: 'add-agenda/:eventId', loadComponent: () => import('./create-event/add-agenda/add-agenda.component').then(m => m.AddAgendaComponent) },
+      //{ path: 'add-speakers/:eventId', loadComponent: () => import('./create-event/add-speakers/add-speakers.component').then(m => m.AddSpeakersComponent) },
+      //{ path: 'add-agenda/:eventId', loadComponent: () => import('./create-event/add-agenda/add-agenda.component').then(m => m.AddAgendaComponent) },
 
       { path: 'mentor/:instructorId', loadComponent: () => import('./instructor-details/instructor-details.component').then(m => m.InstructorDetailsComponent) },
       { path: 'mentors', loadComponent: () => import('./instructor-listing/instructor-listing.component').then(m => m.InstructorListingComponent) },

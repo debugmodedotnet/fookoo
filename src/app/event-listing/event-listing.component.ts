@@ -20,7 +20,7 @@ export class EventListingComponent implements OnInit {
   user?: IUser;
   defaultImage = 'assets/images/events/event_default.svg';
   showLoadMoreButton = false;
-  displayedEventsCount = 10;
+  displayedEventsCount = 9;
 
   private firestore = inject(AngularFirestore);
   private userService = inject(UserService);

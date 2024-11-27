@@ -1,234 +1,92 @@
 <section class="py-5">
   <div class="container-boxed">
-    <h2 class="font-36 nmc-dark-grey font-family-poppins pb-2">
-      Step 1 : Fill Basic Event Details
-    </h2>
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+      <li class="nav-item" role="presentation">
+        <button
+          class="nav-link nmc-dark-grey active"
+          id="home-tab"
+          data-bs-toggle="tab"
+          data-bs-target="#home-tab-pane"
+          type="button"
+          role="tab"
+          aria-controls="home-tab-pane"
+          aria-selected="true"
+        >
+          Basic Details
+        </button>
+      </li>
 
-    <div class="form-wrapper rounded-0 w-100">
-      <form [formGroup]="eventForm" (ngSubmit)="addEvent()">
-        <div class="row form-group mt-4 p-4">
-          <div class="col-12">
-            <label for="title" class="form-label required">Event Title</label>
-            <input
-              id="title"
-              type="text"
-              class="form-control h-3 rounded-3"
-              formControlName="Title"
-              placeholder="Enter Title"
-            />
-            @if(eventForm.get('Title')?.invalid &&
-            eventForm.get('Title')?.touched){
-            <div class="error">Title is required.</div>
-            }
-          </div>
+      <li class="nav-item" role="presentation">
+        <button
+          class="nav-link nmc-dark-grey"
+          id="profile-tab"
+          [attr.disabled]="!eventId ? true : null"
+          data-bs-toggle="tab"
+          data-bs-target="#profile-tab-pane"
+          type="button"
+          role="tab"
+          aria-controls="profile-tab-pane"
+          aria-selected="false"
+          [class.disabled]="!eventId"
+        >
+          Add Speakers
+        </button>
+      </li>
 
-          <div class="col-12 mt-4">
-            <label for="longDescription" class="form-label required"
-              >Event Description</label
-            >
-            <textarea
-              id="longDescription"
-              type="text"
-              class="form-control rounded-3"
-              formControlName="Description"
-              placeholder="Enter Description"
-              rows="4"
-            ></textarea>
+      <li class="nav-item" role="presentation">
+        <button
+          class="nav-link nmc-dark-grey"
+          id="contact-tab"
+          [attr.disabled]="!eventId ? true : null"
+          data-bs-toggle="tab"
+          data-bs-target="#contact-tab-pane"
+          type="button"
+          role="tab"
+          aria-controls="contact-tab-pane"
+          aria-selected="false"
+          [class.disabled]="!eventId"
+        >
+          Add Agenda
+        </button>
+      </li>
+    </ul>
 
-            @if( eventForm.get('Description')?.invalid &&
-            eventForm.get('Description')?.touched){
-            <div class="error">
-              Description is required & should be more than 300 letters and less
-              than 500 letters!
-            </div>
-            }
-          </div>
+    <div class="tab-content" id="myTabContent">
+      <div
+        class="tab-pane fade show active"
+        id="home-tab-pane"
+        role="tabpanel"
+        aria-labelledby="home-tab"
+        tabindex="0"
+      >
+        <app-add-basics (next)="handleEventIdCreated($event)"></app-add-basics>
+      </div>
 
-          <div class="col-4 mt-4">
-            <label for="totalSeats" class="form-label required"
-              >Total Seats</label
-            >
-            <input
-              id="totalSeats"
-              type="number"
-              class="form-control h-3 rounded-3"
-              formControlName="TotalSeats"
-              placeholder="Enter Total Seats"
-            />
-            @if( eventForm.get('TotalSeats')?.invalid &&
-            eventForm.get('TotalSeats')?.touched){
-            <div class="error">Total Seats is required.</div>
-            }
-          </div>
+      <div
+        class="tab-pane fade"
+        id="profile-tab-pane"
+        role="tabpanel"
+        aria-labelledby="profile-tab"
+        tabindex="0"
+      >
+        <app-add-speakers
+          [eventId]="eventId"
+          (next)="goToNextTab(1, $event)"
+        ></app-add-speakers>
+      </div>
 
-          <div class="col-4 mt-4">
-            <label for="tech" class="form-label required">Technology</label>
-
-            <select
-              class="form-select form-control h-3 rounded-3"
-              id="tech"
-              formControlName="Tech"
-            >
-              <option selected>Select Technology</option>
-              <option value="Angular">Angular</option>
-              <option value="React">React</option>
-              <option value="Vue">Vue</option>
-              <option value="GenAI">GenAI</option>
-            </select>
-            @if(eventForm.get('Tech')?.invalid &&
-            eventForm.get('Tech')?.touched){
-            <div class="error">Technology is required.</div>
-            }
-          </div>
-
-          <div class="col-4 mt-4">
-            <label for="eventImage" class="form-label required"
-              >Event Image</label
-            >
-            <input
-              type="file"
-              id="eventImage"
-              class="form-control h-3 rounded-3"
-              (change)="uploadPhoto($event)"
-            />
-          </div>
-
-          <div class="col-3 mt-4">
-            <label for="date" class="form-label required">Date</label>
-            <input
-              id="date"
-              formControlName="Date"
-              type="date"
-              class="form-control h-3 rounded-3"
-            />
-
-            @if( eventForm.get('Date')?.invalid &&
-            eventForm.get('Date')?.touched){
-            <div class="error">Date is required.</div>
-            }
-          </div>
-
-          <div class="col-3 mt-4">
-            <label for="city" class="form-label required">City</label>
-            <input
-              id="city"
-              type="text"
-              class="form-control h-3 rounded-3"
-              formControlName="City"
-              placeholder="Enter City"
-            />
-
-            @if( eventForm.get('City')?.invalid &&
-            eventForm.get('City')?.touched){
-            <div class="error">City is required.</div>
-            }
-          </div>
-
-          <div class="col-6 mt-4">
-            <label for="venueName" class="form-label required"
-              >Venue Name</label
-            >
-            <input
-              id="venueName"
-              type="text"
-              class="form-control h-3 rounded-3"
-              formControlName="VenueName"
-              placeholder="Enter Venue Name"
-            />
-
-            @if( eventForm.get('VenueName')?.invalid &&
-            eventForm.get('VenueName')?.touched){
-            <div class="error">Venue Name is required.</div>
-            }
-          </div>
-
-          <div class="col-6 mt-4">
-            <label for="venueIframe" class="form-label required"
-              >Venue Map Location</label
-            >
-            <input
-              id="venueIframe"
-              type="text"
-              class="form-control h-3 rounded-3"
-              formControlName="VenueIframe"
-              placeholder="Enter Iframe"
-            />
-
-            @if(eventForm.get('VenueIframe')?.invalid &&
-            eventForm.get('VenueIframe')?.touched){
-            <div class="error">Venue Iframe Locations is required.</div>
-            }
-          </div>
-
-          <div class="col-6 mt-4">
-            <label for="venueInfo" class="form-label required"
-              >Venue Address</label
-            >
-            <textarea
-              id="venueInfo"
-              type="text"
-              class="form-control rounded-3"
-              formControlName="VenueInfo"
-              placeholder="Venue Info"
-              rows="1"
-            ></textarea>
-            @if(eventForm.get('VenueInfo')?.invalid &&
-            eventForm.get('VenueInfo')?.touched){
-            <div class="error">Venue Info is required.</div>
-            }
-          </div>
-
-          <div class="col-12 d-flex gap-5">
-            <div class="mt-4">
-              <input type="checkbox" formControlName="isOffline" />
-              Is Offline?
-            </div>
-
-            <!-- <div class="mt-4">
-              <input type="checkbox" formControlName="isPaid" />
-              Is Paid?
-            </div> -->
-
-            <div class="mt-4">
-              <input type="checkbox" formControlName="isCertificateProvided" />
-              Is Certificate Provided?
-            </div>
-
-            <!-- <div class="mt-4">
-              <input type="checkbox" formControlName="displayAtHomePage" />
-              Display At HomePage
-            </div>
-
-            <div class="mt-4">
-              <input type="checkbox" formControlName="isActive" />
-              Is Active?
-            </div>
-
-            <div class="mt-4">
-              <input type="checkbox" formControlName="isPrivate" />
-              Is Private?
-            </div> -->
-          </div>
-        </div>
-
-        <div class="d-flex justify-content-end p-4 pt-0">
-          <button
-            type="button"
-            class="nmc-btn-primary px-sm-5 px-4 py-3 h-auto font-18 nmc-bg-medium-grey"
-            (click)="cancel()"
-          >
-            Cancel
-          </button>
-
-          <button
-            (click)="addEvent()"
-            type="submit"
-            class="nmc-btn-primary px-sm-5 px-4 py-3 h-auto ms-3 font-18"
-          >
-            Next
-          </button>
-        </div>
-      </form>
+      <div
+        class="tab-pane fade"
+        id="contact-tab-pane"
+        role="tabpanel"
+        aria-labelledby="contact-tab"
+        tabindex="0"
+      >
+        <app-add-agenda
+          [eventId]="eventId"
+          (next)="goToNextTab(2, $event)"
+        ></app-add-agenda>
+      </div>
     </div>
   </div>
 </section>

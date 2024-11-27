@@ -1,10 +1,9 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, EventEmitter, inject, Input, OnChanges, Output, SimpleChanges } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { ActivatedRoute, Router, RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { IEventAgenda } from '../../modules/event-agenda';
 import { IEventSpeakers } from '../../modules/event-speakers';
-
 
 @Component({
   selector: 'app-add-agenda',
@@ -13,9 +12,8 @@ import { IEventSpeakers } from '../../modules/event-speakers';
   templateUrl: './add-agenda.component.html',
   styleUrl: './add-agenda.component.scss'
 })
-export class AddAgendaComponent implements OnInit {
+export class AddAgendaComponent implements OnChanges {
 
-  eventId?: string;
   agendas: IEventAgenda[] = [];
   speakers: IEventSpeakers[] = [];
   agendaForm!: FormGroup;
@@ -25,22 +23,19 @@ export class AddAgendaComponent implements OnInit {
 
   private fb = inject(FormBuilder);
   private firestore = inject(AngularFirestore);
-  private route = inject(ActivatedRoute);
   private router = inject(Router);
 
-  ngOnInit(): void {
-    this.route.paramMap.subscribe(params => {
-      const paramEventId = params.get('eventId');
-      if (paramEventId) {
-        this.eventId = paramEventId;
-        console.log("Event id", this.eventId);
-        this.initForm();
-        this.loadAgendas();
-        this.loadSpeakers();
-      } else {
-        console.error('Event ID is not available');
-      }
-    });
+  @Output() next = new EventEmitter<string>();
+  @Input() eventId = '';
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['eventId'] && this.eventId) {
+      this.initForm();
+      this.loadAgendas();
+      this.loadSpeakers();
+    } else {
+      this.initForm();
+    }
   }
 
   initForm(): void {
@@ -103,7 +98,9 @@ export class AddAgendaComponent implements OnInit {
       this.agendaForm.patchValue(agenda);
     } else {
       this.isEditMode = false;
-      this.agendaForm.reset();
+      if (this.agendaForm) {
+        this.agendaForm.reset();
+      }
     }
     this.formVisible = true;
   }
@@ -122,18 +119,12 @@ export class AddAgendaComponent implements OnInit {
         .then(() => {
           this.loadAgendas();
           this.hideForm();
-        })
-        .catch(error => {
-          console.error('Error updating agenda: ', error);
         });
     } else {
       this.firestore.collection(`events/${this.eventId}/agendas`).add(agendaData)
         .then(() => {
           this.loadAgendas();
           this.hideForm();
-        })
-        .catch(error => {
-          console.error('Error adding agenda: ', error);
         });
     }
   }
@@ -153,6 +144,7 @@ export class AddAgendaComponent implements OnInit {
   navigateToEventPage(): void {
     if (this.eventId) {
       this.router.navigate(['/event', this.eventId]);
+      //this.next.emit(this.eventId);
     }
   }
 

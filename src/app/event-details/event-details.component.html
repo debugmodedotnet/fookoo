@@ -1,9 +1,61 @@
-<app-event-about [eventId]="eventId"></app-event-about>
+<section class="event-details py-5">
+  <div class="container-boxed">
+    <div class="wrapper rounded-0 nmc-bg-white">
+      <app-event-about [eventId]="eventId"></app-event-about>
 
-<app-event-agenda [eventId]="eventId"></app-event-agenda>
+      <app-event-agenda [eventId]="eventId"></app-event-agenda>
 
-<app-event-speakers [eventId]="eventId"></app-event-speakers>
+      <app-event-speakers [eventId]="eventId"></app-event-speakers>
 
-<app-event-attendees [eventId]="eventId"></app-event-attendees>
+      <app-event-attendees [eventId]="eventId"></app-event-attendees>
 
-<app-event-venue [eventId]="eventId"></app-event-venue> 
+      <app-event-venue [eventId]="eventId"></app-event-venue>
+
+      <!-- Event Share Modal -->
+      <div
+        class="modal fade"
+        id="eventModal"
+        tabindex="-1"
+        aria-labelledby="eventModalLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title font-18" id="eventModalLabel">Share</h1>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+
+            <div class="modal-body">
+              <div class="share-options d-flex align-items-center gap-4">
+                <a class="cursor-pointer linkedin" (click)="shareOnLinkedIn()">
+                  <i class="bi bi-linkedin font-30"></i>
+                </a>
+
+                <a class="cursor-pointer whatsapp" (click)="shareOnWhatsApp()">
+                  <i class="bi bi-whatsapp font-30"></i>
+                </a>
+
+                <a class="cursor-pointer twitter" (click)="shareOnTwitter()">
+                  <i class="bi bi-twitter-x font-30"></i>
+                </a>
+
+                <a
+                  class="cursor-pointer instagram"
+                  (click)="shareOnInstagram()"
+                >
+                  <i class="bi bi-instagram font-30"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,5 +1,5 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { ActivatedRoute, Router, RouterLink } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { JobService } from '../services/job.service';
 import { Job } from '../modules/job';
 import { UserService } from '../services/user.service';
@@ -10,7 +10,7 @@ import { AngularFirestore } from '@angular/fire/compat/firestore';
 @Component({
   selector: 'app-job-details',
   standalone: true,
-  imports: [RouterLink],
+  imports: [],
   templateUrl: './job-details.component.html',
   styleUrl: './job-details.component.scss'
 })

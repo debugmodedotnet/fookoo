@@ -14,7 +14,7 @@
         [class.flex-column-reverse]="i % 2 !== 0"
       >
         @if(i % 2 === 0){
-        <div class="speaker-img position-relative w-30">
+        <div class="speaker-img position-relative w-30 z-1">
           <figure class="m-0 overflow-hidden">
             <img
               [src]="speaker.Image ? speaker.Image : defaultImage"
@@ -94,7 +94,7 @@
           </div>
         </div>
 
-        <div class="speaker-img position-relative w-30">
+        <div class="speaker-img position-relative w-30 z-1">
           <figure class="m-0 overflow-hidden">
             <img
               [src]="speaker.Image ? speaker.Image : defaultImage"

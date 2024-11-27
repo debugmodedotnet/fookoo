@@ -1,5 +1,5 @@
 import { Component, OnInit, inject } from '@angular/core';
-import { DatePipe } from '@angular/common';
+import { DatePipe, SlicePipe } from '@angular/common';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { RouterModule } from '@angular/router';
 import { IEvent } from '../modules/event';
@@ -8,7 +8,7 @@ import { map } from 'rxjs';
 @Component({
   selector: 'app-event',
   standalone: true,
-  imports: [DatePipe, RouterModule],
+  imports: [DatePipe, SlicePipe, RouterModule],
   templateUrl: './event.component.html',
   styleUrl: './event.component.scss'
 })

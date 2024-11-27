@@ -62,7 +62,7 @@
                 </h4>
 
                 <h3 class="font-16 nmc-medium-grey mb-3 fw-normal">
-                  {{ e.ShortDescription }}
+                  {{ e.Description | slice : 0 : 125 }}...
                 </h3>
 
                 <div class="d-flex align-items-center gap-3">
